@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DEMO TOYOTA
+
+
+
+Este proyecto [Next.js](https://nextjs.org/) se ha creado con [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -11,6 +15,24 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Config structure files
+
+El desarrollo en general se ubica en el folder src. Se configur el archivo jsconfig.json para apuntar al root y las rutas relativas en Nextjs.
+
+
+## Unit Test
+
+It has been used for testing, [Jest](https://jestjs.io/docs/es-ES/getting-started) + [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
+
+```bash
+npm run test
+# or
+yarn test
+```
+
+### Config Unit Test
+
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
