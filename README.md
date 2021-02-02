@@ -1,29 +1,61 @@
 # DEMO TOYOTA
 
+[Alcance inicial Demo / TOYOT -8](https://mdsdigital.atlassian.net/browse/TOYOT-8?atlOrigin=eyJpIjoiMmUzOGZlZGIzNjY2NDhhMGE2YTMxMGNiZjA4M2Q4MjUiLCJwIjoiaiJ9)
 
+**Usuario (FrontEnd):**
 
-Este proyecto [Next.js](https://nextjs.org/) se ha creado con [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+    Crear un proyecto web básico.
 
-## Getting Started
+    Debe permitir tomar una foto.
 
-First, run the development server:
+    Simular envio de foto.
+
+    Debe recibir un video en una nueva pantalla con la posibilidad de visualizarlo.
+
+    En la pantalla del video, botones de compartir y descargar.
+
+**Usuario (BackEnd):**
+
+    Recibir foto.
+
+    Funcionalidad de merge de video: Devolver video final mp4 de la unión de video test con foto (ffmpeg) y marca de agua.
+
+    Prueba basica de API DeepFake para enviar foto y recibir video clip.
+
+    Prueba de API Vimeo (Cloud Video), para enviar video y llamada del mismo.
+
+    Enviar foto a FrontEnd.
+
+## Desarrollo
+
+Este proyecto de [Next.js](https://nextjs.org/) se ha creado con [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Empezando
+
+Para correr en desarrollo:
 
 ```bash
+npm install
 npm run dev
-# or
+# o
+yarn
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir [http://localhost:3131](http://localhost:3131) En el browser para ver la salida.
 
-### Config structure files
+### Estructura de Archivos
 
-El desarrollo en general se ubica en el folder src. Se configur el archivo jsconfig.json para apuntar al root y las rutas relativas en Nextjs.
+El desarrollo en general se ubica en el folder ```src```. Se configuro el archivo ```jsconfig.json``` para apuntar al root y las rutas relativas en Nextjs.
 
 
-## Unit Test
+## Test Unitarios
 
-It has been used for testing, [Jest](https://jestjs.io/docs/es-ES/getting-started) + [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
+Se ha usado para Testing, [Jest](https://jestjs.io/docs/es-ES/getting-started) + [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
+
+La Finalidad de los test es no romper las fucionalidades de desarrollo. Si realiza ajustes cerciorese de correr los test y modificar donde sea necesario.
+
+Para correr los test:
 
 ```bash
 npm run test
@@ -33,24 +65,13 @@ yarn test
 
 ### Config Unit Test
 
+Cualquier pagina puede ser modificada en  `src/pages/`.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+[rutas API](https://nextjs.org/docs/api-routes/introduction) pueden ser accedidas desde [http://localhost:3131/api/endpoint](http://localhost:3131/api/hello). Estos endpoint pueden ser editados en `src/pages/api/`.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+El directorio `pages/api` es mapeado a la ruta `/api/*`. Estos archivos son tratados como [rutas API](https://nextjs.org/docs/api-routes/introduction) en lugar de **routes** en **React**.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+## Despliegue
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Loren ipsum.....
