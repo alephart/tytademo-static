@@ -61,7 +61,7 @@ export default function Home() {
         .container-circles {
           position: absolute;
           left: 50%;
-          bottom: 100px;
+          bottom: 20px;
           cursor: pointer;
         }
 
