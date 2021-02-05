@@ -1,24 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import Webcam from "react-webcam";
-
-const videoConstraints = {
-  width: 480,
-  height: 640,
-  facingMode: "user"
-};
+import WebcamCapture from '@/components/WebcamCapture'
 
 export default function Home() {
-
-  const webcamRef = React.useRef(null);
-  const [imgSrc, setImgSrc] = React.useState(null);
-
-  const capture = React.useCallback(() => {
-      const imageSrc = webcamRef.current.getScreenshot();
-      setImgSrc(imageSrc);
-    }, [webcamRef, setImgSrc]);
-
   return (
     <div className={styles.container}>
       <Head>
@@ -29,27 +14,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1>Toyota DeepFake</h1>
 
-        <Webcam
-          audio={false}
-          height={640}
-          width={480}
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          videoConstraints={videoConstraints}
-          mirrored
-        />
-
-        <div className="container-circles">
-          <div className="outer-circle">
-            <div className="inner-circle" onClick={capture}></div>
-          </div>
-        </div>
-
-        {imgSrc && (
-        <img
-          src={imgSrc}
-        />
-      )}
+        <WebcamCapture />
 
       </main>
 
@@ -102,9 +67,6 @@ export default function Home() {
           width: 38px;
           margin: -19px 0px 0px -19px;
         }
-
-
-
       `}</style>
     </div>
   )
