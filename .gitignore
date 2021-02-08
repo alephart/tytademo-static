@@ -32,3 +32,8 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+
+# no photos
+public/photos
+public/videos
