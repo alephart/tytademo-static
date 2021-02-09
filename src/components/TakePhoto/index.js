@@ -2,8 +2,8 @@ import React from 'react'
 import Webcam from 'react-webcam'
 import ButtonTake from './ButtonTake'
 
-const videoConstraints = {
-  width: 480,
+const constraints = {
+  width: 360,
   height: 640,
   facingMode: "user"
 };
@@ -15,7 +15,7 @@ const TakePhoto = () => {
   const [confirmTakePhoto, setConfirmTakePhoto] = React.useState(false);
 
   const capture = React.useCallback(() => {
-      const imageSrc = webcamRef.current.getScreenshot();
+      const imageSrc = webcamRef.current.getScreenshot({width: 1080, height: 1920});
       setImgSrc(imageSrc);
       setTakePhoto(true);
 
@@ -60,12 +60,12 @@ const TakePhoto = () => {
       {!takePhoto && (
         <div className="zone-take-photo">
           <Webcam
-            audio={true}
+            audio={false}
             height={640}
             width={480}
             ref={webcamRef}
             screenshotFormat="image/png"
-            videoConstraints={videoConstraints}
+            videoConstraints={constraints}
             mirrored
           />
 
@@ -110,6 +110,11 @@ const TakePhoto = () => {
           left: 100px;
           top: 300px;
           color: lightgray;
+        }
+
+        .zone-photo img {
+          width: 100%;
+          height: auto;
         }
 
         .zone-process {
