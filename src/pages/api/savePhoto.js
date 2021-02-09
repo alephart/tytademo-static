@@ -36,7 +36,7 @@ export default (req, res) => {
     fs.writeFile(
       imageFinalPath,
       imageBuffer.data,
-      { mode: 0o755 },
+      //{ mode: 0o755 },
       function (err) {
         if (!err) {
           console.log('file is created');
