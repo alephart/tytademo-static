@@ -16,7 +16,6 @@ const ButtonTake = ({onClick}) => {
         .outer-circle {
           position: absolute;
           left: 0;
-
           height: 75px;
           width: 75px;
           background-color: rgba(0, 0, 0, 0.4);
