@@ -3,8 +3,11 @@ import Webcam from 'react-webcam'
 import ButtonTake from './ButtonTake'
 
 const constraints = {
-  width: 360,
+  //width: { min: 480, ideal: 1080, max: 1080 },
+  //height: { min: 640, ideal: 1440, max: 1440 },
+  width: 480,
   height: 640,
+  aspectRatio: 1.333333,
   facingMode: "user"
 };
 
@@ -13,9 +16,10 @@ const TakePhoto = () => {
   const [imgSrc, setImgSrc] = React.useState(null);
   const [takePhoto, setTakePhoto] = React.useState(false);
   const [confirmTakePhoto, setConfirmTakePhoto] = React.useState(false);
+  const [responseProcess, setResponseProcess] = React.useState(null);
 
   const capture = React.useCallback(() => {
-      const imageSrc = webcamRef.current.getScreenshot({width: 1080, height: 1920});
+      const imageSrc = webcamRef.current.getScreenshot({width: 1080, height: 1440});
       setImgSrc(imageSrc);
       setTakePhoto(true);
 
@@ -32,10 +36,13 @@ const TakePhoto = () => {
         })
         .then(response => response.json())
         .then(data => {
-          console.log(data)
+          console.log(data);
+          setTimeout(() => {
+            setResponseProcess(data);
+          }, 1000);
         })
         .catch(error => {
-          console.error(error)
+          console.error(error);
         });
       }
     }, [confirmTakePhoto]);
@@ -80,14 +87,19 @@ const TakePhoto = () => {
               src={imgSrc}
               />
           </div>
-            <button data-confirm="true" onClick={handleConfirmTakePhoto}>Si continuar</button>
+            <button className="blue" data-confirm="true" onClick={handleConfirmTakePhoto}>Si continuar</button>
             <button data-confirm="false" onClick={handleConfirmTakePhoto}>Volver a tomar</button>
         </div>
       )}
 
       {confirmTakePhoto && (
         <div className="zone-process">
-          Procesando...
+          {!responseProcess ? (
+            <span>Procesando...</span>
+          ) : (
+            <a href={`/photos/${responseProcess.photo}`} target="_blank">Clic para ver foto!</a>
+          )}
+          
           <button onClick={handleReturn}>Volver</button>
         </div>
 
@@ -96,9 +108,25 @@ const TakePhoto = () => {
       <style jsx>{`
         button {
           display: block;
+          background-color: #D5DBDB;
+          min-width: 160px;
+          min-height: 40px;
+          border: none;
+          border-radius: 50px;
+          text-transform: uppercase;
+          margin: 5px;
+        }
+
+        .blue {
+          background-color: #3498DB;
+          color: white;
         }
 
         .zone-take-photo, .zone-photo, .zone-process {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
           position: relative;
           width: 480px;
           margin: 0 auto;
@@ -107,8 +135,6 @@ const TakePhoto = () => {
         .zone-take-photo::before {
           content: "Activando camara...";
           position: absolute;
-          left: 100px;
-          top: 300px;
           color: lightgray;
         }
 
@@ -123,10 +149,17 @@ const TakePhoto = () => {
           height: 240px;
           background-color: white;
           margin: 0 auto;
-          padding-left: 200px;
-          padding-top: 120px;
+          padding: 10px;
           z-index: 1;
         }
+
+        .zone-process a {
+          color: #3498DB;
+          text-decoration: none;
+        } 
+        .zone-process a:hover {
+          color: #2980B9;
+        } 
       `}</style>
     </>
   )
