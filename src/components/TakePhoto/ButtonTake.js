@@ -11,15 +11,15 @@ const ButtonTake = ({onClick}) => {
           width: 75px;
           margin: 10px auto;
           cursor: pointer;
+          margin-top: -90px;
         }
 
         .outer-circle {
           position: absolute;
-          left: -37px;
-
+          left: 0;
           height: 75px;
           width: 75px;
-          background-color: rgba(0, 0, 0, 0.4);
+          background-color: rgba(255, 255, 255, 0.4);
           border-radius: 50%;
           z-index: 1;
         }
@@ -30,7 +30,7 @@ const ButtonTake = ({onClick}) => {
           top: 38px;
           height: 44px;
           width: 44px;
-          background: black;
+          background: white;
           border-radius: 50%;
           /*
           Offset the position correctly with
