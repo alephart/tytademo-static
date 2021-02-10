@@ -8,8 +8,8 @@ const DIR_TEMP = './temp';
 
 const DUMMY_IMAGE = "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=";
 
-console.log('. = %s', path.resolve(DIR_TEMP));
-console.log('__dirname = %s', path.resolve(__dirname, DIR_TEMP));
+// console.log('. = %s', path.resolve(DIR_TEMP));
+// console.log('__dirname = %s', path.resolve(__dirname, DIR_TEMP));
 
 export const config = {
   api: {
@@ -56,7 +56,8 @@ async function moveFile(source, destination) {
 async function saveDummy(dummyBuffer) {
   try {
     //const dummyBuffer = decodeBase64Image(DUMMY_IMAGE);
-    const nameDummy = `dummy-image.${dummyBuffer.ext}`;
+    const nameCuid = cuid();
+    const nameDummy = `image-${nameCuid.substring(0,10)}.${dummyBuffer.ext}`;
     const pathDummy = path.join('./public/photos/', nameDummy);
     await writeFile(pathDummy, dummyBuffer.data);
   } catch (err) {
@@ -78,11 +79,11 @@ export default async (req, res) => {
 
     const imageBuffer = decodeBase64Image(photoData);
     const nameCuid = cuid();
-    const nameFilePhoto = `${nameCuid}.${imageBuffer.ext}`;
+    const nameFilePhoto = `image-${nameCuid.substring(0,10)}.${imageBuffer.ext}`;
     const pathFinalFile = path.join('./public/photos/', nameFilePhoto);
 
     await writeFile(pathFinalFile, imageBuffer.data);
-    await saveDummy(imageBuffer);
+    //await saveDummy(imageBuffer);
 
     //await moveFile(`${DIR_TEMP}/${nameFilePhoto}`, pathFinalFile);
 
