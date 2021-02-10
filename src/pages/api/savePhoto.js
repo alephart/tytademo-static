@@ -1,6 +1,13 @@
+const path = require('path');
 const fs = require('fs').promises;
 const fsSycn = require('fs');
 const cuid = require('cuid');
+
+const DIR_TEMP = path.join(__dirname,  './temp');
+//const DIR_TEMP = './temp';
+
+console.log(". = %s", path.resolve(DIR_TEMP));
+console.log("__dirname = %s", path.resolve(__dirname, DIR_TEMP));
 
 export const config = {
   api: {
@@ -28,8 +35,9 @@ const decodeBase64Image = (dataString) => {
 async function writeFile(pathFile, dataFile) {
   try {
     await fs.writeFile(pathFile, dataFile);
-  } catch (error) {
-    console.error(`Got an error trying to write to a file: ${error.message}`);
+  } catch (err) {
+    if (err) throw err;
+    console.error(`Got an error trying to write to a file: ${err.message}`);
   }
 }
 
@@ -37,16 +45,15 @@ async function moveFile(source, destination) {
   try {
     await fs.rename(source, destination);
     console.log(`Moved file from ${source} to ${destination}`);
-  } catch (error) {
-    console.error(`Got an error trying to move the file: ${error.message}`);
+  } catch (err) {
+    if (err) throw err;
+    console.error(`Got an error trying to move the file: ${err.message}`);
   }
 }
 
 export default async (req, res) => {
   try {
     const photoData = req.body;
-
-    const DIR_TEMP = './temp';
 
     if (!fsSycn.existsSync(DIR_TEMP)){
         fs.mkdir(DIR_TEMP, { recursive: true }, (err) => {
