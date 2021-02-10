@@ -79,7 +79,7 @@ export default async (req, res) => {
 
     const imageBuffer = decodeBase64Image(photoData);
     const nameCuid = cuid();
-    const nameFilePhoto = `image-${nameCuid.substring(0,10)}.${imageBuffer.ext}`;
+    const nameFilePhoto = `image-${nameCuid.substring(10)}.${imageBuffer.ext}`;
     const pathFinalFile = path.join('./public/photos/', nameFilePhoto);
 
     await writeFile(pathFinalFile, imageBuffer.data);
