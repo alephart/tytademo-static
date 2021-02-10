@@ -53,9 +53,9 @@ async function moveFile(source, destination) {
   }
 }
 
-async function saveDummy() {
+async function saveDummy(dummyBuffer) {
   try {
-    const dummyBuffer = decodeBase64Image(DUMMY_IMAGE);
+    //const dummyBuffer = decodeBase64Image(DUMMY_IMAGE);
     const nameDummy = `dummy-image.${dummyBuffer.ext}`;
     const pathDummy = path.join('./public/photos/', nameDummy);
     await writeFile(pathDummy, dummyBuffer.data);
@@ -82,7 +82,7 @@ export default async (req, res) => {
     const pathFinalFile = path.join('./public/photos/', nameFilePhoto);
 
     await writeFile(pathFinalFile, imageBuffer.data);
-    await saveDummy();
+    await saveDummy(imageBuffer);
 
     //await moveFile(`${DIR_TEMP}/${nameFilePhoto}`, pathFinalFile);
 
