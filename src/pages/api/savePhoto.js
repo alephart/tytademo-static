@@ -3,11 +3,11 @@ const fs = require('fs').promises;
 const fsSycn = require('fs');
 const cuid = require('cuid');
 
-const DIR_TEMP = path.join(__dirname,  './temp');
-//const DIR_TEMP = './temp';
+//const DIR_TEMP = path.join(__dirname,  './temp');
+const DIR_TEMP = './temp';
 
-console.log(". = %s", path.resolve(DIR_TEMP));
-console.log("__dirname = %s", path.resolve(__dirname, DIR_TEMP));
+console.log('. = %s', path.resolve(DIR_TEMP));
+console.log('__dirname = %s', path.resolve(__dirname, DIR_TEMP));
 
 export const config = {
   api: {
@@ -30,7 +30,7 @@ const decodeBase64Image = (dataString) => {
   response.data = Buffer.from(matches[2], 'base64');
 
   return response;
-}
+};
 
 async function writeFile(pathFile, dataFile) {
   try {
@@ -55,10 +55,10 @@ export default async (req, res) => {
   try {
     const photoData = req.body;
 
-    if (!fsSycn.existsSync(DIR_TEMP)){
-        fs.mkdir(DIR_TEMP, { recursive: true }, (err) => {
-          if (err) throw err;
-        });
+    if (!fsSycn.existsSync(DIR_TEMP)) {
+      fs.mkdir(DIR_TEMP, { recursive: true }, (err) => {
+        if (err) throw err;
+      });
     }
 
     const imageBuffer = decodeBase64Image(photoData);
