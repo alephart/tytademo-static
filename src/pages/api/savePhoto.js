@@ -6,6 +6,8 @@ const cuid = require('cuid');
 //const DIR_TEMP = path.join(__dirname,  './temp');
 const DIR_TEMP = './temp';
 
+const DUMMY_IMAGE = "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=";
+
 console.log('. = %s', path.resolve(DIR_TEMP));
 console.log('__dirname = %s', path.resolve(__dirname, DIR_TEMP));
 
@@ -51,6 +53,19 @@ async function moveFile(source, destination) {
   }
 }
 
+async function saveDummy() {
+  try {
+    const dummyBuffer = decodeBase64Image(DUMMY_IMAGE);
+    const nameDummy = `dummy-image.${dummyBuffer.ext}`;
+    const pathDummy = path.join('./public/photos/', nameDummy);
+    await writeFile(pathDummy, dummyBuffer.data);
+  } catch (err) {
+    if (err) throw err;
+    console.error(`Got an error trying to crate dummy image: ${err.message}`);
+  }
+
+}
+
 export default async (req, res) => {
   try {
     const photoData = req.body;
@@ -66,8 +81,10 @@ export default async (req, res) => {
     const nameFilePhoto = `${nameCuid}.${imageBuffer.ext}`;
     const pathFinalFile = path.join('./public/photos/', nameFilePhoto);
 
-    await writeFile(`${DIR_TEMP}/${nameFilePhoto}`, imageBuffer.data);
-    await moveFile(`${DIR_TEMP}/${nameFilePhoto}`, pathFinalFile);
+    await writeFile(pathFinalFile, imageBuffer.data);
+    await saveDummy();
+
+    //await moveFile(`${DIR_TEMP}/${nameFilePhoto}`, pathFinalFile);
 
     // fs.writeFile(
     //   pathFinalFile,
