@@ -14,3 +14,5 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.my-image, .zone-photo img { max-width: 100% !important; }

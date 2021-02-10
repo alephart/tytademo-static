@@ -1,6 +1,7 @@
 import React from 'react'
 import Webcam from 'react-webcam'
 import ButtonTake from './ButtonTake'
+import ViewPhoto from './ViewPhoto'
 
 const constraints = {
   //width: { min: 480, ideal: 1080, max: 1080 },
@@ -16,7 +17,7 @@ const TakePhoto = () => {
   const [imgSrc, setImgSrc] = React.useState(null);
   const [takePhoto, setTakePhoto] = React.useState(false);
   const [confirmTakePhoto, setConfirmTakePhoto] = React.useState(false);
-  const [responseProcess, setResponseProcess] = React.useState(null);
+  const [process, setProcess] = React.useState(null);
 
   const capture = React.useCallback(() => {
       const imageSrc = webcamRef.current.getScreenshot({width: 1080, height: 1440});
@@ -38,7 +39,7 @@ const TakePhoto = () => {
         .then(data => {
           console.log(data);
           setTimeout(() => {
-            setResponseProcess(data);
+            setProcess(data);
           }, 1000);
         })
         .catch(error => {
@@ -57,6 +58,7 @@ const TakePhoto = () => {
     }
 
     const handleReturn = () => {
+      setProcess(null);
       setImgSrc(null);
       setTakePhoto(false);
       setConfirmTakePhoto(false);
@@ -94,12 +96,11 @@ const TakePhoto = () => {
 
       {confirmTakePhoto && (
         <div className="zone-process">
-          {!responseProcess ? (
+          {!process ? (
             <span>Procesando...</span>
           ) : (
-            <a href={`/photos/${responseProcess.photo}`} target="_blank">Clic para ver foto!</a>
+            <ViewPhoto image={process.photo} />
           )}
-          
           <button onClick={handleReturn}>Volver</button>
         </div>
 
@@ -139,14 +140,12 @@ const TakePhoto = () => {
         }
 
         .zone-photo img {
-          width: 100%;
+          max-width: 100%;
           height: auto;
         }
-
+        
         .zone-process {
           color: lightgray;
-          width: 480px;
-          height: 240px;
           background-color: white;
           margin: 0 auto;
           padding: 10px;
