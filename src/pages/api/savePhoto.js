@@ -10,7 +10,7 @@ export const config = {
   },
 };
 
-function decodeBase64Image(dataString) {
+const decodeBase64Image = (dataString) => {
   const matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
     response = {};
 
@@ -26,9 +26,9 @@ function decodeBase64Image(dataString) {
 }
 
 export default (req, res) => {
-  const photoData = req.body;
-
   try {
+    const photoData = req.body;
+
     const imageBuffer = decodeBase64Image(photoData);
     const nameCuid = cuid();
     const nameFilePhoto = `${nameCuid}.${imageBuffer.ext}`;
