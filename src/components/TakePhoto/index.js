@@ -20,7 +20,7 @@ const TakePhoto = () => {
   const [process, setProcess] = React.useState(null);
 
   const capture = React.useCallback(() => {
-      const imageSrc = webcamRef.current.getScreenshot({width: 1440, height: 1080});
+      const imageSrc = webcamRef.current.getScreenshot();
       setImgSrc(imageSrc);
       setTakePhoto(true);
 
@@ -70,7 +70,7 @@ const TakePhoto = () => {
         <div className="zone-take-photo">
           <Webcam
             audio={false}
-            height={360}
+            height='100%'
             width='100%'
             ref={webcamRef}
             screenshotFormat="image/png"
