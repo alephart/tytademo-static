@@ -1,5 +1,6 @@
 const fs = require('fs');
 const cuid = require('cuid');
+const cloudinary = require('cloudinary').v2;
 
 export const config = {
   api: {
@@ -8,6 +9,12 @@ export const config = {
     },
   },
 };
+
+cloudinary.config({ 
+  cloud_name: 'alephart-co', 
+  api_key: process.env.API_KEY_CLOUDINARY, 
+  api_secret: process.env.API_SECRET_CLOUDINARY
+});
 
 function decodeBase64Image(dataString) {
   const matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
