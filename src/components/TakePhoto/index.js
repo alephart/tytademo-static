@@ -20,7 +20,7 @@ const TakePhoto = () => {
   const [process, setProcess] = React.useState(null);
 
   const capture = React.useCallback(() => {
-      const imageSrc = webcamRef.current.getScreenshot({width: 1920, height: 1440});
+      const imageSrc = webcamRef.current.getScreenshot({width: 1440, height: 1080});
       setImgSrc(imageSrc);
       setTakePhoto(true);
 
@@ -138,8 +138,8 @@ const TakePhoto = () => {
         }
 
         .zone-photo img {
-          width: 360px;
-          height: 270px;
+          width: 100%;
+          height: auto;
         }
         
         .zone-process {
