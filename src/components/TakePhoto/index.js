@@ -4,8 +4,8 @@ import ButtonTake from './ButtonTake'
 import ViewPhoto from './ViewPhoto'
 
 const constraints = {
-  //width: { min: 480, ideal: 1080, max: 1080 },
-  //height: { min: 640, ideal: 1440, max: 1440 },
+  //width: { min: 480, ideal: 1080, max: 1920 },
+  //height: { min: 360, ideal: 1440, max: 1440 },
   width: 480,
   height: 360,
   aspectRatio: 1.333333,
@@ -71,7 +71,7 @@ const TakePhoto = () => {
           <Webcam
             audio={false}
             height={360}
-            width={480}
+            width='100%'
             ref={webcamRef}
             screenshotFormat="image/png"
             videoConstraints={constraints}
@@ -129,7 +129,7 @@ const TakePhoto = () => {
           align-items: center;
           justify-content: center;
           position: relative;
-          width: 480px;
+          width: 100%;
           margin: 0 auto;
         }
 
