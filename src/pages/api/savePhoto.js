@@ -1,3 +1,4 @@
+const path = require('path');
 const fs = require('fs');
 const cuid = require('cuid');
 
@@ -29,12 +30,12 @@ export default (req, res) => {
 
   try {
     const imageBuffer = decodeBase64Image(photoData);
+    const nameCuid = cuid();
+    const nameFilePhoto = `${nameCuid}.${imageBuffer.ext}`;
+    const pathFinalFile = path.join('./public/photos/', nameFilePhoto);
 
-    const pathSave = './public/photos/';
-    const namePhoto = cuid();
-    const imageFinalPath = `${pathSave}${namePhoto}.${imageBuffer.ext}`;
     fs.writeFile(
-      imageFinalPath,
+      pathFinalFile,
       imageBuffer.data,
       //{ mode: 0o755 },
       function (err) {
@@ -44,7 +45,7 @@ export default (req, res) => {
       }
     );
 
-    res.status(200).json({ response: 'success', photo: `${namePhoto}.${imageBuffer.ext}` });
+    res.status(200).json({ response: 'success', photo: nameFilePhoto });
   } catch (error) {
     res.status(500).json({ error: error });
   }
