@@ -7,7 +7,6 @@ const cloud = {
 
 const ViewPhoto = (props) => {
   const {image} = props;
-  console.log(image);
   return (
     <div className="zone-photo">
       <Image cloudName={cloud.cloudName} publicId={`${cloud.publicId}${image}`} className="my-image">
@@ -24,10 +23,9 @@ const ViewPhoto = (props) => {
           width: 480px;
           margin: 0 auto;
         }
-
       `}</style>
     </div>
   )
 }
 
-export default ViewPhoto;
+export default ViewPhoto
