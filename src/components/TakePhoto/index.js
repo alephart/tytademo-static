@@ -84,11 +84,9 @@ const TakePhoto = () => {
 
       {(imgSrc && takePhoto && !confirmTakePhoto) && (
         <div className="zone-photo">
-          <div>
-            <img
-              src={imgSrc}
-              />
-          </div>
+          <img
+            src={imgSrc}
+            />
             <button className="blue" data-confirm="true" onClick={handleConfirmTakePhoto}>Si continuar</button>
             <button data-confirm="false" onClick={handleConfirmTakePhoto}>Volver a tomar</button>
         </div>
@@ -140,8 +138,8 @@ const TakePhoto = () => {
         }
 
         .zone-photo img {
-          max-width: 100%;
-          height: auto;
+          width: 360px;
+          height: 270px;
         }
         
         .zone-process {
