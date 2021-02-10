@@ -1,5 +1,5 @@
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs').promises;
 const cuid = require('cuid');
 
 export const config = {
@@ -25,7 +25,15 @@ const decodeBase64Image = (dataString) => {
   return response;
 }
 
-export default (req, res) => {
+async function writeFile(pathFile, dataFile) {
+  try {
+    await fs.writeFile(pathFile, dataFile);
+  } catch (error) {
+    console.error(`Got an error trying to write to a file: ${error.message}`);
+  }
+}
+
+export default async (req, res) => {
   try {
     const photoData = req.body;
 
@@ -34,16 +42,19 @@ export default (req, res) => {
     const nameFilePhoto = `${nameCuid}.${imageBuffer.ext}`;
     const pathFinalFile = path.join('./public/photos/', nameFilePhoto);
 
-    fs.writeFile(
-      pathFinalFile,
-      imageBuffer.data,
-      //{ mode: 0o755 },
-      function (err) {
-        if (!err) {
-          console.log('file is created');
-        }
-      }
-    );
+    await writeFile(pathFinalFile, imageBuffer.data);
+
+    // fs.writeFile(
+    //   pathFinalFile,
+    //   imageBuffer.data,
+    //   //{ mode: 0o755 },
+    //  (err) => {
+    //     if (!err) {
+    //       console.log('file is created');
+    //     }
+    //     return;
+    //   }
+    // );
 
     res.status(200).json({ response: 'success', photo: nameFilePhoto });
   } catch (error) {
