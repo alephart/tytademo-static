@@ -7,7 +7,7 @@ const constraints = {
   //width: { min: 480, ideal: 1080, max: 1080 },
   //height: { min: 640, ideal: 1440, max: 1440 },
   width: 480,
-  height: 640,
+  height: 360,
   aspectRatio: 1.333333,
   facingMode: "user"
 };
@@ -20,7 +20,7 @@ const TakePhoto = () => {
   const [process, setProcess] = React.useState(null);
 
   const capture = React.useCallback(() => {
-      const imageSrc = webcamRef.current.getScreenshot({width: 1080, height: 1440});
+      const imageSrc = webcamRef.current.getScreenshot({width: 1920, height: 1440});
       setImgSrc(imageSrc);
       setTakePhoto(true);
 
@@ -70,7 +70,7 @@ const TakePhoto = () => {
         <div className="zone-take-photo">
           <Webcam
             audio={false}
-            height={640}
+            height={360}
             width={480}
             ref={webcamRef}
             screenshotFormat="image/png"
