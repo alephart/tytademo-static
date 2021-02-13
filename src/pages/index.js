@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import TakePhoto from '@/components/TakePhoto'
+import WebcamCapture from '@/components/SelectDevice'
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <h1>Toyota DeepFake</h1>
 
         <TakePhoto />
+        <WebcamCapture />
 
       </main>
 
