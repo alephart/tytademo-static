@@ -1,12 +1,6 @@
 const ffmpegConcat = require('ffmpeg-concat');
 const ffmpeg = require('fluent-ffmpeg');
 var fs = require('fs');
-//var path = require('path');
-
-//const cloudinary = require('cloudinary').v2;
-//const {configCldnry} = require('./configCldnry');
-
-//cloudinary.config(configCldnry);
 
 const data = {
   output: 'media/output.mp4',
