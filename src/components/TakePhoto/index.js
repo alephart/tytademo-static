@@ -4,10 +4,10 @@ import ButtonTake from './ButtonTake'
 import ViewPhoto from './ViewPhoto'
 
 const constraints = {
-  //width: { min: 480, ideal: 1080, max: 1080 },
-  //height: { min: 640, ideal: 1440, max: 1440 },
-  width: 480,
-  height: 360,
+  //width: { min: 480, ideal: 1080, max: 1920 },
+  //height: { min: 360, ideal: 1440, max: 1440 },
+  width: 640,
+  height: 480,
   aspectRatio: 1.333333,
   facingMode: "user"
 };
@@ -68,15 +68,17 @@ const TakePhoto = () => {
     <>
       {!takePhoto && (
         <div className="zone-take-photo">
-          <Webcam
-            audio={false}
-            height={360}
-            width={480}
-            ref={webcamRef}
-            screenshotFormat="image/png"
-            videoConstraints={constraints}
-            mirrored
-          />
+          <span>
+            <Webcam
+              audio={false}
+              height='100%'
+              width='100%'
+              ref={webcamRef}
+              screenshotFormat="image/png"
+              videoConstraints={constraints}
+              mirrored
+            />
+          </span>
 
           <ButtonTake onClick={capture} />
         </div>
@@ -132,13 +134,22 @@ const TakePhoto = () => {
           width: 480px;
           margin: 0 auto;
         }
-
+  
         .zone-take-photo::before {
           content: "Activando camara...";
           position: absolute;
           color: lightgray;
         }
-
+/*
+        .zone-take-photo::after {
+          content: " ";
+          position: absolute;
+          color: lightgray;
+          width: 256px;
+          height: 256px;
+          z-index: 2;
+        }
+*/
         .zone-photo img {
           max-width: 100%;
           height: auto;

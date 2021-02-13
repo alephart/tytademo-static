@@ -3,15 +3,14 @@ const fs = require('fs').promises;
 const fsSycn = require('fs');
 const cuid = require('cuid');
 const cloudinary = require('cloudinary').v2;
+const configCldnry = require('/lib/configCldnry');
+const decodeBase64Image = require ('/lib/decodeBase64');
 
 //const DIR_TEMP = path.join(__dirname,  './temp');
 const DIR_TEMP = './temp';
 
 // console.log('. = %s', path.resolve(DIR_TEMP));
 // console.log('__dirname = %s', path.resolve(__dirname, DIR_TEMP));
-
-const DUMMY_IMAGE =
-  'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
 
 export const config = {
   api: {
@@ -21,26 +20,7 @@ export const config = {
   },
 };
 
-cloudinary.config({
-  cloud_name: 'alephart-co',
-  api_key: process.env.API_KEY_CLOUDINARY,
-  api_secret: process.env.API_SECRET_CLOUDINARY,
-});
-
-const decodeBase64Image = (dataString) => {
-  const matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
-    response = {};
-
-  if (matches.length !== 3) {
-    return new Error('Invalid input string');
-  }
-
-  response.type = matches[1];
-  response.ext = matches[1].match(/jpeg|png|gif/)[0];
-  response.data = Buffer.from(matches[2], 'base64');
-
-  return response;
-};
+cloudinary.config(configCldnry);
 
 async function writeFile(pathFile, dataFile) {
   try {
