@@ -166,6 +166,7 @@ const TakePhoto = (props) => {
           content: 'Activating camera...';
           position: absolute;
           color: lightgray;
+          z-index: -1;
         }
         /*
         .zone-take-photo::after {
