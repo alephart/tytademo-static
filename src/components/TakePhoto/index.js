@@ -1,19 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Webcam from 'react-webcam';
 import ButtonTake from './ButtonTake';
 import ViewPhoto from './ViewPhoto';
 
 const TakePhoto = (props) => {
   console.log('Take Photo', props);
-  const { deviceId = 'user', groupId } = props.device;
-  const { camName } = props;
-  console.log('device.deviceId', deviceId);
+  const { facingMode } = props;
+  const { deviceId, groupId } = props.device;
 
-  const webcamRef = React.useRef(null);
-  const [imgSrc, setImgSrc] = React.useState(null);
-  const [takePhoto, setTakePhoto] = React.useState(false);
-  const [confirmTakePhoto, setConfirmTakePhoto] = React.useState(false);
-  const [process, setProcess] = React.useState(null);
+  const webcamRef = useRef(null);
+  const [imgSrc, setImgSrc] = useState(null);
+  const [takePhoto, setTakePhoto] = useState(false);
+  const [confirmTakePhoto, setConfirmTakePhoto] = useState(false);
+  const [process, setProcess] = useState(null);
 
   let constraints = {
     //width: { min: 480, ideal: 1080, max: 1920 },
@@ -23,20 +22,16 @@ const TakePhoto = (props) => {
     aspectRatio: 1.333333,
     deviceId: deviceId,
     groupId: groupId,
-    //facingMode: deviceId
+    facingMode: facingMode,
   };
 
-  if (deviceId === 'user') {
-    constraints.facingMode = deviceId;
-  }
-  
-  const capture = React.useCallback(() => {
+  const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
     setTakePhoto(true);
   }, [webcamRef, setImgSrc]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (confirmTakePhoto) {
       //const formData = new FormData();
       //formData.append('photo', imgSrc);
@@ -67,7 +62,7 @@ const TakePhoto = (props) => {
     }
   };
 
-  const handleReturn = () => {
+  const handleBackTakePhoto = () => {
     setProcess(null);
     setImgSrc(null);
     setTakePhoto(false);
@@ -87,7 +82,7 @@ const TakePhoto = (props) => {
             ref={webcamRef}
             screenshotFormat='image/png'
             videoConstraints={constraints}
-            mirrored={camName==='Front' ? true : false}
+            mirrored={facingMode === 'user' ? true : false}
           />
 
           <ButtonTake onClick={capture} />
@@ -117,9 +112,9 @@ const TakePhoto = (props) => {
           {!process ? (
             <span>Process...</span>
           ) : (
-            <div className="oneColunm">
+            <div className='oneColunm'>
               <ViewPhoto image={process.photo} />
-              <button onClick={handleReturn}>Back</button>
+              <button onClick={handleBackTakePhoto}>Back</button>
             </div>
           )}
         </div>

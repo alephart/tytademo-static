@@ -6,13 +6,13 @@ import SelectDevice from '@/components/SelectDevice'
 
 export default function Home() {
   const [device, setDevice] = useState(null);
-  const [camName, setCamName] = useState('');
+  const [facingMode, setFacingMode] = useState('');
   const [cameraOn, setCameraOn] = useState(false);
 
-  const handleOnCamera = (device, name) => {
-    console.log(device, name);
+  const handleOnCamera = (device, mode) => {
+    console.log(device, mode);
     setCameraOn(!cameraOn);
-    setCamName(name);
+    setFacingMode(mode);
     setDevice(device);
   }
 
@@ -27,7 +27,7 @@ export default function Home() {
         <h1>Toyota DeepFake</h1>
 
         { cameraOn || <SelectDevice onCamera={handleOnCamera} /> }
-        { device && <TakePhoto device={device} camName={camName} /> }
+        { device && <TakePhoto device={device} facingMode={facingMode} /> }
       </main>
 
       <footer className={styles.footer}>

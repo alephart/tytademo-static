@@ -1,0 +1,10 @@
+
+{
+  "short_name": "Tyta_face",
+  "name": "Toyota DeepFake",
+  "permissions": {
+    "video-capture": {
+      "description": "Required to capture video using getUserMedia()"
+    }
+  }
+}
