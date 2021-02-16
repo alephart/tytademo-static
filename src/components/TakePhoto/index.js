@@ -3,9 +3,10 @@ import Webcam from 'react-webcam';
 import ButtonTake from './ButtonTake';
 import ViewPhoto from './ViewPhoto';
 
-const TakePhoto = ({ device, key }) => {
-  console.log('Take Photo', device);
-  const { deviceId = 'user', groupId } = device;
+const TakePhoto = (props) => {
+  console.log('Take Photo', props);
+  const { deviceId = 'user', groupId } = props.device;
+  const { camName } = props;
   console.log('device.deviceId', deviceId);
 
   const webcamRef = React.useRef(null);
@@ -86,7 +87,7 @@ const TakePhoto = ({ device, key }) => {
             ref={webcamRef}
             screenshotFormat='image/png'
             videoConstraints={constraints}
-            mirrored={key===1 ? false : true}
+            mirrored={camName==='Front' ? true : false}
           />
 
           <ButtonTake onClick={capture} />

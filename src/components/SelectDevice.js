@@ -61,11 +61,11 @@ const SelectDevice = (props) => {
 
           <div className="selection">
             {devices.map((device, key) => {
-              const image = key === 0 ? '/images/camera-front.png' : '/images/camera-back.png';
+              const name = key === 0 ? 'Front' : 'Back';
               return (
-                <div className="btn" key={key} onClick={() => handleCantCameras(device, key)}>
-                  <img src={image} width="60" alt={device.label} />
-                  <p>{key === 0 ? 'Front' : 'Back'}</p>
+                <div className="btn" key={key} onClick={() => handleCantCameras(device, name)}>
+                  <img src={name === 'Front' ? '/images/camera-front.png' : '/images/camera-back.png'} width="60" alt={device.label} />
+                  <p>{name}</p>
                 </div>
               )}
               )}
