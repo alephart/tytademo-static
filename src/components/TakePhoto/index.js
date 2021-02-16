@@ -3,21 +3,23 @@ import Webcam from 'react-webcam'
 import ButtonTake from './ButtonTake'
 import ViewPhoto from './ViewPhoto'
 
-const constraints = {
-  //width: { min: 480, ideal: 1080, max: 1920 },
-  //height: { min: 360, ideal: 1440, max: 1440 },
-  width: 480,
-  height: 360,
-  aspectRatio: 1.333333,
-  facingMode: "user"
-};
 
-const TakePhoto = () => {
+const TakePhoto = ({device}) => {
+  const { deviceId = 'user' } = device;
   const webcamRef = React.useRef(null);
   const [imgSrc, setImgSrc] = React.useState(null);
   const [takePhoto, setTakePhoto] = React.useState(false);
   const [confirmTakePhoto, setConfirmTakePhoto] = React.useState(false);
   const [process, setProcess] = React.useState(null);
+  
+  const constraints = {
+    //width: { min: 480, ideal: 1080, max: 1920 },
+    //height: { min: 360, ideal: 1440, max: 1440 },
+    width: 640,
+    height: 480,
+    aspectRatio: 1.333333,
+    facingMode: deviceId
+  };
 
   const capture = React.useCallback(() => {
       const imageSrc = webcamRef.current.getScreenshot();
@@ -68,15 +70,15 @@ const TakePhoto = () => {
     <>
       {!takePhoto && (
         <div className="zone-take-photo">
-          <Webcam
-            audio={false}
-            height='100%'
-            width='100%'
-            ref={webcamRef}
-            screenshotFormat="image/png"
-            videoConstraints={constraints}
-            mirrored
-          />
+            <Webcam
+              audio={false}
+              height='100%'
+              width='100%'
+              ref={webcamRef}
+              screenshotFormat="image/png"
+              videoConstraints={constraints}
+              mirrored
+            />
 
           <ButtonTake onClick={capture} />
         </div>
@@ -121,6 +123,8 @@ const TakePhoto = () => {
           color: white;
         }
 
+
+
         .zone-take-photo, .zone-photo, .zone-process {
           display: flex;
           flex-direction: column;
@@ -128,15 +132,25 @@ const TakePhoto = () => {
           justify-content: center;
           position: relative;
           width: 100%;
-          margin: 0 auto;
+          max-width: 480px;
+          margin: 20px auto;
         }
-
+  
         .zone-take-photo::before {
           content: "Activando camara...";
           position: absolute;
           color: lightgray;
         }
-
+/*
+        .zone-take-photo::after {
+          content: " ";
+          position: absolute;
+          color: lightgray;
+          width: 256px;
+          height: 256px;
+          z-index: 2;
+        }
+*/
         .zone-photo img {
           width: 100%;
           height: auto;

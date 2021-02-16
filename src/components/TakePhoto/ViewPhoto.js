@@ -21,7 +21,6 @@ const ViewPhoto = (props) => {
           position: relative;
           max-width: 480px;
           width: 100%;
-          height: auto;
           margin: 0 auto;
         }
       `}</style>

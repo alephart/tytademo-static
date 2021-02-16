@@ -2,7 +2,7 @@
 
 [Alcance inicial Demo / TOYOT -8](https://mdsdigital.atlassian.net/browse/TOYOT-8?atlOrigin=eyJpIjoiMmUzOGZlZGIzNjY2NDhhMGE2YTMxMGNiZjA4M2Q4MjUiLCJwIjoiaiJ9)
 
-**Usuario (FrontEnd):**
+**FrontEnd:**
 
     Crear un proyecto web básico.
     Debe permitir tomar una foto.
@@ -10,7 +10,7 @@
     Debe recibir un video en una nueva pantalla con la posibilidad de visualizarlo.
     En la pantalla del video, botones de compartir y descargar.
 
-**Usuario (BackEnd):**
+**BackEnd:**
 
     Recibir foto.
     Funcionalidad de merge de video: Devolver video final mp4 de la unión de video test con foto (ffmpeg) y marca de agua.
@@ -19,19 +19,31 @@
     Enviar foto a FrontEnd.
 
 ## Desarrollo
+*FrontEnd*
+- Nexjs
+- Reactjs
 
-Este proyecto de [Next.js](https://nextjs.org/) se ha creado con [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+*BackEnd*
+- Nodejs
+- ffmpeg
 
+## Requerimientos
+Para el funcionamiento adecuado instalar:
+
+- nodejs v14
+- ffmpeg
 ### Lanzar App
 
 Para correr en desarrollo:
 
 ```bash
-npm install
-npm run dev
-# o
 yarn
 yarn dev
+
+# o
+
+npm install
+npm run dev
 ```
 
 Abrir [http://localhost:3131](http://localhost:3131) en el browser para ver la salida.
@@ -42,14 +54,16 @@ El desarrollo en general se ubica en el folder ```src```.
 
 Cualquier pagina puede ser modificada en  `src/pages/`.
 
-[rutas API](https://nextjs.org/docs/api-routes/introduction) pueden ser accedidas desde [http://localhost:3131/api/endpoint](http://localhost:3131/api/hello). Estos endpoint pueden ser editados en `src/pages/api/`.
+El directorio `pages/api` es mapeado a la ruta `/api/*`, como en ```http://localhost:3131/api/endpoint```. Estos archivos son tratados como [rutas API](https://nextjs.org/docs/api-routes/introduction) en lugar de **routes** en **React**.
 
-El directorio `pages/api` es mapeado a la ruta `/api/*`. Estos archivos son tratados como [rutas API](https://nextjs.org/docs/api-routes/introduction) en lugar de **routes** en **React**.
+Estos endpoint pueden ser editados en `src/pages/api/`.
+
 
 Se configuro el archivo ```jsconfig.json``` para apuntar al root y las rutas relativas en Nextjs, no necesita usar ```../```. Puede usar la llamada a un import de la siguiente forma:
 
-```import MyComponent from '@/components/MyComponent';```
-
+```javascript
+import MyComponent from '@/components/MyComponent';
+```
 ## Test Unitarios
 
 Se ha usado para Testing, [Jest](https://jestjs.io/docs/es-ES/getting-started) + [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
@@ -59,11 +73,52 @@ La Finalidad de los test es no romper las fucionalidades de desarrollo. Si reali
 Para correr los test:
 
 ```bash
-npm run test
-# or
 yarn test
+# or
+npm run test
 ```
 
 ## Despliegue
+Se mantiene 2 ramas para este desarrollo: *master*  y *develop*. 
 
-Loren ipsum.....
+La rama *develop* será donde se haga todo el trabajo de desarrollo.
+
+La rama *master* es donde se sube para producción.
+
+### Para correr en producción:
+En un entorno Linux (ubuntu + nginx + nodejs + pm2 + ffmpeg). Instalar un certificado de seguridad SSL (requerido para funcionamiento de camara).
+
+Dentro del folder del sitio web (*website* para este proyecto):
+
+```bash
+# Actualizar el repo:
+git pull
+
+# Remover .next:
+rm -rf  .next
+
+# Actualizar Dependencias:
+yarn
+
+# Construir Proyecto:
+yarn build
+
+# Reiniciar sitio web:
+pm2 restart website
+```
+Eso es todo!
+
+Nota: en el servidor actual designado se creó un archivo bash de nombre *deploy.sh* que realiza todo el despliegue de la aplicación. Simplemente en el folder del proyecto digite: 
+
+```bash
+./deploy.sh
+```
+
+### Datos de acceso al servidor (actualizar si es necesario)
+
+```
+ssh -i mds-default.pem ubuntu@3.82.116.242
+```
+
+_Recuerde solicitar el archivo de firma publica mds-default.pem_
+
