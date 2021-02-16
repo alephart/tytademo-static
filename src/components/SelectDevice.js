@@ -43,9 +43,10 @@ const SelectDevice = (props) => {
   },
   [devices]);
 
-  const handleCantCameras = (e, device) => {
+  const handleCantCameras = (device, key) => {
+    console.log({key});
     setDeviceId(deviceId);
-    onCamera(device);
+    onCamera(device, key);
     console.log(cantCameras);
   }
 
@@ -62,7 +63,7 @@ const SelectDevice = (props) => {
             {devices.map((device, key) => {
               const image = key === 0 ? '/images/camera-front.png' : '/images/camera-back.png';
               return (
-                <div className="btn" key={key} onClick={(e) => handleCantCameras(e, device)}>
+                <div className="btn" key={key} onClick={() => handleCantCameras(device, key)}>
                   <img src={image} width="60" alt={device.label} />
                   <p>{key === 0 ? 'Front' : 'Back'}</p>
                 </div>
