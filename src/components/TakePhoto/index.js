@@ -117,7 +117,7 @@ const TakePhoto = (props) => {
           {!process ? (
             <span>Process...</span>
           ) : (
-            <div>
+            <div className="oneColunm">
               <ViewPhoto image={process.photo} />
               <button onClick={handleReturn}>Back</button>
             </div>
@@ -147,6 +147,13 @@ const TakePhoto = (props) => {
         .blue {
           background-color: #3498db;
           color: white;
+        }
+
+        .oneColunm {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
         }
 
         .zone-take-photo,
