@@ -5,7 +5,7 @@ import ViewPhoto from './ViewPhoto';
 
 const TakePhoto = ({ device }) => {
   console.log('Take Photo', device);
-  const { deviceId = 'user' } = device;
+  const { deviceId = 'user', groupId } = device;
   console.log('device.deviceId', deviceId);
 
   const webcamRef = React.useRef(null);
@@ -20,19 +20,15 @@ const TakePhoto = ({ device }) => {
     width: 640,
     height: 480,
     aspectRatio: 1.333333,
-    deviceId: { exact: deviceId },
+    deviceId: deviceId,
+    groupId: groupId,
     //facingMode: deviceId
   };
 
   if (deviceId === 'user') {
-    constraints = {
-      width: 640,
-      height: 480,
-      aspectRatio: 1.333333,
-      facingMode: deviceId,
-    };
+    constraints.facingMode = deviceId;
   }
-
+  
   const capture = React.useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
@@ -76,6 +72,8 @@ const TakePhoto = ({ device }) => {
     setTakePhoto(false);
     setConfirmTakePhoto(false);
   };
+
+  console.log(constraints);
 
   return (
     <>
