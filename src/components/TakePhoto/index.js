@@ -3,7 +3,6 @@ import Webcam from 'react-webcam'
 import ButtonTake from './ButtonTake'
 import ViewPhoto from './ViewPhoto'
 
-
 const TakePhoto = ({device}) => {
   const { deviceId = 'user' } = device;
   const webcamRef = React.useRef(null);
@@ -12,14 +11,24 @@ const TakePhoto = ({device}) => {
   const [confirmTakePhoto, setConfirmTakePhoto] = React.useState(false);
   const [process, setProcess] = React.useState(null);
   
-  const constraints = {
+  let constraints = {
     //width: { min: 480, ideal: 1080, max: 1920 },
     //height: { min: 360, ideal: 1440, max: 1440 },
     width: 640,
     height: 480,
     aspectRatio: 1.333333,
-    facingMode: deviceId
+    deviceId : { exact: deviceId },
+    //facingMode: deviceId
   };
+
+  if(deviceId !== 'user') {
+    constraints = {
+      width: 640,
+      height: 480,
+      aspectRatio: 1.333333,
+      facingMode: deviceId
+    };
+  }
 
   const capture = React.useCallback(() => {
       const imageSrc = webcamRef.current.getScreenshot();
@@ -89,25 +98,36 @@ const TakePhoto = ({device}) => {
           <img
             src={imgSrc}
             />
-            <button className="blue" data-confirm="true" onClick={handleConfirmTakePhoto}>Si continuar</button>
-            <button data-confirm="false" onClick={handleConfirmTakePhoto}>Volver a tomar</button>
+            <div className="buttons">
+              <button className="blue" data-confirm="true" onClick={handleConfirmTakePhoto}>Yes, continue</button>
+              <button data-confirm="false" onClick={handleConfirmTakePhoto}>Again take photo</button>
+            </div>
         </div>
       )}
 
       {confirmTakePhoto && (
         <div className="zone-process">
           {!process ? (
-            <span>Procesando...</span>
+            <span>Process...</span>
           ) : (
-            <ViewPhoto image={process.photo} />
+            <div>
+              <ViewPhoto image={process.photo} />
+              <button onClick={handleReturn}>Back</button>
+            </div>
           )}
-          <button onClick={handleReturn}>Volver</button>
         </div>
-
       )}
 
       <style jsx>{`
+
+        .buttons {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
         button {
+          flex: 1;
           display: block;
           background-color: #D5DBDB;
           min-width: 160px;
@@ -123,8 +143,6 @@ const TakePhoto = ({device}) => {
           color: white;
         }
 
-
-
         .zone-take-photo, .zone-photo, .zone-process {
           display: flex;
           flex-direction: column;
@@ -137,7 +155,7 @@ const TakePhoto = ({device}) => {
         }
   
         .zone-take-photo::before {
-          content: "Activando camara...";
+          content: "Activating camera...";
           position: absolute;
           color: lightgray;
         }

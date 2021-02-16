@@ -56,7 +56,7 @@ const SelectDevice = (props) => {
     <>
       {devices && (
         <div className="zone-cameras">
-          <p>Selecciona tu camara:</p>
+          <p>Select you camera:</p>
 
           <div className="selection">
             {devices.map((device, key) => {
