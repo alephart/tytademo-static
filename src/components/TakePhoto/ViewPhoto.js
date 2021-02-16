@@ -21,7 +21,7 @@ const ViewPhoto = (props) => {
           justify-content: center;
           position: relative;
           max-width: 480px;
-          width: 480px;
+          width: 100%;
           margin: 0 auto;
         }
 

@@ -3,24 +3,26 @@ import Webcam from 'react-webcam'
 import ButtonTake from './ButtonTake'
 import ViewPhoto from './ViewPhoto'
 
-const constraints = {
-  //width: { min: 480, ideal: 1080, max: 1920 },
-  //height: { min: 360, ideal: 1440, max: 1440 },
-  width: 640,
-  height: 480,
-  aspectRatio: 1.333333,
-  facingMode: "user"
-};
 
-const TakePhoto = () => {
+const TakePhoto = ({device}) => {
+  const { deviceId = 'user' } = device;
   const webcamRef = React.useRef(null);
   const [imgSrc, setImgSrc] = React.useState(null);
   const [takePhoto, setTakePhoto] = React.useState(false);
   const [confirmTakePhoto, setConfirmTakePhoto] = React.useState(false);
   const [process, setProcess] = React.useState(null);
+  
+  const constraints = {
+    //width: { min: 480, ideal: 1080, max: 1920 },
+    //height: { min: 360, ideal: 1440, max: 1440 },
+    width: 640,
+    height: 480,
+    aspectRatio: 1.333333,
+    facingMode: deviceId
+  };
 
   const capture = React.useCallback(() => {
-      const imageSrc = webcamRef.current.getScreenshot({width: 1920, height: 1440});
+      const imageSrc = webcamRef.current.getScreenshot();
       setImgSrc(imageSrc);
       setTakePhoto(true);
 
@@ -68,7 +70,6 @@ const TakePhoto = () => {
     <>
       {!takePhoto && (
         <div className="zone-take-photo">
-          <span>
             <Webcam
               audio={false}
               height='100%'
@@ -78,7 +79,6 @@ const TakePhoto = () => {
               videoConstraints={constraints}
               mirrored
             />
-          </span>
 
           <ButtonTake onClick={capture} />
         </div>
@@ -125,14 +125,17 @@ const TakePhoto = () => {
           color: white;
         }
 
+
+
         .zone-take-photo, .zone-photo, .zone-process {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           position: relative;
-          width: 480px;
-          margin: 0 auto;
+          width: 100%;
+          max-width: 480px;
+          margin: 20px auto;
         }
   
         .zone-take-photo::before {
