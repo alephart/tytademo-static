@@ -33,9 +33,11 @@ export default async (req, res) => {
     const pathFinalFile = path.join(DIR_TEMP, `${nameFilePhoto}.${imageBuffer.ext}`);
 
     await writeFile(pathFinalFile, imageBuffer.data);
+    // generate video
+
     await saveCloud(pathFinalFile, nameFilePhoto);
 
-    // remove file from server
+    // remove file (image) from server
     fsSync.unlinkSync(pathFinalFile);
 
     res.status(200).json({ response: 'success', photo: `${nameFilePhoto}.${imageBuffer.ext}` });

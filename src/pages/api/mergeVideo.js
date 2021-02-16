@@ -4,6 +4,7 @@ var fs = require('fs');
 
 const data = {
   output: 'media/output.mp4',
+  final: 'media/final.mp4',
   videos: [
     'media/skateboarder.mp4',
     'media/puppy.mp4',
@@ -16,7 +17,7 @@ const data = {
   }
 };
 
-// concat 3 mp4s together using 2 500ms directionalWipe transitions
+// concat mp4s together using 500ms directionalWipe transitions
 async function transitionMergeVideos(data){
   try {
     await ffmpegConcat(data);
