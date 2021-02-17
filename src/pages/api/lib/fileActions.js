@@ -1,21 +1,59 @@
 /**
- * here only promises actions 
+ * here the synchronous actions end with Sync
+ * all other actions are promises 
  */
 const fs = require('fs').promises;
+const fsSync = require('fs');
 const path = require('path');
 const cuid = require('cuid');
 
-// const DIR_TEMP = './temp';
+const DIR_TEMP = './temp';
 // const DIR_TEMP = path.join(__dirname,  './temp');
 // console.log('. = %s', path.resolve(DIR_TEMP));
 // console.log('__dirname = %s', path.resolve(__dirname, DIR_TEMP));
+
+const checkFileSync = (path) => {
+  try {
+    if (fsSync.existsSync(path)) {
+      return true;
+    }
+    return false;
+  } catch(err) {
+    console.error(err);
+    throw err;
+  }
+};
+
+const createDirSync = (dir = DIR_TEMP) => {
+  try {
+    if (!fsSync.existsSync(dir)) {
+      fs.mkdir(dir, { recursive: true }, (err) => {
+        if (err) throw err;
+      });
+    }
+  } catch(err) {
+    console.error(err);
+    throw err;
+  }
+};
+
+const removeFileSync = (pathFile) => {
+  try {
+    if(checkFileSync(pathFile)) {
+      fsSync.unlinkSync(pathFile);
+    }
+  } catch(err) {
+    if (err) throw err;
+    console.error(err);
+  }
+};
 
 async function writeFile(pathFile, dataFile) {
   try {
     await fs.writeFile(pathFile, dataFile);
   } catch (err) {
-    if (err) throw err;
     console.error(`Got an error trying to write to a file: ${err.message}`);
+    if (err) throw err;
   }
 }
 
@@ -24,8 +62,8 @@ async function moveFile(source, destination) {
     await fs.rename(source, destination);
     console.log(`Moved file from ${source} to ${destination}`);
   } catch (err) {
-    if (err) throw err;
     console.error(`Got an error trying to move the file: ${err.message}`);
+    if (err) throw err;
   }
 }
 
@@ -37,8 +75,8 @@ async function saveDummy(dummyBuffer) {
     const pathDummy = path.join('./public/photos/', nameDummy);
     await writeFile(pathDummy, dummyBuffer.data);
   } catch (err) {
-    if (err) throw err;
     console.error(`Got an error trying to crate dummy image: ${err.message}`);
+    if (err) throw err;
   }
 }
 
@@ -54,4 +92,10 @@ async function saveDummy(dummyBuffer) {
     //   }
     // );
 
-module.exports = { writeFile, moveFile };
+module.exports = { 
+  writeFile,
+  moveFile,
+  removeFileSync,
+  checkFileSync,
+  createDirSync
+};
