@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import App from '../src/pages/index';
 
-describe('App', () => {
+describe.skip('App', () => {
   it('renders heading page', () => {
     render(<App />);
     expect(
