@@ -39,7 +39,7 @@ const placeWatermarkOnVideo = async (data) => {
   });
 }
 
-const name = (data) => {
+const concatVideoImage = (data) => {
   // command:
   // ffmpeg -loop 1 -framerate 24 -t 5 -i image.png \ 
   // -f lavfi -t 1 -i anullsrc \ 

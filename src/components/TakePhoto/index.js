@@ -36,7 +36,7 @@ const TakePhoto = (props) => {
       //const formData = new FormData();
       //formData.append('photo', imgSrc);
 
-      fetch('/api/savePhoto', {
+      fetch('/api/processPhoto', {
         method: 'POST',
         body: imgSrc,
       })
