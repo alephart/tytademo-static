@@ -36,7 +36,7 @@ async function saveCloud(pathFile, nameFile, type = 'image') {
         { public_id: pathCloud, tags: `demo` }, // directory and tags are optional
         function (err, result) {
           if (err) throw err;
-          console.log(result, error);
+          console.log(result, err);
           // return image details
           //res.json(result)
         }

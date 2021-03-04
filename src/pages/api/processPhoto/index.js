@@ -29,7 +29,7 @@ export default async (req, res) => {
     const nameFilePhoto = `photo-${nameCuid.substring(10)}`;
     const pathFinalPhoto = path.join(DIR_TEMP, `${nameFilePhoto}.${imageBuffer.ext}`);
 
-    // save photo
+    // save photo in /temp
     await writeFile(pathFinalPhoto, imageBuffer.data);
 
     //response = { ...response, photo: `${nameFilePhoto}.${imageBuffer.ext}` };

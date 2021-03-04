@@ -10,7 +10,7 @@ const DIR_TEMP = './temp';
 
 describe('ffmpeg', () => {
 
-  test('it should check ffmpeg is installed on server', () => {
+  test('it should check and return true if ffmpeg is installed on server', () => {
     expect(ffmpegExist).toBeTruthy();
   });
 
