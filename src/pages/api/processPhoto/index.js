@@ -1,9 +1,10 @@
 const path = require('path');
 const cuid = require('cuid');
-const decodeBase64Image = require ('../lib/decodeBase64');
+const {decodeBase64Image} = require ('../lib/imageBase64');
 const { transitionMergeVideos, placeWatermarkOnVideo } = require('../lib/ffmpegActions');
 const { createDirSync, removeFileSync, writeFile } = require('../lib/fileActions');
 const { saveCloud } = require('../lib/saveFileCloud');
+const { uploadFile } = require('../lib/bucketMedia');
 
 const media = path.join(__dirname,  '../media');
 console.log({media});
@@ -20,7 +21,6 @@ export const config = {
 export default async (req, res) => {
   try {
     const photoData = req.body;
-    const response = {};
 
     createDirSync(DIR_TEMP);
 
@@ -31,8 +31,6 @@ export default async (req, res) => {
 
     // save photo in /temp
     await writeFile(pathFinalPhoto, imageBuffer.data);
-
-    //response = { ...response, photo: `${nameFilePhoto}.${imageBuffer.ext}` };
     
     const nameFileVideo = `video-${nameCuid.substring(10)}`;
     console.log(nameFileVideo);
@@ -69,20 +67,18 @@ export default async (req, res) => {
 
     await placeWatermarkOnVideo(data);
 
-    //response = { ...response, video: `${nameFileVideo}.mp4` };
-
     // save image on cloud
-    await saveCloud(pathFinalPhoto, nameFilePhoto);
+    const imageLocation = await uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
 
     // save final video on cloud
-    await saveCloud(data.output, nameFileVideo, 'video');
+    const videoLocation = await uploadFile(data.output, nameFileVideo, 'video', true);
 
     // remove files (image and videos) from server
     removeFileSync(pathFinalPhoto);
     //removeFileSync(videoTemp);
     //removeFileSync(data.output);
 
-    res.status(200).json({ response: 'success', photo: `${nameFilePhoto}.${imageBuffer.ext}` });
+    res.status(200).json({ response: 'success', photo: imageLocation, video: videoLocation });
   } catch (error) {
     res.status(500).json({ error: error });
   }
