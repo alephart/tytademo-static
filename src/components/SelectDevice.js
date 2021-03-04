@@ -1,11 +1,10 @@
-
 import {useState, useEffect, useCallback} from 'react';
+import FlipCamera from './Icons/FlipCamera';
 
 const SelectDevice = (props) => {
-  const { onCamera } = props;
+  const { onCamera, mode, setMode } = props;
   const [deviceId, setDeviceId] = useState({});
   const [devices, setDevices] = useState([]);
-  const [cameras, setCameras] = useState([]);
   const [cantCameras, setCantCameras] = useState(0);
 
   const handleDevices = useCallback(
@@ -21,33 +20,20 @@ const SelectDevice = (props) => {
 
   useEffect(() => {
     setCantCameras(devices.length);
-    console.log(devices);
-
-    // if (devices.length > 0) {
-    //   // de momento para capturar cadena en label. 
-    //   // Esto puede sobrar si no se utiliza esta cadena
-    //   const devicesTemp = devices.map((device, idx, arr) => {
-    //     const image = device.label.trim().split(' ').splice(-1)[0];
-    //     arr = {
-    //       deviceId: device.deviceId,
-    //       groupId: device.groupId,
-    //       kind: device.groupId,
-    //       label: device.label, 
-    //       image
-    //     };
-    //     return arr;
-    //   });
-      
-    //   setCameras(devicesTemp);
-    // }
   },
   [devices]);
 
-  const handleCantCameras = (device, mode) => {
+  useEffect(() => {
+    console.log(mode);
+  }, [mode]);
+
+  const changeCamera = () => {
+    console.log({devices});
     console.log({mode});
-    setDeviceId(deviceId);
-    onCamera(device, mode);
+    //setDeviceId(deviceId);
+    //onCamera(device, mode);
     console.log(cantCameras);
+    setMode(mode==='user' ? 'environment' : 'user');
   }
 
   if (cantCameras === 0) return null; // seleccionar archivo
@@ -55,47 +41,11 @@ const SelectDevice = (props) => {
 
   return (
     <>
-      {devices && (
+      {devices && cantCameras > 1 && (
         <div className="zone-cameras">
-          <p>Select you camera:</p>
-
-          <div className="selection">
-            {devices.map((device, key) => {
-              const mode = key === 0 ? 'user' : 'environment';
-              return (
-                <div className="btn" key={key} onClick={() => handleCantCameras(device, mode)}>
-                  <img src={mode === 'user' ? '/images/camera-front.png' : '/images/camera-back.png'} width="60" alt={device.label} />
-                  <p>{mode==='user' ? 'Front' : 'Back'}</p>
-                </div>
-              )}
-              )}
-          </div>
-
+          <FlipCamera onClick={changeCamera} />
         </div>
       )}
-      <style>{`
-        .zone-cameras {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-        }
-
-        .selection {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .btn {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-        }
-      `}</style>
     </>
   );
 };

@@ -4,9 +4,8 @@ import ButtonTake from './ButtonTake';
 import ViewPhoto from './ViewPhoto';
 
 const TakePhoto = (props) => {
-  console.log('Take Photo', props);
   const { facingMode } = props;
-  const { deviceId, groupId } = props.device;
+  //const { deviceId, groupId } = props.device;
 
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
@@ -20,8 +19,8 @@ const TakePhoto = (props) => {
     width: 640,
     height: 480,
     aspectRatio: 1.333333,
-    deviceId: deviceId,
-    groupId: groupId,
+    //deviceId: deviceId,
+    //groupId: groupId,
     facingMode: facingMode,
   };
 
@@ -86,6 +85,7 @@ const TakePhoto = (props) => {
           />
 
           <ButtonTake onClick={capture} />
+
         </div>
       )}
 
