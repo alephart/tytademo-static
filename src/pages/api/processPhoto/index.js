@@ -1,9 +1,8 @@
 const path = require('path');
 const cuid = require('cuid');
 const {decodeBase64Image} = require ('../lib/imageBase64');
-const { transitionMergeVideos, placeWatermarkOnVideo } = require('../lib/ffmpegActions');
+const { transitionMergeVideos, placeWatermarkOnVideo, placeImageOnVideo } = require('../lib/ffmpegActions');
 const { createDirSync, removeFileSync, writeFile } = require('../lib/fileActions');
-const { saveCloud } = require('../lib/saveFileCloud');
 const { uploadFile } = require('../lib/bucketMedia');
 
 const media = path.join(__dirname,  '../media');
@@ -36,6 +35,9 @@ export default async (req, res) => {
     console.log(nameFileVideo);
     
     // generate video from 2 videos
+
+    let videoTemp = '';
+
     let data = {
       output: `${DIR_TEMP}/output.mp4`,
       videos: [
@@ -50,34 +52,39 @@ export default async (req, res) => {
 
     console.log('data1', data);
 
+    // remove posible video exists 
     removeFileSync(data.output);
 
     await transitionMergeVideos(data);
 
     // create watermark into video 
-    let videoTemp = data.output;
+    videoTemp = data.output;
 
     data = {
-      output: `${DIR_TEMP}/${nameFileVideo}`,
+      output: `${DIR_TEMP}/output2.mp4`,
       video: videoTemp,
       watermark: `${DIR_TEMP}/MDS.png`,
     };
 
     console.log('data2', data);
 
+    // remove posible video exists 
+    removeFileSync(data.output);
+
     await placeWatermarkOnVideo(data);
 
     // put image on video
-    // create watermark into video 
     videoTemp = data.output;
 
     data = {
       output: `${DIR_TEMP}/${nameFileVideo}`,
       video: videoTemp,
-      watermark: `${DIR_TEMP}/MDS.png`,
+      watermark: pathFinalPhoto,
     };
 
-    console.log('data2', data);
+    console.log('data3', data);
+
+    placeImageOnVideo(data);
 
     // save image on cloud
     const imageLocation = await uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
@@ -87,8 +94,8 @@ export default async (req, res) => {
 
     // remove files (image and videos) from server
     removeFileSync(pathFinalPhoto);
-    //removeFileSync(videoTemp);
-    //removeFileSync(data.output);
+    removeFileSync(videoTemp);
+    removeFileSync(data.output);
 
     res.status(200).json({ response: 'success', photo: imageLocation, video: videoLocation });
   } catch (error) {
