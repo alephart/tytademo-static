@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Webcam from 'react-webcam';
 import ButtonTake from './ButtonTake';
-import ViewPhoto from './ViewPhoto';
+import ViewVideo from './ViewVideo';
 
 const TakePhoto = (props) => {
   const { facingMode } = props;
@@ -101,7 +101,7 @@ const TakePhoto = (props) => {
               Yes, continue
             </button>
             <button data-confirm='false' onClick={handleConfirmTakePhoto}>
-              Again take photo
+              Take photo again
             </button>
           </div>
         </div>
@@ -113,8 +113,8 @@ const TakePhoto = (props) => {
             <span>Process...</span>
           ) : (
             <div className='oneColunm'>
-              <ViewPhoto image={process.photo} />
-              <button onClick={handleBackTakePhoto}>Back</button>
+              <ViewVideo data={process} />
+              <a onClick={handleBackTakePhoto}>Back</a>
             </div>
           )}
         </div>

@@ -18,6 +18,7 @@
     "next": "10.0.6",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-player": "^2.9.0",
     "react-webcam": "^5.2.2"
   },
   "devDependencies": {
