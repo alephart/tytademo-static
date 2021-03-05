@@ -26,13 +26,13 @@ export default async (req, res) => {
 
     const imageBuffer = decodeBase64Image(photoData);
     const nameCuid = cuid();
-    const nameFilePhoto = `photo-${nameCuid.substring(10)}`;
-    const pathFinalPhoto = path.join(DIR_TEMP, `${nameFilePhoto}.${imageBuffer.ext}`);
+    const nameFilePhoto = `photo-${nameCuid.substring(10)}.${imageBuffer.ext}`;
+    const pathFinalPhoto = path.join(DIR_TEMP, nameFilePhoto);
 
     // save photo in /temp
     await writeFile(pathFinalPhoto, imageBuffer.data);
     
-    const nameFileVideo = `video-${nameCuid.substring(10)}`;
+    const nameFileVideo = `video-${nameCuid.substring(10)}.mp4`;
     console.log(nameFileVideo);
     
     // generate video from 2 videos
@@ -55,10 +55,10 @@ export default async (req, res) => {
     await transitionMergeVideos(data);
 
     // create watermark into video 
-    const videoTemp = data.output;
+    let videoTemp = data.output;
 
     data = {
-      output: `${DIR_TEMP}/${nameFileVideo}.mp4`,
+      output: `${DIR_TEMP}/${nameFileVideo}`,
       video: videoTemp,
       watermark: `${DIR_TEMP}/MDS.png`,
     };
@@ -66,6 +66,18 @@ export default async (req, res) => {
     console.log('data2', data);
 
     await placeWatermarkOnVideo(data);
+
+    // put image on video
+    // create watermark into video 
+    videoTemp = data.output;
+
+    data = {
+      output: `${DIR_TEMP}/${nameFileVideo}`,
+      video: videoTemp,
+      watermark: `${DIR_TEMP}/MDS.png`,
+    };
+
+    console.log('data2', data);
 
     // save image on cloud
     const imageLocation = await uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);

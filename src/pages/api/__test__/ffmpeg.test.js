@@ -1,5 +1,5 @@
 const commandExistsSync = require('command-exists').sync;
-const { transitionMergeVideos, placeWatermarkOnVideo } = require('../lib/ffmpegActions');
+const { transitionMergeVideos, placeWatermarkOnVideo, placeImageOnVideo } = require('../lib/ffmpegActions');
 const { checkFileSync, removeFileSync } = require('../lib/fileActions');
 const path = require('path');
 
@@ -49,6 +49,24 @@ describe('ffmpeg', () => {
     removeFileSync(data.output);
     
     await placeWatermarkOnVideo(data);
+    
+    const existVideoOutput = checkFileSync(data.output);
+    
+    expect(existVideoOutput).toBeTruthy();
+    
+    done();
+  });
+
+  itif(ffmpegExist)('it should place a image on a video', async (done) => {
+    const data = {
+      output: `${DIR_TEMP}/test3.mp4`,
+      video: `${DIR_TEMP}/test2.mp4`,
+      watermark: `${DIR_TEMP}/test-photo.png`,
+    };
+    
+    removeFileSync(data.output);
+    
+    await placeImageOnVideo(data);
     
     const existVideoOutput = checkFileSync(data.output);
     
