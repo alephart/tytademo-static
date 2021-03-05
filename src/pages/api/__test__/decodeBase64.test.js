@@ -1,5 +1,5 @@
 
-import decodeBase64Image from '../lib/decodeBase64'
+const {decodeBase64Image} = require ('../lib/imageBase64');
 
 describe('Image Base64', () => {
   const DUMMY_IMAGE = 'dummy-image.jpg';

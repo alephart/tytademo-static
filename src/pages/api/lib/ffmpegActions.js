@@ -15,7 +15,7 @@ const transitionMergeVideos = async (data) => {
 const placeWatermarkOnVideo = async (data) => {
   // commmand:
   // ffmpeg -i video.mp4 -i watermark.png \
-  // -filter_complex "overlay=x=(main_w-overlay_w)-50:y=(main_h-overlay_h)-50" \
+  // -filter_complex "[1:v] scale=120/90 [mds1]; [0:v][mds1] overlay=x=(main_w-overlay_w)-50:y=(main_h-overlay_h)-50" \
   // output.mp4
 
   return new Promise(async (resolve, reject) => {
@@ -23,7 +23,7 @@ const placeWatermarkOnVideo = async (data) => {
       ffmpeg()
       .input(data.video)
       .input(data.watermark)
-      .complexFilter(["overlay=x=(main_w-overlay_w)-50:y=(main_h-overlay_h)-50"])
+      .complexFilter(["[1:v] scale=120/35 [mds1]; [0:v][mds1] overlay=x=(main_w-overlay_w)-50:y=(main_h-overlay_h)-50"])
       // .on('start', function)
       .on('end', resolve)
       .on('error', reject)
@@ -39,14 +39,38 @@ const placeWatermarkOnVideo = async (data) => {
   });
 }
 
-const name = (data) => {
+const placeImageOnVideo = async (data) => {
+  // scale=120/90 (1.333333)
+  // command:
+  // ffmpeg -i video.mp4 -i image.png \
+  // -filter_complex "[1:v] scale=120/90 [mds1]; [0:v][mds1] overlay=20:20" \
+  // output.mp4
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      ffmpeg()
+      .input(data.video)
+      .input(data.watermark)
+      .complexFilter(["[1:v] scale=120/90 [mds1]; [0:v][mds1] overlay=50:50"])
+      // .on('start', function)
+      .on('end', resolve)
+      .on('error', reject)
+      .output(data.output)
+      .run();
+  
+    } catch (err) {
+      throw err;
+    }
+  });
+}
+
+const concatVideoImage = (data) => {
   // command:
   // ffmpeg -loop 1 -framerate 24 -t 5 -i image.png \ 
   // -f lavfi -t 1 -i anullsrc \ 
   // -i video.mp4 \ 
   // -filter_complex "[2:v]scale=320:240,setsar=sar=1[video];[0:v][1:a][video][2:a]concat=n=2:v=1:a=1" 
   // output.mp4
-
 
   try {
     ffmpeg()
@@ -67,3 +91,4 @@ const name = (data) => {
 
 exports.transitionMergeVideos = transitionMergeVideos;
 exports.placeWatermarkOnVideo = placeWatermarkOnVideo;
+exports.placeImageOnVideo = placeImageOnVideo;

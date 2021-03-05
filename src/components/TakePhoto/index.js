@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Webcam from 'react-webcam';
 import ButtonTake from './ButtonTake';
-import ViewPhoto from './ViewPhoto';
+import ViewVideo from './ViewVideo';
 
 const TakePhoto = (props) => {
-  console.log('Take Photo', props);
   const { facingMode } = props;
-  const { deviceId, groupId } = props.device;
+  //const { deviceId, groupId } = props.device;
 
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
@@ -20,8 +19,8 @@ const TakePhoto = (props) => {
     width: 640,
     height: 480,
     aspectRatio: 1.333333,
-    deviceId: deviceId,
-    groupId: groupId,
+    //deviceId: deviceId,
+    //groupId: groupId,
     facingMode: facingMode,
   };
 
@@ -36,7 +35,7 @@ const TakePhoto = (props) => {
       //const formData = new FormData();
       //formData.append('photo', imgSrc);
 
-      fetch('/api/savePhoto', {
+      fetch('/api/processPhoto', {
         method: 'POST',
         body: imgSrc,
       })
@@ -86,6 +85,7 @@ const TakePhoto = (props) => {
           />
 
           <ButtonTake onClick={capture} />
+
         </div>
       )}
 
@@ -101,7 +101,7 @@ const TakePhoto = (props) => {
               Yes, continue
             </button>
             <button data-confirm='false' onClick={handleConfirmTakePhoto}>
-              Again take photo
+              Take photo again
             </button>
           </div>
         </div>
@@ -113,8 +113,8 @@ const TakePhoto = (props) => {
             <span>Process...</span>
           ) : (
             <div className='oneColunm'>
-              <ViewPhoto image={process.photo} />
-              <button onClick={handleBackTakePhoto}>Back</button>
+              <ViewVideo data={process} />
+              <a onClick={handleBackTakePhoto}>Back</a>
             </div>
           )}
         </div>
