@@ -5,7 +5,6 @@ const path = require('path');
 
 const itif = (condition) => condition ? it : it.skip;
 const ffmpegExist = commandExistsSync('ffmpeg');
-const media = path.join(__dirname,  '../media');
 const DIR_TEMP = './temp';
 
 describe('ffmpeg', () => {
