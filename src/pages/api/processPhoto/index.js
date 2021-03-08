@@ -1,7 +1,7 @@
 const path = require('path');
 const cuid = require('cuid');
 const {decodeBase64Image} = require ('../lib/imageBase64');
-const { transitionMergeVideos, placeWatermarkOnVideo, placeImageOnVideo } = require('../lib/ffmpegActions');
+const { placeWatermarkOnVideo, placeImageOnVideo, transitionMergeVideosExec } = require('../lib/ffmpegActions');
 const { createDirSync, removeFileSync, writeFile } = require('../lib/fileActions');
 const { uploadFile } = require('../lib/bucketMedia');
 
@@ -55,7 +55,8 @@ export default async (req, res) => {
     // remove posible video exists 
     removeFileSync(data.output);
 
-    await transitionMergeVideos(data);
+    //await transitionMergeVideos(data);
+    await transitionMergeVideosExec(data);
 
     // create watermark into video 
     videoTemp = data.output;
