@@ -3,6 +3,8 @@ const ffmpeg = require('fluent-ffmpeg');
 const { exec } = require('child_process');
 var fs = require('fs');
 
+var isMac = process.platform === "darwin";
+
 // concat mp4s together using transitions (using ffmpeg-concat - only videos)
 const transitionMergeVideos = async (data) => {
   try {
@@ -15,8 +17,12 @@ const transitionMergeVideos = async (data) => {
 
 const transitionMergeVideosExec = async (data) => {
   const {output, videos, transition} = data;
-  const generate = `ffmpeg-concat -t ${transition.name} -d ${transition.duration} -o ${output} ${videos[0]} ${videos[1]}`;
-  // "ffmpeg-concat -t circleopen -d 500 -o out.mp4 video1.mp4 video4.mp4"
+
+
+  // xvfb-run -s "-ac -screen 0 1280x1024x24" ffmpeg-concat -t circleopen -d 500 -o out.mp4 video1.mp4 video4.mp4
+  const xvfb = `xvfb-run -s "-ac -screen 0 1280x1024x24`;
+  const concat = `ffmpeg-concat -t ${transition.name} -d ${transition.duration} -o ${output} ${videos[0]} ${videos[1]}`;
+  const generate = !isMac ? `${xvfb} ${concat}` : concat;
 
   return new Promise(async (resolve, reject) => {
     try {
