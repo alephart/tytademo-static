@@ -85,7 +85,7 @@ export default async (req, res) => {
 
     console.log('data3', data);
 
-    placeImageOnVideo(data);
+    await placeImageOnVideo(data);
 
     // save image on cloud
     const imageLocation = await uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
