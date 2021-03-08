@@ -1,5 +1,11 @@
 const commandExistsSync = require('command-exists').sync;
-const { transitionMergeVideos, placeWatermarkOnVideo, placeImageOnVideo } = require('../lib/ffmpegActions');
+const { 
+  transitionMergeVideos, 
+  placeWatermarkOnVideo, 
+  placeImageOnVideo, 
+  concatVideos,
+  transitionMergeVideosExec
+} = require('../lib/ffmpegActions');
 const { checkFileSync, removeFileSync } = require('../lib/fileActions');
 const path = require('path');
 
@@ -13,7 +19,32 @@ describe('ffmpeg', () => {
     expect(ffmpegExist).toBeTruthy();
   });
 
-  itif(ffmpegExist)('it should join 2 videos with transition concat', async (done) => {
+  // itif(ffmpegExist)('it should join 2 videos with transition concat', async (done) => {
+  //   const data = {
+  //     output: `${DIR_TEMP}/test.mp4`,
+  //     videos: [
+  //       `${DIR_TEMP}/video1.mp4`,
+  //       `${DIR_TEMP}/video4.mp4`,
+  //     ],
+  //     transition: {
+  //       name: 'directionalWipe',
+  //       duration: 300
+  //     }
+  //   };
+
+  //   removeFileSync(data.output);
+
+  //   await transitionMergeVideos(data);
+
+  //   const existVideoOutput = checkFileSync(data.output);
+    
+  //   done();
+    
+  //   expect(existVideoOutput).toBeTruthy();
+    
+  // }, 30000);
+
+  itif(ffmpegExist)('it should join 2 videos with transition exec + concat', async (done) => {
     const data = {
       output: `${DIR_TEMP}/test.mp4`,
       videos: [
@@ -28,7 +59,7 @@ describe('ffmpeg', () => {
 
     removeFileSync(data.output);
 
-    await transitionMergeVideos(data);
+    await transitionMergeVideosExec(data);
 
     const existVideoOutput = checkFileSync(data.output);
     
@@ -37,6 +68,28 @@ describe('ffmpeg', () => {
     expect(existVideoOutput).toBeTruthy();
     
   }, 30000);
+
+  // itif(ffmpegExist)('it should join 2 videos with fluent-ffmpeg', async (done) => {
+  //   const data = {
+  //     output: `${DIR_TEMP}/test.mp4`,
+  //     outputTemp: DIR_TEMP,
+  //     videos: [
+  //       `${DIR_TEMP}/video1.mp4`,
+  //       `${DIR_TEMP}/video4.mp4`,
+  //     ]
+  //   };
+
+  //   removeFileSync(data.output);
+
+  //   await concatVideos(data);
+
+  //   const existVideoOutput = checkFileSync(data.output);
+    
+  //   done();
+    
+  //   expect(existVideoOutput).toBeTruthy();
+    
+  // }, 30000);
   
   itif(ffmpegExist)('it should place a watermark on a video', async (done) => {
     const data = {

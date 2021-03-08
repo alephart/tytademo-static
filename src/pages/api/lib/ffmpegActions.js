@@ -1,5 +1,6 @@
 const ffmpegConcat = require('ffmpeg-concat');
 const ffmpeg = require('fluent-ffmpeg');
+const { exec } = require('child_process');
 var fs = require('fs');
 
 // concat mp4s together using transitions (using ffmpeg-concat - only videos)
@@ -10,6 +11,51 @@ const transitionMergeVideos = async (data) => {
     console.error(err);
     throw err;
   }
+}
+
+const transitionMergeVideosExec = async (data) => {
+  const {output, videos, transition} = data;
+  const generate = `ffmpeg-concat -t ${transition.name} -d ${transition.duration} -o ${output} ${videos[0]} ${videos[1]}`;
+  // "ffmpeg-concat -t circleopen -d 500 -o out.mp4 video1.mp4 video4.mp4"
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      exec(generate, (error, stdout, stderr) => {
+        if (error) {    
+            console.log(`error: ${error.message}`);
+            return reject(error);
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return resolve(stderr);;
+        }
+        console.log(`stdout: ${stdout}`);
+        return resolve(stdout);
+      });
+    } catch (err) {
+      console.error(err);
+      if(err) throw err;
+      reject(err);
+    }
+  });
+}
+
+const concatVideos = async (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      ffmpeg()
+      .input(data.videos[0])
+      .input(data.videos[1])
+      .complexFilter(["[0:v:0][0:a:0][1:v:0]concat=n=2:v=1:a=1[outv][outa]"])
+      .on('end', resolve)
+      .on('error', reject)
+      .output(data.output)
+    } catch (err) {
+      console.error(err);
+      if(err) throw err;
+      reject(err);
+    }
+  });
 }
 
 const placeWatermarkOnVideo = async (data) => {
@@ -89,6 +135,10 @@ const concatVideoImage = (data) => {
   }
 };
 
-exports.transitionMergeVideos = transitionMergeVideos;
-exports.placeWatermarkOnVideo = placeWatermarkOnVideo;
-exports.placeImageOnVideo = placeImageOnVideo;
+module.exports = {
+  transitionMergeVideos,
+  placeWatermarkOnVideo,
+  placeImageOnVideo,
+  concatVideos,
+  transitionMergeVideosExec,
+}
