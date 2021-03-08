@@ -20,7 +20,7 @@ const transitionMergeVideosExec = async (data) => {
 
 
   // xvfb-run -s "-ac -screen 0 1280x1024x24" ffmpeg-concat -t circleopen -d 500 -o out.mp4 video1.mp4 video4.mp4
-  const xvfb = `xvfb-run -s "-ac -screen 0 1280x1024x24`;
+  const xvfb = `xvfb-run -s "-ac -screen 0 1280x1024x24"`;
   const concat = `ffmpeg-concat -t ${transition.name} -d ${transition.duration} -o ${output} ${videos[0]} ${videos[1]}`;
   const generate = !isMac ? `${xvfb} ${concat}` : concat;
 
