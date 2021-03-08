@@ -18,13 +18,14 @@ const transitionMergeVideos = async (data) => {
 const transitionMergeVideosExec = async (data) => {
   const {output, videos, transition} = data;
 
-
   // xvfb-run -s "-ac -screen 0 1280x1024x24" ffmpeg-concat -t circleopen -d 500 -o out.mp4 video1.mp4 video4.mp4
   const xvfb = `xvfb-run -s "-ac -screen 0 1280x1024x24"`;
   const concat = `ffmpeg-concat -t ${transition.name} -d ${transition.duration} -o ${output} ${videos[0]} ${videos[1]}`;
   const generate = !isMac ? `${xvfb} ${concat}` : concat;
 
   return new Promise(async (resolve, reject) => {
+    let stdoutData = '', stderrData = '';
+    
     try {
       exec(generate, (error, stdout, stderr) => {
         if (error) {    
@@ -33,11 +34,20 @@ const transitionMergeVideosExec = async (data) => {
         }
         if (stderr) {
             console.log(`stderr: ${stderr}`);
-            return resolve(stderr);;
+            stderrData += stderr;
         }
-        console.log(`stdout: ${stdout}`);
-        return resolve(stdout);
+        if (stdout) {
+            console.log(`stdout: ${stdout}`);
+            stdoutData += stdout;
+        }
+
+        if(stderrData) {
+          reject(stderrData);
+        } else {
+          resolve(stdoutData);
+        }
       });
+
     } catch (err) {
       console.error(err);
       if(err) throw err;
