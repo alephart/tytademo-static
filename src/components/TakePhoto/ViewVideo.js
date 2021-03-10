@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
-import Share from "@/components/Share";
 
 const ViewVideo = ({data}) => {
   console.log(data);
