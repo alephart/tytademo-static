@@ -4,7 +4,8 @@ import { TwitterIcon } from "react-share";
 const shareStyle = {
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
+  margin: '10px'
 };
 
 const Share = () => {
