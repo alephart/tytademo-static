@@ -16,7 +16,7 @@ const ViewVideo = ({data}) => {
           height='100%'
         />
       </div>
-      <Share />
+
       <div>
         <img src={data.photo} />
       </div>
