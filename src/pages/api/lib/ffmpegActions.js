@@ -23,7 +23,7 @@ const transitionMergeVideosExec = async (data) => {
   const concat = `ffmpeg-concat -t ${transition.name} -d ${transition.duration} -o ${output} ${videos[0]} ${videos[1]}`;
   const generate = !isMac ? `${xvfb} ${concat}` : concat;
 
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let stdoutData = '', stderrData = '';
     
     try {
