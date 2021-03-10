@@ -1,9 +1,8 @@
 const ffmpegConcat = require('ffmpeg-concat');
 const ffmpeg = require('fluent-ffmpeg');
 const { exec } = require('child_process');
-var fs = require('fs');
 
-var isMac = process.platform === "darwin";
+const isMac = process.platform === "darwin";
 
 // concat mp4s together using transitions (using ffmpeg-concat - only videos)
 const transitionMergeVideos = async (data) => {
