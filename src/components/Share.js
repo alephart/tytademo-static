@@ -1,6 +1,12 @@
 import { TwitterShareButton } from "react-share";
 import { TwitterIcon } from "react-share";
 
+const shareStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+};
+
 const Share = () => {
   return (
     <TwitterShareButton
@@ -8,16 +14,10 @@ const Share = () => {
       url={"https://tytademo.devmds.com/"}
       hashtags={["hashtag1", "hashtag2"]}
       className="share"
+      style={shareStyle}
     >
-      <TwitterIcon size={32} round />{' '}
-      <span> Twitter Share</span>
-      <style jsx>{`
-        .share {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      `}</style>
+      <TwitterIcon size={32} round />
+      {' '}<span> Twitter Share</span>
     </TwitterShareButton>
   )
 }
