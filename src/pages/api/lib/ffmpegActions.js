@@ -1,9 +1,9 @@
 const ffmpegConcat = require('ffmpeg-concat');
 const ffmpeg = require('fluent-ffmpeg');
 const { exec } = require('child_process');
-var fs = require('fs');
+const fs = require('fs');
 
-var isMac = process.platform === "darwin";
+const isMac = process.platform === "darwin";
 
 // concat mp4s together using transitions (using ffmpeg-concat - only videos)
 const transitionMergeVideos = async (data) => {
@@ -23,7 +23,7 @@ const transitionMergeVideosExec = async (data) => {
   const concat = `ffmpeg-concat -t ${transition.name} -d ${transition.duration} -o ${output} ${videos[0]} ${videos[1]}`;
   const generate = !isMac ? `${xvfb} ${concat}` : concat;
 
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     let stdoutData = '', stderrData = '';
     
     try {
@@ -126,30 +126,30 @@ const placeImageOnVideo = async (data) => {
   });
 }
 
-const concatVideoImage = (data) => {
-  // command:
-  // ffmpeg -loop 1 -framerate 24 -t 5 -i image.png \ 
-  // -f lavfi -t 1 -i anullsrc \ 
-  // -i video.mp4 \ 
-  // -filter_complex "[2:v]scale=320:240,setsar=sar=1[video];[0:v][1:a][video][2:a]concat=n=2:v=1:a=1" 
-  // output.mp4
+// const concatVideoImage = (data) => {
+//   // command:
+//   // ffmpeg -loop 1 -framerate 24 -t 5 -i image.png \ 
+//   // -f lavfi -t 1 -i anullsrc \ 
+//   // -i video.mp4 \ 
+//   // -filter_complex "[2:v]scale=320:240,setsar=sar=1[video];[0:v][1:a][video][2:a]concat=n=2:v=1:a=1" 
+//   // output.mp4
 
-  try {
-    ffmpeg()
-    .input(data.image)
-    .loop(1)
-    .withFpsInput(24)
-    .outputOptions(['-t 5'])
-    .input(data.video)
-    .inputOptions(['-f lavfi -t 1 -i anullsrc'])
-    .complexFilter(['[2:v]scale=320:240,setsar=sar=1,3333[video];[0:v][1:a][video][2:a]concat=n=2:v=1:a=1'])
-    .output(data.output)
-    .run()
+//   try {
+//     ffmpeg()
+//     .input(data.image)
+//     .loop(1)
+//     .withFpsInput(24)
+//     .outputOptions(['-t 5'])
+//     .input(data.video)
+//     .inputOptions(['-f lavfi -t 1 -i anullsrc'])
+//     .complexFilter(['[2:v]scale=320:240,setsar=sar=1,3333[video];[0:v][1:a][video][2:a]concat=n=2:v=1:a=1'])
+//     .output(data.output)
+//     .run()
 
-  } catch (err) {
+//   } catch (err) {
     
-  }
-};
+//   }
+// };
 
 module.exports = {
   transitionMergeVideos,

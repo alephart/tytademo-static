@@ -37,7 +37,6 @@ const SelectDevice = (props) => {
   }
 
   if (cantCameras === 0) return null; // seleccionar archivo
-  //if (cantCameras === 1) return null; // directo a la camara
 
   return (
     <>
