@@ -2,9 +2,10 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Webcam from 'react-webcam';
 import ButtonTake from './ButtonTake';
 import ViewVideo from './ViewVideo';
+import SelectDevice from '@/components/SelectDevice'
 
 const TakePhoto = (props) => {
-  const { facingMode } = props;
+  const { facingMode, setFacingMode } = props;
   //const { deviceId, groupId } = props.device;
 
   const webcamRef = useRef(null);
@@ -86,6 +87,7 @@ const TakePhoto = (props) => {
 
           <ButtonTake onClick={capture} />
 
+        <SelectDevice mode={facingMode} setMode={setFacingMode} />
         </div>
       )}
 
