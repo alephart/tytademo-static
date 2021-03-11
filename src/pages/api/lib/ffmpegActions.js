@@ -1,7 +1,6 @@
 const ffmpegConcat = require('ffmpeg-concat');
 const ffmpeg = require('fluent-ffmpeg');
 const { exec } = require('child_process');
-const fs = require('fs');
 
 const isMac = process.platform === "darwin";
 
@@ -125,31 +124,6 @@ const placeImageOnVideo = async (data) => {
     }
   });
 }
-
-// const concatVideoImage = (data) => {
-//   // command:
-//   // ffmpeg -loop 1 -framerate 24 -t 5 -i image.png \ 
-//   // -f lavfi -t 1 -i anullsrc \ 
-//   // -i video.mp4 \ 
-//   // -filter_complex "[2:v]scale=320:240,setsar=sar=1[video];[0:v][1:a][video][2:a]concat=n=2:v=1:a=1" 
-//   // output.mp4
-
-//   try {
-//     ffmpeg()
-//     .input(data.image)
-//     .loop(1)
-//     .withFpsInput(24)
-//     .outputOptions(['-t 5'])
-//     .input(data.video)
-//     .inputOptions(['-f lavfi -t 1 -i anullsrc'])
-//     .complexFilter(['[2:v]scale=320:240,setsar=sar=1,3333[video];[0:v][1:a][video][2:a]concat=n=2:v=1:a=1'])
-//     .output(data.output)
-//     .run()
-
-//   } catch (err) {
-    
-//   }
-// };
 
 module.exports = {
   transitionMergeVideos,
