@@ -5,8 +5,6 @@ const { placeWatermarkOnVideo, placeImageOnVideo, transitionMergeVideosExec } = 
 const { createDirSync, removeFileSync, writeFile } = require('../lib/fileActions');
 const { uploadFile } = require('../lib/bucketMedia');
 
-const media = path.join(__dirname,  '../media');
-console.log({media});
 const DIR_TEMP = './temp';
 
 export const config = {

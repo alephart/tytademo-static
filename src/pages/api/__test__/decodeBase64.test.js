@@ -2,7 +2,6 @@
 const {decodeBase64Image} = require ('../lib/imageBase64');
 
 describe('Image Base64', () => {
-  const DUMMY_IMAGE = 'dummy-image.jpg';
   const DUMMY_IMAGE_BASE64 = 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
 
   test('it should return that it is not a valid input string', () => {

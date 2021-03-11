@@ -1,3 +1,7 @@
+/**
+ * this function for test with bucket S3
+ * Call Asyc and Sync function uploadFile
+ */
 const path = require('path');
 const { uploadFile } = require('./lib/bucketMedia');
 
