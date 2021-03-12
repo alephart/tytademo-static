@@ -1,9 +1,12 @@
 const commandExistsSync = require('command-exists').sync;
+
 const { 
   placeWatermarkOnVideo, 
   placeImageOnVideo, 
-  transitionMergeVideosExec
+  transitionMergeVideosExec,
+  createThumbFromVideo,
 } = require('../lib/ffmpegActions');
+
 const { checkFileSync, removeFileSync } = require('../lib/fileActions');
 const path = require('path');
 
@@ -33,13 +36,10 @@ describe('ffmpeg', () => {
     removeFileSync(data.output);
 
     await transitionMergeVideosExec(data);
-
-    const existVideoOutput = checkFileSync(data.output);
     
     done();
     
-    expect(existVideoOutput).toBeTruthy();
-    
+    expect(checkFileSync(data.output)).toBeTruthy();
   }, 30000);
   
   itif(ffmpegExist)('it should place a watermark on a video', async (done) => {
@@ -52,12 +52,10 @@ describe('ffmpeg', () => {
     removeFileSync(data.output);
     
     await placeWatermarkOnVideo(data);
-    
-    const existVideoOutput = checkFileSync(data.output);
-    
-    expect(existVideoOutput).toBeTruthy();
-    
+        
     done();
+    
+    expect(checkFileSync(data.output)).toBeTruthy();
   });
 
   itif(ffmpegExist)('it should place a image on a video', async (done) => {
@@ -71,18 +69,25 @@ describe('ffmpeg', () => {
     
     await placeImageOnVideo(data);
     
-    const existVideoOutput = checkFileSync(data.output);
-    
-    expect(existVideoOutput).toBeTruthy();
-    
     done();
+    
+    expect(checkFileSync(data.output)).toBeTruthy();
   });
 
-  itif(ffmpegExist)('test anything', () => {
-    const value = 2;
-    expect(value).toBe(2);
+  itif(ffmpegExist)('it should create and return a thumbnail image of a video frame', async (done) => {
+    
+    const data = {
+      output: `${DIR_TEMP}/thumb-test.jpg`,
+      video: `${DIR_TEMP}/video1.mp4`,
+    };
+
+    removeFileSync(data.output);
+
+    await createThumbFromVideo(data);
+    
+    done();
+
+    expect(checkFileSync(data.output)).toBeTruthy();
   });
 
 });
-
-

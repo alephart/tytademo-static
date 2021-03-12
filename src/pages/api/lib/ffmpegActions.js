@@ -3,26 +3,13 @@ const ffmpeg = require('fluent-ffmpeg');
 const { exec } = require('child_process');
 
 const isMac = process.platform === "darwin";
+const xvfb = `xvfb-run -s "-ac -screen 0 1280x1024x24"`;
 
-// concat mp4s together using transitions (using ffmpeg-concat - only videos)
-const transitionMergeVideos = async (data) => {
-  try {
-    await ffmpegConcat(data);
-  } catch (err) {
-    console.error(err);
-    throw err;
-  }
-}
+// run Exec command promise
+const runExecCommnad = (command) => {
+  const generate = !isMac ? `${xvfb} ${command}` : command;
 
-const transitionMergeVideosExec = async (data) => {
-  const {output, videos, transition} = data;
-
-  // xvfb-run -s "-ac -screen 0 1280x1024x24" ffmpeg-concat -t circleopen -d 500 -o out.mp4 video1.mp4 video4.mp4
-  const xvfb = `xvfb-run -s "-ac -screen 0 1280x1024x24"`;
-  const concat = `ffmpeg-concat -t ${transition.name} -d ${transition.duration} -o ${output} ${videos[0]} ${videos[1]}`;
-  const generate = !isMac ? `${xvfb} ${concat}` : concat;
-
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     let stdoutData = '', stderrData = '';
     
     try {
@@ -39,20 +26,41 @@ const transitionMergeVideosExec = async (data) => {
             console.log(`stdout: ${stdout}`);
             stdoutData += stdout;
         }
-
+  
         if(stderrData) {
           reject(stderrData);
         } else {
           resolve(stdoutData);
         }
       });
-
+  
     } catch (err) {
       console.error(err);
       if(err) throw err;
       reject(err);
     }
   });
+}
+
+// concat mp4s together using transitions (using ffmpeg-concat - only videos)
+// this process not run on linux (ubuntu) - use transitionMergeVideosExec()
+const transitionMergeVideos = async (data) => {
+  try {
+    await ffmpegConcat(data);
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
+
+const transitionMergeVideosExec = async (data) => {
+  const {output, videos, transition} = data;
+  // command: 
+  // xvfb-run -s "-ac -screen 0 1280x1024x24" ffmpeg-concat -t circleopen -d 500 -o out.mp4 video1.mp4 video4.mp4
+  
+  const concat = `ffmpeg-concat -t ${transition.name} -d ${transition.duration} -o ${output} ${videos[0]} ${videos[1]}`;
+
+  return await runExecCommnad(concat);
 }
 
 const concatVideos = async (data) => {
@@ -120,9 +128,23 @@ const placeImageOnVideo = async (data) => {
       .run();
   
     } catch (err) {
-      throw err;
+      console.error(err);
+      if(err) throw err;
+      reject(err);
     }
   });
+}
+
+const createThumbFromVideo = async (data) => {
+  // scale=300/169 (1.777)
+  // command:
+  // ffmpeg -i video1.mp4 -frames 1 -an -s 300x169 -ss 1 test-thumb.jpg
+  // ffmpeg -i video1.mp4 -ss 00:00:01 -frames:v 1 -an -s 300x169 test-thumb.jpg
+  // ffmpeg -i video1.mp4 -ss 00:00:01 -frames:v 1 test-thumb.jpg
+
+  const thumbCmd = `ffmpeg -i ${data.video} -ss 00:00:01 -frames:v 1 -s 300x170 ${data.output}`;
+
+  return await runExecCommnad(thumbCmd);
 }
 
 module.exports = {
@@ -131,4 +153,5 @@ module.exports = {
   placeImageOnVideo,
   concatVideos,
   transitionMergeVideosExec,
+  createThumbFromVideo,
 }
