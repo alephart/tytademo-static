@@ -2051,6 +2051,11 @@ dup@^1.0.0:
   resolved "https://registry.yarnpkg.com/dup/-/dup-1.0.0.tgz#51fc5ac685f8196469df0b905e934b20af5b4029"
   integrity sha1-UfxaxoX4GWRp3wuQXpNLIK9bQCk=
 
+easing-utils@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/easing-utils/-/easing-utils-0.0.7.tgz#db56bb5f526ff05fd83a5cdb37343ebf91a5b066"
+  integrity sha1-21a7X1Jv8F/YOlzbNzQ+v5GlsGY=
+
 ecc-jsbn@~0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.2.tgz#3a83a904e54353287874c564b7549386849a98c9"
@@ -4832,6 +4837,18 @@ react-refresh@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
+
+react-responsive-spritesheet@^2.3.9:
+  version "2.3.9"
+  resolved "https://registry.yarnpkg.com/react-responsive-spritesheet/-/react-responsive-spritesheet-2.3.9.tgz#58822bd7532a46de8d564042c40d90e1d2aaafc5"
+  integrity sha512-7x1co8f6mg01wy5a8KsRDGOQ6a1inxhakdc/z2gXVhOBgRPQznUipWdGYZXHw7ecI5kPdXC1uXvFIXmWip3vnA==
+
+react-sequence-animator@^1.0.44:
+  version "1.0.44"
+  resolved "https://registry.yarnpkg.com/react-sequence-animator/-/react-sequence-animator-1.0.44.tgz#9006ae056204483a3f4c0722365b56e09f63f457"
+  integrity sha512-eJySoihOprfwj7+6TMpHl83d9HObE79IeoVfJ3pmC/3fs7UrBalZ1e4JZJsfP+ks1yuMardkZRCXPXfDTNm/9w==
+  dependencies:
+    easing-utils "0.0.7"
 
 react-share@^4.4.0:
   version "4.4.0"
