@@ -36,8 +36,8 @@ const runExecCommnad = (command) => {
   
     } catch (err) {
       console.error(err);
-      if(err) throw err;
       reject(err);
+      //throw err;
     }
   });
 }
@@ -63,22 +63,14 @@ const transitionMergeVideosExec = async (data) => {
   return await runExecCommnad(concat);
 }
 
-const concatVideos = async (data) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      ffmpeg()
-      .input(data.videos[0])
-      .input(data.videos[1])
-      .complexFilter(["[0:v:0][0:a:0][1:v:0]concat=n=2:v=1:a=1[outv][outa]"])
-      .on('end', resolve)
-      .on('error', reject)
-      .output(data.output)
-    } catch (err) {
-      console.error(err);
-      if(err) throw err;
-      reject(err);
-    }
-  });
+// concatenate several videos - all with same codecs (stream level)
+const concatVideosDemuxer = async (data) => {
+  const {output, fileVideos} = data;
+
+  const concat = `ffmpeg -f concat -safe 0 -i ${fileVideos} -c copy ${output}`;
+
+  return await runExecCommnad(concat);
+  
 }
 
 const placeWatermarkOnVideo = async (data) => {
@@ -101,7 +93,6 @@ const placeWatermarkOnVideo = async (data) => {
       
     } catch (err) {
       console.error(err);
-      if(err) throw err;
       reject(err);
     }
 
@@ -129,7 +120,6 @@ const placeImageOnVideo = async (data) => {
   
     } catch (err) {
       console.error(err);
-      if(err) throw err;
       reject(err);
     }
   });
@@ -151,7 +141,7 @@ module.exports = {
   transitionMergeVideos,
   placeWatermarkOnVideo,
   placeImageOnVideo,
-  concatVideos,
+  concatVideosDemuxer,
   transitionMergeVideosExec,
   createThumbFromVideo,
 }
