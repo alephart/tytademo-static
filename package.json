@@ -23,7 +23,8 @@
     "react-player": "^2.9.0",
     "react-sequence-animator": "^1.0.44",
     "react-share": "^4.4.0",
-    "react-webcam": "^5.2.2"
+    "react-webcam": "^5.2.2",
+    "vimeo": "^2.1.1"
   },
   "devDependencies": {
     "@testing-library/dom": "^7.29.4",

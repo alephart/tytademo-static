@@ -17,5 +17,12 @@ const configS3 = {
   region: process.env.AWS_REGION,
 };
 
-exports.configS3 =configS3;
-exports.configCldnry =configCldnry;
+const configVimeo = {
+  client_id: process.env.VIMEO_CLIENT_ID,
+  client_secret: process.env.VIMEO_CLIENT_SECRET,
+  access_token: process.env.VIMEO_ACCESS_TOKEN,
+};
+
+exports.configS3 = configS3;
+exports.configCldnry = configCldnry;
+exports.configVimeo = configVimeo;
