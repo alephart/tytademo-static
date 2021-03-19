@@ -1,9 +1,8 @@
 import React from 'react'
 
 const SharedExperience = () => {
-    Return (
-        <div className="sharedExperience">
-        </div>
+    return (
+        <div className="sharedExperience"></div>
     )
 }
     
