@@ -19,7 +19,7 @@ export const config = {
 
 const dataVideos = async (faceId) => {
   const videosData = [
-    {
+    { // 2
       intensity: 1,
       video_id: 'b03bcf8f-d544-4725-bed6-3710255fba48',
       facemapping: {
@@ -28,7 +28,7 @@ const dataVideos = async (faceId) => {
         ]
       }
     },
-    {
+    { // 4
       intensity: 1,
       video_id: 'fdf3f31e-4f66-4b23-9dd4-ee0e523ebe84',
       facemapping: {
@@ -37,7 +37,16 @@ const dataVideos = async (faceId) => {
         ]
       }
     },
-    {
+    // { // 5
+    //   intensity: 1,
+    //   video_id: '293a13c0-dfc3-426c-8ebf-ba54c162ce9e',
+    //   facemapping: {
+    //     'a7475ed5-b48e-4687-bac0-0a415db9d371': [
+    //       `${faceId}`
+    //     ]
+    //   }
+    // },
+    { // 6
       intensity: 1,
       video_id: '2f66872d-9908-46a4-957a-8a91f13ceeba',
       facemapping: {
@@ -46,15 +55,15 @@ const dataVideos = async (faceId) => {
         ]
       }
     },
-    // {
-    //   intensity: 1,
-    //   video_id: '71ceccf3-b309-4820-9040-bbb5c705f7a7',
-    //   facemapping: {
-    //     '97faf846-8549-4a51-ac9d-ec5ba6869463': [
-    //       `${faceId}`
-    //     ]
-    //   }
-    // },
+    { // 8
+      intensity: 1,
+      video_id: '71ceccf3-b309-4820-9040-bbb5c705f7a7',
+      facemapping: {
+        '97faf846-8549-4a51-ac9d-ec5ba6869463': [
+          `${faceId}`
+        ]
+      }
+    },
   ];
 
   try {
@@ -90,10 +99,15 @@ const writeVideosToLocal = async (videos) => {
       await writeFile(pathVideo, buffer);
 
       const index = i * 2 + 1;
-      const even = `file vid-pt${index}.mp4\n`;
-      const odd = `file ${videos[i].name}\n`;
-      fileVideos += even;
-      fileVideos += odd;
+      // fileVideos += `file vid-pt${index}.mp4\n`;
+      // fileVideos += `file ${videos[i].name}\n`;
+
+      if(index === 5) {
+        fileVideos += `file vid-pt${index}.mp4\n`;
+      } else {
+        fileVideos += `file vid-pt${index}.mp4\n`;
+        fileVideos += `file ${videos[i].name}\n`;
+      }
     }
   }
 
@@ -159,7 +173,7 @@ export default async (req, res) => {
 
     await concatVideosDemuxer(dataFinal);
 
-    // create watermark into video 
+    // // create watermark into video 
     // let videoTemp = dataFinal.output;
 
     // dataFinal = {
@@ -169,7 +183,7 @@ export default async (req, res) => {
     // };
 
     // // remove posible video exists 
-    // //removeFileSync(dataFinal.output);
+    // // removeFileSync(dataFinal.output);
 
     // await placeWatermarkOnVideo(dataFinal);
 
