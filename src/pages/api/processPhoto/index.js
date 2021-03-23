@@ -48,13 +48,14 @@ const dataVideos = async (faceId) => {
     // },
     { // 6
       intensity: 1,
-      video_id: '2f66872d-9908-46a4-957a-8a91f13ceeba',
+      video_id: '68751096-db10-4e6f-b772-8fa873a04b36',
       facemapping: {
-        '2016f411-916c-4e68-8ce1-64b865eb0c99': [
+        '597ca71e-57b9-40d6-b7f3-eb8538f7536f': [
           `${faceId}`
         ]
       }
     },
+
     { // 8
       intensity: 1,
       video_id: '71ceccf3-b309-4820-9040-bbb5c705f7a7',
@@ -99,15 +100,15 @@ const writeVideosToLocal = async (videos) => {
       await writeFile(pathVideo, buffer);
 
       const index = i * 2 + 1;
-      // fileVideos += `file vid-pt${index}.mp4\n`;
-      // fileVideos += `file ${videos[i].name}\n`;
+      fileVideos += `file vid-pt${index}.mp4\n`;
+      fileVideos += `file ${videos[i].name}\n`;
 
-      if(index === 5) {
-        fileVideos += `file vid-pt${index}.mp4\n`;
-      } else {
-        fileVideos += `file vid-pt${index}.mp4\n`;
-        fileVideos += `file ${videos[i].name}\n`;
-      }
+      // if(index === 5) {
+      //   fileVideos += `file vid-pt${index}.mp4\n`;
+      // } else {
+      //   fileVideos += `file vid-pt${index}.mp4\n`;
+      //   fileVideos += `file ${videos[i].name}\n`;
+      // }
     }
   }
 
