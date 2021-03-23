@@ -169,7 +169,7 @@ export default async (req, res) => {
     };
 
     // remove posible video exists 
-    removeFileSync(dataFinal.output);
+    //removeFileSync(dataFinal.output);
 
     await placeWatermarkOnVideo(dataFinal);
 
