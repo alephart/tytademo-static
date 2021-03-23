@@ -39,13 +39,22 @@ const dataVideos = async (faceId) => {
     },
     {
       intensity: 1,
-      video_id: '71ceccf3-b309-4820-9040-bbb5c705f7a7',
+      video_id: '2f66872d-9908-46a4-957a-8a91f13ceeba',
       facemapping: {
-        '97faf846-8549-4a51-ac9d-ec5ba6869463': [
+        '2016f411-916c-4e68-8ce1-64b865eb0c99': [
           `${faceId}`
         ]
       }
     },
+    // {
+    //   intensity: 1,
+    //   video_id: '71ceccf3-b309-4820-9040-bbb5c705f7a7',
+    //   facemapping: {
+    //     '97faf846-8549-4a51-ac9d-ec5ba6869463': [
+    //       `${faceId}`
+    //     ]
+    //   }
+    // },
   ];
 
   try {
@@ -79,8 +88,12 @@ const writeVideosToLocal = async (videos) => {
     if (videoStatus == 200) {
       const pathVideo = path.join(DIR_TEMP, videos[i].name);
       await writeFile(pathVideo, buffer);
-      const fileName = `file ${videos[i].name}\n`;
-      fileVideos += fileName;
+
+      const index = i * 2 + 1;
+      const even = `file vid-pt${index}.mp4\n`;
+      const odd = `file ${videos[i].name}\n`;
+      fileVideos += even;
+      fileVideos += odd;
     }
   }
 
