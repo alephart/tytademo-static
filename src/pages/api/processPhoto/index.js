@@ -160,18 +160,18 @@ export default async (req, res) => {
     await concatVideosDemuxer(dataFinal);
 
     // create watermark into video 
-    let videoTemp = dataFinal.output;
+    // let videoTemp = dataFinal.output;
 
-    dataFinal = {
-      output: `${DIR_TEMP}/temp-${videoTemp}`,
-      video: videoTemp,
-      watermark: `${DIR_TEMP}/FeaturingYou.png`,
-    };
+    // dataFinal = {
+    //   output: `${DIR_TEMP}/temp-${videoTemp}`,
+    //   video: videoTemp,
+    //   watermark: `${DIR_TEMP}/FeaturingYou.png`,
+    // };
 
-    // remove posible video exists 
-    //removeFileSync(dataFinal.output);
+    // // remove posible video exists 
+    // //removeFileSync(dataFinal.output);
 
-    await placeWatermarkOnVideo(dataFinal);
+    // await placeWatermarkOnVideo(dataFinal);
 
     // 8. upload video to VIMEO and get url
     const videoLocation = await uploadFile(dataFinal.output, nameFileVideo, 'video', true);
