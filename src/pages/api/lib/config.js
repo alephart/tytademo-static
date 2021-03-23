@@ -23,6 +23,12 @@ const configVimeo = {
   access_token: process.env.VIMEO_ACCESS_TOKEN,
 };
 
+const configReface = {
+  token: process.env.REFACE_TOKEN,
+  url_base: process.env.REFACE_URL,
+};
+
 exports.configS3 = configS3;
 exports.configCldnry = configCldnry;
 exports.configVimeo = configVimeo;
+exports.configReface = configReface;
