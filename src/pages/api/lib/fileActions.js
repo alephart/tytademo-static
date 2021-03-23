@@ -67,6 +67,44 @@ async function moveFile(source, destination) {
   }
 }
 
+async function loadFile(pathFile) {
+  try {
+    fs.readFile(pathFile, async (err, data) => {
+      if (err) throw err;
+    
+      try {
+        // Encode to base64
+        const encodedImage = await Buffer(data, 'binary').toString('base64');
+      
+        // Decode from base64
+        return await Buffer(encodedImage, 'base64').toString('binary');
+        
+      } catch (err) {
+        console.error(err);
+        throw err;
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+
+async function loadFileBinarySync(pathFile) {
+  try{
+    const data = await fs.readFile(pathFile, function (err, data) {
+      if (err) throw err;
+      return data;
+    });
+
+    return data;
+
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
+
 async function saveDummy(dummyBuffer) {
   try {
     //const dummyBuffer = decodeBase64Image(DUMMY_IMAGE);
@@ -97,5 +135,7 @@ module.exports = {
   moveFile,
   removeFileSync,
   checkFileSync,
-  createDirSync
+  createDirSync,
+  loadFileBinarySync,
+  loadFile,
 };

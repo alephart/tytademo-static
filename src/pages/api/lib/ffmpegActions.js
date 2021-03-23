@@ -84,7 +84,7 @@ const placeWatermarkOnVideo = async (data) => {
       ffmpeg()
       .input(data.video)
       .input(data.watermark)
-      .complexFilter(["[1:v] scale=120/35 [mds1]; [0:v][mds1] overlay=x=(main_w-overlay_w)-50:y=(main_h-overlay_h)-50"])
+      .complexFilter(["[1:v] scale=120/60 [toyota1]; [0:v][toyota1] overlay=x=(main_w-overlay_w)-50:y=(main_h-overlay_h)-50"])
       // .on('start', function)
       .on('end', resolve)
       .on('error', reject)
