@@ -1,7 +1,11 @@
 const fetch = require('node-fetch');
 const { configReface } = require('./config');
 
-// Get Signed URL
+/**
+ * [GET] Generate Signed URL (video or image)
+ * @param {strin} type file type to get signed_url
+ * @returns string JSON with signed_url or error message
+ */
 const getSignedUrl = async (type) => {
   const endPoint = `/getsignedurl?extension=${type}`;
   try {
@@ -33,8 +37,12 @@ const getSignedUrl = async (type) => {
   }
 }
 
-// Upload Asset (PUT)
-// return the url file (image or video)
+/**
+ * [PUT] Upload Asset and return signed_url
+ * @param {binary} binaryFile binary file. image or video.
+ * @param {string} contentType header Content-Type
+ * @returns string JSON wit signed_url (image or video)
+ */
 const uploadAsset = async (binaryFile, contentType) => {
   const type = contentType.split('/')[1];
   let res, data;
@@ -69,12 +77,17 @@ const uploadAsset = async (binaryFile, contentType) => {
   }
 }
 
-// Detect face in Asset - this return the faces. 
-// In video return the id face in the number faces into video 
-// In image return the id face from partipant
-
-const detectFaceInAsset = async (imageUrl, type, numberFace = 0) => {
-  const endPoint = type === 'video/mp4' ? '/addvideo' : '/addimage';
+/**
+ * [POST] Detect face in Asset
+ * In image return the first id face or specific number of array
+ * TODO: In video return the id face in the number faces into video (adjust)
+ * @param {string} imageUrl url image upload on reface
+ * @param {string} contentType header Content-Type
+ * @param {number} numberFace is the number face in array to get id
+ * @returns the faceId from the image (photo)
+ */
+const detectFaceInAsset = async (imageUrl, contentType, numberFace = 0) => {
+  const endPoint = contentType === 'video/mp4' ? '/addvideo' : '/addimage';
   let resFinal = [];
 
   const obj = {image_url: imageUrl};
@@ -98,43 +111,16 @@ const detectFaceInAsset = async (imageUrl, type, numberFace = 0) => {
   }
 }
 
-// Swap video - return of url video swap
-const swapVideo = async (data) => {
-
-  // const videos = [
-  //   {
-  //     intensity: 1,
-  //     video_id: 'b03bcf8f-d544-4725-bed6-3710255fba48',
-  //     facemapping: {
-  //       '8a3ad45c-fb07-48ad-818a-6a28af806233': [
-  //         faceId
-  //       ]
-  //     }
-  //   },
-  //   {
-  //     intensity: 1,
-  //     video_id: 'fdf3f31e-4f66-4b23-9dd4-ee0e523ebe84',
-  //     facemapping: {
-  //       '75d80011-45d1-4a5f-8aec-e7ffceb3d869': [
-  //         faceId
-  //       ]
-  //     }
-  //   },
-  //   {
-  //     intensity: 1,
-  //     video_id: '71ceccf3-b309-4820-9040-bbb5c705f7a7',
-  //     facemapping: {
-  //       '97faf846-8549-4a51-ac9d-ec5ba6869463': [
-  //         faceId
-  //       ]
-  //     }
-  //   },
-  // ];
-
+/**
+ * [POST] Swap video - return of url video swap
+ * @param {obj} obj obj with data face mappign [/swapvideo] 
+ * @returns [application/json] a json data response from swap video reface
+ */
+const swapVideo = async (obj) => {
   try {
     const response = await fetch(`${configReface.url_base}/swapvideo`, {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(obj),
       headers: {'Content-Type': 'application/json'}
     });
 

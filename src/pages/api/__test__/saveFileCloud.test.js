@@ -1,5 +1,5 @@
-const {decodeBase64Image} = require ('../lib/imageBase64');
-const { uploadFile } = require('../lib/bucketMedia');
+const { decodeBase64Image } = require ('../lib/utils');
+const { uploadFile } = require('../lib/bucketAWS');
 const { uploadVideo } = require('../lib/vimeoAPI');
 const { writeFile } = require('../lib/fileActions');
 const path = require('path');
@@ -38,10 +38,10 @@ describe.only('Vimeo API Interaction', () => {
   });
 
   test('Should upload a video by VIMEO API', async (done) => {
-    const nameVideo = 'video1.mp4';
+    const nameVideo = 'vid-pt1.mp4';
     const params = {
-      'name': 'Title video',
-      'description': 'The description goes here.'
+      'name': 'First video',
+      'description': 'The first video to upload!!!.'
     };
 
     let uploaVimeo;

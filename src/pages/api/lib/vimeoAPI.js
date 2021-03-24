@@ -3,14 +3,7 @@ const { configVimeo } = require('../lib/config');
 
 const client = new Vimeo(configVimeo.client_id, configVimeo.client_secret, configVimeo.access_token);
 
-// const params = {
-//   'name': 'Title video',
-//   'description': 'The description goes here.'
-// };
 
-/***
- * 
- */
 const uploadVideo = async (pathFile, params) => {
   return await new Promise((resolve, reject) => {
     try {

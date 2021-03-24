@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const {decodeBase64Image} = require ('../lib/imageBase64');
 const { placeWatermarkOnVideo, concatVideosDemuxer } = require('../lib/ffmpegActions');
 const { createDirSync, removeFileSync, writeFile, loadFileBinarySync } = require('../lib/fileActions');
-const { uploadFile } = require('../lib/bucketMedia');
+const { uploadFile } = require('../lib/bucketAWS');
 const { uploadAsset, detectFaceInAsset, swapVideo} = require('../lib/refaceAPI');
 
 const DIR_TEMP = './temp';

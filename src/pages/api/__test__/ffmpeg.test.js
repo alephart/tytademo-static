@@ -43,7 +43,7 @@ describe('ffmpeg', () => {
     expect(checkFileSync(data.output)).toBeTruthy();
   }, 30000);
 
-  itif(ffmpegExist).only('it should join 9 videos with file-videos and demuxer (same codecs)', async (done) => {
+  itif(ffmpegExist).skip('it should join 9 videos with file-videos and demuxer (same codecs)', async (done) => {
     const data = {
       output: `${DIR_TEMP}/test.mp4`,
       fileVideos: `${DIR_TEMP}/videos.txt`,

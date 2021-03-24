@@ -1,5 +1,5 @@
 
-const {decodeBase64Image} = require ('../lib/imageBase64');
+const {decodeBase64Image} = require ('../lib/utils');
 
 describe('Image Base64', () => {
   const DUMMY_IMAGE_BASE64 = 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
