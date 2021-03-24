@@ -1,7 +1,70 @@
-const {decodeBase64Image} = require ('../lib/imageBase64');
-const { uploadFile } = require('../lib/bucketMedia');
+const { decodeBase64Image } = require ('../lib/utils');
+const { uploadFile } = require('../lib/bucketAWS');
+const { uploadVideo } = require('../lib/vimeoAPI');
 const { writeFile } = require('../lib/fileActions');
 const path = require('path');
+
+describe.only('Vimeo API Interaction', () => {
+  const Vimeo = require('vimeo').Vimeo;
+  const { configVimeo } = require('../lib/config');
+  const client = new Vimeo(configVimeo.client_id, configVimeo.client_secret, configVimeo.access_token);
+  const DIR_TEMP = './temp';
+
+  test('Should return a success message from API Vimeo', async (done) => {
+    const expected = 'Success!';
+
+    const response = await new Promise((resolve, reject) => {
+      try {
+        client.request({
+          method: 'GET',
+          path: '/tutorial'
+        }, function (error, body, status_code, headers) {
+          if (error) {
+            reject(error);
+          }
+          resolve(body);
+        });
+        
+      } catch (error) {
+        reject(error);
+      }
+    });
+        
+    done();
+    
+    expect(response.status).toBe(200);
+    expect(response.message).toEqual(expect.stringContaining(expected));
+    expect(response.token_is_authenticated).toBeTruthy();
+  });
+
+  test('Should upload a video by VIMEO API', async (done) => {
+    const nameVideo = 'vid-pt1.mp4';
+    const params = {
+      'name': 'First video',
+      'description': 'The first video to upload!!!.'
+    };
+
+    let uploaVimeo;
+
+    try {
+      const pathFinalVideo = path.join(DIR_TEMP, nameVideo);
+
+      uploaVimeo = await uploadVideo(pathFinalVideo, params);
+
+    } catch (error) {
+      //console.log(error);
+      uploaVimeo = error;
+    }
+
+    done();
+
+    //console.log('uploaVimeo', uploaVimeo);
+
+    expect(uploaVimeo).toEqual(expect.stringContaining('Error'));
+
+  }, 10000);
+
+});
 
 describe('Save Cloud', () => {
   const DIR_TEMP = './temp';

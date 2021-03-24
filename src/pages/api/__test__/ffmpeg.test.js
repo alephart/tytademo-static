@@ -5,6 +5,7 @@ const {
   placeImageOnVideo, 
   transitionMergeVideosExec,
   createThumbFromVideo,
+  concatVideosDemuxer,
 } = require('../lib/ffmpegActions');
 
 const { checkFileSync, removeFileSync } = require('../lib/fileActions');
@@ -36,6 +37,21 @@ describe('ffmpeg', () => {
     removeFileSync(data.output);
 
     await transitionMergeVideosExec(data);
+    
+    done();
+    
+    expect(checkFileSync(data.output)).toBeTruthy();
+  }, 30000);
+
+  itif(ffmpegExist).skip('it should join 9 videos with file-videos and demuxer (same codecs)', async (done) => {
+    const data = {
+      output: `${DIR_TEMP}/test.mp4`,
+      fileVideos: `${DIR_TEMP}/videos.txt`,
+    };
+
+    removeFileSync(data.output);
+
+    await concatVideosDemuxer(data);
     
     done();
     
@@ -74,7 +90,7 @@ describe('ffmpeg', () => {
     expect(checkFileSync(data.output)).toBeTruthy();
   });
 
-  itif(ffmpegExist)('it should create and return a thumbnail image of a video frame', async (done) => {
+  itif(ffmpegExist).skip('it should create and return a thumbnail image of a video frame', async (done) => {
     
     const data = {
       output: `${DIR_TEMP}/thumb-test.jpg`,
