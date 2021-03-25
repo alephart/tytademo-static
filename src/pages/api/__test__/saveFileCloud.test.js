@@ -7,7 +7,7 @@ const path = require('path');
 describe.only('Vimeo API Interaction', () => {
   const Vimeo = require('vimeo').Vimeo;
   const { configVimeo } = require('../lib/config');
-  const client = new Vimeo(configVimeo.client_id, configVimeo.client_secret, configVimeo.access_token);
+  const clientVimeo = new Vimeo(configVimeo.client_id, configVimeo.client_secret, configVimeo.access_token);
   const DIR_TEMP = './temp';
 
   test('Should return a success message from API Vimeo', async (done) => {
@@ -15,7 +15,7 @@ describe.only('Vimeo API Interaction', () => {
 
     const response = await new Promise((resolve, reject) => {
       try {
-        client.request({
+        clientVimeo.request({
           method: 'GET',
           path: '/tutorial'
         }, function (error, body, status_code, headers) {

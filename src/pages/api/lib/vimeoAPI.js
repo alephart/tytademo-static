@@ -17,7 +17,7 @@ const clientVimeo = new Vimeo(
 const uploadVimeo = (pathFile, params) => {
   return new Promise((resolve, reject) => {
     try {
-      client.upload(
+      clientVimeo.upload(
         pathFile,
         params,
         uri => {
