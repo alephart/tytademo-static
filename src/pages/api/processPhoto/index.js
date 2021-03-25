@@ -106,7 +106,7 @@ export default async (req, res) => {
 
     // remove files (image, videos, txt) from server
     removeFileSync(pathFinalPhoto);
-    //removeFileSync(videos);
+    removeFileSync(videos);
     //removeFileSync(videoTemp);
     //removeFileSync(data.output);
     //removeFileSync(pathFileVideos);

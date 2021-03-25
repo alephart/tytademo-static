@@ -3,17 +3,30 @@ import ReactPlayer from 'react-player';
 
 const ViewVideo = ({data}) => {
   console.log(data);
+
+  const [urlVideo, setUrlVideo] = React.useState('');
+
+  React.useEffect(() => {
+    const id = data.video.split('/').slice(-1)[0];
+
+    setUrlVideo(`https://vimeo.com/${id}`);
+  });
+
   return (
     <div className="zone-info">
       <div>
-        <ReactPlayer
-          className="react-player"
-          url={data.video}
-          controls={true}
-          playing={true}
-          width='100%'
-          height='100%'
-        />
+        {urlVideo ? (
+          <ReactPlayer
+            className="react-player"
+            url={urlVideo}
+            controls={true}
+            playing={true}
+            width='480px'
+            height='280px'
+          />
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
 
       <div>
