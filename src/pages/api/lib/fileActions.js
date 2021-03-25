@@ -37,11 +37,24 @@ const createDirSync = (dir = DIR_TEMP) => {
   }
 };
 
+/**
+ * Void: Remove or delete files from the path 
+ * @param {string | array} pathFile   The path file(s). If string then is single file, if array are several files
+ */
 const removeFileSync = (pathFile) => {
   try {
-    if(checkFileSync(pathFile)) {
-      fsSync.unlinkSync(pathFile);
+    if(Array.isArray(pathFile)) {
+      for(let i = 0; i < pathFile.length; i++) {
+        if(checkFileSync(pathFile[i])) {
+          fsSync.unlinkSync(pathFile[i]);
+        }
+      }
+    } else {
+      if(checkFileSync(pathFile)) {
+        fsSync.unlinkSync(pathFile);
+      }
     }
+
   } catch(err) {
     if (err) throw err;
     console.error(err);

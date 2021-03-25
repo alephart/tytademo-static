@@ -1,6 +1,6 @@
 const { decodeBase64Image } = require ('../lib/utils');
 const { uploadFile } = require('../lib/bucketAWS');
-const { uploadVideo } = require('../lib/vimeoAPI');
+const { uploadVimeo } = require('../lib/vimeoAPI');
 const { writeFile } = require('../lib/fileActions');
 const path = require('path');
 
@@ -44,25 +44,25 @@ describe.only('Vimeo API Interaction', () => {
       'description': 'The first video to upload!!!.'
     };
 
-    let uploaVimeo;
+    let upVimeo;
 
     try {
       const pathFinalVideo = path.join(DIR_TEMP, nameVideo);
 
-      uploaVimeo = await uploadVideo(pathFinalVideo, params);
+      upVimeo = await uploadVimeo(pathFinalVideo, params);
 
     } catch (error) {
       //console.log(error);
-      uploaVimeo = error;
+      upVimeo = error;
     }
 
     done();
 
-    //console.log('uploaVimeo', uploaVimeo);
+    //console.log('upVimeo', upVimeo);
 
-    expect(uploaVimeo).toEqual(expect.stringContaining('Error'));
+    expect(upVimeo).toEqual(expect.stringContaining('videos'));
 
-  }, 10000);
+  });
 
 });
 
