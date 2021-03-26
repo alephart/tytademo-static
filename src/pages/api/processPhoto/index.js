@@ -103,8 +103,11 @@ export default async (req, res) => {
     removeFileSync(dataFinal.output);
     //removeFileSync(pathFileVideos);
     removeFileSync(dowloadVideos);
+
+    const response = { response: 'success', success: true, photo: photoLocation, video: videoLocation };
+    console.log(response);
     
-    res.status(200).json({ response: 'success', success: true, photo: photoLocation, video: videoLocation });
+    res.status(200).json(response);
   } catch (error) {
     res.status(500).json({ success: false, error: error });
   }
