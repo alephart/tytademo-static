@@ -96,7 +96,13 @@ export default async (req, res) => {
       'description': 'description video!!!.' // Here create description from data form
     };
     
-    const videoLocation = await uploadVimeo(dataFinal.output, params);
+    //const videoLocation = await uploadVimeo(dataFinal.output, params);
+
+    // save image on cloud
+    //const imageLocation = await uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
+
+    // save final video on cloud
+    const videoLocation = await uploadFile(dataFinal.output, nameFileVideo, 'video', true);
 
     // remove files (image, videos, txt) from server
     removeFileSync(pathFinalPhoto);
