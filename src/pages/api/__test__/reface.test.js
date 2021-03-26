@@ -160,7 +160,7 @@ describe('Reface API', () => {
       '84783eba-9a8b-4e9d-9132-7b95939af1e4.mp4'
     ];
 
-    const fileVideos = formatFileVideos(videos);
+    const fileVideos = formatFileVideos(videos, 'vid-pt');
 
     expect(fileVideos).toBeTruthy();
   });

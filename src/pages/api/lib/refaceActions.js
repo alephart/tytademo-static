@@ -13,46 +13,36 @@ const DIR_TEMP = './temp';
  * @param {string} faceId The id face from photo in reface
  * @returns array list of the processed videos in the swap.
  */
-const swapDataVideos = async (faceId) => {
-  const videosData = [
-    { // 2
-      intensity: 1,
-      video_id: 'b03bcf8f-d544-4725-bed6-3710255fba48',
-      facemapping: {
-        '8a3ad45c-fb07-48ad-818a-6a28af806233': [
-          `${faceId}`
-        ]
-      }
-    },
-    { // 4
-      intensity: 1,
-      video_id: 'fdf3f31e-4f66-4b23-9dd4-ee0e523ebe84',
-      facemapping: {
-        '75d80011-45d1-4a5f-8aec-e7ffceb3d869': [
-          `${faceId}`
-        ]
-      }
-    },
-    // { // 6
-    //   intensity: 1,
-    //   video_id: '68751096-db10-4e6f-b772-8fa873a04b36',
-    //   facemapping: {
-    //     '597ca71e-57b9-40d6-b7f3-eb8538f7536f': [
-    //       `${faceId}`
-    //     ]
-    //   }
-    // },
-
-    { // 8
-      intensity: 1,
-      video_id: '71ceccf3-b309-4820-9040-bbb5c705f7a7',
-      facemapping: {
-        '97faf846-8549-4a51-ac9d-ec5ba6869463': [
-          `${faceId}`
-        ]
-      }
-    },
-  ];
+const swapDataVideos = async (videosData) => {
+  // const videosData = [
+  //   { // 2
+  //     intensity: 1,
+  //     video_id: 'b03bcf8f-d544-4725-bed6-3710255fba48',
+  //     facemapping: {
+  //       '8a3ad45c-fb07-48ad-818a-6a28af806233': [
+  //         `${faceId}`
+  //       ]
+  //     }
+  //   },
+  //   { // 4
+  //     intensity: 1,
+  //     video_id: 'fdf3f31e-4f66-4b23-9dd4-ee0e523ebe84',
+  //     facemapping: {
+  //       '75d80011-45d1-4a5f-8aec-e7ffceb3d869': [
+  //         `${faceId}`
+  //       ]
+  //     }
+  //   },
+  //   { // 8
+  //     intensity: 1,
+  //     video_id: '71ceccf3-b309-4820-9040-bbb5c705f7a7',
+  //     facemapping: {
+  //       '97faf846-8549-4a51-ac9d-ec5ba6869463': [
+  //         `${faceId}`
+  //       ]
+  //     }
+  //   },
+  // ];
 
   try {
     const tasks = videosData.map(data => swapVideo(data));
@@ -99,19 +89,18 @@ const downloadSwapVideos = async (videos) => {
   return results;
 };
 
-const formatFileVideos = (videos) => {
+const formatFileVideos = (videos, name) => {
   let file = '';
 
   for (let i = 0; i < videos.length; i++) {
     const idx = i * 2 + 1;
 
-    if(idx === 5) {
-      file += `file vid-pt${idx}.mp4\n`;
-      file += `file vid-pt${idx+1}.mp4\n`;
-      file += `file vid-pt${idx+2}.mp4\n`;
+    if(idx === 3) {
+      file += `file ${name}${idx}.mp4\n`;
       file += `file ${videos[i]}\n`;
+      file += `file ${name}${idx+2}.mp4\n`;
     } else {
-      file += `file vid-pt${idx}.mp4\n`;
+      file += `file ${name}${idx}.mp4\n`;
       file += `file ${videos[i]}\n`;
     }
   }

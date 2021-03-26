@@ -5,31 +5,62 @@ const ViewVideo = ({data}) => {
   console.log(data);
 
   const [urlVideo, setUrlVideo] = React.useState('');
+  const [footage, setFootage] = React.useState(null);
 
   React.useEffect(() => {
     //const id = data.video.split('/').slice(-1)[0];
 
     //setUrlVideo(`https://vimeo.com/${id}`);
 
-    setUrlVideo(data.video);
+    setFootage(data.footage);
   });
 
   return (
     <div className="zone-info">
-      <div>
-        {urlVideo ? (
-          <ReactPlayer
-            className="react-player"
-            url={urlVideo}
-            controls={true}
-            playing={true}
-            width='480px'
-            height='280px'
-          />
+        {footage ? (
+          <div>
+            <div className="item">
+              <h3>Final Video</h3>
+              <ReactPlayer
+                className="react-player"
+                url={footage[1]}
+                controls={true}
+                playing={true}
+                width='480px'
+                height='280px'
+              />
+            </div>
+            <div className="item">
+              <h3>Photo</h3>
+              <img src={footage[0]} alt="Participante" />
+            </div>
+            <div className="item">
+              <h3>Swap 1</h3>
+              <ReactPlayer
+                className="react-player"
+                url={footage[2]}
+                controls={true}
+                playing={false}
+                width='480px'
+                height='280px'
+              />
+            </div>
+
+            <div className="item">
+              <h3>Swap 2</h3>
+              <ReactPlayer
+                className="react-player"
+                url={footage[3]}
+                controls={true}
+                playing={false}
+                width='480px'
+                height='280px'
+              />
+            </div>
+          </div>
         ) : (
           <p>Loading...</p>
         )}
-      </div>
 
       <style jsx>{`
         .zone-info {
@@ -47,6 +78,9 @@ const ViewVideo = ({data}) => {
           position: absolute;
           top: 0;
           left: 0;
+        }
+        .item {
+          padding-bottom: 20px;
         }
         .button {
           background-color: #3498db;

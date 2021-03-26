@@ -53,7 +53,28 @@ export default async (req, res) => {
     console.log(faceId);
 
     // 3. Swap videos and get urls
-    const dataVideos = await swapDataVideos(faceId);
+    const videosSwap = [
+      { // 2
+        intensity: 1,
+        video_id: '0dd57817-70fe-40fc-9ac4-cd33e60dc3a4',
+        facemapping: {
+          '96863cb0-7eea-4608-a85a-015ba15a9303': [
+            `${faceId}`
+          ]
+        }
+      },
+      { // 4
+        intensity: 1,
+        video_id: 'c4da7ca8-eef0-4152-8c1b-1c09675b38b3',
+        facemapping: {
+          '02c63a56-ad40-43a4-af7b-d44262e4fd68': [
+            `${faceId}`
+          ]
+        }
+      },
+    ];
+
+    const dataVideos = await swapDataVideos(videosSwap);
     console.log({dataVideos});
 
     // 4. Download videos, save in temp
@@ -61,7 +82,7 @@ export default async (req, res) => {
     console.log({dowloadVideos});
 
     // 5. write file .txt with info videos
-    const fileVideosToTxt = formatFileVideos(dowloadVideos);
+    const fileVideosToTxt = formatFileVideos(dowloadVideos, 'Lunay_Video_');
     const nameFileVideos = `videos-${subName}.txt`;
     writeFileSync(path.join(DIR_TEMP, nameFileVideos), fileVideosToTxt);
 
@@ -106,8 +127,10 @@ export default async (req, res) => {
     //const videoLocation = await uploadVimeo(dataFinal.output, params);
 
     // save sub videos on cloud
-    const allSubVideos = dowloadVideos.map(video => {
+    let removeSubVideos = [];
+    const allSubVideos = dowloadVideos.map((video, index) => {
       const pathFile = path.join(DIR_TEMP, video);
+      removeSubVideos[index] = pathFile;
       return uploadFile(pathFile, video, 'video', true);
     });
 
@@ -115,7 +138,7 @@ export default async (req, res) => {
 
     removeFileSync(pathFinalPhoto);
     removeFileSync(dataFinal.output);
-    removeFileSync(dowloadVideos);
+    removeFileSync(removeSubVideos);
     //removeFileSync(videoTemp);
 
     console.log({ success: true, footage: footage });
