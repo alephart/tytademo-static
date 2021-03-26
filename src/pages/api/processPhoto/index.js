@@ -84,6 +84,9 @@ export default async (req, res) => {
     // // removeFileSync(dataFinal.output);
 
     // await placeWatermarkOnVideo(dataFinal);
+    
+    const photoLocation = uploadFile(pathFinalPhoto, nameFilePhoto, 'image');
+    console.log(photoLocation);
 
     // 7. upload video to VIMEO and get url
     const params = {
@@ -93,8 +96,6 @@ export default async (req, res) => {
 
     const videoLocation = await uploadVimeo(dataFinal.output, params);
 
-    const photoLocation = uploadFile(pathFinalPhoto, nameFilePhoto, 'image');
-    console.log(photoLocation);
 
     // remove files (image, videos, txt) from server
     removeFileSync(pathFinalPhoto);
