@@ -1,6 +1,6 @@
 const path = require('path');
 const cuid = require('cuid');
-const { uploadFile } = require('../lib/bucketAWS');
+const { uploadFile } = require('../lib/bucketS3API');
 const { uploadVimeo } = require('../lib/vimeoAPI');
 const { decodeBase64Image } = require ('../lib/utils');
 const { placeWatermarkOnVideo, concatVideosDemuxer } = require('../lib/ffmpegActions');
@@ -31,16 +31,16 @@ export default async (req, res) => {
     const nameFilePhoto = `photo-${subName}.${imageBuffer.ext}`;
     const pathFinalPhoto = path.join(DIR_TEMP, nameFilePhoto);
   
-    /**
+    /********************************************************************************************************************
      * SWAP VIDEOS PROCESS
-     */
+     * Each process here depends on the completion of the other. In the specific case of refase, 
+     * the faceId is required first to process the swaps, and it is required to have the swap videos 
+     * to go on to mount the entire final video.
+     ********************************************************************************************************************/
     
-    // 1. Get photo conver to binary and: upload to S3, upload to reface API
+    // 1. Get photo, convert to binary and upload to reface API
     await writeFile(pathFinalPhoto, imageBuffer.data);
     const binaryFile = loadFileSync(pathFinalPhoto);
-    
-    //const photoLocation = uploadFile(pathFinalPhoto, nameFilePhoto, 'image');
-    //console.log(photoLocation);
 
     const uploadReface = await uploadAsset(binaryFile, `image/${imageBuffer.ext}`);
 
@@ -89,30 +89,36 @@ export default async (req, res) => {
 
     // await placeWatermarkOnVideo(dataFinal);
 
-    
-    // 7. upload video to VIMEO and get url
     const params = {
       'name': `Video ${subName}`, // Here get name from data form
       'description': 'description video!!!.' // Here create description from data form
     };
-    
-    //const videoLocation = await uploadVimeo(dataFinal.output, params);
+    /********************************************************************************************************************
+     * The following processes are asynchronous, but I will use the technique that they run in parallel 
+     * ([sync] since they can be independent) and it will continue until they all proceed (promises alll)
+     ********************************************************************************************************************/
 
     // save image on cloud
-    //const imageLocation = await uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
+    const photoLocation = uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
 
     // save final video on cloud
-    const videoLocation = await uploadFile(dataFinal.output, nameFileVideo, 'video', true);
+    const videoLocation = uploadFile(dataFinal.output, nameFileVideo, 'video', true);
+    //const videoLocation = await uploadVimeo(dataFinal.output, params);
 
-    // remove files (image, videos, txt) from server
+    // save sub videos on cloud
+    const allSubVideos = dowloadVideos.map(video => {
+      const pathFile = path.join(DIR_TEMP, video);
+      return uploadFile(pathFile, video, 'video', true);
+    });
+
+    const footage = await Promise.all([photoLocation, videoLocation, ...allSubVideos]);
+
     removeFileSync(pathFinalPhoto);
+    removeFileSync(dataFinal.output);
+    removeFileSync(dowloadVideos);
     //removeFileSync(videoTemp);
-    //removeFileSync(dataFinal.output);
-    //removeFileSync(pathFileVideos);
-    //removeFileSync(dowloadVideos);
 
-    const response = { response: 'success', success: true, video: videoLocation };
-    console.log(response);
+    console.log({ success: true, footage: footage });
     
     res.status(200).json(response);
   } catch (error) {
