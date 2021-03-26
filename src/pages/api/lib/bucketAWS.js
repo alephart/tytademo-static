@@ -43,7 +43,8 @@ const uploadFile = (pathFile, nameFile, type='image', async=false) => {
             if (err) {
                 throw err;
             }
-            console.log(`File uploaded successfully. ${data.Location}`);
+            //console.log(`File uploaded successfully. ${data.Location}`);
+
             return data.Location;
         });
 

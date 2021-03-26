@@ -29,10 +29,6 @@ const ViewVideo = ({data}) => {
         )}
       </div>
 
-      <div>
-        <img src={data.photo} />
-      </div>
-
       <style jsx>{`
         .zone-info {
           display: flex;

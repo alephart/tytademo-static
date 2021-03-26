@@ -38,8 +38,9 @@ export default async (req, res) => {
     // 1. Get photo conver to binary and: upload to S3, upload to reface API
     await writeFile(pathFinalPhoto, imageBuffer.data);
     const binaryFile = loadFileSync(pathFinalPhoto);
-    const photoLocation = uploadFile(pathFinalPhoto, nameFilePhoto, 'image');
-    console.log(photoLocation);
+    
+    //const photoLocation = uploadFile(pathFinalPhoto, nameFilePhoto, 'image');
+    //console.log(photoLocation);
 
     const uploadReface = await uploadAsset(binaryFile, `image/${imageBuffer.ext}`);
 
@@ -100,11 +101,11 @@ export default async (req, res) => {
     // remove files (image, videos, txt) from server
     removeFileSync(pathFinalPhoto);
     //removeFileSync(videoTemp);
-    removeFileSync(dataFinal.output);
+    //removeFileSync(dataFinal.output);
     //removeFileSync(pathFileVideos);
-    removeFileSync(dowloadVideos);
+    //removeFileSync(dowloadVideos);
 
-    const response = { response: 'success', success: true, photo: photoLocation, video: videoLocation };
+    const response = { response: 'success', success: true, video: videoLocation };
     console.log(response);
     
     res.status(200).json(response);
