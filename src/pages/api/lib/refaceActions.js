@@ -1,7 +1,7 @@
 const path = require('path');
 const fetch = require('node-fetch');
 const { swapVideo } = require('../lib/refaceAPI');
-const { writeFile } = require('../lib/fileActions');
+const { writeFileSync } = require('../lib/fileActions');
 
 const DIR_TEMP = './temp';
 
@@ -55,17 +55,12 @@ const swapDataVideos = async (faceId) => {
   ];
 
   try {
-    let videos = [{ url: '', name: '' }];
-  
-    for(let i = 0; i < videosData.length; i++) {
-      const dataSwap = await swapVideo(videosData[i]);
-      const url = dataSwap.videoInfo.video_path;
-      const name = `${dataSwap.videoInfo.id}.mp4`;
-      videos[i] = {url: url, name: name};
+    const tasks = videosData.map(data => swapVideo(data));
 
-    }
-    
-    return videos;
+    const results = await Promise.all(tasks);
+    console.log(results);
+
+    return results;
 
   } catch (error) {
     console.error(error);
@@ -80,34 +75,54 @@ const swapDataVideos = async (faceId) => {
  * @param {array} videos List of videos processed in the swap.
  * @returns List of all videos to concat.
  */
-const DownloadSwapAndGetVideoList = async (videos) => {
+const downloadSwapVideos = async (videos) => {
 
-  let fileVideos = '';
-
-  for(let i = 0; i < videos.length; i++) {
-    const response = await fetch(videos[i].url);
-    const videoStatus = await response.status;
+  const tasks = videos.map(async video => {
+    let name = '';
+    const response = await fetch(video.videoInfo.video_path);
+    const status = await response.status;
     const buffer = await response.buffer();
 
-    if (videoStatus == 200) {
-      const pathVideo = path.join(DIR_TEMP, videos[i].name);
-      await writeFile(pathVideo, buffer);
+    if (status == 200) {
+      name = `${video.videoInfo.id}.mp4`;
+      writeFileSync(path.join(DIR_TEMP, name), buffer);
+    }
 
-      const index = i * 2 + 1;
+    return name;
 
-      if(index === 5) {
-        fileVideos += `file vid-pt${index}.mp4\n`;
-        fileVideos += `file vid-pt${index+1}.mp4\n`;
-        fileVideos += `file vid-pt${index+2}.mp4\n`;
-        fileVideos += `file ${videos[i].name}\n`;
-      } else {
-        fileVideos += `file vid-pt${index}.mp4\n`;
-        fileVideos += `file ${videos[i].name}\n`;
-      }
+  });
+
+  const results = await Promise.all(tasks);
+  
+  console.log(results);
+
+  return results;
+};
+
+const formatFileVideos = (videos) => {
+  let file = '';
+
+  for (let i = 0; i < videos.length; i++) {
+    const idx = i * 2 + 1;
+
+    if(idx === 5) {
+      file += `file vid-pt${idx}.mp4\n`;
+      file += `file vid-pt${idx+1}.mp4\n`;
+      file += `file vid-pt${idx+2}.mp4\n`;
+      file += `file ${videos[i]}\n`;
+    } else {
+      file += `file vid-pt${idx}.mp4\n`;
+      file += `file ${videos[i]}\n`;
     }
   }
 
-  return fileVideos;
+  console.log(file);
+
+  return file;
 };
 
-module.exports = { swapDataVideos, DownloadSwapAndGetVideoList };
+module.exports = { 
+  swapDataVideos, 
+  downloadSwapVideos, 
+  formatFileVideos 
+};

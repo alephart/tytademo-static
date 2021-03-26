@@ -61,6 +61,15 @@ const removeFileSync = (pathFile) => {
   }
 };
 
+function writeFileSync(pathFile, dataFile) {
+  try {
+    fsSync.writeFileSync(pathFile, dataFile);
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
+
 async function writeFile(pathFile, dataFile) {
   try {
     await fs.writeFile(pathFile, dataFile);
@@ -103,7 +112,7 @@ async function loadFile(pathFile) {
   }
 }
 
-async function loadFileBinarySync(pathFile) {
+async function loadFileSync(pathFile) {
   try{
     const data = await fs.readFile(pathFile, function (err, data) {
       if (err) throw err;
@@ -149,6 +158,7 @@ module.exports = {
   removeFileSync,
   checkFileSync,
   createDirSync,
-  loadFileBinarySync,
+  loadFileSync,
+  writeFileSync,
   loadFile,
 };

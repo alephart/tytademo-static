@@ -4,9 +4,9 @@ const { uploadFile } = require('../lib/bucketAWS');
 const { uploadVimeo } = require('../lib/vimeoAPI');
 const { decodeBase64Image } = require ('../lib/utils');
 const { placeWatermarkOnVideo, concatVideosDemuxer } = require('../lib/ffmpegActions');
-const { createDirSync, removeFileSync, writeFile, loadFileBinarySync } = require('../lib/fileActions');
+const { createDirSync, removeFileSync, loadFileSync, writeFileSync, writeFile } = require('../lib/fileActions');
 const { uploadAsset, detectFaceInAsset } = require('../lib/refaceAPI');
-const { swapDataVideos, DownloadSwapAndGetVideoList } = require('../lib/refaceActions');
+const { swapDataVideos, DownloadSwapVideos } = require('../lib/refaceActions');
 
 const DIR_TEMP = './temp';
 
@@ -27,55 +27,48 @@ export default async (req, res) => {
 
     const imageBuffer = decodeBase64Image(photoData);
     const nameCuid = cuid();
-    const nameFilePhoto = `photo-${nameCuid.substring(10)}.${imageBuffer.ext}`;
+    const subName = nameCuid.substring(10);
+    const nameFilePhoto = `photo-${subName}.${imageBuffer.ext}`;
     const pathFinalPhoto = path.join(DIR_TEMP, nameFilePhoto);
-
-    // save photo in /temp
-    await writeFile(pathFinalPhoto, imageBuffer.data);
-
+  
     /**
-     * SWAP VIDEOS
+     * SWAP VIDEOS PROCESS
      */
-
-    // 1.get photo in binary format
-    // const binaryFile = await imageBuffer.blob();
-    const binaryFile = await loadFileBinarySync(pathFinalPhoto);
-    console.log(imageBuffer.ext);
-
-    // 2. upload asset to reface and get url asset (signed_url generated in upload)
+    
+    // 1. Get photo conver to binary and: upload to S3, upload to reface API
+    await writeFile(pathFinalPhoto, imageBuffer.data);
+    const binaryFile = loadFileSync(pathFinalPhoto);
+    const photoLocation = uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
     const uploadReface = await uploadAsset(binaryFile, `image/${imageBuffer.ext}`);
 
     responseReface = JSON.parse(uploadReface);
 
     console.log(responseReface);
 
-    // 3. preprocess the upload image (get de faceId)
+    // 2. preprocess the upload image (get de faceId)
     const faceId = await detectFaceInAsset(responseReface.urlFile, `image/${imageBuffer.ext}`);
     console.log(faceId);
 
-    // 4. Swap videos and get url
-    const videos = await swapDataVideos(faceId);
+    // 3. Swap videos and get urls
+    const dataVideos = await swapDataVideos(faceId);
     console.log(videos);
 
-    // 5. Download videos, save in temp
-    const fileVideosToLocal = await DownloadSwapAndGetVideoList(videos);
-    console.log(fileVideosToLocal);
+    // 4. Download videos, save in temp
+    const dowloadVideos = await DownloadSwapVideos(dataVideos);
+    console.log(dowloadVideos);
 
-    // 6. write file .txt with info videos
-    const nameFileVideos = `videos-${nameCuid.substring(10)}.txt`;
-    const pathFileVideos = path.join(DIR_TEMP, nameFileVideos);
-    await writeFile(pathFileVideos, fileVideosToLocal);
+    // 5. write file .txt with info videos
+    const fileVideosToTxt = formatFileVideos(dowloadVideos);
+    const nameFileVideos = `videos-${subName}.txt`;
+    writeFileSync(path.join(DIR_TEMP, nameFileVideos), fileVideosToTxt);
 
-    // 7. Merge videos (get final video)
-    const nameFileVideo = `video-${nameCuid.substring(10)}.mp4`;
+    // 6. Merge videos (get final video)
+    const nameFileVideo = `video-${subName}.mp4`;
 
     let dataFinal = {
       output: `${DIR_TEMP}/${nameFileVideo}`,
       fileVideos: `${DIR_TEMP}/${nameFileVideos}`,
     };
-
-    // remove posible video exists 
-    removeFileSync(dataFinal.output);
 
     await concatVideosDemuxer(dataFinal);
 
@@ -93,16 +86,13 @@ export default async (req, res) => {
 
     // await placeWatermarkOnVideo(dataFinal);
 
-    // 8. upload video to VIMEO and get url
+    // 7. upload video to VIMEO and get url
     const params = {
-      'name': 'Name participant video', // Here get name from data form
+      'name': `Video ${subName}`, // Here get name from data form
       'description': 'description video!!!.' // Here create description from data form
     };
 
     const videoLocation = await uploadVimeo(dataFinal.output, params);
-
-    // 9. save photo in cloud
-    const imageLocation = await uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
 
     // remove files (image, videos, txt) from server
     removeFileSync(pathFinalPhoto);
@@ -110,10 +100,10 @@ export default async (req, res) => {
     //removeFileSync(data.output);
     //removeFileSync(pathFileVideos);
 
-    const removeVideos = videos.map(video => video.name);
-    removeFileSync(removeVideos);
+    //const removeVideos = videos.map(video => video.name);
+    removeFileSync(dowloadVideos);
     
-    res.status(200).json({ response: 'success', photo: imageLocation, video: videoLocation });
+    res.status(200).json({ response: 'success', photo: photoLocation, video: videoLocation });
     //res.status(200).json({ response: 'success' });
   } catch (error) {
     res.status(500).json({ error: error });

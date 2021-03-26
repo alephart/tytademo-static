@@ -78,9 +78,9 @@ const uploadAsset = async (binaryFile, contentType) => {
 }
 
 /**
- * [POST] Detect face in Asset
- * In image return the first id face or specific number of array
- * TODO: In video return the id face in the number faces into video (adjust)
+ * [POST] Detect face in Asset.
+ * Image: return the first id face or specific number of array
+ * TODO: Video: return the ids face in the number faces into video (adjust)
  * @param {string} imageUrl     url image upload on reface
  * @param {string} contentType  header Content-Type
  * @param {number} numberFace   is the number face in array to get id

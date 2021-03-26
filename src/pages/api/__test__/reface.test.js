@@ -1,11 +1,13 @@
 const {getSignedUrl, uploadAsset, detectFaceInAsset, swapVideo} = require('../lib/refaceAPI');
-const { loadFileBinarySync } = require('../lib/fileActions');
+const { loadFileSync } = require('../lib/fileActions');
+const { swapDataVideos, downloadSwapVideos, formatFileVideos } = require('../lib/refaceActions');
+
 const path = require('path');
 
 describe('Reface API', () => {
   const DIR_TEMP = './temp';
 
-  test.skip('Should return signed_url correctly', async (done) => {
+  test('Should return signed_url correctly', async (done) => {
     let data;
 
     try {
@@ -24,7 +26,7 @@ describe('Reface API', () => {
     //expect().toBe(2);
   });
 
-  test.skip('It should upload an image to reface and get the url of the image', async (done) => {
+  test('It should upload an image to reface and get the url of the image', async (done) => {
     const pathFile = path.join(DIR_TEMP, 'photo-000ae9ke8gf3mun.png');
     let data;
 
@@ -77,9 +79,7 @@ describe('Reface API', () => {
         };
 
         dataSwap = await swapVideo(videoData);
-
       }
-      
       
     } catch (error) {
       console.log(error);
@@ -92,5 +92,77 @@ describe('Reface API', () => {
 
     expect(dataSwap.success).toBeTruthy();
   }, 20000);
+
+  /** Test swap and dowload */
+  test('it should swap videos and download them, return an array wiht the list of those videos.', async (done) => {
+
+    const faceId = '9165f8b9-4495-4b82-931c-3ba1875d4683';
+
+    let videos;
+
+    try {
+      videos = await swapDataVideos(faceId);
+      
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+
+    done();
+
+    expect(Array.isArray(videos)).toBeTruthy();
+
+  }, 20000);
+
+  // Test download and list final videos
+  test('It should', async (done) => {
+    const videos = [
+      {
+        videoInfo: {
+          id: 'bacd57cd-8106-4eea-b954-984c19e2f479',
+          video_path: 'https://storage.googleapis.com/prod-reflect-videos/data/swapped_videos/1d0fdeaf-8965-48ac-be18-831303be90f5.mp4',
+        },
+      },
+      {
+        videoInfo: {
+          id: 'ce3f32fb-2701-4dd2-b457-07cee05ef4dc',
+          video_path: 'https://storage.googleapis.com/prod-reflect-videos/data/swapped_videos/d9f48629-b93a-4d17-aa7f-36f9d30a8b80.mp4',
+        },
+      },
+      {
+        videoInfo: {
+          id: '84783eba-9a8b-4e9d-9132-7b95939af1e4',
+          video_path: 'https://storage.googleapis.com/prod-reflect-videos/data/swapped_videos/3564f955-7218-4891-a021-50519f53c1fa.mp4',
+        },
+      }
+    ];
+    
+    let videosFinal;
+
+    try {
+
+      videosFinal = await downloadSwapVideos(videos);
+      
+    } catch (error) {
+      console.log(error);
+      throw error;      
+    }
+
+    done();
+
+    expect(Array.isArray(videosFinal)).toBeTruthy();
+  });
+
+  test.only('It should', () => {
+    videos = [
+      'bacd57cd-8106-4eea-b954-984c19e2f479.mp4',
+      'ce3f32fb-2701-4dd2-b457-07cee05ef4dc.mp4',
+      '84783eba-9a8b-4e9d-9132-7b95939af1e4.mp4'
+    ];
+
+    const fileVideos = formatFileVideos(videos);
+
+    expect(fileVideos).toBeTruthy();
+  });
 
 });
