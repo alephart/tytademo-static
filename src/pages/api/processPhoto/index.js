@@ -97,10 +97,10 @@ export default async (req, res) => {
     // remove files (image, videos, txt) from server
     removeFileSync(pathFinalPhoto);
     //removeFileSync(videoTemp);
-    //removeFileSync(data.output);
+    removeFileSync(dataFinal.output);
     //removeFileSync(pathFileVideos);
 
-    removeFileSync(removeVideos);
+    removeFileSync(dowloadVideos);
     
     res.status(200).json({ success: true, photo: photoLocation, video: videoLocation });
   } catch (error) {
