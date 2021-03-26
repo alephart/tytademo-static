@@ -38,6 +38,8 @@ export default async (req, res) => {
     // 1. Get photo conver to binary and: upload to S3, upload to reface API
     await writeFile(pathFinalPhoto, imageBuffer.data);
     const photoLocation = uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
+    console.log(photoLocation);
+    
     const binaryFile = loadFileSync(pathFinalPhoto);
     const uploadReface = await uploadAsset(binaryFile, `image/${imageBuffer.ext}`);
 
