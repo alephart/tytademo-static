@@ -112,9 +112,9 @@ async function loadFile(pathFile) {
   }
 }
 
-async function loadFileSync(pathFile) {
+function loadFileSync(pathFile) {
   try{
-    const data = await fs.readFile(pathFile, function (err, data) {
+    const data = fsSync.readFileSync(pathFile, function (err, data) {
       if (err) throw err;
       return data;
     });
@@ -155,10 +155,10 @@ async function saveDummy(dummyBuffer) {
 module.exports = { 
   writeFile,
   moveFile,
+  loadFile,
   removeFileSync,
   checkFileSync,
   createDirSync,
   loadFileSync,
   writeFileSync,
-  loadFile,
 };

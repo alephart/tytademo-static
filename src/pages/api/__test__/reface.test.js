@@ -26,13 +26,13 @@ describe('Reface API', () => {
     //expect().toBe(2);
   });
 
-  test('It should upload an image to reface and get the url of the image', async (done) => {
-    const pathFile = path.join(DIR_TEMP, 'photo-000ae9ke8gf3mun.png');
+  test.only('It should upload an image to reface and get the url of the image', async (done) => {
+    const pathFile = path.join(DIR_TEMP, 'photo-00jz89k2l9r4o1b.png');
     let data;
 
     try {
       // Get the Photo and convert to binary format
-      const binaryFile = await loadFileBinarySync(pathFile);
+      const binaryFile = loadFileSync(pathFile);
       
       // upload asset to reface and get url asset
       const response = await uploadAsset(binaryFile, 'image/png');
@@ -51,12 +51,12 @@ describe('Reface API', () => {
   });
 
   test('It should preprocess the upload image', async (done) => {
-    const pathFile = path.join(DIR_TEMP, 'photo-000ae9ke8gf3mun.png');
+    const pathFile = path.join(DIR_TEMP, 'photo-00jz89k2l9r4o1b.png');
     let data, faceId, dataSwap;
 
     try {
       // Get the Photo and convert to binary format
-      const binaryFile = await loadFileBinarySync(pathFile);
+      const binaryFile = await loadFileSync(pathFile);
       
       // upload asset to reface and get url asset
       const response = await uploadAsset(binaryFile, 'image/png');
@@ -153,7 +153,7 @@ describe('Reface API', () => {
     expect(Array.isArray(videosFinal)).toBeTruthy();
   });
 
-  test.only('It should', () => {
+  test('It should', () => {
     videos = [
       'bacd57cd-8106-4eea-b954-984c19e2f479.mp4',
       'ce3f32fb-2701-4dd2-b457-07cee05ef4dc.mp4',

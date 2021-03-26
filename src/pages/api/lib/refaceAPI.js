@@ -92,6 +92,8 @@ const detectFaceInAsset = async (imageUrl, contentType, numberFace = 0) => {
 
   const obj = {image_url: imageUrl};
 
+  console.log(obj);
+
   try {
     const response = await fetch(`${configReface.url_base}${endPoint}`, {
       method: 'POST',
@@ -102,6 +104,8 @@ const detectFaceInAsset = async (imageUrl, contentType, numberFace = 0) => {
     const data = await response.json();
 
     const faces = Object.keys(data.imageInfo.faces);
+
+    console.log('faces', faces[numberFace]);
 
     return faces[numberFace];
 

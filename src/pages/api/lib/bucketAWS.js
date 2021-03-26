@@ -16,6 +16,7 @@ const uploadFileAsync = async (params) => {
       });
           
       // 'https://mds-tyta.s3.amazonaws.com/<bucket>/file'
+      console.log(`File uploaded successfully. ${res.Location}`);
       return res.Location;
       
     } catch (error) {
@@ -25,7 +26,7 @@ const uploadFileAsync = async (params) => {
 }
 
 const uploadFile = (pathFile, nameFile, type='image', async=false) => {
-    try {      
+  try {
       // Read content from the file
     const fileContent = fsSync.readFileSync(pathFile);
     

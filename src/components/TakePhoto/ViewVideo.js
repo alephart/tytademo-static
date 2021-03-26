@@ -7,9 +7,11 @@ const ViewVideo = ({data}) => {
   const [urlVideo, setUrlVideo] = React.useState('');
 
   React.useEffect(() => {
-    const id = data.video.split('/').slice(-1)[0];
-
-    setUrlVideo(`https://vimeo.com/${id}`);
+    if(data.success) {
+      const id = data.video.split('/').slice(-1)[0];
+  
+      setUrlVideo(`https://vimeo.com/${id}`);
+    }
   });
 
   return (

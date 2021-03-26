@@ -6,7 +6,7 @@ const { decodeBase64Image } = require ('../lib/utils');
 const { placeWatermarkOnVideo, concatVideosDemuxer } = require('../lib/ffmpegActions');
 const { createDirSync, removeFileSync, loadFileSync, writeFileSync, writeFile } = require('../lib/fileActions');
 const { uploadAsset, detectFaceInAsset } = require('../lib/refaceAPI');
-const { swapDataVideos, DownloadSwapVideos } = require('../lib/refaceActions');
+const { swapDataVideos, downloadSwapVideos, formatFileVideos } = require('../lib/refaceActions');
 
 const DIR_TEMP = './temp';
 
@@ -51,11 +51,11 @@ export default async (req, res) => {
 
     // 3. Swap videos and get urls
     const dataVideos = await swapDataVideos(faceId);
-    console.log(videos);
+    console.log({dataVideos});
 
     // 4. Download videos, save in temp
-    const dowloadVideos = await DownloadSwapVideos(dataVideos);
-    console.log(dowloadVideos);
+    const dowloadVideos = await downloadSwapVideos(dataVideos);
+    console.log({dowloadVideos});
 
     // 5. write file .txt with info videos
     const fileVideosToTxt = formatFileVideos(dowloadVideos);
@@ -100,12 +100,10 @@ export default async (req, res) => {
     //removeFileSync(data.output);
     //removeFileSync(pathFileVideos);
 
-    //const removeVideos = videos.map(video => video.name);
-    removeFileSync(dowloadVideos);
+    removeFileSync(removeVideos);
     
-    res.status(200).json({ response: 'success', photo: photoLocation, video: videoLocation });
-    //res.status(200).json({ response: 'success' });
+    res.status(200).json({ success: true, photo: photoLocation, video: videoLocation });
   } catch (error) {
-    res.status(500).json({ error: error });
+    res.status(500).json({ success: false, error: error });
   }
 };
