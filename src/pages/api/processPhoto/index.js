@@ -56,18 +56,18 @@ export default async (req, res) => {
     const videosSwap = [
       { // 2
         intensity: 1,
-        video_id: '0dd57817-70fe-40fc-9ac4-cd33e60dc3a4',
+        video_id: 'daa1f6bc-9644-4b03-b59f-942b694f037d',
         facemapping: {
-          '96863cb0-7eea-4608-a85a-015ba15a9303': [
+          '5487814b-cfe9-4acf-8697-3fcb8ebdfd31': [
             `${faceId}`
           ]
         }
       },
       { // 4
         intensity: 1,
-        video_id: 'c4da7ca8-eef0-4152-8c1b-1c09675b38b3',
+        video_id: '84a26c7f-1c24-403f-889f-c1c03ead79ea',
         facemapping: {
-          '02c63a56-ad40-43a4-af7b-d44262e4fd68': [
+          '629c76af-8191-4c6e-8331-d50dd1dfa956': [
             `${faceId}`
           ]
         }
@@ -141,7 +141,8 @@ export default async (req, res) => {
     removeFileSync(removeSubVideos);
     //removeFileSync(videoTemp);
 
-    console.log({ success: true, footage: footage });
+    const response = { success: true, footage: footage };
+    console.log(response);
     
     res.status(200).json(response);
   } catch (error) {
