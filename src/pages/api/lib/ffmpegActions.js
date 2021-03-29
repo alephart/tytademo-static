@@ -67,7 +67,7 @@ const transitionMergeVideosExec = async (data) => {
 const concatVideosDemuxer = async (data) => {
   const {output, fileVideos} = data;
 
-  const concat = `ffmpeg -f concat -safe 0 -i ${fileVideos} ${output}`;
+  const concat = `ffmpeg -f concat -safe 0 -i ${fileVideos} -c copy ${output}`;
 
   return await runExecCommnad(concat);
 }

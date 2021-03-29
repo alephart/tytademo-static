@@ -148,7 +148,7 @@ export default async (req, res) => {
     const photoLocation = uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
 
     // save final video on cloud
-    const videoLocation = uploadFile(dataFinal.output, nameFinalVideo, 'video', true);
+    const videoLocation = uploadFile(dataTrack.output, nameFinalVideo, 'video', true);
     //const videoLocation = await uploadVimeo(dataFinal.output, params);
 
     // save sub videos on cloud
