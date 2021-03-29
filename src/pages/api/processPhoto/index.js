@@ -111,10 +111,11 @@ export default async (req, res) => {
     await concatVideosDemuxer(dataFinal);
 
     // 6.1 chage track in final video 
+    const nameFinalVideo = `video-${subName}_final.mp4`;
 
     const dataTrack = {
       input: dataFinal.output,
-      output: `${DIR_TEMP}/video-${subName}_final.mp4`,
+      output: `${DIR_TEMP}/${nameFinalVideo}`,
       track: path.join(DIR_TEMP, 'Lunay-Audio.m4a'),
     }
 
@@ -147,7 +148,7 @@ export default async (req, res) => {
     const photoLocation = uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
 
     // save final video on cloud
-    const videoLocation = uploadFile(dataFinal.output, dataTrack.output, 'video', true);
+    const videoLocation = uploadFile(dataFinal.output, nameFinalVideo, 'video', true);
     //const videoLocation = await uploadVimeo(dataFinal.output, params);
 
     // save sub videos on cloud
