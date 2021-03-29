@@ -83,7 +83,7 @@ const fixTBField = async (data) => {
 const changeTrack = async (data) => {
   const {input, output, track} = data;
 
-  const change = `fmpeg -i ${input} -i ${track} -c:v copy -map 0:v:0 -map 1:a:0 ${output}`;
+  const change = `ffmpeg -i ${input} -i ${track} -c:v copy -map 0:v:0 -map 1:a:0 ${output}`;
 
   return await runExecCommnad(change);
 

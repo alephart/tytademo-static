@@ -114,7 +114,7 @@ export default async (req, res) => {
 
     const dataTrack = {
       input: dataFinal.output,
-      output: `${dataFinal.output.split('.')[0]}_final.mp4`,
+      output: `${DIR_TEMP}/video-${subName}_final.mp4`,
       track: path.join(DIR_TEMP, 'Lunay-Audio.m4a'),
     }
 
