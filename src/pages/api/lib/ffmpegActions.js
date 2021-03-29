@@ -86,9 +86,8 @@ const changeTrack = async (data) => {
   const change = `fmpeg -i ${input} -i ${track} -c:v copy -map 0:v:0 -map 1:a:0 ${output}`;
 
   return await runExecCommnad(change);
+
 }
-
-
 
 const placeWatermarkOnVideo = async (data) => {
   // commmand:
