@@ -16,9 +16,9 @@ const ViewVideo = ({data}) => {
   });
 
   return (
-    <div className="zone-info">
+    <div>
         {footage ? (
-          <div>
+          <div className="zone-info">
             <div className="item">
               <h3>Final Video</h3>
               <ReactPlayer
@@ -26,13 +26,14 @@ const ViewVideo = ({data}) => {
                 url={footage[1]}
                 controls={true}
                 playing={true}
-                width='480px'
-                height='280px'
+                width='100%'
+                height='100%'
+
               />
             </div>
             <div className="item">
               <h3>Photo</h3>
-              <img src={footage[0]} alt="Participante" />
+              <img src={footage[0]} width='100%' height='auto' alt="Participante" />
             </div>
             <div className="item">
               <h3>Swap 1</h3>
@@ -41,8 +42,9 @@ const ViewVideo = ({data}) => {
                 url={footage[2]}
                 controls={true}
                 playing={false}
-                width='480px'
-                height='280px'
+                width='100%'
+                height='100%'
+
               />
             </div>
 
@@ -53,8 +55,9 @@ const ViewVideo = ({data}) => {
                 url={footage[3]}
                 controls={true}
                 playing={false}
-                width='480px'
-                height='280px'
+                width='100%'
+                height='100%'
+
               />
             </div>
           </div>
@@ -69,7 +72,7 @@ const ViewVideo = ({data}) => {
           align-items: center;
           justify-content: center;
           position: relative;
-          max-width: 480px;
+          max-width: 420px;
           min-height: 280px;
           width: 100%;
           margin: 0 auto;
@@ -80,7 +83,13 @@ const ViewVideo = ({data}) => {
           left: 0;
         }
         .item {
-          padding-bottom: 20px;
+          padding: 20px 6px;
+          max-width: 420px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
         }
         .button {
           background-color: #3498db;
