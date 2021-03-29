@@ -163,6 +163,7 @@ export default async (req, res) => {
 
     removeFileSync(pathFinalPhoto);
     removeFileSync(dataFinal.output);
+    removeFileSync(dataTrack.output);
     removeFileSync(removeSubVideos);
     //removeFileSync(videoTemp);
 
