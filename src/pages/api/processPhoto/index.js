@@ -3,7 +3,7 @@ const cuid = require('cuid');
 const { uploadFile } = require('../lib/bucketS3API');
 const { uploadVimeo } = require('../lib/vimeoAPI');
 const { decodeBase64Image } = require ('../lib/utils');
-const { placeWatermarkOnVideo, concatVideosDemuxer } = require('../lib/ffmpegActions');
+const { placeWatermarkOnVideo, concatVideosDemuxer, fixTBField, changeTrack } = require('../lib/ffmpegActions');
 const { createDirSync, removeFileSync, loadFileSync, writeFileSync, writeFile } = require('../lib/fileActions');
 const { uploadAsset, detectFaceInAsset } = require('../lib/refaceAPI');
 const { swapDataVideos, downloadSwapVideos, formatFileVideos } = require('../lib/refaceActions');
@@ -56,18 +56,18 @@ export default async (req, res) => {
     const videosSwap = [
       { // 2
         intensity: 1,
-        video_id: 'daa1f6bc-9644-4b03-b59f-942b694f037d',
+        video_id: '0dd57817-70fe-40fc-9ac4-cd33e60dc3a4',
         facemapping: {
-          '5487814b-cfe9-4acf-8697-3fcb8ebdfd31': [
+          '96863cb0-7eea-4608-a85a-015ba15a9303': [
             `${faceId}`
           ]
         }
       },
       { // 4
         intensity: 1,
-        video_id: '84a26c7f-1c24-403f-889f-c1c03ead79ea',
+        video_id: 'c4da7ca8-eef0-4152-8c1b-1c09675b38b3',
         facemapping: {
-          '629c76af-8191-4c6e-8331-d50dd1dfa956': [
+          '02c63a56-ad40-43a4-af7b-d44262e4fd68': [
             `${faceId}`
           ]
         }
@@ -80,6 +80,22 @@ export default async (req, res) => {
     // 4. Download videos, save in temp
     const dowloadVideos = await downloadSwapVideos(dataVideos);
     console.log({dowloadVideos});
+    
+    // 4.1 modify the TB to 24K (Reface send to 90K)
+    // Here only the firts video swap (swap 1) - create rutine for check TB several videos
+    const videoNewName = `${dowloadVideos[0].split('.')[0]}_up.mp4`;
+    
+    const dataTB = {
+      input: path.join(DIR_TEMP, dowloadVideos[0]),
+      output: path.join(DIR_TEMP, videoNewName),
+      timeScale: 24000,
+    }
+
+    dowloadVideos[0] = videoNewName;
+
+    console.log({dowloadVideos});
+
+    await fixTBField(dataTB);
 
     // 5. write file .txt with info videos
     const fileVideosToTxt = formatFileVideos(dowloadVideos, 'Lunay_Video_');
@@ -87,14 +103,22 @@ export default async (req, res) => {
     writeFileSync(path.join(DIR_TEMP, nameFileVideos), fileVideosToTxt);
 
     // 6. Merge videos (get final video)
-    const nameFileVideo = `video-${subName}.mp4`;
-
-    let dataFinal = {
-      output: `${DIR_TEMP}/${nameFileVideo}`,
+    const dataFinal = {
+      output: `${DIR_TEMP}/video-${subName}.mp4`,
       fileVideos: `${DIR_TEMP}/${nameFileVideos}`,
     };
 
     await concatVideosDemuxer(dataFinal);
+
+    // 6.1 chage track in final video 
+
+    const dataTrack = {
+      input: dataFinal.output,
+      output: `${dataFinal.output.split('.')[0]}_final.mp4`,
+      track: `${DIR_TEMP}/Lunay-Audio.m4a`,
+    }
+
+    await changeTrack(dataTrack);
 
     // // create watermark into video 
     // let videoTemp = dataFinal.output;
@@ -123,7 +147,7 @@ export default async (req, res) => {
     const photoLocation = uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
 
     // save final video on cloud
-    const videoLocation = uploadFile(dataFinal.output, nameFileVideo, 'video', true);
+    const videoLocation = uploadFile(dataFinal.output, dataTrack.output, 'video', true);
     //const videoLocation = await uploadVimeo(dataFinal.output, params);
 
     // save sub videos on cloud

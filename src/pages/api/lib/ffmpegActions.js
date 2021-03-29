@@ -70,8 +70,25 @@ const concatVideosDemuxer = async (data) => {
   const concat = `ffmpeg -f concat -safe 0 -i ${fileVideos} -c copy ${output}`;
 
   return await runExecCommnad(concat);
-  
 }
+
+const fixTBField = async (data) => {
+  const {input, output, timeScale} = data;
+
+  const fixTB = `ffmpeg -i ${input} -video_track_timescale ${timeScale} ${output}`;
+
+  return await runExecCommnad(fixTB);
+}
+
+const changeTrack = async (data) => {
+  const {input, output, track} = data;
+
+  const change = `fmpeg -i ${input} -i ${track} -c:v copy -map 0:v:0 -map 1:a:0 ${output}`;
+
+  return await runExecCommnad(change);
+}
+
+
 
 const placeWatermarkOnVideo = async (data) => {
   // commmand:
@@ -144,4 +161,6 @@ module.exports = {
   concatVideosDemuxer,
   transitionMergeVideosExec,
   createThumbFromVideo,
+  fixTBField,
+  changeTrack,
 }
