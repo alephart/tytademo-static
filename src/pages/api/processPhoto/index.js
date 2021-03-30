@@ -161,6 +161,7 @@ export default async (req, res) => {
 
     const footage = await Promise.all([photoLocation, videoLocation, ...allSubVideos]);
 
+    // TODO: generate list assets to remove - remove in async parallel
     removeFileSync(pathFinalPhoto);
     removeFileSync(dataFinal.output);
     removeFileSync(dataTrack.output);
