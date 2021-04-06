@@ -14,36 +14,6 @@ const DIR_TEMP = './temp';
  * @returns array list of the processed videos in the swap.
  */
 const swapDataVideos = async (videosData) => {
-  // const videosData = [
-  //   { // 2
-  //     intensity: 1,
-  //     video_id: 'b03bcf8f-d544-4725-bed6-3710255fba48',
-  //     facemapping: {
-  //       '8a3ad45c-fb07-48ad-818a-6a28af806233': [
-  //         `${faceId}`
-  //       ]
-  //     }
-  //   },
-  //   { // 4
-  //     intensity: 1,
-  //     video_id: 'fdf3f31e-4f66-4b23-9dd4-ee0e523ebe84',
-  //     facemapping: {
-  //       '75d80011-45d1-4a5f-8aec-e7ffceb3d869': [
-  //         `${faceId}`
-  //       ]
-  //     }
-  //   },
-  //   { // 8
-  //     intensity: 1,
-  //     video_id: '71ceccf3-b309-4820-9040-bbb5c705f7a7',
-  //     facemapping: {
-  //       '97faf846-8549-4a51-ac9d-ec5ba6869463': [
-  //         `${faceId}`
-  //       ]
-  //     }
-  //   },
-  // ];
-
   try {
     const tasks = videosData.map(data => swapVideo(data));
 

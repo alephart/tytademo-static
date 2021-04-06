@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { PROCESS_ENUM } from '@/utils/globals';
 import Webcam from 'react-webcam';
 import ButtonTake from './ButtonTake';
 import ViewVideo from './ViewVideo';
-import SelectDevice from '@/components/SelectDevice'
+import SelectDevice from '@/components/SelectDevice';
 
 const TakePhoto = (props) => {
   const { facingMode, setFacingMode } = props;
@@ -11,8 +12,12 @@ const TakePhoto = (props) => {
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
   const [takePhoto, setTakePhoto] = useState(false);
-  const [confirmTakePhoto, setConfirmTakePhoto] = useState(false);
-  const [process, setProcess] = useState(null);
+  const [confirmPhoto, setConfirmPhoto] = useState(false);
+  const [process, setProcess] = useState(PROCESS_ENUM.take);
+  const [swap, setSwap] = useState(null);
+  const [data, setData] = useState(null);
+  const [faces, setFaces] = useState(null);
+  const [message, setMessage] = useState('');
 
   let constraints = {
     //width: { min: 480, ideal: 1080, max: 1920 },
@@ -25,51 +30,110 @@ const TakePhoto = (props) => {
     facingMode: facingMode,
   };
 
+  const sendData = (payload) => {
+    fetch('/api/processPhoto', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+
+        // check status 500
+
+        // check success
+        if(json.success) {
+          setSwap(json.data);
+
+        } else { // not success
+          setMessage(json.message);
+
+          if(json.data === undefined) {
+            // not faces then try again
+            handleBackTakePhoto();
+
+          } else { // select photo
+            handleSelectPhoto(json.data);
+            
+          }
+        }
+
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   const capture = useCallback(() => {
+    setMessage('');
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
     setTakePhoto(true);
   }, [webcamRef, setImgSrc]);
 
+  useEffect(() =>{
+    console.log('data:::', data);
+  }, [data]);
+
   useEffect(() => {
-    if (confirmTakePhoto) {
-      //const formData = new FormData();
-      //formData.append('photo', imgSrc);
+    console.log('check confirm photo!!!');
 
-      fetch('/api/processPhoto', {
-        method: 'POST',
-        body: imgSrc,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          setTimeout(() => {
-            setProcess(data);
-          }, 1000);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  }, [confirmTakePhoto]);
+    if (confirmPhoto) {
 
-  const handleConfirmTakePhoto = (e) => {
-    const response = e.target.dataset;
-    if (response.confirm === 'true') {
-      setConfirmTakePhoto(true);
-    } else {
-      setTakePhoto(false);
+      const payload = {
+        photo: imgSrc,
+        process,
+        data,
+      };
+
+      setMessage('Processing...');
+      sendData(payload);
     }
-  };
+  }, [confirmPhoto]);
 
   const handleBackTakePhoto = () => {
-    setProcess(null);
+    setProcess(PROCESS_ENUM.take);
     setImgSrc(null);
     setTakePhoto(false);
-    setConfirmTakePhoto(false);
+    setConfirmPhoto(false);
+    setFaces(null);
+  };
+  
+  const handleConfirmTakePhoto = (event) => {
+    event.preventDefault();
+    console.log('event', event);
+    const dataset = event.currentTarget.dataset;
+    const {confirm, face_id} = dataset;
+
+    console.log(dataset);
+    console.log({confirm}, {face_id});
+
+    if (confirm === 'true') {
+      if(process === PROCESS_ENUM.select) {
+        setData({
+          ...data,
+          faceId: face_id,
+        });
+      }
+      setConfirmPhoto(true);
+
+    } else {
+      setMessage('');
+      handleBackTakePhoto();
+    }
+  };
+  
+  const handleSelectPhoto = (data) => {
+    setData(data);
+    setFaces(data.faces);
+    setProcess(PROCESS_ENUM.select);
+    setConfirmPhoto(false);
+
   };
 
   console.log(constraints);
+
+  console.log(faces);
 
   return (
     <>
@@ -91,34 +155,62 @@ const TakePhoto = (props) => {
         </div>
       )}
 
-      {imgSrc && takePhoto && !confirmTakePhoto && (
+      {imgSrc && takePhoto && !confirmPhoto && (
         <div className='zone-photo'>
           <img src={imgSrc} />
-          <div className='buttons'>
-            <button
-              className='blue'
-              data-confirm='true'
-              onClick={handleConfirmTakePhoto}
-            >
-              Yes, continue
-            </button>
-            <button data-confirm='false' onClick={handleConfirmTakePhoto}>
-              Take photo again
-            </button>
-          </div>
         </div>
       )}
 
-      {confirmTakePhoto && (
+      {confirmPhoto && (
         <div className='zone-process'>
-          {!process ? (
-            <span>Process...</span>
+          {!swap ? (
+            <span>...</span>
           ) : (
             <div className='oneColunm'>
-              <ViewVideo data={process} />
-              <a onClick={handleBackTakePhoto}>Back</a>
+              <ViewVideo swap={swap} />
+              <a onClick={handleBackTakePhoto}> Back </a>
             </div>
           )}
+        </div>
+      )}
+
+      {faces && (
+        <div className='zone-select'>
+          {faces.map((face, index) => (
+            <button
+              className='select'
+              key={index}
+              data-face_id={face[1].id}
+              data-confirm={true}
+              onClick={handleConfirmTakePhoto}
+            >
+              <img src={face[1].image_path} />
+            </button>
+          ))}
+        </div>
+      )}
+
+      {message && (
+        <div className='zone-message'>{message}</div>
+      )}
+
+      {imgSrc && takePhoto && !confirmPhoto && (
+        <div className='zone-photo'>
+          <div className='buttons'>
+            {process !== PROCESS_ENUM.select && (
+              <button
+                className='button blue'
+                data-confirm={true}
+                onClick={handleConfirmTakePhoto}
+              >
+                Yes, continue
+              </button>
+            )}
+
+            <button className="button" data-confirm={false} onClick={handleConfirmTakePhoto}>
+              Take photo again
+            </button>
+          </div>
         </div>
       )}
 
@@ -129,7 +221,7 @@ const TakePhoto = (props) => {
           justify-content: center;
         }
 
-        button {
+        .button {
           flex: 1;
           display: block;
           background-color: #d5dbdb;
@@ -201,6 +293,31 @@ const TakePhoto = (props) => {
         }
         .zone-process a:hover {
           color: #2980b9;
+        }
+
+        .zone-select {
+          display: inline-flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .select {
+          width: 140px;
+          height: 140px;
+          border: 2px solid transparent;
+          border-radius: 0;
+          cursor: pointer;
+          background: transparent;
+          padding: 2px;
+        }
+
+        .select:hover {
+          border: 2px solid orange;
+        }
+
+        .select img {
+          width: 100%; 
+          height:auto;
         }
       `}</style>
     </>
