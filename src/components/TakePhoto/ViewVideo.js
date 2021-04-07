@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
 
-const ViewVideo = ({data}) => {
-  console.log(data);
+const ViewVideo = ({swap}) => {
+  console.log(swap);
 
   const [urlVideo, setUrlVideo] = React.useState('');
   const [footage, setFootage] = React.useState(null);
 
   React.useEffect(() => {
-    //const id = data.video.split('/').slice(-1)[0];
+    //const id = swap.video.split('/').slice(-1)[0];
 
     //setUrlVideo(`https://vimeo.com/${id}`);
 
-    setFootage(data.footage);
+    setFootage(swap.footage);
   });
 
   return (
