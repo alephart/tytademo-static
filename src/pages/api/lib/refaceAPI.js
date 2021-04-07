@@ -105,8 +105,6 @@ const detectFacesInAsset = async (imageUrl, contentType, numberFace = 0) => {
     //const faces = Object.keys(data.imageInfo.faces);
     const faces = Object.entries(data.imageInfo.faces);
 
-    console.log('faces >>>', faces[0]);
-
     return faces;
 
   } catch (error) {

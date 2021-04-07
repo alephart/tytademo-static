@@ -47,7 +47,7 @@ export default async (req, res) => {
   
       // 2. Check cant faces: faces == 0 => return; faces == 1 => faceId; faces > 1 => select face.
       const faces = await detectFacesInAsset(responseAsset.urlFile, `image/${ext}`);
-      console.log({ faces });
+      console.log('faces >>>', faces);
 
       if(faces.length === 0) { 
         // return 
@@ -66,7 +66,8 @@ export default async (req, res) => {
         res.status(200).send(response);
 
       } else {
-        faceId = faces[0].id;
+        faceId = Object.values(faces[0])[1].id;
+        console.log('faceId', faceId);
       }
     } 
     
