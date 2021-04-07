@@ -5,7 +5,7 @@ import ViewVideo from '@/components/TakePhoto/ViewVideo'
 
 export default function testVideo() {
 
-  const data = {
+  const swap = {
     "success": true,
     "data": [
         "https://mds-tyta.s3.amazonaws.com/photos/photo-ckn7q22n5000046nx776f4rla.png",
@@ -24,7 +24,7 @@ export default function testVideo() {
       <main className={styles.main}>
         <h1>Test preview video</h1>
 
-        <ViewVideo data={data} /> 
+        <ViewVideo data={swap.data} /> 
       </main>
 
       <footer className={styles.footer}>

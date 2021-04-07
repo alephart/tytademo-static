@@ -167,7 +167,7 @@ const TakePhoto = (props) => {
             <span>...</span>
           ) : (
             <div className='oneColunm'>
-              <ViewVideo swap={swap} />
+              <ViewVideo data={swap} />
               <a onClick={handleBackTakePhoto}> Back </a>
             </div>
           )}

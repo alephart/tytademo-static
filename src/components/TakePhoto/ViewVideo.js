@@ -11,7 +11,7 @@ const ViewVideo = ({data}) => {
 
     //setUrlVideo(`https://vimeo.com/${id}`);
 
-    setFootage(data.data);
+    setFootage(data);
   });
 
   return (
