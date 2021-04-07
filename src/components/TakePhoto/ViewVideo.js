@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
 
-const ViewVideo = ({swap}) => {
-  console.log(swap);
+const ViewVideo = ({data}) => {
+  console.log(data);
 
-  const [urlVideo, setUrlVideo] = React.useState('');
   const [footage, setFootage] = React.useState(null);
 
   React.useEffect(() => {
@@ -12,7 +11,7 @@ const ViewVideo = ({swap}) => {
 
     //setUrlVideo(`https://vimeo.com/${id}`);
 
-    setFootage(swap.footage);
+    setFootage(data.data);
   });
 
   return (

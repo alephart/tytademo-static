@@ -6,14 +6,14 @@ import ViewVideo from '@/components/TakePhoto/ViewVideo'
 export default function testVideo() {
 
   const data = {
-    response: "success", 
-    footage: [
-      "https://mds-tyta.s3.amazonaws.com/photos/photo-000y7nxdzhj0ee7.png",
-      "https://mds-tyta.s3.amazonaws.com/videos/video-000y7nxdzhj0ee7_final.mp4",
-      "https://mds-tyta.s3.amazonaws.com/videos/ba030a6a-735d-45ef-a246-1f8562be8b73_up.mp4",
-      "https://mds-tyta.s3.amazonaws.com/videos/79a27f84-3dbe-47f6-98c9-19db52057960.mp4"
+    "success": true,
+    "data": [
+        "https://mds-tyta.s3.amazonaws.com/photos/photo-ckn7q22n5000046nx776f4rla.png",
+        "https://mds-tyta.s3.amazonaws.com/videos/video-ckn7q22n5000046nx776f4rla_final.mp4",
+        "https://mds-tyta.s3.amazonaws.com/videos/59efb3bf-57d6-4d6b-934b-273661278025_up.mp4",
+        "https://mds-tyta.s3.amazonaws.com/videos/3fade84b-565d-4901-88e0-50be8078552e.mp4"
     ]
-  };
+};
   return (
     <div className={styles.container}>
       <Head>
