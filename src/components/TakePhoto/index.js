@@ -16,8 +16,8 @@ const TakePhoto = (props) => {
   const [process, setProcess] = useState(PROCESS_ENUM.take);
   const [swap, setSwap] = useState(null);
   const [data, setData] = useState(null);
-  const [faces, setFaces] = useState(null);
   const [message, setMessage] = useState('');
+  const [character, setCharacter] = useState(null);
 
   let constraints = {
     //width: { min: 480, ideal: 1080, max: 1920 },
@@ -49,12 +49,8 @@ const TakePhoto = (props) => {
           setMessage(json.message);
 
           if(json.data === undefined) {
-            // not faces then try again
+            // not faces or more faces then try again
             handleBackTakePhoto();
-
-          } else { // select photo
-            handleSelectPhoto(json.data);
-            
           }
         }
 
@@ -83,6 +79,7 @@ const TakePhoto = (props) => {
       const payload = {
         photo: imgSrc,
         process,
+        character: character,
         data,
       };
 
@@ -91,12 +88,22 @@ const TakePhoto = (props) => {
     }
   }, [confirmPhoto]);
 
+  // const handleAlert = () => {
+
+  // };
+
+  const handleSelectCharacter = (event) => {
+    event.preventDefault();
+    console.log('event', event);
+    const dataset = event.currentTarget.dataset;
+    setCharacter(dataset.character);
+  };
+
   const handleBackTakePhoto = () => {
     setProcess(PROCESS_ENUM.take);
     setImgSrc(null);
     setTakePhoto(false);
     setConfirmPhoto(false);
-    setFaces(null);
   };
   
   const handleConfirmTakePhoto = (event) => {
@@ -133,11 +140,26 @@ const TakePhoto = (props) => {
 
   console.log(constraints);
 
-  console.log(faces);
-
   return (
     <>
-      {!takePhoto && (
+      {!character && (
+        <div className="oneColunm">
+          <h3>
+            Select character?
+          </h3>
+
+          <div className="zone-select">
+            <button className="button red" data-character='woman' onClick={handleSelectCharacter}>
+              Woman
+            </button>
+            <button className="button red" data-character='man' onClick={handleSelectCharacter}>
+              Man
+            </button>
+          </div>
+        </div>
+      )}
+
+      {!takePhoto && character && (
         <div className='zone-take-photo'>
           <Webcam
             audio={false}
@@ -168,30 +190,10 @@ const TakePhoto = (props) => {
           ) : (
             <div className='oneColunm'>
               <ViewVideo data={swap} />
-              <a onClick={handleBackTakePhoto}> Back </a>
+              <button onClick={handleBackTakePhoto}> Back </button>
             </div>
           )}
         </div>
-      )}
-
-      {faces && (
-        <div className='zone-select'>
-          {faces.map((face, index) => (
-            <button
-              className='select'
-              key={index}
-              data-face_id={face[1].id}
-              data-confirm={true}
-              onClick={handleConfirmTakePhoto}
-            >
-              <img src={face[1].image_path} />
-            </button>
-          ))}
-        </div>
-      )}
-
-      {message && (
-        <div className='zone-message'>{message}</div>
       )}
 
       {imgSrc && takePhoto && !confirmPhoto && (
@@ -214,6 +216,10 @@ const TakePhoto = (props) => {
         </div>
       )}
 
+      {message && (
+        <div className='zone-message'>{message}</div>
+      )}
+
       <style jsx>{`
         .buttons {
           display: flex;
@@ -231,10 +237,16 @@ const TakePhoto = (props) => {
           border-radius: 50px;
           text-transform: uppercase;
           margin: 5px;
+          cursor: pointer;
         }
 
         .blue {
           background-color: #3498db;
+          color: white;
+        }
+
+        .red {
+          background-color: #B9293F;
           color: white;
         }
 

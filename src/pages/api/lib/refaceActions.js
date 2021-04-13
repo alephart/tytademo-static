@@ -1,19 +1,19 @@
 const path = require('path');
 const fetch = require('node-fetch');
 const { swapVideo } = require('../lib/refaceAPI');
+const { fixTBNField } = require('../lib/ffmpegActions');
 const { writeFileSync } = require('../lib/fileActions');
 
 const DIR_TEMP = './temp';
 
 /**
- * Make the swap of the videos. 
- * First compose all the videos that were previously adjusted. 
- * After each video is traversed doing the swap face of the participant.
+ * Make the swap of the videos.
+ * Each video is traversed doing the swap face of the participant.
  * Finally it returns the list of the videos processed in the swap
- * @param {string} faceId The id face from photo in reface
+ * @param {array} videosData  The info about video_id, facemapping and id face from photo in reface
  * @returns array list of the processed videos in the swap.
  */
-const swapDataVideos = async (videosData) => {
+const dataSwapVideos = async (videosData) => {
   try {
     const tasks = videosData.map(data => swapVideo(data));
 
@@ -32,7 +32,7 @@ const swapDataVideos = async (videosData) => {
  * Download all videos processed in swap and save in server path.
  * At the same time it's generating a list of videos to be joined.
  * Finally return the list of videos to join.
- * @param {array} videos List of videos processed in the swap.
+ * @param {array} videos  List of videos processed in the swap.
  * @returns List of all videos to concat.
  */
 const downloadSwapVideos = async (videos) => {
@@ -49,39 +49,68 @@ const downloadSwapVideos = async (videos) => {
     }
 
     return name;
-
   });
 
   const results = await Promise.all(tasks);
   
-  console.log(results);
-
   return results;
 };
 
-const formatFileVideos = (videos, name) => {
-  let file = '';
+/**
+ * This function builds the list of videos to concatenate.
+ * @param {array} videosSwap List of videos that were swapped.
+ * @param {array} videosList List of all the videos that must be concatenated at the end.
+ * @param {string} character Character type selected by the user.
+ * @returns Text string with list of videos to contact for ffmpeg.
+ */
+const buildFileVideos = (videosSwap, videosList, character) => {
+  let file = '# files video name to concat\n', index = 0;
 
-  for (let i = 0; i < videos.length; i++) {
-    const idx = i * 2 + 1;
-
-    if(idx === 3) {
-      file += `file ${name}${idx}.mp4\n`;
-      file += `file ${videos[i]}\n`;
-      file += `file ${name}${idx+2}.mp4\n`;
+  videosList.forEach(video => {
+    if (video.character === character) {
+      file += `file ${videosSwap[index]}\n`;
+      index ++;
     } else {
-      file += `file ${name}${idx}.mp4\n`;
-      file += `file ${videos[i]}\n`;
+      file += `file ${video.name}\n`;
     }
-  }
-
-  console.log(file);
+  });
 
   return file;
 };
 
+// 4.1 
+/**
+ * Modify the TBN video time scale to 90K (Reface send to 90K) to all videos in array.
+ * TODO: Create script to check TBN several videos and convert only modified.
+ * @param {array} videosData List videos processed in swap and store in temp.
+ * @param {number} timeScale Number of timescale to convert.
+ * @returns Array with new name videos to concat.
+ */
+const adjustTbnVideos = async (videosData, timeScale = 90000) => {
+  const tasks = videosData.map(video => {
+    const videoNewName = `${video.split('.')[0]}_tbn.mp4`;
+    
+    const dataTBN = {
+      input: path.join(DIR_TEMP, video),
+      output: path.join(DIR_TEMP, videoNewName),
+      timeScale: timeScale,
+    }
+
+    fixTBNField(dataTBN);
+
+    return videoNewName;
+  });
+  
+  const results = await Promise.all(tasks);
+
+  console.log('adjustTbnVideos:::', results);
+
+  return results;
+};
+
 module.exports = { 
-  swapDataVideos, 
+  dataSwapVideos, 
   downloadSwapVideos, 
-  formatFileVideos 
+  buildFileVideos,
+  adjustTbnVideos,
 };

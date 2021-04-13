@@ -27,9 +27,11 @@ const ViewVideo = ({data}) => {
                 playing={true}
                 width='100%'
                 height='100%'
-
               />
             </div>
+            
+            <div className="item"><a href={footage[1]} download>Download video</a></div>
+
             <div className="item">
               <h3>Photo</h3>
               <img src={footage[0]} width='100%' height='auto' alt="Participante" />

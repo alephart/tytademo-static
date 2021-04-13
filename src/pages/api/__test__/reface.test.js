@@ -1,6 +1,6 @@
 const {getSignedUrl, uploadAsset, detectFaceInAsset, swapVideo} = require('../lib/refaceAPI');
 const { loadFileSync } = require('../lib/fileActions');
-const { swapDataVideos, downloadSwapVideos, formatFileVideos } = require('../lib/refaceActions');
+const { swapDataVideos, downloadSwapVideos, buildFileVideos, adjustTbnVideos } = require('../lib/refaceActions');
 
 const path = require('path');
 
@@ -26,7 +26,7 @@ describe('Reface API', () => {
     //expect().toBe(2);
   });
 
-  test.only('It should upload an image to reface and get the url of the image', async (done) => {
+  test('It should upload an image to reface and get the url of the image', async (done) => {
     const pathFile = path.join(DIR_TEMP, 'photo-00jz89k2l9r4o1b.png');
     let data;
 
@@ -153,16 +153,65 @@ describe('Reface API', () => {
     expect(Array.isArray(videosFinal)).toBeTruthy();
   });
 
-  test('It should', () => {
-    videos = [
-      'bacd57cd-8106-4eea-b954-984c19e2f479.mp4',
-      'ce3f32fb-2701-4dd2-b457-07cee05ef4dc.mp4',
-      '84783eba-9a8b-4e9d-9132-7b95939af1e4.mp4'
+  test('It should return video list final for file .txt videos.', () => {
+    const videosList = [
+      { name: '01-NoSwap.mp4', character: '' },
+      { name: '02-SwapSidekick.mp4', character: 'man' },
+      { name: '03-NoSwap.mp4', character: '' },
+      { name: '04-SwapWoman.mp4', character: 'woman' },
+      { name: '05-NoSwap.mp4', character: '' },
+      { name: '06-SwapSidekick.mp4', character: 'man' },
+      { name: '07-NoSwap.mp4', character: '' },
+      { name: '08-SwapWoman.mp4', character: 'woman' },
+      { name: '09-NoSwap.mp4', character: '' },
     ];
 
-    const fileVideos = formatFileVideos(videos, 'vid-pt');
+    const videosSwap = [
+      'videoSwap-385708912.mp4',
+      'videoSwap-124567080.mp4',
+    ];
 
-    expect(fileVideos).toBeTruthy();
+    const fileText = buildFileVideos(videosSwap, videosList, 'woman');
+
+    expect(fileText).toMatch(/(385708912)/i);
+    expect(fileText).toMatch(/(124567080)/i);
+  });
+
+  test.only('should ', async (done) => {
+    const videoList = [
+      '01-NoSwap.mp4',
+      '02-SwapSidekick.mp4',
+      '03-NoSwap.mp4',
+      '04-SwapWoman.mp4',
+      '05-NoSwap.mp4',
+      '06-SwapSidekick.mp4',
+      '07-NoSwap.mp4',
+      '08-SwapWoman.mp4',
+      '09-NoSwap.mp4',
+      '10-SwapSidekick.mp4',
+      '11-NoSwap.mp4',
+      '12-SwapWoman.mp4',
+      '13-NoSwap.mp4',
+      '14-SwapWoman.mp4',
+      '15-NoSwap.mp4',
+    ];
+
+    let newListVideos;
+
+    try {
+      newListVideos = adjustTbnVideos(videoList, 90000);
+      
+    } catch (error) {
+      console.log(error);
+    }
+
+    done();
+
+    console.log(newListVideos);
+
+    expect(newListVideos.success).toBeTruthy();
+
+
   });
 
 });

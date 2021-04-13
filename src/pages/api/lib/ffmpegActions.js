@@ -65,15 +65,15 @@ const transitionMergeVideosExec = async (data) => {
 
 // concatenate several videos - all with same codecs (stream level)
 const concatVideosDemuxer = async (data) => {
-  const {output, fileVideos} = data;
+  const {output, fileVideos, audio = true} = data;
 
-  const concat = `ffmpeg -f concat -safe 0 -i ${fileVideos} -c copy ${output}`;
+  const concat = audio ? `ffmpeg -f concat -safe 0 -i ${fileVideos} -vcodec copy ${output}` : `ffmpeg -f concat -safe 0 -i ${fileVideos} ${output}`;
 
   return await runExecCommnad(concat);
 }
 
-const fixTBField = async (data) => {
-  const {input, output, timeScale} = data;
+const fixTBNField = async (data) => {
+  const {input, output, timeScale = 90000} = data;
 
   const fixTB = `ffmpeg -i ${input} -video_track_timescale ${timeScale} ${output}`;
 
@@ -160,6 +160,6 @@ module.exports = {
   concatVideosDemuxer,
   transitionMergeVideosExec,
   createThumbFromVideo,
-  fixTBField,
+  fixTBNField,
   changeTrack,
 }

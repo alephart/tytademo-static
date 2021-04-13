@@ -1,16 +1,15 @@
 const path = require('path');
 const cuid = require('cuid');
-import { PROCESS_ENUM } from '@/utils/globals';
+//import { PROCESS_ENUM } from '@/utils/globals';
 const { uploadFile } = require('../lib/bucketS3API');
 const { decodeBase64Image } = require ('../lib/utils');
-const { placeWatermarkOnVideo, concatVideosDemuxer, fixTBField, changeTrack } = require('../lib/ffmpegActions');
+const { placeWatermarkOnVideo, concatVideosDemuxer, changeTrack } = require('../lib/ffmpegActions');
 const { createDirSync, removeFileSync, loadFileSync, writeFileSync, writeFile } = require('../lib/fileActions');
 const { uploadAsset, detectFacesInAsset } = require('../lib/refaceAPI');
-const { swapDataVideos, downloadSwapVideos, formatFileVideos } = require('../lib/refaceActions');
+const { dataSwapVideos, downloadSwapVideos, buildFileVideos, adjustTbnVideos } = require('../lib/refaceActions');
+const { videosListWoman, videosListMan, videoListAll } = require('../lib/dataVideos');
 
 const DIR_TEMP = './temp';
-
-const next = false;
 
 export const config = {
   api: {
@@ -22,67 +21,53 @@ export const config = {
 
 export default async (req, res) => {
   try {
-    const { process, photo = '', data = {} } = JSON.parse(req.body);
+    const { character, photo = '', data = {} } = JSON.parse(req.body);
     let subName, nameFilePhoto, pathFinalPhoto, ext, response, faceId;
     
     createDirSync(DIR_TEMP);
 
-    if(process === PROCESS_ENUM.take) {
-      const imageBuffer = decodeBase64Image(photo);
+    const nameTrackAudio = 'Lunay_TodoONada.m4a';
 
-      subName = cuid();
-      ext = imageBuffer.ext;
-      nameFilePhoto = `photo-${subName}.${ext}`;
-      pathFinalPhoto = path.join(DIR_TEMP, nameFilePhoto);
+    /****************************************************************************
+     * FIRST PART: PROCESS PHOTO AND REFACE RETURN FACEID
+    ****************************************************************************/
+    const imageBuffer = decodeBase64Image(photo);
 
-      // 1. Get photo, convert to binary and upload to reface API
-      await writeFile(pathFinalPhoto, imageBuffer.data);
-      const binaryFile = loadFileSync(pathFinalPhoto);
+    subName = cuid();
+    ext = imageBuffer.ext;
+    nameFilePhoto = `photo-${subName}.${ext}`;
+    pathFinalPhoto = path.join(DIR_TEMP, nameFilePhoto);
 
-      const uploadAssetReface = await uploadAsset(binaryFile, `image/${ext}`);
-  
-      const responseAsset = JSON.parse(uploadAssetReface);
-  
-      console.log(responseAsset);
-  
-      // 2. Check cant faces: faces == 0 => return; faces == 1 => faceId; faces > 1 => select face.
-      const faces = await detectFacesInAsset(responseAsset.urlFile, `image/${ext}`);
-      console.log('faces >>>', faces);
+    // 1. Get photo, convert to binary and upload to reface API
+    await writeFile(pathFinalPhoto, imageBuffer.data);
+    const binaryFile = loadFileSync(pathFinalPhoto);
 
-      if(faces.length === 0) { 
-        // return 
-        response = { success: false, message: 'No faces, please try again with your face!' };
-        res.status(200).send(response);
+    const uploadAssetReface = await uploadAsset(binaryFile, `image/${ext}`);
 
-      } else if(faces.length > 1) {
-        // return with data
-        const dataReturn = {
-          id: subName,
-          namePhoto: nameFilePhoto,
-          faces: faces,
-        };
-        
-        response = { success: false, data: dataReturn, message: 'Select a face for swap!' };
-        res.status(200).send(response);
+    const responseAsset = JSON.parse(uploadAssetReface);
 
-      } else {
-        faceId = Object.values(faces[0])[1].id;
-        console.log('faceId', faceId);
-      }
-    } 
-    
-    if (process === PROCESS_ENUM.select) {
-      subName = data.id;
-      ext = data.namePhoto.split('.')[1];
-      nameFilePhoto = data.namePhoto;
-      pathFinalPhoto = path.join(DIR_TEMP, nameFilePhoto);
-      faceId = data.faceId;
+    console.log(responseAsset);
+
+    // 2. Get cant faces and faceId
+    const faces = await detectFacesInAsset(responseAsset.urlFile, `image/${ext}`);
+    console.log('faces >>>', faces);
+
+    // Check faces for process
+    if(faces.length === 0 || faces.length > 1) {
+      removeFileSync(pathFinalPhoto);
+
+      // return 
+      response = { success: false, message: 'You must take your photo again.' };
+      res.status(200).send(response);
+
+    } else { // continue
+      faceId = Object.values(faces[0])[1].id;
     }
 
-    if (faceId) {
-      
-      console.log(data);
-  
+    /****************************************************************************
+     * SECOND PART: SWAP REFACE - FFMPEG - UPLOAD CLOUD
+    ****************************************************************************/
+    if (faceId) {  
       console.log(subName, nameFilePhoto, pathFinalPhoto, ext, faceId);
       /********************************************************************************************************************
        * SWAP VIDEOS PROCESS
@@ -90,57 +75,24 @@ export default async (req, res) => {
        * the faceId is required first to process the swaps, and it is required to have the swap videos 
        * to go on to concat the entire final video.
        ********************************************************************************************************************/
-      // 3. Swap videos and get urls
-      const videosSwap = [
-        { // 2
-          intensity: 1,
-          video_id: '0dd57817-70fe-40fc-9ac4-cd33e60dc3a4',
-          facemapping: {
-            '96863cb0-7eea-4608-a85a-015ba15a9303': [
-              `${faceId}`
-            ]
-          }
-        },
-        { // 4
-          intensity: 1,
-          video_id: 'c4da7ca8-eef0-4152-8c1b-1c09675b38b3',
-          facemapping: {
-            '02c63a56-ad40-43a4-af7b-d44262e4fd68': [
-              `${faceId}`
-            ]
-          }
-        },
-      ];
+      // 3. Swap videos and get ids
+      const videosListCharacter = character === 'woman' ? videosListWoman(faceId) : videosListMan(faceId);
+      console.log('Videos List Character', videosListCharacter);
 
-      console.log('videosSwap', videosSwap);
-
-      const dataVideos = await swapDataVideos(videosSwap);
-      console.log('dataVideos', dataVideos);
+      const swapVideos = await dataSwapVideos(videosListCharacter);
+      console.log('Data Swap Videos', swapVideos);
 
       // 4. Download videos, save in temp
-      const dowloadVideos = await downloadSwapVideos(dataVideos);
-      console.log('dowloadVideos', dowloadVideos);
+      const dowloadVideos = await downloadSwapVideos(swapVideos);
+      console.log('Dowload Videos', dowloadVideos);
       
-      // 4.1 modify the TB to 24K (Reface send to 90K)
-      // Here only the firts video swap (swap 1) - create rutine for check TB several videos
-      const videoNewName = `${dowloadVideos[0].split('.')[0]}_up.mp4`;
-      
-      const dataTB = {
-        input: path.join(DIR_TEMP, dowloadVideos[0]),
-        output: path.join(DIR_TEMP, videoNewName),
-        timeScale: 24000,
-      }
-
-      dowloadVideos[0] = videoNewName;
-
-      console.log({dowloadVideos});
-
-      await fixTBField(dataTB);
+      // 4.1 modify the TBN to 90K
+      const adjustVideos = await adjustTbnVideos(dowloadVideos, 90000);
+      console.log('Adjust TBN Videos', adjustVideos);
 
       // 5. write file .txt with info videos
-      const fileVideosToTxt = formatFileVideos(dowloadVideos, 'Lunay_Video_');
       const nameFileVideos = `videos-${subName}.txt`;
-      writeFileSync(path.join(DIR_TEMP, nameFileVideos), fileVideosToTxt);
+      writeFileSync( path.join(DIR_TEMP, nameFileVideos), buildFileVideos(adjustVideos, videoListAll, character) );
 
       // 6. Merge videos (get final video)
       const dataFinal = {
@@ -156,7 +108,7 @@ export default async (req, res) => {
       const dataTrack = {
         input: dataFinal.output,
         output: `${DIR_TEMP}/${nameFinalVideo}`,
-        track: path.join(DIR_TEMP, 'Lunay-Audio.m4a'),
+        track: path.join(DIR_TEMP, `/footage/${nameTrackAudio}`),
       }
 
       await changeTrack(dataTrack);
@@ -175,13 +127,9 @@ export default async (req, res) => {
 
       // await placeWatermarkOnVideo(dataFinal);
 
-      const params = {
-        'name': `Video ${subName}`, // Here get name from data form
-        'description': 'description video!!!.' // Here create description from data form
-      };
       /********************************************************************************************************************
        * The following processes are asynchronous, but I will use the technique that they run in parallel 
-       * ([sync] since they can be independent) and it will continue until they all proceed (promises alll)
+       * ([sync] since they can be independent) and it will continue until they all proceed (promises all)
        ********************************************************************************************************************/
 
       // save image on cloud
@@ -189,11 +137,10 @@ export default async (req, res) => {
 
       // save final video on cloud
       const videoLocation = uploadFile(dataTrack.output, nameFinalVideo, 'video', true);
-      //const videoLocation = await uploadVimeo(dataFinal.output, params);
 
       // save sub videos on cloud
       let removeSubVideos = [];
-      const allSubVideos = dowloadVideos.map((video, index) => {
+      const allSubVideos = adjustVideos.map((video, index) => {
         const pathFile = path.join(DIR_TEMP, video);
         removeSubVideos[index] = pathFile;
         return uploadFile(pathFile, video, 'video', true);
