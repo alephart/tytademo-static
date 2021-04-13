@@ -87,7 +87,7 @@ const buildFileVideos = (videosSwap, videosList, character) => {
  * @returns Array with new name videos to concat.
  */
 const adjustTbnVideos = async (videosData, timeScale = 90000) => {
-  const tasks = videosData.map(video => {
+  const tasks = videosData.map(async video => {
     const videoNewName = `${video.split('.')[0]}_tbn.mp4`;
     
     const dataTBN = {
@@ -96,7 +96,7 @@ const adjustTbnVideos = async (videosData, timeScale = 90000) => {
       timeScale: timeScale,
     }
 
-    fixTBNField(dataTBN);
+    await fixTBNField(dataTBN);
 
     return videoNewName;
   });
