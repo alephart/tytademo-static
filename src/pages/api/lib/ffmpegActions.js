@@ -82,8 +82,9 @@ const transitionMergeVideosExec = async (data) => {
 // concatenate several videos - all with same codecs (stream level)
 const concatVideosDemuxer = async (data) => {
   const {output, fileVideos, audio = true} = data;
-
-  const concat = audio ? `ffmpeg -f concat -safe 0 -i ${fileVideos} -vcodec copy ${output}` : `ffmpeg -f concat -safe 0 -i ${fileVideos} ${output}`;
+  
+  //const concat = audio ? `ffmpeg -f concat -safe 0 -i ${fileVideos} -vcodec copy ${output}` : `ffmpeg -f concat -safe 0 -i ${fileVideos} ${output}`;
+  const concat = `ffmpeg -f concat -safe 0 -i ${fileVideos} -c copy ${output}`;
 
   return await runExecCommnad(concat);
 }

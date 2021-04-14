@@ -108,7 +108,7 @@ export default async (req, res) => {
       const dataTrack = {
         input: dataFinal.output,
         output: `${DIR_TEMP}/${nameFinalVideo}`,
-        track: path.join(DIR_TEMP, `/footage/${nameTrackAudio}`),
+        track: path.join(DIR_TEMP, nameTrackAudio),
       }
 
       await changeTrack(dataTrack);
