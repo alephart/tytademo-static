@@ -1,7 +1,7 @@
 const path = require('path');
 const fetch = require('node-fetch');
 const { swapVideo } = require('../lib/refaceAPI');
-const { fixTBNField } = require('../lib/ffmpegActions');
+const { fixTBNField, getMetaData } = require('../lib/ffmpegActions');
 const { writeFileSync } = require('../lib/fileActions');
 
 const DIR_TEMP = './temp';
@@ -80,7 +80,7 @@ const buildFileVideos = (videosSwap, videosList, character) => {
 
 // 4.1 
 /**
- * Modify the TBN video time scale to 90K (Reface send to 90K) to all videos in array.
+ * Modify the TBN video time scale to timeScale (Reface change) to all videos in array.
  * TODO: Create script to check TBN several videos and convert only modified.
  * @param {array} videosData List videos processed in swap and store in temp.
  * @param {number} timeScale Number of timescale to convert.
@@ -88,22 +88,36 @@ const buildFileVideos = (videosSwap, videosList, character) => {
  */
 const adjustTbnVideos = async (videosData, timeScale = 90000) => {
   const tasks = videosData.map(async video => {
-    const videoNewName = `${video.split('.')[0]}_tbn.mp4`;
-    
-    const dataTBN = {
-      input: path.join(DIR_TEMP, video),
-      output: path.join(DIR_TEMP, videoNewName),
-      timeScale: timeScale,
+    const pathVideo = path.join(DIR_TEMP, video);
+    const timeBaseActual = await getMetaData(pathVideo, 'time_base');
+
+    // console.log('timeBaseActual', timeBaseActual);
+    // console.log(`1/${timeScale}`);
+    // console.log(`1/${timeScale/1000}`);
+
+    if(timeBaseActual !== `1/${timeScale}`) {
+      const videoNewName = `${video.split('.')[0]}_tbn.mp4`;
+      
+      const dataTBN = {
+        input: pathVideo,
+        output: path.join(DIR_TEMP, videoNewName),
+        timeScale: timeScale,
+      }
+  
+      fixTBNField(dataTBN);
+  
+      return videoNewName;
+
+    } else {
+
+      return video;
     }
 
-    await fixTBNField(dataTBN);
-
-    return videoNewName;
   });
   
   const results = await Promise.all(tasks);
 
-  console.log('adjustTbnVideos:::', results);
+  // console.log('adjustTbnVideos:::', results);
 
   return results;
 };

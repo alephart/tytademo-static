@@ -155,15 +155,15 @@ describe('Reface API', () => {
 
   test('It should return video list final for file .txt videos.', () => {
     const videosList = [
-      { name: '01-NoSwap.mp4', character: '' },
-      { name: '02-SwapSidekick.mp4', character: 'man' },
-      { name: '03-NoSwap.mp4', character: '' },
-      { name: '04-SwapWoman.mp4', character: 'woman' },
-      { name: '05-NoSwap.mp4', character: '' },
-      { name: '06-SwapSidekick.mp4', character: 'man' },
-      { name: '07-NoSwap.mp4', character: '' },
-      { name: '08-SwapWoman.mp4', character: 'woman' },
-      { name: '09-NoSwap.mp4', character: '' },
+      { name: '01-NoSwap_tbn.mp4', character: '' },
+      { name: '02-SwapSidekick_tbn.mp4', character: 'man' },
+      { name: '03-NoSwap_tbn.mp4', character: '' },
+      { name: '04-SwapWoman_tbn.mp4', character: 'woman' },
+      { name: '05-NoSwap_tbn.mp4', character: '' },
+      { name: '06-SwapSidekick_tbn.mp4', character: 'man' },
+      { name: '07-NoSwap_tbn.mp4', character: '' },
+      { name: '08-SwapWoman_tbn.mp4', character: 'woman' },
+      { name: '09-NoSwap_tbn.mp4', character: '' },
     ];
 
     const videosSwap = [
@@ -179,27 +179,16 @@ describe('Reface API', () => {
 
   test.only('should ', async (done) => {
     const videoList = [
-      '01-NoSwap.mp4',
-      '02-SwapSidekick.mp4',
-      '03-NoSwap.mp4',
-      '04-SwapWoman.mp4',
-      '05-NoSwap.mp4',
-      '06-SwapSidekick.mp4',
-      '07-NoSwap.mp4',
-      '08-SwapWoman.mp4',
-      '09-NoSwap.mp4',
-      '10-SwapSidekick.mp4',
-      '11-NoSwap.mp4',
-      '12-SwapWoman.mp4',
-      '13-NoSwap.mp4',
-      '14-SwapWoman.mp4',
-      '15-NoSwap.mp4',
+      '01-NoSwap_tbn.mp4',
+      '02-SwapSidekick_tbn.mp4',
+      '03-NoSwap_tbn.mp4',
+      '04-SwapWoman_tbn.mp4',
     ];
 
     let newListVideos;
 
     try {
-      newListVideos = adjustTbnVideos(videoList, 90000);
+      newListVideos = await adjustTbnVideos(videoList, 90000);
       
     } catch (error) {
       console.log(error);
@@ -207,11 +196,8 @@ describe('Reface API', () => {
 
     done();
 
-    console.log(newListVideos);
+    expect(newListVideos).toBeTruthy();
 
-    expect(newListVideos.success).toBeTruthy();
-
-
-  });
+  }, 30000);
 
 });
