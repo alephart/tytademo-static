@@ -87,39 +87,40 @@ const buildFileVideos = (videosSwap, videosList, character) => {
  * @returns Array with new name videos to concat.
  */
 const adjustTbnVideos = async (videosData, timeScale = 90000) => {
-  const tasks = videosData.map(async video => {
-    const pathVideo = path.join(DIR_TEMP, video);
-    const timeBaseActual = await getMetaData(pathVideo, 'time_base');
 
-    // console.log('timeBaseActual', timeBaseActual);
-    // console.log(`1/${timeScale}`);
-    // console.log(`1/${timeScale/1000}`);
-
-    if(timeBaseActual !== `1/${timeScale}`) {
-      const videoNewName = `${video.split('.')[0]}_tbn.mp4`;
-      
-      const dataTBN = {
-        input: pathVideo,
-        output: path.join(DIR_TEMP, videoNewName),
-        timeScale: timeScale,
+  try {
+    const tasks = videosData.map(async video => {
+      const pathVideo = path.join(DIR_TEMP, video);
+      const timeBaseActual = await getMetaData(pathVideo, 'time_base');
+    
+      if(timeBaseActual !== `1/${timeScale}`) {
+        const videoNewName = `${video.split('.')[0]}_tbn.mp4`;
+        
+        const dataTBN = {
+          input: pathVideo,
+          output: path.join(DIR_TEMP, videoNewName),
+          timeScale: timeScale,
+        }
+    
+        await fixTBNField(dataTBN);
+    
+        return videoNewName;
+  
+      } else {
+  
+        return video;
       }
   
-      await fixTBNField(dataTBN);
-  
-      return videoNewName;
+    });
+    
+    const results = await Promise.all(tasks);
+    
+    return results;
 
-    } else {
-
-      return video;
-    }
-
-  });
-  
-  const results = await Promise.all(tasks);
-
-  // console.log('adjustTbnVideos:::', results);
-
-  return results;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
 module.exports = { 
