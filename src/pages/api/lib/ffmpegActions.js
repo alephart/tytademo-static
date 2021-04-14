@@ -3,7 +3,7 @@ const ffmpeg = require('fluent-ffmpeg');
 const { exec } = require('child_process');
 
 const isMac = process.platform === "darwin";
-const xvfb = `xvfb-run -a "-ac -screen 0 1280x1024x24"`;
+const xvfb = `xvfb-run -s "-ac -screen 0 1280x1024x24"`;
 
 // run Exec command promise
 const runExecCommnad = (command) => {
@@ -38,6 +38,22 @@ const runExecCommnad = (command) => {
       console.error(err);
       reject(err);
       //throw err;
+    }
+  });
+}
+
+const getMetaData = (filePath, stream = 'all') => {
+  return new Promise((resolve, reject) => {
+    try {
+      ffmpeg.ffprobe(filePath, (err, metadata) => {
+        if(err) {
+          reject(err);
+        }
+        resolve(metadata.streams[0][stream]);
+    });
+    } catch (err) {
+      console.error(err);
+      reject(err);
     }
   });
 }
@@ -162,4 +178,5 @@ module.exports = {
   createThumbFromVideo,
   fixTBNField,
   changeTrack,
+  getMetaData,
 }
