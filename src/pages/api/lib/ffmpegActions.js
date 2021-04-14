@@ -92,9 +92,9 @@ const concatVideosDemuxer = async (data) => {
 const fixTBNField = async (data) => {
   const {input, output, timeScale = 90000} = data;
 
-  const fixTB = `ffmpeg -i ${input} -video_track_timescale ${timeScale} ${output}`;
+  const fixTBN = `ffmpeg -i ${input} -video_track_timescale ${timeScale} ${output}`;
 
-  return await runExecCommnad(fixTB);
+  return await runExecCommnad(fixTBN);
 }
 
 const changeTrack = async (data) => {

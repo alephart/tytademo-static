@@ -104,7 +104,7 @@ const adjustTbnVideos = async (videosData, timeScale = 90000) => {
         timeScale: timeScale,
       }
   
-      fixTBNField(dataTBN);
+      await fixTBNField(dataTBN);
   
       return videoNewName;
 
