@@ -3,7 +3,7 @@ const ffmpeg = require('fluent-ffmpeg');
 const { exec } = require('child_process');
 
 const isMac = process.platform === "darwin";
-const xvfb = `xvfb-run -s "-ac -screen 0 1280x1024x24"`;
+const xvfb = `xvfb-run -s "-a -screen 0 1280x1024x24"`;
 
 // run Exec command promise
 const runExecCommnad = (command) => {
