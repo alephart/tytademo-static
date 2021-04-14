@@ -110,7 +110,6 @@ const adjustTbnVideos = async (videosData, timeScale = 90000) => {
   
         return video;
       }
-  
     });
     
     const results = await Promise.all(tasks);

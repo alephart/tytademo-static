@@ -87,12 +87,12 @@ export default async (req, res) => {
       console.log('Dowload Videos', dowloadVideos);
       
       // 4.1 modify video the TBN to 90K
-      // const adjustVideos = await adjustTbnVideos(dowloadVideos, 90000);
-      // console.log('Adjust TBN Videos', adjustVideos);
+      const adjustVideos = await adjustTbnVideos(dowloadVideos, 90000);
+      console.log('Adjust TBN Videos', adjustVideos);
 
       // 5. write file .txt with info videos
       const nameFileVideos = `videos-${subName}.txt`;
-      writeFileSync( path.join(DIR_TEMP, nameFileVideos), buildFileVideos(dowloadVideos, videoListAll, character) );
+      writeFileSync( path.join(DIR_TEMP, nameFileVideos), buildFileVideos(adjustVideos, videoListAll, character) );
 
       // 6. Merge videos (get final video)
       const dataFinal = {
@@ -140,7 +140,7 @@ export default async (req, res) => {
 
       // save sub videos on cloud
       let removeSubVideos = [];
-      const allSubVideos = dowloadVideos.map((video, index) => {
+      const allSubVideos = adjustVideos.map((video, index) => {
         const pathFile = path.join(DIR_TEMP, video);
         removeSubVideos[index] = pathFile;
         return uploadFile(pathFile, video, 'video', true);
