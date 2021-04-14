@@ -86,7 +86,7 @@ export default async (req, res) => {
       const dowloadVideos = await downloadSwapVideos(swapVideos);
       console.log('Dowload Videos', dowloadVideos);
       
-      // 4.1 modify the TBN to 90K
+      // 4.1 modify video the TBN to 90K
       const adjustVideos = await adjustTbnVideos(dowloadVideos, 90000);
       console.log('Adjust TBN Videos', adjustVideos);
 
