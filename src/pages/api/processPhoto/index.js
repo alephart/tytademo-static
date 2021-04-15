@@ -158,7 +158,7 @@ export default async (req, res) => {
       response = { success: true, data: footage };
       console.log(response);
       
-      res.status(200).json(response);
+      res.status(200).send(response);
 
     } // eof faceId
 
