@@ -52,7 +52,10 @@ const TakePhoto = (props) => {
 
           if(json.data === undefined) {
             // not faces or more faces then try again
-            handleBackTakePhoto();
+            // Show message and boton to go again.
+            setConfirmPhoto(false);
+            setProcess(PROCESS_ENUM.repeat);
+            //handleBackTakePhoto();
           }
         }
 
@@ -198,7 +201,7 @@ const TakePhoto = (props) => {
       {imgSrc && takePhoto && !confirmPhoto && (
         <div className='zone-photo'>
           <div className='buttons'>
-            {process !== PROCESS_ENUM.select && (
+            {process !== PROCESS_ENUM.repeat && (
               <button
                 className='button blue'
                 data-confirm={true}

@@ -4,7 +4,8 @@
 export const PROCESS_ENUM = Object.freeze(
   { 
     take: 'takePhoto', 
-    select: 'selectPhoto', 
+    select: 'selectPhoto',
+    repeat: 'repeatPhoto',
   }
 );
 
