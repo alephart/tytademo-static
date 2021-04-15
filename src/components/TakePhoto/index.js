@@ -44,7 +44,7 @@ const TakePhoto = (props) => {
         // check success
         if(json.success) {
           setSwap(json.data);
-          setMessage('fin!!!');
+          setMessage('');
 
         } else { // not success
           setMessage(json.message);
