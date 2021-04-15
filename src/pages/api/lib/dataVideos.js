@@ -132,7 +132,7 @@ export const videoListAll = [
   { name: 'footage/011.mp4', character: '' },
   { name: 'footage/012-SIDEKICK.mp4', character: 'man' },
   { name: 'footage/013.mp4', character: '' },
-  { name: 'footage/014-WOMAN-SIDEKICK.mp4', character: 'woman' },
+  { name: 'footage/014-WOMAN-SIDEKICK.mp4', character: 'mix' },
   { name: 'footage/015.mp4', character: '' },
   { name: 'footage/016-WOMAN.mp4', character: 'woman' },
   { name: 'footage/017.mp4', character: '' },

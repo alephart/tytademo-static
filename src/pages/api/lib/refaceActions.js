@@ -67,7 +67,7 @@ const buildFileVideos = (videosSwap, videosList, character) => {
   let file = '# files video name to concat\n', index = 0;
 
   videosList.forEach(video => {
-    if (video.character === character) {
+    if (video.character === character || video.character === 'mix') {
       file += `file ${videosSwap[index]}\n`;
       index ++;
     } else {
