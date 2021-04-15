@@ -81,9 +81,8 @@ const transitionMergeVideosExec = async (data) => {
 
 // concatenate several videos - all with same codecs (stream level)
 const concatVideosDemuxer = async (data) => {
-  const {output, fileVideos, audio = true} = data;
+  const {output, fileVideos} = data;
   
-  //const concat = audio ? `ffmpeg -f concat -safe 0 -i ${fileVideos} -vcodec copy ${output}` : `ffmpeg -f concat -safe 0 -i ${fileVideos} ${output}`;
   const concat = `ffmpeg -f concat -safe 0 -i ${fileVideos} -vcodec copy ${output}`;
 
   return await runExecCommnad(concat);
@@ -91,10 +90,24 @@ const concatVideosDemuxer = async (data) => {
 
 const fixTBNField = async (data) => {
   const {input, output, timeScale = 90000} = data;
+  // commmand:
+  // ffmpeg -i ${input} -video_track_timescale ${timeScale} ${output};
 
-  const fixTBN = `ffmpeg -i ${input} -video_track_timescale ${timeScale} ${output}`;
-
-  return await runExecCommnad(fixTBN);
+  return new Promise((resolve, reject) => {
+    try {
+      ffmpeg()
+      .input(input)
+      .outputOptions(`-video_track_timescale ${timeScale}`)
+      .on('end', resolve)
+      .on('error', reject)
+      .output(output)
+      .run();
+      
+    } catch (err) {
+      console.error(err);
+      reject(err);
+    }
+  });
 }
 
 const changeTrack = async (data) => {
@@ -103,7 +116,6 @@ const changeTrack = async (data) => {
   const change = `ffmpeg -i ${input} -i ${track} -c:v copy -map 0:v:0 -map 1:a:0 ${output}`;
 
   return await runExecCommnad(change);
-
 }
 
 const placeWatermarkOnVideo = async (data) => {
@@ -128,7 +140,6 @@ const placeWatermarkOnVideo = async (data) => {
       console.error(err);
       reject(err);
     }
-
   });
 }
 

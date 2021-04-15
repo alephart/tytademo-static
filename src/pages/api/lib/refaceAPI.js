@@ -134,8 +134,7 @@ const swapVideo = async (obj) => {
     console.error(error);
     throw error;
   }
-
-}
+};
 
 module.exports = {
   getSignedUrl,
