@@ -41,7 +41,7 @@ const ViewVideo = ({data}) => {
 
             {clips.map((item, index) => (
               <div className="item" key={index}>
-                <h3>Swap 1</h3>
+                <h3>{`Swap ${index + 1}`}</h3>
                 <ReactPlayer
                   className="react-player"
                   url={item}

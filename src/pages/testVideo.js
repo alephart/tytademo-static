@@ -11,6 +11,8 @@ export default function testVideo() {
         "https://mds-tyta.s3.amazonaws.com/photos/photo-ckn7q22n5000046nx776f4rla.png",
         "https://mds-tyta.s3.amazonaws.com/videos/video-ckn7q22n5000046nx776f4rla_final.mp4",
         "https://mds-tyta.s3.amazonaws.com/videos/59efb3bf-57d6-4d6b-934b-273661278025_up.mp4",
+        "https://mds-tyta.s3.amazonaws.com/videos/3fade84b-565d-4901-88e0-50be8078552e.mp4",
+        "https://mds-tyta.s3.amazonaws.com/videos/3fade84b-565d-4901-88e0-50be8078552e.mp4",
         "https://mds-tyta.s3.amazonaws.com/videos/3fade84b-565d-4901-88e0-50be8078552e.mp4"
     ]
 };
