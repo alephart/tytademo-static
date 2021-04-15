@@ -5,13 +5,15 @@ const ViewVideo = ({data}) => {
   console.log(data);
 
   const [footage, setFootage] = React.useState(null);
+  const [clips, setClips] = React.useState(null);
 
   React.useEffect(() => {
     //const id = swap.video.split('/').slice(-1)[0];
-
     //setUrlVideo(`https://vimeo.com/${id}`);
 
     setFootage(data);
+    setClips(data.slice(2));
+
   });
 
   return (
@@ -36,31 +38,20 @@ const ViewVideo = ({data}) => {
               <h3>Photo</h3>
               <img src={footage[0]} width='100%' height='auto' alt="Participante" />
             </div>
-            <div className="item">
-              <h3>Swap 1</h3>
-              <ReactPlayer
-                className="react-player"
-                url={footage[2]}
-                controls={true}
-                playing={false}
-                width='100%'
-                height='100%'
 
-              />
-            </div>
-
-            <div className="item">
-              <h3>Swap 2</h3>
-              <ReactPlayer
-                className="react-player"
-                url={footage[3]}
-                controls={true}
-                playing={false}
-                width='100%'
-                height='100%'
-
-              />
-            </div>
+            {clips.map((item, index) => (
+              <div className="item" key={index}>
+                <h3>Swap 1</h3>
+                <ReactPlayer
+                  className="react-player"
+                  url={item}
+                  controls={true}
+                  playing={false}
+                  width='100%'
+                  height='100%'
+                />
+              </div>
+            ))}
           </div>
         ) : (
           <p>Loading...</p>
