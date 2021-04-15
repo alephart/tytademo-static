@@ -10,45 +10,27 @@ export const videosListMan = (faceId) => {
   return [
     { // 02
       intensity: 1,
-      video_id: '85434d30-bdd3-48b4-bcde-4f0681e57ed6',
+      video_id: 'ef3acc67-21f2-42f7-957f-343c554490bb',
       facemapping: {
-        '4f06dbd1-0568-422d-bbd2-9d968068bf73': [
+        '28df3a19-5b70-4f87-861b-d1d3870b5c0c': [
           `${faceId}`
         ]
       },
     },
     { // 06
       intensity: 1,
-      video_id: 'e939a4f8-0246-48e6-8ef0-4a7884a859e1',
+      video_id: 'c82cbbce-3a57-4444-9588-b011a0a75236',
       facemapping: {
-        '9a78b1f9-53d6-4d0e-a59f-6473e9cada92': [
+        'ef5220a5-7351-428c-9306-70ab0c80648b': [
           `${faceId}`
         ]
       },
     },
     { // 08
       intensity: 1,
-      video_id: '4826c84b-b1a9-4ac1-b953-b00cfb9e725b',
+      video_id: '935caaa1-e93b-4cae-8fd4-b7a5ac8a592d',
       facemapping: {
-        '521ce870-36cf-46d5-bffe-68429eaa4d05': [
-          `${faceId}`
-        ]
-      },
-    },
-    { // 12
-      intensity: 1,
-      video_id: '39425615-2d94-49ab-87ea-49c357e20f34',
-      facemapping: {
-        'dc431f74-7fb7-4cd2-94db-8908f3371184': [
-          `${faceId}`
-        ]
-      },
-    },
-    { // 14
-      intensity: 1,
-      video_id: '8ffab2cf-dc6f-419d-bb0f-3acae4960f2d',
-      facemapping: {
-        '05a88bb2-b51f-4cac-9bb5-c52a79af5d75': [
+        '6d83c3e1-adae-49fc-96cf-f8a5ccd30492': [
           `${faceId}`
         ]
       },
@@ -62,57 +44,39 @@ export const videosListWoman = (faceId) => {
   return [
     { // 04
       intensity: 1,
-      video_id: 'a8237e9b-9c0c-4722-9e6c-b9a8b9a5c411',
+      video_id: '658fdbac-444b-4a64-86be-990f9c9d9f64',
       facemapping: {
-        '0736c057-c6b9-445d-84a4-c2708bc8d02f': [
+        '9afceb47-cfef-4579-b3f7-3aae791d3838': [
+          `${faceId}`
+        ]
+      },
+    },
+    { // 08
+      intensity: 1,
+      video_id: '935caaa1-e93b-4cae-8fd4-b7a5ac8a592d',
+      facemapping: {
+        '4dfa57b9-09cd-4202-b30a-157e1bfc9857': [
           `${faceId}`
         ]
       },
     },
     { // 10
       intensity: 1,
-      video_id: '3e3f47d7-25f0-4da9-95de-c85605a92190',
+      video_id: 'eb3b7ff2-88be-4f67-9fa7-6f97a081b59c',
       facemapping: {
-        '11983f1c-d97a-42b7-a465-b315a1a5c239': [
+        'dfcadbd3-d100-42df-b74e-42e944237731': [
           `${faceId}`
         ]
       },
     },
-    { // 14
+    { // 12
       intensity: 1,
-      video_id: '8ffab2cf-dc6f-419d-bb0f-3acae4960f2d',
+      video_id: 'dff5e754-d3d0-476d-b77f-8fdf5c5d759f',
       facemapping: {
-        '8cc715fc-cfaa-4737-81da-4db3f4bd6b80': [
+        'edbc59e5-6b7e-4b5b-bead-d1234e06ec99': [
           `${faceId}`
         ]
       },
-    },
-    { // 16
-      intensity: 1,
-      video_id: '53b8b899-0f4b-4011-b3ab-27d775e209d3',
-      facemapping: {
-        'dfff0df7-8dab-40bf-bb8b-54587e4ada64': [
-          `${faceId}`
-        ]
-      },
-    },
-    { // 18
-      intensity: 1,
-      video_id: '76a75c2b-570c-440e-8685-69996dd395ef',
-      facemapping: {
-        '5b525dd1-1add-4534-8713-bacb82d955ef': [
-          `${faceId}`
-        ]
-      },
-    },
-    { // 20
-      intensity: 1,
-      video_id: '5efc1653-8eee-455a-8b8f-8fc784d236a8',
-      facemapping: {
-        'b43cf87f-4f1f-4d66-9874-a60ba5d32b5f': [
-          `${faceId}`
-        ]
-     , },
     },
   ];
 };
@@ -126,17 +90,9 @@ export const videoListAll = [
   { name: 'footage/005.mp4', character: '' },
   { name: 'footage/006-SIDEKICK.mp4', character: 'man' },
   { name: 'footage/007.mp4', character: '' },
-  { name: 'footage/008-SIDEKICK.mp4', character: 'man' },
+  { name: 'footage/008-WOMAN-SIDEKICK.mp4', character: 'mix' },
   { name: 'footage/009.mp4', character: '' },
   { name: 'footage/010-WOMAN.mp4', character: 'woman' },
   { name: 'footage/011.mp4', character: '' },
-  { name: 'footage/012-SIDEKICK.mp4', character: 'man' },
-  { name: 'footage/013.mp4', character: '' },
-  { name: 'footage/014-WOMAN-SIDEKICK.mp4', character: 'mix' },
-  { name: 'footage/015.mp4', character: '' },
-  { name: 'footage/016-WOMAN.mp4', character: 'woman' },
-  { name: 'footage/017.mp4', character: '' },
-  { name: 'footage/018-WOMAN.mp4', character: 'woman' },
-  { name: 'footage/019.mp4', character: '' },
-  { name: 'footage/020-WOMAN.mp4', character: 'woman' },
+  { name: 'footage/012-WOMAN.mp4', character: 'woman' },
 ];
