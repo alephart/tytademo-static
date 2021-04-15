@@ -18,6 +18,7 @@ const TakePhoto = (props) => {
   const [data, setData] = useState(null);
   const [message, setMessage] = useState('');
   const [character, setCharacter] = useState(null);
+  const warning = "Remember not use accessories, place your face in the center of the camera, try not to make gestures or smile.";
 
   let constraints = {
     //width: { min: 480, ideal: 1080, max: 1920 },
@@ -131,14 +132,6 @@ const TakePhoto = (props) => {
       handleBackTakePhoto();
     }
   };
-  
-  const handleSelectPhoto = (data) => {
-    setData(data);
-    setFaces(data.faces);
-    setProcess(PROCESS_ENUM.select);
-    setConfirmPhoto(false);
-
-  };
 
   console.log(constraints);
 
@@ -175,7 +168,9 @@ const TakePhoto = (props) => {
 
           <ButtonTake onClick={capture} />
 
-        <SelectDevice mode={facingMode} setMode={setFacingMode} />
+          <SelectDevice mode={facingMode} setMode={setFacingMode} />
+
+          <div className='zone-message'>{warning}</div>
         </div>
       )}
 
@@ -309,12 +304,16 @@ const TakePhoto = (props) => {
           color: #2980b9;
         }
 
+        .zone-message {
+          text-align: center;
+          padding: 10px;
+        }
+
         .zone-select {
           display: inline-flex;
           flex-wrap: wrap;
           gap: 10px;
         }
-
         .select {
           width: 140px;
           height: 140px;
