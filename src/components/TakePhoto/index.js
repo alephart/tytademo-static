@@ -63,6 +63,7 @@ const TakePhoto = (props) => {
   }
 
   const capture = useCallback(() => {
+    setSwap(null);
     setMessage('');
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
@@ -99,14 +100,15 @@ const TakePhoto = (props) => {
     console.log('event', event);
     const dataset = event.currentTarget.dataset;
     setCharacter(dataset.character);
+    
   };
 
   const handleBackTakePhoto = () => {
-    setProcess(PROCESS_ENUM.take);
+    setConfirmPhoto(false);
     setImgSrc(null);
     setTakePhoto(false);
-    setConfirmPhoto(false);
     setCharacter(false);
+    setProcess(PROCESS_ENUM.take);
   };
   
   const handleConfirmTakePhoto = (event) => {
