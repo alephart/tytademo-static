@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { PROCESS_ENUM } from '@/utils/globals';
 import Webcam from 'react-webcam';
 import ButtonTake from './ButtonTake';
 import ViewVideo from './ViewVideo';
-import SelectDevice from '@/components/SelectDevice'
+import SelectDevice from '@/components/SelectDevice';
 
 const TakePhoto = (props) => {
   const { facingMode, setFacingMode } = props;
@@ -11,8 +12,13 @@ const TakePhoto = (props) => {
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
   const [takePhoto, setTakePhoto] = useState(false);
-  const [confirmTakePhoto, setConfirmTakePhoto] = useState(false);
-  const [process, setProcess] = useState(null);
+  const [confirmPhoto, setConfirmPhoto] = useState(false);
+  const [process, setProcess] = useState(PROCESS_ENUM.take);
+  const [swap, setSwap] = useState(null);
+  const [data, setData] = useState(null);
+  const [message, setMessage] = useState('');
+  const [character, setCharacter] = useState(null);
+  const warning = "Remember not use accessories, place your face in the center of the camera, try not to make gestures or smile.";
 
   let constraints = {
     //width: { min: 480, ideal: 1080, max: 1920 },
@@ -25,55 +31,135 @@ const TakePhoto = (props) => {
     facingMode: facingMode,
   };
 
+  const sendData = (payload) => {
+    fetch('/api/processPhoto', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+
+        // check status 500
+
+        // check success
+        if(json.success) {
+          setSwap(json.data);
+          setMessage('');
+
+        } else { // not success
+          setMessage(json.message);
+
+          if(json.data === undefined) {
+            // not faces or more faces then try again
+            // Show message and boton to go again.
+            setConfirmPhoto(false);
+            setProcess(PROCESS_ENUM.repeat);
+            //handleBackTakePhoto();
+          }
+        }
+
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   const capture = useCallback(() => {
+    setSwap(null);
+    setMessage('');
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
     setTakePhoto(true);
   }, [webcamRef, setImgSrc]);
 
+  useEffect(() =>{
+    console.log('data:::', data);
+  }, [data]);
+
   useEffect(() => {
-    if (confirmTakePhoto) {
-      //const formData = new FormData();
-      //formData.append('photo', imgSrc);
+    console.log('check confirm photo!!!');
 
-      fetch('/api/processPhoto', {
-        method: 'POST',
-        body: imgSrc,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          setTimeout(() => {
-            setProcess(data);
-          }, 1000);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  }, [confirmTakePhoto]);
+    if (confirmPhoto) {
 
-  const handleConfirmTakePhoto = (e) => {
-    const response = e.target.dataset;
-    if (response.confirm === 'true') {
-      setConfirmTakePhoto(true);
-    } else {
-      setTakePhoto(false);
+      const payload = {
+        photo: imgSrc,
+        process,
+        character: character,
+        data,
+      };
+
+      setMessage('Processing...');
+      sendData(payload);
     }
+  }, [confirmPhoto]);
+
+  // const handleAlert = () => {
+
+  // };
+
+  const handleSelectCharacter = (event) => {
+    event.preventDefault();
+    console.log('event', event);
+    const dataset = event.currentTarget.dataset;
+    setCharacter(dataset.character);
+    
   };
 
   const handleBackTakePhoto = () => {
-    setProcess(null);
+    setConfirmPhoto(false);
     setImgSrc(null);
     setTakePhoto(false);
-    setConfirmTakePhoto(false);
+    setCharacter(false);
+    setProcess(PROCESS_ENUM.take);
+  };
+  
+  const handleConfirmTakePhoto = (event) => {
+    event.preventDefault();
+    console.log('event', event);
+    const dataset = event.currentTarget.dataset;
+    const {confirm, face_id} = dataset;
+
+    console.log(dataset);
+    console.log({confirm}, {face_id});
+
+    if (confirm === 'true') {
+      if(process === PROCESS_ENUM.select) {
+        setData({
+          ...data,
+          faceId: face_id,
+        });
+      }
+      setConfirmPhoto(true);
+
+    } else {
+      setMessage('');
+      handleBackTakePhoto();
+    }
   };
 
   console.log(constraints);
 
   return (
     <>
-      {!takePhoto && (
+      {!character && (
+        <div className="oneColunm">
+          <h3>
+            Select character?
+          </h3>
+
+          <div className="zone-select">
+            <button className="button red" data-character='woman' onClick={handleSelectCharacter}>
+              Woman
+            </button>
+            <button className="button red" data-character='man' onClick={handleSelectCharacter}>
+              Man
+            </button>
+          </div>
+        </div>
+      )}
+
+      {!takePhoto && character && (
         <div className='zone-take-photo'>
           <Webcam
             audio={false}
@@ -87,39 +173,53 @@ const TakePhoto = (props) => {
 
           <ButtonTake onClick={capture} />
 
-        <SelectDevice mode={facingMode} setMode={setFacingMode} />
+          <SelectDevice mode={facingMode} setMode={setFacingMode} />
+
+          <div className='zone-message'>{warning}</div>
         </div>
       )}
 
-      {imgSrc && takePhoto && !confirmTakePhoto && (
+      {imgSrc && takePhoto && !confirmPhoto && (
         <div className='zone-photo'>
           <img src={imgSrc} />
+        </div>
+      )}
+
+      {confirmPhoto && (
+        <div className='zone-process'>
+          {!swap ? (
+            <span>...</span>
+          ) : (
+            <div className='oneColunm'>
+              <ViewVideo data={swap} />
+              <button onClick={handleBackTakePhoto}> Back </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {imgSrc && takePhoto && !confirmPhoto && (
+        <div className='zone-photo'>
           <div className='buttons'>
-            <button
-              className='blue'
-              data-confirm='true'
-              onClick={handleConfirmTakePhoto}
-            >
-              Yes, continue
-            </button>
-            <button data-confirm='false' onClick={handleConfirmTakePhoto}>
+            {process !== PROCESS_ENUM.repeat && (
+              <button
+                className='button blue'
+                data-confirm={true}
+                onClick={handleConfirmTakePhoto}
+              >
+                Yes, continue
+              </button>
+            )}
+
+            <button className="button" data-confirm={false} onClick={handleConfirmTakePhoto}>
               Take photo again
             </button>
           </div>
         </div>
       )}
 
-      {confirmTakePhoto && (
-        <div className='zone-process'>
-          {!process ? (
-            <span>Process...</span>
-          ) : (
-            <div className='oneColunm'>
-              <ViewVideo data={process} />
-              <a onClick={handleBackTakePhoto}>Back</a>
-            </div>
-          )}
-        </div>
+      {message && (
+        <div className='zone-message'>{message}</div>
       )}
 
       <style jsx>{`
@@ -129,7 +229,7 @@ const TakePhoto = (props) => {
           justify-content: center;
         }
 
-        button {
+        .button {
           flex: 1;
           display: block;
           background-color: #d5dbdb;
@@ -139,10 +239,16 @@ const TakePhoto = (props) => {
           border-radius: 50px;
           text-transform: uppercase;
           margin: 5px;
+          cursor: pointer;
         }
 
         .blue {
           background-color: #3498db;
+          color: white;
+        }
+
+        .red {
+          background-color: #B9293F;
           color: white;
         }
 
@@ -201,6 +307,35 @@ const TakePhoto = (props) => {
         }
         .zone-process a:hover {
           color: #2980b9;
+        }
+
+        .zone-message {
+          text-align: center;
+          padding: 10px;
+        }
+
+        .zone-select {
+          display: inline-flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+        .select {
+          width: 140px;
+          height: 140px;
+          border: 2px solid transparent;
+          border-radius: 0;
+          cursor: pointer;
+          background: transparent;
+          padding: 2px;
+        }
+
+        .select:hover {
+          border: 2px solid orange;
+        }
+
+        .select img {
+          width: 100%; 
+          height:auto;
         }
       `}</style>
     </>
