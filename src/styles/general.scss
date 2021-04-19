@@ -1,0 +1,505 @@
+@import "./variables";
+*{
+	outline: none;
+}
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+#video {
+	position: absolute;
+    right: -1px;
+    top: 0px;
+    width: 101%;
+    min-height: 100%;
+}
+body { 
+	font-family: NotoSans-Regular; 
+	-webkit-font-smoothing: antialiased;
+	background: transparent;
+	background: #fff;
+	color: #fff;
+	letter-spacing: 1px;
+	overflow: hidden;
+    position: relative;
+	img
+	{
+		width: 100%;
+	}
+	.buttonStart,
+	.buttonPhoto,
+	.buttonJoin,
+	.buttonThanks,
+	.yesContinue,
+	.againPhoto
+	{
+		background-color: #5A2DFC;
+		color: #fff;
+		margin: 0 auto;
+		display: block;
+		position: relative;
+		font-size: 16px;
+		left: 0;
+		right: 0;
+		width: 300px;
+		height: 56px;
+		border-radius: 30px;
+		font-family: 'JoyrideEx';
+		text-transform: none;
+	}
+	&.fancybox-active
+	{
+		.navbar.bg-light
+		{
+			position: fixed;
+			width: 100%;
+		}
+	}
+	.starPage
+	{
+		max-width: 414px;
+		width: 100%;
+		height: 100vh;
+		display: block;
+		margin: 0 auto;
+		background-position: center;
+		background-size: cover;
+		overflow: hidden;
+    	position: relative;
+		font-family: 'JoyrideEx';
+		.copyStart
+		{
+			font-size: 16px;
+			text-align: center;
+			color: #fff;
+			margin: 100% auto 15%;
+			width: 100%;
+			line-height: 24px;
+			max-width: 300px;
+			display: block;
+			position: absolute;
+			bottom: 100px;
+			left: 0;
+			right: 0;
+		}
+		.buttonStart
+		{
+			position: absolute;
+			bottom: 70px;
+		}
+		.copyFooter
+		{
+			position: absolute;
+			font-size: 11px;
+			color: #fff;
+			text-align: center;
+			bottom: 30px;
+			width: 100%;
+			font-family: 'ToyotaRegular';
+			a
+			{
+				text-decoration: underline;
+			}
+		}
+	}
+	.chooseCharacter,
+	.formVideo,
+	.checkVideoFinal,
+	.sharedExperience,
+	.likePicture,
+	.loading
+	{
+		max-width: 414px;
+		width: 102%;
+		min-height: 100vh;
+		display: block;
+		margin: 0 auto;
+		background-color: black;
+		overflow: hidden;
+    	position: relative;
+		font-family: 'JoyrideEx';
+		background-image: url("../assets/images/bg.png");
+		background-position: center;
+		background-size: cover;
+
+		// chooseCharacter
+		.selectCopy
+		{
+			font-size: 20px;
+			text-align: center;
+			color: #fff;
+			top: 30px;
+			width: 100%;
+			max-width: 300px;
+			line-height: 26px;
+			margin: 10% auto;
+		}
+		.selectCharacter1,
+		.selectCharacter2
+		{
+			width: 85%;
+			margin: 0 auto 20px;
+			display: block;
+		}
+		.buttonPhoto
+		{
+			margin: 20px auto;
+		}
+
+		// likePicture
+		.canvasPhoto
+		{
+			height: 100%;
+			width: 100%;
+			top: 0;
+			position: absolute;
+			border: 1px solid red;
+		}
+		.paddingCanvas
+		{
+			height: 50vh;
+			width: 100%;
+			position: relative;
+		}
+		.yesContinue,
+		.againPhoto
+		{
+			position: relative;
+			margin: 0 auto 10%;
+		}
+		.againPhoto
+		{
+			background: #000;
+			border: 2px solid #fff;
+		}
+		.copyLike
+		{
+			font-size: 18px;
+			width: 320px;
+			margin: 10% auto 15%;
+			text-align: center;
+		}
+
+		// sharedExperience
+		.logoToyota
+		{
+			width: 180px;
+			display: block;
+			margin: 5% auto;
+		}
+		.copyThanks
+		{
+			margin: 10px auto;
+			font-size: 22px;
+			text-align: center;
+			.copyLunay
+			{
+				font-size: 15px;
+				font-family: 'ToyotaBold';
+				margin: 10px 0;
+			}
+			span
+			{
+				font-size: 15px;
+				line-height: 100%;
+				font-family: 'ToyotaRegular';
+				margin: 10px 0;
+			}
+		}
+		.sharedSocial
+		{
+			width: 300px;
+			height: 111px;
+			background-image: url("../assets/images/bgSocial.png");
+			background-position: center;
+			background-size: cover;
+			overflow: hidden;
+			position: relative;
+			display: block;
+			margin: 0 auto;
+			color: #C0ACED;
+			font-size: 14px;
+			padding: 22px 0 0 0 ;
+			text-align: center;
+			margin: 30px auto 0;
+		}
+		.iconSocial
+		{
+			text-align: center;
+			margin: 20px 0;
+			a
+			{
+				margin: 0 20px;
+				display: inline-block;
+			}
+			img
+			{
+				display: inline-block;
+				width: 35px;
+			}
+		}
+		.buttonThanks
+		{
+			margin: 20px auto;
+			background: #000;
+			border: 2px solid #fff;
+		}
+		.copyFooter
+		{
+			position: absolute;
+			font-size: 11px;
+			color: #fff;
+			text-align: center;
+			bottom: 10px;
+			width: 100%;
+			font-family: 'ToyotaRegular';
+			a
+			{
+				text-decoration: underline;
+			}
+		}
+
+		// checkVideoFinal
+		.copyJoin
+		{
+			margin: 10px auto;
+			font-size: 15px;
+			text-align: center;
+			margin: 20px auto 0;
+			span
+			{
+				font-size: 17px;
+				line-height: 20px;
+				font-family: 'ToyotaRegular';
+				margin: 20% 0;
+				display: block;
+			}
+		}	
+	}
+	.sharedExperience
+	{
+		.copyFooter
+		{
+			position: relative;
+			margin: 20px auto;
+		}
+	}
+	.loading
+	{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.logoToyota
+		{
+			width: 180px;
+			display: block;
+			margin: 5% auto;
+		}
+		.percentageVideo
+		{
+			width: 100%;
+			height: 30vh;
+			min-height: 150px;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.boxPercentage
+			{
+				width: 130px;
+				height: 60px;
+				font-family: 'ToyotaRegular';
+				letter-spacing: 0px;
+				.iconPercentage
+				{
+					width: 40px;
+					height: 40px;
+					background-image: url("../assets/images/vector-animacion.svg");
+					background-position: center left;
+					background-size: contain;
+					background-repeat: no-repeat;
+					transform: rotate(90deg);
+					float: left;
+					margin: 8px 0px 0px;
+				}
+				.numberPercentage
+				{	
+					float: right;
+					font-size: 11px;
+					width: calc(100% - 45px);
+				}	
+				.linePercentage
+				{
+					height: 2px;
+					float: left;
+					width: calc(100% - 50px);
+					margin: 0 0 0 5px;
+					.percentage
+					{
+						height: 2px;
+						background: #FFD800;
+					}
+
+				}
+				.timePercentage
+				{
+					float: right;
+					font-size: 11px;
+					width: calc(100% - 45px);
+				}
+				.secondPercentage
+				{
+					float: right;
+					font-size: 11px;
+					width: calc(100% - 45px);
+				}
+			}
+		}
+
+	}
+	// formVideo
+	.formVideo
+	{
+		height: auto;
+		min-height: 100%;
+		.percentageVideo
+		{
+			width: 100%;
+			height: 30vh;
+			min-height: 150px;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.boxPercentage
+			{
+				width: 130px;
+				height: 60px;
+				font-family: 'ToyotaRegular';
+				letter-spacing: 0px;
+				.iconPercentage
+				{
+					width: 40px;
+					height: 40px;
+					background-image: url("../assets/images/vector-animacion.svg");
+					background-position: center left;
+					background-size: contain;
+					background-repeat: no-repeat;
+					transform: rotate(90deg);
+					float: left;
+					margin: 8px 0px 0px;
+				}
+				.numberPercentage
+				{	
+					float: right;
+					font-size: 11px;
+					width: calc(100% - 45px);
+				}	
+				.linePercentage
+				{
+					height: 2px;
+					float: left;
+					width: calc(100% - 50px);
+					margin: 0 0 0 5px;
+					.percentage
+					{
+						height: 2px;
+						background: #FFD800;
+					}
+
+				}
+				.timePercentage
+				{
+					float: right;
+					font-size: 11px;
+					width: calc(100% - 45px);
+				}
+				.secondPercentage
+				{
+					float: right;
+					font-size: 11px;
+					width: calc(100% - 45px);
+				}
+			}
+		}
+		.copyTitleForm
+		{
+			font-size: 22px;
+			text-align: center;
+			width: 100%;
+		}
+		.copySubtitleForm
+		{
+			margin: 10px auto;
+			font-size: 14px;
+			text-align: center;
+			width: 100%;
+			font-family: 'ToyotaRegular';
+		}
+		.MuiInputBase-root
+		{
+			width: 90%;
+			margin: 20px auto;
+			display: block;
+		}
+		.MuiInput-underline:before
+		{
+			border-bottom: 2px solid #848484;
+		}
+		.MuiInput-underline:hover:not(.Mui-disabled):before
+		{
+			border-bottom: 2px solid #848484;
+		}
+		.MuiInput-underline:after
+		{
+			border-bottom: 2px solid #fff;
+		}
+		.MuiInputBase-input
+		{
+			width: 100%;
+			color: #fff;
+			font-family: 'ToyotaRegular';
+		}
+		.errorsField
+		{
+			display: block;
+			width: 90%;
+			margin: -20px auto;
+			color: #FAC2C2;
+			font-family: 'ToyotaBold';
+			font-size: 12px;
+			&.center
+			{
+				width: 100%;
+				text-align: center;
+				margin: 10px auto;
+			}
+		}
+		.boxCheckbox
+		{
+			width: 90%;
+			margin: 20px auto;
+			display: block;
+			font-family: 'ToyotaRegular';
+			letter-spacing: 0px;
+			overflow: hidden;
+			color: #848484;
+			font-size: 15px;
+			.copyCheckbox
+			{
+				width: calc(100% - 60px);
+				float: left;
+				&.special
+				{
+					text-decoration: underline;
+					color: #9EB4C4;
+					float: right;
+				}
+			}
+		}
+
+	}
+}
+
+
+
