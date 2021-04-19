@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
+import Link from 'next/link'
 
 const SharedExperience = () => {
     return (
@@ -28,7 +29,9 @@ const SharedExperience = () => {
                     </a>
                 </div>
             </div>
-            <Button className="buttonThanks" variant="contained">descargar video</Button>
+            <Link href="/checkVideoFinal">
+                <Button className="buttonThanks" variant="contained">descargar video</Button>
+            </Link>
             <div className="copyFooter">
                 Haz <a href="">click aquí</a> para ver las reglas y condiciones
             </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
+import Link from 'next/link'
 
 const ChooseCharacter = () => {
     return (
@@ -13,7 +14,9 @@ const ChooseCharacter = () => {
             <div className="selectCharacter2">
                 <img src="images/femenino.png" alt=""/>
             </div>
-            <Button className="buttonPhoto" variant="contained">tomar foto</Button>
+            <Link href="/likePicture">
+                <Button className="buttonPhoto" variant="contained">tomar foto</Button>
+            </Link>
 
         </div>
     )

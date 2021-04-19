@@ -111,7 +111,7 @@ body {
 	{
 		max-width: 414px;
 		width: 102%;
-		height: 100vh;
+		min-height: 100vh;
 		display: block;
 		margin: 0 auto;
 		background-color: black;
@@ -143,8 +143,7 @@ body {
 		}
 		.buttonPhoto
 		{
-			position: absolute;
-			bottom: 20px;
+			margin: 20px auto;
 		}
 
 		// likePicture
@@ -158,8 +157,9 @@ body {
 		}
 		.paddingCanvas
 		{
-			height: 50%;
+			height: 50vh;
 			width: 100%;
+			position: relative;
 		}
 		.yesContinue,
 		.againPhoto
@@ -276,8 +276,19 @@ body {
 			}
 		}	
 	}
+	.sharedExperience
+	{
+		.copyFooter
+		{
+			position: relative;
+			margin: 20px auto;
+		}
+	}
 	.loading
 	{
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		.logoToyota
 		{
 			width: 180px;

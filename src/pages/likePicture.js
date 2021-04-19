@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
+import Link from 'next/link'
 
 const LikePicture = () => {
     return (
@@ -11,7 +12,9 @@ const LikePicture = () => {
             <div className="copyLike">
                 ¿te gusta tu foto?
             </div>
-            <Button className="yesContinue" variant="contained">sí, continuar</Button>
+            <Link href="/formVideo">
+                <Button className="yesContinue" variant="contained">sí, continuar</Button>
+            </Link>
             <Button className="againPhoto" variant="contained">volver a tomar</Button>
         </div>
     )

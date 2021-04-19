@@ -49,18 +49,18 @@ const FormVideo = () => {
                 Regístrate para obtener el preview de tu video
             </div>
             {errors.nameRequired && errors.lastNameRequired && errors.emailRequired && errors.zipRequired && <span className="errorsField center">Por favor completa todos los campos</span>}
-            <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
+            <form noValidate autoComplete="off">
 
-                <Input {...register("nameRequired", { required: true })}  placeholder="Nombre" inputProps={{ 'aria-label': 'description' }} />
+                <Input {...register("nameRequired", { required: false })}  placeholder="Nombre" inputProps={{ 'aria-label': 'description' }} />
                 {errors.nameRequired && <span className="errorsField">Por favor completa el campo</span>}
 
-                <Input {...register("lastNameRequired", { required: true })} placeholder="Apellido" inputProps={{ 'aria-label': 'description' }} />
+                <Input {...register("lastNameRequired", { required: false })} placeholder="Apellido" inputProps={{ 'aria-label': 'description' }} />
                 {errors.lastNameRequired && <span className="errorsField">Por favor completa el campo</span>}
 
-                <Input {...register("emailRequired", { required: true })} placeholder="Email" inputProps={{ 'aria-label': 'description' }} />
+                <Input {...register("emailRequired", { required: false })} placeholder="Email" inputProps={{ 'aria-label': 'description' }} />
                 {errors.emailRequired && <span className="errorsField">Por favor completa el campo</span>}
 
-                <Input {...register("zipRequired", { required: true })} placeholder="Zip code" inputProps={{ 'aria-label': 'description' }} />
+                <Input {...register("zipRequired", { required: false })} placeholder="Zip code" inputProps={{ 'aria-label': 'description' }} />
                 {errors.zipRequired && <span className="errorsField">Por favor completa el campo</span>}
                 
                 <div className="boxCheckbox">
@@ -101,7 +101,9 @@ const FormVideo = () => {
                     />
 
                 </div>
-                <Button type="submit" className="yesContinue" variant="contained">enviar video</Button>
+                <Link href="/sharedExperience">
+                    <Button className="yesContinue" variant="contained">enviar video</Button>
+                </Link>
             </form>
         </div>
     )
