@@ -11,7 +11,7 @@ export default function Home() {
   const [facingMode, setFacingMode] = useState('user');
 
   if (loading) {
-    return <p>Loading...</p>
+    return <p style={{color: '#000' }}>Loading...</p>
   }
 
   return (
