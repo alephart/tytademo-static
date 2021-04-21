@@ -16,13 +16,13 @@ const Start = () => {
             
             <img src="intro.gif" alt=""/>
             <div className="copyStart">
-                tómate una foto y sé parte del video de lunay
+                TÓMATE UNA SELFIE Y SÉ PARTE DEL VIDEO DE LUNAY
             </div>
             <Link href="/chooseCharacter">
                 <Button className="buttonStart" variant="contained">comenzar</Button>
             </Link>
             <div className="copyFooter">
-                Al hacer clic estás aceptando los <a href="javascript:void(0);">Términos y condiciones</a>
+                Al hacer click estás aceptando los <a href="javascript:void(0);">Términos y condiciones</a>
             </div>
         </div>
     )

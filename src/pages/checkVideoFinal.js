@@ -12,11 +12,10 @@ const CheckVideoFinal = () => {
                 ve el video de tu <br/>
                 amigo y crea el tuyo.<br/>
                 <span>
-                    toma una foto y se parte del video <br/>
-                    de lunay
+                    Tómate una selfie para ser parte del video <br/> de Lunay 
                 </span>
             </div>
-            <Button className="buttonJoin" variant="contained">participar</Button>
+            <Button className="buttonJoin" variant="contained">QUIERO MI VIDEO</Button>
         </div>
     )
 }

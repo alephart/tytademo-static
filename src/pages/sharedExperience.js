@@ -10,12 +10,12 @@ const SharedExperience = () => {
 
             </video>
             <div className="copyThanks">
-                ¡gracias! <br/>
+                 <br/>
                 <div className="copyLunay">
                     ¡Ya eres parte del video de LUNAY!
                 </div>
                 <span>
-                    Ahora descárgalo y compártelo con tus amigos para ganar premios increíbles.
+                    Ahora descárgalo y compártelo con el mundo, podrías ganar que Lunay lo comparta y otros premios increíbles. 
                 </span>
             </div>
             <div className="sharedSocial">
