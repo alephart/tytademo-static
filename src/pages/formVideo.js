@@ -43,10 +43,10 @@ const FormVideo = () => {
                 </div>
             </div>
             <div className="copyTitleForm">
-                ¡falta poco!
+                ¡YA CASI!
             </div>
             <div className="copySubtitleForm">
-                Regístrate para obtener el preview de tu video
+                Regístrate para obtener tu video
             </div>
             {errors.nameRequired && errors.lastNameRequired && errors.emailRequired && errors.zipRequired && <span className="errorsField center">Por favor completa todos los campos</span>}
             <form noValidate autoComplete="off">

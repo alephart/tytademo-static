@@ -6,7 +6,7 @@ const ChooseCharacter = () => {
     return (
         <div className="chooseCharacter">
             <div className="selectCopy">
-                selecciona un personaje
+                ELIGE TU PERSONAJE
             </div>
             <div className="selectCharacter1">
                 <img src="images/masculino.png" alt=""/>
@@ -15,9 +15,8 @@ const ChooseCharacter = () => {
                 <img src="images/femenino.png" alt=""/>
             </div>
             <Link href="/likePicture">
-                <Button className="buttonPhoto" variant="contained">tomar foto</Button>
+                <Button className="buttonPhoto" variant="contained">TOMAR FOTO</Button>
             </Link>
-
         </div>
     )
 }
