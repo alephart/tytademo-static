@@ -15,7 +15,9 @@ const LikePicture = () => {
             <Link href="/formVideo">
                 <Button className="yesContinue" variant="contained">¡SI!</Button>
             </Link>
-            <Button className="againPhoto" variant="contained">VOLVER A TOMAR</Button>
+            <Link href="/start">
+                    <Button className="againPhoto" variant="contained">VOLVER A TOMAR</Button>
+            </Link>
         </div>
     )
 }
