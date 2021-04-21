@@ -5,7 +5,7 @@ const CheckVideoFinal = () => {
     return (
         <div className="checkVideoFinal">
             <img className="logoToyota" src="images/logo-toyota.png" alt=""/>
-            <video src="">
+            <video src="" className="checkVideoFinalVideo">
 
             </video>
             <div className="copyJoin">
