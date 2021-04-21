@@ -15,7 +15,9 @@ const CheckVideoFinal = () => {
                     Tómate una selfie para ser parte del video <br/> de Lunay 
                 </span>
             </div>
-            <Button className="buttonJoin" variant="contained">QUIERO MI VIDEO</Button>
+            <Link href="/start">
+                <Button className="buttonJoin" variant="contained">QUIERO MI VIDEO</Button>
+            </Link>
         </div>
     )
 }
