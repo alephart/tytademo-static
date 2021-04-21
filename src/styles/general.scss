@@ -68,6 +68,8 @@ body {
 		background-size: cover;
 		overflow: hidden;
     	position: absolute;
+		left: 0;
+		right: 0;
 		font-family: 'JoyrideEx';
 		.copyStart
 		{
@@ -120,6 +122,8 @@ body {
 		background-color: black;
 		overflow: hidden;
     	position: absolute;
+		left: 0;
+		right: 0;
 		font-family: 'JoyrideEx';
 		background-image: url("../assets/images/bg.png");
 		background-position: center;
