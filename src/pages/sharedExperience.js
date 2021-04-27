@@ -33,7 +33,7 @@ const SharedExperience = () => {
                 <Button className="buttonThanks" variant="contained">descargar video</Button>
             </Link>
             <div className="copyFooter">
-                Haz <a href="">click aquí</a> para ver las reglas y condiciones
+                Haz <Link href="/termsR">click aquí</Link> para ver las reglas y condiciones
             </div>
         </div>
     )
