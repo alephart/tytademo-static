@@ -15,15 +15,15 @@ const runExecCommnad = (command) => {
     try {
       exec(generate, (error, stdout, stderr) => {
         if (error) {    
-            console.log(`error: ${error.message}`);
+            console.log(`error exec: ${error.message}`);
             return reject(error);
         }
         if (stderr) {
-            console.log(`stderr: ${stderr}`);
+            console.log(`stderr exec: ${stderr}`);
             stderrData += stderr;
         }
         if (stdout) {
-            console.log(`stdout: ${stdout}`);
+            console.log(`stdout exec: ${stdout}`);
             stdoutData += stdout;
         }
   
@@ -38,6 +38,22 @@ const runExecCommnad = (command) => {
       console.error(err);
       reject(err);
       //throw err;
+    }
+  });
+}
+
+const getMetaData = (filePath, stream = 'all') => {
+  return new Promise((resolve, reject) => {
+    try {
+      ffmpeg.ffprobe(filePath, (err, metadata) => {
+        if(err) {
+          reject(err);
+        }
+        resolve(metadata.streams[0][stream]);
+    });
+    } catch (err) {
+      console.error(err);
+      reject(err);
     }
   });
 }
@@ -66,11 +82,40 @@ const transitionMergeVideosExec = async (data) => {
 // concatenate several videos - all with same codecs (stream level)
 const concatVideosDemuxer = async (data) => {
   const {output, fileVideos} = data;
-
-  const concat = `ffmpeg -f concat -safe 0 -i ${fileVideos} -c copy ${output}`;
+  
+  const concat = `ffmpeg -f concat -safe 0 -i ${fileVideos} -vcodec copy ${output}`;
 
   return await runExecCommnad(concat);
-  
+}
+
+const fixTBNField = async (data) => {
+  const {input, output, timeScale = 90000} = data;
+  // commmand:
+  // ffmpeg -i ${input} -video_track_timescale ${timeScale} ${output};
+
+  return new Promise((resolve, reject) => {
+    try {
+      ffmpeg()
+      .input(input)
+      .outputOptions(`-video_track_timescale ${timeScale}`)
+      .on('end', resolve)
+      .on('error', reject)
+      .output(output)
+      .run();
+      
+    } catch (err) {
+      console.error(err);
+      reject(err);
+    }
+  });
+}
+
+const changeTrack = async (data) => {
+  const {input, output, track} = data;
+
+  const change = `ffmpeg -i ${input} -i ${track} -c:v copy -map 0:v:0 -map 1:a:0 ${output}`;
+
+  return await runExecCommnad(change);
 }
 
 const placeWatermarkOnVideo = async (data) => {
@@ -95,7 +140,6 @@ const placeWatermarkOnVideo = async (data) => {
       console.error(err);
       reject(err);
     }
-
   });
 }
 
@@ -144,4 +188,7 @@ module.exports = {
   concatVideosDemuxer,
   transitionMergeVideosExec,
   createThumbFromVideo,
+  fixTBNField,
+  changeTrack,
+  getMetaData,
 }

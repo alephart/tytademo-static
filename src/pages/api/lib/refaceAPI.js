@@ -39,8 +39,8 @@ const getSignedUrl = async (type) => {
 
 /**
  * [PUT] Upload Asset and return signed_url
- * @param {binary} binaryFile binary file. image or video.
- * @param {string} contentType header Content-Type
+ * @param {binary} binaryFile   binary file. image or video.
+ * @param {string} contentType  header Content-Type
  * @returns string JSON wit signed_url (image or video)
  */
 const uploadAsset = async (binaryFile, contentType) => {
@@ -78,15 +78,15 @@ const uploadAsset = async (binaryFile, contentType) => {
 }
 
 /**
- * [POST] Detect face in Asset
- * In image return the first id face or specific number of array
- * TODO: In video return the id face in the number faces into video (adjust)
- * @param {string} imageUrl url image upload on reface
- * @param {string} contentType header Content-Type
- * @param {number} numberFace is the number face in array to get id
+ * [POST] Detect face in Asset.
+ * Image: return the first id face or specific number of array
+ * TODO: Video: return the ids face in the number faces into video (adjust)
+ * @param {string} imageUrl     url image upload on reface
+ * @param {string} contentType  header Content-Type
+ * @param {number} numberFace   is the number face in array to get id
  * @returns the faceId from the image (photo)
  */
-const detectFaceInAsset = async (imageUrl, contentType, numberFace = 0) => {
+const detectFacesInAsset = async (imageUrl, contentType, numberFace = 0) => {
   const endPoint = contentType === 'video/mp4' ? '/addvideo' : '/addimage';
   let resFinal = [];
 
@@ -100,10 +100,12 @@ const detectFaceInAsset = async (imageUrl, contentType, numberFace = 0) => {
     });
 
     const data = await response.json();
+    console.log(data);
 
-    const faces = Object.keys(data.imageInfo.faces);
+    //const faces = Object.keys(data.imageInfo.faces);
+    const faces = Object.entries(data.imageInfo.faces);
 
-    return faces[numberFace];
+    return faces;
 
   } catch (error) {
     console.error(error);
@@ -113,7 +115,7 @@ const detectFaceInAsset = async (imageUrl, contentType, numberFace = 0) => {
 
 /**
  * [POST] Swap video - return of url video swap
- * @param {obj} obj obj with data face mappign [/swapvideo] 
+ * @param {object} obj obj with data face mappign [/swapvideo] 
  * @returns [application/json] a json data response from swap video reface
  */
 const swapVideo = async (obj) => {
@@ -132,12 +134,11 @@ const swapVideo = async (obj) => {
     console.error(error);
     throw error;
   }
-
-}
+};
 
 module.exports = {
   getSignedUrl,
   uploadAsset,
-  detectFaceInAsset,
+  detectFacesInAsset,
   swapVideo,
 };
