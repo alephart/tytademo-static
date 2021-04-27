@@ -167,6 +167,11 @@ body {
 			width: 70%;
 			margin: 0 auto 20px;
 			display: block;
+			opacity: 0.5;
+			&.selected
+			{
+				opacity: 1;
+			}
 		}
 		.buttonPhoto
 		{
