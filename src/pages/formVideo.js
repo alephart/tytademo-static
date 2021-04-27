@@ -11,10 +11,10 @@ const FormVideo = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
     const [state, setState] = React.useState({
-        checkedA: true,
-        checkedB: true,
+        checkedA: false,
+        checkedB: false,
     });
-    const [checked, setChecked] = React.useState(true);
+    const [checked, setChecked] = React.useState(false);
 
     const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
@@ -82,9 +82,9 @@ const FormVideo = () => {
                         arrendar un vehículo Toyota.
                     </div>
                     <Switch
-                        checked={state.checkedA}
+                        checked={state.checkedB}
                         onChange={handleChange}
-                        name="checkedA"
+                        name="checkedB"
                         inputProps={{ 'aria-label': 'secondary checkbox' }}
                     />
 
@@ -92,7 +92,7 @@ const FormVideo = () => {
                 <div className="boxCheckbox">
 
                     <div className="copyCheckbox special">
-                        <Link href="#" color="inherit"> Acepto Políticas de tratamiento de datos</Link>
+                        <Link href="/termsP" color="inherit"> Acepto Políticas de tratamiento de datos</Link>
                     </div>
                     <Checkbox
                         checked={checked}

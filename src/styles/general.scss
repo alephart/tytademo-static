@@ -34,8 +34,8 @@ body {
 	.yesContinue,
 	.againPhoto
 	{
-		background-color: #5A2DFC;
-		color: #fff;
+		background-color: #5A2DFC ;
+		color: #fff ;
 		margin: 0 auto;
 		display: block;
 		position: relative;
@@ -48,6 +48,13 @@ body {
 		font-family: 'JoyrideEx';
 		text-transform: none;
 		text-transform: lowercase;
+		&.MuiButton-contained.Mui-disabled
+		{
+			opacity: 0.3;
+			background-color: #5A2DFC ;
+			color: #fff ;
+			margin: 0 auto;
+		}
 	}
 	&.fancybox-active
 	{
@@ -70,6 +77,9 @@ body {
     	position: absolute;
 		left: 0;
 		right: 0;
+		background-image: url("../assets/images/bg.png");
+		background-position: center;
+		background-size: cover;
 		font-family: 'JoyrideEx';
 		.copyStart
 		{
@@ -112,7 +122,8 @@ body {
 	.checkVideoFinal,
 	.sharedExperience,
 	.likePicture,
-	.loading
+	.loading,
+	.terms
 	{
 		max-width: 414px;
 		width: 102%;
@@ -128,7 +139,15 @@ body {
 		background-image: url("../assets/images/bg.png");
 		background-position: center;
 		background-size: cover;
-
+		
+		.textTerms
+		{
+			width: 90%;
+			margin: 20px auto;
+			display: block;
+			font-size: 10px;
+			font-family: 'ToyotaRegular';
+		}
 		// chooseCharacter
 		.selectCopy
 		{
@@ -278,15 +297,16 @@ body {
 		{
 			margin: 10px auto;
 			font-size: 16px;
+			width: 90%;
 			text-align: center;
 			margin: 50px auto 0;
 			line-height: 18px;
 			span
 			{
-				font-size: 18px;
+				font-size: 16px;
 				line-height: 20px;
 				font-family: 'ToyotaRegular';
-				margin: 20px 0 60px;
+				margin: 20px 0 40px;
 				display: block;
 			}
 		}	
@@ -501,6 +521,40 @@ body {
 			overflow: hidden;
 			color: #848484;
 			font-size: 15px;
+			.MuiSvgIcon-root
+			{
+				color: #414141;
+			}
+			.MuiCheckbox-colorSecondary.Mui-checked .MuiSvgIcon-root
+			{
+				color: #5A2CFB;
+			}
+			.MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track
+			{
+				background-color: transparent;
+			}
+			.MuiSwitch-colorSecondary.Mui-checked
+			{
+				color: #5A2CFB;
+			}
+			.MuiSwitch-switchBase
+			{
+				color: #fff;
+			}
+			.MuiSwitch-track
+			{
+				border: 2px solid #fff;
+				padding: 12px 22px;
+				margin: -7px -7px;
+				border-radius: 15px;
+			}
+			.MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track
+			{
+				border: 2px solid #5A2CFB;
+				padding: 12px 22px;
+				margin: -7px -7px;
+				border-radius: 15px;
+			}
 			.copyCheckbox
 			{
 				width: calc(100% - 60px);
@@ -517,6 +571,4 @@ body {
 
 	}
 }
-
-
 
