@@ -18,7 +18,6 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>DeepFake Toyota</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header>
