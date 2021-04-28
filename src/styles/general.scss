@@ -12,6 +12,61 @@ html, body {
     top: 0px;
     width: 101%;
     min-height: 100%;
+	opacity: 1;
+	-webkit-animation: fadeOut 6s ease-in-out 1 forwards;
+    -moz-animation: fadeOut 6s ease-in-out 1 forwards;
+    -o-animation: fadeOut 6s ease-in-out 1 forwards;
+    animation: fadeOut 6s ease-in-out 1 forwards;
+	animation-delay: 3s;
+}
+#video2 {
+	position: absolute;
+    right: -1px;
+    top: 0px;
+    width: 101%;
+    min-height: 100%;
+	opacity: 0;
+	-webkit-animation: fadeIn 4s ease-in-out 1 forwards;
+    -moz-animation: fadeIn 4s ease-in-out 1 forwards;
+    -o-animation: fadeIn 4s ease-in-out 1 forwards;
+    animation: fadeIn 4s ease-in-out 1 forwards;
+	animation-delay: 3s;
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@-webkit-keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@-moz-keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@-o-keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 body { 
 	font-family: NotoSans-Regular; 
@@ -126,7 +181,7 @@ body {
 	.terms
 	{
 		max-width: 414px;
-		width: 102%;
+		width: 100%;
 		min-height: 100%;
 		display: block;
 		margin: 0 auto;
@@ -188,7 +243,7 @@ body {
 		}
 		.paddingCanvas
 		{
-			height: 55vh;
+			height: 70vh;
 			width: 100%;
 			position: relative;
 		}
@@ -574,6 +629,34 @@ body {
 			}
 		}
 
+	}
+	.likePicture
+	{
+		.boxIframe
+		{
+			width: 375px;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+		}
+		iframe
+		{
+			position: absolute;
+			width: 200%;
+			height: 200%;
+			border: none;
+			top: 0;
+			zoom: 0.50;
+			-moz-transform: scale(0.50);
+			-moz-transform-origin: 0 0;
+			-o-transform: scale(0.50);
+			-o-transform-origin: 0 0;
+			-webkit-transform: scale(0.50);
+			-webkit-transform-origin: 0 0;
+		}
 	}
 }
 

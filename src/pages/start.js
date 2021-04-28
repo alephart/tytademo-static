@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link'
 
+
 const Start = () => {
     return (
         <div  className="starPage">
@@ -9,6 +10,14 @@ const Start = () => {
                 <video playsinline="" autoplay=""  muted=""  id="video">
                     <source
                         src="video.mp4"
+                        type="video/mp4"
+                    />
+                </video>,` }}>
+            </div>
+            <div dangerouslySetInnerHTML={{ __html: `
+                <video playsinline="" loop="" autoplay=""  muted=""  id="video2">
+                    <source
+                        src="videoloop.mp4"
                         type="video/mp4"
                     />
                 </video>,` }}>
