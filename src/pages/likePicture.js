@@ -6,9 +6,6 @@ const LikePicture = () => {
     return (
         <div className="likePicture">
             <div className="paddingCanvas"></div>
-            <div className="canvasPhoto">
-                <img src="" alt=""/>
-            </div>
             <div className="boxIframe" dangerouslySetInnerHTML={{ __html: "<iframe src='face/new-vectors.html' />"}} />
             <div className="copyLike">
                 ¿TE GUSTA ESTA FOTO?
