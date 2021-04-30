@@ -8,4 +8,3 @@ export const PROCESS_ENUM = Object.freeze(
     repeat: 'repeatPhoto',
   }
 );
-

@@ -1,31 +1,11 @@
 const {getSignedUrl, uploadAsset, detectFaceInAsset, swapVideo} = require('../lib/refaceAPI');
 const { loadFileSync } = require('../lib/fileActions');
-const { swapDataVideos, downloadSwapVideos, buildFileVideos, adjustTbnVideos } = require('../lib/refaceActions');
+const { downloadSwapVideos, buildFileVideos, adjustTbnVideos } = require('../lib/refaceActions');
 
 const path = require('path');
+const DIR_TEMP = './temp';
 
-describe('Reface API', () => {
-  const DIR_TEMP = './temp';
-
-  test('Should return signed_url correctly', async (done) => {
-    let data;
-
-    try {
-      const response = await getSignedUrl('jpg');
-      data = JSON.parse(response);
-
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-
-    done();
-
-    expect(data.success).toBeTruthy();
-
-    //expect().toBe(2);
-  });
-
+describe.skip('Reface API - requires access to reface account', () => {
   test('It should upload an image to reface and get the url of the image', async (done) => {
     const pathFile = path.join(DIR_TEMP, 'photo-00jz89k2l9r4o1b.png');
     let data;
@@ -93,29 +73,7 @@ describe('Reface API', () => {
     expect(dataSwap.success).toBeTruthy();
   }, 20000);
 
-  /** Test swap and dowload */
-  test('it should swap videos and download them, return an array wiht the list of those videos.', async (done) => {
-
-    const faceId = '9165f8b9-4495-4b82-931c-3ba1875d4683';
-
-    let videos;
-
-    try {
-      videos = await swapDataVideos(faceId);
-      
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-
-    done();
-
-    expect(Array.isArray(videos)).toBeTruthy();
-
-  }, 20000);
-
-  // Test download and list final videos
-  test('It should', async (done) => {
+  test('It should download swaps and list final videos', async (done) => {
     const videos = [
       {
         videoInfo: {
@@ -177,7 +135,30 @@ describe('Reface API', () => {
     expect(fileText).toMatch(/(124567080)/i);
   });
 
-  test.only('should ', async (done) => {
+});
+
+describe('Reface API that can be tested', () => {
+
+  test.only('Should return signed_url correctly', async (done) => {
+    let data;
+
+    try {
+      const response = await getSignedUrl('jpg');
+      data = JSON.parse(response);
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+
+    done();
+
+    expect(data.success).toBeTruthy();
+
+    //expect().toBe(2);
+  });
+
+  test.only('should adjust TBN value in the videos that are required', async (done) => {
     const videoList = [
       '01-NoSwap_tbn.mp4',
       '02-SwapSidekick_tbn.mp4',

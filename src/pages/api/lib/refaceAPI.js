@@ -39,9 +39,9 @@ const getSignedUrl = async (type) => {
 
 /**
  * [PUT] Upload Asset and return signed_url
- * @param {binary} binaryFile   binary file. image or video.
+ * @param {binary} binaryFile   binary file ['image/jpeg' | 'video/mp4']
  * @param {string} contentType  header Content-Type
- * @returns string JSON wit signed_url (image or video)
+ * @returns string JSON wit signed_url [image or video]
  */
 const uploadAsset = async (binaryFile, contentType) => {
   const type = contentType.split('/')[1];
@@ -55,7 +55,7 @@ const uploadAsset = async (binaryFile, contentType) => {
       const response = await fetch(data.signedUrl, {
         method: 'PUT',
         body: binaryFile,
-        headers: {'Content-Type': contentType} // eg: 'image/jpeg' | 'video/mp4'
+        headers: {'Content-Type': contentType}
       });
 
       const status = await response.status;
@@ -78,18 +78,15 @@ const uploadAsset = async (binaryFile, contentType) => {
 }
 
 /**
- * [POST] Detect face in Asset.
- * Image: return the first id face or specific number of array
+ * [POST] Detect faces in Asset.
+ * Image: detect and return the faces id
  * TODO: Video: return the ids face in the number faces into video (adjust)
  * @param {string} imageUrl     url image upload on reface
  * @param {string} contentType  header Content-Type
- * @param {number} numberFace   is the number face in array to get id
- * @returns the faceId from the image (photo)
+ * @returns Array with faces Id from the image (photo)
  */
-const detectFacesInAsset = async (imageUrl, contentType, numberFace = 0) => {
+const detectFacesInAsset = async (imageUrl, contentType) => {
   const endPoint = contentType === 'video/mp4' ? '/addvideo' : '/addimage';
-  let resFinal = [];
-
   const obj = {image_url: imageUrl};
 
   try {

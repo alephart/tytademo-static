@@ -58,41 +58,6 @@ const uploadFile = (pathFile, nameFile, type='image', async=false) => {
   }
 };
 
-const uploadFileS3 = (binaryFile, nameFile, type='image', async=false) => {
-    try {      
-      // Read content from the file
-    //const fileContent = fsSync.readFileSync(pathFile);
-    
-    // Setting up S3 upload parameters
-    const params = {
-        Bucket: type ==='image' ? `${configS3.bucket}/photos` : `${configS3.bucket}/videos`,
-        Key: nameFile, // File name to save as in S3
-        Body: binaryFile,
-        ACL: 'public-read'
-    };
-
-    if (!async) {
-        // Uploading files to the bucket
-          s3.upload(params, function(err, data) {
-            if (err) {
-                throw err;
-            }
-            //console.log(`File uploaded successfully. ${data.Location}`);
-
-            return data.Location;
-        });
-
-    } else {
-      return uploadFileAsync(params);
-    }
-
-  } catch (error) {
-      console.error(error);
-      throw error;
-  }
-};
-
 module.exports = {
   uploadFile,
-  uploadFileS3,
 };

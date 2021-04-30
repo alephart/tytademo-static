@@ -8,10 +8,8 @@ const path = require('path');
 const cuid = require('cuid');
 
 const DIR_TEMP = './temp';
-// const DIR_TEMP = path.join(__dirname,  './temp');
-// console.log('. = %s', path.resolve(DIR_TEMP));
-// console.log('__dirname = %s', path.resolve(__dirname, DIR_TEMP));
 
+//
 const checkFileSync = (path) => {
   try {
     if (fsSync.existsSync(path)) {
@@ -24,6 +22,7 @@ const checkFileSync = (path) => {
   }
 };
 
+//
 const createDirSync = (dir = DIR_TEMP) => {
   try {
     if (!fsSync.existsSync(dir)) {
@@ -61,6 +60,7 @@ const removeFileSync = (pathFile) => {
   }
 };
 
+//
 function writeFileSync(pathFile, dataFile) {
   try {
     fsSync.writeFileSync(pathFile, dataFile);
@@ -70,6 +70,7 @@ function writeFileSync(pathFile, dataFile) {
   }
 }
 
+//
 async function writeFile(pathFile, dataFile) {
   try {
     await fs.writeFile(pathFile, dataFile);
@@ -79,6 +80,7 @@ async function writeFile(pathFile, dataFile) {
   }
 }
 
+//
 async function moveFile(source, destination) {
   try {
     await fs.rename(source, destination);
@@ -89,6 +91,7 @@ async function moveFile(source, destination) {
   }
 }
 
+//
 async function loadFile(pathFile) {
   try {
     fs.readFile(pathFile, async (err, data) => {
@@ -112,6 +115,7 @@ async function loadFile(pathFile) {
   }
 }
 
+//
 function loadFileSync(pathFile) {
   try{
     const data = fsSync.readFileSync(pathFile, function (err, data) {
@@ -126,31 +130,6 @@ function loadFileSync(pathFile) {
     throw err;
   }
 }
-
-async function saveDummy(dummyBuffer) {
-  try {
-    //const dummyBuffer = decodeBase64Image(DUMMY_IMAGE);
-    const nameCuid = cuid();
-    const nameDummy = `image-${nameCuid.substring(0, 10)}.${dummyBuffer.ext}`;
-    const pathDummy = path.join('./public/photos/', nameDummy);
-    await writeFile(pathDummy, dummyBuffer.data);
-  } catch (err) {
-    console.error(`Got an error trying to crate dummy image: ${err.message}`);
-    if (err) throw err;
-  }
-}
-
-    // fs.writeFile(
-    //   pathFinalFile,
-    //   imageBuffer.data,
-    //   //{ mode: 0o755 },
-    //  (err) => {
-    //     if (!err) {
-    //       console.log('file is created');
-    //     }
-    //     return;
-    //   }
-    // );
 
 module.exports = { 
   writeFile,
