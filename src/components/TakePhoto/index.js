@@ -52,7 +52,7 @@ const TakePhoto = (props) => {
 
           if(json.data === undefined) {
             // not faces or more faces then try again
-            // Show message and boton to go again.
+            // Show message and button to go again.
             setConfirmPhoto(false);
             setProcess(PROCESS_ENUM.repeat);
             //handleBackTakePhoto();
@@ -94,10 +94,6 @@ const TakePhoto = (props) => {
     }
   }, [confirmPhoto]);
 
-  // const handleAlert = () => {
-
-  // };
-
   const handleSelectCharacter = (event) => {
     event.preventDefault();
     console.log('event', event);
@@ -124,12 +120,12 @@ const TakePhoto = (props) => {
     console.log({confirm}, {face_id});
 
     if (confirm === 'true') {
-      if(process === PROCESS_ENUM.select) {
-        setData({
-          ...data,
-          faceId: face_id,
-        });
-      }
+      // if(process === PROCESS_ENUM.select) {
+      //   setData({
+      //     ...data,
+      //     faceId: face_id,
+      //   });
+      // }
       setConfirmPhoto(true);
 
     } else {
@@ -179,27 +175,15 @@ const TakePhoto = (props) => {
         </div>
       )}
 
-      {imgSrc && takePhoto && !confirmPhoto && (
+      {/* {imgSrc && takePhoto && !confirmPhoto && (
         <div className='zone-photo'>
           <img src={imgSrc} />
         </div>
-      )}
-
-      {confirmPhoto && (
-        <div className='zone-process'>
-          {!swap ? (
-            <span>...</span>
-          ) : (
-            <div className='oneColunm'>
-              <ViewVideo data={swap} />
-              <button onClick={handleBackTakePhoto}> Back </button>
-            </div>
-          )}
-        </div>
-      )}
+      )} */}
 
       {imgSrc && takePhoto && !confirmPhoto && (
         <div className='zone-photo'>
+          <img src={imgSrc} />
           <div className='buttons'>
             {process !== PROCESS_ENUM.repeat && (
               <button
@@ -215,6 +199,19 @@ const TakePhoto = (props) => {
               Take photo again
             </button>
           </div>
+        </div>
+      )}      
+
+      {confirmPhoto && (
+        <div className='zone-process'>
+          {!swap ? (
+            <span>...</span>
+          ) : (
+            <div className='oneColunm'>
+              <ViewVideo data={swap} />
+              <button onClick={handleBackTakePhoto}> Back </button>
+            </div>
+          )}
         </div>
       )}
 

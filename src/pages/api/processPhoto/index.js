@@ -3,7 +3,7 @@ const cuid = require('cuid');
 //import { PROCESS_ENUM } from '@/utils/globals';
 const { uploadFile } = require('../lib/bucketS3API');
 const { decodeBase64Image } = require ('../lib/utils');
-const { placeWatermarkOnVideo, concatVideosDemuxer, changeTrack } = require('../lib/ffmpegActions');
+const { concatVideosDemuxer, changeTrack } = require('../lib/ffmpegActions');
 const { createDirSync, removeFileSync, loadFileSync, writeFileSync, writeFile } = require('../lib/fileActions');
 const { uploadAsset, detectFacesInAsset } = require('../lib/refaceAPI');
 const { dataSwapVideos, downloadSwapVideos, buildFileVideos, adjustTbnVideos } = require('../lib/refaceActions');
@@ -26,7 +26,7 @@ export default async (req, res) => {
     
     createDirSync(DIR_TEMP);
 
-    const nameTrackAudio = 'Lunay_TodoONada.m4a';
+    const NAME_TRACK_AUDIO = 'Lunay_TodoONada.m4a';
 
     /****************************************************************************
      * FIRST PART: PROCESS PHOTO AND REFACE RETURN FACEID
@@ -108,7 +108,7 @@ export default async (req, res) => {
       const dataTrack = {
         input: dataFinal.output,
         output: `${DIR_TEMP}/${nameFinalVideo}`,
-        track: path.join(DIR_TEMP, nameTrackAudio),
+        track: path.join(DIR_TEMP, NAME_TRACK_AUDIO),
       }
 
       await changeTrack(dataTrack);

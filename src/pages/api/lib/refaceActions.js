@@ -9,7 +9,7 @@ const DIR_TEMP = './temp';
 /**
  * Make the swap of the videos.
  * Each video is traversed doing the swap face of the participant.
- * Finally it returns the list of the videos processed in the swap
+ * Finally it returns the list of the videos processed in the swap.
  * @param {array} videosData  The info about video_id, facemapping and id face from photo in reface
  * @returns array list of the processed videos in the swap.
  */
@@ -61,7 +61,7 @@ const downloadSwapVideos = async (videos) => {
  * @param {array} videosSwap List of videos that were swapped.
  * @param {array} videosList List of all the videos that must be concatenated at the end.
  * @param {string} character Character type selected by the user.
- * @returns Text string with list of videos to contact for ffmpeg.
+ * @returns Text string with list of videos to contact by ffmpeg.
  */
 const buildFileVideos = (videosSwap, videosList, character) => {
   let file = '# files video name to concat\n', index = 0;
@@ -78,10 +78,10 @@ const buildFileVideos = (videosSwap, videosList, character) => {
   return file;
 };
 
-// 4.1 
+// Step 4.1
 /**
- * Modify the TBN video time scale to timeScale (Reface change) to all videos in array.
- * TODO: Create script to check TBN several videos and convert only modified.
+ * Modify the TBN video time scale to timeScale (Reface change).
+ * Check TBN several videos and convert only modified.
  * @param {array} videosData List videos processed in swap and store in temp.
  * @param {number} timeScale Number of timescale to convert.
  * @returns Array with new name videos to concat.

@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import { signIn, signOut, useSession } from "next-auth/client"
-import Link from "next/link"
 import styles from '../styles/Home.module.scss'
 import TakePhoto from '@/components/TakePhoto'
-
 
 export default function Home() {
   const [session, loading] = useSession();

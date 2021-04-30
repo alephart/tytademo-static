@@ -1,17 +1,15 @@
 const commandExistsSync = require('command-exists').sync;
-
+const { checkFileSync, removeFileSync } = require('../lib/fileActions');
+const path = require('path');
 const { 
   placeWatermarkOnVideo, 
-  placeImageOnVideo, 
   transitionMergeVideosExec,
   createThumbFromVideo,
   concatVideosDemuxer,
 } = require('../lib/ffmpegActions');
 
-const { checkFileSync, removeFileSync } = require('../lib/fileActions');
-const path = require('path');
-
 const itif = (condition) => condition ? it : it.skip;
+
 const ffmpegExist = commandExistsSync('ffmpeg');
 const DIR_TEMP = './temp';
 
@@ -43,7 +41,7 @@ describe('ffmpeg', () => {
     expect(checkFileSync(data.output)).toBeTruthy();
   }, 30000);
 
-  itif(ffmpegExist).only('it should join 8 videos with file-videos and demuxer (same codecs)', async (done) => {
+  itif(ffmpegExist).skip('it should join 8 videos with file-videos and demuxer (same codecs)', async (done) => {
     const data = {
       output: `${DIR_TEMP}/test.mp4`,
       fileVideos: `${DIR_TEMP}/videos-list.txt`,
@@ -80,22 +78,6 @@ describe('ffmpeg', () => {
     done();
     
     expect(response).toBeTruthy();
-  });
-
-  itif(ffmpegExist)('it should place a image on a video', async (done) => {
-    const data = {
-      output: `${DIR_TEMP}/test3.mp4`,
-      video: `${DIR_TEMP}/test2.mp4`,
-      watermark: `${DIR_TEMP}/test-photo.png`,
-    };
-    
-    removeFileSync(data.output);
-    
-    await placeImageOnVideo(data);
-    
-    done();
-    
-    expect(checkFileSync(data.output)).toBeTruthy();
   });
 
   itif(ffmpegExist).skip('it should create and return a thumbnail image of a video frame', async (done) => {
