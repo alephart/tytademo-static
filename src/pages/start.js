@@ -23,7 +23,10 @@ const Start = () => {
                 </video>,` }}>
             </div>
             <div className="copyStart">
-                Regístrate y podrías ganar una charla virtual con Lunay y más premios increíbles.
+                TÓMATE UNA SELFIE Y SÉ PARTE DEL VIDEO DE LUNAY
+                <span>
+                    Regístrate y podrías ganar una charla virtual con Lunay y más premios increíbles.
+                </span>
             </div>
             <Link href="/chooseCharacter">
                 <Button className="buttonStart" variant="contained">comenzar</Button>
