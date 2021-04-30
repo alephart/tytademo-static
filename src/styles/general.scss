@@ -243,15 +243,34 @@ body {
 		}
 		.paddingCanvas
 		{
-			height: 70vh;
+			height: 480px;
 			width: 100%;
 			position: relative;
+		}
+		.boxPhoto
+		{
+			height: 480px;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			background-position: center;
+			background-size: cover;
+		}
+		.bgdegrade
+		{
+			height: 480px;
+			width: 100%;
+			position: absolute;
+			top: 200px;
+			background-image: url("../assets/images/bgDegrade.png");
+			background-position: center;
+			background-size: cover;
 		}
 		.yesContinue,
 		.againPhoto
 		{
 			position: relative;
-			margin: 0 auto 20px;
+			margin: 30px auto 20px;
 		}
 		.againPhoto
 		{
@@ -262,9 +281,11 @@ body {
 		{
 			font-size: 18px;
 			width: 320px;
-			margin: 10% auto 20px;
+			margin: 2% auto 20px;
 			text-align: center;
 			text-transform: lowercase;
+			position: relative;
+			z-index: 1;
 		}
 
 		// sharedExperience
@@ -549,6 +570,7 @@ body {
 		.MuiInput-underline:after
 		{
 			border-bottom: 2px solid #fff;
+			transition: transform 0.5s cubic-bezier(0.0, 0, 0.2, 1) 0ms;
 		}
 		.MuiInputBase-input
 		{
@@ -597,16 +619,28 @@ body {
 			{
 				color: #5A2CFB;
 			}
+			.MuiSwitch-colorSecondary .MuiSwitch-thumb
+			{
+				background-image: url("../assets/images/icon-buttonx.png");
+				background-size: 20px;
+    			background-repeat: no-repeat;
+			}
+			.MuiSwitch-colorSecondary.Mui-checked .MuiSwitch-thumb
+			{
+				background-image: url("../assets/images/icon-button.png");
+			}
 			.MuiSwitch-switchBase
 			{
-				color: #fff;
+				color: #544E5C;
 			}
+			
 			.MuiSwitch-track
 			{
-				border: 2px solid #fff;
+				border: 2px solid #544E5C;
 				padding: 12px 22px;
 				margin: -7px -7px;
 				border-radius: 15px;
+				background-color: transparent;
 			}
 			.MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track
 			{
@@ -637,7 +671,7 @@ body {
 			width: 375px;
 			height: 100%;
 			position: absolute;
-			top: 0;
+			top: -30px;
 			left: 0;
 			right: 0;
 			margin: 0 auto;

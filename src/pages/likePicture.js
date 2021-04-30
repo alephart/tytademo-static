@@ -1,14 +1,13 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import Link from 'next/link'
+import Link from 'next/link' 
 
 const LikePicture = () => {
     return (
         <div className="likePicture">
+            <div className="boxPhoto" style={{ backgroundImage: 'url(images/background_image.png)' }}></div>
             <div className="paddingCanvas"></div>
-            <div className="canvasPhoto">
-                <img src="" alt=""/>
-            </div>
+            <div className="bgdegrade"></div>
             <div className="boxIframe" dangerouslySetInnerHTML={{ __html: "<iframe src='face/new-vectors.html' />"}} />
             <div className="copyLike">
                 ¿TE GUSTA ESTA FOTO?
@@ -22,5 +21,5 @@ const LikePicture = () => {
         </div>
     )
 }
-    
+
 export default LikePicture
