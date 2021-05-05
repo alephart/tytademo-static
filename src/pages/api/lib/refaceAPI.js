@@ -97,7 +97,7 @@ const detectFacesInAsset = async (imageUrl, contentType) => {
     });
 
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
 
     //const faces = Object.keys(data.imageInfo.faces);
     const faces = Object.entries(data.imageInfo.faces);

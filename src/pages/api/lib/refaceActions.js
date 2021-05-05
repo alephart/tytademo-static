@@ -18,7 +18,7 @@ const dataSwapVideos = async (videosData) => {
     const tasks = videosData.map(data => swapVideo(data));
 
     const results = await Promise.all(tasks);
-    console.log(results);
+    //console.log(results);
 
     return results;
 
