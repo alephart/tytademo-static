@@ -26,7 +26,7 @@ export default async (req, res) => {
     
     createDirSync(DIR_TEMP);
 
-    const NAME_TRACK_AUDIO = 'Lunay_TodoONada.m4a';
+    const NAME_TRACK_AUDIO = 'footage/Lunay_TodoONada.m4a';
 
     /****************************************************************************
      * FIRST PART: PROCESS PHOTO AND REFACE RETURN FACEID

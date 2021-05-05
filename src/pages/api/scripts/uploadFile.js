@@ -3,7 +3,7 @@
  * Call Asyc and Sync function uploadFile
  */
 const path = require('path');
-const { uploadFile } = require('./lib/bucketS3API');
+const { uploadFile } = require('../lib/bucketS3API');
 
 const DIR_TEMP = './temp';
 const nameImg = 'test-image.gif';

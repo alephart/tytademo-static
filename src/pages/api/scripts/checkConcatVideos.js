@@ -1,5 +1,5 @@
-const { placeWatermarkOnVideo, concatVideosDemuxer } = require('./lib/ffmpegActions');
-const { createDirSync, removeFileSync, writeFile, loadFileBinarySync } = require('./lib/fileActions');
+const { placeWatermarkOnVideo, concatVideosDemuxer } = require('../lib/ffmpegActions');
+const { createDirSync, removeFileSync, writeFile, loadFileBinarySync } = require('../lib/fileActions');
 
 const DIR_TEMP = './temp';
 
