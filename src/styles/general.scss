@@ -151,6 +151,13 @@ body {
 			left: 0;
 			right: 0;
 			text-transform: lowercase;
+			span
+			{
+				font-family: 'ToyotaRegular';
+				display: block;
+				font-size: 14px;
+				line-height: 16px;
+			}
 		}
 		.buttonStart
 		{
