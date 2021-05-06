@@ -714,7 +714,14 @@ body {
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
-		.boxItemsDesktopn,
+		@include tablet
+		{
+			display: block;
+			min-height: 100vh;
+			height: auto;
+			padding: 5% 0 10%;
+		}
+		.boxItemsDesktop,
 		.boxItemsNotAvailable
 		{
 			display: block;
@@ -723,6 +730,11 @@ body {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			@include tablet
+			{
+				display: block;
+			}
+
 			.videoDesktop
 			{
 				width: 50%;
@@ -731,6 +743,13 @@ body {
 				video
 				{
 					width: 100%;
+				}
+				@include tablet
+				{
+					width: 100%;
+					float: none;
+					display: block;
+					margin: 0 auto;
 				}
 			}
 			.copydesktop,
@@ -741,6 +760,13 @@ body {
 				float: left;
 				text-align: center;
 				padding: 0 10%;
+				@include tablet
+				{
+					width: 100%;
+					float: none;
+					display: block;
+					margin: 0 auto;
+				}
 				.logoToyota
 				{
 					width: 100%;
@@ -774,6 +800,11 @@ body {
 				{
 					font-size: 14px;
 					max-width: 600px;	
+				}
+				a
+				{
+					text-decoration: underline;
+					font-family: 'ToyotaBold';
 				}
 			}
 		}

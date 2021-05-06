@@ -3,25 +3,19 @@ import Button from '@material-ui/core/Button';
 import Link from 'next/link'
 
 
-const NotAvailable = () => {
+const mobileAvailable = () => {
     return (
         <div  className="notAvailable">
             <div className="boxItemsNotAvailable">
                 <div className="copyNotAvailable">
                     <img className="logoToyota" src="images/logo-toyota.png" alt=""/>
                     <h2>
-                        esta campaña no está disponible en tu país.
+                        ingresa desde tu celular, tómate la foto y se parte del video de lunay
                     </h2>
-                    <p>
-                        Conoce el nuevo Corolla Apex:
-                        <Link href="www.toyota.com/corolla/">
-                            www.toyota.com/corolla/
-                        </Link>
-                    </p>
                 </div>
             </div>
         </div>
     )
 }
-
-export default NotAvailable
+    
+export default mobileAvailable
