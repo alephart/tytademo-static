@@ -3,7 +3,7 @@ const cuid = require('cuid');
 //import { PROCESS_ENUM } from '@/utils/globals';
 const { uploadFile } = require('../lib/bucketS3API');
 const { decodeBase64Image } = require ('../lib/utils');
-const { concatVideosDemuxer, changeTrack } = require('../lib/ffmpegActions');
+const { concatVideosFluent, changeTrackFluent } = require('../lib/ffmpegActions');
 const { createDirSync, removeFileSync, loadFileSync, writeFileSync, writeFile } = require('../lib/fileActions');
 const { uploadAsset, detectFacesInAsset } = require('../lib/refaceAPI');
 const { dataSwapVideos, downloadSwapVideos, buildFileVideos, adjustTbnVideos } = require('../lib/refaceActions');
@@ -99,7 +99,7 @@ export default async (req, res) => {
       //console.log('Dowload Videos', dowloadVideos);
       console.timeEnd("downloadSwapVideos from DeepFake Service");
       
-      // 4.1 modify video the TBN to 90K
+      // 4.1 modify video the TBN to 90K - please if not necessary, do not use!
       console.time("adjustTbnVideos if required");
       const adjustVideos = await adjustTbnVideos(dowloadVideos, 90000);
       //console.log('Adjust TBN Videos', adjustVideos);
@@ -116,9 +116,9 @@ export default async (req, res) => {
         fileVideos: `${DIR_TEMP}/${nameFileVideos}`,
       };
 
-      console.time("concatVideosDemuxer - ffmpeg direct exec");
-      await concatVideosDemuxer(dataFinal);
-      console.timeEnd("concatVideosDemuxer - ffmpeg direct exec");
+      console.time("concatVideosFluent - ffmpeg direct exec");
+      await concatVideosFluent(dataFinal);
+      console.timeEnd("concatVideosFluent - ffmpeg direct exec");
 
       // 6.1 chage track in final video 
       const nameFinalVideo = `video-${subName}_final.mp4`;
@@ -129,11 +129,11 @@ export default async (req, res) => {
         track: path.join(DIR_TEMP, NAME_TRACK_AUDIO),
       }
 
-      console.time("changeTrack - ffmpeg add track audio");
-      await changeTrack(dataTrack);
-      console.timeEnd("changeTrack - ffmpeg add track audio");
+      console.time("changeTrackFluent - ffmpeg add track audio");
+      await changeTrackFluent(dataTrack);
+      console.timeEnd("changeTrackFluent - ffmpeg add track audio");
 
-      // // create watermark into video 
+      // // create watermark into video - this process is very slow
       // let videoTemp = dataFinal.output;
 
       // dataFinal = {
