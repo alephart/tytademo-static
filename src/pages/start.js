@@ -18,7 +18,7 @@ const Start = () => {
         setOpen(false);
     };
     const theme = useTheme();
-    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const fullScreen = useMediaQuery(theme.breakpoints.down('lg'));
     return (
         <div  className="starPage">
             <div dangerouslySetInnerHTML={{ __html: `
