@@ -699,5 +699,115 @@ body {
 			-webkit-transform-origin: 0 0;
 		}
 	}
+	// formVideo
+	.indexDesktop,
+	.notAvailable
+	{
+		background: #000;
+		width: 100%;
+		height: 100vh;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-image: url("../assets/images/bg-site-desktop.png");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		@include tablet
+		{
+			display: block;
+			min-height: 100vh;
+			height: auto;
+			padding: 5% 0 10%;
+		}
+		.boxItemsDesktop,
+		.boxItemsNotAvailable
+		{
+			display: block;
+			width: 100%;
+			max-width: 1280px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			@include tablet
+			{
+				display: block;
+			}
+
+			.videoDesktop
+			{
+				width: 50%;
+				height: auto;
+				float: left;
+				video
+				{
+					width: 100%;
+				}
+				@include tablet
+				{
+					width: 100%;
+					float: none;
+					display: block;
+					margin: 0 auto;
+				}
+			}
+			.copydesktop,
+			.copyNotAvailable
+			{
+				width: 50%;
+				height: auto;
+				float: left;
+				text-align: center;
+				padding: 0 10%;
+				@include tablet
+				{
+					width: 100%;
+					float: none;
+					display: block;
+					margin: 0 auto;
+				}
+				.logoToyota
+				{
+					width: 100%;
+					max-width: 287px;
+					margin: 0 auto;
+					display: block;
+				}
+				h2
+				{	
+					line-height: 30px;
+					margin: 65px auto 10px;
+					display: block;
+					width: 100%;
+					max-width: 280px;
+					font-size: 26px;
+					font-family: 'JoyrideEx';
+				}
+				p
+				{
+					margin: 0 auto;
+					display: block;
+					width: 100%;
+					max-width: 300px;
+					font-family: 'ToyotaRegular';
+				}
+			}
+			.copyNotAvailable
+			{
+				width: 100%;
+				p, h2
+				{
+					font-size: 14px;
+					max-width: 600px;	
+				}
+				a
+				{
+					text-decoration: underline;
+					font-family: 'ToyotaBold';
+				}
+			}
+		}
+	}
 }
 
