@@ -312,6 +312,12 @@ body {
 		{
 			width: 100%;
 		}
+		.videoForm
+		{
+			z-index: 0;
+			width: 100%;
+			position: absolute;
+		}
 		.logoToyota
 		{
 			width: 240px;
@@ -508,7 +514,7 @@ body {
 		.percentageVideo
 		{
 			width: 100%;
-			height: 30vh;
+			height: 36vh;
 			min-height: 150px;
 			position: relative;
 			display: flex;

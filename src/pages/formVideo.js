@@ -25,6 +25,14 @@ const FormVideo = () => {
 
     return (
         <div className="formVideo">
+            <div dangerouslySetInnerHTML={{ __html: `
+                <video class="videoForm" playsinline="" autoplay=""  muted=""  id="">
+                    <source
+                        src="output-2.mp4" 
+                        type="video/mp4"
+                    />
+                </video>` }}>
+            </div>
             <div className="percentageVideo">
                 <div className="boxPercentage">
                     <div className="iconPercentage"></div>
