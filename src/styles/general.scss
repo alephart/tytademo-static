@@ -12,6 +12,61 @@ html, body {
     top: 0px;
     width: 101%;
     min-height: 100%;
+	opacity: 1;
+	-webkit-animation: fadeOut 6s ease-in-out 1 forwards;
+    -moz-animation: fadeOut 6s ease-in-out 1 forwards;
+    -o-animation: fadeOut 6s ease-in-out 1 forwards;
+    animation: fadeOut 6s ease-in-out 1 forwards;
+	animation-delay: 3s;
+}
+#video2 {
+	position: absolute;
+    right: -1px;
+    top: 0px;
+    width: 101%;
+    min-height: 100%;
+	opacity: 0;
+	-webkit-animation: fadeIn 4s ease-in-out 1 forwards;
+    -moz-animation: fadeIn 4s ease-in-out 1 forwards;
+    -o-animation: fadeIn 4s ease-in-out 1 forwards;
+    animation: fadeIn 4s ease-in-out 1 forwards;
+	animation-delay: 3s;
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@-webkit-keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@-moz-keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@-o-keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 body { 
 	font-family: NotoSans-Regular; 
@@ -96,6 +151,13 @@ body {
 			left: 0;
 			right: 0;
 			text-transform: lowercase;
+			span
+			{
+				font-family: 'ToyotaRegular';
+				display: block;
+				font-size: 14px;
+				line-height: 16px;
+			}
 		}
 		.buttonStart
 		{
@@ -126,7 +188,7 @@ body {
 	.terms
 	{
 		max-width: 414px;
-		width: 102%;
+		width: 100%;
 		min-height: 100%;
 		display: block;
 		margin: 0 auto;
@@ -188,15 +250,34 @@ body {
 		}
 		.paddingCanvas
 		{
-			height: 55vh;
+			height: 480px;
 			width: 100%;
 			position: relative;
+		}
+		.boxPhoto
+		{
+			height: 480px;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			background-position: center;
+			background-size: cover;
+		}
+		.bgdegrade
+		{
+			height: 480px;
+			width: 100%;
+			position: absolute;
+			top: 200px;
+			background-image: url("../assets/images/bgDegrade.png");
+			background-position: center;
+			background-size: cover;
 		}
 		.yesContinue,
 		.againPhoto
 		{
 			position: relative;
-			margin: 0 auto 20px;
+			margin: 30px auto 20px;
 		}
 		.againPhoto
 		{
@@ -207,9 +288,11 @@ body {
 		{
 			font-size: 18px;
 			width: 320px;
-			margin: 10% auto 20px;
+			margin: 2% auto 20px;
 			text-align: center;
 			text-transform: lowercase;
+			position: relative;
+			z-index: 1;
 		}
 
 		// sharedExperience
@@ -494,6 +577,7 @@ body {
 		.MuiInput-underline:after
 		{
 			border-bottom: 2px solid #fff;
+			transition: transform 0.5s cubic-bezier(0.0, 0, 0.2, 1) 0ms;
 		}
 		.MuiInputBase-input
 		{
@@ -542,16 +626,28 @@ body {
 			{
 				color: #5A2CFB;
 			}
+			.MuiSwitch-colorSecondary .MuiSwitch-thumb
+			{
+				background-image: url("../assets/images/icon-buttonx.png");
+				background-size: 20px;
+    			background-repeat: no-repeat;
+			}
+			.MuiSwitch-colorSecondary.Mui-checked .MuiSwitch-thumb
+			{
+				background-image: url("../assets/images/icon-button.png");
+			}
 			.MuiSwitch-switchBase
 			{
-				color: #fff;
+				color: #544E5C;
 			}
+			
 			.MuiSwitch-track
 			{
-				border: 2px solid #fff;
+				border: 2px solid #544E5C;
 				padding: 12px 22px;
 				margin: -7px -7px;
 				border-radius: 15px;
+				background-color: transparent;
 			}
 			.MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track
 			{
@@ -574,6 +670,144 @@ body {
 			}
 		}
 
+	}
+	.likePicture
+	{
+		.boxIframe
+		{
+			width: 375px;
+			height: 100%;
+			position: absolute;
+			top: -30px;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+		}
+		iframe
+		{
+			position: absolute;
+			width: 200%;
+			height: 200%;
+			border: none;
+			top: 0;
+			zoom: 0.50;
+			-moz-transform: scale(0.50);
+			-moz-transform-origin: 0 0;
+			-o-transform: scale(0.50);
+			-o-transform-origin: 0 0;
+			-webkit-transform: scale(0.50);
+			-webkit-transform-origin: 0 0;
+		}
+	}
+	// formVideo
+	.indexDesktop,
+	.notAvailable
+	{
+		background: #000;
+		width: 100%;
+		height: 100vh;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-image: url("../assets/images/bg-site-desktop.png");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		@include tablet
+		{
+			display: block;
+			min-height: 100vh;
+			height: auto;
+			padding: 5% 0 10%;
+		}
+		.boxItemsDesktop,
+		.boxItemsNotAvailable
+		{
+			display: block;
+			width: 100%;
+			max-width: 1280px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			@include tablet
+			{
+				display: block;
+			}
+
+			.videoDesktop
+			{
+				width: 50%;
+				height: auto;
+				float: left;
+				video
+				{
+					width: 100%;
+				}
+				@include tablet
+				{
+					width: 100%;
+					float: none;
+					display: block;
+					margin: 0 auto;
+				}
+			}
+			.copydesktop,
+			.copyNotAvailable
+			{
+				width: 50%;
+				height: auto;
+				float: left;
+				text-align: center;
+				padding: 0 10%;
+				@include tablet
+				{
+					width: 100%;
+					float: none;
+					display: block;
+					margin: 0 auto;
+				}
+				.logoToyota
+				{
+					width: 100%;
+					max-width: 287px;
+					margin: 0 auto;
+					display: block;
+				}
+				h2
+				{	
+					line-height: 30px;
+					margin: 65px auto 10px;
+					display: block;
+					width: 100%;
+					max-width: 280px;
+					font-size: 26px;
+					font-family: 'JoyrideEx';
+				}
+				p
+				{
+					margin: 0 auto;
+					display: block;
+					width: 100%;
+					max-width: 300px;
+					font-family: 'ToyotaRegular';
+				}
+			}
+			.copyNotAvailable
+			{
+				width: 100%;
+				p, h2
+				{
+					font-size: 14px;
+					max-width: 600px;	
+				}
+				a
+				{
+					text-decoration: underline;
+					font-family: 'ToyotaBold';
+				}
+			}
+		}
 	}
 }
 

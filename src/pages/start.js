@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link'
 
+
 const Start = () => {
     return (
         <div  className="starPage">
@@ -13,8 +14,19 @@ const Start = () => {
                     />
                 </video>,` }}>
             </div>
+            <div dangerouslySetInnerHTML={{ __html: `
+                <video playsinline="" loop="" autoplay=""  muted=""  id="video2">
+                    <source
+                        src="videoloop.mp4"
+                        type="video/mp4"
+                    />
+                </video>,` }}>
+            </div>
             <div className="copyStart">
                 TÓMATE UNA SELFIE Y SÉ PARTE DEL VIDEO DE LUNAY
+                <span>
+                    Regístrate y podrías ganar una charla virtual con Lunay y más premios increíbles.
+                </span>
             </div>
             <Link href="/chooseCharacter">
                 <Button className="buttonStart" variant="contained">comenzar</Button>

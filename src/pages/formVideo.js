@@ -60,7 +60,13 @@ const FormVideo = () => {
                 <Input {...register("emailRequired", { required: false })} placeholder="Email" inputProps={{ 'aria-label': 'description' }} />
                 {errors.emailRequired && <span className="errorsField">Por favor completa el campo</span>}
 
-                <Input {...register("zipRequired", { required: false })} placeholder="Zip code" inputProps={{ 'aria-label': 'description' }} />
+                <Input 
+                    type="number" 
+                    onInput = {(e) =>{e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,5)}} 
+                    {...register("zipRequired", { required: false })} 
+                    placeholder="Zip code" 
+                    inputProps={{ 'aria-label': 'description' }}
+                />
                 {errors.zipRequired && <span className="errorsField">Por favor completa el campo</span>}
                 
                 <div className="boxCheckbox">
@@ -89,8 +95,7 @@ const FormVideo = () => {
                     />
 
                 </div>
-                <div className="boxCheckbox">
-
+                {/* <div className="boxCheckbox">
                     <div className="copyCheckbox special">
                         <Link href="/termsP" color="inherit"> Acepto Políticas de tratamiento de datos</Link>
                     </div>
@@ -99,8 +104,7 @@ const FormVideo = () => {
                         onChange={handleChangeCheck}
                         inputProps={{ 'aria-label': 'primary checkbox' }}
                     />
-
-                </div>
+                </div> */}
                 <Link href="/sharedExperience">
                     <Button className="yesContinue" variant="contained">enviar video</Button>
                 </Link>

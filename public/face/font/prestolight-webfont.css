@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'prestolight';
+    src: url('prestolight-webfont.woff2') format('woff2'),
+         url('prestolight-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
