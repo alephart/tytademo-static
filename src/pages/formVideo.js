@@ -46,7 +46,7 @@ const FormVideo = () => {
                 ¡YA CASI!
             </div>
             <div className="copySubtitleForm">
-                Regístrate para obtener tu video
+                Regístrate para obtener tu video.
             </div>
             {errors.nameRequired && errors.lastNameRequired && errors.emailRequired && errors.zipRequired && <span className="errorsField center">Por favor completa todos los campos</span>}
             <form noValidate autoComplete="off">
@@ -57,14 +57,14 @@ const FormVideo = () => {
                 <Input {...register("lastNameRequired", { required: false })} placeholder="Apellido" inputProps={{ 'aria-label': 'description' }} />
                 {errors.lastNameRequired && <span className="errorsField">Por favor completa el campo</span>}
 
-                <Input {...register("emailRequired", { required: false })} placeholder="Email" inputProps={{ 'aria-label': 'description' }} />
+                <Input {...register("emailRequired", { required: false })} placeholder="Correo electrónico" inputProps={{ 'aria-label': 'description' }} />
                 {errors.emailRequired && <span className="errorsField">Por favor completa el campo</span>}
 
                 <Input 
                     type="number" 
                     onInput = {(e) =>{e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,5)}} 
                     {...register("zipRequired", { required: false })} 
-                    placeholder="Zip code" 
+                    placeholder="Código postal" 
                     inputProps={{ 'aria-label': 'description' }}
                 />
                 {errors.zipRequired && <span className="errorsField">Por favor completa el campo</span>}
@@ -83,9 +83,9 @@ const FormVideo = () => {
                 </div>
                 <div className="boxCheckbox">
                     <div className="copyCheckbox">
-                        Me gustaría ser contactado por mi concesionario Toyota para 
-                        una prueba de manejo y más información sobre cómo comprar o 
-                        arrendar un vehículo Toyota.
+                        Me gustaría que mi concesionario local Toyota me contactara 
+                        para una prueba de manejo y para darme más información sobre 
+                        la compra o arrendamiento de un vehículo Toyota nuevo.
                     </div>
                     <Switch
                         checked={state.checkedB}
@@ -106,7 +106,7 @@ const FormVideo = () => {
                     />
                 </div> */}
                 <Link href="/sharedExperience">
-                    <Button className="yesContinue" variant="contained">enviar video</Button>
+                    <Button className="yesContinue" variant="contained">VER VIDEO</Button>
                 </Link>
             </form>
         </div>

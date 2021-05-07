@@ -72,12 +72,20 @@ body {
 	font-family: NotoSans-Regular; 
 	-webkit-font-smoothing: antialiased;
 	background: transparent;
-	background: #fff;
+	background: #000;
 	color: #fff;
 	letter-spacing: 1px;
 	overflow-x: hidden;
     position: absolute;
 	height: 100%;
+	.MuiPaper-root
+	{
+		background-color: #000;
+	}
+	.MuiDialogContent-root:first-child
+	{
+		padding-top: 0px;
+	}
 	img
 	{
 		width: 100%;
@@ -110,6 +118,10 @@ body {
 			color: #fff ;
 			margin: 0 auto;
 		}
+	}
+	.MuiButton-contained:hover
+	{
+		background-color: #4720D6;
 	}
 	&.fancybox-active
 	{
@@ -296,6 +308,10 @@ body {
 		}
 
 		// sharedExperience
+		.videoGeneral
+		{
+			width: 100%;
+		}
 		.logoToyota
 		{
 			width: 240px;
@@ -479,6 +495,10 @@ body {
 			}
 		}
 
+	}
+	.terms
+	{
+		color: #fff;
 	}
 	// formVideo
 	.formVideo
