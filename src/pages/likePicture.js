@@ -13,7 +13,7 @@ const LikePicture = () => {
                 ¿TE GUSTA ESTA FOTO?
             </div>
             <Link href="/formVideo">
-                <Button className="yesContinue" variant="contained">¡SI!</Button>
+                <Button className="yesContinue" variant="contained">¡SÍ!</Button>
             </Link>
             <Link href="/chooseCharacter">
                 <Button className="againPhoto" variant="contained">VOLVER A TOMAR</Button>
