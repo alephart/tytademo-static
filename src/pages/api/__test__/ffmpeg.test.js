@@ -2,7 +2,8 @@ const commandExistsSync = require('command-exists').sync;
 const { checkFileSync, removeFileSync } = require('../lib/fileActions');
 const path = require('path');
 const { 
-  concatVideosFluent,
+  concatVideosTxtFluent,
+  concatVideosArrayFluent,
   changeTrackFluent,
   placeWatermarkOnVideo, 
   transitionMergeVideosExec,
@@ -21,7 +22,7 @@ describe('fluent ffmpeg', () => {
     expect(ffmpegExist).toBeTruthy();
   });
   
-  itif(ffmpegExist)('it should join videos with fluent-ffmpeg', async (done) => {
+  itif(ffmpegExist)('it should join videos from txt file with fluent-ffmpeg', async (done) => {
     const data = {
       output: `${DIR_TEMP}/video-test.mp4`,
       fileVideos: `${DIR_TEMP}/videos-test.txt`,
@@ -30,7 +31,9 @@ describe('fluent ffmpeg', () => {
     try {
       removeFileSync(data.output);
   
-      await concatVideosFluent(data);
+      console.time(':::::concat videos:::::');
+      await concatVideosTxtFluent(data);
+      console.timeEnd(':::::concat videos:::::');
 
     } catch (error) {
       console.log(error);
@@ -43,7 +46,44 @@ describe('fluent ffmpeg', () => {
 
   }, 30000);
 
-  itif(ffmpegExist)('it should join video plus track audio with fluent-ffmpeg', async (done) => {
+  itif(ffmpegExist).skip('it should join videos from array data with fluent-ffmpeg', async (done) => {
+    const data = {
+      output: `${DIR_TEMP}/video-test.mp4`,
+      videos: [
+        `${DIR_TEMP}/footage/001.mp4`,
+        `${DIR_TEMP}/002-SIDEKICK-SWAP.mp4`,
+        `${DIR_TEMP}/footage/003.mp4`,
+        `${DIR_TEMP}/footage/004-WOMAN.mp4`,
+        `${DIR_TEMP}/footage/005.mp4`,
+        `${DIR_TEMP}/006-SIDEKICK-SWAP.mp4`,
+        `${DIR_TEMP}/footage/007.mp4`,
+        `${DIR_TEMP}/008-SIDEKICK-SWAP.mp4`,
+        `${DIR_TEMP}/footage/009.mp4`,
+        `${DIR_TEMP}/footage/010-WOMAN.mp4`,
+        `${DIR_TEMP}/footage/011.mp4`,
+        `${DIR_TEMP}/footage/012-WOMAN.mp4`,
+      ],
+    };
+
+    try {
+      removeFileSync(data.output);
+  
+      console.time(':::::concat videos array:::::');
+      await concatVideosArrayFluent(data);
+      console.timeEnd(':::::concat videos array:::::');
+
+    } catch (error) {
+      console.log(error);
+      throw error;  
+    }
+
+    done();
+
+    expect(checkFileSync(data.output)).toBeTruthy();
+
+  }, 30000);
+
+  itif(ffmpegExist).skip('it should join video plus track audio with fluent-ffmpeg', async (done) => {
     const NAME_TRACK_AUDIO = 'footage/Lunay_TodoONada.m4a';
 
     const data = {
@@ -55,7 +95,9 @@ describe('fluent ffmpeg', () => {
     try {
       removeFileSync(data.output);
   
+      console.time(':::::track:::::');
       await changeTrackFluent(data);
+      console.timeEnd(':::::track:::::');
 
     } catch (error) {
       console.log(error);
@@ -106,7 +148,7 @@ describe.skip('ffmpeg old', () => {
         `${DIR_TEMP}/video4.mp4`,
       ],
       transition: {
-        name: 'directionalWipe',
+        name: 'fade',
         duration: 300
       }
     };

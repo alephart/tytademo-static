@@ -3,7 +3,7 @@ const cuid = require('cuid');
 //import { PROCESS_ENUM } from '@/utils/globals';
 const { uploadFile } = require('../lib/bucketS3API');
 const { decodeBase64Image } = require ('../lib/utils');
-const { concatVideosFluent, changeTrackFluent } = require('../lib/ffmpegActions');
+const { concatVideosTxtFluent, changeTrackFluent } = require('../lib/ffmpegActions');
 const { createDirSync, removeFileSync, loadFileSync, writeFileSync, writeFile } = require('../lib/fileActions');
 const { uploadAsset, detectFacesInAsset } = require('../lib/refaceAPI');
 const { dataSwapVideos, downloadSwapVideos, buildFileVideos, adjustTbnVideos } = require('../lib/refaceActions');
@@ -48,17 +48,17 @@ export default async (req, res) => {
     console.timeEnd("Read Photo from system");
 
     console.time("uploadAsset to DeepFake");
-    const uploadAssetReface = await uploadAsset(binaryFile, `image/${ext}`);
+    const uploadAsseUrlFile = await uploadAsset(binaryFile, `image/${ext}`);
     console.timeEnd("uploadAsset to DeepFake");
 
-    const responseAsset = JSON.parse(uploadAssetReface);
-
-    //console.log(responseAsset);
+    if (!uploadAsseUrlFile) {
+      // return 
+      res.status(200).send({ success: false, message: 'Please, take you photo again' }); // 'ERROR - uploading to Google Storage Failed'
+    }
 
     // 2. Get cant faces and faceId
     console.time("detectFacesInAsset");
-    const faces = await detectFacesInAsset(responseAsset.urlFile, `image/${ext}`);
-    // console.log('faces >>>', faces);
+    const faces = await detectFacesInAsset(uploadAsseUrlFile, `image/${ext}`);
     console.timeEnd("detectFacesInAsset");
 
     // Check faces for process
@@ -110,6 +110,7 @@ export default async (req, res) => {
       const nameFileVideos = `videos-${subName}.txt`;
       writeFileSync( path.join(DIR_TEMP, nameFileVideos), buildFileVideos(adjustVideos, videoListAll, character) );
       console.timeEnd("Write file .txt whit info videos");
+      
       // 6. Merge videos (get final video)
       const dataFinal = {
         output: `${DIR_TEMP}/video-${subName}.mp4`,
@@ -117,7 +118,7 @@ export default async (req, res) => {
       };
 
       console.time("concatVideosFluent - ffmpeg direct exec");
-      await concatVideosFluent(dataFinal);
+      await concatVideosTxtFluent(dataFinal);
       console.timeEnd("concatVideosFluent - ffmpeg direct exec");
 
       // 6.1 chage track in final video 
@@ -133,20 +134,6 @@ export default async (req, res) => {
       await changeTrackFluent(dataTrack);
       console.timeEnd("changeTrackFluent - ffmpeg add track audio");
 
-      // // create watermark into video - this process is very slow
-      // let videoTemp = dataFinal.output;
-
-      // dataFinal = {
-      //   output: `${DIR_TEMP}/temp-${videoTemp}`,
-      //   video: videoTemp,
-      //   watermark: `${DIR_TEMP}/FeaturingYou.png`,
-      // };
-
-      // // remove posible video exists 
-      // // removeFileSync(dataFinal.output);
-
-      // await placeWatermarkOnVideo(dataFinal);
-
       /********************************************************************************************************************
        * The following processes are asynchronous, but I will use the technique that they run in parallel 
        * ([sync] since they can be independent) and it will continue until they all proceed (promises all)
@@ -159,17 +146,18 @@ export default async (req, res) => {
       // save final video on cloud
       const videoLocation = uploadFile(dataTrack.output, nameFinalVideo, 'video', true);
       
-      // save sub videos on cloud
-      let removeSubVideos = [];
+      // save sub videos on cloud [this will not necessary for the final version]
+      //let removeSubVideos = [];
       const allSubVideos = adjustVideos.map((video, index) => {
         const pathFile = path.join(DIR_TEMP, video);
-        removeSubVideos[index] = pathFile;
+        //removeSubVideos[index] = pathFile;
         return uploadFile(pathFile, video, 'video', true);
       });
       
       const footage = await Promise.all([photoLocation, videoLocation, ...allSubVideos]);
       console.timeEnd("uploadFile - save assets on S3");
 
+      /* 
       console.time("Remove files assets from system");
       // TODO: generate list assets to remove - remove in async parallel
       removeFileSync(pathFinalPhoto);
@@ -178,7 +166,8 @@ export default async (req, res) => {
       removeFileSync(removeSubVideos);
       removeFileSync(dataFinal.fileVideos);
       console.timeEnd("Remove files assets from system");
-      
+       */
+
       response = { success: true, data: footage };
       console.log(response);
       

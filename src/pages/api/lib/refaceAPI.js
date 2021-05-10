@@ -59,16 +59,9 @@ const uploadAsset = async (binaryFile, contentType) => {
       });
 
       const status = await response.status;
-      const bool = await response.text();
+      //const bool = await response.text();
   
-      if (status === 200) {
-        res = JSON.stringify({success: true, urlFile: data.signedUrl.split('?')[0]});
-      } else {
-        res = JSON.stringify({success: false, error: 'ERROR - uploading to Google Storage Failed', msg: bool});
-      }
-
-      return res;
-
+      return status === 200 ? data.signedUrl.split('?')[0] : false;
     }
 
   } catch (error) {
