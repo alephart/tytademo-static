@@ -95,8 +95,7 @@ body {
 	.buttonJoin,
 	.buttonThanks,
 	.yesContinue,
-	.againPhoto,
-	.linkVideo
+	.againPhoto
 	{
 		background-color: #5A2DFC ;
 		color: #fff ;
@@ -195,7 +194,6 @@ body {
 	.chooseCharacter,
 	.formVideo,
 	.checkVideoFinal,
-	.copyLink,
 	.sharedExperience,
 	.likePicture,
 	.loading,
@@ -422,13 +420,6 @@ body {
 				display: block;
 			}
 		}	
-	}
-	.copyLink
-	{
-		.linkVideo
-		{
-			margin: 0 auto 20px;
-		}
 	}
 	.sharedExperience
 	{
