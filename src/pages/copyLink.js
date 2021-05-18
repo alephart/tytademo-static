@@ -1,33 +1,30 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
+import Link from 'next/link'
 
 const CopyLink = () => {
     return (
-        <div className="sharedExperience">
+        <div className="copyLink">
             <img className="logoToyota" src="images/logo-toyota.png" alt=""/>
-            <video src="images/logo-toyota.png">
-
-            </video>
-            <div className="copyThanks">
-                 <br/>
-                <div className="copyLunay">
-                    ¡Ya eres parte del video de LUNAY!
-                </div>
+            <div dangerouslySetInnerHTML={{ __html: `
+                <video class="videoGeneral" controls="" playsinline="" id="">
+                    <source
+                        src="output-2.mp4"
+                        type="video/mp4"
+                    />
+                </video>` }}>
+            </div>
+            <div className="copyJoin">
+                ve el video de tu <br/>
+                amigo y crea el tuyo.
                 <span>
-                    Ahora descárgalo y compártelo con el mundo, podrías ganar que Lunay lo comparta y otros premios increíbles. 
+                    Para participar copia el link, luego desde el menú busca la opción abrir desde navegador.
                 </span>
             </div>
-            <div className="sharedSocial">
-                compartir video <br/>
-                <div className="iconSocial">
-                    <a href="">
-                        <img src="images/twitter.svg" alt=""/>
-                    </a>
-                    <a href="">
-                        <img src="images/facebook.svg" alt=""/>
-                    </a>
-                </div>
-            </div>
+            <img className="logoToyota" src="images/copyLink.png" alt=""/>
+            <Link href="/start">
+                <Button className="linkVideo" variant="contained">¡QUIERO MI VIDEO!</Button>
+            </Link>
         </div>
     )
 }
