@@ -751,7 +751,6 @@ body {
 		background-size: cover;
 		@include tablet
 		{
-			display: block;
 			min-height: 100vh;
 			height: auto;
 			padding: 5% 0 10%;
