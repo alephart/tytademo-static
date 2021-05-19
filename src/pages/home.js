@@ -1,20 +1,18 @@
 import { useState } from 'react';
 import Layout from '@/components/Layout';
-import DialogTerms from '@/components/dialogs/Terms'; 
+import DialogTyta from '@/components/Dialogs'; 
 
 const Home = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  
+  const [isOpenDialog, setIsOpenDialog] = useState(false);
 
   return (
     <Layout>
       <div>Prueba!!!!</div>
 
       <div className="copyFooter">
-          Haz <a onClick={() => setIsOpen(!isOpen)} role="button">click aquí</a> para ver las reglas y condiciones.
+          Haz <a className="" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">click aquí</a> para ver las reglas y condiciones.
       </div>
-      <DialogTerms dialog='terms' isOpen={isOpen} />
+      <DialogTyta dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
     </Layout>
   )
 }

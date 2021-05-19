@@ -1,4 +1,4 @@
-const TermsContent = () => (
+const PoliciesContent = () => (
   <div className='copyThanks'>
     <br />
     <div className='copyLunay'>¡Ya eres parte del video de LUNAY!</div>
@@ -42,4 +42,4 @@ const TermsContent = () => (
   </div>
 );
 
-export default TermsContent;
+export default PoliciesContent;
