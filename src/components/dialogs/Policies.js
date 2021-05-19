@@ -2,7 +2,7 @@ const PoliciesContent = () => (
   <div className='copyThanks'>
     <br />
     <div className='copyLunay'>¡Ya eres parte del video de LUNAY!</div>
-    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+    <div className='copyLunay'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
     <p className='textTerms'>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
