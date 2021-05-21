@@ -11,14 +11,14 @@ const IndexDesktop = () => {
                     <div dangerouslySetInnerHTML={{ __html: `
                         <video playsinline="" autoplay=""  muted=""  id="">
                             <source
-                                src="output-1.mp4"
+                                src="/output-1.mp4"
                                 type="video/mp4"
                             />
                         </video>` }}>
                     </div>
                 </div>
                 <div className="copydesktop">
-                    <img className="logoToyota" src="images/logo-toyota.png" alt=""/>
+                    <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
                     <h2>
                         y tú, ¿ya participaste?
                     </h2>

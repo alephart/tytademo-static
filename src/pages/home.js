@@ -20,7 +20,7 @@ const Home = () => {
           </span>
       </div>
 
-      <Link href="/chooseCharacter">
+      <Link href="/start/chooseCharacter">
           <Button className="buttonStart" variant="contained">comenzar</Button>
       </Link>
 

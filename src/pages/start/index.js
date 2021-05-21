@@ -43,7 +43,7 @@ const Start = () => {
                     Regístrate y podrías ganar una charla virtual con Lunay y más premios increíbles.
                 </span>
             </div>
-            <Link href="/chooseCharacter">
+            <Link href="/start/chooseCharacter">
                 <Button className="buttonStart" variant="contained">comenzar</Button>
             </Link>
             <div className="copyFooter">
