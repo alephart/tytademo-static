@@ -1,8 +1,8 @@
 
-// Here compose all videos that were previously adjusted in Reface.
+// Here compose all videos that were previously adjusted in DeepFake.
 
 // The functions return array with objects. 
-// Each object is how it should be sent to Reface to do the swap.
+// Each object is how it should be sent to DeepFake to do the swap.
 
 // Step 3. Swap videos [sidekick] and get ids
 export const videosListMan = (faceId) => {
@@ -10,27 +10,27 @@ export const videosListMan = (faceId) => {
   return [
     { // 02
       intensity: 1,
-      video_id: 'ef3acc67-21f2-42f7-957f-343c554490bb',
+      video_id: '7c8a8787-87d6-4baa-bf67-bd72e00374a3',
       facemapping: {
-        '28df3a19-5b70-4f87-861b-d1d3870b5c0c': [
+        'a4b1cc83-0c86-43c9-97f0-179751a26921': [
           `${faceId}`
         ]
       },
     },
     { // 06
       intensity: 1,
-      video_id: 'c82cbbce-3a57-4444-9588-b011a0a75236',
+      video_id: '2160d8fa-658c-4631-b888-37d954e8ac40',
       facemapping: {
-        'ef5220a5-7351-428c-9306-70ab0c80648b': [
+        '4bfeed2f-7396-403a-ab1f-5ca5f62ad23a': [
           `${faceId}`
         ]
       },
     },
     { // 08
       intensity: 1,
-      video_id: '935caaa1-e93b-4cae-8fd4-b7a5ac8a592d',
+      video_id: 'fdddee18-c0e3-437d-ab5c-e5239499bf78',
       facemapping: {
-        '6d83c3e1-adae-49fc-96cf-f8a5ccd30492': [
+        '8884158c-90c1-4e68-9484-8c75fd309e3c': [
           `${faceId}`
         ]
       },
@@ -44,36 +44,36 @@ export const videosListWoman = (faceId) => {
   return [
     { // 04
       intensity: 1,
-      video_id: '658fdbac-444b-4a64-86be-990f9c9d9f64',
+      video_id: '5efa4d77-f19f-4722-9be5-8f65e599a46e',
       facemapping: {
-        '9afceb47-cfef-4579-b3f7-3aae791d3838': [
+        'd727820b-acab-45f4-ace7-69c1f31ea809': [
           `${faceId}`
         ]
       },
     },
     { // 08
       intensity: 1,
-      video_id: '935caaa1-e93b-4cae-8fd4-b7a5ac8a592d',
+      video_id: 'fdddee18-c0e3-437d-ab5c-e5239499bf78',
       facemapping: {
-        '4dfa57b9-09cd-4202-b30a-157e1bfc9857': [
+        '54500bbd-6813-40c7-819b-79b86478511d': [
           `${faceId}`
         ]
       },
     },
     { // 10
       intensity: 1,
-      video_id: 'eb3b7ff2-88be-4f67-9fa7-6f97a081b59c',
+      video_id: '9e4fd31f-e078-48a5-96ae-6627a01db274',
       facemapping: {
-        'dfcadbd3-d100-42df-b74e-42e944237731': [
+        '8ea9fa0e-629e-4721-b0f7-86b93ca90397': [
           `${faceId}`
         ]
       },
     },
     { // 12
       intensity: 1,
-      video_id: 'dff5e754-d3d0-476d-b77f-8fdf5c5d759f',
+      video_id: '943b2b8d-af42-4b2c-9784-b3177b180642',
       facemapping: {
-        'edbc59e5-6b7e-4b5b-bead-d1234e06ec99': [
+        '2e7ee0ab-e6fe-4afc-853b-dc48466a4ee6': [
           `${faceId}`
         ]
       },

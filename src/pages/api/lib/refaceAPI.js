@@ -39,9 +39,9 @@ const getSignedUrl = async (type) => {
 
 /**
  * [PUT] Upload Asset and return signed_url
- * @param {binary} binaryFile   binary file. image or video.
+ * @param {binary} binaryFile   binary file ['image/jpeg' | 'video/mp4']
  * @param {string} contentType  header Content-Type
- * @returns string JSON wit signed_url (image or video)
+ * @returns string JSON wit signed_url [image or video]
  */
 const uploadAsset = async (binaryFile, contentType) => {
   const type = contentType.split('/')[1];
@@ -55,20 +55,13 @@ const uploadAsset = async (binaryFile, contentType) => {
       const response = await fetch(data.signedUrl, {
         method: 'PUT',
         body: binaryFile,
-        headers: {'Content-Type': contentType} // eg: 'image/jpeg' | 'video/mp4'
+        headers: {'Content-Type': contentType}
       });
 
       const status = await response.status;
-      const bool = await response.text();
+      //const bool = await response.text();
   
-      if (status === 200) {
-        res = JSON.stringify({success: true, urlFile: data.signedUrl.split('?')[0]});
-      } else {
-        res = JSON.stringify({success: false, error: 'ERROR - uploading to Google Storage Failed', msg: bool});
-      }
-
-      return res;
-
+      return status === 200 ? data.signedUrl.split('?')[0] : false;
     }
 
   } catch (error) {
@@ -78,18 +71,15 @@ const uploadAsset = async (binaryFile, contentType) => {
 }
 
 /**
- * [POST] Detect face in Asset.
- * Image: return the first id face or specific number of array
+ * [POST] Detect faces in Asset.
+ * Image: detect and return the faces id
  * TODO: Video: return the ids face in the number faces into video (adjust)
  * @param {string} imageUrl     url image upload on reface
  * @param {string} contentType  header Content-Type
- * @param {number} numberFace   is the number face in array to get id
- * @returns the faceId from the image (photo)
+ * @returns Array with faces Id from the image (photo)
  */
-const detectFacesInAsset = async (imageUrl, contentType, numberFace = 0) => {
+const detectFacesInAsset = async (imageUrl, contentType) => {
   const endPoint = contentType === 'video/mp4' ? '/addvideo' : '/addimage';
-  let resFinal = [];
-
   const obj = {image_url: imageUrl};
 
   try {
@@ -100,7 +90,7 @@ const detectFacesInAsset = async (imageUrl, contentType, numberFace = 0) => {
     });
 
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
 
     //const faces = Object.keys(data.imageInfo.faces);
     const faces = Object.entries(data.imageInfo.faces);
