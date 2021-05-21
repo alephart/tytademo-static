@@ -68,7 +68,7 @@ html, body {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-body { 
+body {
 	font-family: NotoSans-Regular; 
 	-webkit-font-smoothing: antialiased;
 	background: transparent;
@@ -89,6 +89,9 @@ body {
 	img
 	{
 		width: 100%;
+	}
+	a {
+		cursor: pointer;
 	}
 	.buttonStart,
 	.buttonPhoto,
@@ -131,7 +134,7 @@ body {
 			width: 100%;
 		}
 	}
-	.starPage
+	.startPage
 	{
 		max-width: 414px;
 		width: 100%;
@@ -191,6 +194,7 @@ body {
 			}
 		}
 	}
+	.container,
 	.chooseCharacter,
 	.formVideo,
 	.checkVideoFinal,
@@ -742,7 +746,6 @@ body {
 		background-size: cover;
 		@include tablet
 		{
-			display: block;
 			min-height: 100vh;
 			height: auto;
 			padding: 5% 0 10%;

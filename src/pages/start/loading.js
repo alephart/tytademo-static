@@ -5,7 +5,7 @@ const Loading = () => {
     return (
         <div className="loading">
             <div>
-                <img className="logoToyota" src="images/logo-toyota.png" alt=""/>
+                <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
                 <div className="percentageVideo">
                     <div className="boxPercentage">
                         <div className="iconPercentage"></div>

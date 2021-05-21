@@ -8,18 +8,17 @@ const IndexDesktop = () => {
         <div  className="indexDesktop">
             <div className="boxItemsDesktop">
                 <div className="videoDesktop">
-                    <img className="logoToyota" src="images/video.png" alt=""/>
-                    {/* <div dangerouslySetInnerHTML={{ __html: `
+                    <div dangerouslySetInnerHTML={{ __html: `
                         <video playsinline="" autoplay=""  muted=""  id="">
                             <source
-                                src=".mp4"
+                                src="/output-1.mp4"
                                 type="video/mp4"
                             />
-                        </video>,` }}>
-                    </div> */}
+                        </video>` }}>
+                    </div>
                 </div>
                 <div className="copydesktop">
-                    <img className="logoToyota" src="images/logo-toyota.png" alt=""/>
+                    <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
                     <h2>
                         y tú, ¿ya participaste?
                     </h2>

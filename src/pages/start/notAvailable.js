@@ -8,7 +8,7 @@ const NotAvailable = () => {
         <div  className="notAvailable">
             <div className="boxItemsNotAvailable">
                 <div className="copyNotAvailable">
-                    <img className="logoToyota" src="images/logo-toyota.png" alt=""/>
+                    <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
                     <h2>
                         esta campaña no está disponible en tu país.
                     </h2>

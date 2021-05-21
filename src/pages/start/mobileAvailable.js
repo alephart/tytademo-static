@@ -8,7 +8,7 @@ const mobileAvailable = () => {
         <div  className="notAvailable">
             <div className="boxItemsNotAvailable">
                 <div className="copyNotAvailable">
-                    <img className="logoToyota" src="images/logo-toyota.png" alt=""/>
+                    <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
                     <h2>
                         ingresa desde tu celular, tómate la foto y se parte del video de lunay
                     </h2>

@@ -5,15 +5,15 @@ import Link from 'next/link'
 const Terms = () => {
     return (
         <div className="terms">
-            <img className="logoToyota" src="images/logo-toyota.png" alt=""/>
+            <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
             <div className="copyThanks">
                  <br/>
                 <div className="copyLunay">
                     ¡Ya eres parte del video de LUNAY!
                 </div>
-                <span>
+                <div className="copyLunay">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </span>
+                </div>
                 <p className="textTerms">
                     Lorem ipsum dolor sit amet, 
                     consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -44,7 +44,7 @@ const Terms = () => {
                 </p>
                 
             </div>
-            <Link href="/sharedExperience">
+            <Link href="/start/sharedExperience">
                 <Button className="buttonThanks" variant="contained">Volver</Button>
             </Link>
         </div>

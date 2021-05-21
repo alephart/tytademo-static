@@ -16,12 +16,12 @@ const ChooseCharacter = () => {
                 ELIGE TU PERSONAJE
             </div>
             <div className={`selectCharacter1 ${character === 'male' ? 'selected' : ''}`} onClick={() => handleSelectCharacter('male')}>
-                <img src="images/masculino.png" alt=""/>
+                <img src="/images/masculino.png" alt=""/>
             </div>
             <div className={`selectCharacter2 ${character === 'female' ? 'selected' : ''}`} onClick={() => handleSelectCharacter('female')}>
-                <img src="images/femenino.png" alt=""/>
+                <img src="/images/femenino.png" alt=""/>
             </div>
-            <Link href="/likePicture">
+            <Link href="/start/likePicture">
                 <Button disabled={!character} className="buttonPhoto" variant="contained">TOMAR FOTO</Button>
             </Link>
         </div>

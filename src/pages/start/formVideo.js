@@ -28,7 +28,7 @@ const FormVideo = () => {
             <div dangerouslySetInnerHTML={{ __html: `
                 <video class="videoForm" playsinline="" autoplay=""  muted=""  id="">
                     <source
-                        src="output-2.mp4" 
+                        src="/output-2.mp4" 
                         type="video/mp4"
                     />
                 </video>` }}>
@@ -113,7 +113,7 @@ const FormVideo = () => {
                         inputProps={{ 'aria-label': 'primary checkbox' }}
                     />
                 </div> */}
-                <Link href="/sharedExperience">
+                <Link href="/start/sharedExperience">
                     <Button className="yesContinue" variant="contained">VER VIDEO</Button>
                 </Link>
             </form>
