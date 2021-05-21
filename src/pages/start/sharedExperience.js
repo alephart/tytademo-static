@@ -20,11 +20,11 @@ const SharedExperience = () => {
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
     return (
         <div className="sharedExperience">
-            <img className="logoToyota" src="images/logo-toyota.png" alt=""/>
+            <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
             <div dangerouslySetInnerHTML={{ __html: `
                 <video class="videoGeneral" controls="" playsinline="" id="">
                     <source
-                        src="output-1.mp4"
+                        src="/output-1.mp4"
                         type="video/mp4"
                     />
                 </video>` }}>
@@ -43,14 +43,14 @@ const SharedExperience = () => {
                 compartir video <br/>
                 <div className="iconSocial">
                     <a href="">
-                        <img src="images/twitter.svg" alt=""/>
+                        <img src="/images/twitter.svg" alt=""/>
                     </a>
                     <a href="">
-                        <img src="images/facebook.svg" alt=""/>
+                        <img src="/images/facebook.svg" alt=""/>
                     </a>
                 </div>
             </div>
-            <Link href="/checkVideoFinal">
+            <Link href="/start/checkVideoFinal">
                 <Button className="buttonThanks" variant="contained">descargar video</Button>
             </Link>
             <div className="copyFooter">
@@ -66,7 +66,7 @@ const SharedExperience = () => {
                 <DialogContent>
                 <DialogContentText id="alert-dialog-description">
                 <div className="terms">
-                    <img className="logoToyota" src="images/logo-toyota.png" alt=""/>
+                    <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
                     <div className="copyThanks">
                         <br/>
                         <div className="copyLunay">

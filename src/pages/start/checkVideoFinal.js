@@ -5,11 +5,11 @@ import Link from 'next/link'
 const CheckVideoFinal = () => {
     return (
         <div className="checkVideoFinal">
-            <img className="logoToyota" src="images/logo-toyota.png" alt=""/>
+            <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
             <div dangerouslySetInnerHTML={{ __html: `
                 <video class="videoGeneral" controls="" playsinline="" id="">
                     <source
-                        src="output-2.mp4"
+                        src="/output-2.mp4"
                         type="video/mp4"
                     />
                 </video>` }}>
