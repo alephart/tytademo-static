@@ -20,7 +20,7 @@ const Start = () => {
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('lg'));
     return (
-        <div  className="starPage">
+        <div  className="startPage">
             <div dangerouslySetInnerHTML={{ __html: `
                 <video playsinline="" autoplay=""  muted=""  id="video">
                     <source

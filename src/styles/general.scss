@@ -68,7 +68,7 @@ html, body {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-body { 
+body {
 	font-family: NotoSans-Regular; 
 	-webkit-font-smoothing: antialiased;
 	background: transparent;
@@ -90,12 +90,16 @@ body {
 	{
 		width: 100%;
 	}
+	a {
+		cursor: pointer;
+	}
 	.buttonStart,
 	.buttonPhoto,
 	.buttonJoin,
 	.buttonThanks,
 	.yesContinue,
-	.againPhoto
+	.againPhoto,
+	.linkVideo
 	{
 		background-color: #5A2DFC ;
 		color: #fff ;
@@ -131,7 +135,7 @@ body {
 			width: 100%;
 		}
 	}
-	.starPage
+	.startPage
 	{
 		max-width: 414px;
 		width: 100%;
@@ -191,9 +195,11 @@ body {
 			}
 		}
 	}
+	.container,
 	.chooseCharacter,
 	.formVideo,
 	.checkVideoFinal,
+	.copyLink,
 	.sharedExperience,
 	.likePicture,
 	.loading,
@@ -420,6 +426,13 @@ body {
 				display: block;
 			}
 		}	
+	}
+	.copyLink
+	{
+		.linkVideo
+		{
+			margin: 0 auto 20px;
+		}
 	}
 	.sharedExperience
 	{
@@ -742,7 +755,6 @@ body {
 		background-size: cover;
 		@include tablet
 		{
-			display: block;
 			min-height: 100vh;
 			height: auto;
 			padding: 5% 0 10%;
