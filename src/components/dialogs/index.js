@@ -22,7 +22,7 @@ const DialogTyta = ({ dialog, isOpen, setIsOpen }) => {
     >
       <DialogContent>
         <DialogContentText id='alert-dialog-description' className='terms'>
-          <img className='logoToyota' src='images/logo-toyota.png' alt='Toyota' />
+          <img className='logoToyota' src='/images/logo-toyota.png' alt='Toyota' />
           {dialog === 'terms' ? <TermsContent /> : <PoliciesContent />}
           
           <Button
