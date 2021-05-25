@@ -1,16 +1,18 @@
 import { useState } from 'react';
-import Link from 'next/link';
-import Layout from '@/components/layouts/StartPage';
-import Button from '@material-ui/core/Button';
-import FlowExperience from '';
+import Layout from '@/components/layouts/General';
+import { CharacterChoose } from '@/components/FlowExperience';
+import { PROCESS_ENUM } from '@/utils/globals';
+
 const Experience = () => {
+  const [process, setProcess] = useState(PROCESS_ENUM.character);
+  const [character, setCharacter] = useState(null);
 
   return (
     <Layout>
+      {process === PROCESS_ENUM.character && (
+        <CharacterChoose character={character} setCharacter={setCharacter} setProcess={setProcess} />
+      )}
 
-      <Link href="/start/chooseCharacter">
-          <Button className="buttonStart" variant="contained">comenzar</Button>
-      </Link>
 
     </Layout>
   )

@@ -3,8 +3,9 @@
  *******************************/
 export const PROCESS_ENUM = Object.freeze(
   { 
-    take: 'takePhoto', 
-    select: 'selectPhoto',
-    repeat: 'repeatPhoto',
+    character: 'characterChoose',
+    cameraSelect: 'cameraSelect',
+    photoTake: 'photoTake', 
+    photoRepeat: 'photoRepeat',
   }
 );

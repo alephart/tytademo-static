@@ -6,7 +6,7 @@
 // 5.  Not valid Photo - Take again -> 3 (swap)
 // 6.  Email Confirm (laravel)
 // 7.  Email aleady exist (laravel)
-// 8.  Email not exist then process Reface (swap)
+// 8.  Email exist then process Reface (swap)
 // 9.  Complete other form fields -> 12 (laravel)
 // 10. End Swap process (swap)
 // 11. Return data final video
