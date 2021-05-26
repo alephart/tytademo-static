@@ -5,6 +5,7 @@ import {
   PhotoTake, 
   PictureConfirm,
   RegisterInfo,
+  ShareExperience,
 } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/utils/globals';
 
@@ -36,6 +37,10 @@ const Experience = () => {
 
       {process === PROCESS_ENUM.register && (
         <RegisterInfo setProcess={setProcess} />
+      )}
+
+      {process === PROCESS_ENUM.share && (
+        <ShareExperience setProcess={setProcess} />
       )}
     </Layout>
   )

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Layout from '@/components/layouts/StartPage';
-import DialogTyta from '@/components/Dialogs';
+import DialogTyta from '@/components/DialogsTyta';
 import { VideoBg } from '@/components/Anims';
 import Button from '@material-ui/core/Button';
 
@@ -20,7 +20,7 @@ const Home = () => {
           </span>
       </div>
 
-      <Link href="/start/chooseCharacter">
+      <Link href="/experience">
           <Button className="buttonStart" variant="contained">comenzar</Button>
       </Link>
 

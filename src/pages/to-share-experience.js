@@ -3,7 +3,7 @@ import Layout from '@/components/layouts/General';
 import { ShareExperience } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/utils/globals';
 
-const ShareExp = () => {
+const ToShareExp = () => {
   const [process, setProcess] = useState(PROCESS_ENUM.share);
   console.log('Actual process', process);
 
@@ -24,4 +24,4 @@ const ShareExp = () => {
   )
 }
 
-export default ShareExp;
+export default ToShareExp;

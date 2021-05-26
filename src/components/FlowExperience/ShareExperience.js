@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Button from '@material-ui/core/Button';
-import DialogTyta from '@/components/Dialogs';
+import DialogTyta from '@/components/DialogsTyta';
 import Link from 'next/link';
 
-const SharedExperience = () => {
+const ShareExperience = () => {
   const [isOpenDialog, setIsOpenDialog] = useState(false);
 
   return (
@@ -48,10 +48,10 @@ const SharedExperience = () => {
       <div className="copyFooter">
           Haz <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">click aquí</a> para ver las reglas y condiciones.
       </div>
-      <DialogTyta dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
+      <DialogTyta dialog='policies' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
 
     </div>
   );
 };
 
-export default SharedExperience;
+export default ShareExperience;

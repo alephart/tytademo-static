@@ -7,8 +7,9 @@ import {
 } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { VideoLoading } from '@/components/Anims';
+import { PROCESS_ENUM } from '@/utils/globals';
 
-const RegisterInfo = () => {
+const RegisterInfo = ({ setProcess }) => {
   const {
     register,
     handleSubmit,

@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM } from '@/utils/globals';
 
 const PictureConfirm = ({ imgSrc, setProcess }) => {
-  console.log('into confirm picture', imgSrc);
   return (
     <div className='likePicture'>
       <div className='boxPhoto'>
