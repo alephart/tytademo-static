@@ -4,6 +4,7 @@ import {
   CharacterChoose, 
   PhotoTake, 
   PictureConfirm,
+  RegisterInfo,
 } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/utils/globals';
 
@@ -31,6 +32,10 @@ const Experience = () => {
 
       {imgSrc && process === PROCESS_ENUM.photoConfirm && (
         <PictureConfirm imgSrc={imgSrc} setProcess={setProcess} />
+      )}
+
+      {process === PROCESS_ENUM.register && (
+        <RegisterInfo setProcess={setProcess} />
       )}
     </Layout>
   )

@@ -1,3 +1,4 @@
-import videoBg from './VideoBg';
+import VideoBg from './VideoBg';
+import VideoLoading from './VideoLoading';
 
-export { videoBg };
+export { VideoBg, VideoLoading };

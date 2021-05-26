@@ -21,7 +21,7 @@ const PictureConfirm = ({ imgSrc, setProcess }) => {
       <Button 
         className='yesContinue'
         variant='contained'
-        onClick={() => setProcess(PROCESS_ENUM.form)}
+        onClick={() => setProcess(PROCESS_ENUM.register)}
       >
         ¡SÍ!
       </Button>

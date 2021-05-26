@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Layout from '@/components/layouts/StartPage';
 import DialogTyta from '@/components/Dialogs';
-import { videoBg } from '@/components/Anims';
+import { VideoBg } from '@/components/Anims';
 import Button from '@material-ui/core/Button';
 
 const Home = () => {
@@ -10,8 +10,8 @@ const Home = () => {
 
   return (
     <Layout>
-      <div dangerouslySetInnerHTML={videoBg('video', 'video.mp4', false)}></div>
-      <div dangerouslySetInnerHTML={videoBg('video2', 'videoloop.mp4', true)}></div>
+      <div dangerouslySetInnerHTML={VideoBg('video', 'video.mp4', false)}></div>
+      <div dangerouslySetInnerHTML={VideoBg('video2', 'videoloop.mp4', true)}></div>
 
       <div className="copyStart">
           TÓMATE UNA SELFIE Y SÉ PARTE DEL VIDEO DE LUNAY

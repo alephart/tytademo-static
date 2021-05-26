@@ -7,6 +7,7 @@ export const PROCESS_ENUM = Object.freeze(
     cameraSelect: 'Camera Select',
     photoTake: 'Photo Take',
     photoConfirm: 'Photo Confirm',
-    form: 'Fill Form'
+    register: 'Fill Register',
+    share: 'Share Video',
   }
 );
