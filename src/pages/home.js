@@ -4,8 +4,11 @@ import Layout from '@/components/layouts/StartPage';
 import DialogTyta from '@/components/DialogsTyta';
 import { VideoBg } from '@/components/Anims';
 import Button from '@material-ui/core/Button';
+import { useTranslation } from 'react-i18next'
+import '../i18n'
 
 const Home = () => {
+  const { t } = useTranslation();
   const [isOpenDialog, setIsOpenDialog] = useState(false);
 
   return (
@@ -14,7 +17,7 @@ const Home = () => {
       <div dangerouslySetInnerHTML={VideoBg('video2', 'videoloop.mp4', true)}></div>
 
       <div className="copyStart">
-          TÓMATE UNA SELFIE Y SÉ PARTE DEL VIDEO DE LUNAY
+          {t('start.copyStart')}
           <span>
               Regístrate y podrías ganar una charla virtual con Lunay y más premios increíbles.
           </span>

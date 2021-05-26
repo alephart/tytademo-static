@@ -4,6 +4,7 @@ import '@/styles/general.scss'
 import { Provider as SessionProvider } from "next-auth/client"
 import TytaProvider from '@/context/state'
 
+
 const MyApp = ({ Component, pageProps }) => {
   return (
     <TytaProvider>
