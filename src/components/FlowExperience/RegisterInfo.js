@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { VideoLoading } from '@/components/Anims';
-import { PROCESS_ENUM } from '@/utils/globals';
+import { PROCESS_ENUM } from '@/helpers/globals';
 import ExperienceContext from '@/context/ExperienceContext';
 
 const RegisterInfo = () => {

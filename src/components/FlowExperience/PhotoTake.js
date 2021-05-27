@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useContext } from 'react';
 import Webcam from 'react-webcam';
 import ButtonTake from '@/components/TakePhoto/ButtonTake';
 import SelectDevice from '@/components/SelectDevice';
-import { PROCESS_ENUM } from '@/utils/globals';
+import { PROCESS_ENUM } from '@/helpers/globals';
 import ExperienceContext from '@/context/ExperienceContext';
 
 const PhotoTake = () => {

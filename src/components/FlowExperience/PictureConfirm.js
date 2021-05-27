@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
-import { PROCESS_ENUM } from '@/utils/globals';
+import { PROCESS_ENUM } from '@/helpers/globals';
 import ExperienceContext from '@/context/ExperienceContext';
 
 const PictureConfirm = () => {
