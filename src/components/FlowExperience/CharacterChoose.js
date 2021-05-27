@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM } from '@/utils/globals';
+import ExperienceContext from '@/context/ExperienceContext';
 
-const CharacterChoose = ({ character, setCharacter, setProcess }) => {
-
+const CharacterChoose = () => {
+  const { character, setCharacter, setProcess } = useContext(ExperienceContext);
+  
   const handleSelectCharacter = (event) => {
     event.preventDefault();
     const dataset = event.currentTarget.dataset;

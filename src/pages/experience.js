@@ -7,6 +7,7 @@ import {
   RegisterInfo,
   ShareExperience,
 } from '@/components/FlowExperience';
+import ExperienceContext from '@/context/ExperienceContext';
 import { PROCESS_ENUM } from '@/utils/globals';
 
 const Experience = () => {
@@ -14,34 +15,43 @@ const Experience = () => {
   const [character, setCharacter] = useState(null);
   const [facingMode, setFacingMode] = useState('user');
   const [imgSrc, setImgSrc] = useState(null);
-
+  
+  const contextValues = {
+    process,
+    setProcess,
+    character, 
+    setCharacter, 
+    facingMode, 
+    setFacingMode,
+    imgSrc, 
+    setImgSrc,
+  };
+  
   console.log('Actual process', process);
 
   return (
     <Layout>
-      {process === PROCESS_ENUM.character && (
-        <CharacterChoose character={character} setCharacter={setCharacter} setProcess={setProcess} />
-      )}
+      <ExperienceContext.Provider value={contextValues}>
+        {process === PROCESS_ENUM.character && (
+          <CharacterChoose />
+        )}
 
-      {process === PROCESS_ENUM.photoTake && (
-        <PhotoTake
-          facingMode={facingMode}
-          setFacingMode={setFacingMode}
-          setImg={setImgSrc}
-          setProcess={setProcess} />
-      )}
+        {process === PROCESS_ENUM.photoTake && (
+          <PhotoTake />
+        )}
 
-      {imgSrc && process === PROCESS_ENUM.photoConfirm && (
-        <PictureConfirm imgSrc={imgSrc} setProcess={setProcess} />
-      )}
+        {imgSrc && process === PROCESS_ENUM.photoConfirm && (
+          <PictureConfirm />
+        )}
 
-      {process === PROCESS_ENUM.register && (
-        <RegisterInfo setProcess={setProcess} />
-      )}
+        {process === PROCESS_ENUM.register && (
+          <RegisterInfo />
+        )}
 
-      {process === PROCESS_ENUM.share && (
-        <ShareExperience setProcess={setProcess} />
-      )}
+        {process === PROCESS_ENUM.share && (
+          <ShareExperience setProcess={setProcess} />
+          )}
+      </ExperienceContext.Provider>
     </Layout>
   )
 }

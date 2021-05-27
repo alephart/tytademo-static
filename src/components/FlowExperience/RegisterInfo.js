@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext, useState } from 'react';
 import {
   Input,
   Button,
@@ -8,8 +8,10 @@ import {
 import { useForm } from 'react-hook-form';
 import { VideoLoading } from '@/components/Anims';
 import { PROCESS_ENUM } from '@/utils/globals';
+import ExperienceContext from '@/context/ExperienceContext';
 
-const RegisterInfo = ({ setProcess }) => {
+const RegisterInfo = () => {
+  const { setProcess } = useContext(ExperienceContext);
   const {
     register,
     handleSubmit,
@@ -17,11 +19,11 @@ const RegisterInfo = ({ setProcess }) => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     checkedA: false,
     checkedB: false,
   });
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = useState(false);
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
