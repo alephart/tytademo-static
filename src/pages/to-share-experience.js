@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Layout from '@/components/layouts/General';
 import { ShareExperience } from '@/components/FlowExperience';
-import { PROCESS_ENUM } from '@/utils/globals';
+import { PROCESS_ENUM } from '@/helpers/globals';
 
 const ToShareExp = () => {
   const [process, setProcess] = useState(PROCESS_ENUM.share);

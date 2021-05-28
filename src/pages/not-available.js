@@ -1,7 +1,5 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import Link from 'next/link'
-
 
 const NotAvailable = () => {
     return (
@@ -13,10 +11,10 @@ const NotAvailable = () => {
                         esta campaña no está disponible en tu país.
                     </h2>
                     <p>
-                        Conoce el nuevo Corolla Apex:
-                        <Link href="www.toyota.com/corolla/">
-                            www.toyota.com/corolla/
-                        </Link>
+                        Conoce el nuevo Corolla Apex: {' '}
+                        <a href="https://www.toyota.com/corolla/">
+                            www.toyota.com/corolla
+                        </a>
                     </p>
                 </div>
             </div>
@@ -24,4 +22,4 @@ const NotAvailable = () => {
     )
 }
 
-export default NotAvailable
+export default NotAvailable;

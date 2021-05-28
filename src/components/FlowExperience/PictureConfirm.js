@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from '@material-ui/core/Button';
+import { PROCESS_ENUM } from '@/helpers/globals';
+import ExperienceContext from '@/context/ExperienceContext';
 import { PROCESS_ENUM } from '@/utils/globals';
 import { useTranslation } from 'react-i18next';
 import '../../i18n';
 
-const PictureConfirm = ({ imgSrc, setProcess }) => {
+const PictureConfirm = () => {
   const { t } = useTranslation();
+  const { imgSrc, setProcess } = useContext(ExperienceContext);
   return (
     <div className='likePicture'>
       <div className='boxPhoto'>
