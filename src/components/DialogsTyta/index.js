@@ -1,11 +1,13 @@
 import PoliciesContent from './Policies';
-import TermsContent from './Policies';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import TermsContent from './Terms';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  useMediaQuery,
+} from '@material-ui/core/';
 import { useTheme } from '@material-ui/core/styles';
 
 const DialogTyta = ({ dialog, isOpen, setIsOpen }) => {
@@ -20,9 +22,11 @@ const DialogTyta = ({ dialog, isOpen, setIsOpen }) => {
       aria-describedby='alert-dialog-description'
       fullScreen={fullScreen}
     >
-      <DialogContent>
-        <DialogContentText id='alert-dialog-description' className='terms'>
-          <img className='logoToyota' src='images/logo-toyota.png' alt='Toyota' />
+      {dialog === 'terms' ? <TermsContent /> : <PoliciesContent />}
+      
+      <DialogContent id='alert-dialog-description' className='terms'>
+
+          <img className='logoToyota' src='/images/logo-toyota.png' alt='Toyota' />
           {dialog === 'terms' ? <TermsContent /> : <PoliciesContent />}
           
           <Button
@@ -32,9 +36,9 @@ const DialogTyta = ({ dialog, isOpen, setIsOpen }) => {
           >
             Volver
           </Button>
-          
-        </DialogContentText>
+
       </DialogContent>
+
       <DialogActions></DialogActions>
     </Dialog>
   );

@@ -1,13 +1,17 @@
 import '@/styles/globals.css'
 import '@/styles/general.scss'
 
-import { Provider } from "next-auth/client"
+import { Provider as SessionProvider } from "next-auth/client"
+import TytaProvider from '@/context/state'
+
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <Provider session={pageProps.session}>
-      <Component {...pageProps} />
-    </Provider>
+    <TytaProvider>
+      <SessionProvider session={pageProps.session}>
+        <Component {...pageProps} />
+      </SessionProvider>
+    </TytaProvider>
   )
 }
 export default MyApp

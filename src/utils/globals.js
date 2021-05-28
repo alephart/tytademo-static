@@ -3,8 +3,11 @@
  *******************************/
 export const PROCESS_ENUM = Object.freeze(
   { 
-    take: 'takePhoto', 
-    select: 'selectPhoto',
-    repeat: 'repeatPhoto',
+    character: 'Character Choose',
+    cameraSelect: 'Camera Select',
+    photoTake: 'Photo Take',
+    photoConfirm: 'Photo Confirm',
+    register: 'Fill Register',
+    share: 'Share Video',
   }
 );

@@ -53,9 +53,6 @@ const SharedExperience = () => {
             <Link href="/start/checkVideoFinal">
                 <Button className="buttonThanks" variant="contained">descargar video</Button>
             </Link>
-            <div className="copyFooter">
-                Haz <a onClick={handleClickOpen}>click aquí</a> para ver las reglas y condiciones.
-            </div>
             <Dialog
                 open={open}
                 onClose={handleClose}
