@@ -4,8 +4,8 @@ import Layout from '@/components/layouts/StartPage';
 import DialogTyta from '@/components/DialogsTyta';
 import { VideoBg } from '@/components/Anims';
 import Button from '@material-ui/core/Button';
-import { useTranslation } from 'react-i18next'
-import '../i18n'
+import { useTranslation } from 'react-i18next';
+import '../i18n';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -17,18 +17,18 @@ const Home = () => {
       <div dangerouslySetInnerHTML={VideoBg('video2', 'videoloop.mp4', true)}></div>
 
       <div className="copyStart">
-          {t('start.copyStart')}
+          {t("start.copyStart")}
           <span>
-              Regístrate y podrías ganar una charla virtual con Lunay y más premios increíbles.
+            {t('start.subCopyStart')}
           </span>
       </div>
 
       <Link href="/experience">
-          <Button className="buttonStart" variant="contained">comenzar</Button>
+          <Button className="buttonStart" variant="contained">{t('start.buttonStart')}</Button>
       </Link>
 
       <div className="copyFooter">
-          Haz <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">click aquí</a> para ver las reglas y condiciones.
+        {t('start.copyFooter1')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a> {t('start.copyFooter2')}
       </div>
       <DialogTyta dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
 

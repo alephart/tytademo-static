@@ -2,8 +2,11 @@ import { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import DialogTyta from '@/components/DialogsTyta';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
 const ShareExperience = () => {
+  const { t } = useTranslation();
   const [isOpenDialog, setIsOpenDialog] = useState(false);
 
   return (
@@ -22,14 +25,13 @@ const ShareExperience = () => {
       ></div>
       <div className='copyThanks'>
         <br />
-        <div className='copyLunay'>¡Ya eres parte del video de LUNAY!</div>
+        <div className='copyLunay'>{t("characterChoose.copyLunay")}</div>
         <span>
-          Ahora descárgalo y compártelo con el mundo. Podrías ganar una charla
-          online con Lunay y otros premios increíbles.
+          {t("characterChoose.copyLunaySpan")}
         </span>
       </div>
       <div className='sharedSocial'>
-        compartir video <br />
+        {t("characterChoose.sharedSocial")} <br />
         <div className='iconSocial'>
           <a href=''>
             <img src='/images/twitter.svg' alt='' />
@@ -41,12 +43,12 @@ const ShareExperience = () => {
       </div>
       <Link href='/start/checkVideoFinal'>
         <Button className='buttonThanks' variant='contained'>
-          descargar video
+          {t("characterChoose.buttonThanks")}
         </Button>
       </Link>
 
       <div className="copyFooter">
-          Haz <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">click aquí</a> para ver las reglas y condiciones.
+          {t('start.copyFooter1')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a> {t('start.copyFooter2')}
       </div>
       <DialogTyta dialog='policies' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
 

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM } from '@/utils/globals';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
 const CharacterChoose = ({ character, setCharacter, setProcess }) => {
+  const { t } = useTranslation();
 
   const handleSelectCharacter = (event) => {
     event.preventDefault();
@@ -12,7 +15,7 @@ const CharacterChoose = ({ character, setCharacter, setProcess }) => {
 
   return (
     <>
-      <div className='selectCopy'>ELIGE TU PERSONAJE</div>
+      <div className='selectCopy'>{t("characterChoose.selectCopy")}</div>
       <div
         className={`selectCharacter1 ${character === 'male' ? 'selected' : ''}`}
         data-character='male'
@@ -34,7 +37,7 @@ const CharacterChoose = ({ character, setCharacter, setProcess }) => {
         variant='contained'
         onClick={() => setProcess(PROCESS_ENUM.photoTake)}
       >
-        TOMAR FOTO
+        {t("characterChoose.selectCopy")}
       </Button>
     </>
   );

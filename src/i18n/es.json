@@ -1,3 +1,37 @@
 {
-    "start.copyStart": "1TÓMATE UNA SELFIE Y SÉ PARTE DEL VIDEO DE LUNAY"    
+    "start":{
+        "copyStart": "TÓMATE UNA SELFIE Y SÉ PARTE DEL VIDEO DE LUNAY",
+        "subCopyStart": "Regístrate y podrías ganar una charla virtual con Lunay y más premios increíbles.",        
+        "buttonStart": "comenzar",
+        "copyFooter1": "Haz",
+        "copyFooterLink": "click aquí",
+        "copyFooter2": "para ver las reglas y condiciones."
+    },
+    "characterChoose":{
+        "selectCopy": "TÓMATE UNA SELFIE Y SÉ PARTE DEL VIDEO DE LUNAY",
+        "buttonPhoto": "TOMAR FOTO"
+    },
+    "pictureConfirm":{
+        "copyLike": "¿TE GUSTA ESTA FOTO?",
+        "yesContinue": "¡SÍ!",
+        "againPhoto": "VOLVER A TOMAR"
+    },
+    "registerInfo":{
+        "copyTitleForm": "¡YA CASI!",
+        "copySubtitleForm": "Regístrate para obtener tu video.",
+        "errorsField": "Por favor completa todos los campos",
+        "errorsFieldGeneral": "Por favor completa el campo",
+        "copyCheckbox1": "Me gustaría recibir noticias sobre productos y eventos de Toyota.",
+        "copyCheckbox2": "Me gustaría que mi concesionario local Toyota me contactara para una prueba de manejo y para darme más información sobre la compra o arrendamiento de un vehículo Toyota nuevo.",
+        "yesContinue": "VER VIDEO"
+    },
+    "shareExperience":{
+        "copyLunay": "¡Ya eres parte del video de LUNAY!",
+        "copyLunaySpan": "Ahora descárgalo y compártelo con el mundo. Podrías ganar una charla online con Lunay y otros premios increíbles.",
+        "sharedSocial": "compartir video",
+        "buttonThanks": "descargar video",
+        "copyFooter1": "Haz",
+        "copyFooterLink": "click aquí",
+        "copyFooter2": "para ver las reglas y condiciones."
+    }
 }

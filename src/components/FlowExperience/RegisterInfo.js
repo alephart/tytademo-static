@@ -8,8 +8,11 @@ import {
 import { useForm } from 'react-hook-form';
 import { VideoLoading } from '@/components/Anims';
 import { PROCESS_ENUM } from '@/utils/globals';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
 const RegisterInfo = ({ setProcess }) => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -33,14 +36,14 @@ const RegisterInfo = ({ setProcess }) => {
   return (
     <div className='formVideo'>
       <VideoLoading />
-      <div className='copyTitleForm'>¡YA CASI!</div>
-      <div className='copySubtitleForm'>Regístrate para obtener tu video.</div>
+      <div className='copyTitleForm'>{t("registerInfo.copyTitleForm")}</div>
+      <div className='copySubtitleForm'>{t("registerInfo.copySubtitleForm")}</div>
       {errors.nameRequired &&
         errors.lastNameRequired &&
         errors.emailRequired &&
         errors.zipRequired && (
           <span className='errorsField center'>
-            Por favor completa todos los campos
+            {t("registerInfo.errorsField")}
           </span>
         )}
       <form noValidate autoComplete='off'>
@@ -50,7 +53,7 @@ const RegisterInfo = ({ setProcess }) => {
           inputProps={{ 'aria-label': 'description' }}
         />
         {errors.nameRequired && (
-          <span className='errorsField'>Por favor completa el campo</span>
+          <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
         )}
 
         <Input
@@ -59,7 +62,7 @@ const RegisterInfo = ({ setProcess }) => {
           inputProps={{ 'aria-label': 'description' }}
         />
         {errors.lastNameRequired && (
-          <span className='errorsField'>Por favor completa el campo</span>
+          <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
         )}
 
         <Input
@@ -68,7 +71,7 @@ const RegisterInfo = ({ setProcess }) => {
           inputProps={{ 'aria-label': 'description' }}
         />
         {errors.emailRequired && (
-          <span className='errorsField'>Por favor completa el campo</span>
+          <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
         )}
 
         <Input
@@ -83,12 +86,12 @@ const RegisterInfo = ({ setProcess }) => {
           inputProps={{ 'aria-label': 'description' }}
         />
         {errors.zipRequired && (
-          <span className='errorsField'>Por favor completa el campo</span>
+          <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
         )}
 
         <div className='boxCheckbox'>
           <div className='copyCheckbox'>
-            Me gustaría recibir noticias sobre productos y eventos de Toyota.
+            {t("registerInfo.copyCheckbo1")}
           </div>
           <Switch
             checked={state.checkedA}
@@ -99,9 +102,7 @@ const RegisterInfo = ({ setProcess }) => {
         </div>
         <div className='boxCheckbox'>
           <div className='copyCheckbox'>
-            Me gustaría que mi concesionario local Toyota me contactara para una
-            prueba de manejo y para darme más información sobre la compra o
-            arrendamiento de un vehículo Toyota nuevo.
+            {t("registerInfo.copyCheckbo1")}
           </div>
           <Switch
             checked={state.checkedB}
@@ -125,7 +126,7 @@ const RegisterInfo = ({ setProcess }) => {
           variant='contained'
           onClick={() => setProcess(PROCESS_ENUM.share)}
         >
-          VER VIDEO
+          {t("registerInfo.yesContinue")}
         </Button>
       </form>
     </div>

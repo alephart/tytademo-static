@@ -1,8 +1,11 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM } from '@/utils/globals';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
 const PictureConfirm = ({ imgSrc, setProcess }) => {
+  const { t } = useTranslation();
   return (
     <div className='likePicture'>
       <div className='boxPhoto'>
@@ -16,20 +19,20 @@ const PictureConfirm = ({ imgSrc, setProcess }) => {
           __html: "<iframe src='/face/new-vectors.html' />",
         }}
       />
-      <div className='copyLike'>¿TE GUSTA ESTA FOTO?</div>
+      <div className='copyLike'>{t("pictureConfirm.copyLike")}</div>
       <Button 
         className='yesContinue'
         variant='contained'
         onClick={() => setProcess(PROCESS_ENUM.register)}
       >
-        ¡SÍ!
+        {t("pictureConfirm.yesContinue")}
       </Button>
       <Button 
         className='againPhoto' 
         variant='contained'
         onClick={() => setProcess(PROCESS_ENUM.character)}
       >
-        VOLVER A TOMAR
+        {t("pictureConfirm.againPhoto")}
       </Button>
     </div>
   );
