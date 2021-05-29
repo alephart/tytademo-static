@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM } from '@/utils/globals';
 
-const ConfirmPicture = ({ imgSrc, setProcess }) => {
+const PictureConfirm = ({ imgSrc, setProcess }) => {
   console.log('into confirm picture', imgSrc);
   return (
     <div className='likePicture'>
@@ -36,4 +36,4 @@ const ConfirmPicture = ({ imgSrc, setProcess }) => {
   );
 };
 
-export default ConfirmPicture;
+export default PictureConfirm;

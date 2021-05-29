@@ -1,5 +1,5 @@
 import CharacterChoose from './CharacterChoose';
 import PhotoTake from './PhotoTake';
-import ConfirmPicture from './ConfirmPicture';
+import PictureConfirm from './PictureConfirm';
 
-export { CharacterChoose, PhotoTake, ConfirmPicture };
+export { CharacterChoose, PhotoTake, PictureConfirm };

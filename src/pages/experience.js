@@ -3,7 +3,7 @@ import Layout from '@/components/layouts/General';
 import { 
   CharacterChoose, 
   PhotoTake, 
-  ConfirmPicture,
+  PictureConfirm,
 } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/utils/globals';
 
@@ -30,7 +30,7 @@ const Experience = () => {
       )}
 
       {imgSrc && process === PROCESS_ENUM.photoConfirm && (
-        <ConfirmPicture imgSrc={imgSrc} setProcess={setProcess} />
+        <PictureConfirm imgSrc={imgSrc} setProcess={setProcess} />
       )}
     </Layout>
   )
