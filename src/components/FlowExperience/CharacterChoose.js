@@ -32,7 +32,7 @@ const CharacterChoose = ({ character, setCharacter, setProcess }) => {
         disabled={!character}
         className='buttonPhoto'
         variant='contained'
-        onClick={() => setProcess(PROCESS_ENUM.takePhoto)}
+        onClick={() => setProcess(PROCESS_ENUM.photoTake)}
       >
         TOMAR FOTO
       </Button>
