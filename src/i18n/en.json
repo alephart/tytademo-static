@@ -1,49 +1,33 @@
 {
-    "start":{
-        "copyStart": "TAKE A SELFIE AND BE PART OF LUNAY’S VIDEO",
-        "subCopyStart": "Register and you could win a virtual Meet & Greet with Lunay and more amazing prizes. ",        
-        "buttonStart": "START",
-        "copyFooter1": "By",
-        "copyFooterLink": "clicking",
-        "copyFooter2": "you are accepting the Terms and conditions."
-    },
-    "characterChoose":{
-        "selectCopy": "CHOOSE YOUR CHARACTER",
-        "buttonPhoto": "TAKE PICTURE"
-    },
-    "pictureConfirm":{
-        "copyLike": "DO YOU LIKE THIS PHOTO?",
-        "yesContinue": "YES!",
-        "againPhoto": "TRY AGAIN"
-    },
-    "registerInfo":{
-        "copyTitleForm": "ALMOST READY!",
-        "copySubtitleForm": "Register to get your video.",
-        "errorsField": "Please complete all fields",
-        "errorsFieldGeneral": "Please complete the field",
-        "copyCheckbox1": "I would like to receive exciting product and event news from Toyota.",
-        "copyCheckbox2": "I would like to be contacted by my local Toyota dealer for a test drive and more information about purchasing or leasing a new Toyota vehicle.",
-        "yesContinue": "WATCH YOUR VIDEO"
-    },
-    "shareExperience":{
-        "copyLunay": "You’re now a part of LUNAY’s music video!",
-        "copyLunaySpan": "Don’t forget to download it and share with the world. You might win a virtual meeting with Lunay and other amazing prizes.",
-        "sharedSocial": "SHARE VIDEO",
-        "buttonThanks": "DOWNLOAD VIDEO",
-        "copyFooter1": "By",
-        "copyFooterLink": "clicking",
-        "copyFooter2": "you are accepting the Terms and conditions."
-    },
-    "join":{
-        "copyJoin": "CHECK OUT YOUR FRIEND´S VIDEO AND MAKE YOUR OWN.",
-        "subCopyJoin": "Take a selfie to be a part of LUNAY’s video.",
-        "buttonJoin": "GET MY VIDEO!"
-    },
-    "VideoLoading":{
-        "timePercentage": "Per second"
-    },
-    "notAvailable":{
-        "copyNotAvailable": "SORRY, THIS EXPERIENCE IS NOT AVAILABLE IN YOUR COUNTRY.",
-        "copyNotAvailableParagrah": "Learn more about the New Corolla Apex"
-    }
+    "start.copyStart": "TAKE A SELFIE AND BE PART OF LUNAY’S VIDEO",
+    "start.subCopyStart": "Register and you could win a virtual Meet & Greet with Lunay and more amazing prizes. ",        
+    "start.buttonStart": "START",
+    "start.copyFooter1": "By",
+    "start.copyFooterLink": "clicking",
+    "start.copyFooter2": "you are accepting the Terms and conditions.",
+    "characterChoose.selectCopy": "CHOOSE YOUR CHARACTER",
+    "characterChoose.buttonPhoto": "TAKE PICTURE",
+    "pictureConfirm.copyLike": "DO YOU LIKE THIS PHOTO?",
+    "pictureConfirm.yesContinue": "YES!",
+    "pictureConfirm.againPhoto": "TRY AGAIN",
+    "registerInfo.copyTitleForm": "ALMOST READY!",
+    "registerInfo.copySubtitleForm": "Register to get your video.",
+    "registerInfo.errorsField": "Please complete all fields",
+    "registerInfo.errorsFieldGeneral": "Please complete the field",
+    "registerInfo.copyCheckbox1": "I would like to receive exciting product and event news from Toyota.",
+    "registerInfo.copyCheckbox2": "I would like to be contacted by my local Toyota dealer for a test drive and more information about purchasing or leasing a new Toyota vehicle.",
+    "registerInfo.yesContinue": "WATCH YOUR VIDEO",
+    "shareExperience.copyLunay": "You’re now a part of LUNAY’s music video!",
+    "shareExperience.copyLunaySpan": "Don’t forget to download it and share with the world. You might win a virtual meeting with Lunay and other amazing prizes.",
+    "shareExperience.sharedSocial": "SHARE VIDEO",
+    "shareExperience.buttonThanks": "DOWNLOAD VIDEO",
+    "shareExperience.copyFooter1": "By",
+    "shareExperience.copyFooterLink": "clicking",
+    "shareExperience.copyFooter2": "you are accepting the Terms and conditions.",
+    "join.copyJoin": "CHECK OUT YOUR FRIEND´S VIDEO AND MAKE YOUR OWN.",
+    "join.subCopyJoin": "Take a selfie to be a part of LUNAY’s video.",
+    "join.buttonJoin": "GET MY VIDEO!",
+    "VideoLoading.timePercentage": "Per second",
+    "notAvailable.copyNotAvailable": "SORRY, THIS EXPERIENCE IS NOT AVAILABLE IN YOUR COUNTRY.",
+    "notAvailable.copyNotAvailableParagrah": "Learn more about the New Corolla Apex"
 }
