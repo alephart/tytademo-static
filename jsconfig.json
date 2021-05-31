@@ -8,6 +8,7 @@
       "@/styles/*": ["src/styles/*"],
       "@/utils/*": ["src/utils/*"],
       "@/pages/*": ["src/pages/*"],
+      "@/i18n/*": ["src/i18n/*"],
     }
   }
 }
