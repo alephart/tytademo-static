@@ -1,6 +1,9 @@
 import VideoBg from './VideoBg';
+import { useTranslation } from 'react-i18next';
+import '../../i18n';
 
 const VideoLoading = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div dangerouslySetInnerHTML={VideoBg('', 'output-2.mp4', false, 'videoForm')}></div>
@@ -11,7 +14,7 @@ const VideoLoading = () => {
           <div className='linePercentage'>
             <div className='percentage' style={{ width: 50 }}></div>
           </div>
-          <div className='timePercentage'>Por segundo</div>
+          <div className='timePercentage'>{t("VideoLoading.timePercentage")}</div>
           <div className='secondPercentage'>000 000 166</div>
         </div>
       </div>

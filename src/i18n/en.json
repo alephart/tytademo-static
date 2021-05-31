@@ -38,5 +38,12 @@
         "copyJoin": "CHECK OUT YOUR FRIEND´S VIDEO AND MAKE YOUR OWN.",
         "subCopyJoin": "Take a selfie to be a part of LUNAY’s video.",
         "buttonJoin": "GET MY VIDEO!"
+    },
+    "VideoLoading":{
+        "timePercentage": "Per second"
+    },
+    "notAvailable":{
+        "copyNotAvailable": "SORRY, THIS EXPERIENCE IS NOT AVAILABLE IN YOUR COUNTRY.",
+        "copyNotAvailableParagrah": "Learn more about the New Corolla Apex"
     }
 }
