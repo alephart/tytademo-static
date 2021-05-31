@@ -21,10 +21,15 @@ const Experience = () => {
   const { loading, location, error } = useLocation( 
     ENV !== 'development' ? geolocationDb(geoDbKey) : mockDetector
   );
+
   const [process, setProcess] = useState(PROCESS_ENUM.character);
   const [character, setCharacter] = useState(null);
   const [facingMode, setFacingMode] = useState('user');
   const [imgSrc, setImgSrc] = useState(null);
+  const [data, setData] = useState(null);
+  const [swap, setSwap] = useState(null);
+
+  const [message, setMessage] = useState('');
 
   const router = useRouter();
   
@@ -37,9 +42,13 @@ const Experience = () => {
     setFacingMode,
     imgSrc, 
     setImgSrc,
+    data,
+    setData,
+    swap,
+    setSwap,
+    setMessage,
   };
-  
-  
+
   if(loading) {
     return (<div>loading...</div>);
   }
@@ -76,8 +85,15 @@ const Experience = () => {
 
         {process === PROCESS_ENUM.share && (
           <ShareExperience setProcess={setProcess} />
-          )}
+        )}
+
+        {message && (
+          <div className='zoneMessage'><p>{message}</p></div>
+        )}
       </ExperienceContext.Provider>
+
+      
+
     </Layout>
   )
 }

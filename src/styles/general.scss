@@ -274,19 +274,20 @@ body {
 		}
 		.boxPhoto
 		{
-			height: 480px;
-			width: 100%;
+			width: 800px;
 			position: absolute;
 			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
 			background-position: center;
 			background-size: cover;
 		}
 		.bgdegrade
 		{
-			height: 480px;
+			height: 380px;
 			width: 100%;
 			position: absolute;
-			top: 200px;
+			bottom: 1px;
 			background-image: url("../assets/images/bgDegrade.png");
 			background-position: center;
 			background-size: cover;
@@ -845,6 +846,39 @@ body {
 					font-family: 'ToyotaBold';
 				}
 			}
+		}
+	}
+
+	.zoneTakePhoto {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+    width: 800px;
+		max-width: 800px;
+		margin: 0 auto;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+	}
+
+	.zoneMessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    max-width: 414px;
+		margin: 10px 0;
+		position: absolute;
+		bottom: 0;;
+		p {
+			font-family: "ToyotaRegular";
+			text-align: center;
+			font-size: 14px;
+			line-height: 16px;
+			padding: 10px;
 		}
 	}
 }

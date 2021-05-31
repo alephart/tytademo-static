@@ -1,9 +1,8 @@
 import { useState, useContext } from 'react';
+import Link from 'next/link';
 import Button from '@material-ui/core/Button';
 import DialogTyta from '@/components/DialogsTyta';
-import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import '../../i18n';
 import ExperienceContext from '@/context/ExperienceContext';
 
 const ShareExperience = () => {

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {
   Input,
   Button,
@@ -7,27 +7,33 @@ import {
 } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { VideoLoading } from '@/components/Anims';
-import { PROCESS_ENUM } from '@/utils/globals';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import ExperienceContext from '@/context/ExperienceContext';
 import { useTranslation } from 'react-i18next';
-import '../../i18n';
 
 const RegisterInfo = () => {
   const { t } = useTranslation();
-  const { setProcess } = useContext(ExperienceContext);
+  const { setProcess, data, setMessage } = useContext(ExperienceContext);
+
+  useEffect(() =>{
+    setMessage('');
+    console.log("data in register", data);
+  }, []);
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
   const [state, setState] = useState({
     checkedA: false,
     checkedB: false,
   });
   const [checked, setChecked] = useState(false);
+
+  const onSubmit = (data) => console.log(data);
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
@@ -36,11 +42,13 @@ const RegisterInfo = () => {
     setChecked(event.target.checked);
   };
 
+
   return (
     <div className='formVideo'>
       <VideoLoading />
       <div className='copyTitleForm'>{t("registerInfo.copyTitleForm")}</div>
       <div className='copySubtitleForm'>{t("registerInfo.copySubtitleForm")}</div>
+
       {errors.nameRequired &&
         errors.lastNameRequired &&
         errors.emailRequired &&
@@ -49,7 +57,11 @@ const RegisterInfo = () => {
             {t("registerInfo.errorsField")}
           </span>
         )}
-      <form noValidate autoComplete='off'>
+
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        noValidate autoComplete='off'
+      >
         <Input
           {...register('nameRequired', { required: false })}
           placeholder='Nombre'

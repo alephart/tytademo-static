@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useContext } from 'react';
+import React, { useEffect, useCallback, useRef, useContext } from 'react';
 import Webcam from 'react-webcam';
 import ButtonTake from '@/components/TakePhoto/ButtonTake';
 import SelectDevice from '@/components/SelectDevice';
@@ -6,7 +6,8 @@ import { PROCESS_ENUM } from '@/helpers/globals';
 import ExperienceContext from '@/context/ExperienceContext';
 
 const PhotoTake = () => {
-  const { facingMode, setFacingMode, setImgSrc, setProcess } = useContext(ExperienceContext);
+  const { facingMode, setFacingMode, setImgSrc, setProcess, setMessage } = useContext(ExperienceContext);
+  const warning = "Remember not use accessories, place your face in the center of the camera, try not to make gestures or smile.";
 
   const webcamRef = useRef(null);
 
@@ -21,6 +22,10 @@ const PhotoTake = () => {
     facingMode: facingMode,
   };
 
+  useEffect(() =>{
+    setMessage(warning);
+  }, []);
+
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
@@ -28,7 +33,7 @@ const PhotoTake = () => {
   }, [webcamRef, setImgSrc]);
 
   return (
-    <div className='zone-take-photo'>
+    <div className='zoneTakePhoto'>
     <Webcam
       audio={false}
       height='100%'

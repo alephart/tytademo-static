@@ -5,7 +5,6 @@ import DialogTyta from '@/components/DialogsTyta';
 import { VideoBg } from '@/components/Anims';
 import Button from '@material-ui/core/Button';
 import { useTranslation } from 'react-i18next';
-import '../i18n';
 
 const Home = () => {
   const { t } = useTranslation();

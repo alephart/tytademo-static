@@ -1,15 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import ExperienceContext from '@/context/ExperienceContext';
-import { PROCESS_ENUM } from '@/utils/globals';
 import { useTranslation } from 'react-i18next';
-import '../../i18n';
 
 const CharacterChoose = () => {
   const { t } = useTranslation();
-  const { character, setCharacter, setProcess } = useContext(ExperienceContext);
+  const { character, setCharacter, setProcess, setMessage } = useContext(ExperienceContext);
   
+  useEffect(() =>{
+    setMessage('');
+  }, []);
+
   const handleSelectCharacter = (event) => {
     event.preventDefault();
     const dataset = event.currentTarget.dataset;
