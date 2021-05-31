@@ -14,34 +14,44 @@ import { useTranslation } from 'react-i18next';
 const RegisterInfo = () => {
   const { t } = useTranslation();
   const { setProcess, data, setMessage } = useContext(ExperienceContext);
+  const [isSubmitting, setSubmitting] = useState(false);
+  const [aceptTerms, setAceptTerms] = useState(false);
+  const [contact, setContact] = useState({
+    productNews: false,
+    testDrive: false,
+  });
 
   useEffect(() =>{
     setMessage('');
     console.log("data in register", data);
   }, []);
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const [state, setState] = useState({
-    checkedA: false,
-    checkedB: false,
-  });
-  const [checked, setChecked] = useState(false);
+  const onSubmit = (dataForm) => {
+    setSubmitting(true);
+    console.log(dataForm);
 
-  const onSubmit = (data) => console.log(data);
+    const dataRegister = { 
+      ...dataForm, 
+      ...contact,  
+      ...data, 
+    };
+
+    console.log(dataRegister);
+
+    // when save data, then change to share
+    // setProcess(PROCESS_ENUM.share);
+
+  };
 
   const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
-  const handleChangeCheck = (event) => {
-    setChecked(event.target.checked);
+    setContact({ ...contact, [event.target.name]: event.target.checked });
   };
 
+  const handleChangeCheck = (event) => {
+    setAceptTerms(event.target.checked);
+  };
 
   return (
     <div className='formVideo'>
@@ -49,10 +59,10 @@ const RegisterInfo = () => {
       <div className='copyTitleForm'>{t("registerInfo.copyTitleForm")}</div>
       <div className='copySubtitleForm'>{t("registerInfo.copySubtitleForm")}</div>
 
-      {errors.nameRequired &&
-        errors.lastNameRequired &&
-        errors.emailRequired &&
-        errors.zipRequired && (
+      {errors.firstname &&
+        errors.lastname &&
+        errors.email &&
+        errors.zipcode && (
           <span className='errorsField center'>
             {t("registerInfo.errorsField")}
           </span>
@@ -63,29 +73,29 @@ const RegisterInfo = () => {
         noValidate autoComplete='off'
       >
         <Input
-          {...register('nameRequired', { required: false })}
+          {...register('firstname', { required: true })}
           placeholder='Nombre'
-          inputProps={{ 'aria-label': 'description' }}
+          inputProps={{ 'aria-label': 'nombre' }}
         />
-        {errors.nameRequired && (
+        {errors.firstname && (
           <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
         )}
 
         <Input
-          {...register('lastNameRequired', { required: false })}
+          {...register('lastname', { required: true })}
           placeholder='Apellido'
-          inputProps={{ 'aria-label': 'description' }}
+          inputProps={{ 'aria-label': 'apeliido' }}
         />
-        {errors.lastNameRequired && (
+        {errors.lastname && (
           <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
         )}
 
         <Input
-          {...register('emailRequired', { required: false })}
+          {...register('email', { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ })}
           placeholder='Correo electrónico'
-          inputProps={{ 'aria-label': 'description' }}
+          inputProps={{ 'aria-label': 'email' }}
         />
-        {errors.emailRequired && (
+        {errors.email && (
           <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
         )}
 
@@ -96,34 +106,34 @@ const RegisterInfo = () => {
               .toString()
               .slice(0, 5);
           }}
-          {...register('zipRequired', { required: false })}
+          {...register('zipcode', { required: true, pattern: /^[0-9]{5}(?:-[0-9]{4})?$/ })}
           placeholder='Código postal'
-          inputProps={{ 'aria-label': 'description' }}
+          inputProps={{ 'aria-label': 'código postal' }}
         />
-        {errors.zipRequired && (
+        {errors.zipcode && (
           <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
         )}
 
         <div className='boxCheckbox'>
           <div className='copyCheckbox'>
-            {t("registerInfo.copyCheckbo1")}
+            {t("registerInfo.copyCheckbox1")}
           </div>
           <Switch
-            checked={state.checkedA}
+            checked={contact.productNews}
             onChange={handleChange}
-            name='checkedA'
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
+            name='productNews'
+            inputProps={{ 'aria-label': 'product news' }}
           />
         </div>
         <div className='boxCheckbox'>
           <div className='copyCheckbox'>
-            {t("registerInfo.copyCheckbo1")}
+            {t("registerInfo.copyCheckbox2")}
           </div>
           <Switch
-            checked={state.checkedB}
+            checked={contact.testDrive}
             onChange={handleChange}
-            name='checkedB'
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
+            name='testDrive'
+            inputProps={{ 'aria-label': 'test drive' }}
           />
         </div>
         {/* <div className="boxCheckbox">
@@ -131,15 +141,16 @@ const RegisterInfo = () => {
                 <Link href="/termsP" color="inherit"> Acepto Políticas de tratamiento de datos</Link>
             </div>
             <Checkbox
-                checked={checked}
-                onChange={handleChangeCheck}
+                checked={aceptTerms}
+                onChange={handleChangeTerms}
                 inputProps={{ 'aria-label': 'primary checkbox' }}
             />
         </div> */}
         <Button
           className='yesContinue'
           variant='contained'
-          onClick={() => setProcess(PROCESS_ENUM.share)}
+          type="submit"
+          disabled={isSubmitting}
         >
           {t("registerInfo.yesContinue")}
         </Button>
