@@ -1,8 +1,11 @@
-import React from 'react'
-import Button from '@material-ui/core/Button'
-import Link from 'next/link'
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
+import '../i18n';
 
 const JoinExperince = () => {
+    const { t } = useTranslation();
     return (
         <div className="checkVideoFinal">
             <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
@@ -15,14 +18,13 @@ const JoinExperince = () => {
                 </video>` }}>
             </div>
             <div className="copyJoin">
-                ve el video de tu <br/>
-                amigo y crea el tuyo.<br/>
+                {t("join.copyJoin")}
                 <span>
-                    Tómate una selfie para ser parte del video <br/> de Lunay.
+                    {t("join.subCopyJoin")}
                 </span>
             </div>
             <Link href="/start">
-                <Button className="buttonJoin" variant="contained">¡QUIERO MI VIDEO!</Button>
+                <Button className="buttonJoin" variant="contained">{t("join.buttonJoin")}</Button>
             </Link>
         </div>
     )

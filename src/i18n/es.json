@@ -33,5 +33,10 @@
         "copyFooter1": "Haz",
         "copyFooterLink": "click aquí",
         "copyFooter2": "para ver las reglas y condiciones."
+    },
+    "join":{
+        "copyJoin": "VE EL VIDEO DE TU AMIGO Y CREA EL TUYO.",
+        "subCopyJoin": "Take a selfie to be a part of LUNAY’s video.",
+        "buttonJoin": "¡QUIERO MI VIDEO!"
     }
 }
