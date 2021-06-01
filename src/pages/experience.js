@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import Layout from '@/components/layouts/General';
 import ExperienceContext from '@/context/ExperienceContext';
@@ -49,6 +49,12 @@ const Experience = () => {
     setMessage,
   };
 
+  useEffect(() => {
+    if(process === PROCESS_ENUM.share) {
+      router.push('/to-share-experience');
+    }
+  }, [process])
+
   if(loading) {
     return (<div>loading...</div>);
   }
@@ -81,10 +87,6 @@ const Experience = () => {
 
         {process === PROCESS_ENUM.register && (
           <RegisterInfo />
-        )}
-
-        {process === PROCESS_ENUM.share && (
-          <ShareExperience setProcess={setProcess} />
         )}
 
         {message && (
