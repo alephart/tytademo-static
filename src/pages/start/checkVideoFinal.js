@@ -9,7 +9,7 @@ const CheckVideoFinal = () => {
             <div dangerouslySetInnerHTML={{ __html: `
                 <video class="videoGeneral" controls="" playsinline="" id="">
                     <source
-                        src="/output-2.mp4"
+                        src="/output2.mp4"
                         type="video/mp4"
                     />
                 </video>` }}>

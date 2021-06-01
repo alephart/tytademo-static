@@ -24,7 +24,7 @@ const SharedExperience = () => {
             <div dangerouslySetInnerHTML={{ __html: `
                 <video class="videoGeneral" controls="" playsinline="" id="">
                     <source
-                        src="/output-1.mp4"
+                        src="/output1.mp4"
                         type="video/mp4"
                     />
                 </video>` }}>
