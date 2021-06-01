@@ -17,7 +17,7 @@ html, body {
     -moz-animation: fadeOut 6s ease-in-out 1 forwards;
     -o-animation: fadeOut 6s ease-in-out 1 forwards;
     animation: fadeOut 6s ease-in-out 1 forwards;
-	animation-delay: 3s;
+	animation-delay: 4s;
 }
 #video2 {
 	position: absolute;
@@ -106,7 +106,7 @@ body {
 		margin: 0 auto;
 		display: block;
 		position: relative;
-		font-size: 16px;
+		font-size: 14px;
 		left: 0;
 		right: 0;
 		width: 300px;
@@ -167,6 +167,7 @@ body {
 			left: 0;
 			right: 0;
 			text-transform: lowercase;
+			text-shadow: 0 0 5px #000;
 			span
 			{
 				font-family: 'ToyotaRegular';
@@ -244,14 +245,38 @@ body {
 		.selectCharacter1,
 		.selectCharacter2
 		{
-			width: 70%;
+			border: 1px solid yellow;
+			width: 300px;
+    		height: 180px;
 			margin: 0 auto 20px;
 			display: block;
 			opacity: 0.5;
-			&.selected
+			position: relative;
+			overflow: hidden;
+			background-image: url("../assets/images/bg-masculino.jpg");
+			background-position: center;
+			background-size: cover;
+			img
 			{
-				opacity: 1;
+				right: 0;
+				left: 0;
+				margin: 0 auto;
+				width: 50%;
+				position: absolute;
 			}
+			&.selected
+			{	
+				opacity: 1;
+				zoom: 1.3;
+				img
+				{
+					width: 70%;
+				}
+			}
+		}
+		.selectCharacter2
+		{
+			background-image: url("../assets/images/bg-femenina.jpg");
 		}
 		.buttonPhoto
 		{
@@ -849,18 +874,23 @@ body {
 		}
 	}
 
-	.zoneTakePhoto {
+	.zoneTakePhoto 
+	{
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		position: absolute;
-    width: 800px;
+		width: 800px;
 		max-width: 800px;
 		margin: 0 auto;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		height: 75vh;
+		background-image: url("../assets/images/loading.svg");
+		background-position: 50% 30%;
+		background-repeat: no-repeat;
 	}
 
 	.zoneMessage {

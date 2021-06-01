@@ -41,7 +41,7 @@ const RegisterInfo = () => {
     console.log(dataRegister);
 
     // when save data, then change to share
-    // setProcess(PROCESS_ENUM.share);
+    setProcess(PROCESS_ENUM.share);
 
   };
 
