@@ -27,13 +27,13 @@ const ShareExperience = () => {
       ></div>
       <div className='copyThanks'>
         <br />
-        <div className='copyLunay'>{t("characterChoose.copyLunay")}</div>
+        <div className='copyLunay'>{t("shareExperience.copyLunay")}</div>
         <span>
-          {t("characterChoose.copyLunaySpan")}
+          {t("shareExperience.copyLunaySpan")}
         </span>
       </div>
       <div className='sharedSocial'>
-        {t("characterChoose.sharedSocial")} <br />
+        {t("shareExperience.sharedSocial")} <br />
         <div className='iconSocial'>
           <a href=''>
             <img src='/images/twitter.svg' alt='' />
@@ -45,12 +45,12 @@ const ShareExperience = () => {
       </div>
       <Link href='/start/checkVideoFinal'>
         <Button className='buttonThanks' variant='contained'>
-          {t("characterChoose.buttonThanks")}
+          {t("shareExperience.buttonThanks")}
         </Button>
       </Link>
 
       <div className="copyFooter">
-          {t('start.copyFooter1')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a> {t('start.copyFooter2')}
+          {t('shareExperience.copyFooter1')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('shareExperience.copyFooterLink')}</a> {t('shareExperience.copyFooter2')}
       </div>
       <DialogTyta dialog='policies' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
 
