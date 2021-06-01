@@ -13,9 +13,9 @@ import { useTranslation } from 'react-i18next';
 
 const RegisterInfo = () => {
   const { t } = useTranslation();
-  const { setProcess, data, setMessage } = useContext(ExperienceContext);
+  const { setProcess, data, character, setMessage } = useContext(ExperienceContext);
   const [isSubmitting, setSubmitting] = useState(false);
-  const [aceptTerms, setAceptTerms] = useState(false);
+  const [agreeTerms, setAgreeTerms] = useState(true);
   const [contact, setContact] = useState({
     productNews: false,
     testDrive: false,
@@ -35,7 +35,8 @@ const RegisterInfo = () => {
     const dataRegister = { 
       ...dataForm, 
       ...contact,  
-      ...data, 
+      ...data,
+      character,
     };
 
     console.log(dataRegister);
@@ -50,7 +51,7 @@ const RegisterInfo = () => {
   };
 
   const handleChangeCheck = (event) => {
-    setAceptTerms(event.target.checked);
+    setAgreeTerms(event.target.checked);
   };
 
   return (
@@ -141,7 +142,7 @@ const RegisterInfo = () => {
                 <Link href="/termsP" color="inherit"> Acepto Políticas de tratamiento de datos</Link>
             </div>
             <Checkbox
-                checked={aceptTerms}
+                checked={agreeTerms}
                 onChange={handleChangeTerms}
                 inputProps={{ 'aria-label': 'primary checkbox' }}
             />

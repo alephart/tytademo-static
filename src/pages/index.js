@@ -1,48 +1,38 @@
-import React, { useState } from 'react'
-import Head from 'next/head'
-import { signIn, signOut, useSession } from "next-auth/client"
-import styles from '../styles/Home.module.scss'
-import TakePhoto from '@/components/TakePhoto'
+import { useState } from 'react';
+import Link from 'next/link';
+import Layout from '@/components/layouts/StartPage';
+import DialogTyta from '@/components/DialogsTyta';
+import { VideoBg } from '@/components/Anims';
+import Button from '@material-ui/core/Button';
+import { useTranslation } from 'react-i18next';
 
-export default function Home() {
-  const [session, loading] = useSession();
-  const [facingMode, setFacingMode] = useState('user');
-
-  if (loading) {
-    return <p style={{color: '#000' }}>Loading...</p>
-  }
+const Home = () => {
+  const { t } = useTranslation();
+  const [isOpenDialog, setIsOpenDialog] = useState(false);
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>DeepFake Toyota</title>
-      </Head>
+    <Layout>
+      <div dangerouslySetInnerHTML={VideoBg('video', 'video.mp4', false)}></div>
+      <div dangerouslySetInnerHTML={VideoBg('video2', 'videoloop.mp4', true)}></div>
 
-      <header>
-        <h1>Toyota DeepFake</h1>
-        {session && (
-          <>
-            Signed in as {session.user.name}  <button onClick={signOut}>Sign out</button>
-          </>
-        )}
-        {!session && (
-          <>
-            <button onClick={signIn}>Sign in Toyota Experience DEMO</button>
-          </>
-        )}
-      </header>
+      <div className="copyStart">
+          {t("start.copyStart")}
+          <span>
+            {t('start.subCopyStart')}
+          </span>
+      </div>
 
-      <main className={styles.main}>
-        {session && (
-          <>
-            <TakePhoto facingMode={facingMode} setFacingMode={setFacingMode} />
-          </>
-        )}
+      <Link href="/experience">
+          <Button className="buttonStart" variant="contained">{t('start.buttonStart')}</Button>
+      </Link>
 
-      </main>
-      <footer className={styles.footer}>
-        Copyright Toyota
-      </footer>
-    </div>
+      <div className="copyFooter">
+        {t('start.copyFooter1')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a> {t('start.copyFooter2')}
+      </div>
+      <DialogTyta dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
+
+    </Layout>
   )
 }
+
+export default Home;

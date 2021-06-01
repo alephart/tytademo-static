@@ -43,7 +43,7 @@ const ShareExperience = () => {
           </a>
         </div>
       </div>
-      <Link href='/start/checkVideoFinal'>
+      <Link href='/friends-video'>
         <Button className='buttonThanks' variant='contained'>
           {t("shareExperience.buttonThanks")}
         </Button>

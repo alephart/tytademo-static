@@ -5,7 +5,7 @@ import { PROCESS_ENUM } from '@/helpers/globals';
 
 const ToShareExp = () => {
   const [process, setProcess] = useState(PROCESS_ENUM.share);
-  console.log('Actual process', process);
+  console.log('page: to-share: actual process', process);
 
   useEffect(() => {
     if (process !== PROCESS_ENUM.share) {
