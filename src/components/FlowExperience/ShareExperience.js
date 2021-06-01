@@ -7,9 +7,10 @@ import ExperienceContext from '@/context/ExperienceContext';
 
 const ShareExperience = () => {
   const { t } = useTranslation();
-  const { setProcess } = useContext(ExperienceContext);
-
+  const { setProcess, swap } = useContext(ExperienceContext);
   const [isOpenDialog, setIsOpenDialog] = useState(false);
+
+  console.log('swap into ShareExperience', swap);
 
   return (
     <div className='sharedExperience'>
@@ -43,11 +44,12 @@ const ShareExperience = () => {
           </a>
         </div>
       </div>
-      <Link href='/friends-video'>
-        <Button className='buttonThanks' variant='contained'>
+      <a
+        className='buttonThanks'
+        download="this-is-my-experience-toyota.mp4"
+        href="https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4">
           {t("shareExperience.buttonThanks")}
-        </Button>
-      </Link>
+      </a>
 
       <div className="copyFooter">
           {t('shareExperience.copyFooter1')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('shareExperience.copyFooterLink')}</a> {t('shareExperience.copyFooter2')}

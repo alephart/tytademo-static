@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Layout from '@/components/layouts/General';
+import ExperienceContext from '@/context/ExperienceContext';
 import { ShareExperience } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/helpers/globals';
 
 const ToShareExp = () => {
-  const [process, setProcess] = useState(PROCESS_ENUM.share);
+  const { process, setProcess } = useContext(ExperienceContext);
+  //const [process, setProcess] = useState(PROCESS_ENUM.share);
   console.log('page: to-share: actual process', process);
 
   useEffect(() => {
@@ -16,10 +18,11 @@ const ToShareExp = () => {
 
   return (
     <Layout>
-      {process === PROCESS_ENUM.share && (
-        <ShareExperience setProcess={setProcess} />
-      )}
-
+      <ExperienceContext.Provider>
+        {process === PROCESS_ENUM.share && (
+          <ShareExperience setProcess={setProcess} />
+        )}
+      </ExperienceContext.Provider>
     </Layout>
   )
 }

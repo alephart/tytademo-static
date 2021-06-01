@@ -13,8 +13,8 @@ import { useTranslation } from 'react-i18next';
 
 const RegisterInfo = () => {
   const { t } = useTranslation();
-  const { setProcess, data, character, setMessage } = useContext(ExperienceContext);
-  const [isSubmitting, setSubmitting] = useState(false);
+  const { setProcess, data, character, setMessage, swap, setSwap } = useContext(ExperienceContext);
+  const [isSubmitting, setSubmitting] = useState(false); 
   const [agreeTerms, setAgreeTerms] = useState(true);
   const [contact, setContact] = useState({
     productNews: false,
@@ -24,6 +24,11 @@ const RegisterInfo = () => {
   useEffect(() =>{
     setMessage('');
     console.log("data in register", data);
+
+    setSwap({
+      success: true, 
+      swap: ['https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4']
+    });
   }, []);
 
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -37,8 +42,10 @@ const RegisterInfo = () => {
       ...contact,  
       ...data,
       character,
+      ...swap,
     };
 
+    console.log('swap in register', swap);
     console.log(dataRegister);
 
     // when save data, then change to share

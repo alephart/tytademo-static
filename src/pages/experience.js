@@ -49,11 +49,11 @@ const Experience = () => {
     setMessage,
   };
 
-  useEffect(() => {
-    if(process === PROCESS_ENUM.share) {
-      router.push('/to-share-experience');
-    }
-  }, [process])
+  // useEffect(() => {
+  //   if(process === PROCESS_ENUM.share) {
+  //     router.push('/to-share-experience');
+  //   }
+  // }, [process])
 
   if(loading) {
     return (<div>loading...</div>);
@@ -87,6 +87,10 @@ const Experience = () => {
 
         {process === PROCESS_ENUM.register && (
           <RegisterInfo />
+        )}
+
+        {process === PROCESS_ENUM.share && (
+          <ShareExperience />
         )}
 
         {message && (

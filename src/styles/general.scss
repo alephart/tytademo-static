@@ -123,6 +123,11 @@ body {
 			margin: 0 auto;
 		}
 	}
+	a.buttonThanks {
+		display: flex;
+    align-items: center;
+    justify-content: center;
+	}
 	.MuiButton-contained:hover
 	{
 		background-color: #4720D6;
