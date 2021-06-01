@@ -28,7 +28,7 @@ const FormVideo = () => {
             <div dangerouslySetInnerHTML={{ __html: `
                 <video class="videoForm" playsinline="" autoplay=""  muted=""  id="">
                     <source
-                        src="/output2.mp4" 
+                        src="/videos/output2.mp4" 
                         type="video/mp4"
                     />
                 </video>` }}>
