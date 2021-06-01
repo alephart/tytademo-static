@@ -26,14 +26,14 @@ const CharacterChoose = () => {
         data-character='male'
         onClick={handleSelectCharacter}
         >
-        <img src='/images/masculino.png' alt='' />
+        <img src='/images/silueta-masculino.png' alt='' />
       </div>
       <div
         className={`selectCharacter2 ${character === 'female' ? 'selected' : ''}`}
         data-character='female'
         onClick={handleSelectCharacter}
       >
-        <img src='/images/femenino.png' alt='' />
+        <img src='/images/silueta-femenina.png' alt='' />
       </div>
 
       <Button
