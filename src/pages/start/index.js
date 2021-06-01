@@ -24,7 +24,7 @@ const Start = () => {
             <div dangerouslySetInnerHTML={{ __html: `
                 <video playsinline="" autoplay=""  muted=""  id="video">
                     <source
-                        src="video.mp4"
+                        src="/videos/video.mp4"
                         type="video/mp4"
                     />
                 </video>,` }}>
@@ -32,7 +32,7 @@ const Start = () => {
             <div dangerouslySetInnerHTML={{ __html: `
                 <video playsinline="" loop="" autoplay=""  muted=""  id="video2">
                     <source
-                        src="videoloop.mp4"
+                        src="/videos/videoloop.mp4"
                         type="video/mp4"
                     />
                 </video>,` }}>

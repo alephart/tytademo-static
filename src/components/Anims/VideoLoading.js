@@ -6,7 +6,7 @@ const VideoLoading = () => {
   const { t } = useTranslation();
   return (
     <>
-      <div dangerouslySetInnerHTML={VideoBg('', '/output2.mp4', false, 'videoForm')}></div>
+      <div dangerouslySetInnerHTML={VideoBg('', 'output2.mp4', false, 'videoForm')}></div>
       <div className='percentageVideo'>
         <div className='boxPercentage'>
           <div className='iconPercentage'></div>
