@@ -4,13 +4,11 @@ import Layout from '@/components/layouts/StartPage';
 import DialogTyta from '@/components/DialogsTyta';
 import { VideoBg } from '@/components/Anims';
 import Button from '@material-ui/core/Button';
-import { useTranslation } from 'react-i18next';
-import { GlobalContext } from '@/components/Context';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const Home = () => {
-  const { locale } = useContext(GlobalContext);
-  const { t, i18n } = useTranslation();
-  i18n.changeLanguage(locale);
+  const { t } = useTranslation('common');
   const [isOpenDialog, setIsOpenDialog] = useState(false);
 
   return (
@@ -37,5 +35,11 @@ const Home = () => {
     </Layout>
   )
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common']),
+  },
+})
 
 export default Home;

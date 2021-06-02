@@ -1,11 +1,10 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
-import '../i18n';
+import { useTranslation } from 'next-i18next';
 
 const JoinExperince = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('common');
     return (
         <div className="checkVideoFinal">
             <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
@@ -29,5 +28,11 @@ const JoinExperince = () => {
         </div>
     )
 }
-    
+
+export const getStaticProps = async ({ locale }) => ({
+    props: {
+      ...await serverSideTranslations(locale, ['common']),
+    },
+  });
+  
 export default JoinExperince;

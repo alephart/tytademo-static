@@ -1,6 +1,6 @@
 import { useEffect, useContext } from 'react';
 import Layout from '@/components/layouts/General';
-import { GlobalContext, ExperienceContext } from '@/components/Context';
+import { ExperienceContext } from '@/components/Context';
 import { ShareExperience } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/helpers/globals';
 

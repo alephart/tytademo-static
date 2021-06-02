@@ -1,9 +1,8 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import '../i18n';
+import { useTranslation } from 'next-i18next';
 
 const NotAvailable = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   return (
     <div className='notAvailable'>
       <div className='boxItemsNotAvailable'>
@@ -19,5 +18,11 @@ const NotAvailable = () => {
     </div>
   );
 };
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common']),
+  },
+});
 
 export default NotAvailable;

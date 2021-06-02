@@ -12,6 +12,7 @@ import {
   RegisterInfo,
   ShareExperience,
 } from '@/components/FlowExperience';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const ENV = 'development';
 const mockDetector = () => 'US';
@@ -103,5 +104,11 @@ const Experience = () => {
     </Layout>
   )
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common']),
+  },
+});
 
 export default Experience;

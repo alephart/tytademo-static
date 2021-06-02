@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM } from '@/helpers/globals';
-import { GlobalContext, ExperienceContext } from '@/components/Context';
-import { useTranslation } from 'react-i18next';
+import { ExperienceContext } from '@/components/Context';
+import { useTranslation } from 'next-i18next';
 
 const PictureConfirm = () => {
-  const { locale } = useContext(GlobalContext);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation('common');
   const { imgSrc, character, setData, process, setProcess, setMessage } = useContext(ExperienceContext);
   const [isLoading, setIsLoading] = useState(false);
   const [deepFake, setDeepFake] = useState(true);

@@ -3,7 +3,7 @@ import Webcam from 'react-webcam';
 import ButtonTake from '@/components/TakePhoto/ButtonTake';
 import SelectDevice from '@/components/SelectDevice';
 import { PROCESS_ENUM } from '@/helpers/globals';
-import { GlobalContext, ExperienceContext } from '@/components/Context';
+import { ExperienceContext } from '@/components/Context';
 
 const PhotoTake = () => {
   const { facingMode, setFacingMode, setImgSrc, setProcess, setMessage } = useContext(ExperienceContext);

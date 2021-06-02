@@ -1,9 +1,8 @@
 import VideoBg from './VideoBg';
-import { useTranslation } from 'react-i18next';
-import '../../i18n';
+import { useTranslation } from 'next-i18next';
 
 const VideoLoading = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   return (
     <>
       <div dangerouslySetInnerHTML={VideoBg('', 'output2.mp4', false, 'videoForm')}></div>
