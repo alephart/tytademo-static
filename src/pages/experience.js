@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import Layout from '@/components/layouts/General';
-import ExperienceContext from '@/context/ExperienceContext';
+import { ExperienceContext } from '@/components/Context';
 import { useLocation } from '@/components/hooks';
 import { geolocationDb } from '@/utils/geolocationDB';
 import { PROCESS_ENUM } from '@/helpers/globals';
@@ -18,7 +18,7 @@ const mockDetector = () => 'US';
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Experience = () => {
-  const { loading, location, error } = useLocation( 
+  const { loading, location, error } = useLocation(
     ENV !== 'development' ? geolocationDb(geoDbKey) : mockDetector
   );
 

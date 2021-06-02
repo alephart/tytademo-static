@@ -1,13 +1,11 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import Layout from '@/components/layouts/General';
-import ExperienceContext from '@/context/ExperienceContext';
+import { GlobalContext, ExperienceContext } from '@/components/Context';
 import { ShareExperience } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/helpers/globals';
 
 const ToShareExp = () => {
   const { process, setProcess } = useContext(ExperienceContext);
-  //const [process, setProcess] = useState(PROCESS_ENUM.share);
-  console.log('page: to-share: actual process', process);
 
   useEffect(() => {
     if (process !== PROCESS_ENUM.share) {

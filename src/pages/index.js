@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Link from 'next/link';
 import Layout from '@/components/layouts/StartPage';
 import DialogTyta from '@/components/DialogsTyta';
 import { VideoBg } from '@/components/Anims';
 import Button from '@material-ui/core/Button';
 import { useTranslation } from 'react-i18next';
+import { GlobalContext } from '@/components/Context';
 
 const Home = () => {
-  const { t } = useTranslation();
+  const { locale } = useContext(GlobalContext);
+  const { t, i18n } = useTranslation();
+  i18n.changeLanguage(locale);
   const [isOpenDialog, setIsOpenDialog] = useState(false);
 
   return (

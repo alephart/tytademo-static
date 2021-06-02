@@ -3,10 +3,12 @@ import Link from 'next/link';
 import Button from '@material-ui/core/Button';
 import DialogTyta from '@/components/DialogsTyta';
 import { useTranslation } from 'react-i18next';
-import ExperienceContext from '@/context/ExperienceContext';
+import { GlobalContext, ExperienceContext } from '@/components/Context';
 
 const ShareExperience = () => {
-  const { t } = useTranslation();
+  const { locale } = useContext(GlobalContext);
+  const { t, i18n } = useTranslation();
+  i18n.changeLanguage(locale);
   const { setProcess, swap } = useContext(ExperienceContext);
   const [isOpenDialog, setIsOpenDialog] = useState(false);
 

@@ -3,7 +3,7 @@ import Webcam from 'react-webcam';
 import ButtonTake from '@/components/TakePhoto/ButtonTake';
 import SelectDevice from '@/components/SelectDevice';
 import { PROCESS_ENUM } from '@/helpers/globals';
-import ExperienceContext from '@/context/ExperienceContext';
+import { GlobalContext, ExperienceContext } from '@/components/Context';
 
 const PhotoTake = () => {
   const { facingMode, setFacingMode, setImgSrc, setProcess, setMessage } = useContext(ExperienceContext);
@@ -12,10 +12,12 @@ const PhotoTake = () => {
   const webcamRef = useRef(null);
 
   let constraints = {
-    //width: { min: 480, ideal: 1080, max: 1920 },
-    //height: { min: 360, ideal: 1440, max: 1440 },
-    //deviceId: deviceId,
-    //groupId: groupId,
+    /*
+    width: { min: 480, ideal: 1080, max: 1920 },
+    height: { min: 360, ideal: 1440, max: 1440 },
+    deviceId: deviceId,
+    groupId: groupId, 
+    */
     width: 1080,
     height: 1440,
     aspectRatio: 1.333333,

@@ -1,11 +1,13 @@
 import React, { useEffect, useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM } from '@/helpers/globals';
-import ExperienceContext from '@/context/ExperienceContext';
+import { GlobalContext, ExperienceContext } from '@/components/Context';
 import { useTranslation } from 'react-i18next';
 
 const CharacterChoose = () => {
-  const { t } = useTranslation();
+  const { locale } = useContext(GlobalContext);
+  const { t, i18n } = useTranslation();
+  i18n.changeLanguage(locale);
   const { character, setCharacter, setProcess, setMessage } = useContext(ExperienceContext);
   
   useEffect(() =>{

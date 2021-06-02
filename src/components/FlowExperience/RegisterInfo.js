@@ -8,11 +8,13 @@ import {
 import { useForm } from 'react-hook-form';
 import { VideoLoading } from '@/components/Anims';
 import { PROCESS_ENUM } from '@/helpers/globals';
-import ExperienceContext from '@/context/ExperienceContext';
+import { GlobalContext, ExperienceContext } from '@/components/Context';
 import { useTranslation } from 'react-i18next';
 
 const RegisterInfo = () => {
-  const { t } = useTranslation();
+  const { locale } = useContext(GlobalContext);
+  const { t, i18n } = useTranslation();
+  i18n.changeLanguage(locale);
   const { setProcess, data, character, setMessage, swap, setSwap } = useContext(ExperienceContext);
   const [isSubmitting, setSubmitting] = useState(false); 
   const [agreeTerms, setAgreeTerms] = useState(true);
