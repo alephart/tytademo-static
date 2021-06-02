@@ -1,7 +1,16 @@
-import '../styles/globals.css'
+import '@/styles/globals.css'
+import '@/styles/general.scss'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import { appWithTranslation } from 'next-i18next';
+
+import { Provider as SessionProvider } from "next-auth/client";
+
+const MyApp = ({ Component, pageProps }) => {
+  return (
+    <SessionProvider session={pageProps.session}>
+      <Component {...pageProps} />
+    </SessionProvider>
+  )
 }
 
-export default MyApp
+export default appWithTranslation(MyApp);

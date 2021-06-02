@@ -1,34 +1,45 @@
-import React, { useState } from 'react'
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import TakePhoto from '@/components/TakePhoto'
-import SelectDevice from '@/components/SelectDevice'
-import Share from "@/components/Share";
+import { useState, useContext } from 'react';
+import Link from 'next/link';
+import Layout from '@/components/layouts/StartPage';
+import DialogTyta from '@/components/DialogsTyta';
+import { VideoBg } from '@/components/Anims';
+import Button from '@material-ui/core/Button';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-export default function Home() {
-  const [facingMode, setFacingMode] = useState('user');
-  const [cameraOn, setCameraOn] = useState(true);
+const Home = () => {
+  const { t } = useTranslation('common');
+  const [isOpenDialog, setIsOpenDialog] = useState(false);
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>DeepFake Toyota</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout>
+      <div dangerouslySetInnerHTML={VideoBg('video', 'video.mp4', false)}></div>
+      <div dangerouslySetInnerHTML={VideoBg('video2', 'videoloop.mp4', true)}></div>
 
-      <main className={styles.main}>
-        <h1>Toyota DeepFake</h1>
+      <div className="copyStart">
+          {t("start.copyStart")}
+          <span>
+            {t('start.subCopyStart')}
+          </span>
+      </div>
 
-        <TakePhoto facingMode={facingMode} />
-        <SelectDevice mode={facingMode} setMode={setFacingMode} />
-        <Share />
+      <Link href="/experience">
+          <Button className="buttonStart" variant="contained">{t('start.buttonStart')}</Button>
+      </Link>
 
-      </main>
+      <div className="copyFooter">
+        {t('start.copyFooter1')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a> {t('start.copyFooter2')}
+      </div>
+      <DialogTyta dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
 
-      <footer className={styles.footer}>
-        Copyright Toyota
-      </footer>
-
-    </div>
+    </Layout>
   )
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common']),
+  },
+})
+
+export default Home;
