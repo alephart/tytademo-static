@@ -18,10 +18,10 @@ const CheckVideoFinal = () => {
                 </video>` }}>
             </div>
             <div className="copyJoin">
-                ve el video de tu <br/>
-                amigo y crea el tuyo.<br/>
+                ve el video de tu 
+                amigo y crea el tuyo.
                 <span>
-                    Tómate una selfie para ser parte del video <br/> de Lunay.
+                    Tómate una selfie para ser parte del video de Lunay.
                 </span>
             </div>
             <Link href="/">

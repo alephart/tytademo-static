@@ -485,8 +485,10 @@ body {
 			font-size: 16px;
 			width: 90%;
 			text-align: center;
-			margin: 50px auto 0;
+			margin: 78px auto 63px;
 			line-height: 18px;
+			text-transform: lowercase;
+			width: 300px;
 			span
 			{
 				font-size: 16px;
@@ -494,8 +496,17 @@ body {
 				font-family: 'ToyotaRegular';
 				margin: 20px 0 40px;
 				display: block;
+				text-transform: initial;
 			}
 		}	
+	}
+	.checkVideoFinal
+	{
+		.logoToyota
+		{
+			width: 223px;
+			margin: 48px auto 52px;
+		}
 	}
 	.chooseCharacter
 	{
@@ -824,6 +835,7 @@ body {
 			left: 0;
 			right: 0;
 			margin: 0 auto;
+			background: transparent;
 		}
 		iframe
 		{
@@ -924,6 +936,7 @@ body {
 					max-width: 280px;
 					font-size: 26px;
 					font-family: 'JoyrideEx';
+					text-transform: lowercase;
 				}
 				p
 				{
@@ -968,6 +981,10 @@ body {
 		background-image: url("../assets/images/loading.svg");
 		background-position: 50% 30%;
 		background-repeat: no-repeat;
+		video
+		{
+			min-height: 75vh;
+		}
 	}
 
 	.zoneMessage {
@@ -1022,11 +1039,9 @@ body {
 		border: 2px solid #5A2CFB;
 	}
 
-	.inner-circle.is-clicked, 
-	.inner-circle:hover {
-		height: 50px;
-		width: 50px;
-		margin: -20px 0px 0px -25px;
+	.outer-circle:hover {
+		zoom: 0.99;
+		transition: width 0.1s;
 	}
 
 	.icons-social {
@@ -1045,4 +1060,17 @@ body {
 .boxProgrees .MuiCircularProgress-determinate.lineProgrees
 {
 	color: #5A2DFC;
+}
+.zone-cameras
+{
+	margin-top: 95px;
+	button
+	{
+		background: transparent;
+		border: none;
+		img
+		{
+			width: 55px;
+		}
+	}
 }

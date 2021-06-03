@@ -83,8 +83,7 @@ const RegisterInfo = () => {
         <Input
           className="check"
           {...register('firstname', { required: true })}
-          placeholder='Nombre'
-          inputProps={{ 'aria-label': 'nombre' }}
+          placeholder={t("registerInfo.name")}
         />
         {errors.firstname && (
           <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
@@ -92,7 +91,7 @@ const RegisterInfo = () => {
 
         <Input
           {...register('lastname', { required: true })}
-          placeholder='Apellido'
+          placeholder={t("registerInfo.lastName")}
           inputProps={{ 'aria-label': 'apeliido' }}
         />
         {errors.lastname && (
@@ -101,7 +100,7 @@ const RegisterInfo = () => {
 
         <Input
           {...register('email', { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ })}
-          placeholder='Correo electrónico'
+          placeholder={t("registerInfo.email")}
           inputProps={{ 'aria-label': 'email' }}
         />
         {errors.email && (
@@ -116,7 +115,7 @@ const RegisterInfo = () => {
               .slice(0, 5);
           }}
           {...register('zipcode', { required: true, pattern: /^[0-9]{5}(?:-[0-9]{4})?$/ })}
-          placeholder='Código postal'
+          placeholder={t("registerInfo.zip")}
           inputProps={{ 'aria-label': 'código postal' }}
         />
         {errors.zipcode && (
