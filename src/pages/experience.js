@@ -61,10 +61,10 @@ const Experience = () => {
         setProgress(40);
         break;
       case PROCESS_ENUM.photoConfirm:
-        setProgress(40);
+        setProgress(60);
         break;
       case PROCESS_ENUM.register:
-        setProgress(60);
+        setProgress(80);
         break;
       case PROCESS_ENUM.share:
         setProgress(100);
