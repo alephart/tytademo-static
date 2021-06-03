@@ -34,7 +34,7 @@ html, body {
 }
 .degrade
 {
-	background-image: url("../assets/images/gradient-bg-home.png");
+	background-image: url("/images/gradient-bg-home.png");
 	background-position: bottom left;
     max-width: 414px;
     width: 100%;
@@ -168,7 +168,7 @@ body {
     	position: absolute;
 		left: 0;
 		right: 0;
-		background-image: url("../assets/images/bg.png");
+		background-image: url("/images/bg.png");
 		background-position: center;
 		background-size: cover;
 		font-family: 'JoyrideEx';
@@ -246,7 +246,7 @@ body {
 		left: 0;
 		right: 0;
 		font-family: 'JoyrideEx';
-		background-image: url("../assets/images/bg.png");
+		background-image: url("/images/bg.png");
 		background-position: center;
 		background-size: cover;
 		
@@ -283,7 +283,7 @@ body {
 			display: block;
 			opacity: 0.5;
 			position: relative;
-			background-image: url("../assets/images/bg-masculino.jpg");
+			background-image: url("/images/bg-masculino.jpg");
 			background-position: center;
 			background-size: cover;
 			transition: width 0.5s;
@@ -307,7 +307,7 @@ body {
 		}
 		.selectCharacter2
 		{
-			background-image: url("../assets/images/bg-femenina.jpg");
+			background-image: url("/images/bg-femenina.jpg");
 			img
 			{
 				right: 35px;
@@ -349,7 +349,7 @@ body {
 			width: 100%;
 			position: absolute;
 			bottom: 1px;
-			background-image: url("../assets/images/bgDegrade.png");
+			background-image: url("/images/bgDegrade.png");
 			background-position: center;
 			background-size: cover;
 		}
@@ -423,7 +423,7 @@ body {
 		{
 			width: 300px;
 			height: 111px;
-			background-image: url("../assets/images/bgSocial.png");
+			background-image: url("/images/bgSocial.png");
 			background-position: center;
 			background-size: cover;
 			overflow: hidden;
@@ -575,7 +575,7 @@ body {
 				{
 					width: 40px;
 					height: 40px;
-					background-image: url("../assets/images/vector-animacion.svg");
+					background-image: url("/images/vector-animacion.svg");
 					background-position: center left;
 					background-size: contain;
 					background-repeat: no-repeat;
@@ -648,7 +648,7 @@ body {
 				{
 					width: 50px;
 					height: 50px;
-					background-image: url("../assets/images/cube.gif");
+					background-image: url("/images/cube.gif");
 					background-position: center left;
 					background-size: contain;
 					background-repeat: no-repeat;
@@ -721,7 +721,7 @@ body {
 			transition: width 0.3s;
 			&.check
 			{
-				background-image: url("../assets/images/icon-ok.svg");
+				background-image: url("/images/icon-ok.svg");
 				background-repeat: no-repeat;
 				background-position: center right;
 				transition: width 0.3s;
@@ -789,13 +789,13 @@ body {
 			}
 			.MuiSwitch-colorSecondary .MuiSwitch-thumb
 			{
-				background-image: url("../assets/images/icon-buttonx.png");
+				background-image: url("/images/icon-buttonx.png");
 				background-size: 20px;
     			background-repeat: no-repeat;
 			}
 			.MuiSwitch-colorSecondary.Mui-checked .MuiSwitch-thumb
 			{
-				background-image: url("../assets/images/icon-button.png");
+				background-image: url("/images/icon-button.png");
 			}
 			.MuiSwitch-switchBase
 			{
@@ -883,7 +883,7 @@ body {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-image: url("../assets/images/bg-site-desktop.png");
+		background-image: url("/images/bg-site-desktop.png");
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -997,7 +997,7 @@ body {
 		left: 50%;
 		transform: translateX(-50%);
 		height: 75vh;
-		background-image: url("../assets/images/loading.svg");
+		background-image: url("/images/loading.svg");
 		background-position: 50% 30%;
 		background-repeat: no-repeat;
 		video
