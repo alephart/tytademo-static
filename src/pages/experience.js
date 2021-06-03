@@ -13,6 +13,7 @@ import {
   ShareExperience,
 } from '@/components/FlowExperience';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { TytaProgress } from '@/components/Anims';
 
 const ENV = 'development';
 const mockDetector = () => 'US';
@@ -24,6 +25,7 @@ const Experience = () => {
   );
 
   const [process, setProcess] = useState(PROCESS_ENUM.character);
+  const [progress, setProgress] = useState(0);
   const [character, setCharacter] = useState(null);
   const [facingMode, setFacingMode] = useState('user');
   const [imgSrc, setImgSrc] = useState(null);
@@ -50,11 +52,33 @@ const Experience = () => {
     setMessage,
   };
 
-  // useEffect(() => {
-  //   if(process === PROCESS_ENUM.share) {
-  //     router.push('/to-share-experience');
-  //   }
-  // }, [process])
+  useEffect(() => {
+    console.log('here in process progress!!!')
+    switch (process) {
+      case PROCESS_ENUM.character:
+        setProgress(20);
+        break;
+      case PROCESS_ENUM.photoTake:
+        setProgress(40);
+        break;
+      case PROCESS_ENUM.photoConfirm:
+        setProgress(40);
+        break;
+      case PROCESS_ENUM.register:
+        setProgress(60);
+        break;
+      case PROCESS_ENUM.share:
+        setProgress(100);
+        break;
+        
+        default:
+        setProgress(10);
+        break;
+    }
+    //if(process === PROCESS_ENUM.share) {
+      //router.push('/to-share-experience');
+    //}
+  }, [process]);
 
   if(loading) {
     return (<div>loading...</div>);
@@ -74,6 +98,9 @@ const Experience = () => {
   return (
     <Layout>
       <ExperienceContext.Provider value={contextValues}>
+
+        <TytaProgress progress={progress}/>
+
         {process === PROCESS_ENUM.character && (
           <CharacterChoose />
         )}
