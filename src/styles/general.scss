@@ -385,6 +385,7 @@ body {
 			z-index: 0;
 			width: 100%;
 			position: absolute;
+			opacity: 0.9;
 		}
 		.logoToyota
 		{
@@ -455,7 +456,7 @@ body {
 		{
 			margin: 40px auto;
 			background: #000;
-			border: 2px solid #fff;
+			border: 2px solid #FFFFFF54;
 		}
 		.copyFooter
 		{
@@ -506,6 +507,10 @@ body {
 		{
 			width: 223px;
 			margin: 48px auto 52px;
+		}
+		.buttonJoin
+		{
+			margin-bottom: 60px;
 		}
 	}
 	.chooseCharacter
@@ -583,6 +588,7 @@ body {
 					float: right;
 					font-size: 11px;
 					width: calc(100% - 45px);
+					text-shadow: 0 0 3px #000;
 				}	
 				.linePercentage
 				{
@@ -595,19 +601,20 @@ body {
 						height: 2px;
 						background: #FFD800;
 					}
-
 				}
 				.timePercentage
 				{
 					float: right;
 					font-size: 11px;
 					width: calc(100% - 45px);
+					text-shadow: 0 0 3px #000;
 				}
 				.secondPercentage
 				{
 					float: right;
 					font-size: 11px;
 					width: calc(100% - 45px);
+					text-shadow: 0 0 3px #000;
 				}
 			}
 		}
@@ -661,10 +668,18 @@ body {
 					float: left;
 					width: calc(100% - 65px);
 					margin: 0 0 0 10px;
+					position: relative;
 					.percentage
 					{
 						height: 2px;
 						background: #FFD800;
+						position: absolute;
+						z-index: 1;
+						transition: width 0.3s;
+						&.gray
+						{
+							background: #3c3c3c;
+						}
 					}
 
 				}
@@ -702,11 +717,13 @@ body {
 			width: 90%;
 			margin: 20px auto;
 			display: block;
+			transition: width 0.3s;
 			&.check
 			{
 				background-image: url("../assets/images/icon-ok.svg");
 				background-repeat: no-repeat;
 				background-position: center right;
+				transition: width 0.3s;
 			}
 		}
 		.MuiInput-underline:before
@@ -732,9 +749,9 @@ body {
 		{
 			display: block;
 			width: 90%;
-			margin: -20px auto;
+			margin: -20px auto -15px;
 			color: #FAC2C2;
-			font-family: 'ToyotaBold';
+			font-family: 'ToyotaRegular';
 			font-size: 12px;
 			&.center
 			{
@@ -812,6 +829,7 @@ body {
 				width: calc(100% - 80px);
 				float: left;
 				margin-right: 20px;
+				letter-spacing: 0.5px;
 				&.special
 				{
 					text-decoration: underline;
