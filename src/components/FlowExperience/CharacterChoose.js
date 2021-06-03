@@ -14,37 +14,39 @@ const CharacterChoose = () => {
 
   const handleSelectCharacter = (event) => {
     event.preventDefault();
-    const dataset = event.currentTarget.dataset;
+    const dataset = event.currentTarget.dataset; 
     setCharacter(dataset.character);
   };
 
   return (
-    <>
-      <div className='selectCopy'>{t("characterChoose.selectCopy")}</div>
-      <div
-        className={`selectCharacter1 ${character === 'male' ? 'selected' : ''}`}
-        data-character='male'
-        onClick={handleSelectCharacter}
+    <div className="chooseCharacter">
+      <div className="BoxchooseCharacter">
+        <div className='selectCopy'>{t("characterChoose.selectCopy")}</div>
+        <div
+          className={`selectCharacter1 ${character === 'male' ? 'selected' : ''}`}
+          data-character='male'
+          onClick={handleSelectCharacter}
+          >
+          <img src='/images/silueta-masculino.png' alt='' />
+        </div>
+        <div
+          className={`selectCharacter2 ${character === 'female' ? 'selected' : ''}`}
+          data-character='female'
+          onClick={handleSelectCharacter}
         >
-        <img src='/images/silueta-masculino.png' alt='' />
-      </div>
-      <div
-        className={`selectCharacter2 ${character === 'female' ? 'selected' : ''}`}
-        data-character='female'
-        onClick={handleSelectCharacter}
-      >
-        <img src='/images/silueta-femenina.png' alt='' />
-      </div>
+          <img src='/images/silueta-femenina.png' alt='' />
+        </div>
 
-      <Button
-        disabled={!character}
-        className='buttonPhoto'
-        variant='contained'
-        onClick={() => setProcess(PROCESS_ENUM.photoTake)}
-      >
-        {t("characterChoose.selectCopy")}
-      </Button>
-    </>
+        <Button
+          disabled={!character}
+          className='buttonPhoto'
+          variant='contained'
+          onClick={() => setProcess(PROCESS_ENUM.photoTake)}
+        >
+          {t("characterChoose.selectCopy")}
+        </Button>
+      </div>
+    </div>
   );
 };
 

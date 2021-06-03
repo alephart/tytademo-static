@@ -22,21 +22,21 @@ const useStylesProgress = makeStyles((theme) => ({
 const TytaProgress  = ({progress}) => {
   const classes = useStylesProgress();
   return (
-    <div className={classes.root}>
+    <div className={classes.root + ` boxProgrees`}>
       <CircularProgress
         variant="determinate"
         className={classes.bottom}
-        size={40}
+        size={30}
         thickness={4}
         value={100}
       />
       <CircularProgress
         variant="determinate"
-        className={classes.top}
+        className={classes.top + ` lineProgrees`}
         classes={{
           circle: classes.circle,
         }}
-        size={40}
+        size={30}
         thickness={4}
         value={progress}
       />

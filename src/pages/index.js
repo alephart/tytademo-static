@@ -15,7 +15,7 @@ const Home = () => {
     <Layout>
       <div dangerouslySetInnerHTML={VideoBg('video', 'video.mp4', false)}></div>
       <div dangerouslySetInnerHTML={VideoBg('video2', 'videoloop.mp4', true)}></div>
-
+      <div className="degrade"></div>
       <div className="copyStart">
           {t("start.copyStart")}
           <span>
@@ -28,7 +28,7 @@ const Home = () => {
       </Link>
 
       <div className="copyFooter">
-        {t('start.copyFooter1')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a> {t('start.copyFooter2')}
+        {t('start.copyFooter1')} {t('start.copyFooter2')}<a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
       </div>
       <DialogTyta dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
 

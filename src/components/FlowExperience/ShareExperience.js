@@ -26,7 +26,6 @@ const ShareExperience = () => {
         }}
       ></div>
       <div className='copyThanks'>
-        <br />
         <div className='copyLunay'>{t("shareExperience.copyLunay")}</div>
         <span>
           {t("shareExperience.copyLunaySpan")}
@@ -42,10 +41,10 @@ const ShareExperience = () => {
           {t("shareExperience.buttonThanks")}
       </a>
 
-      <div className="copyFooter">
+      {/* <div className="copyFooter">
           {t('shareExperience.copyFooter1')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('shareExperience.copyFooterLink')}</a> {t('shareExperience.copyFooter2')}
       </div>
-      <DialogTyta dialog='policies' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
+      <DialogTyta dialog='policies' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} /> */}
 
     </div>
   );

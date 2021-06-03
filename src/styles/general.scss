@@ -13,10 +13,10 @@ html, body {
     width: 101%;
     min-height: 100%;
 	opacity: 1;
-	-webkit-animation: fadeOut 6s ease-in-out 1 forwards;
-    -moz-animation: fadeOut 6s ease-in-out 1 forwards;
-    -o-animation: fadeOut 6s ease-in-out 1 forwards;
-    animation: fadeOut 6s ease-in-out 1 forwards;
+	-webkit-animation: fadeOut 4.5s ease-in-out 1 forwards;
+    -moz-animation: fadeOut 4.5s ease-in-out 1 forwards;
+    -o-animation: fadeOut 4.5s ease-in-out 1 forwards;
+    animation: fadeOut 4.5s ease-in-out 1 forwards;
 	animation-delay: 4s;
 }
 #video2 {
@@ -26,11 +26,26 @@ html, body {
     width: 101%;
     min-height: 100%;
 	opacity: 0;
-	-webkit-animation: fadeIn 4s ease-in-out 1 forwards;
-    -moz-animation: fadeIn 4s ease-in-out 1 forwards;
-    -o-animation: fadeIn 4s ease-in-out 1 forwards;
-    animation: fadeIn 4s ease-in-out 1 forwards;
-	animation-delay: 3s;
+	-webkit-animation: fadeIn 3s ease-in-out 1 forwards;
+    -moz-animation: fadeIn 3s ease-in-out 1 forwards;
+    -o-animation: fadeIn 3s ease-in-out 1 forwards;
+    animation: fadeIn 3s ease-in-out 1 forwards;
+	animation-delay: 0.1s;
+}
+.degrade
+{
+	background-image: url("../assets/images/gradient-bg-home.png");
+	background-position: bottom left;
+    max-width: 414px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 0;
 }
 @keyframes fadeOut {
     from { opacity: 1; }
@@ -162,29 +177,36 @@ body {
 			font-size: 16px;
 			text-align: center;
 			color: #fff;
-			margin: 100% auto 15%;
+			margin: 0 auto 0;
 			width: 100%;
 			line-height: 24px;
-			max-width: 300px;
+			max-width: 315px;
 			display: block;
 			position: absolute;
-			bottom: 100px;
 			left: 0;
 			right: 0;
 			text-transform: lowercase;
-			text-shadow: 0 0 5px #000;
+			text-shadow: 0 0 23px #0a074699;
+			bottom: 130px;
+			@include mobileMin
+			{
+				font-size: 14px;
+			}
 			span
 			{
-				font-family: 'ToyotaRegular';
+				font-family: "ToyotaRegular";
 				display: block;
-				font-size: 14px;
-				line-height: 16px;
+				font-size: 16px;
+				line-height: 20px;
+				margin-top: 5px;
+				width: 321px;
+				text-transform: initial;
 			}
 		}
 		.buttonStart
 		{
 			position: absolute;
-			bottom: 70px;
+			bottom: 45px;
 		}
 		.copyFooter
 		{
@@ -194,7 +216,9 @@ body {
 			text-align: center;
 			bottom: 30px;
 			width: 100%;
+			letter-spacing: 0;
 			font-family: 'ToyotaRegular';
+			bottom: 17px;
 			a
 			{
 				text-decoration: underline;
@@ -244,24 +268,25 @@ body {
 			width: 100%;
 			max-width: 300px;
 			line-height: 26px;
-			margin: 10% auto;
+			margin: 0px auto 60px;
 			text-transform: lowercase;
+			top: 60px;
+			position: absolute;
 		}
 		.selectCharacter1,
 		.selectCharacter2
 		{
-			border: 1px solid yellow;
+			border: 2px solid #fff;
 			width: 280px;
     		height: 180px;
-			margin: 0 auto 20px;
+			margin: 0 auto 50px;
 			display: block;
 			opacity: 0.5;
 			position: relative;
-			overflow: hidden;
 			background-image: url("../assets/images/bg-masculino.jpg");
 			background-position: center;
 			background-size: cover;
-			transition: transform 0.5s cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+			transition: width 0.5s;
 			img
 			{
 				right: 0;
@@ -269,25 +294,29 @@ body {
 				margin: 0 auto;
 				width: 50%;
 				position: absolute;
+				bottom: 0;
 			}
 			&.selected
 			{	
-				transition: transform 0.5s cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+
+				transition: width 0.5s;
 				opacity: 1;
 				zoom: 1.1;
-				img
-				{
-					width: 70%;
-				}
+				border: 2px solid yellow;
 			}
 		}
 		.selectCharacter2
 		{
 			background-image: url("../assets/images/bg-femenina.jpg");
+			img
+			{
+				right: 35px;
+			}
 		}
 		.buttonPhoto
 		{
 			margin: 20px auto;
+			bottom: 0;
 		}
 
 		// likePicture
@@ -365,21 +394,28 @@ body {
 		}
 		.copyThanks
 		{
-			margin: 10px auto;
+			margin: 40px auto;
 			font-size: 22px;
 			text-align: center;
 			.copyLunay
 			{
 				font-size: 15px;
-				font-family: 'ToyotaBold';
-				margin: 10px 0;
+				font-family: "JoyrideEx";
+				margin: 0px auto 10px;
+				text-transform: lowercase;
+				width: 300px;
+				line-height: 20px;
 			}
 			span
 			{
 				font-size: 15px;
 				line-height: 100%;
-				font-family: 'ToyotaRegular';
-				margin: 10px 0;
+				font-family: "ToyotaRegular";
+				margin: 10px auto;
+				width: 310px;
+				display: block;
+				letter-spacing: 0;
+				line-height: 19px;
 			}
 		}
 		.sharedSocial
@@ -398,6 +434,7 @@ body {
 			padding: 22px 0 0 0 ;
 			text-align: center;
 			margin: 30px auto 0;
+			text-transform: lowercase;
 		}
 		.iconSocial
 		{
@@ -416,7 +453,7 @@ body {
 		}
 		.buttonThanks
 		{
-			margin: 30px auto 35px;
+			margin: 40px auto;
 			background: #000;
 			border: 2px solid #fff;
 		}
@@ -460,6 +497,18 @@ body {
 			}
 		}	
 	}
+	.chooseCharacter
+	{
+		padding: 40px 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: none;
+		.BoxchooseCharacter
+		{
+			padding-top: 110px;
+		}
+	}
 	.copyLink
 	{
 		.linkVideo
@@ -469,6 +518,11 @@ body {
 	}
 	.sharedExperience
 	{
+		.logoToyota
+		{
+			width: 190px;
+			margin: 33px auto 35px;
+		}
 		.copyFooter
 		{
 			position: relative;
@@ -574,28 +628,28 @@ body {
 				letter-spacing: 0px;
 				.iconPercentage
 				{
-					width: 40px;
-					height: 40px;
+					width: 50px;
+					height: 50px;
 					background-image: url("../assets/images/cube.gif");
 					background-position: center left;
 					background-size: contain;
 					background-repeat: no-repeat;
 					transform: rotate(90deg);
 					float: left;
-					margin: 8px 0px 0px;
+					margin: -8px 0px 0px;
 				}
 				.numberPercentage
 				{	
 					float: right;
 					font-size: 11px;
-					width: calc(100% - 45px);
+					width: calc(100% - 60px);
 				}	
 				.linePercentage
 				{
 					height: 2px;
 					float: left;
-					width: calc(100% - 50px);
-					margin: 0 0 0 5px;
+					width: calc(100% - 65px);
+					margin: 0 0 0 10px;
 					.percentage
 					{
 						height: 2px;
@@ -607,13 +661,13 @@ body {
 				{
 					float: right;
 					font-size: 11px;
-					width: calc(100% - 45px);
+					width: calc(100% - 60px);
 				}
 				.secondPercentage
 				{
 					float: right;
 					font-size: 11px;
-					width: calc(100% - 45px);
+					width: calc(100% - 60px);
 				}
 			}
 		}
@@ -637,6 +691,12 @@ body {
 			width: 90%;
 			margin: 20px auto;
 			display: block;
+			&.check
+			{
+				background-image: url("../assets/images/icon-ok.svg");
+				background-repeat: no-repeat;
+				background-position: center right;
+			}
 		}
 		.MuiInput-underline:before
 		{
@@ -728,10 +788,19 @@ body {
 				margin: -7px -7px;
 				border-radius: 15px;
 			}
+			.MuiSwitch-root
+			{
+				margin: 5px 0;
+			}
+			.switch2
+			{
+				margin: 18px 0;
+			}
 			.copyCheckbox
 			{
-				width: calc(100% - 60px);
+				width: calc(100% - 80px);
 				float: left;
+				margin-right: 20px;
 				&.special
 				{
 					text-decoration: underline;
@@ -739,6 +808,7 @@ body {
 					float: right;
 					margin-top: 7px;
 				}
+				
 			}
 		}
 
@@ -965,4 +1035,14 @@ body {
     align-items: center;
 	}
 }
-
+.boxProgrees
+{
+	position: absolute !important;
+	top: 20px;
+	left: 20px;
+	z-index: 10;
+}
+.boxProgrees .MuiCircularProgress-determinate.lineProgrees
+{
+	color: #5A2DFC;
+}

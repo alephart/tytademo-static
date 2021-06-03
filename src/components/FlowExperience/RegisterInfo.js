@@ -81,6 +81,7 @@ const RegisterInfo = () => {
         noValidate autoComplete='off'
       >
         <Input
+          className="check"
           {...register('firstname', { required: true })}
           placeholder='Nombre'
           inputProps={{ 'aria-label': 'nombre' }}
@@ -138,6 +139,7 @@ const RegisterInfo = () => {
             {t("registerInfo.copyCheckbox2")}
           </div>
           <Switch
+            className="switch2"
             checked={contact.testDrive}
             onChange={handleChange}
             name='testDrive'
