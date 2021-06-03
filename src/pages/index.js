@@ -28,7 +28,7 @@ const Home = () => {
       </Link>
 
       <div className="copyFooter">
-        {t('start.copyFooter1')} {t('start.copyFooter2')}<a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
+        {t('start.copyFooter1')} {t('start.copyFooter2')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
       </div>
       <DialogTyta dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
 
