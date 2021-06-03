@@ -25,7 +25,7 @@ const PhotoTake = () => {
   };
 
   useEffect(() =>{
-    setMessage(warning);
+    //setMessage(warning);
   }, []);
 
   const capture = useCallback(() => {
