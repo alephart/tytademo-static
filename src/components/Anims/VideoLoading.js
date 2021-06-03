@@ -12,7 +12,7 @@ const VideoLoading = ({progress}) => {
           <div className='numberPercentage'>{`${progress}%`}</div>
           <div className='linePercentage'>
             <div className='percentage' style={{ width: 100 }}></div>
-            <div className='percentage' style={{ width: 50 }}></div>
+            <div className='percentage' style={{ width: progress }}></div>
           </div>
           <div className='timePercentage'>{t("VideoLoading.timePercentage")}</div>
           <div className='secondPercentage'>000 000 166</div>
