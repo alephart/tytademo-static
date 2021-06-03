@@ -1,8 +1,10 @@
 import VideoBg from './VideoBg';
 import { useTranslation } from 'next-i18next';
+import { useCountUp } from 'react-countup';
 
 const VideoLoading = ({progress}) => {
   const { t } = useTranslation('common');
+  const { countUp } = useCountUp({ start: 0, end: 9999999999, delay: 1 });
   return (
     <>
       <div dangerouslySetInnerHTML={VideoBg('', 'output2.mp4', false, 'videoForm')}></div>
@@ -15,7 +17,7 @@ const VideoLoading = ({progress}) => {
             <div className='percentage' style={{ width: progress }}></div>
           </div>
           <div className='timePercentage'>{t("VideoLoading.timePercentage")}</div>
-          <div className='secondPercentage'>000 000 166</div>
+          <div className='secondPercentage'>{countUp}</div>
         </div>
       </div>
     </>
