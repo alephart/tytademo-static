@@ -124,7 +124,7 @@ const RegisterInfo = () => {
         )}
 
         <Input
-          className={items.firstname ? 'check' : ''}
+          className={items.lastname ? 'check' : ''}
           {...register('lastname', { required: true })}
           placeholder={t("registerInfo.lastName")}
           inputProps={{ 'aria-label': 'apeliido' }}
@@ -135,7 +135,7 @@ const RegisterInfo = () => {
         )}
 
         <Input
-          className={items.firstname ? 'check' : ''}
+          className={items.email ? 'check' : ''}
           {...register('email', { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ })}
           placeholder={t("registerInfo.email")}
           inputProps={{ 'aria-label': 'email' }}
@@ -146,7 +146,7 @@ const RegisterInfo = () => {
         )}
 
         <Input
-          className={items.firstname ? 'check' : ''}
+          className={items.zipcode ? 'check' : ''}
           type='number'
           onInput={(e) => {
             e.target.value = Math.max(0, parseInt(e.target.value))
