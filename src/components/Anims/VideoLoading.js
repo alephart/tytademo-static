@@ -4,7 +4,7 @@ import { useCountUp } from 'react-countup';
 
 const VideoLoading = ({progress}) => {
   const { t } = useTranslation('common');
-  const { countUp } = useCountUp({ start: 0, end: 9999999999, delay: 1, duration: 1000 });
+  const { countUp } = useCountUp({ start: 0, end: 9999999999, delay: 2, duration: 1000 });
   return (
     <>
       <div dangerouslySetInnerHTML={VideoBg('', 'output2.mp4', true, 'videoForm')}></div>
