@@ -694,6 +694,7 @@ body {
 					float: right;
 					font-size: 11px;
 					width: calc(100% - 60px);
+					transition: width 0.3s;
 				}
 			}
 		}

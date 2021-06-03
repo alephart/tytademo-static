@@ -21,7 +21,7 @@ const RegisterInfo = () => {
     email: false,
     zipcode: false,
   });
-  const [isSubmitting, setSubmitting] = useState(false); 
+  const [isSubmitting, setSubmitting] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(true);
   const [contact, setContact] = useState({
     productNews: false,
