@@ -59,15 +59,15 @@ const Experience = () => {
   if(loading) {
     return (<div>loading...</div>);
   }
-  
+    
   if(error) {
-    return (<div>No se pudo detectar ubicación: {error.toString()}</div>);
-  }
-  
-  if(location !== 'US') {
+      return (<div>No se pudo detectar ubicación: {error.toString()}</div>);
+    }
+    
+  if(location !== 'US' || error) {
     router.push('/not-available');
   }
-  
+    
   console.log('location', location);
   console.log('Actual process', process);
 
@@ -98,8 +98,6 @@ const Experience = () => {
           <div className='zoneMessage'><p>{message}</p></div>
         )}
       </ExperienceContext.Provider>
-
-      
 
     </Layout>
   )
