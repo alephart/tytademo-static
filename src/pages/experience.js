@@ -53,7 +53,6 @@ const Experience = () => {
   };
 
   useEffect(() => {
-    console.log('here in process progress!!!')
     switch (process) {
       case PROCESS_ENUM.character:
         setProgress(20);

@@ -14,6 +14,13 @@ import { useTranslation } from 'next-i18next';
 const RegisterInfo = () => {
   const { t } = useTranslation('common');
   const { setProcess, data, character, setMessage, swap, setSwap } = useContext(ExperienceContext);
+  const [progress, setProgress] = useState(0);
+  const [items, seItems] = useState({
+    firstname: false,
+    lastname: false,
+    email: false,
+    zipcode: false,
+  });
   const [isSubmitting, setSubmitting] = useState(false); 
   const [agreeTerms, setAgreeTerms] = useState(true);
   const [contact, setContact] = useState({
@@ -30,8 +37,8 @@ const RegisterInfo = () => {
       swap: ['https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4']
     });
   }, []);
-
-  const { register, handleSubmit, formState: { errors } } = useForm();
+ 
+  const { register, handleSubmit, getValues, formState: { errors } } = useForm();
 
   const onSubmit = (dataForm) => {
     setSubmitting(true);
@@ -53,8 +60,33 @@ const RegisterInfo = () => {
 
   };
 
-  const handleChange = (event) => {
+  const handleChangeContact = (event) => {
     setContact({ ...contact, [event.target.name]: event.target.checked });
+  };
+
+  const calcProgress = () => {
+    const values = Object.values(getValues());
+    const count = values.reduce((count, item) => {
+      return item ? count + 1 : count;
+    }, 0);
+
+    return (count * 100) / values.length;
+  }
+
+  const handleBlurField = (event) => {
+    const { name, value } = event.target;
+    let next = true;
+
+    if(name === 'email') {
+      const valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      next = valid.test(value);
+    }
+
+    if(next) {
+      const check = value ? true : false;
+      seItems({...items, [name]: check});
+      setProgress(calcProgress());
+    }
   };
 
   const handleChangeCheck = (event) => {
@@ -63,7 +95,7 @@ const RegisterInfo = () => {
 
   return (
     <div className='formVideo'>
-      <VideoLoading />
+      <VideoLoading progress={progress} />
       <div className='copyTitleForm'>{t("registerInfo.copyTitleForm")}</div>
       <div className='copySubtitleForm'>{t("registerInfo.copySubtitleForm")}</div>
 
@@ -81,33 +113,40 @@ const RegisterInfo = () => {
         noValidate autoComplete='off'
       >
         <Input
-          className="check"
+          className={items.firstname ? 'check' : ''}
           {...register('firstname', { required: true })}
           placeholder={t("registerInfo.name")}
+          inputProps={{ 'aria-label': 'nombre' }}
+          onBlur={handleBlurField}
         />
         {errors.firstname && (
           <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
         )}
 
         <Input
+          className={items.firstname ? 'check' : ''}
           {...register('lastname', { required: true })}
           placeholder={t("registerInfo.lastName")}
           inputProps={{ 'aria-label': 'apeliido' }}
+          onBlur={handleBlurField}
         />
         {errors.lastname && (
           <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
         )}
 
         <Input
+          className={items.firstname ? 'check' : ''}
           {...register('email', { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ })}
           placeholder={t("registerInfo.email")}
           inputProps={{ 'aria-label': 'email' }}
+          onBlur={handleBlurField}
         />
         {errors.email && (
           <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
         )}
 
         <Input
+          className={items.firstname ? 'check' : ''}
           type='number'
           onInput={(e) => {
             e.target.value = Math.max(0, parseInt(e.target.value))
@@ -117,6 +156,7 @@ const RegisterInfo = () => {
           {...register('zipcode', { required: true, pattern: /^[0-9]{5}(?:-[0-9]{4})?$/ })}
           placeholder={t("registerInfo.zip")}
           inputProps={{ 'aria-label': 'código postal' }}
+          onBlur={handleBlurField}
         />
         {errors.zipcode && (
           <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
@@ -128,7 +168,7 @@ const RegisterInfo = () => {
           </div>
           <Switch
             checked={contact.productNews}
-            onChange={handleChange}
+            onChange={handleChangeContact}
             name='productNews'
             inputProps={{ 'aria-label': 'product news' }}
           />
@@ -140,7 +180,7 @@ const RegisterInfo = () => {
           <Switch
             className="switch2"
             checked={contact.testDrive}
-            onChange={handleChange}
+            onChange={handleChangeContact}
             name='testDrive'
             inputProps={{ 'aria-label': 'test drive' }}
           />
