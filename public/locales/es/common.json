@@ -41,5 +41,7 @@
     "alertDescription.item3": "Solo tú puedes estar en la foto",
     "alertDescription.item4": "Asegúrate que tu car esté visible",
     "alertDescription.button": "ACEPTAR",
-    "back.button": "VOLVER"
+    "back.button": "VOLVER",
+    "landscape": "Gira tu celular para seguir con la experiencia",
+    "desktop": "INGRESA AL SITIO DESDE TU CELULAR, TÓMATE UNA SELFIE Y SÉ PARTE DEL VIDEO DE LUNAY."
 }
