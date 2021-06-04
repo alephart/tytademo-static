@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useTranslation } from 'next-i18next';
 
 const Meta = (props) => {
   const {
@@ -15,7 +16,7 @@ const Meta = (props) => {
       <meta name="description" content={description}></meta>
 
       {/* Twitter */}
-      <meta name="twitter:card" content="summary" key="summary_large_image" />
+      <meta name="twitter:card" content="summary" key="player" />
       <meta name="twitter:site" content="@Toyota" />
       <meta name="twitter:creator" content="@Toyota" />
       <meta name="twitter:title" content={pageTitle} />

@@ -1,22 +1,27 @@
 import React from 'react';
+import Layout from '@/components/layouts/General';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import ReactPlayer from 'react-player';
 
 const JoinExperince = () => {
     const { t } = useTranslation('common');
+    const urlVideo = 'https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4';
     return (
-        <div className="checkVideoFinal">
+        <Layout>
             <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
-            <div dangerouslySetInnerHTML={{ __html: `
-                <video class="videoGeneral" controls="" playsinline="" id="">
-                    <source
-                        src="/videos/output2.mp4"
-                        type="video/mp4"
-                    />
-                </video>` }}>
-            </div>
+
+            <ReactPlayer
+                className="react-player"
+                url={urlVideo}
+                controls={true}
+                playing={true}
+                width='100%'
+                height='100%'
+              />
+
             <div className="copyJoin">
                 {t("join.copyJoin")}
                 <span>
@@ -26,7 +31,7 @@ const JoinExperince = () => {
             <Link href="/start">
                 <Button className="buttonJoin" variant="contained">{t("join.buttonJoin")}</Button>
             </Link>
-        </div>
+        </Layout>
     )
 }
 
