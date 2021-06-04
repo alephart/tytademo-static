@@ -3,7 +3,7 @@
 
 //Responsive Media Queries
 @mixin desktopMax {
-    @media screen and (max-width: 1920px) {
+    @media screen and (max-width: 9920px) {
         @content;
     }
 }

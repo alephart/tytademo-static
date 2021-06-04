@@ -1,7 +1,9 @@
 import Meta from './Meta';
 import { isAndroid } from 'react-device-detect';
+import { useTranslation } from 'next-i18next';
 
 const Layout = ({ children }) => {
+  const { t } = useTranslation('common');
   const meta = {
     pageTitle: 'Featuring You Lunay X Toyota',
     description: '',
@@ -16,13 +18,16 @@ const Layout = ({ children }) => {
       <div className={`container ${isAndroid ? 'android' : ''}`}>
         {children}
         {/* aqui va version desktop */}
-        <div className='portrait'>
+        <div className='landscape'>
             <div className="notAvailable">
                 <div className="boxItemsNotAvailable">
                     <div className="copyNotAvailable">
                         <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
-                        <h2>
-                            gira tu celular para seguir con la experiencia
+                        <h2 className="desktop">
+                          {t("desktop")}
+                        </h2>
+                        <h2 className="mobile">
+                          {t("landscape")}
                         </h2>
                     </div>
                 </div>
