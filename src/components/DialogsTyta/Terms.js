@@ -2,8 +2,7 @@ const TermsContent = () => (
   <div>
       <div className='copyThanks'>
         <br />
-        <h3 className='copyLunay'>Términos y Condiciones</h3>
-        <h4 className='copyLunay'>¡Ya eres parte del video de LUNAY!</h4>
+        <h3 className='copyLunay'>Lorem ipsum dolor sit amet</h3>
 
         <p className='textTerms'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

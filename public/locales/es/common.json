@@ -40,5 +40,6 @@
     "alertDescription.item2": "Intenta no hacer gestos o sonreír",
     "alertDescription.item3": "Solo tú puedes estar en la foto",
     "alertDescription.item4": "Asegúrate que tu car esté visible",
-    "alertDescription.button": "ACEPTAR"
+    "alertDescription.button": "ACEPTAR",
+    "back.button": "VOLVER"
 }

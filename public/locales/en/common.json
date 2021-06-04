@@ -41,5 +41,6 @@
     "alertDescription.item2": "Avoid smiling and other gestures",
     "alertDescription.item3": "Only one person in the photo ",
     "alertDescription.item4": "Asegúrate que tu car esté visible",
-    "alertDescription.button": "OK"
+    "alertDescription.button": "OK",
+    "back.button": "BACK"
 }

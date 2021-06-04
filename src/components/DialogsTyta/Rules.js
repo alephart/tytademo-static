@@ -9,8 +9,10 @@ import {
   useMediaQuery,
 } from '@material-ui/core/';
 import { useTheme } from '@material-ui/core/styles';
+import { useTranslation } from 'next-i18next';
 
 const Rules = ({ dialog, isOpen, setIsOpen }) => {
+  const { t } = useTranslation('common');
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('lg'));
 
@@ -32,7 +34,7 @@ const Rules = ({ dialog, isOpen, setIsOpen }) => {
             onClick={() => setIsOpen(false)}
             color='primary'
           >
-            Volver
+            {t("back.button")}
           </Button>
 
       </DialogContent>
