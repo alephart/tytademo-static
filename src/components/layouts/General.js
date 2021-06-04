@@ -1,7 +1,15 @@
 import Meta from './Meta';
 import { isAndroid } from 'react-device-detect';
 
-const Layout = ({ children, meta }) => {
+const Layout = ({ children }) => {
+  const meta = {
+    pageTitle: 'Featuring You Lunay X Toyota',
+    description: '',
+    currentURL: 'https://tytademo.devmds.com/',
+    previewImage: 'feature-you-toyota-lunay.png',
+    siteName: 'Toyota Featuring You',
+    videoName: 'featureYouToyota.mp4',
+  };
   return (
     <>
       <Meta meta={meta} />
