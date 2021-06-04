@@ -1,9 +1,11 @@
 import Head from 'next/head';
+import { useTranslation } from 'next-i18next';
 
 const Meta = (props) => {
+  const { t } = useTranslation('common');
   const {
     pageTitle = 'Featuring You Lunay X Toyota',
-    description = '',
+    description = t("meta.tags.descripction"),
     currentURL = 'https://tytademo.devmds.com/',
     previewImage = 'feature-you-toyota-lunay.png',
     siteName = 'Toyota Featuring You',
@@ -15,7 +17,7 @@ const Meta = (props) => {
       <meta name="description" content={description}></meta>
 
       {/* Twitter */}
-      <meta name="twitter:card" content="summary" key="summary_large_image" />
+      <meta name="twitter:card" content="summary" key="player" />
       <meta name="twitter:site" content="@Toyota" />
       <meta name="twitter:creator" content="@Toyota" />
       <meta name="twitter:title" content={pageTitle} />
@@ -24,7 +26,7 @@ const Meta = (props) => {
       <meta name="twitter:image" content={currentURL+previewImage} />
       
       {/* Open Graph */}
-      <meta property="og:url" content={currentURL} key="ogurl" />
+      <meta property="og:url" content={`${currentURL}join-experience`} key="ogurl" />
       <meta property="og:site_name" content={siteName} key="ogsitename" />
       <meta property="og:title" content={pageTitle} key="ogtitle" />
       <meta property="og:description" content={description} key="ogdesc" />

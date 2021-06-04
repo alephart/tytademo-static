@@ -30,7 +30,7 @@
     "shareExperience.copyFooter2": "para ver las reglas y condiciones.",
     "shareExperience.shareMessage": "Estoy en el nuevo video de “Todo o Nada” con Lunay y Corolla Apex. Véanlo y creen el suyo aquí:",
     "join.copyJoin": "VE EL VIDEO DE TU AMIGO Y CREA EL TUYO.",
-    "join.subCopyJoin": "Take a selfie to be a part of LUNAY’s video.",
+    "join.subCopyJoin": "Tómate una selfie y se parte del video de LUNAY",
     "join.buttonJoin": "¡QUIERO MI VIDEO!",
     "VideoLoading.timePercentage": "Por segundo",
     "notAvailable.copyNotAvailable": "LO SENTIMOS, ESTA EXPERIENCIA NO ESTÁ DISPONIBLE EN TU PAÍS.",
@@ -43,5 +43,6 @@
     "alertDescription.button": "ACEPTAR",
     "back.button": "VOLVER",
     "landscape": "Gira tu celular para seguir con la experiencia",
-    "desktop": "INGRESA AL SITIO DESDE TU CELULAR, TÓMATE UNA SELFIE Y SÉ PARTE DEL VIDEO DE LUNAY."
+    "desktop": "INGRESA AL SITIO DESDE TU CELULAR, TÓMATE UNA SELFIE Y SÉ PARTE DEL VIDEO DE LUNAY.",
+    "meta.tags.descripction": "Tómate una selfie y se parte del video de LUNAY y Corolla Apex"
 }
