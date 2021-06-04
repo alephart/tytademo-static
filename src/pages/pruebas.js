@@ -12,6 +12,8 @@ const Pruebas = () => {
       <p>Loading</p>
       <Loading />
 
+      <p>Modal</p>
+
       <Button onClick={() => setHelp(!help)}>Active Modal!</Button>
 
       <Help isOpen={help} setIsOpen={setHelp} />
