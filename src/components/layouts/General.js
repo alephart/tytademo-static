@@ -1,6 +1,8 @@
+import { isAndroid } from 'react-device-detect';
+
 const Layout = ({ children }) => {
   return (
-    <div className="container">
+    <div className={`container ${isAndroid ? 'android' : ''}`}>
       {children}
       {/* aqui va version desktop */}
     </div>
