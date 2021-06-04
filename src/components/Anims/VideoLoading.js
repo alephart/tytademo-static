@@ -6,15 +6,7 @@ const VideoLoading = ({progress}) => {
   const { countUp } = useCountUp({ start: 0, end: 9999999999, delay: 2, duration: 1000 });
   return (
     <>
-      <div dangerouslySetInnerHTML={{
-         __html: `
-         <video class="videoForm" playsinline="" autoplay="" loop="" muted="">
-             <source
-                 src="/videos/registerVideoBG.mp4"
-                 type="video/mp4"
-             />
-         </video>`
-      }}></div>
+      <div><img src="/images/registerVideoBG.gif" alt="Toyota Experience Lunay" /></div>
       <div className='percentageVideo'>
         <div className='boxPercentage'>
           <div className='iconPercentage'></div>
