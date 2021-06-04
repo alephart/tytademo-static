@@ -6,11 +6,14 @@ import { VideoBg } from '@/components/Anims';
 import Button from '@material-ui/core/Button';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-
+import { isMobile } from 'react-device-detect';
 
 const Home = () => {
   const { t } = useTranslation('common');
   const [isOpenDialog, setIsOpenDialog] = useState(false);
+
+  console.log('isMobile', isMobile);
+
   return (
     <Layout>
       <div dangerouslySetInnerHTML={VideoBg('video', 'video.mp4', false)}></div>

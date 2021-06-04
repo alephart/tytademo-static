@@ -4,6 +4,7 @@ import Layout from '@/components/layouts/General';
 import { ExperienceContext } from '@/components/Context';
 import { useLocation } from '@/components/hooks';
 import { geolocationDb } from '@/utils/geolocationDB';
+import { isMobile } from 'react-device-detect';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import { 
   CharacterChoose,
@@ -80,15 +81,15 @@ const Experience = () => {
     //}
   }, [process]);
 
+  // if(!isMobile) {
+  //   router.push('/toyota-experience');
+  // }
+
   if(loading) {
     return (<Loading />);
   }
   
-  if(error) {
-    return (<div>No se pudo detectar ubicación: {error.toString()}</div>);
-  }
-  
-  if(location !== 'US') {
+  if(location !== 'US' || error) {
     router.push('/not-available');
   }
   
