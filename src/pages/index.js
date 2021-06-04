@@ -7,10 +7,10 @@ import Button from '@material-ui/core/Button';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+
 const Home = () => {
   const { t } = useTranslation('common');
   const [isOpenDialog, setIsOpenDialog] = useState(false);
-
   return (
     <Layout>
       <div dangerouslySetInnerHTML={VideoBg('video', 'video.mp4', false)}></div>
