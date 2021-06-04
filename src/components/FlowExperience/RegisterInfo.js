@@ -98,7 +98,6 @@ const RegisterInfo = () => {
       <VideoLoading progress={progress} />
       <div className='copyTitleForm'>{t("registerInfo.copyTitleForm")}</div>
       <div className='copySubtitleForm'>{t("registerInfo.copySubtitleForm")}</div>
-
       {errors.firstname &&
         errors.lastname &&
         errors.email &&
@@ -119,9 +118,6 @@ const RegisterInfo = () => {
           inputProps={{ 'aria-label': 'nombre' }}
           onBlur={handleBlurField}
         />
-        {errors.firstname && (
-          <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
-        )}
 
         <Input
           className={items.lastname ? 'check' : ''}
@@ -130,9 +126,6 @@ const RegisterInfo = () => {
           inputProps={{ 'aria-label': 'apeliido' }}
           onBlur={handleBlurField}
         />
-        {errors.lastname && (
-          <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
-        )}
 
         <Input
           className={items.email ? 'check' : ''}
@@ -141,9 +134,6 @@ const RegisterInfo = () => {
           inputProps={{ 'aria-label': 'email' }}
           onBlur={handleBlurField}
         />
-        {errors.email && (
-          <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
-        )}
 
         <Input
           className={items.zipcode ? 'check' : ''}
@@ -158,9 +148,6 @@ const RegisterInfo = () => {
           inputProps={{ 'aria-label': 'código postal' }}
           onBlur={handleBlurField}
         />
-        {errors.zipcode && (
-          <span className='errorsField'>{t("registerInfo.errorsFieldGeneral")}</span>
-        )}
 
         <div className='boxCheckbox'>
           <div className='copyCheckbox'>
