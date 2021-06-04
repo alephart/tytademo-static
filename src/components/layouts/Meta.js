@@ -24,14 +24,18 @@ const Meta = (props) => {
       <meta property="og:title" content={pageTitle} key="ogtitle" />
       <meta property="og:description" content={description} key="ogdesc" />
       
+      <meta property="og:type" content="video" />
+
+      <meta property="og:image:type" content="image/png" />
       <meta property="og:image" content={currentURL+previewImage} key="ogimage" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
 
-      <meta property="og:video:type" content="" key="ogvideotype" />
-      <meta property="og:video:width" content="1280" key="ogvideo" />
-      <meta property="og:video:height" content="720" key="ogvideo" />
-      <meta property="og:video" content={`${currentURL}videos/${videoName}`} key="ogvideo" />
+      <meta property="og:video:url" content={`${currentURL}videos/${videoName}`} />
+      <meta property="og:video:secure_url" content={`${currentURL}videos/${videoName}`} />
+      <meta property="og:video:type" content="text/html" />
+      <meta property="og:video:width" content="1280" />
+      <meta property="og:video:height" content="720" />
     </Head>
   )
 }
