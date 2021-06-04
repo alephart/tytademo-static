@@ -7,8 +7,9 @@ const shareStyle = {
 
 const Share = () => {
   const { t } = useTranslation('common');
-
+  
   const url = 'https://tytademo.devmds.com/';
+  const videoPath = `${url}videos/featureYouToyota.mp4`;
   const message = t("shareExperience.shareMessage");
   return (
     <div className='sharedSocial'>
@@ -17,7 +18,7 @@ const Share = () => {
       <div className='icons-social'>
 
         <FacebookShareButton
-          quote={`${message} ${url} #LunayXToyota`}
+          quote={`${message} ${url} #LunayXToyota ${videoPath}`}
           url={url}
           hashtags='#LunayXToyota'
           className='share'
@@ -27,8 +28,8 @@ const Share = () => {
         </FacebookShareButton>
 
         <TwitterShareButton
-            title={`${message}`}
-            url={url}
+            title={`${message} ${url}`}
+            url={videoPath}
             hashtags={['LunayXToyota']}
             className='share'
             style={shareStyle}
