@@ -28,7 +28,7 @@ const JoinExperince = () => {
                     {t("join.subCopyJoin")}
                 </span>
             </div>
-            <Link href="/start">
+            <Link href="/">
                 <Button className="buttonJoin" variant="contained">{t("join.buttonJoin")}</Button>
             </Link>
         </Layout>
