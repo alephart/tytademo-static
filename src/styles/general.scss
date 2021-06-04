@@ -345,6 +345,7 @@ body {
 			background-size: cover;
 			max-height: 90vh;
 			overflow: hidden;
+			
 			@include mobileGrand
 			{
 				width: 100%;
@@ -1112,7 +1113,50 @@ body {
 {
 	display: block;
 }
-
-.android {
-	background: blue;
+.android .boxPhoto
+{
+	width: 400px;
+}
+.dialogs
+{
+	width: 100%;
+	color: #fff;
+	.MuiPaper-root
+	{
+		width: 300px;
+		color: #fff;
+	}
+	h2
+	{
+		font-size: 20px;
+		font-family: 'ToyotaBold';
+		text-align: center;
+	}
+	p
+	{
+		font-size: 16px;
+		font-family: 'ToyotaBold';
+	}
+	ul
+	{
+		font-family: 'ToyotaRegular';
+		padding: 0 0 0 15px;
+		li
+		{
+			font-size: 12px;
+		}
+	}
+	.MuiButton-root
+	{
+		background: #fff !important;
+		width: 250px;
+		height: 56px;
+		font-size: 20px;
+		font-family: 'ToyotaBold';
+		color: #000;
+		border-radius: 0px;
+	}
+	.MuiButton-root:hover{
+		opacity: 0.7;
+	}
 }

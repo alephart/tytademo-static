@@ -34,5 +34,11 @@
     "join.buttonJoin": "¡QUIERO MI VIDEO!",
     "VideoLoading.timePercentage": "Por segundo",
     "notAvailable.copyNotAvailable": "LO SENTIMOS, ESTA EXPERIENCIA NO ESTÁ DISPONIBLE EN TU PAÍS.",
-    "notAvailable.copyNotAvailableParagrah": "Conoce el nuevo Corolla Apex"
+    "alertDescription.title": "INTENTA OTRA VEZ",
+    "alertDescription.text": "Recuerda",
+    "alertDescription.item1": "Tu cara debe estar centrada",
+    "alertDescription.item2": "Intenta no hacer gestos o sonreír",
+    "alertDescription.item3": "Solo tú puedes estar en la foto",
+    "alertDescription.item4": "Asegúrate que tu car esté visible",
+    "alertDescription.button": "ACEPTAR"
 }
