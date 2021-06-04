@@ -344,6 +344,10 @@ body {
 			background-size: cover;
 			max-height: 90vh;
 			overflow: hidden;
+			@include mobile
+			{
+				width: 100%;
+			}
 		}
 		.bgdegrade
 		{
