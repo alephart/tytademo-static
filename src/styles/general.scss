@@ -132,6 +132,7 @@ body {
 		font-family: 'JoyrideEx';
 		text-transform: none;
 		text-transform: lowercase;
+		padding-top: 2px;
 		&.MuiButton-contained.Mui-disabled
 		{
 			opacity: 0.3;
@@ -408,7 +409,7 @@ body {
 		}
 		.copyThanks
 		{
-			margin: 40px auto;
+			margin: 20px auto;
 			font-size: 22px;
 			text-align: center;
 			.copyLunay
@@ -447,7 +448,7 @@ body {
 			font-size: 14px;
 			padding: 22px 0 0 0 ;
 			text-align: center;
-			margin: 30px auto 0;
+			margin: 20px auto 0;
 			text-transform: lowercase;
 		}
 		.iconSocial
@@ -467,7 +468,7 @@ body {
 		}
 		.buttonThanks
 		{
-			margin: 40px auto;
+			margin: 20px auto;
 			background: #000;
 			border: 2px solid #FFFFFF54;
 		}
@@ -1121,7 +1122,7 @@ body {
 }
 .zone-cameras
 {
-	margin-top: 95px;
+	margin-top: 15vh;
 	button
 	{
 		background: transparent;

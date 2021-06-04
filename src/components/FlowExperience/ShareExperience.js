@@ -17,7 +17,7 @@ const ShareExperience = () => {
       <div
         dangerouslySetInnerHTML={{
           __html: `
-                <video class="videoGeneral" controls="" playsinline="" id="">
+                <video class="videoGeneral" autoplay="" controls="" playsinline="" id="">
                     <source
                         src="/videos/output1.mp4"
                         type="video/mp4"
