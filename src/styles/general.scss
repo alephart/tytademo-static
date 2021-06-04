@@ -94,6 +94,7 @@ body {
 	overflow-x: hidden;
     position: absolute;
 	height: 100%;
+	letter-spacing: 0px;
 	.MuiPaper-root
 	{
 		background-color: #000;
@@ -138,11 +139,15 @@ body {
 			color: #fff ;
 			margin: 0 auto;
 		}
+		.MuiButton-label
+		{
+			margin-top: 2px;
+		}
 	}
 	a.buttonThanks {
 		display: flex;
-    align-items: center;
-    justify-content: center;
+		align-items: center;
+		justify-content: center;
 	}
 	.MuiButton-contained:hover
 	{
@@ -200,7 +205,7 @@ body {
 				font-size: 16px;
 				line-height: 20px;
 				margin-top: 5px;
-				width: 321px;
+				width: 310px;
 				text-transform: initial;
 			}
 		}

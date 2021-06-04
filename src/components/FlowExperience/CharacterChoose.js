@@ -43,7 +43,7 @@ const CharacterChoose = () => {
           variant='contained'
           onClick={() => setProcess(PROCESS_ENUM.photoTake)}
         >
-          {t("characterChoose.selectCopy")}
+          {t("characterChooses.buttonPhoto")}
         </Button>
       </div>
     </div>
