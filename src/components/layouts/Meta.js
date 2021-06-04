@@ -7,7 +7,7 @@ const Meta = (props) => {
     pageTitle = 'Featuring You Lunay X Toyota',
     description = t("meta.tags.descripction"),
     currentURL = 'https://tytademo.devmds.com/',
-    previewImage = 'feature-you-toyota-lunay.png',
+    previewImage = 'toyota-lunay-feature-you.png',
     siteName = 'Toyota Featuring You',
     videoName = 'featureYouToyota.mp4'
   } = props;
@@ -26,7 +26,7 @@ const Meta = (props) => {
       <meta name="twitter:image" content={currentURL+previewImage} />
       
       {/* Open Graph */}
-      <meta property="og:url" content={`${currentURL}join-experience`} key="ogurl" />
+      <meta property="og:url" content={`${currentURL}join-experience/`} key="ogurl" />
       <meta property="og:site_name" content={siteName} key="ogsitename" />
       <meta property="og:title" content={pageTitle} key="ogtitle" />
       <meta property="og:description" content={description} key="ogdesc" />
