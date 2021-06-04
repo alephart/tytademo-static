@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import {
   Button,
   Dialog,
@@ -9,9 +8,6 @@ import { useTranslation } from 'next-i18next';
 
 const Help = ({ isOpen, setIsOpen }) => {
   const { t } = useTranslation('common');
-  //const theme = useTheme();
-  //const [isOpen, setIsOpen] = useState(false);
-
   return (
     <Dialog
       className="dialogs"
