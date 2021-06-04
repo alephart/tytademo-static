@@ -344,7 +344,7 @@ body {
 			background-size: cover;
 			max-height: 90vh;
 			overflow: hidden;
-			@include mobile
+			@include mobileGrand
 			{
 				width: 100%;
 			}
