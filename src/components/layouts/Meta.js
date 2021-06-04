@@ -7,7 +7,7 @@ const Meta = (props) => {
     pageTitle = 'Featuring You Lunay X Toyota',
     description = t("meta.tags.descripction"),
     currentURL = 'https://tytademo.devmds.com/',
-    previewImage = 'feature-you-toyota-lunay.png',
+    previewImage = 'toyota-lunay-feature-you.png',
     siteName = 'Toyota Featuring You',
     videoName = 'featureYouToyota.mp4'
   } = props;
