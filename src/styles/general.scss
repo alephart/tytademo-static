@@ -876,6 +876,10 @@ body {
 			-o-transform-origin: 0 0;
 			-webkit-transform: scale(0.50);
 			-webkit-transform-origin: 0 0;
+			@include mobileMin
+			{
+				left: -65px;
+			}
 		}
 	}
 	// formVideo
@@ -1098,4 +1102,12 @@ body {
 			width: 55px;
 		}
 	}
+}
+.portrait
+{
+	display: none;
+}
+.landscape
+{
+	display: block;
 }
