@@ -15,9 +15,14 @@ const Meta = (props) => {
       <meta name="description" content={description}></meta>
 
       {/* Twitter */}
-      <meta name="twitter:card" content="summary" key="twcard" />
-      {/* <meta name="twitter:creator" content={twitterHandle} key="twhandle" /> */}
-
+      <meta name="twitter:card" content="summary" key="summary_large_image" />
+      <meta name="twitter:site" content="@Toyota" />
+      <meta name="twitter:creator" content="@Toyota" />
+      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:domain" content="Toyota"/>
+      <meta name="twitter:image" content={currentURL+previewImage} />
+      
       {/* Open Graph */}
       <meta property="og:url" content={currentURL} key="ogurl" />
       <meta property="og:site_name" content={siteName} key="ogsitename" />

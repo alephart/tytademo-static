@@ -17,20 +17,20 @@ const Share = () => {
       <div className='icons-social'>
 
         <FacebookShareButton
-          quote={`${message} ${url}`}
+          quote={`${message} ${url} #LunayXToyota`}
           url={url}
-          hashtags={["LunayXToyota"]}
-          className="share"
+          hashtags='#LunayXToyota'
+          className='share'
           style={shareStyle}
         >
           <img src='/images/facebook.svg' alt='' />
         </FacebookShareButton>
 
         <TwitterShareButton
-            title={message}
+            title={`${message}`}
             url={url}
-            hashtags={["LunayXToyota"]}
-            className="share"
+            hashtags={['LunayXToyota']}
+            className='share'
             style={shareStyle}
           >
             <img src='/images/twitter.svg' alt='' />
