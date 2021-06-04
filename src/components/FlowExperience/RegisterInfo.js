@@ -112,7 +112,7 @@ const RegisterInfo = () => {
         noValidate autoComplete='off'
       >
         <Input
-          className={items.firstname ? 'check' : ''}
+          className={items.firstname ? 'check' : 'error'}
           {...register('firstname', { required: true })}
           placeholder={t("registerInfo.name")}
           inputProps={{ 'aria-label': 'nombre' }}
@@ -120,7 +120,7 @@ const RegisterInfo = () => {
         />
 
         <Input
-          className={items.lastname ? 'check' : ''}
+          className={items.lastname ? 'check' : 'error'}
           {...register('lastname', { required: true })}
           placeholder={t("registerInfo.lastName")}
           inputProps={{ 'aria-label': 'apeliido' }}
@@ -128,7 +128,7 @@ const RegisterInfo = () => {
         />
 
         <Input
-          className={items.email ? 'check' : ''}
+          className={items.email ? 'check' : 'error'}
           {...register('email', { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ })}
           placeholder={t("registerInfo.email")}
           inputProps={{ 'aria-label': 'email' }}
@@ -136,7 +136,7 @@ const RegisterInfo = () => {
         />
 
         <Input
-          className={items.zipcode ? 'check' : ''}
+          className={items.zipcode ? 'check' : 'error'}
           type='number'
           onInput={(e) => {
             e.target.value = Math.max(0, parseInt(e.target.value))
