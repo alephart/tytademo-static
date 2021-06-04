@@ -24,7 +24,7 @@ const Meta = (props) => {
       <meta property="og:title" content={pageTitle} key="ogtitle" />
       <meta property="og:description" content={description} key="ogdesc" />
       
-      <meta property="og:type" content="video" />
+      <meta property="og:type" content="video.movie" />
 
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image" content={currentURL+previewImage} key="ogimage" />
