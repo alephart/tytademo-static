@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import Link from 'next/link';
 import Layout from '@/components/layouts/StartPage';
-import DialogTyta from '@/components/DialogsTyta';
+import { Rules } from '@/components/DialogsTyta';
 import { VideoBg } from '@/components/Anims';
 import Button from '@material-ui/core/Button';
 import { useTranslation } from 'next-i18next';
@@ -30,7 +30,7 @@ const Home = () => {
       <div className="copyFooter">
         {t('start.copyFooter1')} {t('start.copyFooter2')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
       </div>
-      <DialogTyta dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
+      <Rules dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
 
     </Layout>
   )

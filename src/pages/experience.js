@@ -6,14 +6,15 @@ import { useLocation } from '@/components/hooks';
 import { geolocationDb } from '@/utils/geolocationDB';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import { 
-  CharacterChoose, 
-  PhotoTake, 
+  CharacterChoose,
+  PhotoTake,
   PictureConfirm,
   RegisterInfo,
   ShareExperience,
 } from '@/components/FlowExperience';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TytaProgress } from '@/components/Anims';
+import { Loading } from '@/components/Anims';
 
 const ENV = 'development';
 const mockDetector = () => 'US';
@@ -80,7 +81,7 @@ const Experience = () => {
   }, [process]);
 
   if(loading) {
-    return (<div>loading...</div>);
+    return (<Loading />);
   }
   
   if(error) {
@@ -91,9 +92,6 @@ const Experience = () => {
     router.push('/not-available');
   }
   
-  console.log('location', location);
-  console.log('Actual process', process);
-
   return (
     <Layout>
       <ExperienceContext.Provider value={contextValues}>
@@ -124,8 +122,6 @@ const Experience = () => {
           <div className='zoneMessage'><p>{message}</p></div>
         )}
       </ExperienceContext.Provider>
-
-      
 
     </Layout>
   )

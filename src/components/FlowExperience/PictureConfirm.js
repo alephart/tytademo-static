@@ -3,12 +3,15 @@ import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
 import { useTranslation } from 'next-i18next';
+import { Help } from '@/components/DialogsTyta';
+import { Loading } from '@/components/Anims';
 
 const PictureConfirm = () => {
   const { t } = useTranslation('common');
   const { imgSrc, character, setData, process, setProcess, setMessage } = useContext(ExperienceContext);
   const [isLoading, setIsLoading] = useState(false);
   const [deepFake, setDeepFake] = useState(true);
+  const [help, setHelp] = useState(false);
 
   useEffect(() =>{
     setMessage('');
@@ -69,43 +72,46 @@ const PictureConfirm = () => {
   };
 
   return (
-    <div className='likePicture'>
-      <div className='boxPhoto'>
-        <img src={imgSrc} />
-      </div>
-      <div className='paddingCanvas' />
-      <div className='bgdegrade' />
-      <div
-        className='boxIframe'
-        dangerouslySetInnerHTML={{
-          __html: "<iframe src='/face/new-vectors.html' />",
-        }}
-      />
-      <div className='copyLike'>{t("pictureConfirm.copyLike")}</div>
-      {!isLoading ? (
-        <>
-        {deepFake && (
-          <Button
-            className='yesContinue'
-            variant='contained'
-            onClick={handlePhotoValid}
-          >
-            {t("pictureConfirm.yesContinue")}
-          </Button>
-        )}
+    <>
+      <div className='likePicture'>
+        <div className='boxPhoto'>
+          <img src={imgSrc} />
+        </div>
+        <div className='paddingCanvas' />
+        <div className='bgdegrade' />
+        <div
+          className='boxIframe'
+          dangerouslySetInnerHTML={{
+            __html: "<iframe src='/face/new-vectors.html' />",
+          }}
+        />
+        <div className='copyLike'>{t("pictureConfirm.copyLike")}</div>
+        {!isLoading ? (
+          <>
+          {deepFake && (
+            <Button
+              className='yesContinue'
+              variant='contained'
+              onClick={handlePhotoValid}
+            >
+              {t("pictureConfirm.yesContinue")}
+            </Button>
+          )}
 
-          <Button
-            className='againPhoto' 
-            variant='contained'
-            onClick={() => setProcess(PROCESS_ENUM.photoTake)}
-          >
-            {t("pictureConfirm.againPhoto")}
-          </Button>
-        </>
-      ) : (
-        <div>processing...</div>
-      )}
-    </div>
+            <Button
+              className='againPhoto' 
+              variant='contained'
+              onClick={() => setProcess(PROCESS_ENUM.photoTake)}
+            >
+              {t("pictureConfirm.againPhoto")}
+            </Button>
+          </>
+        ) : (
+          <Loading />
+        )}
+      </div>
+      <Help isOpen={help} setIsOpen={setHelp} />
+    </>
   );
 };
 
