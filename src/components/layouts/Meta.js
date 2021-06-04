@@ -26,7 +26,7 @@ const Meta = (props) => {
       <meta name="twitter:image" content={currentURL+previewImage} />
       
       {/* Open Graph */}
-      <meta property="og:url" content={`${currentURL}join-experience`} key="ogurl" />
+      <meta property="og:url" content={`${currentURL}join-experience/`} key="ogurl" />
       <meta property="og:site_name" content={siteName} key="ogsitename" />
       <meta property="og:title" content={pageTitle} key="ogtitle" />
       <meta property="og:description" content={description} key="ogdesc" />
