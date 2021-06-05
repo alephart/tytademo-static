@@ -22,11 +22,14 @@ const RegisterInfo = () => {
     zipcode: false,
   });
   const [isSubmitting, setSubmitting] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
   const [agreeTerms, setAgreeTerms] = useState(true);
   const [contact, setContact] = useState({
     productNews: false,
     testDrive: false,
   });
+
+  const { register, handleSubmit, getValues, formState: { errors } } = useForm();
 
   useEffect(() =>{
     setMessage('');
@@ -37,8 +40,55 @@ const RegisterInfo = () => {
       swap: ['https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4']
     });
   }, []);
+
+  useEffect(() => {
+    // const isData = Object.values(values).every(value => value);
+    // console.log('values change', values);
+    // console.log('hay 4 valores', isData)
+
+    // setIsEnabled(!isData);
+
+    if(progress >= 100) {
+      setIsDisabled(false);
+    }
+
+    console.log(progress);
+
+  }, [progress]);
  
-  const { register, handleSubmit, getValues, formState: { errors } } = useForm();
+  const calcProgress = () => {
+    const values = Object.values(getValues());
+    const count = values.reduce((count, item) => {
+      return item ? count + 1 : count;
+    }, 0);
+
+    return (count * 100) / values.length;
+  }
+
+  const handleChangeContact = (event) => {
+    setContact({ ...contact, [event.target.name]: event.target.checked });
+  };
+
+  const handleBlurField = (event) => {
+    const { name, value } = event.target;
+    let next = true;
+    
+    if(name === 'email') {
+      const valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      next = valid.test(value);
+    }
+
+    if(next) {
+      const check = value ? true : false;
+      seItems({...items, [name]: check});
+      setProgress(calcProgress());
+    }
+  };
+
+
+  const handleChangeCheck = (event) => {
+    setAgreeTerms(event.target.checked);
+  };
 
   const onSubmit = (dataForm) => {
     setSubmitting(true);
@@ -60,39 +110,6 @@ const RegisterInfo = () => {
 
   };
 
-  const handleChangeContact = (event) => {
-    setContact({ ...contact, [event.target.name]: event.target.checked });
-  };
-
-  const calcProgress = () => {
-    const values = Object.values(getValues());
-    const count = values.reduce((count, item) => {
-      return item ? count + 1 : count;
-    }, 0);
-
-    return (count * 100) / values.length;
-  }
-
-  const handleBlurField = (event) => {
-    const { name, value } = event.target;
-    let next = true;
-
-    if(name === 'email') {
-      const valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-      next = valid.test(value);
-    }
-
-    if(next) {
-      const check = value ? true : false;
-      seItems({...items, [name]: check});
-      setProgress(calcProgress());
-    }
-  };
-
-  const handleChangeCheck = (event) => {
-    setAgreeTerms(event.target.checked);
-  };
-
   return (
     <div className='formVideo'>
       <VideoLoading progress={progress} />
@@ -112,15 +129,17 @@ const RegisterInfo = () => {
         noValidate autoComplete='off'
       >
         <Input
-          className={items.firstname ? 'check' : 'error'}
-          {...register('firstname', { required: true })}
+          className={`
+            ${items.firstname ? 'check' : ''}
+          `}
+          {...register('firstname', { required: true, pattern: /^[A-Za-z ]+$/i })}
           placeholder={t("registerInfo.name")}
           inputProps={{ 'aria-label': 'nombre' }}
           onBlur={handleBlurField}
         />
 
         <Input
-          className={items.lastname ? 'check' : 'error'}
+          className={items.lastname ? 'check' : ''}
           {...register('lastname', { required: true })}
           placeholder={t("registerInfo.lastName")}
           inputProps={{ 'aria-label': 'apeliido' }}
@@ -128,7 +147,7 @@ const RegisterInfo = () => {
         />
 
         <Input
-          className={items.email ? 'check' : 'error'}
+          className={items.email ? 'check' : ''}
           {...register('email', { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ })}
           placeholder={t("registerInfo.email")}
           inputProps={{ 'aria-label': 'email' }}
@@ -136,7 +155,7 @@ const RegisterInfo = () => {
         />
 
         <Input
-          className={items.zipcode ? 'check' : 'error'}
+          className={items.zipcode ? 'check' : ''}
           type='number'
           onInput={(e) => {
             e.target.value = Math.max(0, parseInt(e.target.value))
@@ -186,7 +205,7 @@ const RegisterInfo = () => {
           className='yesContinue'
           variant='contained'
           type="submit"
-          disabled={isSubmitting}
+          disabled={isDisabled}
         >
           {t("registerInfo.yesContinue")}
         </Button>
