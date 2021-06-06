@@ -15,12 +15,15 @@ const RegisterInfo = () => {
   const { t } = useTranslation('common');
   const { setProcess, data, character, setMessage, swap, setSwap } = useContext(ExperienceContext);
   const [progress, setProgress] = useState(0);
-  const [items, seItems] = useState({
-    firstname: false,
-    lastname: false,
-    email: false,
-    zipcode: false,
+  const [values, setValues] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    zipcode: '',
   });
+  const [validEmail, setValidEmail] = useState(false);
+  const [validZipCode, setValidZipCode] = useState(false);
+
   const [isSubmitting, setSubmitting] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [agreeTerms, setAgreeTerms] = useState(true);
@@ -29,9 +32,11 @@ const RegisterInfo = () => {
     testDrive: false,
   });
 
-  const { register, handleSubmit, getValues, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    mode: 'onChange',
+  });
 
-  useEffect(() =>{
+  useEffect(() => {
     setMessage('');
     console.log("data in register", data);
 
@@ -42,49 +47,49 @@ const RegisterInfo = () => {
   }, []);
 
   useEffect(() => {
-    // const isData = Object.values(values).every(value => value);
-    // console.log('values change', values);
-    // console.log('hay 4 valores', isData)
-
-    // setIsEnabled(!isData);
-
-    if(progress >= 100) {
-      setIsDisabled(false);
-    }
-
-    console.log(progress);
-
+    setIsDisabled(progress >= 100 ? false : true);
   }, [progress]);
- 
-  const calcProgress = () => {
-    const values = Object.values(getValues());
-    const count = values.reduce((count, item) => {
+  
+  useEffect(() => {
+    console.log(values);
+    const items = Object.values(values);
+    const count = items.reduce((count, item) => {
       return item ? count + 1 : count;
     }, 0);
-
-    return (count * 100) / values.length;
-  }
+  
+    setProgress( (count * 100) / items.length );
+  }, [values]);
 
   const handleChangeContact = (event) => {
     setContact({ ...contact, [event.target.name]: event.target.checked });
   };
 
-  const handleBlurField = (event) => {
+  const handleChangeEmail = (event) => {
     const { name, value } = event.target;
-    let next = true;
     
-    if(name === 'email') {
-      const valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-      next = valid.test(value);
-    }
+    const valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+    
+    setValidEmail(valid);
+    setValues({...values, [name]: value});
+  }
+  
+  const handleChangeZip = (event) => {
+    const { name, value } = event.target;
 
-    if(next) {
-      const check = value ? true : false;
-      seItems({...items, [name]: check});
-      setProgress(calcProgress());
-    }
+    const valid = /^[0-9]{5}(?:-[0-9]{4})?$/.test(value);
+    
+    setValidZipCode(valid);
+    setValues({...values, [name]: value});
+  }
+  
+  const handleChangeLetters = (event) => {
+    const { name, value } = event.target;
+    let text = '';
+    
+    text = value.replace(/[^A-Za-zÑñ ]/ig, '');
+    
+    setValues({...values, [name]: text});
   };
-
 
   const handleChangeCheck = (event) => {
     setAgreeTerms(event.target.checked);
@@ -115,10 +120,12 @@ const RegisterInfo = () => {
       <VideoLoading progress={progress} />
       <div className='copyTitleForm'>{t("registerInfo.copyTitleForm")}</div>
       <div className='copySubtitleForm'>{t("registerInfo.copySubtitleForm")}</div>
-      {errors.firstname &&
-        errors.lastname &&
-        errors.email &&
-        errors.zipcode && (
+      
+      {
+        errors.firstname?.type === 'required' &&
+        errors.lastname?.type === 'required' &&
+        errors.email?.type === 'required' &&
+        errors.zipcode?.type === 'required' && (
           <span className='errorsField center'>
             {t("registerInfo.errorsField")}
           </span>
@@ -130,32 +137,39 @@ const RegisterInfo = () => {
       >
         <Input
           className={`
-            ${items.firstname ? 'check' : ''}
+            ${values.firstname ? 'check' : ''}
           `}
-          {...register('firstname', { required: true, pattern: /^[A-Za-z ]+$/i })}
+          name='firstname'
+          {...register('firstname', { required: true })}
           placeholder={t("registerInfo.name")}
           inputProps={{ 'aria-label': 'nombre' }}
-          onBlur={handleBlurField}
+          value={values.firstname}
+          onChange={handleChangeLetters}
         />
 
         <Input
-          className={items.lastname ? 'check' : ''}
+          className={values.lastname ? 'check' : ''}
+          name='lastname'
           {...register('lastname', { required: true })}
           placeholder={t("registerInfo.lastName")}
           inputProps={{ 'aria-label': 'apeliido' }}
-          onBlur={handleBlurField}
+          value={values.lastname}
+          onChange={handleChangeLetters}
         />
 
         <Input
-          className={items.email ? 'check' : ''}
+          className={validEmail ? 'check' : ''}
+          name='email'
           {...register('email', { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ })}
           placeholder={t("registerInfo.email")}
           inputProps={{ 'aria-label': 'email' }}
-          onBlur={handleBlurField}
+          value={values.email}
+          onChange={handleChangeEmail}
         />
 
         <Input
-          className={items.zipcode ? 'check' : ''}
+          className={validZipCode ? 'check' : ''}
+          name='zipcode'
           type='number'
           onInput={(e) => {
             e.target.value = Math.max(0, parseInt(e.target.value))
@@ -165,7 +179,8 @@ const RegisterInfo = () => {
           {...register('zipcode', { required: true, pattern: /^[0-9]{5}(?:-[0-9]{4})?$/ })}
           placeholder={t("registerInfo.zip")}
           inputProps={{ 'aria-label': 'código postal' }}
-          onBlur={handleBlurField}
+          value={values.zipcode}
+          onChange={handleChangeZip}
         />
 
         <div className='boxCheckbox'>
