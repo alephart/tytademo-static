@@ -23,7 +23,6 @@ const RegisterInfo = () => {
   });
   const [validEmail, setValidEmail] = useState(false);
   const [validZipCode, setValidZipCode] = useState(false);
-
   const [isSubmitting, setSubmitting] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [agreeTerms, setAgreeTerms] = useState(true);
@@ -51,7 +50,6 @@ const RegisterInfo = () => {
   }, [progress]);
   
   useEffect(() => {
-    console.log(values);
     const items = Object.values(values);
     const count = items.reduce((count, item) => {
       return item ? count + 1 : count;
@@ -60,6 +58,7 @@ const RegisterInfo = () => {
     setProgress( (count * 100) / items.length );
   }, [values]);
 
+  /* handle actions */
   const handleChangeContact = (event) => {
     setContact({ ...contact, [event.target.name]: event.target.checked });
   };
@@ -97,6 +96,7 @@ const RegisterInfo = () => {
 
   const onSubmit = (dataForm) => {
     setSubmitting(true);
+
     console.log(dataForm);
 
     const dataRegister = { 
@@ -121,11 +121,7 @@ const RegisterInfo = () => {
       <div className='copyTitleForm'>{t("registerInfo.copyTitleForm")}</div>
       <div className='copySubtitleForm'>{t("registerInfo.copySubtitleForm")}</div>
       
-      {
-        errors.firstname?.type === 'required' &&
-        errors.lastname?.type === 'required' &&
-        errors.email?.type === 'required' &&
-        errors.zipcode?.type === 'required' && (
+      {(errors.firtsname || errors.lastname || errors.email || errors.zipcode) && (
           <span className='errorsField center'>
             {t("registerInfo.errorsField")}
           </span>
@@ -138,37 +134,45 @@ const RegisterInfo = () => {
         <Input
           className={`
             ${values.firstname ? 'check' : ''}
+            ${errors.firstname ? 'error' : ''}
           `}
           name='firstname'
           {...register('firstname', { required: true })}
           placeholder={t("registerInfo.name")}
-          inputProps={{ 'aria-label': 'nombre' }}
+          inputProps={{ 'aria-label': t("registerInfo.name") }}
           value={values.firstname}
           onChange={handleChangeLetters}
         />
-
         <Input
-          className={values.lastname ? 'check' : ''}
+          className={`
+            ${values.lastname ? 'check' : ''}
+            ${errors.lastname ? 'error' : ''}
+          `}
           name='lastname'
           {...register('lastname', { required: true })}
           placeholder={t("registerInfo.lastName")}
-          inputProps={{ 'aria-label': 'apeliido' }}
+          inputProps={{ 'aria-label': t("registerInfo.lastName") }}
           value={values.lastname}
           onChange={handleChangeLetters}
         />
 
         <Input
-          className={validEmail ? 'check' : ''}
+          className={`
+            ${validEmail ? 'check' : ''}
+            ${errors.email ? 'error' : ''}
+          `}
           name='email'
           {...register('email', { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ })}
           placeholder={t("registerInfo.email")}
-          inputProps={{ 'aria-label': 'email' }}
+          inputProps={{ 'aria-label': t("registerInfo.email") }}
           value={values.email}
           onChange={handleChangeEmail}
         />
-
         <Input
-          className={validZipCode ? 'check' : ''}
+          className={`
+            ${validZipCode ? 'check' : ''}
+            ${errors.zipcode ? 'error' : ''}
+          `}
           name='zipcode'
           type='number'
           onInput={(e) => {
@@ -178,7 +182,7 @@ const RegisterInfo = () => {
           }}
           {...register('zipcode', { required: true, pattern: /^[0-9]{5}(?:-[0-9]{4})?$/ })}
           placeholder={t("registerInfo.zip")}
-          inputProps={{ 'aria-label': 'código postal' }}
+          inputProps={{ 'aria-label': t("registerInfo.zip") }}
           value={values.zipcode}
           onChange={handleChangeZip}
         />
@@ -191,7 +195,7 @@ const RegisterInfo = () => {
             checked={contact.productNews}
             onChange={handleChangeContact}
             name='productNews'
-            inputProps={{ 'aria-label': 'product news' }}
+            inputProps={{ 'aria-label': t("registerInfo.copyCheckbox1") }}
           />
         </div>
         <div className='boxCheckbox'>
@@ -203,7 +207,7 @@ const RegisterInfo = () => {
             checked={contact.testDrive}
             onChange={handleChangeContact}
             name='testDrive'
-            inputProps={{ 'aria-label': 'test drive' }}
+            inputProps={{ 'aria-label': t("registerInfo.copyCheckbox2") }}
           />
         </div>
         {/* <div className="boxCheckbox">

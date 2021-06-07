@@ -16,7 +16,7 @@
     "registerInfo.lastName": "Last Name",
     "registerInfo.email": "Email",
     "registerInfo.zip": "Zip code",
-    "registerInfo.errorsField": "Please fill out all the required fields.",
+    "registerInfo.errorsField": "Please fill out all required fields correctly.",
     "registerInfo.errorsFieldGeneral": "Please fill out all the required fields.",
     "registerInfo.copyCheckbox1": "I would like to receive exciting product and event news from Toyota.",
     "registerInfo.copyCheckbox2": "I would like to be contacted by my local Toyota dealer for a test drive and more information about purchasing or leasing a new Toyota vehicle.",

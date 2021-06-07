@@ -7,7 +7,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const RegisterDemo = () => {
   const [process, setProcess] = useState(PROCESS_ENUM.register);
-  const [progress, setProgress] = useState(0);
   const [character, setCharacter] = useState(null);
   const [data, setData] = useState(null);
   const [swap, setSwap] = useState(null);
