@@ -116,7 +116,8 @@ body {
 	.buttonThanks,
 	.yesContinue,
 	.againPhoto,
-	.linkVideo
+	.linkVideo,
+	.button-send-form
 	{
 		background-color: #5A2DFC ;
 		color: #fff ;
@@ -124,9 +125,7 @@ body {
 		display: block;
 		position: relative;
 		font-size: 14px;
-		left: 0;
-		right: 0;
-		width: 300px;
+		width: 324px;
 		height: 56px;
 		border-radius: 30px;
 		font-family: 'JoyrideEx';
@@ -175,19 +174,19 @@ body {
     	position: absolute;
 		left: 0;
 		right: 0;
-		background-image: url("/images/bg.png");
+		background-image: url("/images/bg-app.jpg");
 		background-position: center;
 		background-size: cover;
 		font-family: 'JoyrideEx';
 		.copyStart
 		{
-			font-size: 16px;
+			font-size: 1.0rem;
 			text-align: center;
 			color: #fff;
 			margin: 0 auto 0;
 			width: 100%;
 			line-height: 24px;
-			max-width: 311px;
+			max-width: 324px;
 			display: block;
 			position: absolute;
 			left: 0;
@@ -204,10 +203,9 @@ body {
 			{
 				font-family: "ToyotaRegular";
 				display: block;
-				font-size: 16px;
+				font-size: 0.97rem;
 				line-height: 20px;
 				margin-top: 5px;
-				width: 330px;
 				text-transform: initial;
 				letter-spacing: 0px;
 				@include mobileMin
@@ -219,6 +217,9 @@ body {
 		.buttonStart
 		{
 			position: absolute;
+			left: 0;
+			right: 0;
+			top: auto;
 			bottom: 54px;
 		}
 		.copyFooter
@@ -259,7 +260,7 @@ body {
 		left: 0;
 		right: 0;
 		font-family: 'JoyrideEx';
-		background-image: url("/images/bg.png");
+		background-image: url("/images/bg-app.jpg");
 		background-position: center;
 		background-size: cover;
 		
@@ -325,11 +326,6 @@ body {
 			{
 				right: 35px;
 			}
-		}
-		.buttonPhoto
-		{
-			margin: 20px auto;
-			bottom: 0;
 		}
 
 		// likePicture
@@ -545,6 +541,14 @@ body {
 			padding-top: 110px;
 		}
 	}
+	.buttonPhoto
+	{
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: auto;
+		bottom: 34px;
+	}
 	.copyLink
 	{
 		.linkVideo
@@ -652,7 +656,7 @@ body {
 		form
 		{
 			width: 315px;
-			margin: 0 auto;
+			margin: 0 auto 20px;;
 			@include mobileMin
 			{
 				width: 290px;
