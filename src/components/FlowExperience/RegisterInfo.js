@@ -221,7 +221,7 @@ const RegisterInfo = () => {
             />
         </div> */}
         <Button
-          className='yesContinue'
+          className='button-send-form'
           variant='contained'
           type="submit"
           disabled={isDisabled}
