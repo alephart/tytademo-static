@@ -9,7 +9,7 @@ const Loading = () => {
         align-items: center;
         width: 50px;
         height: 50px;
-        margin: 20px auto;
+        margin: 30px auto;
       }
 
       .loading-cube img { 
