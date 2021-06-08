@@ -11,7 +11,7 @@ const IndexDesktop = () => {
                     <div dangerouslySetInnerHTML={{ __html: `
                         <video playsinline="" autoplay=""  muted=""  id="">
                             <source
-                                src="/output-1.mp4"
+                                src="/videos/output1.mp4"
                                 type="video/mp4"
                             />
                         </video>` }}>

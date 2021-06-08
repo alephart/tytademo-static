@@ -37,6 +37,5 @@ yarn-error.log*
 
 # no media and others
 public/photos
-public/videos
 /temp
 /dev

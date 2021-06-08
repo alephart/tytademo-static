@@ -1,20 +1,42 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router'
 import Layout from '@/components/layouts/General';
+import { ExperienceContext } from '@/components/Context';
+import { useLocation } from '@/components/hooks';
+import { geolocationDb } from '@/utils/geolocationDB';
+import { isMobile } from 'react-device-detect';
+import { PROCESS_ENUM } from '@/helpers/globals';
 import { 
-  CharacterChoose, 
-  PhotoTake, 
+  CharacterChoose,
+  PhotoTake,
   PictureConfirm,
   RegisterInfo,
   ShareExperience,
 } from '@/components/FlowExperience';
-import ExperienceContext from '@/context/ExperienceContext';
-import { PROCESS_ENUM } from '@/utils/globals';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { TytaProgress } from '@/components/Anims';
+import { Loading } from '@/components/Anims';
+
+const ENV = 'development';
+const mockDetector = () => 'US';
+const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Experience = () => {
+  const { loading, location, error } = useLocation(
+    ENV !== 'development' ? geolocationDb(geoDbKey) : mockDetector
+  );
+
   const [process, setProcess] = useState(PROCESS_ENUM.character);
+  const [progress, setProgress] = useState(0);
   const [character, setCharacter] = useState(null);
   const [facingMode, setFacingMode] = useState('user');
   const [imgSrc, setImgSrc] = useState(null);
+  const [data, setData] = useState(null);
+  const [swap, setSwap] = useState(null);
+
+  const [message, setMessage] = useState('');
+
+  const router = useRouter();
   
   const contextValues = {
     process,
@@ -25,13 +47,58 @@ const Experience = () => {
     setFacingMode,
     imgSrc, 
     setImgSrc,
+    data,
+    setData,
+    swap,
+    setSwap,
+    setMessage,
   };
-  
-  console.log('Actual process', process);
 
+  useEffect(() => {
+    switch (process) {
+      case PROCESS_ENUM.character:
+        setProgress(20);
+        break;
+      case PROCESS_ENUM.photoTake:
+        setProgress(40);
+        break;
+      case PROCESS_ENUM.photoConfirm:
+        setProgress(60);
+        break;
+      case PROCESS_ENUM.register:
+        setProgress(80);
+        break;
+      case PROCESS_ENUM.share:
+        setProgress(100);
+        break;
+        
+        default:
+        setProgress(10);
+        break;
+    }
+    //if(process === PROCESS_ENUM.share) {
+      //router.push('/to-share-experience');
+    //}
+  }, [process]);
+
+  // if(!isMobile) {
+  //   router.push('/toyota-experience');
+  // }
+
+  if(loading) {
+    return (<Loading />);
+  }
+  
+  if(location !== 'US' || error) {
+    router.push('/not-available');
+  }
+  
   return (
     <Layout>
       <ExperienceContext.Provider value={contextValues}>
+
+        <TytaProgress progress={progress}/>
+
         {process === PROCESS_ENUM.character && (
           <CharacterChoose />
         )}
@@ -49,11 +116,22 @@ const Experience = () => {
         )}
 
         {process === PROCESS_ENUM.share && (
-          <ShareExperience setProcess={setProcess} />
-          )}
+          <ShareExperience />
+        )}
+
+        {message && (
+          <div className='zoneMessage'><p>{message}</p></div>
+        )}
       </ExperienceContext.Provider>
+
     </Layout>
   )
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common']),
+  },
+});
 
 export default Experience;

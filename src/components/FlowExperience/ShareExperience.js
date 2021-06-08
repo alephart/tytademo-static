@@ -1,12 +1,15 @@
 import { useState, useContext } from 'react';
-import Button from '@material-ui/core/Button';
 import DialogTyta from '@/components/DialogsTyta';
-import Link from 'next/link';
-import ExperienceContext from '@/context/ExperienceContext';
+import { useTranslation } from 'next-i18next';
+import { ExperienceContext } from '@/components/Context';
+import Share from '@/components/Share';
 
 const ShareExperience = () => {
-  const { setProcess } = useContext(ExperienceContext);
+  const { t } = useTranslation('common');
+  const { setProcess, swap } = useContext(ExperienceContext);
   const [isOpenDialog, setIsOpenDialog] = useState(false);
+
+  console.log('swap into ShareExperience', swap);
 
   return (
     <div className='sharedExperience'>
@@ -14,43 +17,34 @@ const ShareExperience = () => {
       <div
         dangerouslySetInnerHTML={{
           __html: `
-                <video class="videoGeneral" controls="" playsinline="" id="">
+                <video class="videoGeneral" autoplay="" controls="" playsinline="" id="">
                     <source
-                        src="/output-1.mp4"
+                        src="/videos/output1.mp4"
                         type="video/mp4"
                     />
                 </video>`,
         }}
       ></div>
       <div className='copyThanks'>
-        <br />
-        <div className='copyLunay'>¡Ya eres parte del video de LUNAY!</div>
+        <div className='copyLunay'>{t("shareExperience.copyLunay")}</div>
         <span>
-          Ahora descárgalo y compártelo con el mundo. Podrías ganar una charla
-          online con Lunay y otros premios increíbles.
+          {t("shareExperience.copyLunaySpan")}
         </span>
       </div>
-      <div className='sharedSocial'>
-        compartir video <br />
-        <div className='iconSocial'>
-          <a href=''>
-            <img src='/images/twitter.svg' alt='' />
-          </a>
-          <a href=''>
-            <img src='/images/facebook.svg' alt='' />
-          </a>
-        </div>
-      </div>
-      <Link href='/start/checkVideoFinal'>
-        <Button className='buttonThanks' variant='contained'>
-          descargar video
-        </Button>
-      </Link>
 
-      <div className="copyFooter">
-          Haz <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">click aquí</a> para ver las reglas y condiciones.
+      <Share />
+
+      <a
+        className='buttonThanks'
+        download="this-is-my-experience-toyota.mp4"
+        href="https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4">
+          {t("shareExperience.buttonThanks")}
+      </a>
+
+      {/* <div className="copyFooter">
+          {t('shareExperience.copyFooter1')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('shareExperience.copyFooterLink')}</a> {t('shareExperience.copyFooter2')}
       </div>
-      <DialogTyta dialog='policies' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
+      <DialogTyta dialog='policies' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} /> */}
 
     </div>
   );

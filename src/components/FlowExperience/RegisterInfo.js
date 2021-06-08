@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {
   Input,
   Button,
@@ -7,109 +7,207 @@ import {
 } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { VideoLoading } from '@/components/Anims';
-import { PROCESS_ENUM } from '@/utils/globals';
-import ExperienceContext from '@/context/ExperienceContext';
+import { PROCESS_ENUM } from '@/helpers/globals';
+import { ExperienceContext } from '@/components/Context';
+import { useTranslation } from 'next-i18next';
 
 const RegisterInfo = () => {
-  const { setProcess } = useContext(ExperienceContext);
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
-  const [state, setState] = useState({
-    checkedA: false,
-    checkedB: false,
+  const { t } = useTranslation('common');
+  const { setProcess, data, character, setMessage, swap, setSwap } = useContext(ExperienceContext);
+  const [progress, setProgress] = useState(0);
+  const [values, setValues] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    zipcode: '',
   });
-  const [checked, setChecked] = useState(false);
+  const [validEmail, setValidEmail] = useState(false);
+  const [validZipCode, setValidZipCode] = useState(false);
+  const [isSubmitting, setSubmitting] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [agreeTerms, setAgreeTerms] = useState(true);
+  const [contact, setContact] = useState({
+    productNews: false,
+    testDrive: false,
+  });
 
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    mode: 'onChange',
+  });
+
+  useEffect(() => {
+    setMessage('');
+    console.log("data in register", data);
+
+    setSwap({
+      success: true, 
+      swap: ['https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4']
+    });
+  }, []);
+
+  useEffect(() => {
+    setIsDisabled(progress >= 100 ? false : true);
+  }, [progress]);
+  
+  useEffect(() => {
+    const items = Object.values(values);
+    const count = items.reduce((count, item) => {
+      return item ? count + 1 : count;
+    }, 0);
+  
+    setProgress( (count * 100) / items.length );
+  }, [values]);
+
+  /* handle actions */
+  const handleChangeContact = (event) => {
+    setContact({ ...contact, [event.target.name]: event.target.checked });
   };
+
+  const handleChangeEmail = (event) => {
+    const { name, value } = event.target;
+    
+    const valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+    
+    setValidEmail(valid);
+    setValues({...values, [name]: value});
+  }
+  
+  const handleChangeZip = (event) => {
+    const { name, value } = event.target;
+
+    const valid = /^[0-9]{5}(?:-[0-9]{4})?$/.test(value);
+    
+    setValidZipCode(valid);
+    setValues({...values, [name]: value});
+  }
+  
+  const handleChangeLetters = (event) => {
+    const { name, value } = event.target;
+    let text = '';
+    
+    text = value.replace(/[^A-Za-zÑñ ]/ig, '');
+    
+    setValues({...values, [name]: text});
+  };
+
   const handleChangeCheck = (event) => {
-    setChecked(event.target.checked);
+    setAgreeTerms(event.target.checked);
+  };
+
+  const onSubmit = (dataForm) => {
+    setSubmitting(true);
+
+    console.log(dataForm);
+
+    const dataRegister = { 
+      ...dataForm, 
+      ...contact,  
+      ...data,
+      character,
+      ...swap,
+    };
+
+    console.log('swap in register', swap);
+    console.log(dataRegister);
+
+    // when save data, then change to share
+    setProcess(PROCESS_ENUM.share);
+
   };
 
   return (
     <div className='formVideo'>
-      <VideoLoading />
-      <div className='copyTitleForm'>¡YA CASI!</div>
-      <div className='copySubtitleForm'>Regístrate para obtener tu video.</div>
-      {errors.nameRequired &&
-        errors.lastNameRequired &&
-        errors.emailRequired &&
-        errors.zipRequired && (
+      <VideoLoading progress={progress} />
+      <div className='copyTitleForm'>{t("registerInfo.copyTitleForm")}</div>
+      <div className='copySubtitleForm'>{t("registerInfo.copySubtitleForm")}</div>
+      
+      {(errors.firtsname || errors.lastname || errors.email || errors.zipcode) && (
           <span className='errorsField center'>
-            Por favor completa todos los campos
+            {t("registerInfo.errorsField")}
           </span>
         )}
-      <form noValidate autoComplete='off'>
+
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        noValidate autoComplete='off'
+      >
         <Input
-          {...register('nameRequired', { required: false })}
-          placeholder='Nombre'
-          inputProps={{ 'aria-label': 'description' }}
+          className={`
+            ${values.firstname ? 'check' : ''}
+            ${errors.firstname ? 'error' : ''}
+          `}
+          name='firstname'
+          {...register('firstname', { required: true })}
+          placeholder={t("registerInfo.name")}
+          inputProps={{ 'aria-label': t("registerInfo.name") }}
+          value={values.firstname}
+          onChange={handleChangeLetters}
         />
-        {errors.nameRequired && (
-          <span className='errorsField'>Por favor completa el campo</span>
-        )}
+        <Input
+          className={`
+            ${values.lastname ? 'check' : ''}
+            ${errors.lastname ? 'error' : ''}
+          `}
+          name='lastname'
+          {...register('lastname', { required: true })}
+          placeholder={t("registerInfo.lastName")}
+          inputProps={{ 'aria-label': t("registerInfo.lastName") }}
+          value={values.lastname}
+          onChange={handleChangeLetters}
+        />
 
         <Input
-          {...register('lastNameRequired', { required: false })}
-          placeholder='Apellido'
-          inputProps={{ 'aria-label': 'description' }}
+          className={`
+            ${validEmail ? 'check' : ''}
+            ${errors.email ? 'error' : ''}
+          `}
+          name='email'
+          {...register('email', { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ })}
+          placeholder={t("registerInfo.email")}
+          inputProps={{ 'aria-label': t("registerInfo.email") }}
+          value={values.email}
+          onChange={handleChangeEmail}
         />
-        {errors.lastNameRequired && (
-          <span className='errorsField'>Por favor completa el campo</span>
-        )}
-
         <Input
-          {...register('emailRequired', { required: false })}
-          placeholder='Correo electrónico'
-          inputProps={{ 'aria-label': 'description' }}
-        />
-        {errors.emailRequired && (
-          <span className='errorsField'>Por favor completa el campo</span>
-        )}
-
-        <Input
+          className={`
+            ${validZipCode ? 'check' : ''}
+            ${errors.zipcode ? 'error' : ''}
+          `}
+          name='zipcode'
           type='number'
           onInput={(e) => {
             e.target.value = Math.max(0, parseInt(e.target.value))
               .toString()
               .slice(0, 5);
           }}
-          {...register('zipRequired', { required: false })}
-          placeholder='Código postal'
-          inputProps={{ 'aria-label': 'description' }}
+          {...register('zipcode', { required: true, pattern: /^[0-9]{5}(?:-[0-9]{4})?$/ })}
+          placeholder={t("registerInfo.zip")}
+          inputProps={{ 'aria-label': t("registerInfo.zip") }}
+          value={values.zipcode}
+          onChange={handleChangeZip}
         />
-        {errors.zipRequired && (
-          <span className='errorsField'>Por favor completa el campo</span>
-        )}
 
         <div className='boxCheckbox'>
           <div className='copyCheckbox'>
-            Me gustaría recibir noticias sobre productos y eventos de Toyota.
+            {t("registerInfo.copyCheckbox1")}
           </div>
           <Switch
-            checked={state.checkedA}
-            onChange={handleChange}
-            name='checkedA'
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
+            checked={contact.productNews}
+            onChange={handleChangeContact}
+            name='productNews'
+            inputProps={{ 'aria-label': t("registerInfo.copyCheckbox1") }}
           />
         </div>
         <div className='boxCheckbox'>
           <div className='copyCheckbox'>
-            Me gustaría que mi concesionario local Toyota me contactara para una
-            prueba de manejo y para darme más información sobre la compra o
-            arrendamiento de un vehículo Toyota nuevo.
+            {t("registerInfo.copyCheckbox2")}
           </div>
           <Switch
-            checked={state.checkedB}
-            onChange={handleChange}
-            name='checkedB'
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
+            className="switch2"
+            checked={contact.testDrive}
+            onChange={handleChangeContact}
+            name='testDrive'
+            inputProps={{ 'aria-label': t("registerInfo.copyCheckbox2") }}
           />
         </div>
         {/* <div className="boxCheckbox">
@@ -117,17 +215,18 @@ const RegisterInfo = () => {
                 <Link href="/termsP" color="inherit"> Acepto Políticas de tratamiento de datos</Link>
             </div>
             <Checkbox
-                checked={checked}
-                onChange={handleChangeCheck}
+                checked={agreeTerms}
+                onChange={handleChangeTerms}
                 inputProps={{ 'aria-label': 'primary checkbox' }}
             />
         </div> */}
         <Button
           className='yesContinue'
           variant='contained'
-          onClick={() => setProcess(PROCESS_ENUM.share)}
+          type="submit"
+          disabled={isDisabled}
         >
-          VER VIDEO
+          {t("registerInfo.yesContinue")}
         </Button>
       </form>
     </div>

@@ -40,7 +40,7 @@ const SelectDevice = (props) => {
 
   return (
     <>
-      {devices && cantCameras > 1 && (
+      {devices && cantCameras > 0 && (
         <div className="zone-cameras">
           <FlipCamera onClick={changeCamera} />
         </div>

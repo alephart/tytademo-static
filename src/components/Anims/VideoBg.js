@@ -6,12 +6,12 @@
  * @param {string} className nombre de clase
  * @returns Un objeto javascript con la info html para cargar en React. Aqui únicamente carga el tag video. 
  */
-const VideoBg = (_id, name, loop, className = "") => {
+const VideoBg = (_id, name, loop, className) => {
   const markup = { 
     __html: `
-    <video class=${className} playsinline="" autoplay="" ${loop && 'loop=""'} muted=""  id=${_id}>
+    <video class=${className} playsinline="" autoplay="" ${loop && 'loop=""'} muted="" id=${_id}>
         <source
-            src=${name}
+            src="/videos/${name}"
             type="video/mp4"
         />
     </video>` }
