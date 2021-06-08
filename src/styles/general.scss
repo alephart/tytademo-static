@@ -129,9 +129,10 @@ body {
 		height: 56px;
 		border-radius: 30px;
 		font-family: 'JoyrideEx';
-		text-transform: none;
 		text-transform: lowercase;
-		padding-top: 2px;
+		display: flex;
+    align-items: center;
+		justify-content: center;
 		&.MuiButton-contained.Mui-disabled
 		{
 			opacity: 0.3;
@@ -225,7 +226,7 @@ body {
 		.copyFooter
 		{
 			position: absolute;
-			font-size: 11px;
+			font-size: 0.66rem;
 			color: #fff;
 			text-align: center;
 			bottom: 30px;
