@@ -23,19 +23,20 @@ const CharacterChoose = () => {
       <div className="BoxchooseCharacter">
         <div className='selectCopy'>{t("characterChoose.selectCopy")}</div>
         <div
-          className={`selectCharacter1 ${character === 'male' ? 'selected' : ''}`}
-          data-character='male'
-          onClick={handleSelectCharacter}
-          >
-          <img src='/images/silueta-masculino.png' alt='' />
-        </div>
-        <div
           className={`selectCharacter2 ${character === 'female' ? 'selected' : ''}`}
           data-character='female'
           onClick={handleSelectCharacter}
         >
           <img src='/images/silueta-femenina.png' alt='' />
         </div>
+        <div
+          className={`selectCharacter1 ${character === 'male' ? 'selected' : ''}`}
+          data-character='male'
+          onClick={handleSelectCharacter}
+          >
+          <img src='/images/silueta-masculino.png' alt='' />
+        </div>
+        
 
         <Button
           disabled={!character}
