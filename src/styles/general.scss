@@ -279,14 +279,15 @@ body {
 			font-size: 20px;
 			text-align: center;
 			color: #fff;
-			top: 30px;
+			top: 0px;
 			width: 100%;
 			max-width: 300px;
 			line-height: 26px;
 			margin: 0px auto 60px;
 			text-transform: lowercase;
-			top: 60px;
 			position: absolute;
+			left: 0;
+			right: 0;
 		}
 		.selectCharacter1,
 		.selectCharacter2
@@ -301,23 +302,29 @@ body {
 			background-image: url("/images/bg-masculino.jpg");
 			background-position: center;
 			background-size: cover;
-			transition: all 0.5s ease-out;
+			transition: all 0.3s ease-out;
 			zoom: 1;
 			img
 			{
 				right: 0;
 				left: 0;
 				margin: 0 auto;
-				width: 50%;
+				width: 39%;
 				position: absolute;
 				bottom: 0;
+				transition: all 0.2s ease-out;
 			}
 			&.selected
 			{	
-				transition: all 0.5s ease-out;
+				transition: all 0.3s ease-out;
 				opacity: 1;
 				zoom: 1.1;
 				border: 2px solid #4720D6;
+				img
+				{
+					width: 50%;
+					transition: all 0.2s ease-out;
+				}
 			}
 		}
 		.selectCharacter2
@@ -374,7 +381,7 @@ body {
 		.againPhoto
 		{
 			position: relative;
-			margin: 30px auto 20px;
+			margin: 10px auto 20px;
 		}
 		.againPhoto
 		{
@@ -383,7 +390,7 @@ body {
 		}
 		.copyLike
 		{
-			font-size: 18px;
+			font-size: 15px;
 			width: 320px;
 			margin: 2% auto 20px;
 			text-align: center;
@@ -540,6 +547,10 @@ body {
 		.BoxchooseCharacter
 		{
 			padding-top: 110px;
+			position: relative;
+			padding-bottom: 60px;
+			width: 320px;
+			height: 620px;
 		}
 	}
 	.buttonPhoto
@@ -547,8 +558,8 @@ body {
 		position: absolute;
 		left: 0;
 		right: 0;
-		top: auto;
-		bottom: 34px;
+		margin: 0 auto;
+		bottom: 0;
 	}
 	.copyLink
 	{
@@ -592,7 +603,7 @@ body {
 			align-items: center;
 			.boxPercentage
 			{
-				width: 130px;
+				width: 140px;
 				height: 60px;
 				font-family: 'ToyotaRegular';
 				letter-spacing: 0px;
@@ -674,14 +685,14 @@ body {
 			align-items: center;
 			.boxPercentage
 			{
-				width: 130px;
+				width: 200px;
 				height: 60px;
 				font-family: 'ToyotaRegular';
 				letter-spacing: 0px;
 				.iconPercentage
 				{
-					width: 50px;
-					height: 50px;
+					width: 60px;
+					height: 60px;
 					background-image: url("/images/cube.gif");
 					background-position: center left;
 					background-size: contain;
@@ -700,7 +711,7 @@ body {
 				{
 					height: 2px;
 					float: left;
-					width: calc(100% - 65px);
+					width: calc(100% - 70px);
 					margin: 0 0 0 10px;
 					position: relative;
 					.percentage
