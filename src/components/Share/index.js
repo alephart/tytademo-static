@@ -1,3 +1,4 @@
+/** meta tags og in components/layouts/Meta.js **/
 import { TwitterShareButton, FacebookShareButton } from "react-share";
 import { useTranslation } from 'next-i18next';
 
