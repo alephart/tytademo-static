@@ -17,7 +17,7 @@ const Pruebas = () => {
 
       <Button onClick={() => setHelp(!help)}>Active Modal!</Button>
 
-      <Help isOpen={help} setIsOpen={setHelp} />
+      <Help isOpen={help} setIsOpen={setHelp} message={MESSAGE_DIALOG.rememberPhoto} />
 
     </Layout>
   )

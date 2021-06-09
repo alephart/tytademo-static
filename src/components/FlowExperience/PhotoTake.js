@@ -56,7 +56,7 @@ const PhotoTake = () => {
         <SelectDevice mode={facingMode} setMode={setFacingMode} />
       </div>
 
-      <Help isOpen={help} setIsOpen={setHelp} />
+      <Help isOpen={help} setIsOpen={setHelp} message={MESSAGE_DIALOG.rememberPhoto} />
     </>
   )
 }
