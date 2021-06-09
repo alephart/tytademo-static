@@ -5,8 +5,9 @@ import {
 } from '@material-ui/core/';
 import { useTheme } from '@material-ui/core/styles';
 import { useTranslation } from 'next-i18next';
+import { MESSAGE_DIALOG } from '@/helpers/globals';
 
-const Help = ({ isOpen, setIsOpen }) => {
+const Help = ({ isOpen, setIsOpen, message }) => {
   const { t } = useTranslation('common');
   return (
     <Dialog
@@ -18,13 +19,20 @@ const Help = ({ isOpen, setIsOpen }) => {
     >  
       <DialogContent id='alert-dialog-description'>
           <h2 className="modal-title">{t("alertDescription.title")}</h2>
-          <p>{t("alertDescription.text")}</p>
-          <ul>
-            <li>· {t("alertDescription.item1")}</li>
-            <li>· {t("alertDescription.item2")}</li>
-            <li>· {t("alertDescription.item3")}</li>
-            <li>· {t("alertDescription.item4")}</li>
-          </ul>
+          { message === MESSAGE_DIALOG.rememberPhoto && (
+            <>
+              <p>{t("alertDescription.text")}</p>
+              <ul>
+                <li>· {t("alertDescription.item1")}</li>
+                <li>· {t("alertDescription.item2")}</li>
+                <li>· {t("alertDescription.item3")}</li>
+                <li>· {t("alertDescription.item4")}</li>
+              </ul>
+            </>
+          )}
+          { message === MESSAGE_DIALOG.emailRegistered && (
+            <p>{t("alertDescription.userExist")}</p>
+          )}
           <Button
             onClick={() => setIsOpen(false)}
             color='primary'

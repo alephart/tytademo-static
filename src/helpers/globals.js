@@ -12,3 +12,10 @@ export const PROCESS_ENUM = Object.freeze(
     share: 'Share Video',
   }
 );
+
+export const MESSAGE_DIALOG = Object.freeze(
+  { 
+    rememberPhoto: 'Remember take photo',
+    emailRegistered: 'Email registered',
+  }
+);

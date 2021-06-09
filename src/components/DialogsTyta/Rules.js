@@ -1,5 +1,5 @@
-import PoliciesContent from './Policies';
-import TermsContent from './Terms';
+import PoliciesContent from './PoliciesContent';
+import TermsContent from './TermsContent';
 import {
   Button,
   Dialog,

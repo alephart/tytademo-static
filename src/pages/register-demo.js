@@ -5,7 +5,8 @@ import { RegisterInfo } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-const RegisterDemo = () => {
+const RegisterDemo = ({ userEmail }) => {
+  console.log(userEmail);
   const [process, setProcess] = useState(PROCESS_ENUM.register);
   const [character, setCharacter] = useState(null);
   const [data, setData] = useState(null);
@@ -30,17 +31,18 @@ const RegisterDemo = () => {
     <Layout>
       <ExperienceContext.Provider value={contextValues}>
         {process === PROCESS_ENUM.register && (
-          <RegisterInfo />
+          <RegisterInfo userEmail={userEmail} />
         )}
       </ExperienceContext.Provider>
     </Layout>
   )
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
+export const getServerSideProps = async ({ req, locale }) => {
+  return { props: { 
     ...await serverSideTranslations(locale, ['common']),
-  },
-});
+    userEmail: req.cookies.userEmail,
+  }, }
+};
 
 export default RegisterDemo;

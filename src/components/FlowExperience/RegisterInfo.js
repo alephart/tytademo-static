@@ -7,11 +7,23 @@ import {
 } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { VideoLoading } from '@/components/Anims';
-import { PROCESS_ENUM } from '@/helpers/globals';
+import { PROCESS_ENUM, MESSAGE_DIALOG } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
 import { useTranslation } from 'next-i18next';
+import { Help } from '@/components/DialogsTyta';
 
-const RegisterInfo = () => {
+const setCookie = (email) => {
+  //cookie.set('email', email, { expires: 1 / 24 });
+  fetch('api/set-cookie', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email }),
+  });
+};
+
+const RegisterInfo = ({ userEmail }) => {
   const { t } = useTranslation('common');
   const { setProcess, data, character, setMessage, swap, setSwap } = useContext(ExperienceContext);
   const [progress, setProgress] = useState(0);
@@ -21,6 +33,7 @@ const RegisterInfo = () => {
     email: '',
     zipcode: '',
   });
+  const [userExists, setUserExists] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
   const [validZipCode, setValidZipCode] = useState(false);
   const [isSubmitting, setSubmitting] = useState(false);
@@ -33,6 +46,7 @@ const RegisterInfo = () => {
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: 'onChange',
+    reValidateMode: 'onChange',
   });
 
   useEffect(() => {
@@ -70,7 +84,13 @@ const RegisterInfo = () => {
     
     setValidEmail(valid);
     setValues({...values, [name]: value});
-  }
+
+    // check user exist
+    if(value === userEmail) {
+      console.log('This user exist!!!!');
+      setUserExists(true);
+    }
+  };
   
   const handleChangeZip = (event) => {
     const { name, value } = event.target;
@@ -99,6 +119,12 @@ const RegisterInfo = () => {
 
     console.log(dataForm);
 
+    // check user exist
+    if(dataForm.email === userEmail) {
+      setUserExists(true);
+      return;
+    }
+
     const dataRegister = { 
       ...dataForm, 
       ...contact,  
@@ -106,13 +132,14 @@ const RegisterInfo = () => {
       character,
       ...swap,
     };
+    
+    setCookie(dataForm.email);
 
     console.log('swap in register', swap);
     console.log(dataRegister);
 
     // when save data, then change to share
-    setProcess(PROCESS_ENUM.share);
-
+    //setProcess(PROCESS_ENUM.share);
   };
 
   return (
@@ -127,10 +154,7 @@ const RegisterInfo = () => {
           </span>
         )}
 
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        noValidate autoComplete='off'
-      >
+      <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
         <Input
           className={`
             ${values.firstname ? 'check' : ''}
@@ -142,6 +166,9 @@ const RegisterInfo = () => {
           inputProps={{ 'aria-label': t("registerInfo.name") }}
           value={values.firstname}
           onChange={handleChangeLetters}
+          inputProps={{
+            autoComplete: "disabled", // disable autocomplete and autofill
+          }}
         />
         <Input
           className={`
@@ -154,6 +181,9 @@ const RegisterInfo = () => {
           inputProps={{ 'aria-label': t("registerInfo.lastName") }}
           value={values.lastname}
           onChange={handleChangeLetters}
+          inputProps={{
+            autoComplete: "disabled", // disable autocomplete and autofill
+          }}
         />
 
         <Input
@@ -167,6 +197,9 @@ const RegisterInfo = () => {
           inputProps={{ 'aria-label': t("registerInfo.email") }}
           value={values.email}
           onChange={handleChangeEmail}
+          inputProps={{
+            autoComplete: "disabled", // disable autocomplete and autofill
+          }}
         />
         <Input
           className={`
@@ -185,6 +218,9 @@ const RegisterInfo = () => {
           inputProps={{ 'aria-label': t("registerInfo.zip") }}
           value={values.zipcode}
           onChange={handleChangeZip}
+          inputProps={{
+            autoComplete: "disabled", // disable autocomplete and autofill
+          }}
         />
 
         <div className='boxCheckbox'>
@@ -229,6 +265,9 @@ const RegisterInfo = () => {
           {t("registerInfo.yesContinue")}
         </Button>
       </form>
+
+      <Help isOpen={userExists} setIsOpen={setUserExists} message={MESSAGE_DIALOG.emailRegistered} />
+
     </div>
   );
 };
