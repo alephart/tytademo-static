@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef, useContext } from 'rea
 import Webcam from 'react-webcam';
 import ButtonTake from '@/components/TakePhoto/ButtonTake';
 import SelectDevice from '@/components/SelectDevice';
-import { PROCESS_ENUM } from '@/helpers/globals';
+import { PROCESS_ENUM, MESSAGE_DIALOG } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
 import { Help } from '@/components/DialogsTyta';
 
