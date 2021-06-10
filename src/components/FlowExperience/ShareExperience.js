@@ -3,6 +3,7 @@ import DialogTyta from '@/components/DialogsTyta';
 import { useTranslation } from 'next-i18next';
 import { ExperienceContext } from '@/components/Context';
 import Share from '@/components/Share';
+import ReactPlayer from 'react-player';
 
 const ShareExperience = () => {
   const { t } = useTranslation('common');
@@ -11,20 +12,21 @@ const ShareExperience = () => {
 
   console.log('swap into ShareExperience', swap);
 
+  const urlVideo = 'https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4';
+
   return (
     <div className='sharedExperience'>
       <img className='logoToyota' src='/images/logo-toyota.png' alt='' />
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `
-                <video class="videoGeneral" autoplay="" controls="" playsinline="" id="">
-                    <source
-                        src="/videos/output1.mp4"
-                        type="video/mp4"
-                    />
-                </video>`,
-        }}
-      ></div>
+
+      <ReactPlayer
+        className="react-player"
+        url={swap.swap[0]}
+        controls={true}
+        playing={true}
+        width='100%'
+        height='100%'
+      />
+
       <div className='copyThanks'>
         <div className='copyLunay'>{t("shareExperience.copyLunay")}</div>
         <span>
