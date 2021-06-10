@@ -13,7 +13,7 @@ const JoinExperince = ({data}) => {
 
     return (
         <Layout>
-            <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
+            <img className="logoToyota join" src="/images/logo-toyota.png" alt=""/>
 
             <ReactPlayer
                 className="react-player"
