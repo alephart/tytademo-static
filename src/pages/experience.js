@@ -19,6 +19,7 @@ import { Loading } from '@/components/Anims';
 
 const mockDetector = () => 'US';
 const ENV = process.env.NODE_ENV;
+console.log('ENV', ENV);
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Experience = ({ userEmail }) => {
