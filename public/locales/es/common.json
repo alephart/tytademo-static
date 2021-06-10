@@ -44,5 +44,7 @@
     "back.button": "VOLVER",
     "landscape": "Gira tu celular para seguir con la experiencia",
     "desktop": "INGRESA AL SITIO DESDE TU CELULAR, TÓMATE UNA SELFIE Y SÉ PARTE DEL VIDEO DE LUNAY.",
-    "meta.tags.descripction": "Tómate una selfie y se parte del video de LUNAY y Corolla Apex"
+    "meta.tags.descripction": "Tómate una selfie y se parte del video de LUNAY y Corolla Apex",
+    "indexDesktop.copyDesktop": "ve el video de tu amigo y crea el tuyo.",
+    "indexDesktop.copyDesktopText": "Tómate una selfie para ser parte del video de Lunay."
 }
