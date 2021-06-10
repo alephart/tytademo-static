@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const Email = require('email-templates');
 
 // message example
 message = {
@@ -21,6 +22,12 @@ let transporter = nodemailer.createTransport({
   //   user: "223d99de78ce34",
   //   pass: "d8b1baa9c9570d"
   }
+});
+
+const email = new Email({
+  transport: transporter,
+  send: true,
+  preview: false,
 });
 
 transporter.sendMail(message, function(err, info) {
