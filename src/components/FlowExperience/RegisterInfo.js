@@ -14,7 +14,7 @@ import { Help } from '@/components/DialogsTyta';
 
 const setCookie = (email) => {
   //cookie.set('email', email, { expires: 1 / 24 });
-  fetch('api/set-cookie', {
+  fetch('api/set_cookie', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -22,6 +22,7 @@ const setCookie = (email) => {
     body: JSON.stringify({ email }),
   });
 };
+
 
 const RegisterInfo = ({ userEmail }) => {
   const { t } = useTranslation('common');
@@ -114,7 +115,7 @@ const RegisterInfo = ({ userEmail }) => {
     setAgreeTerms(event.target.checked);
   };
 
-  const onSubmit = (dataForm) => {
+  const onSubmit = async (dataForm) => {
     setSubmitting(true);
 
     console.log(dataForm);
@@ -133,13 +134,29 @@ const RegisterInfo = ({ userEmail }) => {
       ...swap,
     };
     
-    setCookie(dataForm.email);
-
-    console.log('swap in register', swap);
-    console.log(dataRegister);
-
-    // when save data, then change to share
-    setProcess(PROCESS_ENUM.share);
+    // console.log('swap in register', swap);
+    // console.log(dataRegister);
+    
+    const response = await fetch('api/set_data', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dataRegister),
+    });
+    
+    const data = await response.json();
+    console.log('response data:::', data);
+    
+    if(data.errors) {
+      console.log('data errors::');
+    } else {
+      setCookie(dataForm.email);
+      console.log('success!!!', data.success);
+      console.log('data Body!!!', data.dataBody);
+      // when save data, then change to share
+      //setProcess(PROCESS_ENUM.share);
+    }
   };
 
   return (
