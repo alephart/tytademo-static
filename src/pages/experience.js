@@ -17,8 +17,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TytaProgress } from '@/components/Anims';
 import { Loading } from '@/components/Anims';
 
-const ENV = 'development';
 const mockDetector = () => 'US';
+const ENV = 'development'; // process.env.NODE_ENV;
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Experience = ({ userEmail }) => {
@@ -52,6 +52,8 @@ const Experience = ({ userEmail }) => {
     swap,
     setSwap,
     setMessage,
+    progress,
+    setProgress,
   };
 
   useEffect(() => {
@@ -131,7 +133,7 @@ const Experience = ({ userEmail }) => {
 export const getServerSideProps = async ({ req, locale }) => {
   return { props: { 
     ...await serverSideTranslations(locale, ['common']),
-    userEmail: req.cookies.userEmail,
+    userEmail: req.cookies.userEmail || null,
   }, }
 };
 
