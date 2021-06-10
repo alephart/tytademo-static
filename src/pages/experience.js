@@ -18,18 +18,13 @@ import { TytaProgress } from '@/components/Anims';
 import { Loading } from '@/components/Anims';
 
 const mockDetector = () => 'US';
-const ENV = 'development'; //process.env.NODE_ENV;
+const ENV = 'development'; // process.env.NODE_ENV;
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Experience = ({ userEmail }) => {
   const { loading, location, error } = useLocation(
     ENV !== 'development' ? geolocationDb(geoDbKey) : mockDetector
   );
-  const router = useRouter();
-
-  if(location !== 'US' || error) {
-    router.push('/not-available');
-  }
 
   const [process, setProcess] = useState(PROCESS_ENUM.character);
   const [progress, setProgress] = useState(0);
@@ -41,6 +36,7 @@ const Experience = ({ userEmail }) => {
 
   const [message, setMessage] = useState('');
 
+  const router = useRouter();
   
   const contextValues = {
     process,
@@ -93,6 +89,10 @@ const Experience = ({ userEmail }) => {
 
   if(loading) {
     return (<Loading />);
+  }
+  
+  if(location !== 'US' || error) {
+    router.push('/not-available');
   }
   
   return (
