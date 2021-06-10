@@ -4,6 +4,7 @@ import { Help } from '@/components/DialogsTyta';
 import { Loading } from '@/components/Anims';
 import { Button } from '@material-ui/core/';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { MESSAGE_DIALOG } from '@/helpers/globals';
 
 const Pruebas = () => {
   const [help, setHelp] = useState(false);
@@ -17,7 +18,7 @@ const Pruebas = () => {
 
       <Button onClick={() => setHelp(!help)}>Active Modal!</Button>
 
-      <Help isOpen={help} setIsOpen={setHelp} />
+      <Help isOpen={help} setIsOpen={setHelp} message={MESSAGE_DIALOG.rememberPhoto} />
 
     </Layout>
   )

@@ -6,9 +6,11 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ReactPlayer from 'react-player';
 
-const JoinExperince = () => {
+const JoinExperince = ({data}) => {
+  console.log(data);
+  const { urlVideo } = data;
     const { t } = useTranslation('common');
-    const urlVideo = 'https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4';
+
     return (
         <Layout>
             <img className="logoToyota join" src="/images/logo-toyota.png" alt=""/>
@@ -35,10 +37,21 @@ const JoinExperince = () => {
     )
 }
 
-export const getStaticProps = async ({ locale }) => ({
-    props: {
+export const getServerSideProps = async (context) => {
+    const { params, locale } = context;
+    // Fetch data from external API
+    //const res = await fetch(`https://.../data`)
+    //const data = await res.json()
+
+    const urlVideo = 'https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4';
+
+    const data = { success: true, urlVideo, id: params.id}
+
+    // Pass data to the page via props
+    return { props: { 
       ...await serverSideTranslations(locale, ['common']),
-    },
-  });
+      data
+    }, }
+  };
   
 export default JoinExperince;

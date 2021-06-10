@@ -21,7 +21,7 @@ const ENV = 'development';
 const mockDetector = () => 'US';
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
-const Experience = () => {
+const Experience = ({ userEmail }) => {
   const { loading, location, error } = useLocation(
     ENV !== 'development' ? geolocationDb(geoDbKey) : mockDetector
   );
@@ -112,7 +112,7 @@ const Experience = () => {
         )}
 
         {process === PROCESS_ENUM.register && (
-          <RegisterInfo />
+          <RegisterInfo userEmail={userEmail} />
         )}
 
         {process === PROCESS_ENUM.share && (
@@ -128,10 +128,11 @@ const Experience = () => {
   )
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
+export const getServerSideProps = async ({ req, locale }) => {
+  return { props: { 
     ...await serverSideTranslations(locale, ['common']),
-  },
-});
+    userEmail: req.cookies.userEmail,
+  }, }
+};
 
 export default Experience;

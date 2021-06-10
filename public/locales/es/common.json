@@ -40,6 +40,7 @@
     "alertDescription.item2": "Intenta no hacer gestos o sonreír",
     "alertDescription.item3": "Solo tú puedes estar en la foto",
     "alertDescription.item4": "Asegúrate que tu car esté visible",
+    "alertDescription.userExist": "Este correo electrónico ya está registrado.",
     "alertDescription.button": "ACEPTAR",
     "back.button": "VOLVER",
     "landscape": "Gira tu celular para seguir con la experiencia",
