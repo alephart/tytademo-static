@@ -14,8 +14,8 @@ import {
 } from '@/components/FlowExperience';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-const ENV = 'development';
 const mockDetector = () => 'US';
+const ENV = process.env.NODE_ENV;
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Experience = () => {
