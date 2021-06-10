@@ -14,7 +14,7 @@
     "registerInfo.copySubtitleForm": "Register to get your video.",
     "registerInfo.name": "First Name",
     "registerInfo.lastName": "Last Name",
-    "registerInfo.email": "Email",
+    "registerInfo.email": "email",
     "registerInfo.zip": "Zip code",
     "registerInfo.errorsField": "Please fill out all required fields correctly.",
     "registerInfo.errorsFieldGeneral": "Please fill out all the required fields.",
@@ -32,7 +32,7 @@
     "join.copyJoin": "CHECK OUT YOUR FRIEND´S VIDEO AND MAKE YOUR OWN.",
     "join.subCopyJoin": "Take a selfie to be a part of LUNAY’s video.",
     "join.buttonJoin": "GET MY VIDEO!",
-    "VideoLoading.timePercentage": "Per second",
+    "VideoLoading.timePercentage": "Video upload",
     "notAvailable.copyNotAvailable": "SORRY, THIS EXPERIENCE IS NOT AVAILABLE IN YOUR COUNTRY.",
     "notAvailable.copyNotAvailableParagrah": "Learn more about the New Corolla Apex",
     "alertDescription.title": "TRY AGAIN",
@@ -45,5 +45,7 @@
     "back.button": "BACK",
     "landscape": "Turn your cell phone to continue the experience",
     "desktop": "USE YOUR PHONE TO ACCESS THIS SITE, TAKE A SELFIE AND BE A PART OF LUNAY´S VIDEO.",
-    "meta.tags.descripction": "Take a selfie to be a part of LUNAY’s video and Corolla Apex"
+    "meta.tags.descripction": "Take a selfie to be a part of LUNAY’s video and Corolla Apex",
+    "indexDesktop.copyDesktop": "CHECK OUT YOUR FRIEND´S VIDEO AND MAKE YOUR OWN.",
+    "indexDesktop.copyDesktopText": "Take a selfie to be a part of LUNAY’s video."
 }

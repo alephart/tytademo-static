@@ -11,7 +11,7 @@ const JoinExperince = () => {
     const urlVideo = 'https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4';
     return (
         <Layout>
-            <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
+            <img className="logoToyota join" src="/images/logo-toyota.png" alt=""/>
 
             <ReactPlayer
                 className="react-player"
