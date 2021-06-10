@@ -41,7 +41,7 @@ const RegisterDemo = ({ userEmail }) => {
 export const getServerSideProps = async ({ req, locale }) => {
   return { props: { 
     ...await serverSideTranslations(locale, ['common']),
-    userEmail: req.cookies.userEmail,
+    userEmail: req.cookies.userEmail || null,
   }, }
 };
 
