@@ -2,19 +2,12 @@ import Meta from './Meta';
 import { isAndroid } from 'react-device-detect';
 import { useTranslation } from 'next-i18next';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, ...props }) => {
+  console.log('layout', props);
   const { t } = useTranslation('common');
-  const meta = {
-    pageTitle: 'Featuring You Lunay X Toyota',
-    description: '',
-    currentURL: 'https://tytademo.devmds.com/',
-    previewImage: 'feature-you-toyota-lunay.png',
-    siteName: 'Toyota Featuring You',
-    videoName: 'featureYouToyota.mp4',
-  };
   return (
     <>
-      <Meta meta={meta} />
+      <Meta {...props} />
       <div className={`container ${isAndroid ? 'android' : ''}`}>
         {children}
         {/* aqui va version desktop */}

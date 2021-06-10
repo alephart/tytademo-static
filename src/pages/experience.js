@@ -52,6 +52,8 @@ const Experience = ({ userEmail }) => {
     swap,
     setSwap,
     setMessage,
+    progress,
+    setProgress,
   };
 
   useEffect(() => {
@@ -131,7 +133,7 @@ const Experience = ({ userEmail }) => {
 export const getServerSideProps = async ({ req, locale }) => {
   return { props: { 
     ...await serverSideTranslations(locale, ['common']),
-    userEmail: req.cookies.userEmail,
+    userEmail: req.cookies.userEmail || null,
   }, }
 };
 

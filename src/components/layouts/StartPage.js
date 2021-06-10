@@ -1,20 +1,12 @@
 import Meta from './Meta';
 import { useTranslation } from 'next-i18next';
 
-const Layout = ({ children, pageTitle, description, ...props }) => {
+const Layout = ({ children, ...props }) => {
+  console.log('Layout Home', props)
   const { t } = useTranslation('common');
-  const meta = {
-    pageTitle: 'Featuring You Lunay X Toyota',
-    description: '',
-    currentURL: 'https://tytademo.devmds.com/',
-    previewImage: 'feature-you-toyota-lunay.png',
-    siteName: 'Toyota Featuring You',
-    videoName: 'featureYouToyota.mp4'
-  };
-  
   return (
     <>
-      <Meta meta={meta} />
+      <Meta {...props} />
       <div className="startPage">
         {children}
         <div className='landscape'>
