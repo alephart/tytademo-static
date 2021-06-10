@@ -17,8 +17,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TytaProgress } from '@/components/Anims';
 import { Loading } from '@/components/Anims';
 
-const ENV = 'development';
 const mockDetector = () => 'US';
+const ENV = process.env.NODE_ENV;
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Experience = ({ userEmail }) => {
