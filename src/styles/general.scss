@@ -14,11 +14,8 @@ html, body {
     width: 101%;
     min-height: 100%;
 	opacity: 1;
-	-webkit-animation: fadeOut 4.5s ease-in-out 1 forwards;
-    -moz-animation: fadeOut 4.5s ease-in-out 1 forwards;
-    -o-animation: fadeOut 4.5s ease-in-out 1 forwards;
-    animation: fadeOut 4.5s ease-in-out 1 forwards;
-	animation-delay: 4s;
+    animation: fadeOut 0.5s ease-in-out 1 forwards;
+	animation-delay: 7s;
 }
 #video2 {
 	position: absolute;
@@ -27,11 +24,8 @@ html, body {
     width: 101%;
     min-height: 100%;
 	opacity: 0;
-	-webkit-animation: fadeIn 3s ease-in-out 1 forwards;
-    -moz-animation: fadeIn 3s ease-in-out 1 forwards;
-    -o-animation: fadeIn 3s ease-in-out 1 forwards;
-    animation: fadeIn 3s ease-in-out 1 forwards;
-	animation-delay: 0.1s;
+    animation: fadeIn 0.5s ease-in-out 1 forwards;
+	animation-delay: 4s;
 }
 .degrade
 {
