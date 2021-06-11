@@ -26,7 +26,7 @@ const TytaProgress  = ({progress}) => {
       <CircularProgress
         variant="determinate"
         className={classes.bottom}
-        size={25}
+        size={20}
         thickness={4}
         value={100}
       />
@@ -36,7 +36,7 @@ const TytaProgress  = ({progress}) => {
         classes={{
           circle: classes.circle,
         }}
-        size={25}
+        size={20}
         thickness={4}
         value={progress}
       />
