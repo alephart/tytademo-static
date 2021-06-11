@@ -12,7 +12,7 @@ const JoinExperince = ({data}) => {
     const { t } = useTranslation('common');
 
     return (
-        <>
+        <Layout>
             <div className="checkVideoFinal">
                 <img className="logoToyota join" src="/images/logo-toyota.png" alt=""/>
 
@@ -35,17 +35,18 @@ const JoinExperince = ({data}) => {
                     <Button className="buttonJoin" variant="contained">{t("join.buttonJoin")}</Button>
                 </Link>
             </div>
-            <div  className="indexDesktop">
+
+            <div className="indexDesktop">
                 <div className="boxItemsDesktop">
                     <div className="videoDesktop">
-                        <div dangerouslySetInnerHTML={{ __html: `
-                            <video playsinline="" autoplay=""  muted=""  id="">
-                                <source
-                                    src="/videos/output1.mp4"
-                                    type="video/mp4"
-                                />
-                            </video>` }}>
-                        </div>
+                        <ReactPlayer
+                            className="react-player"
+                            url={urlVideo}
+                            controls={true}
+                            playing={false}
+                            width='100%'
+                            height='100%'
+                        />
                     </div>
                     <div className="copydesktop">
                         <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
@@ -58,7 +59,7 @@ const JoinExperince = ({data}) => {
                     </div>
                 </div>
             </div>
-        </>
+        </Layout>
     )
 }
 
