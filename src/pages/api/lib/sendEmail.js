@@ -6,26 +6,22 @@ const Email = require('email-templates');
 const pathToTemplates = path.join(process.cwd(), 'src/pages/api/email/templates');
 const pathToTemplates2 = path.join(__dirname, '../email/templates');
 
-const sendEmail = async (options) => {
+const sendEmail = async (config, options) => {
+  const { host, port, user, pass, from } = config;
   const { firstname, lastname, email, urlVideo } = options;
   
-  console.log(__dirname);
-  console.log(process.cwd());
-  console.log('path', __dirname);
-  console.log('pathToTemplates', pathToTemplates);
-  console.log('pathToTemplates2', pathToTemplates2);
+  // console.log(__dirname);
+  // console.log(process.cwd());
+  // console.log('path', __dirname);
+  // console.log('pathToTemplates', pathToTemplates);
+  // console.log('pathToTemplates2', pathToTemplates2);
   
   let transporter = nodemailer.createTransport({
-    // host: "email-smtp.us-east-1.amazonaws.com",
-    // port: 465,
-    // auth: {
-    //   user: process.env.AWS_SES_USERNAME,
-    //   pass: process.env.AWS_SES_PASSWORD,
-    host: "smtp.mailtrap.io",
-    port: 2525,
+    host,
+    port,
     auth: {
-      user: process.env.MAILTRAP_USER,
-      pass: process.env.MAILTRAP_PASS,
+      user,
+      pass,
     }
   });
   
@@ -41,7 +37,7 @@ const sendEmail = async (options) => {
   await newEmail.send({
     template: 'register',
     message: {
-      from: 'jpulido@mdsdigital.com',
+      from,
       to: email,
     },
     locals: {

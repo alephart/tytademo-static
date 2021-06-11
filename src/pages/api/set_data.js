@@ -19,6 +19,19 @@ export default async (req, res) => {
   const url = process.env.NEXT_PUBLIC__URL_SITE;
   const urlVideo = `${url}/join-experience/ckow41n6g0000bdnxgrzb6wsv`;
 
+  // host: process.env.AILTRAP_HOST,
+  // port: process.env.AILTRAP_PORT,
+  // user: process.env.AILTRAP_USER,
+  // pass: process.env.AILTRAP_PASS,
+
+  const config = {
+    host: process.env.AWS_SES_HOST,
+    port: process.env.AWS_SES_PORT,
+    user: process.env.AWS_SES_USERNAME,
+    pass: process.env.AWS_SES_PASSWORD,
+    from: 'lcardona@mdsdigital.com',
+  };
+
   const options = {
     firstname,
     lastname,
@@ -26,7 +39,7 @@ export default async (req, res) => {
     urlVideo,
   };
 
-  await sendEmail(options);
+  await sendEmail(config, options);
 
   // return response
 
