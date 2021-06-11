@@ -54,9 +54,13 @@ const RegisterInfo = ({ userEmail }) => {
     setMessage('');
     console.log("data in register", data);
 
+    const url = process.env.NEXT_PUBLIC__URL_SITE;
+    
     setSwap({
-      success: true, 
-      swap: ['https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4']
+      success: true,
+      urlVideo: 'https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4',
+      urlShare: `${url}/join-experience/ckow41n6g0000bdnxgrzb6wsv`,
+      userId: 'ckow41n6g0000bdnxgrzb6wsv',
     });
   }, []);
 
@@ -151,7 +155,7 @@ const RegisterInfo = ({ userEmail }) => {
     if(data.errors) {
       console.log('data errors::');
     } else {
-      setCookie(dataForm.email);
+      //setCookie(dataForm.email);
       console.log('success!!!', data.success);
       console.log('data Body!!!', data.dataBody);
       // when save data, then change to share

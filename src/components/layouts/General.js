@@ -4,11 +4,12 @@ import { useTranslation } from 'next-i18next';
 
 const Layout = ({ children, ...props }) => {
   console.log('layout', props);
+  const { className } = props;
   const { t } = useTranslation('common');
   return (
     <>
       <Meta {...props} />
-      <div className={`container ${isAndroid ? 'android' : ''}`}>
+      <div className={`container ${className ? className : ''} ${isAndroid ? 'android' : ''}`}>
         {children}
         {/* aqui va version desktop */}
         <div className='landscape'>
