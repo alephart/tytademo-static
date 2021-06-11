@@ -122,15 +122,15 @@ const RegisterInfo = ({ userEmail }) => {
 
   const onSubmit = async (dataForm) => {
     setSubmitting(true);
-
+    
     console.log(dataForm);
-
+    
     // check user exist
     if(dataForm.email === userEmail) {
       setUserExists(true);
       return;
     }
-
+    
     const dataRegister = { 
       ...dataForm, 
       ...contact,  
@@ -155,6 +155,7 @@ const RegisterInfo = ({ userEmail }) => {
     
     if(data.errors) {
       console.log('data errors::');
+      setSubmitting(false);
     } else {
       //setCookie(dataForm.email);
       console.log('success!!!', data.success);
@@ -283,7 +284,7 @@ const RegisterInfo = ({ userEmail }) => {
           className='button-send-form'
           variant='contained'
           type="submit"
-          disabled={isDisabled}
+          disabled={isSubmitting}
         >
           {t("registerInfo.yesContinue")}
         </Button>
