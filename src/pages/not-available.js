@@ -17,29 +17,6 @@ const NotAvailable = () => {
         </div>
       </div>
     </div>
-    // <div  className="indexDesktop">
-    //     <div className="boxItemsDesktop">
-    //         <div className="videoDesktop">
-    //             <div dangerouslySetInnerHTML={{ __html: `
-    //                 <video playsinline="" autoplay=""  muted=""  id="">
-    //                     <source
-    //                         src="/videos/output1.mp4"
-    //                         type="video/mp4"
-    //                     />
-    //                 </video>` }}>
-    //             </div>
-    //         </div>
-    //         <div className="copydesktop">
-    //             <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
-    //             <h2>
-    //               {t("indexDesktop.copyDesktop")}
-    //             </h2>
-    //             <p>
-    //               {t("indexDesktop.copyDesktopText")}
-    //             </p>
-    //         </div>
-    //     </div>
-    // </div>
   );
 };
 
