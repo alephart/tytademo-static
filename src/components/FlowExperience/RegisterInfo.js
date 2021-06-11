@@ -155,7 +155,9 @@ const RegisterInfo = ({ userEmail }) => {
       console.log('success!!!', data.success);
       console.log('data Body!!!', data.dataBody);
       // when save data, then change to share
-      //setProcess(PROCESS_ENUM.share);
+      if(data.success) {
+        setProcess(PROCESS_ENUM.share);
+      }
     }
   };
 

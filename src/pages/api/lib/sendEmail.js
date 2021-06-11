@@ -2,26 +2,34 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 const Email = require('email-templates');
 
-const pathToTemplates = path.join(__dirname, '../email/templates');
+// Here change __dirname by process.cwd(). __dirname return path / ()
+const pathToTemplates = path.join(process.cwd(), 'src/pages/api/email/templates');
+const pathToTemplates2 = path.join(__dirname, '../email/templates');
 
 const sendEmail = async (options) => {
   const { firstname, lastname, email, urlVideo } = options;
-
+  
+  console.log(__dirname);
+  console.log(process.cwd());
+  console.log('path', __dirname);
+  console.log('pathToTemplates', pathToTemplates);
+  console.log('pathToTemplates2', pathToTemplates2);
+  
   let transporter = nodemailer.createTransport({
     // host: "email-smtp.us-east-1.amazonaws.com",
     // port: 465,
     // auth: {
-    //   user: "AKIASED4EMDDXHRVVACV",
-    //   pass: "BO0EZTk2fdCZTA54suzroNKGjFpMAUozwmUtgWjzb3sv"
+    //   user: process.env.AWS_SES_USERNAME,
+    //   pass: process.env.AWS_SES_PASSWORD,
     host: "smtp.mailtrap.io",
     port: 2525,
     auth: {
-      user: "223d99de78ce34",
-      pass: "d8b1baa9c9570d"
+      user: process.env.MAILTRAP_USER,
+      pass: process.env.MAILTRAP_PASS,
     }
   });
   
-  const email = new Email({
+  const newEmail = new Email({
     transport: transporter,
     send: true,
     preview: false,
@@ -30,11 +38,11 @@ const sendEmail = async (options) => {
     },
   });
   
-  await email.send({
+  await newEmail.send({
     template: 'register',
     message: {
       from: 'jpulido@mdsdigital.com',
-      to: 'juancpulidos@gmail.com',
+      to: email,
     },
     locals: {
       firstname,
