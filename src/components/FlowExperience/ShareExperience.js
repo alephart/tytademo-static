@@ -34,7 +34,7 @@ const ShareExperience = () => {
         </span>
       </div>
 
-      <Share />
+      <Share url={swap.urlShare} />
 
       <a
         className='buttonThanks'

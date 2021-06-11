@@ -8,7 +8,7 @@ export default async (req, res) => {
   // "https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4"
 
   // get data
-  const { firstname, lastname, email, swap } = req.body;
+  const { firstname, lastname, email, urlVideo, urlShare, userId } = req.body;
 
   // send data to API toyota Admin
 
@@ -16,19 +16,19 @@ export default async (req, res) => {
   // send data To API MoZeus
 
   // send email
-  const url = process.env.NEXT_PUBLIC__URL_SITE;
-  const urlVideo = `${url}/join-experience/ckow41n6g0000bdnxgrzb6wsv`;
+  //const url = process.env.NEXT_PUBLIC__URL_SITE;
+  //const urlShare = `${url}/join-experience/ckow41n6g0000bdnxgrzb6wsv`;
 
-  // host: process.env.AILTRAP_HOST,
-  // port: process.env.AILTRAP_PORT,
-  // user: process.env.AILTRAP_USER,
-  // pass: process.env.AILTRAP_PASS,
-
+  
   const config = {
-    host: process.env.AWS_SES_HOST,
-    port: process.env.AWS_SES_PORT,
-    user: process.env.AWS_SES_USERNAME,
-    pass: process.env.AWS_SES_PASSWORD,
+    host: process.env.MAILTRAP_HOST,
+    port: process.env.MAILTRAP_PORT,
+    user: process.env.MAILTRAP_USER,
+    pass: process.env.MAILTRAP_PASS,
+    // host: process.env.AWS_SES_HOST,
+    // port: process.env.AWS_SES_PORT,
+    // user: process.env.AWS_SES_USERNAME,
+    // pass: process.env.AWS_SES_PASSWORD,
     from: 'lcardona@mdsdigital.com',
   };
 
@@ -36,8 +36,10 @@ export default async (req, res) => {
     firstname,
     lastname,
     email,
-    urlVideo,
+    urlShare,
   };
+
+  console.log(config, options)
 
   await sendEmail(config, options);
 

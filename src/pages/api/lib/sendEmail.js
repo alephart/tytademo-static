@@ -8,7 +8,7 @@ const pathToTemplates2 = path.join(__dirname, '../email/templates');
 
 const sendEmail = async (config, options) => {
   const { host, port, user, pass, from } = config;
-  const { firstname, lastname, email, urlVideo } = options;
+  const { firstname, lastname, email, urlShare } = options;
   
   // console.log(__dirname);
   // console.log(process.cwd());
@@ -44,7 +44,7 @@ const sendEmail = async (config, options) => {
       firstname,
       lastname,
       email,
-      urlVideo,
+      urlShare,
 
     }
   }).then(() => console.log('email has been send!'));

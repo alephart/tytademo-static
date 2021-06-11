@@ -12,7 +12,7 @@ const JoinExperince = ({data}) => {
     const { t } = useTranslation('common');
 
     return (
-        <Layout>
+        <Layout className="espetial">
             <div className="checkVideoFinal">
                 <img className="logoToyota join" src="/images/logo-toyota.png" alt=""/>
 
