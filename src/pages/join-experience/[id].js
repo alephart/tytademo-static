@@ -12,28 +12,53 @@ const JoinExperince = ({data}) => {
     const { t } = useTranslation('common');
 
     return (
-        <Layout>
-            <img className="logoToyota join" src="/images/logo-toyota.png" alt=""/>
+        <>
+            <div className="checkVideoFinal">
+                <img className="logoToyota join" src="/images/logo-toyota.png" alt=""/>
 
-            <ReactPlayer
-                className="react-player"
-                url={urlVideo}
-                controls={true}
-                playing={true}
-                width='100%'
-                height='100%'
-              />
+                <ReactPlayer
+                    className="react-player"
+                    url={urlVideo}
+                    controls={true}
+                    playing={true}
+                    width='100%'
+                    height='100%'
+                />
 
-            <div className="copyJoin">
-                {t("join.copyJoin")}
-                <span>
-                    {t("join.subCopyJoin")}
-                </span>
+                <div className="copyJoin">
+                    {t("join.copyJoin")}
+                    <span>
+                        {t("join.subCopyJoin")}
+                    </span>
+                </div>
+                <Link href="/">
+                    <Button className="buttonJoin" variant="contained">{t("join.buttonJoin")}</Button>
+                </Link>
             </div>
-            <Link href="/">
-                <Button className="buttonJoin" variant="contained">{t("join.buttonJoin")}</Button>
-            </Link>
-        </Layout>
+            <div  className="indexDesktop">
+                <div className="boxItemsDesktop">
+                    <div className="videoDesktop">
+                        <div dangerouslySetInnerHTML={{ __html: `
+                            <video playsinline="" autoplay=""  muted=""  id="">
+                                <source
+                                    src="/videos/output1.mp4"
+                                    type="video/mp4"
+                                />
+                            </video>` }}>
+                        </div>
+                    </div>
+                    <div className="copydesktop">
+                        <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
+                        <h2>
+                        {t("indexDesktop.copyDesktop")}
+                        </h2>
+                        <p>
+                        {t("indexDesktop.copyDesktopText")}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
 
