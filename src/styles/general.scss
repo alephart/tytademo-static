@@ -273,6 +273,10 @@ body {
 		background-image: url("/images/bg-app.jpg");
 		background-position: center;
 		background-size: cover;
+		&.especial
+		{
+			max-width: 100%;
+		}
 		
 		.textTerms
 		{
@@ -1117,13 +1121,14 @@ body {
 		top: 0;
 		left: 50%;
 		transform: translateX(-50%);
-		height: 75vh;
+		height: 70vh;
 		background-image: url("/images/loading.svg");
 		background-position: 50% 30%;
 		background-repeat: no-repeat;
 		video
 		{
-			min-height: 75vh;
+			min-height: 70vh;
+			position: relative;
 		}
 	}
 
@@ -1210,7 +1215,8 @@ body {
 }
 .zone-cameras
 {
-	margin-top: 15vh;
+	bottom: -90px;
+	position: absolute;
 	button
 	{
 		background: transparent;
