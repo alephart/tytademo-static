@@ -21,14 +21,14 @@ export default async (req, res) => {
 
   
   const config = {
-    host: process.env.MAILTRAP_HOST,
-    port: process.env.MAILTRAP_PORT,
-    user: process.env.MAILTRAP_USER,
-    pass: process.env.MAILTRAP_PASS,
-    // host: process.env.AWS_SES_HOST,
-    // port: process.env.AWS_SES_PORT,
-    // user: process.env.AWS_SES_USERNAME,
-    // pass: process.env.AWS_SES_PASSWORD,
+    // host: process.env.MAILTRAP_HOST,
+    // port: process.env.MAILTRAP_PORT,
+    // user: process.env.MAILTRAP_USER,
+    // pass: process.env.MAILTRAP_PASS,
+    host: process.env.AWS_SES_HOST,
+    port: process.env.AWS_SES_PORT,
+    user: process.env.AWS_SES_USERNAME,
+    pass: process.env.AWS_SES_PASSWORD,
     from: 'lcardona@mdsdigital.com',
   };
 
