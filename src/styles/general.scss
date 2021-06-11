@@ -1334,3 +1334,14 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill
 {
 	transition-delay: 10000s;
 }
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
