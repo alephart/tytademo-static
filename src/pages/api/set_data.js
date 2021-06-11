@@ -8,7 +8,7 @@ export default async (req, res) => {
   // "https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4"
 
   // get data
-  const { firstname, lastname, email, urlVideo, urlShare, userId } = req.body;
+  const { firstname, lastname, email, urlVideo, urlShare, urlJoin, userId } = req.body;
 
   // send data to API toyota Admin
 
@@ -36,7 +36,7 @@ export default async (req, res) => {
     firstname,
     lastname,
     email,
-    urlShare,
+    urlJoin,
   };
 
   console.log(config, options)

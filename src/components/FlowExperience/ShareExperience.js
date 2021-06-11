@@ -12,7 +12,7 @@ const ShareExperience = () => {
 
   console.log('swap into ShareExperience', swap);
 
-  const urlVideo = 'https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4';
+  //const urlVideo = 'https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4';
 
   return (
     <div className='sharedExperience'>
@@ -20,7 +20,7 @@ const ShareExperience = () => {
 
       <ReactPlayer
         className="react-player"
-        url={urlVideo}
+        url={swap.urlVideo}
         controls={true}
         playing={true}
         width='100%'
@@ -39,7 +39,7 @@ const ShareExperience = () => {
       <a
         className='buttonThanks'
         download="this-is-my-experience-toyota.mp4"
-        href="https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4">
+        href={swap.urlVideo}>
           {t("shareExperience.buttonThanks")}
       </a>
 

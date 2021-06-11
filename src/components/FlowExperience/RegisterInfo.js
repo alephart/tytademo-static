@@ -59,7 +59,8 @@ const RegisterInfo = ({ userEmail }) => {
     setSwap({
       success: true,
       urlVideo: 'https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4',
-      urlShare: `${url}/join-experience/ckow41n6g0000bdnxgrzb6wsv`,
+      urlShare: `${url}/share-experience/ckow41n6g0000bdnxgrzb6wsv`,
+      urlJoin: `${url}/join-experience/ckow41n6g0000bdnxgrzb6wsv`,
       userId: 'ckow41n6g0000bdnxgrzb6wsv',
     });
   }, []);
@@ -164,7 +165,6 @@ const RegisterInfo = ({ userEmail }) => {
       }
     }
   };
-
   return (
     <div className='formVideo'>
       <VideoLoading progress={progress} />
