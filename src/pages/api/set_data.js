@@ -31,7 +31,7 @@ export default async (req, res) => {
     firstname,
     lastname,
     email,
-    urlJoin,
+    urlShare,
   };
 
   console.log(config, options)
