@@ -8,7 +8,7 @@ const pathToTemplates = path.join(process.cwd(), 'src/pages/api/email/templates'
 
 const sendEmail = async (config, options) => {
   const { host, port, user, pass, from } = config;
-  const { firstname, lastname, email, urlJoin } = options;
+  const { firstname, lastname, email, urlShare } = options;
   
   let transporter = nodemailer.createTransport({
     host,
@@ -22,7 +22,7 @@ const sendEmail = async (config, options) => {
   const newEmail = new Email({
     transport: transporter,
     send: true,
-    preview: false,
+    preview: true,
     views: {
       root: pathToTemplates,
     },
@@ -38,7 +38,7 @@ const sendEmail = async (config, options) => {
       firstname,
       lastname,
       email,
-      urlJoin,
+      urlShare,
 
     }
   })
