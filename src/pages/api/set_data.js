@@ -19,7 +19,6 @@ export default async (req, res) => {
   //const url = process.env.NEXT_PUBLIC__URL_SITE;
   //const urlShare = `${url}/join-experience/ckow41n6g0000bdnxgrzb6wsv`;
 
-  
   const config = {
     host: process.env.AWS_SES_HOST,
     port: process.env.AWS_SES_PORT,
