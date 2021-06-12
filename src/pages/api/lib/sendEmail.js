@@ -32,7 +32,7 @@ const sendEmail = async (config, options) => {
     template: 'register',
     message: {
       from,
-      to: email,
+      to: `${firstname} ${lastname} <${email}>`,
     },
     locals: {
       firstname,

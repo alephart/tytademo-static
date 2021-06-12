@@ -25,7 +25,7 @@ export default async (req, res) => {
     port: process.env.AWS_SES_PORT,
     user: process.env.AWS_SES_USERNAME,
     pass: process.env.AWS_SES_PASSWORD,
-    from: 'lcardona@mdsdigital.com',
+    from: 'Toyota <lcardona@mdsdigital.com>',
   };
 
   const options = {
