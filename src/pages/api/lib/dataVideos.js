@@ -10,27 +10,27 @@ export const videosListMan = (faceId) => {
   return [
     { // 02
       intensity: 1,
-      video_id: '7c8a8787-87d6-4baa-bf67-bd72e00374a3',
+      video_id: '722755d5-5a2b-47e4-b6b7-0a439a577d2e',
       facemapping: {
-        'a4b1cc83-0c86-43c9-97f0-179751a26921': [
+        '94fdcf8a-bd23-48e6-a76c-8e448464e749': [
           `${faceId}`
         ]
       },
     },
     { // 06
       intensity: 1,
-      video_id: '2160d8fa-658c-4631-b888-37d954e8ac40',
+      video_id: '62142062-6022-42f3-a360-0c13faa5222f',
       facemapping: {
-        '4bfeed2f-7396-403a-ab1f-5ca5f62ad23a': [
+        '9c4927ff-f563-4a7d-bfe6-0f8b98146f58': [
           `${faceId}`
         ]
       },
     },
     { // 08
       intensity: 1,
-      video_id: 'fdddee18-c0e3-437d-ab5c-e5239499bf78',
+      video_id: '51ab48bc-e3e0-4aeb-911a-d7c16d2e71cb',
       facemapping: {
-        '8884158c-90c1-4e68-9484-8c75fd309e3c': [
+        '1f97df12-38d6-469e-97d6-0df8dcf22af2': [
           `${faceId}`
         ]
       },
@@ -44,36 +44,36 @@ export const videosListWoman = (faceId) => {
   return [
     { // 04
       intensity: 1,
-      video_id: '5efa4d77-f19f-4722-9be5-8f65e599a46e',
+      video_id: 'd996972c-b32d-4a44-b174-45856d924fdc',
       facemapping: {
-        'd727820b-acab-45f4-ace7-69c1f31ea809': [
+        '926bb652-a54a-42a1-88d3-03b769a78acd': [
           `${faceId}`
         ]
       },
     },
     { // 08
       intensity: 1,
-      video_id: 'fdddee18-c0e3-437d-ab5c-e5239499bf78',
+      video_id: '51ab48bc-e3e0-4aeb-911a-d7c16d2e71cb',
       facemapping: {
-        '54500bbd-6813-40c7-819b-79b86478511d': [
+        '1f97df12-38d6-469e-97d6-0df8dcf22af2': [
           `${faceId}`
         ]
       },
     },
     { // 10
       intensity: 1,
-      video_id: '9e4fd31f-e078-48a5-96ae-6627a01db274',
+      video_id: 'cc53cecf-81c1-4ee6-89f6-35390a0e4a31',
       facemapping: {
-        '8ea9fa0e-629e-4721-b0f7-86b93ca90397': [
+        'cba1cd22-fbcb-4d8e-8c9c-08c9f9de5d93': [
           `${faceId}`
         ]
       },
     },
     { // 12
       intensity: 1,
-      video_id: '943b2b8d-af42-4b2c-9784-b3177b180642',
+      video_id: '4162d5e6-88d0-4ab2-9ec0-f300a024f961',
       facemapping: {
-        '2e7ee0ab-e6fe-4afc-853b-dc48466a4ee6': [
+        '8707bf55-cef5-4d0f-aac8-448ce4f3c32d': [
           `${faceId}`
         ]
       },
