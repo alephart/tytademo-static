@@ -39,7 +39,7 @@
     "alertDescription.item1": "Tu cara debe estar centrada",
     "alertDescription.item2": "Intenta no hacer gestos o sonreír",
     "alertDescription.item3": "Solo tú puedes estar en la foto",
-    "alertDescription.item4": "Asegúrate que tu car esté visible",
+    "alertDescription.item4": "Asegúrate que tu cara esté visible",
     "alertDescription.userExist": "Este correo electrónico ya está registrado.",
     "alertDescription.button": "ACEPTAR",
     "back.button": "VOLVER",
@@ -48,5 +48,11 @@
     "meta.tags.title": "Featuring You Lunay X Toyota",
     "meta.tags.description": "Tómate una selfie y se parte del video de LUNAY y Corolla Apex",
     "indexDesktop.copyDesktop": "ve el video de tu amigo y crea el tuyo.",
-    "indexDesktop.copyDesktopText": "Tómate una selfie para ser parte del video de Lunay."
+    "indexDesktop.copyDesktopText": "Tómate una selfie para ser parte del video de Lunay.",
+    "noMobile.useYourPhone": "INGRESA AL SITIO DESDE TU CELULAR, TÓMATE UNA SELFIE Y SÉ PARTE DEL VIDEO DE LUNAY.",
+    "mailing.title.youMadeIt": "title-es.png",
+    "mailing.btn.watchVideo": "ver-video.png",
+    "mailing.watchYouFullVideo": "En el siguiente link puedes ver tu video completo con Lunay.",
+    "mailing.terms": "Donec sed eros sed libero malesuada mollis. Nam mattis molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et ullamcorper lorem. Aliquam ut consectetur urna. Nullam sit amet ullamcorper elit. Nam non risus quis odio varius tincidunt. Maecenas tincidunt, augue in mollis sodales, lacus quam aliquet nunc, et consequat velit est vitae nisl. Fusce aliquet tortor non ex dictum mollis. Vestibulum pulvinar sem a tincidunt euismod."
+
 }

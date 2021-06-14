@@ -37,24 +37,25 @@ const Experience = ({ userEmail }) => {
   const [message, setMessage] = useState('');
 
   const router = useRouter();
+  const locale = router.locale;
   
   const contextValues = {
-    process,
-    setProcess,
-    character, 
-    setCharacter, 
-    facingMode, 
-    setFacingMode,
-    imgSrc, 
-    setImgSrc,
-    data,
-    setData,
-    swap,
-    setSwap,
+    process, setProcess,
+    character, setCharacter, 
+    facingMode, setFacingMode,
+    imgSrc, setImgSrc,
+    data, setData,
+    swap, setSwap,
+    progress, setProgress,
     setMessage,
-    progress,
-    setProgress,
+    locale,
   };
+
+  // useEffect(() => {
+  //   if(!isMobile) {
+  //     router.push('/toyota-experience');
+  //   }
+  // }, []);
 
   useEffect(() => {
     switch (process) {
@@ -78,14 +79,7 @@ const Experience = ({ userEmail }) => {
         setProgress(10);
         break;
     }
-    //if(process === PROCESS_ENUM.share) {
-      //router.push('/to-share-experience');
-    //}
   }, [process]);
-
-  // if(!isMobile) {
-  //   router.push('/toyota-experience');
-  // }
 
   if(loading) {
     return (<Loading />);

@@ -4,6 +4,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { VideoBg } from '@/components/Anims';
 
 const ToyotaExperience = () => {
+  const { t } = useTranslation('common');
   return (
     <Layout>
         <div className='videoDesktop'>
@@ -11,11 +12,7 @@ const ToyotaExperience = () => {
             </div>
             <div className='copydesktop'>
             <img className='logoToyota' src='/images/logo-toyota.png' alt='' />
-            <h2>y tú, ¿ya participaste?</h2>
-            <p>
-                Ingresa desde tu celular, tómate la foto y se parte del video de
-                Lunay
-            </p>
+            <h2>{t("notAvailable.copyNotAvailable")}</h2>
         </div>
     </Layout>
   );

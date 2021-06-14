@@ -26,7 +26,7 @@ const setCookie = (email) => {
 
 const RegisterInfo = ({ userEmail }) => {
   const { t } = useTranslation('common');
-  const { setProcess, data, character, setMessage, swap, setSwap } = useContext(ExperienceContext);
+  const { setProcess, data, character, setMessage, swap, setSwap, locale } = useContext(ExperienceContext);
   const [progress, setProgress] = useState(0);
   const [values, setValues] = useState({
     firstname: '',
@@ -137,6 +137,7 @@ const RegisterInfo = ({ userEmail }) => {
       ...data,
       character,
       ...swap,
+      locale,
     };
     
     // console.log('swap in register', swap);
@@ -153,16 +154,17 @@ const RegisterInfo = ({ userEmail }) => {
     const data = await response.json();
     console.log('response data:::', data);
     
-    if(data.errors) {
-      console.log('data errors::');
+    if(!data.success) {
+      console.log('data errors::', data.errors);
       setSubmitting(false);
     } else {
+      setSubmitting(false);
       //setCookie(dataForm.email);
       console.log('success!!!', data.success);
       console.log('data Body!!!', data.dataBody);
       // when save data, then change to share
       if(data.success) {
-        setProcess(PROCESS_ENUM.share);
+        //setProcess(PROCESS_ENUM.share);
       }
     }
   };

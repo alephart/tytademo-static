@@ -24,14 +24,16 @@ const Meta = (props) => {
       <meta property="og:title" content={pageTitle} key="ogtitle" />
       <meta property="og:description" content={description} key="ogdesc" />
       <meta property="og:type" content="video.movie" />
+      <meta property="og:image" content={previewImage} key="ogthumb" />
+      <meta property="fb:app_id" content="1421975721482769" />
 
+    {/* Open Graph Video - use on video pages */}
       <meta property="og:video" content={videoPath} />
       <meta property="og:video:url" content={videoPath} />
       <meta property="og:video:secure_url" content={videoPath} />
       <meta property="og:video:type" content="video/mp4" />
       <meta property="og:video:width" content="1280" />
       <meta property="og:video:height" content="720" />
-      <meta property="og:image" content={previewImage} key="ogthumb" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary" key="player" />

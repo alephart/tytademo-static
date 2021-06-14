@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import Layout from '@/components/layouts/General';
+import { useRouter } from 'next/router';
 import { ExperienceContext } from '@/components/Context';
 import { RegisterInfo } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/helpers/globals';
@@ -13,6 +14,9 @@ const RegisterDemo = ({ userEmail }) => {
   const [swap, setSwap] = useState(null);
   const [message, setMessage] = useState('');
 
+  const router = useRouter();
+  const locale = router.locale;
+
   useEffect(() => {
     
   }, []);
@@ -25,6 +29,7 @@ const RegisterDemo = ({ userEmail }) => {
     setMessage,
     swap,
     setSwap,
+    locale
   };
 
   return (

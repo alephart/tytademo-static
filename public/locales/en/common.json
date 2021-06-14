@@ -49,5 +49,10 @@
     "meta.tags.title": "Featuring You Lunay X Toyota",
     "meta.tags.description": "Take a selfie to be a part of LUNAY’s video and Corolla Apex",
     "indexDesktop.copyDesktop": "CHECK OUT YOUR FRIEND´S VIDEO AND MAKE YOUR OWN.",
-    "indexDesktop.copyDesktopText": "Take a selfie to be a part of LUNAY’s video."
+    "indexDesktop.copyDesktopText": "Take a selfie to be a part of LUNAY’s video.",
+    "noMobile.useYourPhone": "USE YOUR PHONE TO ACCESS THIS SITE, TAKE A SELFIE AND BE A PART OF LUNAY´S VIDEO.",
+    "mailing.title.youMadeIt": "title.png",
+    "mailing.btn.watchVideo": "watch-video.png",
+    "mailing.watchYouFullVideo": "On the next link you can watch your full video with Lunay.",
+    "mailing.terms": "Donec sed eros sed libero malesuada mollis. Nam mattis molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et ullamcorper lorem. Aliquam ut consectetur urna. Nullam sit amet ullamcorper elit. Nam non risus quis odio varius tincidunt. Maecenas tincidunt, augue in mollis sodales, lacus quam aliquet nunc, et consequat velit est vitae nisl. Fusce aliquet tortor non ex dictum mollis. Vestibulum pulvinar sem a tincidunt euismod."
 }
