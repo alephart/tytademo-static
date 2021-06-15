@@ -71,7 +71,7 @@ export const getServerSideProps = async (context) => {
     //const res = await fetch(`https://.../data`)
     //const data = await res.json()
 
-    const urlVideo = 'https://mds-tyta.s3.amazonaws.com/videos/video-ckpyl9zk80004sg9k0cfp80nd_final.mp4';
+    const urlVideo = `https://mds-tyta.s3.amazonaws.com/videos/${params.id}_final.mp4`;
 
     const data = { success: true, urlVideo, id: params.id}
 

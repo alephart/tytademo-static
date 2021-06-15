@@ -36,7 +36,8 @@ const ToShareExp = ({data}) => {
 export const getServerSideProps = async (context) => {
   const { params, locale } = context;
   console.log({params});
-  const url = process.env.NEXT_PUBLIC_URL_SITE;
+  //const url = process.env.NEXT_PUBLIC_URL_SITE;
+  const url = '';
   // Fetch data from external API
   //const res = await fetch(`https://.../data`)
   //const data = await res.json()
@@ -44,10 +45,10 @@ export const getServerSideProps = async (context) => {
 
   const data = {
     success: true,
-    urlVideo: 'https://mds-tyta.s3.amazonaws.com/videos/video-ckpyl9zk80004sg9k0cfp80nd_final.mp4',
-    urlShare: `${url}/share-experience/ckpyl9zk80004sg9k0cfp80nd`,
-    urlJoin: `${url}/join-experience/ckpyl9zk80004sg9k0cfp80nd`,
-    userId: 'ckpyl9zk80004sg9k0cfp80nd',
+    urlVideo: `https://mds-tyta.s3.amazonaws.com/videos/${params.id}_final.mp4`,
+    urlShare: `${url}/share-experience/${params.id}`,
+    urlJoin: `${url}/join-experience/${params.id}`,
+    userId: params.id,
   };
 
   // Pass data to the page via props
