@@ -37,7 +37,7 @@ export const getServerSideProps = async (context) => {
   const { params, locale } = context;
   console.log({params});
   //const url = process.env.NEXT_PUBLIC_URL_SITE;
-  const url = '';
+  const url = 'https://tytademo.devmds.com';
   // Fetch data from external API
   //const res = await fetch(`https://.../data`)
   //const data = await res.json()
