@@ -45,7 +45,7 @@ export const getServerSideProps = async (context) => {
 
   const data = {
     success: true,
-    urlVideo: `https://mds-tyta.s3.amazonaws.com/videos/${params.id}_final.mp4`,
+    urlVideo: `https://mds-tyta.s3.amazonaws.com/videos/video-${params.id}_final.mp4`,
     urlShare: `${url}/share-experience/${params.id}`,
     urlJoin: `${url}/join-experience/${params.id}`,
     userId: params.id,
