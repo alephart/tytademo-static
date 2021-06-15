@@ -139,7 +139,7 @@ const RegisterInfo = ({ userEmail }) => {
       }
     };
 
-    if(swap) {
+    if(swap && isSubmitting) {
       sendData();
     }
   }, [dataRegister]);
