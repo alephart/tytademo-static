@@ -5,7 +5,7 @@
 // Each object is how it should be sent to DeepFake to do the swap.
 
 // Step 3. Swap videos [sidekick] and get ids
-export const videosListMan = (faceId) => {
+export const videosListMale = (faceId) => {
   if (!faceId) return null;
   return [
     { // 02
@@ -30,7 +30,7 @@ export const videosListMan = (faceId) => {
       intensity: 1,
       video_id: '51ab48bc-e3e0-4aeb-911a-d7c16d2e71cb',
       facemapping: {
-        '1f97df12-38d6-469e-97d6-0df8dcf22af2': [
+        '1934ccb2-e84c-4a53-b654-df93f29dd5d5': [
           `${faceId}`
         ]
       },
@@ -39,7 +39,7 @@ export const videosListMan = (faceId) => {
 };
 
 // Step 3. Swap videos [woman] and get ids
-export const videosListWoman = (faceId) => {
+export const videosListFemale = (faceId) => {
   if (!faceId) return null;
   return [
     { // 04
@@ -84,15 +84,15 @@ export const videosListWoman = (faceId) => {
 // array with all video clips to use (store into /temp/footage)
 export const videoListAll = [
   { name: 'footage/001.mp4', character: '' },
-  { name: 'footage/002-SIDEKICK.mp4', character: 'man' },
+  { name: 'footage/002-SIDEKICK.mp4', character: 'male' },
   { name: 'footage/003.mp4', character: '' },
-  { name: 'footage/004-WOMAN.mp4', character: 'woman' },
+  { name: 'footage/004-WOMAN.mp4', character: 'female' },
   { name: 'footage/005.mp4', character: '' },
-  { name: 'footage/006-SIDEKICK.mp4', character: 'man' },
+  { name: 'footage/006-SIDEKICK.mp4', character: 'male' },
   { name: 'footage/007.mp4', character: '' },
   { name: 'footage/008-WOMAN-SIDEKICK.mp4', character: 'mix' },
   { name: 'footage/009.mp4', character: '' },
-  { name: 'footage/010-WOMAN.mp4', character: 'woman' },
+  { name: 'footage/010-WOMAN.mp4', character: 'female' },
   { name: 'footage/011.mp4', character: '' },
-  { name: 'footage/012-WOMAN.mp4', character: 'woman' },
+  { name: 'footage/012-WOMAN.mp4', character: 'female' },
 ];

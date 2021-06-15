@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Button from '@material-ui/core/Button';
-import { PROCESS_ENUM } from '@/helpers/globals';
+import { PROCESS_ENUM, MESSAGE_DIALOG } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
 import { useTranslation } from 'next-i18next';
 import { Help } from '@/components/DialogsTyta';
@@ -8,55 +8,38 @@ import { Loading } from '@/components/Anims';
 
 const PictureConfirm = () => {
   const { t } = useTranslation('common');
-  const { imgSrc, character, setData, process, setProcess, setMessage } = useContext(ExperienceContext);
+  const { imgSrc, character, setData, process, setProcess } = useContext(ExperienceContext);
   const [isLoading, setIsLoading] = useState(false);
   const [deepFake, setDeepFake] = useState(true);
   const [help, setHelp] = useState(false);
 
-  useEffect(() =>{
-    setMessage('');
-  }, []);
-
   const sendPicture = async (payload) => {
-    await fetch('/api/photo_valid', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        setIsLoading(false);
-
-        // check status 500
-        //console.log(json);
-        
-        if(json.success) {
-          setData(json.data);
-          setIsLoading(false);
-          setProcess(PROCESS_ENUM.register);
-      
-        } else { // not success
-          console.log(json.message);
-          setMessage(json.message);
-          
-          setDeepFake(json.success);
-
-          //continue by now
-          setProcess(PROCESS_ENUM.register);
-
-          // if(!json.deepFake){
-          //   setDeepFake(false);
-
-      
-          // } else if(!json.data) {
-          //   // not faces or many faces then try again
-          //   // Show message and button to go again.
-          //   setDeepFake(false);
-          // }
-        }
-      })
-      .catch((error) => {
-        console.error(error);
+    try {
+      const response = await fetch('/api/photo_valid', {
+        method: 'POST',
+        body: JSON.stringify(payload),
       });
+  
+      const json = await response.json();
+  
+      if(json.success) {
+        setIsLoading(false);
+        setData(json.data);
+        setProcess(PROCESS_ENUM.register);
+        
+      } else { // not success
+        setIsLoading(false);
+        setHelp(true);
+        
+        setDeepFake(json.success);
+  
+        // if(!json.deepFake){
+        //   setDeepFake(false);
+        // }
+      }      
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handlePhotoValid = () => {
@@ -110,7 +93,7 @@ const PictureConfirm = () => {
           <Loading />
         )}
       </div>
-      <Help isOpen={help} setIsOpen={setHelp} />
+      <Help isOpen={help} setIsOpen={setHelp} message={MESSAGE_DIALOG.rememberPhoto} />
     </>
   );
 };

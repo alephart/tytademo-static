@@ -21,7 +21,7 @@ export default async (req, res) => {
   // send data To API MoZeus
 
   // send email
-  //const url = process.env.NEXT_PUBLIC__URL_SITE;
+  //const url = process.env.NEXT_PUBLIC_URL_SITE;
   //const urlShare = `${url}/join-experience/ckow41n6g0000bdnxgrzb6wsv`;
 
   const config = {
@@ -46,7 +46,7 @@ export default async (req, res) => {
 
   console.log(config, options)
 
-  const success = await sendEmail(config, options) !== undefined ? true : false;
+  await sendEmail(config, options) !== undefined ? true : false;
   // return
-  await res.status(200).send({ success, dataBody: req.body });
+  await res.status(200).send({ success: true, dataBody: req.body });
 }

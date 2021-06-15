@@ -65,11 +65,13 @@ const JoinExperince = ({data}) => {
 
 export const getServerSideProps = async (context) => {
     const { params, locale } = context;
-    // Fetch data from external API
+    const url = process.env.NEXT_PUBLIC_URL_SITE;
+
+    //Fetch data from external API
     //const res = await fetch(`https://.../data`)
     //const data = await res.json()
 
-    const urlVideo = 'https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4';
+    const urlVideo = 'https://mds-tyta.s3.amazonaws.com/videos/video-ckpyl9zk80004sg9k0cfp80nd_final.mp4';
 
     const data = { success: true, urlVideo, id: params.id}
 

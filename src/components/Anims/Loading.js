@@ -10,6 +10,7 @@ const Loading = () => {
         width: 50px;
         height: 50px;
         margin: 30px auto;
+        z-index: 1999;
       }
 
       .loading-cube img { 
