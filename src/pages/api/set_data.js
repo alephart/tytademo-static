@@ -46,7 +46,7 @@ export default async (req, res) => {
 
   console.log(config, options)
 
-  await sendEmail(config, options) !== undefined ? true : false;
+  await sendEmail(config, options);
   // return
   await res.status(200).send({ success: true, dataBody: req.body });
 }

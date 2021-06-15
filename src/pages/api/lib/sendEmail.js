@@ -47,8 +47,8 @@ const sendEmail = async (config, options) => {
       urlShare,
     }
   })
-  .then(console.log)
-  .catch(console.error);
+  .then(console.log('email sent!'))
+  .catch(console.error('Error when send email!!!'));
   
 }
 
