@@ -38,7 +38,6 @@ const RegisterInfo = ({ userEmail }) => {
   const [validEmail, setValidEmail] = useState(false);
   const [validZipCode, setValidZipCode] = useState(false);
   const [isSubmitting, setSubmitting] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [dataRegister, setDataRegister] = useState({});
   const [contact, setContact] = useState({
     productNews: false,
@@ -53,7 +52,8 @@ const RegisterInfo = ({ userEmail }) => {
     reValidateMode: 'onChange',
   });
 
-  /** effects actions **/
+  /******** EFFECT ACTIONS ********/
+
   // effect to init DOM
   useEffect(() => {
     const initSwap = async (payload) => {
@@ -83,21 +83,6 @@ const RegisterInfo = ({ userEmail }) => {
     }
   }, []);
 
-  // effect to progress
-  useEffect(() => {
-    setIsDisabled(progress >= 100 ? false : true);
-  }, [progress]);
-  
-
-  useEffect(() => {
-    const items = Object.values(values);
-    const count = items.reduce((count, item) => {
-      return item ? count + 1 : count;
-    }, 0);
-  
-    setProgress( (count * 100) / items.length );
-  }, [values]);
-
   // effect when swap change state
   useEffect(() => {
     console.log('swap data', swap);
@@ -110,11 +95,11 @@ const RegisterInfo = ({ userEmail }) => {
     }
   }, [swap]);
 
-
   // effect when dataRegister change state
   useEffect(() => {
     const sendData = async () => {
       console.log('data final: ', dataRegister);
+
       const response = await fetch('api/set_data', {
         method: 'POST',
         headers: {
@@ -122,20 +107,29 @@ const RegisterInfo = ({ userEmail }) => {
         },
         body: JSON.stringify(dataRegister),
       });
-      
+
       const json = await response.json();
-      console.log('response json:::', json);
+
+      // console.log('status', response.status);
+      // console.log('response json:::', json);
+
+      if(response.status !== 200) {
+        // server error 
+      }
       
       if(json.success) {
-        setSubmitting(false);
         //setCookie(dataForm.email);
-        console.log('json Body!!!', json.dataBody);
+        //console.log('json Body!!!', json.dataBody);
+
         // when save json, then change to share
         setProcess(PROCESS_ENUM.share);
-
+        
       } else {
         setSubmitting(false);
-        console.log('json errors::', json.errors);
+        
+        if(json.userExist) {
+          setUserExists(json.userExist);
+        }
       }
     };
 
@@ -144,7 +138,22 @@ const RegisterInfo = ({ userEmail }) => {
     }
   }, [dataRegister]);
 
-  /* handle actions */
+  // effect to progress
+  useEffect(() => {
+    setIsDisabled(progress >= 100 ? false : true);
+  }, [progress]);
+  
+  // effect when values change
+  useEffect(() => {
+    const items = Object.values(values);
+    const count = items.reduce((count, item) => {
+      return item ? count + 1 : count;
+    }, 0);
+  
+    setProgress( (count * 100) / items.length );
+  }, [values]);
+
+  /******** HANDLES ACTIONS ********/
   const handleChangeContact = (event) => {
     setContact({ ...contact, [event.target.name]: event.target.checked });
   };
@@ -159,7 +168,6 @@ const RegisterInfo = ({ userEmail }) => {
 
     // check user exist
     if(value === userEmail) {
-      console.log('This user exist!!!!');
       setUserExists(true);
     }
   };
@@ -186,8 +194,8 @@ const RegisterInfo = ({ userEmail }) => {
     setAgreeTerms(event.target.checked);
   };
 
-  /** on submit process */
-  const onSubmit = async (dataForm) => {
+    /******** ON SUBMIT PROCESS ********/
+  const onSubmit = (dataForm) => {
     setSubmitting(true);
         
     // check user exist
