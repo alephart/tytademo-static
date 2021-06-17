@@ -7,15 +7,16 @@ const Loading = () => {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         margin: 30px auto;
-        z-index: 1999;
+        z-index: 1000000000000000;
+        position: relative;
       }
 
       .loading-cube img { 
-        max-width: 50px;
-        max-height: 50px;
+        max-width: 60px;
+        max-height: 60px;
         }
       `}</style>
     </div>
