@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { isMobile } from 'react-device-detect';
+import { motion } from "framer-motion";
 
 const Home = () => {
   const { t } = useTranslation('common');
@@ -15,27 +16,37 @@ const Home = () => {
   console.log('isMobile', isMobile);
 
   return (
-    <Layout>
-      <div dangerouslySetInnerHTML={VideoBg('video', 'video.mp4', false)}></div>
-      <div dangerouslySetInnerHTML={VideoBg('video2', 'videoloop.mp4', true)}></div>
-      <div className="degrade"></div>
-      <div className="copyStart">
-          {t("start.copyStart")}
-          <span>
-            {t('start.subCopyStart')}
-          </span>
-      </div>
+      <Layout>
+        <div dangerouslySetInnerHTML={VideoBg('video', 'video.mp4', false)}></div>
+        <div dangerouslySetInnerHTML={VideoBg('video2', 'videoloop.mp4', true)}></div>
+        <div className="degrade"></div>
+          <motion.div
+            initial={{ opacity: 0, x: -200, y: 0 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            exit={{ opacity: 0, x: 200, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="containerSpecial">
+              <div>
+                <div className="copyStart">
+                    {t("start.copyStart")}
+                    <span>
+                      {t('start.subCopyStart')}
+                    </span>
+                </div>
 
-      <Link href="/experience">
-          <Button className="buttonStart" variant="contained">{t('start.buttonStart')}</Button>
-      </Link>
-
-      <div className="copyFooter">
-        {t('start.copyFooter1')} {t('start.copyFooter2')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
-      </div>
-      <Rules dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
-
-    </Layout>
+                <Link href="/experience">
+                    <Button className="buttonStart" variant="contained">{t('start.buttonStart')}</Button>
+                </Link>
+              
+                <div className="copyFooter">
+                  {t('start.copyFooter1')} {t('start.copyFooter2')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
+                </div>
+                <Rules dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
+              </div>
+            </div>
+          </motion.div>
+      </Layout>
   )
 }
 
