@@ -60,12 +60,12 @@ const PictureConfirm = () => {
         <div className='boxPhoto'>
           <img src={imgSrc} />
         </div>
-        <div className='paddingCanvas' />
+        <div className='paddingCanvas' /> 
         <div className='bgdegrade' />
         <div
           className='boxIframe'
           dangerouslySetInnerHTML={{
-            __html: "<iframe src='/face/new-vectors.html' />",
+            __html: "<div class='bgPhotoDegrade'></div><iframe src='/face/new-vectors.html' />",
           }}
         />
         <div className='copyLike'>{t("pictureConfirm.copyLike")}</div>
