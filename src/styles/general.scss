@@ -43,6 +43,18 @@ html, body {
     right: 0;
     z-index: 0;
 }
+.containerSpecial
+{
+	max-width: 430px;
+	width: 100%;
+	top: 0;
+	opacity: 0;
+	display: flex;
+	margin: 0 auto;
+	animation: fadeIn 0.5s ease-in-out 1 forwards;
+	animation-delay: 3s;
+	height: 100vh;  max-height: -webkit-fill-available;
+}
 @keyframes fadeOut {
     from { opacity: 1; }
     to { opacity: 0; }
@@ -91,15 +103,6 @@ body {
 	letter-spacing: 0px;
 	min-height: 100vh;
 	min-height: -webkit-fill-available;
-	.containerSpecial
-	{
-		max-width: 430px;
-		width: 100%;
-		top: 0;
-		display: flex;
-		margin: 0 auto;
-		height: 100vh;  max-height: -webkit-fill-available;
-	}
 	.MuiPaper-root
 	{
 		background-color: #000;

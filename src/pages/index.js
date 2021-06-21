@@ -20,12 +20,6 @@ const Home = () => {
         <div dangerouslySetInnerHTML={VideoBg('video', 'video.mp4', false)}></div>
         <div dangerouslySetInnerHTML={VideoBg('video2', 'videoloop.mp4', true)}></div>
         <div className="degrade"></div>
-          <motion.div
-            initial={{ opacity: 0, x: -200, y: 0 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            exit={{ opacity: 0, x: 200, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
             <div className="containerSpecial">
               <div>
                 <div className="copyStart">
@@ -45,7 +39,6 @@ const Home = () => {
                 <Rules dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
               </div>
             </div>
-          </motion.div>
       </Layout>
   )
 }
