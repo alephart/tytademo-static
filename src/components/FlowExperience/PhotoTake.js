@@ -41,6 +41,7 @@ const PhotoTake = () => {
   return (
     <>
       <div className='zoneTakePhoto'>
+        <div className="bgFace"></div>
         <Webcam
           audio={false}
           height='100%'
