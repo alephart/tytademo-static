@@ -82,7 +82,7 @@ const Experience = ({ userEmail }) => {
   }, [process]);
 
   if(loading) {
-    return (<Loading />);
+    return (<></>);
   }
   
   if(location !== 'US' || error) {
