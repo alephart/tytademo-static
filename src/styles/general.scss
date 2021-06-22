@@ -53,7 +53,23 @@ html, body {
 	margin: 0 auto;
 	animation: fadeIn 0.5s ease-in-out 1 forwards;
 	animation-delay: 3s;
-	height: 100vh;  max-height: -webkit-fill-available;
+	height: 100vh;  
+	max-height: -webkit-fill-available;
+}
+.animationStart
+{
+	opacity: 1;
+	animation: fadeOut 0.5s ease-in-out 1 forwards;
+	animation-delay: 1s;
+}
+.containerSpecial.animationExit
+{
+	opacity: 1;
+	animation: fadeOutRight 0.5s ease-in-out 1 forwards;
+	animation-delay: 1s;
+	left: 0;
+	overflow: hidden;
+    position: relative;
 }
 @keyframes fadeOut {
     from { opacity: 1; }
@@ -91,7 +107,24 @@ html, body {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+@keyframes fadeOutRight {
+    from {opacity: 1; margin-left: 0%; }
+    to {opacity: 0; margin-left: -50%; }
+}
+@-webkit-keyframes fadeOutRight {
+    from {opacity: 1; margin-left: 0%; }
+    to {opacity: 0; margin-left: -50%; }
+}
 
+@-moz-keyframes fadeOutRight {
+    from {opacity: 1; margin-left: 0%; }
+    to {opacity: 0; margin-left: -50%; }
+}
+
+@-o-keyframes fadeOutRight {
+    from {opacity: 1; margin-left: 0%; }
+    to {opacity: 0;margin-left: -50%; }
+}
 body {
 	font-family: NotoSans-Regular; 
 	-webkit-font-smoothing: antialiased;

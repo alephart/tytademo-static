@@ -10,35 +10,39 @@ import { isMobile } from 'react-device-detect';
 import { motion } from "framer-motion";
 
 const Home = () => {
+
   const { t } = useTranslation('common');
   const [isOpenDialog, setIsOpenDialog] = useState(false);
+  const [isActive, setActive] = useState(false);
+  const toggleClass = () => {setActive(!isActive);};
+
 
   console.log('isMobile', isMobile);
 
   return (
       <Layout>
-        <div dangerouslySetInnerHTML={VideoBg('video', 'video.mp4', false)}></div>
-        <div dangerouslySetInnerHTML={VideoBg('video2', 'videoloop.mp4', true)}></div>
+        <div className={isActive ? 'animationStart': null} dangerouslySetInnerHTML={VideoBg('video', 'video.mp4', false)}></div>
+        <div className={isActive ? 'animationStart': null} dangerouslySetInnerHTML={VideoBg('video2', 'videoloop.mp4', true)}></div>
         <div className="degrade"></div>
-            <div className="containerSpecial">
-              <div>
-                <div className="copyStart">
-                    {t("start.copyStart")}
-                    <span>
-                      {t('start.subCopyStart')}
-                    </span>
-                </div>
-
-                <Link href="/experience">
-                    <Button className="buttonStart" variant="contained">{t('start.buttonStart')}</Button>
-                </Link>
-              
-                <div className="copyFooter">
-                  {t('start.copyFooter1')} {t('start.copyFooter2')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
-                </div>
-                <Rules dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
+          <div className={isActive ? 'containerSpecial animationExit': 'containerSpecial'}>
+            <div>
+              <div className="copyStart ">
+                  {t("start.copyStart")}
+                  <span>
+                    {t('start.subCopyStart')}
+                  </span>
               </div>
+
+              <Link href="javascript:setTimeout(()=>{window.location = '/experience' },1500);">
+                  <Button onClick={toggleClass} className="buttonStart" variant="contained">{t('start.buttonStart')}</Button>
+              </Link>
+            
+              <div className="copyFooter">
+                {t('start.copyFooter1')} {t('start.copyFooter2')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
+              </div>
+              <Rules dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
             </div>
+          </div>
       </Layout>
   )
 }
