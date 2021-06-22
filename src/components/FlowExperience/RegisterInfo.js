@@ -118,7 +118,7 @@ const RegisterInfo = ({ userEmail }) => {
       }
       
       if(json.success) {
-        //setCookie(dataForm.email);
+        setCookie(dataRegister.email);
         //console.log('json Body!!!', json.dataBody);
 
         // when save json, then change to share
