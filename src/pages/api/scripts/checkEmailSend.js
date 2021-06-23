@@ -6,11 +6,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 const testEmail = async () => {
   const config = {
-    host: process.env.MAILTRAP_HOST,
-    port: process.env.MAILTRAP_PORT,
-    user: process.env.MAILTRAP_USERNAME,
-    pass: process.env.MAILTRAP_PASSWORD,
-    from: 'Toyota <jpulido@mdsdigital.com>',
+    host: process.env.AWS_SES_HOST,
+    port: process.env.AWS_SES_PORT,
+    user: process.env.AWS_SES_USERNAME,
+    pass: process.env.AWS_SES_PASSWORD,
+    from: process.env.NEXT_PUBLIC_FROM_EMAIL,
   };
   
   const options = {
