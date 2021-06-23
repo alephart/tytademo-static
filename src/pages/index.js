@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router'
 import Layout from '@/components/layouts/StartPage';
 import { Rules } from '@/components/DialogsTyta';
 import { VideoBg } from '@/components/Anims';
@@ -7,17 +8,21 @@ import Button from '@material-ui/core/Button';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { isMobile } from 'react-device-detect';
-import { motion } from "framer-motion";
 
 const Home = () => {
+  console.log('isMobile', isMobile);
 
   const { t } = useTranslation('common');
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [isActive, setActive] = useState(false);
-  const toggleClass = () => {setActive(!isActive);};
+  const router = useRouter();
 
-
-  console.log('isMobile', isMobile);
+  const handleAdvance = () => {
+    setActive(!isActive);
+    setTimeout(() => {
+      router.push('/experience');
+    }, 1200);
+  };
 
   return (
       <Layout>
@@ -33,9 +38,9 @@ const Home = () => {
                   </span>
               </div>
 
-              <Link href="javascript:setTimeout(()=>{window.location = '/experience' },1500);">
-                  <Button onClick={toggleClass} className="buttonStart" variant="contained">{t('start.buttonStart')}</Button>
-              </Link>
+              <Button onClick={handleAdvance} className="buttonStart" variant="contained">
+                {t('start.buttonStart')}
+              </Button>
             
               <div className="copyFooter">
                 {t('start.copyFooter1')} {t('start.copyFooter2')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>

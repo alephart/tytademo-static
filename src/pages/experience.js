@@ -16,6 +16,8 @@ import {
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TytaProgress } from '@/components/Anims';
 import { Loading } from '@/components/Anims';
+import { AnimatePresence } from "framer-motion";
+
 
 const mockDetector = () => 'US';
 const ENV = 'development'; // process.env.NODE_ENV;
@@ -96,7 +98,9 @@ const Experience = ({ userEmail }) => {
         <TytaProgress progress={progress}/>
 
         {process === PROCESS_ENUM.character && (
-          <CharacterChoose />
+          <AnimatePresence>
+            <CharacterChoose />
+          </AnimatePresence>
         )}
 
         {process === PROCESS_ENUM.photoTake && (
