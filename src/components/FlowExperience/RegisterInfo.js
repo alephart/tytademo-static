@@ -265,6 +265,7 @@ const RegisterInfo = ({ userEmail }) => {
             ${errors.email ? 'error' : ''}
           `}
           name='email'
+          type='email'
           {...register('email', { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ })}
           placeholder={t("registerInfo.email")}
           inputProps={{ 'aria-label': t("registerInfo.email") }}
