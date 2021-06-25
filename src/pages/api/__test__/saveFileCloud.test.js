@@ -89,7 +89,7 @@ describe('Save Cloud', () => {
     console.log(saveImage);
     
     expect(saveImage).toBeTruthy();
-  });
+  }, 10000);
 
 
   // upload video to cloud storage (S3)
