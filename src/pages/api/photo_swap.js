@@ -24,28 +24,20 @@ export default async (req, res) => {
       const videosListCharacter = character === 'female' ? videosListFemale(faceId) : videosListMale(faceId);
       //console.log('Videos List Character', videosListCharacter);
     
-      console.time("dataSwapVideos");
       const swapVideos = await dataSwapVideos(videosListCharacter);
       console.log('Data Swap Videos', swapVideos);
-      console.timeEnd("dataSwapVideos");
     
       // 4. Download videos, save in temp
-      console.time("downloadSwapVideos from DeepFake Service");
       const dowloadVideos = await downloadSwapVideos(swapVideos);
       console.log('Dowload Videos', dowloadVideos);
-      console.timeEnd("downloadSwapVideos from DeepFake Service");
       
       // 4.1 modify video the TBN to 90K - please if not necessary, do not use!
-      console.time("adjustTbnVideos if required");
       const adjustVideos = await adjustTbnVideos(dowloadVideos, 90000);
       console.log('Adjust TBN Videos', adjustVideos);
-      console.timeEnd("adjustTbnVideos if required");
     
       // 5. write file .txt with info videos
-      console.time("Write file .txt whit info videos");
       const nameFileVideos = `videos-${userId}.txt`;
       writeFileSync( path.join(DIR_TEMP, nameFileVideos), buildFileVideos(adjustVideos, videoListAll, character) );
-      console.timeEnd("Write file .txt whit info videos");
       
       // 6. Merge videos (get final video)
       const dataFinal = {
@@ -53,9 +45,7 @@ export default async (req, res) => {
         fileVideos: `${DIR_TEMP}/${nameFileVideos}`,
       };
     
-      console.time("concatVideosFluent - ffmpeg direct exec");
       await concatVideosTxtFluent(dataFinal);
-      console.timeEnd("concatVideosFluent - ffmpeg direct exec");
     
       // 6.1 chage track in final video 
       const nameFinalVideo = `video-${userId}_final.mp4`;
@@ -66,16 +56,13 @@ export default async (req, res) => {
         track: path.join(DIR_TEMP, NAME_TRACK_AUDIO),
       }
     
-      console.time("changeTrackFluent - ffmpeg add track audio");
       await changeTrackFluent(dataTrack);
-      console.timeEnd("changeTrackFluent - ffmpeg add track audio");
     
       /********************************************************************************************************************
        * The following processes are asynchronous, but here will use the technique that they run in parallel 
        * ([sync] since they can be independent) and it will continue until they all proceed (promises all)
        ********************************************************************************************************************/
     
-      console.time("uploadFile - save assets on S3");
       // save image on cloud
       const photoLocation = uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
       
@@ -91,18 +78,14 @@ export default async (req, res) => {
       });
       
       const footage = await Promise.all([photoLocation, videoLocation, ...allSubVideos]);
-      console.timeEnd("uploadFile - save assets on S3");
     
-      /* 
-      console.time("Remove files assets from system");
       // TODO: generate list assets to remove - remove in async parallel
       removeFileSync(pathFinalPhoto);
       removeFileSync(dataFinal.output);
       removeFileSync(dataTrack.output);
       removeFileSync(removeSubVideos);
       removeFileSync(dataFinal.fileVideos);
-      console.timeEnd("Remove files assets from system");
-      */
+
 
       const data = {
         userId,
