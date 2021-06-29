@@ -26,8 +26,8 @@ const Home = () => {
 
   return (
       <Layout>
-        <div className={isActive ? 'animationStart': null} dangerouslySetInnerHTML={VideoBg('video', 'video.mp4', false)}></div>
-        <div className={isActive ? 'animationStart': null} dangerouslySetInnerHTML={VideoBg('video2', 'videoloop.mp4', true)}></div>
+        <div className={isActive ? 'animationStart positionAbsolute': 'positionAbsolute'} dangerouslySetInnerHTML={VideoBg('video', 'video.mp4', false)}></div>
+        <div className={isActive ? 'animationStart positionAbsolute': 'positionAbsolute'} dangerouslySetInnerHTML={VideoBg('video2', 'videoloop.mp4', true)}></div>
         <div className={isActive ? 'degrade animationStart': 'degrade'}></div>
           <div className={isActive ? 'containerSpecial animationExit': 'containerSpecial'}>
             <div>
