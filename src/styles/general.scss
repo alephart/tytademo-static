@@ -82,32 +82,8 @@ html, body {
     from { opacity: 1; }
     to { opacity: 0; }
 }
-@-webkit-keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-@-moz-keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-@-o-keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@-webkit-keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@-moz-keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@-o-keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
@@ -116,32 +92,8 @@ html, body {
     from {opacity: 1; margin-left: 0%; }
     to {opacity: 0; margin-left: -50%; }
 }
-@-webkit-keyframes fadeOutRight {
-    from {opacity: 1; margin-left: 0%; }
-    to {opacity: 0; margin-left: -50%; }
-}
-@-moz-keyframes fadeOutRight {
-    from {opacity: 1; margin-left: 0%; }
-    to {opacity: 0; margin-left: -50%; }
-}
-@-o-keyframes fadeOutRight {
-    from {opacity: 1; margin-left: 0%; }
-    to {opacity: 0; margin-left: -50%; }
-}
 
 @keyframes fadeInRight {
-    from {opacity: 0; left: -50%; }
-    to {opacity: 1; left: 0;}
-}
-@-webkit-keyframes fadeInRight {
-    from {opacity: 0; left: -50%; }
-    to {opacity: 1; left: 0;}
-}
-@-moz-keyframes fadeInRight {
-    from {opacity: 0; left: -50%; }
-    to {opacity: 1; left: 0;}
-}
-@-o-keyframes fadeInRight {
     from {opacity: 0; left: -50%; }
     to {opacity: 1; left: 0;}
 }
@@ -150,32 +102,8 @@ html, body {
     from {opacity: 0; left: 50%; }
     to {opacity: 1; left: 0;}
 }
-@-webkit-keyframes fadeInLeft {
-    from {opacity: 0; left: 50%; }
-    to {opacity: 1; left: 0;}
-}
-@-moz-keyframes fadeInLeft {
-    from {opacity: 0; left: 50%; }
-    to {opacity: 1; left: 0;}
-}
-@-o-keyframes fadeInLeft {
-    from {opacity: 0; left: 50%; }
-    to {opacity: 1; left: 0;}
-}
 
 @keyframes fadeInTop {
-    from {opacity: 0; top: -200px; }
-    to {opacity: 1; top: 70px;}
-}
-@-webkit-keyframes fadeInTop {
-    from {opacity: 0; top: -200px; }
-    to {opacity: 1; top: 70px;}
-}
-@-moz-keyframes fadeInTop {
-    from {opacity: 0; top: -200px; }
-    to {opacity: 1; top: 70px;}
-}
-@-o-keyframes fadeInTop {
     from {opacity: 0; top: -200px; }
     to {opacity: 1; top: 70px;}
 }
@@ -184,18 +112,27 @@ html, body {
     from {opacity: 0; bottom: -200px; }
     to {opacity: 1; bottom: 40px;}
 }
-@-webkit-keyframes fadeInBottom {
-    from {opacity: 0; bottom: -200px; }
-    to {opacity: 1; bottom: 40px;}
+
+@keyframes fadeOutRight2 {
+    from {opacity: 1; left: 0%; }
+    to {opacity: 0; left: -50%;}
 }
-@-moz-keyframes fadeInBottom {
-    from {opacity: 0; bottom: -200px; }
-    to {opacity: 1; bottom: 40px;}
+
+@keyframes fadeOutLeft2 {
+    from {opacity: 1; left: 0%; }
+    to {opacity: 0; left: 50%;}
 }
-@-o-keyframes fadeInBottom {
-    from {opacity: 0; bottom: -200px; }
-    to {opacity: 1; bottom: 40px;}
+
+@keyframes fadeOutTop2 {
+    from {opacity: 1; top: 70px; }
+    to {opacity: 0; top: -200px;}
 }
+
+@keyframes fadeOutBottom2 {
+    from {opacity: 1; bottom: 40px; }
+    to {opacity: 0; bottom: -200px;}
+}
+
 
 body {
 	font-family: NotoSans-Regular; 
@@ -423,6 +360,13 @@ body {
 			opacity: 0;
 			animation: fadeInTop 0.5s ease-in-out 1 forwards;
 			animation-delay: 2s;
+			&.active
+			{
+				top: 70px;
+				opacity: 1;
+				animation: fadeOutTop2 0.5s ease-in-out 1 forwards;
+				animation-delay: 2s;
+			}
 		}
 		.selectCharacter1,
 		.selectCharacter2
@@ -690,6 +634,23 @@ body {
 			margin-bottom: 60px;
 		}
 	}
+	.buttonPhoto
+	{
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		bottom: -200px;
+		animation: fadeInBottom 0.5s ease-in-out 1 forwards;
+		animation-delay: 2s;
+		&.active
+		{
+			bottom: 40px;
+			opacity: 1;
+			animation: fadeOutBottom2 0.5s ease-in-out 1 forwards;
+			animation-delay: 2s;
+		}
+	}
 	.chooseCharacter
 	{
 		padding: 20px 0;
@@ -705,16 +666,23 @@ body {
 			padding-bottom: 60px;
 			width: 320px;
 		}
-	}
-	.buttonPhoto
-	{
-		position: absolute;
-		left: 0;
-		right: 0;
-		margin: 0 auto;
-		bottom: -200px;
-		animation: fadeInBottom 0.5s ease-in-out 1 forwards;
-		animation-delay: 2s;
+		&.active
+		{
+			.selectCharacter2
+			{
+				opacity: 1;
+				left: 0%;
+				animation: fadeOutRight2 0.5s ease-in-out 1 forwards;
+				animation-delay: 1s;
+			}
+			.selectCharacter1
+			{
+				opacity: 1;
+				left: 0;
+				animation: fadeOutLeft2 0.5s ease-in-out 1 forwards;
+				animation-delay: 1s;
+			}
+		}
 	}
 	.copyLink
 	{
