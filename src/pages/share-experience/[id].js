@@ -35,19 +35,19 @@ const ToShareExp = ({data}) => {
 
 export const getServerSideProps = async (context) => {
   const { params, locale } = context;
-  console.log({params});
-  //const url = process.env.NEXT_PUBLIC_URL_SITE;
-  const url = 'https://tytademo.devmds.com';
+  const urlAdmin = process.env.NEXT_PUBLIC_TYTA_API;
+  const urlSite = process.env.NEXT_PUBLIC_URL_SITE;
+
   // Fetch data from external API
-  //const res = await fetch(`https://.../data`)
-  //const data = await res.json()
-  //const urlVideo = 'https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4';
+  const res = await fetch(`${urlAdmin}/participant/${params.id}`);
+  const json = await res.json();
+  console.log(json);
 
   const data = {
     success: true,
-    urlVideo: `https://mds-tyta.s3.amazonaws.com/videos/video-${params.id}_final.mp4`,
-    urlShare: `${url}/share-experience/${params.id}`,
-    urlJoin: `${url}/join-experience/${params.id}`,
+    urlVideo: json.url_video,
+    urlShare: `${urlSite}/share-experience/${params.id}`,
+    urlJoin: `${urlSite}/join-experience/${params.id}`,
     userId: params.id,
   };
 
