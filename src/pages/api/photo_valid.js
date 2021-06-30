@@ -31,33 +31,12 @@ export default async (req, res) => {
     nameFilePhoto = `photo-${userId}.${ext}`;
     pathFinalPhoto = path.join(DIR_TEMP, nameFilePhoto);
 
-    ////// this for now /////
-    // const data = { 
-    //   userId,
-    //   faceId: 'abcdef',
-    //   nameFilePhoto,
-    //   pathFinalPhoto,
-    //   ext,
-    // };
-
-    // response = { success: true, data };
-    // console.log(response);
-    
-    // res.status(200).send(response);
-    ////// this for now /////
-
     // 1. Get photo, convert to binary and upload to reface API
-    console.time("Write Photo to File");
     await writeFile(pathFinalPhoto, imageBuffer.data);
-    console.timeEnd("Write Photo to File");
 
-    console.time("Read Photo from system");
     const binaryFile = loadFileSync(pathFinalPhoto);
-    console.timeEnd("Read Photo from system");
 
-    console.time("uploadAsset to DeepFake");
     const uploadAsseUrlFile = await uploadAsset(binaryFile, `image/${ext}`);
-    console.timeEnd("uploadAsset to DeepFake");
     console.log(uploadAsseUrlFile);
 
     if (!uploadAsseUrlFile) {
@@ -66,10 +45,7 @@ export default async (req, res) => {
     }
 
     // 2. Get cant faces and faceId
-    console.time("detectFacesInAsset");
     const faces = await detectFacesInAsset(uploadAsseUrlFile, `image/${ext}`);
-    console.timeEnd("detectFacesInAsset");
-
     console.log(faces);
 
     // Check faces for process

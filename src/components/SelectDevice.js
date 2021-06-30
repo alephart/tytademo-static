@@ -1,5 +1,4 @@
 import {useState, useEffect, useCallback} from 'react';
-import FlipCamera from './Icons/FlipCamera';
 
 const SelectDevice = (props) => {
   const { onCamera, mode, setMode } = props;
@@ -42,7 +41,7 @@ const SelectDevice = (props) => {
     <>
       {devices && cantCameras > 0 && (
         <div className="zone-cameras">
-          <FlipCamera onClick={changeCamera} />
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
         </div>
       )}
     </>

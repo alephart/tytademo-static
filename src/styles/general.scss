@@ -1355,8 +1355,15 @@ body {
 }
 .zone-cameras
 {
-	bottom: -90px;
-	position: absolute;
+	bottom: -70px;
+    position: absolute;
+    width: 300px;
+	p
+	{
+		font-size: 13px;
+		text-transform: lowercase;
+		line-height: 16px;
+	}
 	button
 	{
 		background: transparent;
