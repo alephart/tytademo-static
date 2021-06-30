@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
 import { useTranslation } from 'next-i18next';
-import { motion } from "framer-motion";
 
 const CharacterChoose = () => {
   const { t } = useTranslation('common');
@@ -20,16 +19,9 @@ const CharacterChoose = () => {
   };
 
   return (
-    <motion.div
-      key={'character'}
-      initial={{ opacity: 0, x: 200, y: 40 }}
-      animate={{ opacity: 1, x: 0, y: 40 }}
-      exit={{ opacity: 0, x: -200, y: 40 }}
-      transition={{ duration: 0.5 }}
-    >
       <div className="chooseCharacter"> 
+        <div className='selectCopy'>{t("characterChoose.selectCopy")}</div>
         <div className="BoxchooseCharacter">
-          <div className='selectCopy'>{t("characterChoose.selectCopy")}</div>
           <div
             className={`selectCharacter2 normal ${character === 'female' ? 'selected' : ''}`}
             data-character='female'
@@ -44,19 +36,16 @@ const CharacterChoose = () => {
             >
             <img src='/images/silueta-masculino.png' alt='' />
           </div>
-          
-
-          <Button
+        </div>
+        <Button
             disabled={!character}
             className='buttonPhoto'
             variant='contained'
             onClick={() => setProcess(PROCESS_ENUM.photoTake)}
           >
             {t("characterChooses.buttonPhoto")}
-          </Button>
-        </div>
+        </Button>
       </div>
-    </motion.div>
   );
 };
 
