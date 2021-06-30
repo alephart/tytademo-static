@@ -86,7 +86,7 @@ export default async (req, res) => {
         zipcode,
       };
 
-      await sendMozeus(dataMozeus);
+      const mozeus = await sendMozeus(dataMozeus);
 
       // Fourth: Email sending
       const config = {
@@ -108,7 +108,7 @@ export default async (req, res) => {
       await sendEmail(config, options);
       
       // return
-      await res.status(200).send({ success: true, dataBody: req.body });
+      await res.status(200).send({ success: true, dataBody: req.body, mozeus });
     } // eof userExist
 
   } catch (error) {
