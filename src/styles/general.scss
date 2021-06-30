@@ -1277,7 +1277,7 @@ body {
 }
 .zone-cameras
 {
-	bottom: -70px;
+	bottom: -90px;
     position: absolute;
     width: 300px;
 	p
@@ -1286,6 +1286,10 @@ body {
 		text-transform: lowercase;
 		line-height: 16px;
 		text-align: center;
+		height: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	button
 	{
