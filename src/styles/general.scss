@@ -1265,6 +1265,17 @@ body {
 		background-image: url("/images/loading.svg");
 		background-position: 50% 30%;
 		background-repeat: no-repeat;
+		.bgFace
+		{
+			background-image: url("/images/frame-capt-photo_left.svg"), url("/images/frame-capt-photo_right.svg");
+			background-position: 27%, 73%;
+			background-repeat: no-repeat;
+			width: 100%;
+			background-size: contain;
+			position: absolute;
+			z-index: 10;
+			height: calc(100% - 110px);
+		}
 		video
 		{
 			min-height: 100%;
