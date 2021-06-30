@@ -86,7 +86,7 @@ export default async (req, res) => {
         zipcode,
       };
 
-      //await sendMozeus(dataMozeus);
+      await sendMozeus(dataMozeus);
 
       // Fourth: Email sending
       const config = {
