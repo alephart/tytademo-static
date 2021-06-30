@@ -1,5 +1,7 @@
 const fetch = require('node-fetch');
 const { configAdmin } = require('./lib/config');
+const { sendMozeus } = require('./lib/sendMozeus');
+const { checkEmail } = require('./lib/checkEmail');
 const { sendEmail } = require('./lib/sendEmail');
 
 export default async (req, res) => {
@@ -11,8 +13,8 @@ export default async (req, res) => {
     lastname,
     email,
     zipcode,
-    productNews = true || false,
-    testDrive = testDrive && true,
+    productNews = true || false,   // this way
+    testDrive = testDrive && true, // or this way
     userId,
     faceId,
     nameFilePhoto,
@@ -26,27 +28,21 @@ export default async (req, res) => {
     footage,
   } = req.body;
 
-  let userExist = false;
-
-  try {
-    // first check unique email address  
-    await fetch(`${configAdmin.url_api}/checkEmail`, {
-      method: 'POST',
-      body:    JSON.stringify({email}),
-      headers: { 'Content-Type': 'application/json' },
-    })
-    .then(res => res.json())
-    .then(json => userExist = json.exist)
-    .catch(error => {
-      console.error(error);
+  
+  try {    
+    // First: check unique email address  
+    const userExist = await checkEmail(email);
+  
+    if (userExist.error) {
+      // log error
       res.status(500).send({ success: false, error});
-    });
+    }
 
     if(userExist) {
       res.status(200).send({ success: false, action: 'checkEmail', userExist });
     
     } else {
-      // send data to API Toyota Admin
+      // Second: send data to API Toyota Admin
       const dataAdmin = {
         participant_id: userId,
         firstname,
@@ -60,8 +56,6 @@ export default async (req, res) => {
         testdrive: testDrive,
         footage,
       };
-
-      //console.log(dataAdmin);
 
       let jsonAdmin;
 
@@ -84,24 +78,17 @@ export default async (req, res) => {
         res.status(500).send({ success: false, error});
       }
 
-      // send data To API MoZeus
-      // const dataMozeus = {
-      //   firstName: firstname,
-      //   lastName: lastname,
-      //   email,
-      //   zipCode: zipcode,
-      // }
+      // Third: Send data To API MoZeus
+      const dataMozeus = {
+        firstname,
+        lastname,
+        email,
+        zipcode,
+      };
 
-      // const resMozeus = await fetch(`${configMozeus.url_api}/${configMozeus.user_id}`, {
-      //   method: 'POST',
-      //   body:    JSON.stringify(dataMozeus),
-      //   headers: { 'Content-Type': 'application/json' },
-      // });
+      await sendMozeus(dataMozeus);
 
-      // const jsonMozeus = await resMozeus.json();
-      // console.log(jsonMozeus);  
-
-      // email sending
+      // Fourth: Email sending
       const config = {
         host: process.env.AWS_SES_HOST,
         port: process.env.AWS_SES_PORT,
@@ -117,9 +104,7 @@ export default async (req, res) => {
         urlShare,
         locale,
       };
-
       //console.log(config, options)
-
       await sendEmail(config, options);
       
       // return

@@ -23,6 +23,8 @@ const configAdmin = {
 const configMozeus = {
   url_api: process.env.MOZEUS_URL_API,
   user_id: process.env.MOZEUS_USER_ID,
+  even_id: process.env.MOZEUS_EVENT_ID,
+  token: process.env.MOZEUS_TOKEN,
 }
 
 // const configVimeo = {
