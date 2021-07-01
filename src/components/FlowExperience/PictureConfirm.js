@@ -5,6 +5,7 @@ import { ExperienceContext } from '@/components/Context';
 import { useTranslation } from 'next-i18next';
 import { Help } from '@/components/DialogsTyta';
 import { Loading } from '@/components/Anims';
+import { isIOS } from 'react-device-detect';
 
 const PictureConfirm = () => {
   const { t } = useTranslation('common');
@@ -57,7 +58,7 @@ const PictureConfirm = () => {
   return (
     <>
       <div className='likePicture'>
-        <div className='boxPhoto'>
+        <div className={isIOS ? 'ios boxPhoto' : 'boxPhoto'}>
           <img src={imgSrc} />
         </div>
         <div className='paddingCanvas' /> 

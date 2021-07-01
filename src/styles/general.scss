@@ -438,7 +438,7 @@ body {
 		}
 		.boxPhoto
 		{
-			width: 600px;
+			width: 680px;
 			position: absolute;
 			top: 0;
 			left: 50%;
@@ -1434,7 +1434,11 @@ body .landscape
 }
 .android .boxPhoto
 {
-	width: 600px !important;
+	width: 680px !important;
+}
+.ios.boxPhoto
+{
+	width: 100% !important;
 }
 .registerVideoBG
 {
