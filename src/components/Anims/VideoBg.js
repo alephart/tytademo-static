@@ -11,7 +11,7 @@ const VideoBg = (_id, name, loop) => {
     __html: `
     <video playsinline="" autoplay="" ${loop && 'loop=""'} muted="" id=${_id}>
         <source
-            src="${name}"
+            src="/videos/${name}"
             type="video/mp4"
         />
     </video>` }
