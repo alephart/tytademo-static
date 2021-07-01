@@ -1,6 +1,6 @@
 const request = require("request");
 
-export default async (req, res) => {
+export default (req, res) => {
   // get path file aws
   const filePath = req.query.filename;
   // ex: https://toyota-featuring-you.s3.us-west-1.amazonaws.com/videos/video-ckql4eczc0000f6qv2qr64qqq_final.mp4

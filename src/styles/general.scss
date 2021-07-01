@@ -438,7 +438,7 @@ body {
 		}
 		.boxPhoto
 		{
-			width: 800px;
+			width: 600px;
 			position: absolute;
 			top: 0;
 			left: 50%;
@@ -450,7 +450,7 @@ body {
 			
 			@include mobileGrand
 			{
-				width: 100%;
+				/* width: 100%;*/
 			}
 		}
 		.bgdegrade
@@ -1262,13 +1262,13 @@ body {
 		.bgFace
 		{
 			background-image: url("/images/frame-capt-photo_left.svg"), url("/images/frame-capt-photo_right.svg");
-			background-position: 27%, 73%;
+			background-position: 32%, 68%;
 			background-repeat: no-repeat;
 			width: 100%;
 			background-size: contain;
 			position: absolute;
 			z-index: 10;
-			height: calc(100% - 110px);
+			height: 320px;
 		}
 		video
 		{
@@ -1434,7 +1434,7 @@ body .landscape
 }
 .android .boxPhoto
 {
-	width: 800px !important;
+	width: 600px !important;
 }
 .registerVideoBG
 {
