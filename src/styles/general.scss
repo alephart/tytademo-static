@@ -1060,34 +1060,44 @@ body {
 				background: #000;
 			}
 		}
-		iframe
+		.boxAnimation
 		{
+			width: 375px;
 			position: absolute;
-			width: 200%;
-			height: 200%;
-			border: none;
-			top: 0;
-			left: 50px;
-			zoom: 0.50;
-			-moz-transform: scale(0.50);
-			-moz-transform-origin: 0 0;
-			-o-transform: scale(0.50);
-			-o-transform-origin: 0 0;
-			-webkit-transform: scale(0.50);
-			-webkit-transform-origin: 0 0;
-			
-			@include mobile
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			height: 100%;
+			overflow: hidden;
+			iframe
 			{
-				left: 0;
-				width: 250%;
+				position: relative;
+				width: 750px;
+				height: 150%;
+				border: none;
+				top: 0;
+				zoom: 0.50;
+				-moz-transform: scale(0.50);
+				-moz-transform-origin: 0 0;
+				-o-transform: scale(0.50);
+				-o-transform-origin: 0 0;
 				-webkit-transform: scale(0.50);
-			}
-			@include mobileMin
-			{
-				width: 250%;
-				-webkit-transform: scale(0.42);
+				-webkit-transform-origin: 0 0;
+				
+				@include mobile
+				{
+					left: 0;
+					width: 250%;
+					-webkit-transform: scale(0.50);
+				}
+				@include mobileMin
+				{
+					width: 250%;
+					-webkit-transform: scale(0.42);
+				}
 			}
 		}
+		
 	}
 	// formVideo
 	.indexDesktop,
