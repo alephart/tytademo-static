@@ -34,7 +34,9 @@ const sendEmail = async (config, options) => {
       from,
       to: `${firstname} ${lastname} <${email}>`,
     },
-    locals: { ...options },
+    locals: { 
+      ...options,
+     },
   })
   .then((res) => console.log('email message sent!'))
   .catch((error) => console.error('Error when send email!!!', error.message));

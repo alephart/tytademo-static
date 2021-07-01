@@ -212,6 +212,12 @@ const RegisterInfo = ({ userEmail }) => {
       ...data,
       character,
       locale,
+      textOpenBrowser: t('mailing.openWithBrowser'),
+      textTitle: t('meta.tags.title'),
+      imgTitle: t('mailing.title.youMadeIt'),
+      textMessage: t('mailing.watchYouFullVideo'),
+      imgButton: t('mailing.btn.watchVideo'),
+      textTerms: t('mailing.terms'),
     });    
   };
 

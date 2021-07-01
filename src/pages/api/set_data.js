@@ -3,11 +3,8 @@ const { configAdmin } = require('./lib/config');
 const { sendMozeus } = require('./lib/sendMozeus');
 const { checkEmail } = require('./lib/checkEmail');
 const { sendEmail } = require('./lib/sendEmail');
-const i18n = require('./locales');
 
-export default async (req, res) => {
-  //console.log('set data::::', req.body);
-  
+export default async (req, res) => {  
   // get data from req body
   const {
     firstname,
@@ -27,9 +24,13 @@ export default async (req, res) => {
     urlPhoto,
     urlVideo,
     footage,
+    textOpenBrowser,
+    textTitle,
+    imgTitle,
+    textMessage,
+    imgButton,
+    textTerms,
   } = req.body;
-  
-  i18n.setLocale(locale);
 
   try {    
     // First: check unique email address  
@@ -98,21 +99,22 @@ export default async (req, res) => {
         pass: process.env.AWS_SES_PASSWORD,
         from: process.env.NEXT_PUBLIC_FROM_EMAIL,
       };
-
+      
       const urlOpenBrowser = `${process.env.NEXT_PUBLIC_URL_SITE}/${locale === 'es' ? 'es/' : ''}mailing-experience?share=${urlShare}`;
 
       const options = {
+        locale,
         firstname,
         lastname,
         email,
         urlShare,
         urlOpenBrowser,
-        textOpenBrowser: i18n.__('mailing.openWithBrowser'),
-        textTitle: i18n.__('mailing.titleName'),
-        imgTitle: i18n.__('mailing.title.youMadeIt'),
-        textMessage: i18n.__('mailing.watchYouFullVideo'),
-        imgButton: i18n.__('mailing.btn.watchVideo'),
-        textTerms: i18n.__('mailing.terms'),
+        textOpenBrowser,
+        textTitle,
+        imgTitle,
+        textMessage,
+        imgButton,
+        textTerms,
       };
 
       console.log(config, options)
