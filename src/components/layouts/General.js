@@ -3,8 +3,7 @@ import { isAndroid } from 'react-device-detect';
 import { useTranslation } from 'next-i18next';
 
 const Layout = ({ children, ...props }) => {
-  console.log('layout', props);
-  const { className } = props;
+  const { className = null } = props;
   const { t } = useTranslation('common');
   return (
     <>
