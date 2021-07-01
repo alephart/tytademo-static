@@ -6,7 +6,8 @@
     "dev": "next dev -p 3131",
     "build": "next build",
     "start": "next start",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "start-prod": "next build && next start -p $PORT"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
