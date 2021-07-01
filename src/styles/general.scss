@@ -1044,9 +1044,9 @@ body {
 		{
 			max-width:430px;
 			width: 100%;
-			height: 110%;
+			height: 100%;
 			position: absolute;
-			top: -30px;
+			top: 0px;
 			left: 0;
 			right: 0;
 			margin: 0 auto;
@@ -1069,6 +1069,7 @@ body {
 			margin: 0 auto;
 			height: 100%;
 			overflow: hidden;
+			top: -30px;
 			iframe
 			{
 				position: relative;
@@ -1076,7 +1077,6 @@ body {
 				height: 150%;
 				border: none;
 				top: 0;
-				zoom: 0.50;
 				-moz-transform: scale(0.50);
 				-moz-transform-origin: 0 0;
 				-o-transform: scale(0.50);
@@ -1089,6 +1089,12 @@ body {
 					left: 0;
 					width: 250%;
 					-webkit-transform: scale(0.50);
+				}
+				@include mobileAndroid
+				{
+					left: 0;
+					width: 250%;
+					-webkit-transform: scale(0.48);
 				}
 				@include mobileMin
 				{
@@ -1343,7 +1349,7 @@ body {
 }
 .zone-cameras
 {
-	bottom: -90px;
+	bottom: -95px;
     position: absolute;
     width: 300px;
 	p
