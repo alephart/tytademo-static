@@ -9,10 +9,9 @@ const ShareExperience = () => {
   const { t } = useTranslation('common');
   const { setProcess, swap } = useContext(ExperienceContext);
   const [isOpenDialog, setIsOpenDialog] = useState(false);
+  const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
 
   console.log('swap into ShareExperience', swap);
-
-  //const urlVideo = 'https://mds-tyta.s3.amazonaws.com/videos/video-ckow41n6g0000bdnxgrzb6wsv_final.mp4';
 
   return (
     <div className='sharedExperience'>
@@ -38,8 +37,8 @@ const ShareExperience = () => {
 
       <a
         className='buttonThanks'
-        download="this-is-my-experience-toyota.mp4"
-        href={swap.urlVideo}>
+        //download="this-is-my-experience-toyota.mp4"
+        href={`${siteURL}/api/download_video?filename=${swap.urlVideo}`}>
           {t("shareExperience.buttonThanks")}
       </a>
 

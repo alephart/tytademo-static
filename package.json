@@ -38,6 +38,7 @@
     "react-responsive": "^8.2.0",
     "react-share": "^4.4.0",
     "react-webcam": "^5.2.2",
+    "request": "^2.88.2",
     "sass": "^1.32.8",
     "vimeo": "^2.1.1"
   },
