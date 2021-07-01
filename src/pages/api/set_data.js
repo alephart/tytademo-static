@@ -3,10 +3,11 @@ const { configAdmin } = require('./lib/config');
 const { sendMozeus } = require('./lib/sendMozeus');
 const { checkEmail } = require('./lib/checkEmail');
 const { sendEmail } = require('./lib/sendEmail');
+const i18n = require('./locales');
 
 export default async (req, res) => {
   //console.log('set data::::', req.body);
-
+  
   // get data from req body
   const {
     firstname,
@@ -27,8 +28,9 @@ export default async (req, res) => {
     urlVideo,
     footage,
   } = req.body;
-
   
+  i18n.setLocale(locale);
+
   try {    
     // First: check unique email address  
     const userExist = await checkEmail(email);
@@ -97,14 +99,23 @@ export default async (req, res) => {
         from: process.env.NEXT_PUBLIC_FROM_EMAIL,
       };
 
+      const urlOpenBrowser = `${process.env.NEXT_PUBLIC_URL_SITE}/${locale === 'es' ? 'es/' : ''}mailing-experience?share=${urlShare}`;
+
       const options = {
         firstname,
         lastname,
         email,
         urlShare,
-        locale,
+        urlOpenBrowser,
+        textOpenBrowser: i18n.__('mailing.openWithBrowser'),
+        textTitle: i18n.__('mailing.titleName'),
+        imgTitle: i18n.__('mailing.title.youMadeIt'),
+        textMessage: i18n.__('mailing.watchYouFullVideo'),
+        imgButton: i18n.__('mailing.btn.watchVideo'),
+        textTerms: i18n.__('mailing.terms'),
       };
-      //console.log(config, options)
+
+      console.log(config, options)
       await sendEmail(config, options);
       
       // return

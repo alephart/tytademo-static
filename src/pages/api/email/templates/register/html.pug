@@ -8,7 +8,7 @@ html(xmlns='http://www.w3.org/1999/xhtml')
     meta(name='color-scheme' content='light dark')
     meta(name='supported-color-schemes' content='light dark')
     meta(content='telephone=no' name='format-detection')
-    title TOYOTA
+    title #{textTitle}
     style(type='text/css').
       html,
       body {
@@ -98,8 +98,8 @@ html(xmlns='http://www.w3.org/1999/xhtml')
         tbody
           tr
             td.arialfallback(bgcolor='#5A2CFB' align='center' cellpadding='5px' style='max-width: 600px; padding: 5px; mso-padding-alt: 5px;font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height: auto; font-style: normal; text-align: center; color: #FFFFFF;' valign='middle' width='100%')
-              a.arialfallback(href='javascript:void(0);' target='_blank' style='font-family: Relative-Book, Arial; font-weight: bold; line-height: 18px; color: #FFFFFF; text-decoration: underline; border: 1px; white-space: nowrap; text-transform: none; text-decoration:underline;')
-                | Open with browser
+              a.arialfallback(href=urlOpenBrowser target='_blank' style='font-family: Relative-Book, Arial; font-weight: bold; line-height: 18px; color: #FFFFFF; text-decoration: underline; border: 1px; white-space: nowrap; text-transform: none; text-decoration:underline;')
+                | #{textOpenBrowser}
       // aqui end
       table(border='0' cellpadding='0' cellspacing='0' margin='0' role='presentation' style='max-width: 600px;' width='100%')
         tbody
@@ -136,13 +136,13 @@ html(xmlns='http://www.w3.org/1999/xhtml')
                             tr
                               td(width='262px' align='left' valign='top')
                         div
-                          img(alt='Toyota' border='0' src='https://devmds.com/toyota/title.png' style='width:262px; outline:none; -ms-interpolation-mode: bicubic; display:block; background-color: #1D1D1D; background-image: linear-gradient(#1D1D1D,#1D1D1D);' width='100%')
+                          img(alt='Toyota' border='0' src=imgTitle style='width:262px; outline:none; -ms-interpolation-mode: bicubic; display:block; background-color: #1D1D1D; background-image: linear-gradient(#1D1D1D,#1D1D1D);' width='100%')
                         //if (gte mso 9)|(IE)
           table(border='0' cellpadding='0' cellspacing='0' margin='0' role='presentation' style='max-width: 600px;' width='100%')
             tbody
               tr
                 td.font10.arialfallback(bgcolor='#0E192D' align='left' cellpadding='0px 25px 0px 25px' style='max-width: 288px; padding: 0px 25px 0px 25px; mso-padding-alt: 0px 25px 0px 25px;font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: auto; font-weight: normal; letter-spacing: normal;  font-style: normal; color: #ffffff; text-align: center; background-color: #1D1D1D; ' valign='middle' width='100%')
-                    | On the next link you can watch your full video with Lunay.
+                    | #{textMessage}
           table(align='center' border='0' cellpadding='0' cellspacing='0' role='presentation' style='max-width: 600px;' width='100%')
             tbody
               td.col(align='center' cellpadding='0' style='max-width: 600px; cellspacing: 0; mso-cellspacing: 0; padding: 0; mso-padding-alt: 0; border: 0;' valign='top' width='100%')
@@ -156,7 +156,7 @@ html(xmlns='http://www.w3.org/1999/xhtml')
                               td(width='288px' align='left' valign='top')
                         div
                           a(border='0' href=urlShare)
-                            img(alt='Toyota' border='0' src='https://devmds.com/toyota/watch-video.png' style='width:288px; outline:none; -ms-interpolation-mode: bicubic; display:block; ' width='100%')
+                            img(alt='Toyota' border='0' src=imgButton style='width:288px; outline:none; -ms-interpolation-mode: bicubic; display:block; ' width='100%')
                         //if (gte mso 9)|(IE)
           table(align='center' border='0' cellpadding='0' cellspacing='0' role='presentation' style='max-width: 600px;' width='100%')
             tbody
@@ -179,11 +179,5 @@ html(xmlns='http://www.w3.org/1999/xhtml')
             tbody
               tr
                 td.arialfallback(bgcolor='#1D1D1D' align='center' cellpadding='24px 10px' style='max-width: 600px; padding: 24px 10px; mso-padding-alt: 24px 10px; font-family: Arial; font-size: 10px; line-height: auto; font-style: normal; color: #ffffff; text-align: left;' valign='middle' width='100%')
-                  | Donec sed eros sed libero malesuada mollis. Nam mattis
-                  | molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  | Curabitur et ullamcorper lorem. Aliquam ut consectetur urna. Nullam sit amet
-                  | ullamcorper elit. Nam non risus quis odio varius tincidunt. Maecenas tincidunt,
-                  | augue in mollis sodales, lacus quam aliquet nunc, et consequat velit est vitae nisl.
-                  | Fusce aliquet tortor non ex dictum mollis. Vestibulum pulvinar sem a tincidunt
-                  | euismod.
+                  | #{textTerms}
           // END FOOTER

@@ -1,11 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const Mailing = () => {
   const { t } = useTranslation('common');
+  const router = useRouter();
+  const query = router.query;
   
   return (
     <div className="mailing">
@@ -13,19 +16,21 @@ const Mailing = () => {
       <div className="mailing__head"></div>
       
       <div style={{ marginBottom: '30px' }}>
-        <Image
-          src="https://devmds.com/toyota/hero.png"
-          alt="Featuring You Lunay X Toyota"
-          placeholder="blur"
-          layout="responsive"
-          width={620}
-          height={355}
-        />
+        <a href={query.share} alt="">
+          <Image
+            src="https://devmds.com/toyota/hero.png"
+            alt="Featuring You Lunay X Toyota"
+            placeholder="blur"
+            layout="responsive"
+            width={620}
+            height={355}
+          />
+        </a>
       </div>
 
       <div className="mailing__content">
         <Image
-          src={`https://devmds.com/toyota/${t("mailing.title.youMadeIt")}`}
+          src={t("mailing.title.youMadeIt")}
           alt=""
           placeholder="blur"
           layout="fixed"
@@ -35,14 +40,16 @@ const Mailing = () => {
 
         <p>{t("mailing.watchYouFullVideo")}</p>
 
-        <Image
-          src={`https://devmds.com/toyota/${t("mailing.btn.watchVideo")}`}
-          alt=""
-          placeholder="blur"
-          layout="fixed"
-          width={233}
-          height={38}
-        />
+        <a href={query.share} alt="">
+          <Image
+            src={t("mailing.btn.watchVideo")}
+            alt=""
+            placeholder="blur"
+            layout="fixed"
+            width={233}
+            height={38}
+          />
+        </a>
 
         <div style={{ marginTop: '20px', width: '100%', height: '30px', borderBottom: '1px solid #2F2F2F' }}></div>
       </div>
