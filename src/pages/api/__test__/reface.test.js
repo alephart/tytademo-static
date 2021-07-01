@@ -7,7 +7,7 @@ const DIR_TEMP = './temp';
 
 describe.skip('Reface API - requires access to reface account', () => {
   test('It should upload an image to reface and get the url of the image', async (done) => {
-    const pathFile = path.join(DIR_TEMP, 'photo-00jz89k2l9r4o1b.png');
+    const pathFile = path.join(DIR_TEMP, 'photo-000mi9k3czld0c9.png');
     let data;
 
     try {
@@ -31,7 +31,7 @@ describe.skip('Reface API - requires access to reface account', () => {
   });
 
   test('It should preprocess the upload image', async (done) => {
-    const pathFile = path.join(DIR_TEMP, 'photo-00jz89k2l9r4o1b.png');
+    const pathFile = path.join(DIR_TEMP, 'photo-000mi9k3czld0c9.png');
     let data, faceId, dataSwap;
 
     try {
@@ -73,7 +73,7 @@ describe.skip('Reface API - requires access to reface account', () => {
     expect(dataSwap.success).toBeTruthy();
   }, 20000);
 
-  test('It should download swaps and list final videos', async (done) => {
+  test.skip('It should download swaps and list final videos', async (done) => {
     const videos = [
       {
         videoInfo: {
@@ -111,7 +111,7 @@ describe.skip('Reface API - requires access to reface account', () => {
     expect(Array.isArray(videosFinal)).toBeTruthy();
   });
 
-  test('It should return video list final for file .txt videos.', () => {
+  test.skip('It should return video list final for file .txt videos.', () => {
     const videosList = [
       { name: '01-NoSwap_tbn.mp4', character: '' },
       { name: '02-SwapSidekick_tbn.mp4', character: 'man' },
@@ -139,7 +139,7 @@ describe.skip('Reface API - requires access to reface account', () => {
 
 describe('Reface API that can be tested', () => {
 
-  test.only('Should return signed_url correctly', async (done) => {
+  test('Should return signed_url correctly', async (done) => {
     let data;
 
     try {
@@ -158,7 +158,7 @@ describe('Reface API that can be tested', () => {
     //expect().toBe(2);
   });
 
-  test.only('should adjust TBN value in the videos that are required', async (done) => {
+  test.skip('should adjust TBN value in the videos that are required', async (done) => {
     const videoList = [
       '01-NoSwap_tbn.mp4',
       '02-SwapSidekick_tbn.mp4',

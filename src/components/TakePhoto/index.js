@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { PROCESS_ENUM } from '@/utils/globals';
+import { PROCESS_ENUM } from '@/helpers/globals';
 import Webcam from 'react-webcam';
 import ButtonTake from './ButtonTake';
 import ViewVideo from './ViewVideo';
