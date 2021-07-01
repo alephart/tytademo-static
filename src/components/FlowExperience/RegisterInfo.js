@@ -185,7 +185,7 @@ const RegisterInfo = ({ userEmail }) => {
     const { name, value } = event.target;
     let text = '';
     
-    text = value.replace(/[^A-Za-z/\W|_ ]+/ig, '').replace(/[.@]/g, '');
+    text = value.replace(/[^A-Za-z/\W|_ ]+/ig, '').replace(/[.@!#$%&*()/><∆+]/g, '');
     
     setValues({...values, [name]: text});
   };
