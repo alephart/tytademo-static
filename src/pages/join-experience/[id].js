@@ -65,15 +65,14 @@ const JoinExperince = ({data}) => {
 
 export const getServerSideProps = async (context) => {
     const { params, locale } = context;
-    //const url = process.env.NEXT_PUBLIC_URL_SITE;
-    const url = 'https://tytademo.devmds.com';
+    const urlAdmin = process.env.NEXT_PUBLIC_TYTA_API;
+
     //Fetch data from external API
-    //const res = await fetch(`https://.../data`)
-    //const data = await res.json()
+    const res = await fetch(`${urlAdmin}/participant/${params.id}`);
+    const json = await res.json();
+    console.log(json);
 
-    const urlVideo = `https://mds-tyta.s3.amazonaws.com/videos/video-${params.id}_final.mp4`;
-
-    const data = { success: true, urlVideo, id: params.id}
+    const data = { success: true, urlVideo: json.url_video, id: params.id}
 
     // Pass data to the page via props
     return { props: { 

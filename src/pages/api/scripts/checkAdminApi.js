@@ -1,5 +1,7 @@
 const fetch = require('node-fetch');
 const { configAdmin } = require('../lib/config');
+const { sendMozeus } = require('../lib/sendMozeus');
+const { checkEmail } = require('../lib/checkEmail');
 
 // const configAdmin = 
 if (process.env.NODE_ENV !== 'production') {
@@ -8,9 +10,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 const req = {
   body: {
-    firstname: 'Juan Carlos',
-    lastname: 'Pulido',
-    email: 'juancps@gmail.com',
+    firstname: 'Test',
+    lastname: 'Toyota',
+    email: 'test5@email.com',
     zipcode: '11109',
     productNews: true,
     //testDrive: true,
@@ -57,41 +59,37 @@ const checkAdminApi = async (req) => {
     footage = [],
   } = req.body;
 
-  let exist = false;
+  // First: check unique email address  
+  const userExist = await checkEmail(email);
 
-  // first check unique email address  
-  await fetch(`${configAdmin.url_api}/checkEmail`, {
-    method: 'POST',
-    body:    JSON.stringify({email}),
-    headers: { 'Content-Type': 'application/json' },
-  })
-  .then(res => res.json())
-  .then(json => {
-    exist = json.exist;
-    console.log(json.exist ? 'claro que existe!' : 'no existe!');
-  })
-  .catch(err => console.error(err));
+  if (userExist.error) {
+    // log error
+    //res.status(500).send({ success: false, error});
+    console.error({ success: false, error: userExist.error});
+  }
 
-  // send data to API Toyota Admin
-  const dataAdmin = {
-    participant_id: userId,
-    firstname,
-    lastname,
-    email,
-    zipcode,
-    character,
-    url_photo: urlPhoto,
-    url_video: urlVideo,
-    productnews: productNews,
-    testdrive: testDrive,
-    footage,
-  };
-
-  console.log(dataAdmin);
-
-  let jsonAdmin;
+  if(userExist) {
+    //res.status(200).send({ success: false, action: 'checkEmail', userExist });
+    console.log({ success: false, action: 'checkEmail', userExist });
   
-  if(!exist) {
+  } else {
+    // Second: send data to API Toyota Admin
+    const dataAdmin = {
+      participant_id: userId,
+      firstname,
+      lastname,
+      email,
+      zipcode,
+      character,
+      url_photo: urlPhoto,
+      url_video: urlVideo,
+      productnews: productNews,
+      testdrive: testDrive,
+      footage,
+    };
+
+    let jsonAdmin;
+
     try {
       const resAdmin = await fetch(`${configAdmin.url_api}/participant`, {
         method: 'POST',
@@ -101,15 +99,26 @@ const checkAdminApi = async (req) => {
     
       jsonAdmin = await resAdmin.json();
       
+      if(!jsonAdmin.participant) {
+        // return
+        //res.status(200).send({ success: false, action: 'saveParticipant', userExist: jsonAdmin.participant });
+        console.log({ success: false, action: 'saveParticipant', userExist: jsonAdmin.participant });
+      }
+
     } catch (error) {
-      console.error(error);
+      console.error({ success: false, error});
+      //res.status(500).send({ success: false, error});
     }
-    
-    if(!jsonAdmin.participant) {
-      console.error('Hubo un error!', jsonAdmin);
-    } else {
-      console.log(jsonAdmin);
-    }
+
+    // Third: Send data To API MoZeus
+    const dataMozeus = {
+      firstname,
+      lastname,
+      email,
+      zipcode,
+    };
+
+    await sendMozeus(dataMozeus);
   }
 };
 

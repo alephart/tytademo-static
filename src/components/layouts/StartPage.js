@@ -2,7 +2,6 @@ import Meta from './Meta';
 import { useTranslation } from 'next-i18next';
 
 const Layout = ({ children, ...props }) => {
-  console.log('Layout Home', props)
   const { t } = useTranslation('common');
   return (
     <>

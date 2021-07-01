@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
 
 const Meta = (props) => {
-  console.log('props in Meta', props);
+  //console.log('props in Meta', props);
   const { t } = useTranslation('common');
   const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
   const {
