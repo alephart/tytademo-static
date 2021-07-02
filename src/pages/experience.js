@@ -86,7 +86,11 @@ const Experience = ({ userEmail }) => {
     return (<></>);
   }
 
-  let noAvaliable = true;
+  console.log(ENV);
+  console.log(location);
+  console.log(error);
+
+  let noAvaliable;
 
   switch (location) {
     case 'US':
@@ -97,8 +101,12 @@ const Experience = ({ userEmail }) => {
       break;
   
     default:
-      noAvaliable = !!error;
+      noAvaliable = true;
       break;
+  }
+
+  if(!!error) {
+    noAvaliable = true;
   }
 
   if(noAvaliable) {
