@@ -397,10 +397,10 @@ body {
 				transition: all 0.3s ease-out;
 				opacity: 1;
 				zoom: 1.1;
-				border: 2px solid #5A2DFC;
+				border: 4px solid #5A2DFC;
 				img
 				{
-					width: 16vh;
+					width: 22vh;
 					transition: all 0.2s ease-out;
 				}
 			}
@@ -416,10 +416,6 @@ body {
 			background-image: url("/images/bg-femenina.jpg");
 			animation: fadeInRight 0.3s ease-in-out 1 forwards;
 			animation-delay: 1s;
-			img
-			{
-				right: 35px;
-			}
 		}
 
 		// likePicture
