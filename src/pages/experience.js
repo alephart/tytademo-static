@@ -24,7 +24,7 @@ const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Experience = ({ userEmail }) => {
   const { loading, location, error } = useLocation(
-    ENV !== 'development' ? geolocationDb(geoDbKey) : mockDetector
+    ENV === 'development' ? geolocationDb(geoDbKey) : mockDetector
   );
 
   const [process, setProcess] = useState(PROCESS_ENUM.character);
@@ -86,9 +86,7 @@ const Experience = ({ userEmail }) => {
     return (<></>);
   }
 
-  console.log(ENV);
   console.log(location);
-  console.log(error);
 
   let noAvaliable;
 
@@ -105,9 +103,7 @@ const Experience = ({ userEmail }) => {
       break;
   }
 
-  if(!!error) {
-    noAvaliable = true;
-  }
+  if(!!error) noAvaliable = true;
 
   if(noAvaliable) {
     router.push('/not-available');
