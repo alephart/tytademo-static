@@ -371,10 +371,10 @@ body {
 		.selectCharacter1,
 		.selectCharacter2
 		{
-			border: 2px solid #fff;
-			width: 275px;
-    		height: 15vh;
-			margin: 0 auto 50px;
+			border: 1px solid #fff;
+			width: 100%;
+    		height: 18vh;
+			margin: 0 auto 20px;
 			display: block;
 			position: relative;
 			background-image: url("/images/bg-masculino.jpg");
@@ -387,27 +387,27 @@ body {
 				right: 0;
 				left: 0;
 				margin: 0 auto;
-				width: 18vh;
+				width: 21vh;
 				position: absolute;
 				bottom: 0;
 				transition: all 0.2s ease-out;
 			}
 			&.selected
 			{	
+				background-image: url("/images/bg-masculino2.jpg");
 				transition: all 0.3s ease-out;
 				opacity: 1;
 				zoom: 1;
 				border: 4px solid #5A2DFC;
 				img
 				{
-					width: 20vh;
+					width: 25vh;
 					transition: all 0.2s ease-out;
 				}
 			}
 		}
 		.selectCharacter1
 		{
-			background-image: url("/images/bg-femenina.jpg");
 			animation: fadeInLeft 0.3s ease-in-out 1 forwards;
 			animation-delay: 1.5s;
 		}
@@ -416,6 +416,14 @@ body {
 			background-image: url("/images/bg-femenina.jpg");
 			animation: fadeInRight 0.3s ease-in-out 1 forwards;
 			animation-delay: 1s;
+			&.selected
+			{
+				background-image: url("/images/bg-femenina2.jpg");
+			}
+			img
+			{
+				right: -20px;
+			}
 		}
 
 		// likePicture
@@ -657,7 +665,7 @@ body {
 		overflow: hidden;
 		.BoxchooseCharacter
 		{
-			padding-top: 170px;
+			padding-top: 17vh;
 			position: relative;
 			padding-bottom: 60px;
 			width: 320px;
