@@ -18,9 +18,8 @@ import { TytaProgress } from '@/components/Anims';
 import { Loading } from '@/components/Anims';
 import { AnimatePresence } from "framer-motion";
 
-
 const mockDetector = () => 'US';
-const ENV = 'development'; // process.env.NODE_ENV;
+const ENV = process.env.NODE_ENV;
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Experience = ({ userEmail }) => {
@@ -86,8 +85,23 @@ const Experience = ({ userEmail }) => {
   if(loading) {
     return (<></>);
   }
+
+  let noAvaliable = true;
+
+  switch (location) {
+    case 'US':
+      noAvaliable = false;
+      break;
+    case 'CO':
+      noAvaliable = false;
+      break;
   
-  if(location !== 'US' || error) {
+    default:
+      noAvaliable = !!error;
+      break;
+  }
+
+  if(noAvaliable) {
     router.push('/not-available');
   }
   
