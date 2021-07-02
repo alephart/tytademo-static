@@ -4,7 +4,6 @@ import Layout from '@/components/layouts/General';
 import { ExperienceContext } from '@/components/Context';
 import { useLocation } from '@/components/hooks';
 import { geolocationDb } from '@/utils/geolocationDB';
-import { isMobile } from 'react-device-detect';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import { 
   CharacterChoose,
@@ -15,7 +14,6 @@ import {
 } from '@/components/FlowExperience';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TytaProgress } from '@/components/Anims';
-import { Loading } from '@/components/Anims';
 import { AnimatePresence } from "framer-motion";
 
 const mockDetector = () => 'US';
@@ -23,10 +21,6 @@ const ENV = process.env.NODE_ENV;
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Experience = ({ userEmail }) => {
-  const { loading, location, error } = useLocation(
-    ENV === 'development' ? geolocationDb(geoDbKey) : mockDetector
-  );
-
   const [process, setProcess] = useState(PROCESS_ENUM.character);
   const [progress, setProgress] = useState(0);
   const [character, setCharacter] = useState(null);
@@ -40,6 +34,10 @@ const Experience = ({ userEmail }) => {
   const router = useRouter();
   const locale = router.locale;
   
+  const { loading, location, error } = useLocation(
+    ENV === 'development' ? geolocationDb(geoDbKey) : mockDetector
+  );
+  
   const contextValues = {
     process, setProcess,
     character, setCharacter, 
@@ -51,12 +49,6 @@ const Experience = ({ userEmail }) => {
     setMessage,
     locale,
   };
-
-  // useEffect(() => {
-  //   if(!isMobile) {
-  //     router.push('/toyota-experience');
-  //   }
-  // }, []);
 
   useEffect(() => {
     switch (process) {
@@ -81,6 +73,12 @@ const Experience = ({ userEmail }) => {
         break;
     }
   }, [process]);
+  
+  // useEffect(() => {
+  //   if(!isMobile) {
+  //     router.push('/toyota-experience');
+  //   }
+  // }, []);
 
   if(loading) {
     return (<></>);
@@ -108,7 +106,7 @@ const Experience = ({ userEmail }) => {
   if(noAvaliable) {
     router.push('/not-available');
   }
-  
+
   return (
     <Layout>
       <ExperienceContext.Provider value={contextValues}>
