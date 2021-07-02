@@ -16,11 +16,10 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TytaProgress } from '@/components/Anims';
 import { AnimatePresence } from "framer-motion";
 
-const mockDetector = () => 'US';
-const ENV = process.env.NODE_ENV;
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Experience = ({ userEmail }) => {
+  const { loading, location, error } = useLocation(geolocationDb(geoDbKey));
   const [process, setProcess] = useState(PROCESS_ENUM.character);
   const [progress, setProgress] = useState(0);
   const [character, setCharacter] = useState(null);
@@ -33,11 +32,7 @@ const Experience = ({ userEmail }) => {
 
   const router = useRouter();
   const locale = router.locale;
-  
-  const { loading, location, error } = useLocation(
-    ENV === 'development' ? geolocationDb(geoDbKey) : mockDetector
-  );
-  
+
   const contextValues = {
     process, setProcess,
     character, setCharacter, 
