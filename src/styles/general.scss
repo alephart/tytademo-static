@@ -358,13 +358,13 @@ body {
 			left: 0;
 			right: 0;
 			opacity: 0;
-			animation: fadeInTop 0.5s ease-in-out 1 forwards;
+			animation: fadeInTop 0.3s ease-in-out 1 forwards;
 			animation-delay: 2s;
 			&.active
 			{
 				top: 70px;
 				opacity: 1;
-				animation: fadeOutTop2 0.5s ease-in-out 1 forwards;
+				animation: fadeOutTop2 0.3s ease-in-out 1 forwards;
 				animation-delay: 2s;
 			}
 		}
@@ -408,13 +408,13 @@ body {
 		.selectCharacter1
 		{
 			background-image: url("/images/bg-femenina.jpg");
-			animation: fadeInLeft 0.5s ease-in-out 1 forwards;
+			animation: fadeInLeft 0.3s ease-in-out 1 forwards;
 			animation-delay: 1.5s;
 		}
 		.selectCharacter2
 		{
 			background-image: url("/images/bg-femenina.jpg");
-			animation: fadeInRight 0.5s ease-in-out 1 forwards;
+			animation: fadeInRight 0.3s ease-in-out 1 forwards;
 			animation-delay: 1s;
 			img
 			{
@@ -641,13 +641,13 @@ body {
 		right: 0;
 		margin: 0 auto;
 		bottom: -200px;
-		animation: fadeInBottom 0.5s ease-in-out 1 forwards;
+		animation: fadeInBottom 0.3s ease-in-out 1 forwards;
 		animation-delay: 2s;
 		&.active
 		{
 			bottom: 40px;
 			opacity: 1;
-			animation: fadeOutBottom2 0.5s ease-in-out 1 forwards;
+			animation: fadeOutBottom2 0.3s ease-in-out 1 forwards;
 			animation-delay: 2s;
 		}
 	}
@@ -672,14 +672,14 @@ body {
 			{
 				opacity: 1;
 				left: 0%;
-				animation: fadeOutRight2 0.5s ease-in-out 1 forwards;
+				animation: fadeOutRight2 0.3s ease-in-out 1 forwards;
 				animation-delay: 1s;
 			}
 			.selectCharacter1
 			{
 				opacity: 1;
 				left: 0;
-				animation: fadeOutLeft2 0.5s ease-in-out 1 forwards;
+				animation: fadeOutLeft2 0.3s ease-in-out 1 forwards;
 				animation-delay: 1s;
 			}
 		}
