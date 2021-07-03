@@ -352,7 +352,7 @@ body {
 			width: 100%;
 			max-width: 300px;
 			line-height: 26px;
-			margin: 0px auto 60px;
+			margin: 0px auto 0px;
 			text-transform: lowercase;
 			position: absolute;
 			left: 0;
@@ -373,8 +373,8 @@ body {
 		{
 			border: 1px solid #fff;
 			width: 100%;
-    		height: 18vh;
-			margin: 0 auto 20px;
+    		height: 17.5vh;
+			margin: 0 auto 6vh;
 			display: block;
 			position: relative;
 			background-image: url("/images/bg-masculino.jpg");
@@ -382,6 +382,10 @@ body {
 			background-size: cover;
 			zoom: 1;
 			opacity: 0;
+			@include mobileMin
+			{
+				width: 300px;
+			}
 			img
 			{
 				right: 0;
@@ -401,8 +405,22 @@ body {
 				border: 4px solid #5A2DFC;
 				img
 				{
-					width: 25vh;
+					width: 24vh;
 					transition: all 0.2s ease-out;
+				}
+			}
+			@include mobileMinL
+			{
+				img
+				{
+					width: 19vh;
+				}
+				&.selected
+				{
+					img
+					{
+						width: 20vh;
+					}
 				}
 			}
 		}
@@ -410,6 +428,7 @@ body {
 		{
 			animation: fadeInLeft 0.3s ease-in-out 1 forwards;
 			animation-delay: 1.5s;
+			margin: 0 auto 0px;
 		}
 		.selectCharacter2
 		{
@@ -665,9 +684,9 @@ body {
 		overflow: hidden;
 		.BoxchooseCharacter
 		{
-			padding-top: 17vh;
+			padding-top: 15vh;
 			position: relative;
-			padding-bottom: 60px;
+			padding-bottom: 10vh;
 			width: 320px;
 		}
 		&.active
