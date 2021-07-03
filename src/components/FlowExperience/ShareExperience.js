@@ -9,6 +9,7 @@ const ShareExperience = () => {
   const { t } = useTranslation('common');
   const { setProcess, swap } = useContext(ExperienceContext);
   const [isOpenDialog, setIsOpenDialog] = useState(false);
+  const [download, setDownload] = useState(false);
   const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
 
   console.log('swap into ShareExperience', swap);
@@ -33,14 +34,16 @@ const ShareExperience = () => {
         </span>
       </div>
 
-      <Share url={swap.urlJoin} />
+      <Share url={swap.urlJoin} setShare={setDownload} />
 
-      <a
-        className='buttonThanks'
-        //download="this-is-my-experience-toyota.mp4"
-        href={`${siteURL}/api/download_video?filename=${swap.urlVideo}`}>
-          {t("shareExperience.buttonThanks")}
-      </a>
+      {download && (
+        <a
+          className='buttonThanks'
+          //download="this-is-my-experience-toyota.mp4"
+          href={`${siteURL}/api/download_video?filename=${swap.urlVideo}`}>
+            {t("shareExperience.buttonThanks")}
+        </a>
+      )}
 
       {/* <div className="copyFooter">
           {t('shareExperience.copyFooter1')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('shareExperience.copyFooterLink')}</a> {t('shareExperience.copyFooter2')}

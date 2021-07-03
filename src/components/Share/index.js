@@ -6,8 +6,12 @@ const shareStyle = {
   margin: '20px'
 };
 
-const Share = ({ url }) => {
+const Share = ({ url, setShare }) => {
   const { t } = useTranslation('common');
+
+  const handleClick = () => {
+    setShare(true);
+  }
   
   const message = t("shareExperience.shareMessage");
   return (
@@ -22,6 +26,7 @@ const Share = ({ url }) => {
           hashtags='#LunayXToyota'
           className='share'
           style={shareStyle}
+          onClick={handleClick}
         >
           <img src='/images/facebook.svg' alt='' />
         </FacebookShareButton>
@@ -32,6 +37,7 @@ const Share = ({ url }) => {
             hashtags={['LunayXToyota']}
             className='share'
             style={shareStyle}
+            onClick={handleClick}
           >
             <img src='/images/twitter.svg' alt='' />
 
