@@ -1,13 +1,21 @@
 import '@/styles/globals.css'
 import '@/styles/general.scss'
 
-import { Provider } from "next-auth/client"
+import { useEffect } from 'react';
+import { appWithTranslation } from 'next-i18next';
+import { Provider as SessionProvider } from "next-auth/client";
+import TagManager from 'react-gtm-module';
 
 const MyApp = ({ Component, pageProps }) => {
+  useEffect(() => {
+    TagManager.initialize({ gtmId: 'GTM-5H22NDS' });
+  }, []);
+
   return (
-    <Provider session={pageProps.session}>
+    <SessionProvider session={pageProps.session}>
       <Component {...pageProps} />
-    </Provider>
+    </SessionProvider>
   )
 }
-export default MyApp
+
+export default appWithTranslation(MyApp);

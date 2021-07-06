@@ -3,8 +3,10 @@
 	outline: none;
 }
 html, body {
-  width: 100%;
-  overflow-x: hidden;
+  	width: 100%;
+  	overflow-x: hidden;
+	background: #000;
+	height: -webkit-fill-available;
 }
 #video {
 	position: absolute;
@@ -13,11 +15,8 @@ html, body {
     width: 101%;
     min-height: 100%;
 	opacity: 1;
-	-webkit-animation: fadeOut 6s ease-in-out 1 forwards;
-    -moz-animation: fadeOut 6s ease-in-out 1 forwards;
-    -o-animation: fadeOut 6s ease-in-out 1 forwards;
-    animation: fadeOut 6s ease-in-out 1 forwards;
-	animation-delay: 3s;
+    animation: fadeOut 0.5s ease-in-out 1 forwards;
+	animation-delay: 7s;
 }
 #video2 {
 	position: absolute;
@@ -26,48 +25,115 @@ html, body {
     width: 101%;
     min-height: 100%;
 	opacity: 0;
-	-webkit-animation: fadeIn 4s ease-in-out 1 forwards;
-    -moz-animation: fadeIn 4s ease-in-out 1 forwards;
-    -o-animation: fadeIn 4s ease-in-out 1 forwards;
-    animation: fadeIn 4s ease-in-out 1 forwards;
-	animation-delay: 3s;
+    animation: fadeIn 0.5s ease-in-out 1 forwards;
+	animation-delay: 4s;
 }
+.degrade
+{
+	background-image: url("/images/gradient-bg-home.png");
+	background-position: bottom left;
+    max-width: 430px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+.containerSpecial
+{
+	max-width: 430px;
+	width: 100%;
+	top: 0;
+	opacity: 0;
+	display: flex;
+	margin: 0 auto;
+	animation: fadeIn 0.5s ease-in-out 1 forwards;
+	animation-delay: 3s;
+	height: 100vh;  
+	max-height: -webkit-fill-available;
+}
+.animationStart
+{
+	opacity: 1;
+	animation: fadeOut 0.5s ease-in-out 1 forwards;
+	animation-delay: 0.7s;
+}
+.positionAbsolute
+{
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.containerSpecial.animationExit
+{
+	opacity: 1;
+	animation: fadeOutRight 0.5s ease-in-out 1 forwards;
+	animation-delay: 1s;
+	left: 0;
+	overflow: hidden;
+    position: relative;
+}
+
 @keyframes fadeOut {
     from { opacity: 1; }
     to { opacity: 0; }
 }
-@-webkit-keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
 
-@-moz-keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-@-o-keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-@-webkit-keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@-moz-keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@-o-keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+@keyframes fadeOutRight {
+    from {opacity: 1; margin-left: 0%; }
+    to {opacity: 0; margin-left: -50%; }
+}
+
+@keyframes fadeInRight {
+    from {opacity: 0; left: 50%; }
+    to {opacity: 1; left: 0;}
+}
+
+@keyframes fadeInLeft {
+    from {opacity: 0; left: -50%; }
+    to {opacity: 1; left: 0;}
+}
+
+@keyframes fadeInTop {
+    from {opacity: 0; top: -200px; }
+    to {opacity: 1; top: 70px;}
+}
+
+@keyframes fadeInBottom {
+    from {opacity: 0; bottom: -200px; }
+    to {opacity: 1; bottom: 40px;}
+}
+
+@keyframes fadeOutRight2 {
+    from {opacity: 1; left: 0%; }
+    to {opacity: 0; left: 50%;}
+}
+
+@keyframes fadeOutLeft2 {
+    from {opacity: 1; left: 0%; }
+    to {opacity: 0; left: -50%;}
+}
+
+@keyframes fadeOutTop2 {
+    from {opacity: 1; top: 70px; }
+    to {opacity: 0; top: -200px;}
+}
+
+@keyframes fadeOutBottom2 {
+    from {opacity: 1; bottom: 40px; }
+    to {opacity: 0; bottom: -200px;}
+}
+
+
 body {
 	font-family: NotoSans-Regular; 
 	-webkit-font-smoothing: antialiased;
@@ -76,8 +142,9 @@ body {
 	color: #fff;
 	letter-spacing: 1px;
 	overflow-x: hidden;
-    position: absolute;
-	height: 100%;
+	letter-spacing: 0px;
+	min-height: 100vh;
+	min-height: -webkit-fill-available;
 	.MuiPaper-root
 	{
 		background-color: #000;
@@ -85,6 +152,7 @@ body {
 	.MuiDialogContent-root:first-child
 	{
 		padding-top: 0px;
+		padding-bottom: 27px;
 	}
 	img
 	{
@@ -99,29 +167,51 @@ body {
 	.buttonThanks,
 	.yesContinue,
 	.againPhoto,
-	.linkVideo
+	.linkVideo,
+	.button-send-form
 	{
 		background-color: #5A2DFC ;
 		color: #fff ;
 		margin: 0 auto;
 		display: block;
 		position: relative;
-		font-size: 16px;
-		left: 0;
-		right: 0;
-		width: 300px;
+		font-size: 14px;
+		width: 322px;
 		height: 56px;
 		border-radius: 30px;
 		font-family: 'JoyrideEx';
-		text-transform: none;
 		text-transform: lowercase;
+		display: flex;
+    	align-items: center;
+		justify-content: center;
+		@include mobileMin
+		{
+			width: 300px;
+		}
 		&.MuiButton-contained.Mui-disabled
 		{
-			opacity: 0.3;
-			background-color: #5A2DFC ;
-			color: #fff ;
+			background-color: #383148;
+			color: #625F6B;
 			margin: 0 auto;
 		}
+		.MuiButton-label
+		{
+			margin-top: 4px;
+		}
+	}
+	.button-send-form
+	{
+		margin: 30px auto !important;
+		margin-bottom: 20px;
+		@include mobileMin
+		{
+			width: 290px;
+		}
+	}
+	a.buttonThanks {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 	.MuiButton-contained:hover
 	{
@@ -137,7 +227,7 @@ body {
 	}
 	.startPage
 	{
-		max-width: 414px;
+		max-width: 430px;
 		width: 100%;
 		height: 100%;
 		display: block;
@@ -148,47 +238,67 @@ body {
     	position: absolute;
 		left: 0;
 		right: 0;
-		background-image: url("../assets/images/bg.png");
+		background-image: url("/images/bg-app.jpg");
 		background-position: center;
 		background-size: cover;
 		font-family: 'JoyrideEx';
 		.copyStart
 		{
-			font-size: 16px;
+			font-size: 17px;
 			text-align: center;
 			color: #fff;
-			margin: 100% auto 15%;
+			margin: 0 auto 0;
 			width: 100%;
 			line-height: 24px;
-			max-width: 300px;
+			max-width: 324px;
 			display: block;
 			position: absolute;
-			bottom: 100px;
 			left: 0;
 			right: 0;
 			text-transform: lowercase;
+			filter: drop-shadow(0 0 1.4rem #0A074699);
+			bottom: 117px;
+			letter-spacing: 0px;
+			@include mobileMin
+			{
+				font-size: 16px;
+				width: 300px;
+			}
 			span
 			{
-				font-family: 'ToyotaRegular';
+				font-family: "ToyotaRegular";
 				display: block;
-				font-size: 14px;
-				line-height: 16px;
+				font-size: 15px;
+				line-height: 20px;
+				margin-top: 4px;
+				text-transform: initial;
+				letter-spacing: 0px;
+				@include mobileMin
+				{
+					font-size: 14px;
+					width: 300px;
+				}
 			}
 		}
 		.buttonStart
 		{
 			position: absolute;
-			bottom: 70px;
+			left: 0;
+			right: 0;
+			top: auto;
+			bottom: 46px;
 		}
 		.copyFooter
 		{
 			position: absolute;
-			font-size: 11px;
-			color: #fff;
+			font-size: 0.66rem;
+			color: #ddd;
 			text-align: center;
 			bottom: 30px;
 			width: 100%;
+			letter-spacing: 0;
 			font-family: 'ToyotaRegular';
+			bottom: 17px;
 			a
 			{
 				text-decoration: underline;
@@ -205,20 +315,24 @@ body {
 	.loading,
 	.terms
 	{
-		max-width: 414px;
+		max-width: 430px;
 		width: 100%;
 		min-height: 100%;
 		display: block;
 		margin: 0 auto;
 		background-color: black;
-		overflow: hidden;
+		overflow-x: hidden;
     	position: absolute;
 		left: 0;
 		right: 0;
 		font-family: 'JoyrideEx';
-		background-image: url("../assets/images/bg.png");
+		background-image: url("/images/bg-app.jpg");
 		background-position: center;
 		background-size: cover;
+		&.especial
+		{
+			max-width: 100%;
+		}
 		
 		.textTerms
 		{
@@ -231,31 +345,81 @@ body {
 		// chooseCharacter
 		.selectCopy
 		{
-			font-size: 20px;
+			font-size: 25px;
 			text-align: center;
 			color: #fff;
-			top: 30px;
+			top: -200px;
 			width: 100%;
 			max-width: 300px;
 			line-height: 26px;
-			margin: 10% auto;
+			margin: 0px auto 60px;
 			text-transform: lowercase;
+			position: absolute;
+			left: 0;
+			right: 0;
+			opacity: 0;
+			animation: fadeInTop 0.5s ease-in-out 1 forwards;
+			animation-delay: 2s;
+			&.active
+			{
+				top: 70px;
+				opacity: 1;
+				animation: fadeOutTop2 0.5s ease-in-out 1 forwards;
+				animation-delay: 2s;
+			}
 		}
 		.selectCharacter1,
 		.selectCharacter2
 		{
-			width: 70%;
-			margin: 0 auto 20px;
+			border: 2px solid #fff;
+			width: 275px;
+    		height: 15vh;
+			margin: 0 auto 50px;
 			display: block;
-			opacity: 0.5;
-			&.selected
+			position: relative;
+			background-image: url("/images/bg-masculino.jpg");
+			background-position: center;
+			background-size: cover;
+			zoom: 1;
+			opacity: 0;
+			img
 			{
+				right: 0;
+				left: 0;
+				margin: 0 auto;
+				width: 14vh;
+				position: absolute;
+				bottom: 0;
+				transition: all 0.2s ease-out;
+			}
+			&.selected
+			{	
+				transition: all 0.3s ease-out;
 				opacity: 1;
+				zoom: 1.1;
+				border: 2px solid #5A2DFC;
+				img
+				{
+					width: 16vh;
+					transition: all 0.2s ease-out;
+				}
 			}
 		}
-		.buttonPhoto
+		.selectCharacter1
 		{
-			margin: 20px auto;
+			background-image: url("/images/bg-femenina.jpg");
+			animation: fadeInLeft 0.5s ease-in-out 1 forwards;
+			animation-delay: 1.5s;
+		}
+		.selectCharacter2
+		{
+			background-image: url("/images/bg-femenina.jpg");
+			animation: fadeInRight 0.5s ease-in-out 1 forwards;
+			animation-delay: 1s;
+			img
+			{
+				right: 35px;
+			}
 		}
 
 		// likePicture
@@ -274,20 +438,28 @@ body {
 		}
 		.boxPhoto
 		{
-			height: 480px;
-			width: 100%;
+			width: 800px;
 			position: absolute;
 			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
 			background-position: center;
 			background-size: cover;
+			max-height: 90vh;
+			overflow: hidden;
+			
+			@include mobileGrand
+			{
+				width: 100%;
+			}
 		}
 		.bgdegrade
 		{
-			height: 480px;
+			height: 380px;
 			width: 100%;
 			position: absolute;
-			top: 200px;
-			background-image: url("../assets/images/bgDegrade.png");
+			bottom: 1px;
+			background-image: url("/images/bgDegrade.png");
 			background-position: center;
 			background-size: cover;
 		}
@@ -295,16 +467,16 @@ body {
 		.againPhoto
 		{
 			position: relative;
-			margin: 30px auto 20px;
+			margin: 10px auto 20px;
 		}
 		.againPhoto
 		{
-			background: #000;
+			background: transparent;
 			border: 2px solid #fff;
 		}
 		.copyLike
 		{
-			font-size: 18px;
+			font-size: 15px;
 			width: 320px;
 			margin: 2% auto 20px;
 			text-align: center;
@@ -323,37 +495,50 @@ body {
 			z-index: 0;
 			width: 100%;
 			position: absolute;
+			opacity: 0.9;
 		}
 		.logoToyota
 		{
 			width: 240px;
 			display: block;
 			margin: 5% auto;
+			&.join
+			{
+				width: 223px;
+				margin: 50px auto;
+			}
 		}
 		.copyThanks
 		{
-			margin: 10px auto;
+			margin: 20px auto;
 			font-size: 22px;
 			text-align: center;
 			.copyLunay
 			{
 				font-size: 15px;
-				font-family: 'ToyotaBold';
-				margin: 10px 0;
+				font-family: "JoyrideEx";
+				margin: 0px auto 10px;
+				text-transform: lowercase;
+				width: 300px;
+				line-height: 20px;
 			}
 			span
 			{
 				font-size: 15px;
 				line-height: 100%;
-				font-family: 'ToyotaRegular';
-				margin: 10px 0;
+				font-family: "ToyotaRegular";
+				margin: 10px auto;
+				width: 310px;
+				display: block;
+				letter-spacing: 0;
+				line-height: 19px;
 			}
 		}
 		.sharedSocial
 		{
 			width: 300px;
 			height: 111px;
-			background-image: url("../assets/images/bgSocial.png");
+			background-image: url("/images/bgSocial.png");
 			background-position: center;
 			background-size: cover;
 			overflow: hidden;
@@ -364,7 +549,8 @@ body {
 			font-size: 14px;
 			padding: 22px 0 0 0 ;
 			text-align: center;
-			margin: 30px auto 0;
+			margin: 20px auto 0;
+			text-transform: lowercase;
 		}
 		.iconSocial
 		{
@@ -383,9 +569,9 @@ body {
 		}
 		.buttonThanks
 		{
-			margin: 30px auto 35px;
-			background: #000;
-			border: 2px solid #fff;
+			margin: 20px auto;
+			background: transparent;
+			border: 2px solid #FFFFFF54;
 		}
 		.copyFooter
 		{
@@ -415,17 +601,88 @@ body {
 			font-size: 16px;
 			width: 90%;
 			text-align: center;
-			margin: 50px auto 0;
-			line-height: 18px;
+			margin: 20px auto 20px;
+			line-height: 20px;
+			text-transform: lowercase;
+			width: 300px;
 			span
 			{
 				font-size: 16px;
 				line-height: 20px;
-				font-family: 'ToyotaRegular';
-				margin: 20px 0 40px;
+				font-family: "ToyotaRegular";
+				margin: 20px auto 23px;
 				display: block;
+				text-transform: initial;
+				width: 200px;
 			}
 		}	
+	}
+	.checkVideoFinal
+	{
+		display: none;
+		@include mobilePlus
+		{
+			display: block;
+		}
+		.logoToyota
+		{
+			width: 223px;
+			margin: 48px auto 52px;
+		}
+		.buttonJoin
+		{
+			margin-bottom: 60px;
+		}
+	}
+	.buttonPhoto
+	{
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		bottom: -200px;
+		animation: fadeInBottom 0.5s ease-in-out 1 forwards;
+		animation-delay: 2s;
+		&.active
+		{
+			bottom: 40px;
+			opacity: 1;
+			animation: fadeOutBottom2 0.5s ease-in-out 1 forwards;
+			animation-delay: 2s;
+		}
+	}
+	.chooseCharacter
+	{
+		padding: 20px 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: none;
+		overflow: hidden;
+		.BoxchooseCharacter
+		{
+			padding-top: 170px;
+			position: relative;
+			padding-bottom: 60px;
+			width: 320px;
+		}
+		&.active
+		{
+			.selectCharacter2
+			{
+				opacity: 1;
+				left: 0%;
+				animation: fadeOutRight2 0.5s ease-in-out 1 forwards;
+				animation-delay: 1s;
+			}
+			.selectCharacter1
+			{
+				opacity: 1;
+				left: 0;
+				animation: fadeOutLeft2 0.5s ease-in-out 1 forwards;
+				animation-delay: 1s;
+			}
+		}
 	}
 	.copyLink
 	{
@@ -436,6 +693,11 @@ body {
 	}
 	.sharedExperience
 	{
+		.logoToyota
+		{
+			width: 190px;
+			margin: 33px auto 35px;
+		}
 		.copyFooter
 		{
 			position: relative;
@@ -456,15 +718,16 @@ body {
 		.percentageVideo
 		{
 			width: 100%;
-			height: 30vh;
+			height: 280px;
 			min-height: 150px;
 			position: relative;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+
 			.boxPercentage
 			{
-				width: 130px;
+				width: 140px;
 				height: 60px;
 				font-family: 'ToyotaRegular';
 				letter-spacing: 0px;
@@ -472,7 +735,7 @@ body {
 				{
 					width: 40px;
 					height: 40px;
-					background-image: url("../assets/images/vector-animacion.svg");
+					background-image: url("/images/vector-animacion.svg");
 					background-position: center left;
 					background-size: contain;
 					background-repeat: no-repeat;
@@ -485,6 +748,7 @@ body {
 					float: right;
 					font-size: 11px;
 					width: calc(100% - 45px);
+					text-shadow: 0 0 3px #000;
 				}	
 				.linePercentage
 				{
@@ -497,19 +761,20 @@ body {
 						height: 2px;
 						background: #FFD800;
 					}
-
 				}
 				.timePercentage
 				{
 					float: right;
 					font-size: 11px;
 					width: calc(100% - 45px);
+					text-shadow: 0 0 3px #000;
 				}
 				.secondPercentage
 				{
 					float: right;
 					font-size: 11px;
 					width: calc(100% - 45px);
+					text-shadow: 0 0 3px #000;
 				}
 			}
 		}
@@ -524,49 +789,73 @@ body {
 	{
 		height: auto;
 		min-height: 100%;
+		form
+		{
+			width: 315px;
+			margin: 0 auto 20px;;
+			@include mobileMin
+			{
+				width: 290px;
+			}
+		}
 		.percentageVideo
 		{
 			width: 100%;
-			height: 36vh;
+			height: 240px;
 			min-height: 150px;
 			position: relative;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			@include mobile
+			{
+				height: 213px;
+			}
+			@include mobileMin
+			{
+				height: 180px;
+			}
 			.boxPercentage
 			{
-				width: 130px;
+				width: 200px;
 				height: 60px;
 				font-family: 'ToyotaRegular';
 				letter-spacing: 0px;
 				.iconPercentage
 				{
-					width: 40px;
-					height: 40px;
-					background-image: url("../assets/images/vector-animacion.svg");
+					width: 60px;
+					height: 60px;
+					background-image: url("/images/cube.gif");
 					background-position: center left;
 					background-size: contain;
 					background-repeat: no-repeat;
-					transform: rotate(90deg);
 					float: left;
-					margin: 8px 0px 0px;
+					margin: -8px 0px 0px;
 				}
 				.numberPercentage
 				{	
 					float: right;
 					font-size: 11px;
-					width: calc(100% - 45px);
+					width: calc(100% - 60px);
 				}	
 				.linePercentage
 				{
 					height: 2px;
 					float: left;
-					width: calc(100% - 50px);
-					margin: 0 0 0 5px;
+					width: calc(100% - 70px);
+					margin: 0 0 0 10px;
+					position: relative;
 					.percentage
 					{
 						height: 2px;
 						background: #FFD800;
+						position: absolute;
+						z-index: 1;
+						transition: width 0.3s;
+						&.gray
+						{
+							background: #3c3c3c;
+						}
 					}
 
 				}
@@ -574,18 +863,20 @@ body {
 				{
 					float: right;
 					font-size: 11px;
-					width: calc(100% - 45px);
+					width: calc(100% - 60px);
 				}
 				.secondPercentage
 				{
 					float: right;
 					font-size: 11px;
-					width: calc(100% - 45px);
+					width: calc(100% - 60px);
+					transition: width 0.3s;
 				}
 			}
 		}
 		.copyTitleForm
 		{
+			margin-top: 28px;
 			font-size: 22px;
 			text-align: center;
 			width: 100%;
@@ -601,9 +892,26 @@ body {
 		}
 		.MuiInputBase-root
 		{
-			width: 90%;
-			margin: 20px auto;
+			width: 100%;
+			margin: 23px auto;
 			display: block;
+			transition: width 0.3s;
+			padding-right: 25px;
+			&.check
+			{
+				background-image: url("/images/icon-ok.svg");
+				background-repeat: no-repeat;
+				background-position: center right;
+				transition: width 0.3s;
+			}
+		}
+		.MuiInput-underline.error:before
+		{
+			border-bottom: 2px solid #FAC2C2;
+		}
+		.MuiInput-underline.error:hover:not(.Mui-disabled):before
+		{
+			border-bottom: 2px solid #FAC2C2;
 		}
 		.MuiInput-underline:before
 		{
@@ -623,14 +931,22 @@ body {
 			width: 100%;
 			color: #fff;
 			font-family: 'ToyotaRegular';
+			padding-bottom: 10px;
+			
+		}
+		.MuiInput-underline.error
+		{
+			.MuiInputBase-input::placeholder {
+				color: #FAC2C2;
+			}
 		}
 		.errorsField
 		{
 			display: block;
-			width: 90%;
-			margin: -20px auto;
+			width: 100%;
+			margin: -20px auto -15px;
 			color: #FAC2C2;
-			font-family: 'ToyotaBold';
+			font-family: 'ToyotaRegular';
 			font-size: 12px;
 			&.center
 			{
@@ -641,7 +957,7 @@ body {
 		}
 		.boxCheckbox
 		{
-			width: 90%;
+			width: 100%;
 			margin: 20px auto;
 			display: block;
 			font-family: 'ToyotaRegular';
@@ -649,6 +965,7 @@ body {
 			overflow: hidden;
 			color: #848484;
 			font-size: 15px;
+			position: relative;
 			.MuiSvgIcon-root
 			{
 				color: #414141;
@@ -667,13 +984,13 @@ body {
 			}
 			.MuiSwitch-colorSecondary .MuiSwitch-thumb
 			{
-				background-image: url("../assets/images/icon-buttonx.png");
+				background-image: url("/images/icon-buttonx.png");
 				background-size: 20px;
     			background-repeat: no-repeat;
 			}
 			.MuiSwitch-colorSecondary.Mui-checked .MuiSwitch-thumb
 			{
-				background-image: url("../assets/images/icon-button.png");
+				background-image: url("/images/icon-button.png");
 			}
 			.MuiSwitch-switchBase
 			{
@@ -695,10 +1012,20 @@ body {
 				margin: -7px -7px;
 				border-radius: 15px;
 			}
+			.MuiSwitch-root
+			{
+				margin: 5px 0;
+				right: -6px;
+			}
+			.switch2
+			{
+				margin: 35px 0;
+			}
 			.copyCheckbox
 			{
-				width: calc(100% - 60px);
+				width: calc(100% - 80px);
 				float: left;
+				margin-right: 20px;
 				&.special
 				{
 					text-decoration: underline;
@@ -706,6 +1033,7 @@ body {
 					float: right;
 					margin-top: 7px;
 				}
+				
 			}
 		}
 
@@ -714,29 +1042,68 @@ body {
 	{
 		.boxIframe
 		{
-			width: 375px;
+			max-width:430px;
+			width: 100%;
 			height: 100%;
 			position: absolute;
-			top: -30px;
+			top: 0px;
 			left: 0;
 			right: 0;
 			margin: 0 auto;
+			background: transparent;
+			.bgPhotoDegrade
+			{
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				opacity: 0.3;
+				background: #000;
+			}
 		}
-		iframe
+		.boxAnimation
 		{
+			width: 375px;
 			position: absolute;
-			width: 200%;
-			height: 200%;
-			border: none;
-			top: 0;
-			zoom: 0.50;
-			-moz-transform: scale(0.50);
-			-moz-transform-origin: 0 0;
-			-o-transform: scale(0.50);
-			-o-transform-origin: 0 0;
-			-webkit-transform: scale(0.50);
-			-webkit-transform-origin: 0 0;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			height: 100%;
+			overflow: hidden;
+			top: -30px;
+			iframe
+			{
+				position: relative;
+				width: 750px;
+				height: 150%;
+				border: none;
+				top: 0;
+				-moz-transform: scale(0.50);
+				-moz-transform-origin: 0 0;
+				-o-transform: scale(0.50);
+				-o-transform-origin: 0 0;
+				-webkit-transform: scale(0.50);
+				-webkit-transform-origin: 0 0;
+				
+				@include mobile
+				{
+					left: 0;
+					width: 250%;
+					-webkit-transform: scale(0.50);
+				}
+				@include mobileAndroid
+				{
+					left: 0;
+					width: 250%;
+					-webkit-transform: scale(0.48);
+				}
+				@include mobileMin
+				{
+					width: 250%;
+					-webkit-transform: scale(0.42);
+				}
+			}
 		}
+		
 	}
 	// formVideo
 	.indexDesktop,
@@ -744,18 +1111,18 @@ body {
 	{
 		background: #000;
 		width: 100%;
-		height: 100vh;
+		height: 100%;
 		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-image: url("../assets/images/bg-site-desktop.png");
+		background-image: url("/images/bg-site-desktop.png");
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
 		@include tablet
 		{
-			min-height: 100vh;
+			min-height: 120%;
 			height: auto;
 			padding: 5% 0 10%;
 		}
@@ -797,7 +1164,7 @@ body {
 				height: auto;
 				float: left;
 				text-align: center;
-				padding: 0 10%;
+				padding: 0 6%;
 				@include tablet
 				{
 					width: 100%;
@@ -815,19 +1182,20 @@ body {
 				h2
 				{	
 					line-height: 30px;
-					margin: 65px auto 10px;
+					margin: 5% auto 10px;
 					display: block;
 					width: 100%;
-					max-width: 280px;
-					font-size: 26px;
+					max-width: 340px;
+					font-size: 20px;
 					font-family: 'JoyrideEx';
+					text-transform: lowercase;
 				}
 				p
 				{
 					margin: 0 auto;
 					display: block;
 					width: 100%;
-					max-width: 300px;
+					max-width: 340px;
 					font-family: 'ToyotaRegular';
 				}
 			}
@@ -836,7 +1204,7 @@ body {
 				width: 100%;
 				p, h2
 				{
-					font-size: 14px;
+					font-size: 12px;
 					max-width: 600px;	
 				}
 				a
@@ -847,5 +1215,280 @@ body {
 			}
 		}
 	}
+	.indexDesktop
+	{
+		height: 100vh;
+		@include mobilePlus
+		{
+			display: none;
+		}
+		.videoDesktop
+		{
+			@include tablet
+			{
+				max-width: 500px;
+				margin: 0 auto 20px !important;
+			}
+		}
+		.copydesktop
+		{
+			h2
+			{
+				@include tablet
+				{
+					max-width: 500px !important;
+				}
+			}
+		}
+	}
+
+	.zoneTakePhoto
+	{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		width: 800px;
+		max-width: 800px;
+		margin: 0 auto;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		height: calc(100% - 110px);
+		background-image: url("/images/loading.svg");
+		background-position: 50% 30%;
+		background-repeat: no-repeat;
+		video
+		{
+			min-height: 100%;
+			position: relative;
+		}
+	}
+
+	.zoneMessage {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 10px;
+		max-width: 430px;
+		margin: 10px 0;
+		position: absolute;
+		bottom: 0;;
+		p {
+			font-family: "ToyotaRegular";
+			text-align: center;
+			font-size: 14px;
+			line-height: 16px;
+			padding: 10px;
+		}
+	}
+
+	/* buttom take photo */
+	.container-circles {
+		position: relative;
+		height: 75px;
+		width: 75px;
+		margin: 10px auto;
+		cursor: pointer;
+		margin-top: -90px;
+	}
+
+	.outer-circle {
+		position: absolute;
+		left: 0;
+		height: 75px;
+		width: 75px;
+		background-color: #fff;
+		border-radius: 50%;
+		z-index: 1;
+	}
+
+	.inner-circle {
+		position: absolute;
+		left: 50%;
+		top: 33px;
+		height: 54px;
+		width: 54px;
+		background: white;
+		border-radius: 50%;
+		margin: -22px 0px 0px -27px;
+		z-index: 2;
+		border: 2px solid #5A2CFB;
+	}
+
+	.outer-circle:hover {
+		zoom: 0.99;
+		transition: width 0.1s;
+	}
+
+	.icons-social 
+	{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		width: 200px;
+		margin: 0 auto;
+		button
+		{
+			margin: 20px 0 !important;
+		}
+	}
+}
+.boxProgrees
+{
+	position: absolute !important;
+	top: 10px;
+	left: 10px;
+	z-index: 10;
+}
+.boxProgrees .MuiCircularProgress-determinate.lineProgrees
+{
+	color: #5A2DFC;
+}
+.zone-cameras
+{
+	bottom: -95px;
+    position: absolute;
+    width: 300px;
+	p
+	{
+		font-size: 12px;
+		text-transform: lowercase;
+		line-height: 16px;
+		text-align: center;
+		height: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	button
+	{
+		background: transparent;
+		border: none;
+		img
+		{
+			width: 55px;
+		}
+	}
+}
+.portrait
+{
+	display: none;
+}
+body .landscape
+{
+	position: fixed;
+	left: 0;
+	width: 100%;
+	zoom: 0.9;
+	height: 100%;
+	z-index: 1000;
+	top: 0;
+
+	.notAvailable
+	{
+		h2.desktop
+		{
+			@include desktopMax
+			{
+				display: block;
+			}
+			@include tabletMax
+			{
+				display: none;
+			}
+		}
+		h2.mobile
+		{
+			@include desktopMax
+			{
+				display: none;
+			}
+			@include tabletMax
+			{
+				display: block;
+			}
+		}
+	}
+	@include desktopMax
+	{
+		display: block;
+	}
+	@include mobilePlus
+	{
+		display: none;
+	}
+}
+.android .boxPhoto
+{
+	width: 800px !important;
+}
+.registerVideoBG
+{
+	position: absolute;
+	z-index: 0;
+}
+.dialogs
+{
+	width: 100%;
+	color: #fff;
+	.MuiPaper-root
+	{
+		width: 300px;
+		color: #fff;
+		margin: 0;
+	}
+	h2
+	{
+		font-size: 20px;
+		font-family: 'ToyotaBold';
+		text-align: center;
+	}
+	p
+	{
+		font-size: 16px;
+		font-family: 'ToyotaBold';
+	}
+	ul
+	{
+		font-family: "ToyotaRegular";
+		padding: 0 0 0 0px;
+		list-style: none;
+		margin-top: -10px;
+		margin-bottom: 20px;
+		li
+		{
+			font-size: 14px;
+		}
+	}
+	.MuiButton-root
+	{
+		background: #fff !important;
+		width: 250px;
+		height: 56px;
+		font-size: 20px;
+		font-family: 'ToyotaBold';
+		color: #000;
+		border-radius: 0px;
+	}
+	.MuiButton-root:hover{
+		opacity: 0.7;
+	}
+}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill
+{
+	transition-delay: 10000s;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
