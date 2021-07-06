@@ -105,7 +105,7 @@ html, body {
 
 @keyframes fadeInTop {
     from {opacity: 0; top: -200px; }
-    to {opacity: 1; top: 70px;}
+    to {opacity: 1; top: 53px;}
 }
 
 @keyframes fadeInBottom {
@@ -124,7 +124,7 @@ html, body {
 }
 
 @keyframes fadeOutTop2 {
-    from {opacity: 1; top: 70px; }
+    from {opacity: 1; top: 53px; }
     to {opacity: 0; top: -200px;}
 }
 
@@ -352,7 +352,7 @@ body {
 			width: 100%;
 			max-width: 300px;
 			line-height: 26px;
-			margin: 0px auto 0px;
+			margin: -10px auto 0px;
 			text-transform: lowercase;
 			position: absolute;
 			left: 0;
@@ -686,7 +686,7 @@ body {
 		{
 			padding-top: 15vh;
 			position: relative;
-			padding-bottom: 10vh;
+			padding-bottom: 15vh;
 			width: 320px;
 		}
 		&.active
