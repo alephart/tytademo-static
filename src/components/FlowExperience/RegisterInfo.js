@@ -326,16 +326,11 @@ const RegisterInfo = ({ userEmail }) => {
             inputProps={{ 'aria-label': t("registerInfo.copyCheckbox2") }}
           />
         </div>
-        {/* <div className="boxCheckbox">
+        <div className="boxCheckbox">
             <div className="copyCheckbox special">
-                <Link href="/termsP" color="inherit"> Acepto Políticas de tratamiento de datos</Link>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit
             </div>
-            <Checkbox
-                checked={agreeTerms}
-                onChange={handleChangeTerms}
-                inputProps={{ 'aria-label': 'primary checkbox' }}
-            />
-        </div> */}
+        </div>
         {isSubmitting && (
           <Loading />
         )}
