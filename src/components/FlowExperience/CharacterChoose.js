@@ -26,7 +26,6 @@ const CharacterChoose = () => {
     }, 2500);
   };
 
-
   return (
       <div className={isActive ? 'active chooseCharacter': 'chooseCharacter'}> 
         <div className={isActive ? 'active selectCopy': 'selectCopy'}>{t("characterChoose.selectCopy")}</div>
@@ -47,6 +46,7 @@ const CharacterChoose = () => {
           </div>
         </div>
         <Button
+            id='btnSelectCharacter'
             disabled={!character}
             className={isActive ? 'active buttonPhoto': 'buttonPhoto'}
             variant='contained'

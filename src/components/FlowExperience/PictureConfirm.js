@@ -74,6 +74,7 @@ const PictureConfirm = () => {
           <>
           {deepFake && (
             <Button
+              id='btnLikePhoto'
               className='yesContinue'
               variant='contained'
               onClick={handlePhotoValid}
@@ -83,6 +84,7 @@ const PictureConfirm = () => {
           )}
 
             <Button
+              id='btnBackPhoto'
               className='againPhoto' 
               variant='contained'
               onClick={() => setProcess(PROCESS_ENUM.photoTake)}
@@ -94,7 +96,7 @@ const PictureConfirm = () => {
           <Loading />
         )}
       </div>
-      <Help isOpen={help} setIsOpen={setHelp} message={MESSAGE_DIALOG.rememberPhoto} />
+      <Help id='invalidPhotoTryAgain' isOpen={help} setIsOpen={setHelp} message={MESSAGE_DIALOG.rememberPhoto} />
     </>
   );
 };
