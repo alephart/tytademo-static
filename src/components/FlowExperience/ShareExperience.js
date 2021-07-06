@@ -14,6 +14,7 @@ const ShareExperience = () => {
   console.log('swap into ShareExperience', swap);
 
   return (
+    <>
     <div className='sharedExperience'>
       <img className='logoToyota' src='/images/logo-toyota.png' alt='' />
 
@@ -48,6 +49,36 @@ const ShareExperience = () => {
       <DialogTyta dialog='policies' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} /> */}
 
     </div>
+    <div className="indexDesktop">
+        <div className="boxItemsDesktop">
+            <div className="videoDesktop">
+                <ReactPlayer
+                    className="react-player"
+                    url={swap.urlVideo}
+                    controls={true}
+                    playing={false}
+                    width='100%'
+                    height='100%'
+                />
+            </div>
+            <div className="copydesktop">
+                <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
+                <h2>
+                  {t("shareExperience.copyLunay")}
+                </h2>
+                <p>
+                  {t("shareExperience.copyLunaySpan")}
+                </p>
+                <a
+                  className='buttonThanks'
+                  //download="this-is-my-experience-toyota.mp4"
+                  href={`${siteURL}/api/download_video?filename=${swap.urlVideo}`}>
+                    {t("shareExperience.buttonThanks")}
+                </a>
+            </div>
+        </div>
+    </div>
+    </>
   );
 };
 

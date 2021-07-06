@@ -23,7 +23,7 @@ const ToShareExp = ({data}) => {
   };
 
   return (
-    <Layout>
+    <Layout className="especial">
       <ExperienceContext.Provider value={contextValues}>
         {process === PROCESS_ENUM.share && (
           <ShareExperience />
