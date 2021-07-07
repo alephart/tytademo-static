@@ -2,11 +2,19 @@
 
 sudo su webapp
 
-ZIP_FILE=/var/app/current/footage.zip
+ZIP_FILE=footage.zip
 
-LOCAL_ZIP_FILE=/var/app/current/temp/footage.zip
+NEW_PATH=/var/app/current/
 
-if [[ -f "$ZIP_FILE" ]]; then
-    echo "$FILE exists."
+LOCAL_ZIP_FILE=/var/app/current/temp/footage/
+
+STATUS="$(cmp --silent $NEW_PATH$ZIP_FILE $LOCAL_PATH$ZIP_FILE; echo $?)"
+
+if [[ -f "$NEW_PATH$ZIP_FILE" ]]; then
+    echo "$ZIP_FILE exists."
+    if [[ $STATUS -ne 0 ]]; then
+        unzip -d $LOCAL_PATH$ZIP_FILE $NEW_PATH$ZIP_FILE
+        cp $LOCAL_PATH$ZIP_FILE $NEW_PATH$ZIP_FILE
+        echo "files aren't equals"
+    fi
 fi
-
