@@ -8,7 +8,7 @@ NEW_PATH=/var/app/current/
 
 LOCAL_ZIP_FILE=/var/app/current/temp/footage/
 {
-    if [[ ! -f "$LOCAL_ZIP_FILE" ]] then
+    if [[ ! -f "$LOCAL_ZIP_FILE" ]]; then
         echo "Directory $LOCAL_ZIP_FILE was making"
         mkdir $LOCAL_ZIP_FILE
     if
