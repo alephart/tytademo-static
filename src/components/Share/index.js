@@ -21,6 +21,7 @@ const Share = ({ url, setShare }) => {
       <div className='icons-social'>
 
         <FacebookShareButton
+          id='shareFacebook'
           quote={`${message} ${url} #LunayXToyota`}
           url={url}
           hashtags='#LunayXToyota'
@@ -32,6 +33,7 @@ const Share = ({ url, setShare }) => {
         </FacebookShareButton>
 
         <TwitterShareButton
+            id='shareTwitter'
             title={`${message}`}
             url={url}
             hashtags={['LunayXToyota']}
