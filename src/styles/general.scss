@@ -1246,8 +1246,8 @@ body {
 				width: 100%;
 				p, h2
 				{
-					font-size: 12px;
-					max-width: 600px;	
+					font-size: 13px;
+					max-width: 470px;	
 				}
 				a
 				{
@@ -1464,6 +1464,17 @@ body .landscape
 			{
 				display: block;
 			}
+		}
+	}
+	&.not
+	{
+		@include desktopMax
+		{
+			display: block;
+		}
+		@include mobilePlus
+		{
+			display: block;
 		}
 	}
 	@include desktopMax
