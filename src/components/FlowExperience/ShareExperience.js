@@ -22,7 +22,7 @@ const ShareExperience = () => {
         className="react-player"
         url={swap.urlVideo}
         controls={true}
-        playing={true}
+        playing={false}
         width='100%'
         height='100%'
       />
