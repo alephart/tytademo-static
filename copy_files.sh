@@ -12,9 +12,15 @@ STATUS="$(cmp --silent $NEW_PATH$ZIP_FILE $LOCAL_PATH$ZIP_FILE; echo $?)"
 
 if [[ -f "$NEW_PATH$ZIP_FILE" ]]; then
     echo "$ZIP_FILE exists."
-    if [[ $STATUS -ne 0 ]]; then
-        unzip -d $LOCAL_PATH$ZIP_FILE $NEW_PATH$ZIP_FILE
-        cp $LOCAL_PATH$ZIP_FILE $NEW_PATH$ZIP_FILE
-        echo "files aren't equals"
+    if [[ -f "$LOCAL_ZIP_FILE$ZIP_FILE" ]]; then
+        if [[ $STATUS -ne 0 ]]; then
+            unzip -d $LOCAL_PATH$ZIP_FILE $NEW_PATH$ZIP_FILE
+            cp $LOCAL_PATH$ZIP_FILE $NEW_PATH$ZIP_FILE
+            echo "files aren't equals"
+        else
+            unzip -d $LOCAL_PATH$ZIP_FILE $NEW_PATH$ZIP_FILE
+            cp $LOCAL_PATH$ZIP_FILE $NEW_PATH$ZIP_FILE
+            echo "files copied"
+        fi
     fi
 fi
