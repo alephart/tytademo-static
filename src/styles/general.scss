@@ -332,6 +332,22 @@ body {
 		&.especial
 		{
 			max-width: 100%;
+			.sharedExperience
+			{
+				display: none;
+				@include mobilePlus
+				{
+					display: block;
+				}
+			}
+			.indexDesktop
+			{
+				display: flex;
+				@include mobilePlus
+				{
+					display: none;
+				}
+			}
 			.landscape
 			{
 				display: none;
