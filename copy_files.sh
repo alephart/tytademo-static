@@ -8,19 +8,19 @@ TEMP_PATH=./temp/
 
 NEW_PATH=./
 
-LOCAL_ZIP_FILE=./temp/footage/
+LOCAL_PATH=./temp/footage/
 {
-    if [[ ! -f "$LOCAL_ZIP_FILE" ]]; then
-        echo "Directory $LOCAL_ZIP_FILE was making"
-        mkdir $LOCAL_ZIP_FILE
+    if [[ ! -f "$LOCAL_PATH" ]]; then
+        echo "Directory $LOCAL_PATH was making"
+        mkdir $LOCAL_PATH
     fi
-
-    STATUS="$(cmp --silent $NEW_PATH$ZIP_FILE $LOCAL_PATH$ZIP_FILE; echo $?)"
 
     if [[ -f "$NEW_PATH$ZIP_FILE" ]]; then
         echo "$ZIP_FILE exists."
 
         if [[ -f "$TEMP_PATH$ZIP_FILE" ]]; then
+            STATUS="$(cmp --silent $NEW_PATH$ZIP_FILE $TEMP_PATH$ZIP_FILE; echo $?)"
+            
             if [[ $STATUS -ne 0 ]]; then
                 unzip -o $NEW_PATH$ZIP_FILE -d $LOCAL_PATH
                 cp $NEW_PATH$ZIP_FILE $TEMP_PATH
