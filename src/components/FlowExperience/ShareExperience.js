@@ -39,6 +39,7 @@ const ShareExperience = () => {
 
       {download && (
         <a
+          id='downloadVideoExperience'
           className='buttonThanks'
           //download="this-is-my-experience-toyota.mp4"
           href={`${siteURL}/api/download_video?filename=${swap.urlVideo}`}>
@@ -73,6 +74,7 @@ const ShareExperience = () => {
                   {t("shareExperience.copyLunaySpan")}
                 </p>
                 <a
+                  id='downloadVideoDesktop'
                   className='buttonThanks'
                   //download="this-is-my-experience-toyota.mp4"
                   href={`${siteURL}/api/download_video?filename=${swap.urlVideo}`}>

@@ -233,7 +233,7 @@ const RegisterInfo = ({ userEmail }) => {
           </span>
         )}
 
-      <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
+      <form id='formRegister' onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
         <Input
           className={`
             ${values.firstname ? 'check' : ''}

@@ -7,7 +7,7 @@ import { useTheme } from '@material-ui/core/styles';
 import { useTranslation } from 'next-i18next';
 import { MESSAGE_DIALOG } from '@/helpers/globals';
 
-const Help = ({ isOpen, setIsOpen, message }) => {
+const Help = ({ isOpen, setIsOpen, message, id }) => {
   const { t } = useTranslation('common');
   return (
     <Dialog
@@ -34,6 +34,7 @@ const Help = ({ isOpen, setIsOpen, message }) => {
             <p>{t("alertDescription.userExist")}</p>
           )}
           <Button
+            id={id}
             onClick={() => setIsOpen(false)}
             color='primary'
           >

@@ -56,7 +56,7 @@ const PhotoTake = () => {
         </div>
       </div>
 
-      <Help isOpen={help} setIsOpen={setHelp} message={MESSAGE_DIALOG.rememberPhoto} />
+      <Help id='invalidPhotoTryAgain' isOpen={help} setIsOpen={setHelp} message={MESSAGE_DIALOG.rememberPhoto} />
     </>
   )
 }
