@@ -1,7 +1,5 @@
 #!/bin/sh
 
-sudo su webapp
-
 ZIP_FILE=footage.zip
 
 NEW_PATH=/var/app/current/
