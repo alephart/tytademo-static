@@ -22,12 +22,12 @@ LOCAL_ZIP_FILE=./temp/footage/
 
         if [[ -f "$TEMP_PATH$ZIP_FILE" ]]; then
             if [[ $STATUS -ne 0 ]]; then
-                unzip -d $LOCAL_PATH $NEW_PATH$ZIP_FILE
+                unzip -o $NEW_PATH$ZIP_FILE -d $LOCAL_PATH
                 cp $NEW_PATH$ZIP_FILE $TEMP_PATH
                 echo "files aren't equals"
             fi
         else
-            unzip -d $LOCAL_PATH $NEW_PATH$ZIP_FILE
+            unzip -o $NEW_PATH$ZIP_FILE -d $LOCAL_PATH
             cp $NEW_PATH$ZIP_FILE $TEMP_PATH
             echo "files copied"
         fi
