@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "$(dirname "$BASH_SOURCE")"
+
 ZIP_FILE=footage.zip
 
 TEMP_PATH=/var/app/current/temp
