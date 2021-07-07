@@ -1247,6 +1247,7 @@ body {
 	.indexDesktop
 	{
 		height: 100vh;
+		padding: 0 5%;
 		@include mobilePlus
 		{
 			display: none;
