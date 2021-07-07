@@ -9,7 +9,7 @@ export default (req, res) => {
   const fileName = filePath.substring(filePath.lastIndexOf("/") + 1);
 
   // set header
-  res.setHeader("content-disposition", "attachment; filename=this-is-my-experience-toyota.mp4");
+  res.setHeader("content-disposition", "attachment; filename=Watch_me_in_Lunays_music_video.mp4");
 
   // send request to the original file
   request
