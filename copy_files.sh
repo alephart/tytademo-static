@@ -35,3 +35,4 @@ LOCAL_ZIP_FILE=./temp/footage/
 } || {
     set -e
 }
+echo "finishing"
