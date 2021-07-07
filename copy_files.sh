@@ -25,12 +25,11 @@ LOCAL_ZIP_FILE=/var/app/current/temp/footage/
                 unzip -d $LOCAL_PATH $NEW_PATH$ZIP_FILE
                 cp $NEW_PATH$ZIP_FILE $TEMP_PATH
                 echo "files aren't equals"
-
-            else
-                unzip -d $LOCAL_PATH $NEW_PATH$ZIP_FILE
-                cp $NEW_PATH$ZIP_FILE $TEMP_PATH
-                echo "files copied"
             fi
+        else
+            unzip -d $LOCAL_PATH $NEW_PATH$ZIP_FILE
+            cp $NEW_PATH$ZIP_FILE $TEMP_PATH
+            echo "files copied"
         fi
     fi
 } || {
