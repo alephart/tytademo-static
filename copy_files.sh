@@ -11,7 +11,7 @@ LOCAL_ZIP_FILE=/var/app/current/temp/footage/
     if [[ ! -f "$LOCAL_ZIP_FILE" ]]; then
         echo "Directory $LOCAL_ZIP_FILE was making"
         mkdir $LOCAL_ZIP_FILE
-    if
+    fi
 
     STATUS="$(cmp --silent $NEW_PATH$ZIP_FILE $LOCAL_PATH$ZIP_FILE; echo $?)"
 
