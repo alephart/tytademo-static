@@ -4,11 +4,11 @@ echo "$(dirname "$BASH_SOURCE")"
 
 ZIP_FILE=footage.zip
 
-TEMP_PATH=/var/app/current/temp
+TEMP_PATH=./temp/
 
-NEW_PATH=/var/app/current/
+NEW_PATH=./
 
-LOCAL_ZIP_FILE=/var/app/current/temp/footage/
+LOCAL_ZIP_FILE=./temp/footage/
 {
     if [[ ! -f "$LOCAL_ZIP_FILE" ]]; then
         echo "Directory $LOCAL_ZIP_FILE was making"
