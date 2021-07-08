@@ -17,14 +17,10 @@ const Home = () => {
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [isActive, setActive] = useState(false);
   const router = useRouter();
-  
-  console.log('isMobile', isMobile);
-  
+    
   if(loading) {
     return (<></>);
   }
-
-  console.log(location);
 
   let noAvaliable;
 

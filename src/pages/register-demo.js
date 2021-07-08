@@ -7,7 +7,6 @@ import { PROCESS_ENUM } from '@/helpers/globals';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const RegisterDemo = ({ userEmail }) => {
-  console.log(userEmail);
   const [process, setProcess] = useState(PROCESS_ENUM.register);
   const [character, setCharacter] = useState(null);
   const [data, setData] = useState(null);
