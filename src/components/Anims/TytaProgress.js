@@ -10,7 +10,7 @@ const useStylesProgress = makeStyles((theme) => ({
   },
   top: {
     color: '#1a90ff',
-    animationDuration: '550ms',
+    animationDuration: '1050ms',
     position: 'absolute',
     left: 0,
   },

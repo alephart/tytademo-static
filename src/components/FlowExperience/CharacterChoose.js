@@ -3,15 +3,17 @@ import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router'
 
 const CharacterChoose = () => {
   const { t } = useTranslation('common');
-  const { character, setCharacter, setProcess, setMessage } = useContext(ExperienceContext);
+  const { character, setCharacter, setProcess } = useContext(ExperienceContext);
   const [isActive, setActive] = useState(false);
+  const router = useRouter();
 
-  useEffect(() =>{
-    setMessage('');
-  }, []);
+  useEffect(() => {
+    localStorage.setItem('character', character);
+  }, [character]);
 
   const handleSelectCharacter = (event) => {
     event.preventDefault();
@@ -23,6 +25,7 @@ const CharacterChoose = () => {
     setActive(!isActive);
     setTimeout(() => {
       setProcess(PROCESS_ENUM.photoTake);
+      router.push('/experience');
     }, 2500);
   };
 
