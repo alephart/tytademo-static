@@ -185,7 +185,7 @@ const RegisterInfo = ({ userEmail }) => {
     const { name, value } = event.target;
     let text = '';
     
-    text = value.replace(/[^A-Za-z/\W|_ ]+$/ig, '');
+    text = value.replace(/[^A-Za-z/\W|_ ]+/ig, '').replace(/[.@!#$%&*()/><∆+]/g, '');
     
     setValues({...values, [name]: text});
   };
@@ -233,7 +233,7 @@ const RegisterInfo = ({ userEmail }) => {
           </span>
         )}
 
-      <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
+      <form id='formRegister' onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
         <Input
           className={`
             ${values.firstname ? 'check' : ''}
@@ -326,16 +326,11 @@ const RegisterInfo = ({ userEmail }) => {
             inputProps={{ 'aria-label': t("registerInfo.copyCheckbox2") }}
           />
         </div>
-        {/* <div className="boxCheckbox">
+        <div className="boxCheckbox">
             <div className="copyCheckbox special">
-                <Link href="/termsP" color="inherit"> Acepto Políticas de tratamiento de datos</Link>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit
             </div>
-            <Checkbox
-                checked={agreeTerms}
-                onChange={handleChangeTerms}
-                inputProps={{ 'aria-label': 'primary checkbox' }}
-            />
-        </div> */}
+        </div>
         {isSubmitting && (
           <Loading />
         )}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef, useContext } from 'react';
 import Webcam from 'react-webcam';
 import ButtonTake from '@/components/TakePhoto/ButtonTake';
-import SelectDevice from '@/components/SelectDevice';
+//import SelectDevice from '@/components/SelectDevice';
 import { PROCESS_ENUM, MESSAGE_DIALOG } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
 import { Help } from '@/components/DialogsTyta';
@@ -9,9 +9,6 @@ import { Help } from '@/components/DialogsTyta';
 const PhotoTake = () => {
   const { facingMode, setFacingMode, setImgSrc, setProcess, setMessage } = useContext(ExperienceContext);
   const [help, setHelp] = useState(false);
-
-  const warning = "Remember not use accessories, place your face in the center of the camera, try not to make gestures or smile.";
-
   const webcamRef = useRef(null);
 
   let constraints = {
@@ -28,7 +25,6 @@ const PhotoTake = () => {
   };
 
   useEffect(() =>{
-    //setMessage(warning);
     console.log(webcamRef);
   }, [webcamRef]);
 
@@ -52,12 +48,15 @@ const PhotoTake = () => {
           mirrored={facingMode === 'user' ? true : false}
         />
 
-        <ButtonTake onClick={capture} />
+        <ButtonTake id='btnPhotoTake' onClick={capture} />
 
-        <SelectDevice mode={facingMode} setMode={setFacingMode} />
+        {/* <SelectDevice mode={facingMode} setMode={setFacingMode} /> */}
+        <div className="zone-cameras">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        </div>
       </div>
 
-      <Help isOpen={help} setIsOpen={setHelp} message={MESSAGE_DIALOG.rememberPhoto} />
+      <Help id='invalidPhotoTryAgain' isOpen={help} setIsOpen={setHelp} message={MESSAGE_DIALOG.rememberPhoto} />
     </>
   )
 }
