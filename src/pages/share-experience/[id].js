@@ -43,11 +43,12 @@ export const getServerSideProps = async (context) => {
   const json = await res.json();
   console.log(json);
 
+  const pathLocale = locale === 'es' ? '/es/' : '/';
   const data = {
     success: true,
     urlVideo: json.url_video,
-    urlShare: `${urlSite}/share-experience/${params.id}`,
-    urlJoin: `${urlSite}/join-experience/${params.id}`,
+    urlShare: `${urlSite}${pathLocale}share-experience/${params.id}`,
+    urlJoin: `${urlSite}${pathLocale}join-experience/${params.id}`,
     userId: params.id,
   };
 

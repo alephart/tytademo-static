@@ -79,7 +79,7 @@ const RegisterInfo = ({ userEmail }) => {
     };
     
     if(data) {
-      initSwap(data);
+      initSwap({ ...data, locale });
     }
   }, []);
 
