@@ -38,7 +38,7 @@ export default async (req, res) => {
   
     if (userExist.error) {
       // log error
-      res.status(500).send({ success: false, error});
+      res.status(500).send({ success: false, action: 'userExist', error});
     }
 
     if(userExist) {
@@ -78,7 +78,7 @@ export default async (req, res) => {
 
       } catch (error) {
         console.error(error);
-        res.status(500).send({ success: false, error});
+        res.status(500).send({ success: false, action: 'saveParticipant', error});
       }
 
       // Third: Send data To API MoZeus
