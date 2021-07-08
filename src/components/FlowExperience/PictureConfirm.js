@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM, MESSAGE_DIALOG } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
@@ -33,15 +33,17 @@ const PictureConfirm = () => {
         setHelp(true);
         
         setDeepFake(json.success);
-  
-        // if(!json.deepFake){
-        //   setDeepFake(false);
-        // }
       }      
     } catch (error) {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    if(!deepFake && !help) {
+      setProcess(PROCESS_ENUM.photoTake);
+    }
+  }, [deepFake, help]);
 
   const handlePhotoValid = () => {
     setIsLoading(true);
