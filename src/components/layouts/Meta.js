@@ -2,7 +2,6 @@ import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
 
 const Meta = (props) => {
-  //console.log('props in Meta', props);
   const { t } = useTranslation('common');
   const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
   const {
@@ -10,7 +9,7 @@ const Meta = (props) => {
     description = t("meta.tags.description"),
     currentURL = siteURL,
     previewImage = `${siteURL}/toyota-lunay-feature-you.png`,
-    siteName = 'Toyota Featuring You',
+    siteName = t("meta.tags.title"),
     videoPath = `${siteURL}/videos/featureYouToyota.mp4`,
   } = props;
   return(

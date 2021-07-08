@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '@/components/layouts/StartPage';
+import { Rules } from '@/components/DialogsTyta';
 import { VideoBg } from '@/components/Anims';
 import Button from '@material-ui/core/Button';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useLocation } from '@/components/hooks';
 import { geolocationDb } from '@/utils/geolocationDB';
-import { isMobile } from 'react-device-detect';
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
@@ -17,14 +17,10 @@ const Home = () => {
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [isActive, setActive] = useState(false);
   const router = useRouter();
-  
-  console.log('isMobile', isMobile);
-  
+    
   if(loading) {
     return (<></>);
   }
-
-  console.log(location);
 
   let noAvaliable;
 
@@ -73,8 +69,9 @@ const Home = () => {
             </Button>
           
             <div className="copyFooter">
-              {t('start.copyFooter1')} {t('start.copyFooter2')} <a href="/term-conditions/tyc.html" target="_blank" id="termsAndConditions" >{t('start.copyFooterLink')}</a>
+              {t('start.copyFooter1')} {t('start.copyFooter2')} <a id="termsAndConditions" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
             </div>
+            <Rules dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
           </div>
         </div>
     </Layout>
