@@ -10,7 +10,7 @@ const NAME_TRACK_AUDIO = 'footage/Audio_WIP13_1.m4a';
 const url = process.env.NEXT_PUBLIC_URL_SITE;
 
 export default async (req, res) => {
-  const { userId, nameFilePhoto, pathFinalPhoto, character, faceId } = JSON.parse(req.body);
+  const { userId, nameFilePhoto, pathFinalPhoto, character, faceId, locale } = JSON.parse(req.body);
 
   try {
     if (faceId) {
@@ -86,11 +86,11 @@ export default async (req, res) => {
       // removeFileSync(removeSubVideos);
       // removeFileSync(dataFinal.fileVideos);
 
-
+      const pathLocale = locale === 'es' ? '/es/' : '/';
       const data = {
         userId,
-        urlShare: `${url}/share-experience/${userId}`, 
-        urlJoin: `${url}/join-experience/${userId}`,
+        urlShare: `${url}${pathLocale}share-experience/${userId}`, 
+        urlJoin: `${url}${pathLocale}join-experience/${userId}`,
         urlPhoto: footage[0],
         urlVideo: footage[1],
         footage,
