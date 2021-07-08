@@ -73,7 +73,7 @@ const Home = () => {
             </Button>
           
             <div className="copyFooter">
-              {t('start.copyFooter1')} {t('start.copyFooter2')} <a href="/term-conditions/tyc.html" id="termsAndConditions" >{t('start.copyFooterLink')}</a>
+              {t('start.copyFooter1')} {t('start.copyFooter2')} <a href="/term-conditions/tyc.html" target="_blank" id="termsAndConditions" >{t('start.copyFooterLink')}</a>
             </div>
           </div>
         </div>

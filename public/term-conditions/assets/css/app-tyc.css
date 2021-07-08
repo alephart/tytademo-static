@@ -1,12 +1,13 @@
 body{
   padding: 0;
   margin: 0;
+  background-image: url(../images/bg-app.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #000;
+  background-position: center top;
 }
 body .terms {
-  background-image: url(../images/bg-app.jpg);
-  background-position: 50%;
-  background-size: cover;
-  background-color: #000;
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -16,6 +17,8 @@ body .terms {
   min-height: 100vh;
   margin: 0;
   padding: 24px;
+  display: block;
+  margin: 0 auto;
 }
 
 .terms .logoToyota {
