@@ -12,7 +12,8 @@ const Layout = ({ children, ...props }) => {
             <div className="notAvailable">
                 <div className="boxItemsNotAvailable">
                     <div className="copyNotAvailable">
-                        <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
+                        <img className="logoToyota desktop" src="/images/logo-toyota.png" alt=""/>
+                        <img className="rotate mobile" src="/images/RotatedYourPhone.png" alt=""/>
                         <h2 className="desktop">
                           {t("desktop")}
                         </h2>
