@@ -1,0 +1,44 @@
+body{
+  padding: 0;
+  margin: 0;
+}
+body .terms {
+  background-image: url(../images/bg-app.jpg);
+  background-position: 50%;
+  background-size: cover;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-family: JoyrideEx;
+  max-width: 430px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px;
+}
+
+.terms .logoToyota {
+  max-width: 240px;
+  display: block;
+  margin: 5% auto;
+}
+
+.copyThanks {
+  margin: 20px auto;
+  font-size: 22px;
+  text-align: left;
+}
+.copyThanks .copyLunay {
+  font-size: 15px;
+  font-family: JoyrideEx;
+  margin: 0 auto 10px;
+  text-transform: lowercase;
+  line-height: 20px;
+}
+.terms .textTerms {
+  margin: 20px auto;
+  display: block;
+  font-size: 14px;
+  font-family: ToyotaRegular;
+}

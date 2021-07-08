@@ -74,7 +74,7 @@ const Home = () => {
             </Button>
           
             <div className="copyFooter">
-              {t('start.copyFooter1')} {t('start.copyFooter2')} <a id="termsAndConditions" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
+              {t('start.copyFooter1')} {t('start.copyFooter2')} <a href="/landing-tyc" id="termsAndConditions" >{t('start.copyFooterLink')}</a>
             </div>
             <Rules dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
           </div>
