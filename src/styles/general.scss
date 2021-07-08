@@ -1220,6 +1220,35 @@ body {
 					max-width: 287px;
 					margin: 0 auto;
 					display: block;
+					&.desktop
+					{
+						@include desktopMax
+						{
+							display: block;
+						}
+						@include tabletMax
+						{
+							display: none;
+						}
+					}
+				}
+				.rotate
+				{
+					width: 100%;
+					max-width: 100px;
+					margin: 0 auto;
+					display: block;
+					&.mobile
+					{
+						@include desktopMax
+						{
+							display: none;
+						}
+						@include tabletMax
+						{
+							display: block;
+						}
+					}
 				}
 				h2
 				{	
@@ -1463,6 +1492,8 @@ body .landscape
 			@include tabletMax
 			{
 				display: block;
+				font-size: 30px;
+				width: 400px;
 			}
 		}
 	}
