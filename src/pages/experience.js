@@ -6,7 +6,6 @@ import { useLocation } from '@/components/hooks';
 import { geolocationDb } from '@/utils/geolocationDB';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import { 
-  CharacterChoose,
   PhotoTake,
   PictureConfirm,
   RegisterInfo,
@@ -14,21 +13,18 @@ import {
 } from '@/components/FlowExperience';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TytaProgress } from '@/components/Anims';
-import { AnimatePresence } from "framer-motion";
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Experience = ({ userEmail }) => {
   const { loading, location, error } = useLocation(geolocationDb(geoDbKey));
-  const [process, setProcess] = useState(PROCESS_ENUM.character);
+  const [process, setProcess] = useState(null);
   const [progress, setProgress] = useState(0);
   const [character, setCharacter] = useState(null);
   const [facingMode, setFacingMode] = useState('user');
   const [imgSrc, setImgSrc] = useState(null);
   const [data, setData] = useState(null);
   const [swap, setSwap] = useState(null);
-
-  const [message, setMessage] = useState('');
 
   const router = useRouter();
   const locale = router.locale;
@@ -41,15 +37,22 @@ const Experience = ({ userEmail }) => {
     data, setData,
     swap, setSwap,
     progress, setProgress,
-    setMessage,
     locale,
   };
 
   useEffect(() => {
+    const typeCharacter = localStorage.getItem('character');
+
+    if(typeCharacter === undefined || typeCharacter === 'null') {
+      router.push('/select-character');
+    } else {
+      setCharacter(localStorage.getItem('character'));
+      setProcess(PROCESS_ENUM.photoTake);
+    }
+  }, []);
+
+  useEffect(() => {
     switch (process) {
-      case PROCESS_ENUM.character:
-        setProgress(20);
-        break;
       case PROCESS_ENUM.photoTake:
         setProgress(40);
         break;
@@ -63,8 +66,8 @@ const Experience = ({ userEmail }) => {
         setProgress(100);
         break;
         
-        default:
-        setProgress(10);
+      default:
+        setProgress(20);
         break;
     }
   }, [process]);
@@ -78,8 +81,6 @@ const Experience = ({ userEmail }) => {
   if(loading) {
     return (<></>);
   }
-
-  console.log(location);
 
   let noAvaliable;
 
@@ -108,12 +109,6 @@ const Experience = ({ userEmail }) => {
 
         <TytaProgress progress={progress}/>
 
-        {process === PROCESS_ENUM.character && (
-          <AnimatePresence>
-            <CharacterChoose />
-          </AnimatePresence>
-        )}
-
         {process === PROCESS_ENUM.photoTake && (
           <PhotoTake />
         )}
@@ -130,9 +125,6 @@ const Experience = ({ userEmail }) => {
           <ShareExperience />
         )}
 
-        {message && (
-          <div className='zoneMessage'><p>{message}</p></div>
-        )}
       </ExperienceContext.Provider>
 
     </Layout>

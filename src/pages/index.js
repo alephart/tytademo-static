@@ -51,7 +51,7 @@ const Home = () => {
   const handleAdvance = () => {
     setActive(!isActive);
     setTimeout(() => {
-      router.push('/experience');
+      router.push('/select-character');
     }, 1200);
   };
 
