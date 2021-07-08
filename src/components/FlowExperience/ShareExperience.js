@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import DialogTyta from '@/components/DialogsTyta';
 import { useTranslation } from 'next-i18next';
 import { ExperienceContext } from '@/components/Context';
@@ -13,12 +13,14 @@ const ShareExperience = () => {
   const [download, setDownload] = useState(false);
   const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
 
+  useEffect(() => {
+    localStorage.setItem('character', null);
+  }, []);
+
   console.log('swap into ShareExperience', swap);
   
-
   return (
     <>
-    
     <div className='sharedExperience'>
       <img className='logoToyota' src='/images/logo-toyota.png' alt='' />
 
