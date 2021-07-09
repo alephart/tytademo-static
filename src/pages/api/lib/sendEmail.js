@@ -4,7 +4,6 @@ const Email = require('email-templates');
 
 // Here change __dirname by process.cwd(). __dirname return / ()
 const pathToTemplates = path.join(process.cwd(), 'src/pages/api/email/templates');
-//const pathToTemplates2 = path.join(__dirname, '../email/templates');
 
 const sendEmail = async (config, options) => {
   const { host, port, user, pass, from, preview = false, send = true } = config;
