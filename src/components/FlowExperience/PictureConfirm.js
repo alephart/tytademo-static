@@ -76,9 +76,9 @@ const PictureConfirm = () => {
             __html: "<div class='bgPhotoDegrade'></div><div class='boxAnimation'><iframe src='/face/new-vectors.html' /></div>",
           }}
         />
+        <div className='copyLike'>{!isLoading ? t("pictureConfirm.copyLike") : ' '}</div>
         {!isLoading ? (
           <>
-            <div className='copyLike'>{t("pictureConfirm.copyLike")}</div>
             {deepFake && (
               <Button
                 id='btnLikePhoto'
