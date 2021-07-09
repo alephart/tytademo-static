@@ -1312,7 +1312,7 @@ body {
 				hr.desktop
 				{
 					width: 287px;
-					margin: 40px auto;
+					margin: -20px auto 50px;
 					@include desktopMax
 					{
 						display: block;
