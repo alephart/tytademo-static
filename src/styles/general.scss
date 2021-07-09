@@ -789,6 +789,10 @@ body {
 			top: -50vh;
 			animation: fadeInTopform 0.3s ease-in-out 1 forwards;
 			animation-delay: 1s;
+			&.gif
+			{
+				width: 320px;
+			}
 		}
 		.react-player
 		{
