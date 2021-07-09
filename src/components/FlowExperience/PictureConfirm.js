@@ -16,7 +16,8 @@ const PictureConfirm = () => {
   const [deepFake, setDeepFake] = useState(true);
   const [help, setHelp] = useState(false);
 
-  const motorola = mobileVendor.toLowerCase() === 'motorola' && mobileModel === 'one vision';
+  const motorola = mobileVendor.toLowerCase() === 'motorola' && mobileModel.toLowerCase() === 'one vision';
+  console.log('motorola', motorola);
 
   const sendPicture = async (payload) => {
     try {
