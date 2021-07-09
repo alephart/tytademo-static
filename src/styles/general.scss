@@ -1239,7 +1239,7 @@ body {
 		background-size: cover;
 		@include tablet
 		{
-			min-height: 120%;
+			min-height: 100%;
 			height: auto;
 			padding: 5% 0 10%;
 		}
@@ -1295,7 +1295,7 @@ body {
 				{
 					width: 100%;
 					max-width: 287px;
-					margin: 0 auto;
+					margin: 0 auto 70px;
 					display: block;
 					&.desktop
 					{
@@ -1418,6 +1418,13 @@ body {
 				{
 					font-size: 13px;
 					max-width: 470px;	
+				}
+				p
+				{
+					@include tabletMax
+					{
+						max-width: 375px;	
+					}
 				}
 				a
 				{
@@ -1650,7 +1657,7 @@ body .landscape
 			{
 				display: block;
 				font-size: 30px;
-				width: 400px;
+				max-width: 310px;
 				font-weight: 100;
 			}
 		}
@@ -1659,7 +1666,8 @@ body .landscape
 	{
 		h2.mobile
 		{
-			font-size: 13px;
+			font-size: 15px;
+			line-height: 24px;
 		}
 		@include desktopMax
 		{

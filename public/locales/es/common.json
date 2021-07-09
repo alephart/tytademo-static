@@ -35,6 +35,8 @@
     "VideoLoading.timePercentage": "Carga de video",
     "notAvailable.copyNotAvailable": "LO SENTIMOS, ESTA EXPERIENCIA NO ESTÁ DISPONIBLE EN TU PAÍS.",
     "notAvailable.copyNotAvailableParagrah": "Más información sobre el nuevo Corolla Apex",
+    "notAvailable.link": "www.toyota.com/espanol/corolla/",
+    "notAvailable.href": "https://www.toyota.com/espanol/corolla/",
     "alertDescription.title": "INTENTA OTRA VEZ",
     "alertDescription.text": "Recuerda",
     "alertDescription.item1": "Tu cara debe estar centrada",
