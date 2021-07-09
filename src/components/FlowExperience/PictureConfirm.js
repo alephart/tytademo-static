@@ -5,14 +5,19 @@ import { ExperienceContext } from '@/components/Context';
 import { useTranslation } from 'next-i18next';
 import { Help } from '@/components/DialogsTyta';
 import { Loading } from '@/components/Anims';
-import { isIOS } from 'react-device-detect';
+import { isIOS, mobileVendor, mobileModel } from 'react-device-detect';
 
 const PictureConfirm = () => {
+  console.log('mobileVendor', mobileVendor);
+  console.log('mobileModel', mobileModel);
   const { t } = useTranslation('common');
   const { imgSrc, character, setData, process, setProcess } = useContext(ExperienceContext);
   const [isLoading, setIsLoading] = useState(false);
   const [deepFake, setDeepFake] = useState(true);
   const [help, setHelp] = useState(false);
+
+  const motorola = mobileVendor.toLowerCase() === 'motorola' && mobileModel.toLowerCase() === 'one vision';
+  console.log('motorola', motorola);
 
   const sendPicture = async (payload) => {
     try {
@@ -60,7 +65,7 @@ const PictureConfirm = () => {
   return (
     <>
       <div className='likePicture'>
-        <div className={isIOS ? 'ios boxPhoto' : 'boxPhoto'}>
+        <div className={isIOS ? 'ios boxPhoto' : motorola ? 'motorola boxPhoto': 'boxPhoto'}>
           <img src={imgSrc} />
         </div>
         <div className='paddingCanvas' /> 
