@@ -25,11 +25,11 @@ export default async (req, res) => {
       //console.log('Videos List Character', videosListCharacter);
     
       const swapVideos = await dataSwapVideos(videosListCharacter);
-      console.log('Data Swap Videos', swapVideos);
+      //console.log('Data Swap Videos', swapVideos);
     
       // 4. Download videos, save in temp
       const dowloadVideos = await downloadSwapVideos(swapVideos);
-      console.log('Dowload Videos', dowloadVideos);
+      //console.log('Dowload Videos', dowloadVideos);
       
       // 4.1 modify video the TBN to 90K - please if not necessary, do not use!
       const adjustVideos = await adjustTbnVideos(dowloadVideos, 90000);
@@ -95,8 +95,6 @@ export default async (req, res) => {
         urlVideo: footage[1],
         footage,
       };
-
-      console.log('data photo_swap', data);
       
       res.status(200).send({ success: true, data });
     
