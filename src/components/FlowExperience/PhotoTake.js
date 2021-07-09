@@ -5,11 +5,8 @@ import ButtonTake from '@/components/ButtonTake';
 import { PROCESS_ENUM, MESSAGE_DIALOG } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
 import { Help } from '@/components/DialogsTyta';
-import { mobileVendor, mobileModel } from 'react-device-detect';
 
 const PhotoTake = () => {
-  console.log('mobileVendor', mobileVendor);
-  console.log('mobileModel', mobileModel);
   const { facingMode, setFacingMode, setImgSrc, setProcess } = useContext(ExperienceContext);
   const [help, setHelp] = useState(false);
   const webcamRef = useRef(null);

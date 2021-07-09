@@ -16,6 +16,8 @@ const PictureConfirm = () => {
   const [deepFake, setDeepFake] = useState(true);
   const [help, setHelp] = useState(false);
 
+  const motorola = mobileVendor.toLowerCase() === 'motorola' && mobileModel === 'one vision';
+
   const sendPicture = async (payload) => {
     try {
       const response = await fetch('/api/photo_valid', {
@@ -62,7 +64,7 @@ const PictureConfirm = () => {
   return (
     <>
       <div className='likePicture'>
-        <div className={isIOS ? 'ios boxPhoto' : 'boxPhoto'}>
+        <div className={isIOS ? 'ios boxPhoto' : motorola ? 'motorola boxPhoto': 'boxPhoto'}>
           <img src={imgSrc} />
         </div>
         <div className='paddingCanvas' /> 
