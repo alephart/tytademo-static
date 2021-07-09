@@ -18,7 +18,7 @@ const NotAvailable = () => {
                   </h2>
                   <p>
                     {t("notAvailable.copyNotAvailableParagrah")}:{' '}
-                    <a href='https://www.toyota.com/corolla/'>www.toyota.com/corolla</a>
+                    <a href={t("notAvailable.href")}>{t("notAvailable.link")}</a>
                   </p>
               </div>
           </div>
