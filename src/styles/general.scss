@@ -113,6 +113,11 @@ html, body {
     to {opacity: 1; bottom: 40px;}
 }
 
+@keyframes fadeInBottom2 {
+    from {opacity: 0; bottom: -200px; }
+    to {opacity: 1; bottom: 0px;}
+}
+
 @keyframes fadeOutRight2 {
     from {opacity: 1; left: 0%; }
     to {opacity: 0; left: 50%;}
@@ -131,6 +136,15 @@ html, body {
 @keyframes fadeOutBottom2 {
     from {opacity: 1; bottom: 40px; }
     to {opacity: 0; bottom: -200px;}
+}
+
+@keyframes fadeInTopform {
+    from {opacity: 0; top: -50vh; }
+    to {opacity: 1; top: 0;}
+}
+@keyframes fadeInRightform {
+    from {opacity: 0; right: -100%; }
+    to {opacity: 1; right: 0;}
 }
 
 
@@ -549,6 +563,10 @@ body {
 			{
 				width: 223px;
 				margin: 50px auto;
+				position: relative;
+				top: -50vh;
+				animation: fadeInTopform 0.3s ease-in-out 1 forwards;
+				animation-delay: 1s;
 			}
 		}
 		.copyThanks
@@ -556,6 +574,11 @@ body {
 			margin: 20px auto;
 			font-size: 22px;
 			text-align: center;
+			opacity: 0;
+			right: -50%;
+			position: relative;
+			animation: fadeInRight 0.3s ease-in-out 1 forwards;
+			animation-delay: 1.5s;
 			.copyLunay
 			{
 				font-size: 15px;
@@ -594,6 +617,11 @@ body {
 			text-align: center;
 			margin: 20px auto 0;
 			text-transform: lowercase;
+			bottom: -200px;
+			opacity: 0;
+			position: relative;
+			animation: fadeInBottom2 0.3s ease-in-out 1 forwards;
+			animation-delay: 1.5s;
 		}
 		.iconSocial
 		{
@@ -648,6 +676,11 @@ body {
 			line-height: 20px;
 			text-transform: lowercase;
 			width: 300px;
+			opacity: 0;
+			right: -50%;
+			position: relative;
+			animation: fadeInRight 0.3s ease-in-out 1 forwards;
+			animation-delay: 1.5s;
 			span
 			{
 				font-size: 16px;
@@ -674,7 +707,19 @@ body {
 		}
 		.buttonJoin
 		{
-			margin-bottom: 60px;
+			margin-bottom: 10px;
+			bottom: -200px;
+			position: relative;
+			animation: fadeInBottom2 0.3s ease-in-out 1 forwards;
+			animation-delay: 1s;
+		}
+		.react-player
+		{
+			left: -50%;
+			opacity: 0;
+			position: relative;
+			animation: fadeInLeft 0.3s ease-in-out 1 forwards;
+			animation-delay: 1.5s;
 		}
 	}
 	.buttonPhoto
@@ -740,6 +785,18 @@ body {
 		{
 			width: 190px;
 			margin: 33px auto 35px;
+			position: relative;
+			top: -50vh;
+			animation: fadeInTopform 0.3s ease-in-out 1 forwards;
+			animation-delay: 1s;
+		}
+		.react-player
+		{
+			left: -50%;
+			opacity: 0;
+			position: relative;
+			animation: fadeInLeft 0.3s ease-in-out 1 forwards;
+			animation-delay: 1.5s;
 		}
 		.copyFooter
 		{
@@ -767,6 +824,7 @@ body {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			z-index: 1;
 
 			.boxPercentage
 			{
@@ -835,7 +893,13 @@ body {
 		form
 		{
 			width: 315px;
-			margin: 0 auto 20px;;
+			margin: 0 auto 20px;
+			z-index: 0;
+			position: relative;
+			right: -100%;
+			opacity: 0;
+			animation: fadeInRightform 0.5s ease-in-out 1 forwards;
+			animation-delay: 1.5s;
 			@include mobileMin
 			{
 				width: 290px;
@@ -850,6 +914,7 @@ body {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			z-index: 1;
 			@include mobile
 			{
 				height: 213px;
@@ -924,6 +989,12 @@ body {
 			text-align: center;
 			width: 100%;
 			text-transform: lowercase;
+			position: relative;
+			z-index: 0;
+			top: -50vh;
+			opacity: 0;
+			animation: fadeInTopform 0.5s ease-in-out 1 forwards;
+			animation-delay: 1s;
 		}
 		.copySubtitleForm
 		{
@@ -932,6 +1003,12 @@ body {
 			text-align: center;
 			width: 100%;
 			font-family: 'ToyotaRegular';
+			z-index: 0;
+			position: relative;
+			top: -50vh;
+			opacity: 0;
+			animation: fadeInTopform 0.5s ease-in-out 1 forwards;
+			animation-delay: 1s;
 		}
 		.MuiInputBase-root
 		{
@@ -1162,7 +1239,7 @@ body {
 		background-size: cover;
 		@include tablet
 		{
-			min-height: 120%;
+			min-height: 100%;
 			height: auto;
 			padding: 5% 0 10%;
 		}
@@ -1218,7 +1295,7 @@ body {
 				{
 					width: 100%;
 					max-width: 287px;
-					margin: 0 auto;
+					margin: 0 auto 70px;
 					display: block;
 					&.desktop
 					{
@@ -1232,6 +1309,70 @@ body {
 						}
 					}
 				}
+				hr.desktop
+				{
+					width: 287px;
+					margin: 40px auto;
+					@include desktopMax
+					{
+						display: block;
+					}
+					@include tabletMax
+					{
+						display: none;
+					}
+				}
+				p.desktop
+				{
+					width: 280px;
+					margin: 0px auto 20px;
+					@include desktopMax
+					{
+						display: block;
+					}
+					@include tabletMax
+					{
+						display: none;
+					}
+				}
+				.QR
+				{
+					width: 200px;
+					margin: 0 auto;
+					display: block;
+					@include desktopMax
+					{
+						display: block;
+					}
+					@include tabletMax
+					{
+						display: none;
+					}
+				}
+				a.desktop
+				{
+					width: 287px;
+					display: block;
+					font-size: 12px;
+					text-decoration: none;
+					margin: 15px auto 20px;
+					font-weight: 100;
+					font-family: "ToyotaRegular";
+					&:hover
+					{
+						text-decoration: underline;
+					}
+					@include desktopMax
+					{
+						display: block;
+					}
+					@include tabletMax
+					{
+						display: none;
+					}
+				}
+
+
 				.rotate
 				{
 					width: 100%;
@@ -1277,6 +1418,13 @@ body {
 				{
 					font-size: 13px;
 					max-width: 470px;	
+				}
+				p
+				{
+					@include tabletMax
+					{
+						max-width: 375px;	
+					}
 				}
 				a
 				{
@@ -1472,11 +1620,27 @@ body .landscape
 
 	.notAvailable
 	{
+		h2.desktopNot
+		{
+			@include desktopMax
+			{
+				display: block;
+			}
+			@include tabletMax
+			{
+				display: none;
+			}
+		}
 		h2.desktop
 		{
 			@include desktopMax
 			{
 				display: block;
+				margin-top: 0;
+				width: 280px;
+				line-height: 20px;
+				font-size: 19px;
+				font-weight: 300;
 			}
 			@include tabletMax
 			{
@@ -1493,12 +1657,18 @@ body .landscape
 			{
 				display: block;
 				font-size: 30px;
-				width: 400px;
+				max-width: 310px;
+				font-weight: 100;
 			}
 		}
 	}
 	&.not
 	{
+		h2.mobile
+		{
+			font-size: 15px;
+			line-height: 24px;
+		}
 		@include desktopMax
 		{
 			display: block;
@@ -1525,10 +1695,14 @@ body .landscape
 {
 	width: 100% !important;
 }
+.motorola.boxPhoto
+{
+	width: 600px !important;
+}
 .registerVideoBG
 {
 	position: absolute;
-	z-index: 0;
+	z-index: 1;
 }
 .dialogs
 {

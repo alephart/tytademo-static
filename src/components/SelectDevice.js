@@ -23,16 +23,9 @@ const SelectDevice = (props) => {
   },
   [devices]);
 
-  useEffect(() => {
-    console.log(mode);
-  }, [mode]);
-
   const changeCamera = () => {
-    console.log({devices});
-    console.log({mode});
     //setDeviceId(deviceId);
     //onCamera(device, mode);
-    console.log(cantCameras);
     setMode(mode==='user' ? 'environment' : 'user');
   }
 

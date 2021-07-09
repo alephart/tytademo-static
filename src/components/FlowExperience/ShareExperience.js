@@ -1,5 +1,4 @@
-import { useState, useContext } from 'react';
-import DialogTyta from '@/components/DialogsTyta';
+import { useState, useContext, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { ExperienceContext } from '@/components/Context';
 import Share from '@/components/Share';
@@ -9,16 +8,15 @@ import { isMobile } from 'react-device-detect';
 const ShareExperience = () => {
   const { t } = useTranslation('common');
   const { setProcess, swap } = useContext(ExperienceContext);
-  const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [download, setDownload] = useState(false);
   const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
 
-  console.log('swap into ShareExperience', swap);
+  useEffect(() => {
+    localStorage.setItem('character', null);
+  }, []);
   
-
   return (
     <>
-    
     <div className='sharedExperience'>
       <img className='logoToyota' src='/images/logo-toyota.png' alt='' />
 
@@ -49,12 +47,6 @@ const ShareExperience = () => {
             {t("shareExperience.buttonThanks")}
         </a>
       )}
-
-      {/* <div className="copyFooter">
-          {t('shareExperience.copyFooter1')} <a onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('shareExperience.copyFooterLink')}</a> {t('shareExperience.copyFooter2')}
-      </div>
-      <DialogTyta dialog='policies' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} /> */}
-
     </div>
     <div className="indexDesktop">
         <div className="boxItemsDesktop">

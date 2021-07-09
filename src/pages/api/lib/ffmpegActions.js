@@ -1,5 +1,3 @@
-const process = require('child_process').exec;
-const ffmpegConcat = require('ffmpeg-concat');
 const ffmpeg = require('fluent-ffmpeg');
 
 /**

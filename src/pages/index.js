@@ -8,7 +8,6 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useLocation } from '@/components/hooks';
 import { geolocationDb } from '@/utils/geolocationDB';
-import { isMobile } from 'react-device-detect';
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
@@ -18,14 +17,10 @@ const Home = () => {
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [isActive, setActive] = useState(false);
   const router = useRouter();
-  
-  console.log('isMobile', isMobile);
-  
+    
   if(loading) {
     return (<></>);
   }
-
-  console.log(location);
 
   let noAvaliable;
 

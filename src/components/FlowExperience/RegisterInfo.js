@@ -57,8 +57,6 @@ const RegisterInfo = ({ userEmail }) => {
   // effect to init DOM
   useEffect(() => {
     const initSwap = async (payload) => {
-      console.log("payload in initSwap", payload);
-
       try {
         const response = await fetch('/api/photo_swap', {
           method: 'POST',
@@ -70,7 +68,7 @@ const RegisterInfo = ({ userEmail }) => {
         if(json.success) {
           setSwap(json.data);
         } else {
-          console.log(json);
+          //
         }
         
       } catch (error) {
@@ -79,14 +77,12 @@ const RegisterInfo = ({ userEmail }) => {
     };
     
     if(data) {
-      initSwap(data);
+      initSwap({ ...data, locale });
     }
   }, []);
 
   // effect when swap change state
   useEffect(() => {
-    console.log('swap data', swap);
-
     if(swap) {
       setDataRegister({
         ...dataRegister,
@@ -98,8 +94,6 @@ const RegisterInfo = ({ userEmail }) => {
   // effect when dataRegister change state
   useEffect(() => {
     const sendData = async () => {
-      console.log('data final: ', dataRegister);
-
       const response = await fetch('api/set_data', {
         method: 'POST',
         headers: {
@@ -110,16 +104,12 @@ const RegisterInfo = ({ userEmail }) => {
 
       const json = await response.json();
 
-      // console.log('status', response.status);
-      // console.log('response json:::', json);
-
       if(response.status !== 200) {
         // server error 
       }
       
       if(json.success) {
         setCookie(dataRegister.email);
-        //console.log('json Body!!!', json.dataBody);
 
         // when save json, then change to share
         setProcess(PROCESS_ENUM.share);

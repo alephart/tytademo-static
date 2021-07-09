@@ -35,17 +35,20 @@
     "VideoLoading.timePercentage": "Video uploading",
     "notAvailable.copyNotAvailable": "SORRY, THIS EXPERIENCE IS NOT AVAILABLE IN YOUR COUNTRY.",
     "notAvailable.copyNotAvailableParagrah": "Learn more about the New Corolla Apex",
+    "notAvailable.link": "www.toyota.com/corolla/",
+    "notAvailable.href": "https://www.toyota.com/corolla/",
     "alertDescription.title": "TRY AGAIN",
     "alertDescription.text": "Remember:",
     "alertDescription.item1": "Your face should be centered",
     "alertDescription.item2": "Avoid smiling and other gestures",
     "alertDescription.item3": "Only one person in the photo ",
-    "alertDescription.item4": "Asegúrate que tu car esté visible",
+    "alertDescription.item4": "Make sure your face is visible",
     "alertDescription.userExist": "This email address is already registered.",
     "alertDescription.button": "OK",
     "back.button": "BACK",
     "landscape": "PLEASE ROTATE YOUR DEVICE",
-    "desktop": "USE YOUR PHONE TO ACCESS THIS SITE, TAKE A SELFIE AND BE A PART OF LUNAY´S VIDEO.",
+    "desktop": "this is a mobile only experience",
+    "desktop.QR": "Scan the QR Code with your mobile device or enter the URL in your mobile web browser.",
     "meta.tags.title": "Featuring You Lunay X Toyota",
     "meta.tags.description": "Take a selfie to be a part of LUNAY’s video and Corolla Apex",
     "indexDesktop.copyDesktop": "CHECK OUT YOUR FRIEND´S VIDEO AND MAKE YOUR OWN.",
@@ -56,5 +59,4 @@
 	"mailing.btn.watchVideo": "https://devmds.com/toyota/watch-video.png",
 	"mailing.watchYouFullVideo": "On the next link you can watch your full video with Lunay.",
 	"mailing.terms": "EN Donec sed eros sed libero malesuada mollis. Nam mattis molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et ullamcorper lorem. Aliquam ut consectetur urna. Nullam sit amet ullamcorper elit. Nam non risus quis odio varius tincidunt. Maecenas tincidunt, augue in mollis sodales, lacus quam aliquet nunc, et consequat velit est vitae nisl. Fusce aliquet tortor non ex dictum mollis. Vestibulum pulvinar sem a tincidunt euismod."
-
 }

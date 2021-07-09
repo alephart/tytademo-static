@@ -10,7 +10,7 @@ const NAME_TRACK_AUDIO = 'footage/Audio_WIP13_1.m4a';
 const url = process.env.NEXT_PUBLIC_URL_SITE;
 
 export default async (req, res) => {
-  const { userId, nameFilePhoto, pathFinalPhoto, character, faceId } = JSON.parse(req.body);
+  const { userId, nameFilePhoto, pathFinalPhoto, character, faceId, locale } = JSON.parse(req.body);
 
   try {
     if (faceId) {
@@ -25,11 +25,11 @@ export default async (req, res) => {
       //console.log('Videos List Character', videosListCharacter);
     
       const swapVideos = await dataSwapVideos(videosListCharacter);
-      console.log('Data Swap Videos', swapVideos);
+      //console.log('Data Swap Videos', swapVideos);
     
       // 4. Download videos, save in temp
       const dowloadVideos = await downloadSwapVideos(swapVideos);
-      console.log('Dowload Videos', dowloadVideos);
+      //console.log('Dowload Videos', dowloadVideos);
       
       // 4.1 modify video the TBN to 90K - please if not necessary, do not use!
       const adjustVideos = await adjustTbnVideos(dowloadVideos, 90000);
@@ -86,17 +86,15 @@ export default async (req, res) => {
       // removeFileSync(removeSubVideos);
       // removeFileSync(dataFinal.fileVideos);
 
-
+      const pathLocale = locale === 'es' ? '/es/' : '/';
       const data = {
         userId,
-        urlShare: `${url}/share-experience/${userId}`, 
-        urlJoin: `${url}/join-experience/${userId}`,
+        urlShare: `${url}${pathLocale}share-experience/${userId}`, 
+        urlJoin: `${url}${pathLocale}join-experience/${userId}`,
         urlPhoto: footage[0],
         urlVideo: footage[1],
         footage,
       };
-
-      console.log('data photo_swap', data);
       
       res.status(200).send({ success: true, data });
     
