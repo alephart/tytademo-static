@@ -46,7 +46,7 @@ export default async (req, res) => {
 
     // 2. Get cant faces and faceId
     const faces = await detectFacesInAsset(uploadAsseUrlFile, `image/${ext}`);
-    console.log(faces);
+    //console.log(faces);
 
     // Check faces for process
     if(faces.length === 0 || faces.length > 1) {
@@ -68,7 +68,6 @@ export default async (req, res) => {
       };
 
       response = { success: true, data };
-      console.log('photo_valid', response);
       
       res.status(200).send(response);
     }
