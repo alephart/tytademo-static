@@ -65,15 +65,15 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
                 </span>
             </div>
 
-            {TOYOTA_COOKIE_CONSENT && (
-              <Button 
+              <Button
+                disabled={true}
                 id='btnStartExperience'
                 onClick={handleAdvance}
                 className="buttonStart"
                 variant="contained">
                 {t('start.buttonStart')}
               </Button>
-            )}
+          
           
             <div className="copyFooter">
               {t('start.copyFooter1')} {t('start.copyFooter2')} <a id="termsAndConditions" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
