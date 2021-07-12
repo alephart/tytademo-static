@@ -2,7 +2,7 @@ const { i18n } = require("./next-i18next.config");
 module.exports = {
   i18n,
   images: {
-    domains: ["devmds.com"],
+    domains: ["lunayxtoyota.com"],
   },
   reactStrictMode: true,
   eslint: {
