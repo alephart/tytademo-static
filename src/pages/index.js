@@ -7,22 +7,17 @@ import Button from '@material-ui/core/Button';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useLocation } from '@/components/hooks';
-import Checkbox from '@material-ui/core/Checkbox';
+import CookieConsent from '@/components/CookieConsent';
 import { geolocationDb } from '@/utils/geolocationDB';
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
-const Home = () => {
+const Home = ({TOYOTA_COOKIE_CONSENT}) => {
   const { loading, location, error } = useLocation(geolocationDb(geoDbKey));
   const { t } = useTranslation('common');
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [isActive, setActive] = useState(false);
   const router = useRouter();
-  const [checked, setChecked] = useState(true);
-
-  const handleChangeCheck = (event) => {
-    setChecked(event.target.checked);
-  };
     
   if(loading) {
     return (<></>);
@@ -70,9 +65,15 @@ const Home = () => {
                 </span>
             </div>
 
-            <Button id='btnStartExperience' onClick={handleAdvance} className="buttonStart" variant="contained">
-              {t('start.buttonStart')}
-            </Button>
+            {TOYOTA_COOKIE_CONSENT && (
+              <Button 
+                id='btnStartExperience'
+                onClick={handleAdvance}
+                className="buttonStart"
+                variant="contained">
+                {t('start.buttonStart')}
+              </Button>
+            )}
           
             <div className="copyFooter">
               {t('start.copyFooter1')} {t('start.copyFooter2')} <a id="termsAndConditions" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
@@ -81,41 +82,16 @@ const Home = () => {
           </div>
         </div>
 
-
-        <div id="cookieconcent">
-          <p>
-            {t('cookie.paragraph1')}
-            <a href={t('cookie.link')} target="_blank" rel="noopener noreferrer"> {t('cookie.linkText')}</a>
-            {t('cookie.paragragh2')}
-          </p>
-          <div className="textCheck">
-              <Checkbox
-                  checked={checked}
-                  onChange={handleChangeCheck}
-                  inputProps={{ 'aria-label': 'primary checkbox' }}
-              /> <div className="copyCheckbox">{t('cookie.Check1')}</div> 
-          </div>
-          <div className="textCheck">
-              <Checkbox
-                  checked={checked}
-                  onChange={handleChangeCheck}
-                  inputProps={{ 'aria-label': 'primary checkbox' }}
-              /><div className="copyCheckbox"> {t('cookie.Check2')} <a href={t('cookie.Check2Link')} target="_blank">{t('cookie.Check2LinkText')}</a></div>
-          </div>
-          <center>
-            <Button className="buttonCookie" disabled={true} variant='contained'>{t('cookie.button')}</Button>
-          </center>
-        </div>
-
-
+        {!TOYOTA_COOKIE_CONSENT && <CookieConsent />}
     </Layout>
   )
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
+export const getServerSideProps = async ({ req, locale }) => {
+  return { props: { 
     ...await serverSideTranslations(locale, ['common']),
-  },
-})
+    TOYOTA_COOKIE_CONSENT: req.cookies.TOYOTA_COOKIE_CONSENT || null,
+  }, }
+};
 
 export default Home;

@@ -1778,7 +1778,7 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
-#cookieconcent {
+#cookieConcent {
 	position: absolute;
 	width: 100%;
 	max-width: 430px;
@@ -1795,47 +1795,47 @@ input[type=number] {
 	animation-delay: 5s;
 	font-family: "ToyotaRegular";
 }
-#cookieconcent .disable
+#cookieConcent .cookieDisabled
 {
 	animation: fadeInTop3 0.5s ease-in-out 1 forwards;
 	animation-delay: 0.5s;
 }
-#cookieconcent h1 {
+#cookieConcent h1 {
 	margin: 0;
 }
-#cookieconcent p {
+#cookieConcent p {
 	font-size: 13px;
 	line-height: 16px;
 }
-#cookieconcent a
+#cookieConcent a
 {
 	text-decoration: underline;
 }
-#cookieconcent div {
+#cookieConcent div {
 	margin: 0.2em;
 }
-#cookieconcent button {
+#cookieConcent button {
 	padding: 0.5em 1em;
 	border: Solid 1px black;
 }
-#cookieconcent center {
+#cookieConcent center {
 	margin-top: 1em;
 }
-#cookieconcent input {
+#cookieConcent input {
 	width: 1.5em;
 	background: red;
 	vertical-align: middle;
 }
-#cookieconcent .MuiCheckbox-colorSecondary.Mui-checked .MuiSvgIcon-root
+#cookieConcent .MuiCheckbox-colorSecondary.Mui-checked .MuiSvgIcon-root
 {
 	color: #5A2CFB;
 }
-#cookieconcent .textCheck
+#cookieConcent .textCheck
 {
 	font-size: 13px;
 	overflow: hidden;
 }
-#cookieconcent .textCheck .copyCheckbox
+#cookieConcent .textCheck .copyCheckbox
 {
 	width: calc(100% - 60px);
 	float: right;
