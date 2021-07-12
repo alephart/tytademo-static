@@ -1807,11 +1807,12 @@ input[type=number] {
 	font-family: sans-serif;
 	background: #000;
 	animation: fadeInBottom3 0.5s ease-in-out 1 forwards;
-	animation-delay: 5s;
+	animation-delay: 4s;
 	font-family: "ToyotaRegular";
 }
-#cookieConcent .cookieDisabled
+#cookieConcent.cookieDisabled
 {
+	bottom: 0;
 	animation: fadeInTop3 0.5s ease-in-out 1 forwards;
 	animation-delay: 0.5s;
 }
@@ -1840,6 +1841,10 @@ input[type=number] {
 	width: 1.5em;
 	background: red;
 	vertical-align: middle;
+}
+#cookieConcent .MuiSvgIcon-root
+{
+	border: 2px solid #544e5c;
 }
 #cookieConcent .MuiCheckbox-colorSecondary.Mui-checked .MuiSvgIcon-root
 {

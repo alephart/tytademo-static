@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '@/components/layouts/StartPage';
 import { Rules } from '@/components/DialogsTyta';
@@ -16,9 +16,14 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
   const { loading, location, error } = useLocation(geolocationDb(geoDbKey));
   const { t } = useTranslation('common');
   const [isOpenDialog, setIsOpenDialog] = useState(false);
+  const [disabledExperience, setDisabledExperience] = useState(true);
   const [isActive, setActive] = useState(false);
   const router = useRouter();
-    
+  
+  useEffect(() => {
+    setDisabledExperience(!!TOYOTA_COOKIE_CONSENT ? false : true);
+  }, []);
+
   if(loading) {
     return (<></>);
   }
@@ -65,15 +70,15 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
                 </span>
             </div>
 
-            {TOYOTA_COOKIE_CONSENT && (
-              <Button 
-                id='btnStartExperience'
+              <Button
+                disabled={disabledExperience}
+                id='btndisabledExperience'
                 onClick={handleAdvance}
                 className="buttonStart"
                 variant="contained">
                 {t('start.buttonStart')}
               </Button>
-            )}
+          
           
             <div className="copyFooter">
               {t('start.copyFooter1')} {t('start.copyFooter2')} <a id="termsAndConditions" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
@@ -82,11 +87,12 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
           </div>
         </div>
 
-        {!TOYOTA_COOKIE_CONSENT && <CookieConsent />}
+        {!TOYOTA_COOKIE_CONSENT && <CookieConsent setDisabledExperience={setDisabledExperience} />}
     </Layout>
   )
 }
 
+// SERVER
 export const getServerSideProps = async ({ req, locale }) => {
   return { props: { 
     ...await serverSideTranslations(locale, ['common']),
