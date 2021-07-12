@@ -80,30 +80,34 @@ const Home = () => {
             <Rules dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
           </div>
         </div>
+
+
         <div id="cookieconcent">
           <p>
-            We use the same configuration as Parcel to bundle this sandbox, you can
-            find more info about Parcel
-            <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
+            {t('cookie.paragraph1')}
+            <a href={t('cookie.link')} target="_blank" rel="noopener noreferrer"> {t('cookie.linkText')}</a>
+            {t('cookie.paragragh2')}
           </p>
           <div className="textCheck">
               <Checkbox
                   checked={checked}
                   onChange={handleChangeCheck}
                   inputProps={{ 'aria-label': 'primary checkbox' }}
-              /> Aasdfasdfdasdfd <a href="#">terminos</a>
+              /> <div className="copyCheckbox">{t('cookie.Check1')}</div> 
           </div>
           <div className="textCheck">
               <Checkbox
                   checked={checked}
                   onChange={handleChangeCheck}
                   inputProps={{ 'aria-label': 'primary checkbox' }}
-              /> Aasdfasdfdasdfd <a href="#">terminos</a>
+              /><div className="copyCheckbox"> {t('cookie.Check2')} <a href={t('cookie.Check2Link')} target="_blank">{t('cookie.Check2LinkText')}</a></div>
           </div>
           <center>
-            <Button className="buttonCookie" disabled={true} variant='contained'>Accept</Button>
+            <Button className="buttonCookie" disabled={true} variant='contained'>{t('cookie.button')}</Button>
           </center>
         </div>
+
+
     </Layout>
   )
 }
