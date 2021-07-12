@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useLocation } from '@/components/hooks';
+import Checkbox from '@material-ui/core/Checkbox';
 import { geolocationDb } from '@/utils/geolocationDB';
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
@@ -17,6 +18,11 @@ const Home = () => {
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [isActive, setActive] = useState(false);
   const router = useRouter();
+  const [checked, setChecked] = useState(true);
+
+  const handleChangeCheck = (event) => {
+    setChecked(event.target.checked);
+  };
     
   if(loading) {
     return (<></>);
@@ -73,6 +79,30 @@ const Home = () => {
             </div>
             <Rules dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
           </div>
+        </div>
+        <div id="cookieconcent">
+          <p>
+            We use the same configuration as Parcel to bundle this sandbox, you can
+            find more info about Parcel
+            <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
+          </p>
+          <div className="textCheck">
+              <Checkbox
+                  checked={checked}
+                  onChange={handleChangeCheck}
+                  inputProps={{ 'aria-label': 'primary checkbox' }}
+              /> Aasdfasdfdasdfd <a href="#">terminos</a>
+          </div>
+          <div className="textCheck">
+              <Checkbox
+                  checked={checked}
+                  onChange={handleChangeCheck}
+                  inputProps={{ 'aria-label': 'primary checkbox' }}
+              /> Aasdfasdfdasdfd <a href="#">terminos</a>
+          </div>
+          <center>
+            <Button className="buttonCookie" disabled={true} variant='contained'>Accept</Button>
+          </center>
         </div>
     </Layout>
   )

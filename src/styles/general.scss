@@ -142,9 +142,19 @@ html, body {
     from {opacity: 0; top: -50vh; }
     to {opacity: 1; top: 0;}
 }
+
 @keyframes fadeInRightform {
     from {opacity: 0; right: -100%; }
     to {opacity: 1; right: 0;}
+}
+
+@keyframes fadeInBottom3 {
+    from {opacity: 0; bottom: -200%; }
+    to {opacity: 1; bottom: 0%;}
+}
+@keyframes fadeInTop3 {
+    from {opacity: 1; bottom: 0%; }
+    to {opacity: 0; bottom: -200%;}
 }
 
 
@@ -182,7 +192,8 @@ body {
 	.yesContinue,
 	.againPhoto,
 	.linkVideo,
-	.button-send-form
+	.button-send-form,
+	.buttonCookie
 	{
 		background-color: #5A2DFC ;
 		color: #fff ;
@@ -1424,6 +1435,7 @@ body {
 					@include tabletMax
 					{
 						max-width: 375px;	
+						font-size: 16px;
 					}
 				}
 				a
@@ -1765,4 +1777,61 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+#cookieconcent {
+	position: absolute;
+	width: 100%;
+	max-width: 430px;
+	bottom: -200%;
+	left: 0%;
+	right: 0;
+	margin: 0 auto;
+	border: Solid 1px black;
+	border-bottom: 0;
+	padding: 1em 2em 2em 2em;
+	font-family: sans-serif;
+	background: #000;
+	animation: fadeInBottom3 0.5s ease-in-out 1 forwards;
+	animation-delay: 5s;
+	font-family: "ToyotaRegular";
+}
+#cookieconcent .disable
+{
+	animation: fadeInTop3 0.5s ease-in-out 1 forwards;
+	animation-delay: 0.5s;
+}
+#cookieconcent h1 {
+	margin: 0;
+}
+#cookieconcent p {
+	font-size: 13px;
+	line-height: 16px;
+}
+#cookieconcent div {
+	margin: 0.2em;
+}
+#cookieconcent button {
+	padding: 0.5em 1em;
+	border: Solid 1px black;
+}
+#cookieconcent center {
+	margin-top: 1em;
+}
+#cookieconcent input {
+	width: 1.5em;
+	height: 1.5em;
+	background: red;
+	vertical-align: middle;
+}
+#cookieconcent .MuiCheckbox-colorSecondary.Mui-checked .MuiSvgIcon-root
+{
+	color: #5A2CFB;
+}
+#cookieconcent .textCheck
+{
+	font-size: 13px;
+}
+.buttonCookie
+{
+	width: 250px !important;
 }
