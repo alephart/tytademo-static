@@ -13,7 +13,7 @@ const setCookie = (consent) => {
   });
 };
 
-const CookieConsent = () => {
+const CookieConsent = ({setDisabledExperience}) => {
   const { t } = useTranslation('common');
   const [cookie, setConsent] = useState({
     ofLegalAge: false,
@@ -33,8 +33,9 @@ const CookieConsent = () => {
 
   const handleAcceptCookie = () => {
     if(cookie.ofLegalAge && cookie.termsAndConditions) {
-      setAcceptAllCookies(true);
       setCookie(cookie);
+      setDisabledExperience(false);
+      setAcceptAllCookies(true);
     }
   };
 
