@@ -9,6 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useLocation } from '@/components/hooks';
 import CookieConsent from '@/components/CookieConsent';
 import { geolocationDb } from '@/utils/geolocationDB';
+import { getUA } from 'react-device-detect';
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
@@ -24,6 +25,8 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
     setDisabledExperience(!!TOYOTA_COOKIE_CONSENT ? false : true);
   }, []);
 
+  console.log('getUA', getUA);
+    
   if(loading) {
     return (<></>);
   }
@@ -68,6 +71,7 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
                 <span>
                   {t('start.subCopyStart')}
                 </span>
+              <p>{getUA.includes("Instagram") && getUA}</p>
             </div>
 
               <Button
