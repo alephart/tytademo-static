@@ -1807,6 +1807,10 @@ input[type=number] {
 	font-size: 13px;
 	line-height: 16px;
 }
+#cookieconcent a
+{
+	text-decoration: underline;
+}
 #cookieconcent div {
 	margin: 0.2em;
 }
@@ -1819,7 +1823,6 @@ input[type=number] {
 }
 #cookieconcent input {
 	width: 1.5em;
-	height: 1.5em;
 	background: red;
 	vertical-align: middle;
 }
@@ -1830,6 +1833,14 @@ input[type=number] {
 #cookieconcent .textCheck
 {
 	font-size: 13px;
+	overflow: hidden;
+}
+#cookieconcent .textCheck .copyCheckbox
+{
+	width: calc(100% - 60px);
+	float: right;
+	margin-right: 10px;
+	margin-top: 10px;
 }
 .buttonCookie
 {

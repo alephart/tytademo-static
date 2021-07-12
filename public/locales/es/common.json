@@ -58,5 +58,14 @@
     "mailing.title.youMadeIt": "https://devmds.com/toyota/title-es.png",
     "mailing.btn.watchVideo": "https://devmds.com/toyota/ver-video.png",
     "mailing.watchYouFullVideo": "En el siguiente link puedes ver tu video completo con Lunay.",
-    "mailing.terms": "ES Donec sed eros sed libero malesuada mollis. Nam mattis molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et ullamcorper lorem. Aliquam ut consectetur urna. Nullam sit amet ullamcorper elit. Nam non risus quis odio varius tincidunt. Maecenas tincidunt, augue in mollis sodales, lacus quam aliquet nunc, et consequat velit est vitae nisl. Fusce aliquet tortor non ex dictum mollis. Vestibulum pulvinar sem a tincidunt euismod."  
+    "mailing.terms": "ES Donec sed eros sed libero malesuada mollis. Nam mattis molestie faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et ullamcorper lorem. Aliquam ut consectetur urna. Nullam sit amet ullamcorper elit. Nam non risus quis odio varius tincidunt. Maecenas tincidunt, augue in mollis sodales, lacus quam aliquet nunc, et consequat velit est vitae nisl. Fusce aliquet tortor non ex dictum mollis. Vestibulum pulvinar sem a tincidunt euismod.",
+    "cookie.paragraph1": "Toyota Featuring You utiliza cookies para la funcionalidad y el rendimiento básicos y siempre están habilitadas. Visite Toyota's ",
+    "cookie.linkText": "Política de privacidad",
+    "cookie.link": "https://lunayxtoyota.com/",
+    "cookie.paragragh2": " para informacion adicional.",
+    "cookie.Check1": "Soy mayor de 18 años, residente legal de los EE. UU. Que reside en los 48 estados contiguos de EE. UU. O D.C",
+    "cookie.Check2": "He leído y acepto los ",
+    "cookie.Check2LinkText": "Términos y condiciones",
+    "cookie.Check2Link": "https://lunayxtoyota.com/rules/tyc.html",
+    "cookie.button": "OK"    
 }
