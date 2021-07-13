@@ -10,7 +10,7 @@ const NotAvailable = () => {
           <div className="boxItemsNotAvailable">
               <div className="copyNotAvailable">
                   <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
-                  <h2 className="desktop">
+                  <h2 className="desktopNot">
                     {t("notAvailable.copyNotAvailable")}
                   </h2>
                   <h2 className="mobile">
@@ -18,7 +18,7 @@ const NotAvailable = () => {
                   </h2>
                   <p>
                     {t("notAvailable.copyNotAvailableParagrah")}:{' '}
-                    <a href='https://www.toyota.com/corolla/'>www.toyota.com/corolla</a>
+                    <a href={t("notAvailable.href")}>{t("notAvailable.link")}</a>
                   </p>
               </div>
           </div>

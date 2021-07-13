@@ -22,8 +22,6 @@ const sendMozeus = async (data) => {
     ]
   };
 
-  console.log('Mozeus data', JSON.stringify(dataMozeus));
-
   try {
     const response = await fetch(`${configMozeus.url_api}/${configMozeus.user_id}`, {
       method: 'POST',
@@ -35,7 +33,6 @@ const sendMozeus = async (data) => {
     });
   
     const json = await response.json();
-    console.log('Mozeus check', json);
     return json;
     
   } catch (error) {

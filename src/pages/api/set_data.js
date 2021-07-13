@@ -117,7 +117,7 @@ export default async (req, res) => {
         textTerms,
       };
 
-      console.log(config, options)
+      //console.log(config, options)
       await sendEmail(config, options);
       
       // return

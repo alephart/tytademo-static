@@ -142,9 +142,19 @@ html, body {
     from {opacity: 0; top: -50vh; }
     to {opacity: 1; top: 0;}
 }
+
 @keyframes fadeInRightform {
     from {opacity: 0; right: -100%; }
     to {opacity: 1; right: 0;}
+}
+
+@keyframes fadeInBottom3 {
+    from {opacity: 0; bottom: -200%; }
+    to {opacity: 1; bottom: 0%;}
+}
+@keyframes fadeInTop3 {
+    from {opacity: 1; bottom: 0%; }
+    to {opacity: 0; bottom: -200%;}
 }
 
 
@@ -182,7 +192,8 @@ body {
 	.yesContinue,
 	.againPhoto,
 	.linkVideo,
-	.button-send-form
+	.button-send-form,
+	.buttonCookie
 	{
 		background-color: #5A2DFC ;
 		color: #fff ;
@@ -525,21 +536,36 @@ body {
 		{
 			position: relative;
 			margin: 10px auto 20px;
+			opacity: 0;
+			left: -50%;
+			position: relative;
+			animation: fadeInLeft 0.3s ease-in-out 1 forwards;
+			animation-delay: 1.5s;
 		}
 		.againPhoto
 		{
 			background: transparent;
 			border: 2px solid #fff;
+			opacity: 0;
+			right: -50%;
+			position: relative;
+			animation: fadeInRight 0.3s ease-in-out 1 forwards;
+			animation-delay: 1.5s;
 		}
 		.copyLike
 		{
 			font-size: 15px;
 			width: 320px;
-			margin: 2% auto 20px;
+			margin: 2% auto 17px;
 			text-align: center;
 			text-transform: lowercase;
 			position: relative;
 			z-index: 1;
+			opacity: 0;
+			right: -50%;
+			position: relative;
+			animation: fadeInRight 0.3s ease-in-out 1 forwards;
+			animation-delay: 1.5s;
 		}
 
 		// sharedExperience
@@ -1243,7 +1269,7 @@ body {
 		background-size: cover;
 		@include tablet
 		{
-			min-height: 120%;
+			min-height: 100%;
 			height: auto;
 			padding: 5% 0 10%;
 		}
@@ -1298,8 +1324,8 @@ body {
 				.logoToyota
 				{
 					width: 100%;
-					max-width: 287px;
-					margin: 0 auto;
+					max-width: 336px;
+					margin: 0 auto 40px;
 					display: block;
 					&.desktop
 					{
@@ -1313,6 +1339,70 @@ body {
 						}
 					}
 				}
+				hr.desktop
+				{
+					width: 336px;
+					margin: 0px auto 40px;
+					@include desktopMax
+					{
+						display: block;
+					}
+					@include tabletMax
+					{
+						display: none;
+					}
+				}
+				p.desktop
+				{
+					width: 280px;
+					margin: 0px auto 40px;
+					@include desktopMax
+					{
+						display: block;
+					}
+					@include tabletMax
+					{
+						display: none;
+					}
+				}
+				.QR
+				{
+					width: 195px;
+					margin: 0 auto;
+					display: block;
+					@include desktopMax
+					{
+						display: block;
+					}
+					@include tabletMax
+					{
+						display: none;
+					}
+				}
+				a.desktop
+				{
+					width: 287px;
+					display: block;
+					font-size: 12px;
+					text-decoration: none;
+					margin: 15px auto 20px;
+					font-weight: 100;
+					font-family: "ToyotaRegular";
+					&:hover
+					{
+						text-decoration: underline;
+					}
+					@include desktopMax
+					{
+						display: block;
+					}
+					@include tabletMax
+					{
+						display: none;
+					}
+				}
+
+
 				.rotate
 				{
 					width: 100%;
@@ -1358,6 +1448,14 @@ body {
 				{
 					font-size: 13px;
 					max-width: 470px;	
+				}
+				p
+				{
+					@include tabletMax
+					{
+						max-width: 375px;	
+						font-size: 16px;
+					}
 				}
 				a
 				{
@@ -1553,11 +1651,28 @@ body .landscape
 
 	.notAvailable
 	{
+		h2.desktopNot
+		{
+			@include desktopMax
+			{
+				display: block;
+			}
+			@include tabletMax
+			{
+				display: none;
+			}
+		}
 		h2.desktop
 		{
 			@include desktopMax
 			{
 				display: block;
+				margin-top: 0;
+				width: 280px;
+				line-height: 31px;
+				font-size: 18px;
+				font-weight: 300;
+				margin-bottom: 9px;
 			}
 			@include tabletMax
 			{
@@ -1573,14 +1688,19 @@ body .landscape
 			@include tabletMax
 			{
 				display: block;
-				font-size: 30px;
-				width: 400px;
+				font-size: 28px;
+				max-width: 370px;
 				font-weight: 100;
 			}
 		}
 	}
 	&.not
 	{
+		h2.mobile
+		{
+			font-size: 15px;
+			line-height: 24px;
+		}
 		@include desktopMax
 		{
 			display: block;
@@ -1677,4 +1797,81 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+#cookieConcent {
+	position: absolute;
+	width: 100%;
+	max-width: 430px;
+	bottom: -200%;
+	left: 0%;
+	right: 0;
+	margin: 0 auto;
+	border: Solid 1px black;
+	border-bottom: 0;
+	padding: 1em 2em 2em 2em;
+	font-family: sans-serif;
+	background: #000;
+	animation: fadeInBottom3 0.5s ease-in-out 1 forwards;
+	animation-delay: 4s;
+	font-family: "ToyotaRegular";
+}
+#cookieConcent.cookieDisabled
+{
+	bottom: 0;
+	animation: fadeInTop3 0.5s ease-in-out 1 forwards;
+	animation-delay: 0.5s;
+}
+#cookieConcent h1 {
+	margin: 0;
+}
+#cookieConcent p {
+	font-size: 13px;
+	line-height: 16px;
+}
+#cookieConcent a
+{
+	text-decoration: underline;
+}
+#cookieConcent div {
+	margin: 0.2em;
+}
+#cookieConcent button {
+	padding: 0.5em 1em;
+	border: Solid 1px black;
+}
+#cookieConcent center {
+	margin-top: 1em;
+}
+#cookieConcent input {
+	width: 1.5em;
+	background: red;
+	vertical-align: middle;
+}
+#cookieConcent .MuiSvgIcon-root
+{
+	border: 2px solid #544e5c;
+}
+#cookieConcent .MuiCheckbox-colorSecondary.Mui-checked .MuiSvgIcon-root
+{
+	color: #5A2CFB;
+}
+#cookieConcent .textCheck
+{
+	font-size: 13px;
+	overflow: hidden;
+}
+#cookieConcent .textCheck .MuiCheckbox-root
+{
+    padding-left: 0;
+}
+#cookieConcent .textCheck .copyCheckbox
+{
+	width: calc(100% - 60px);
+	float: right;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+.buttonCookie
+{
+	width: 100% !important;
 }

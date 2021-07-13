@@ -24,7 +24,6 @@ const Meta = (props) => {
       <meta property="og:description" content={description} key="ogdesc" />
       <meta property="og:type" content="video.movie" />
       <meta property="og:image" content={previewImage} key="ogthumb" />
-      <meta property="fb:app_id" content="1421975721482769" />
 
     {/* Open Graph Video - use on video pages */}
       <meta property="og:video" content={videoPath} />
