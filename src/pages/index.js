@@ -9,6 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useLocation } from '@/components/hooks';
 import CookieConsent from '@/components/CookieConsent';
 import { geolocationDb } from '@/utils/geolocationDB';
+//import { getUA } from 'react-device-detect';
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
@@ -22,8 +23,12 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
   
   useEffect(() => {
     setDisabledExperience(!!TOYOTA_COOKIE_CONSENT ? false : true);
-  }, []);
 
+    // if(getUA.includes("Instagram")) {
+    //   router.push('/copy-link');
+    // }
+  }, []);
+    
   if(loading) {
     return (<></>);
   }
@@ -64,10 +69,10 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
         <div className={isActive ? 'containerSpecial animationExit': 'containerSpecial'}>
           <div>
             <div className="copyStart ">
-                {t("start.copyStart")}
-                <span>
-                  {t('start.subCopyStart')}
-                </span>
+              {t("start.copyStart")}
+              <span>
+                {t('start.subCopyStart')}
+              </span>
             </div>
 
               <Button
@@ -78,7 +83,6 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
                 variant="contained">
                 {t('start.buttonStart')}
               </Button>
-          
           
             <div className="copyFooter">
               {t('start.copyFooter1')} {t('start.copyFooter2')} <a id="termsAndConditions" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
