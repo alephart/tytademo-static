@@ -16,13 +16,15 @@ const CopyLink = () => {
       <img className='logoToyota' src='images/logo-toyota.png' alt='' />
       <div className='copyThanks'>
         <div className='copyLunay'>
-          Para participar puedes: <br />
+          <br />
+          <p>Para participar puedes:</p> <br />
           <span>Desde el menú busca la opción abrir desde navegador.</span>
 
           <img className='' src='images/copyLink.png' alt='Instagram' />
           <br />
           <span>Copia el vínculo de Lunay por Toyota, ve a un explorador distinto y pega el vínculo.</span>
         </div>
+      </div>
         <br />
         <CopyToClipboard 
           text={state.value}
@@ -32,9 +34,13 @@ const CopyLink = () => {
             ¡COPIAR VINCULO!
           </Button>
         </CopyToClipboard>
-        <div className='copyLunay'>{state.copied ? <span>¡Vínculo copiado!.</span> : null}</div>
-      </div>
-
+        {state.copied ? (
+          <div className='copyThanks'>
+            <div className='copyLunay'><span>¡Vínculo copiado!.</span></div>
+          </div>
+        ) : (
+          null
+        )}
     </div>
   );
 };
