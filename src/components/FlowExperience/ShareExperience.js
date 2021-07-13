@@ -18,7 +18,7 @@ const ShareExperience = () => {
   return (
     <>
     <div className='sharedExperience'>
-      <img className='logoToyota' src='/images/logo-toyota.png' alt='' />
+      <img className='logoToyota gif' src='/images/giflogo.gif' alt='lunayxtoyota.com'/>
 
       <ReactPlayer
         className="react-player"
