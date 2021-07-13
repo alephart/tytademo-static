@@ -8,8 +8,6 @@ import { Loading } from '@/components/Anims';
 import { isIOS, mobileVendor, mobileModel } from 'react-device-detect';
 
 const PictureConfirm = () => {
-  console.log('mobileVendor', mobileVendor);
-  console.log('mobileModel', mobileModel);
   const { t } = useTranslation('common');
   const { imgSrc, character, setData, process, setProcess } = useContext(ExperienceContext);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,8 +15,7 @@ const PictureConfirm = () => {
   const [help, setHelp] = useState(false);
 
   const motorola = mobileVendor.toLowerCase() === 'motorola' && mobileModel.toLowerCase() === 'one vision';
-  console.log('motorola', motorola);
-
+  
   const sendPicture = async (payload) => {
     try {
       const response = await fetch('/api/photo_valid', {
