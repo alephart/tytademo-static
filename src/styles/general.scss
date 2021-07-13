@@ -334,7 +334,6 @@ body {
 	.chooseCharacter,
 	.formVideo,
 	.checkVideoFinal,
-	.copyLink,
 	.sharedExperience,
 	.likePicture,
 	.loading,
@@ -800,10 +799,11 @@ body {
 	}
 	.copyLink
 	{
-		.linkVideo
-		{
-			margin: 0 auto 20px;
-		}
+		opacity: 0;
+		right: -50%;
+		position: relative;
+		animation: fadeInRight 0.3s ease-in-out 1 forwards;
+		animation-delay: 1.5s;
 	}
 	.sharedExperience
 	{
