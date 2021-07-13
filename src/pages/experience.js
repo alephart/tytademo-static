@@ -14,6 +14,7 @@ import {
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TytaProgress } from '@/components/Anims';
 import { getUA } from 'react-device-detect';
+import CopyLink from '@/components/CopyLink';
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
@@ -44,10 +45,7 @@ const Experience = ({ userEmail }) => {
   useEffect(() => {
     const typeCharacter = localStorage.getItem('character');
 
-    if(getUA.includes("Instagram")) {
-      router.push('/copy-link');
-
-    } else if(typeCharacter === undefined || typeCharacter === 'null') {
+    if(typeCharacter === undefined || typeCharacter === 'null') {
       router.push('/select-character');
       
     } else {
@@ -110,28 +108,34 @@ const Experience = ({ userEmail }) => {
 
   return (
     <Layout>
-      <ExperienceContext.Provider value={contextValues}>
+      {getUA.includes("Instagram") ? (
+        <CopyLink />
 
-        <TytaProgress progress={progress}/>
+      ) : (
+        <ExperienceContext.Provider value={contextValues}>
 
-        {process === PROCESS_ENUM.photoTake && (
-          <PhotoTake />
-        )}
+          <TytaProgress progress={progress}/>
 
-        {imgSrc && process === PROCESS_ENUM.photoConfirm && (
-          <PictureConfirm />
-        )}
+          {process === PROCESS_ENUM.photoTake && (
+            <PhotoTake />
+          )}
 
-        {process === PROCESS_ENUM.register && (
-          <RegisterInfo userEmail={userEmail} />
-        )}
+          {imgSrc && process === PROCESS_ENUM.photoConfirm && (
+            <PictureConfirm />
+          )}
 
-        {process === PROCESS_ENUM.share && (
-          <ShareExperience />
-        )}
+          {process === PROCESS_ENUM.register && (
+            <RegisterInfo userEmail={userEmail} />
+          )}
 
-      </ExperienceContext.Provider>
+          {process === PROCESS_ENUM.share && (
+            <ShareExperience />
+          )}
 
+        </ExperienceContext.Provider>
+
+      )}
+      
     </Layout>
   )
 }

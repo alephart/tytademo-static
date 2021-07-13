@@ -9,7 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useLocation } from '@/components/hooks';
 import CookieConsent from '@/components/CookieConsent';
 import { geolocationDb } from '@/utils/geolocationDB';
-import { getUA } from 'react-device-detect';
+//import { getUA } from 'react-device-detect';
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
@@ -24,9 +24,9 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
   useEffect(() => {
     setDisabledExperience(!!TOYOTA_COOKIE_CONSENT ? false : true);
 
-    if(getUA.includes("Instagram")) {
-      router.push('/copy-link');
-    }
+    // if(getUA.includes("Instagram")) {
+    //   router.push('/copy-link');
+    // }
   }, []);
     
   if(loading) {
@@ -83,7 +83,6 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
                 variant="contained">
                 {t('start.buttonStart')}
               </Button>
-          
           
             <div className="copyFooter">
               {t('start.copyFooter1')} {t('start.copyFooter2')} <a id="termsAndConditions" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
