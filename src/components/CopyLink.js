@@ -22,25 +22,29 @@ const CopyLink = () => {
 
           <img className='' src='images/copyLink.png' alt='Instagram' />
           <br />
-          <span>Copia el vínculo de Lunay por Toyota, ve a un explorador distinto y pega el vínculo.</span>
+          <span>O copia el vínculo de Lunay por Toyota, ve a un explorador distinto y pega el vínculo.</span>
+          <br />
         </div>
       </div>
-        <br />
+      
+      <div className='copyLink'>
         <CopyToClipboard 
           text={state.value}
           onCopy={() => setState({copied: true})}
         >
           <Button className='linkVideo' variant='contained'>
-            ¡COPIAR VINCULO!
+            <div>¡COPIAR VINCULO!</div>
           </Button>
         </CopyToClipboard>
-        {state.copied ? (
-          <div className='copyThanks'>
-            <div className='copyLunay'><span>¡Vínculo copiado!.</span></div>
-          </div>
-        ) : (
-          null
-        )}
+      </div>
+
+      {state.copied ? (
+        <div className='copyThanks' style={ { animationDelay: '0.3s' } }>
+          <div className='copyLunay'><span>¡Vínculo copiado!.</span></div>
+        </div>
+      ) : (
+        null
+      )}
     </div>
   );
 };
