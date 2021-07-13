@@ -13,6 +13,7 @@ import {
 } from '@/components/FlowExperience';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TytaProgress } from '@/components/Anims';
+import { getUA } from 'react-device-detect';
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
@@ -43,8 +44,12 @@ const Experience = ({ userEmail }) => {
   useEffect(() => {
     const typeCharacter = localStorage.getItem('character');
 
-    if(typeCharacter === undefined || typeCharacter === 'null') {
+    if(getUA.includes("Instagram")) {
+      router.push('/copy-link');
+
+    } else if(typeCharacter === undefined || typeCharacter === 'null') {
       router.push('/select-character');
+      
     } else {
       setCharacter(localStorage.getItem('character'));
       setProcess(PROCESS_ENUM.photoTake);
