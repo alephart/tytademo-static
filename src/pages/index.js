@@ -23,9 +23,11 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
   
   useEffect(() => {
     setDisabledExperience(!!TOYOTA_COOKIE_CONSENT ? false : true);
-  }, []);
 
-  console.log('getUA', getUA);
+    if(getUA.includes("Instagram")) {
+      router.push('/copy-link');
+    }
+  }, []);
     
   if(loading) {
     return (<></>);
@@ -67,11 +69,10 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
         <div className={isActive ? 'containerSpecial animationExit': 'containerSpecial'}>
           <div>
             <div className="copyStart ">
-                {t("start.copyStart")}
-                <span>
-                  {t('start.subCopyStart')}
-                </span>
-              <p>{getUA.includes("Instagram") && getUA}</p>
+              {t("start.copyStart")}
+              <span>
+                {t('start.subCopyStart')}
+              </span>
             </div>
 
               <Button
