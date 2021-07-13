@@ -1320,8 +1320,8 @@ body {
 				.logoToyota
 				{
 					width: 100%;
-					max-width: 287px;
-					margin: 0 auto 70px;
+					max-width: 336px;
+					margin: 0 auto 40px;
 					display: block;
 					&.desktop
 					{
@@ -1337,8 +1337,8 @@ body {
 				}
 				hr.desktop
 				{
-					width: 287px;
-					margin: -20px auto 50px;
+					width: 336px;
+					margin: 0px auto 40px;
 					@include desktopMax
 					{
 						display: block;
@@ -1351,7 +1351,7 @@ body {
 				p.desktop
 				{
 					width: 280px;
-					margin: 0px auto 20px;
+					margin: 0px auto 40px;
 					@include desktopMax
 					{
 						display: block;
@@ -1363,7 +1363,7 @@ body {
 				}
 				.QR
 				{
-					width: 200px;
+					width: 195px;
 					margin: 0 auto;
 					display: block;
 					@include desktopMax
@@ -1665,9 +1665,10 @@ body .landscape
 				display: block;
 				margin-top: 0;
 				width: 280px;
-				line-height: 20px;
-				font-size: 19px;
+				line-height: 31px;
+				font-size: 18px;
 				font-weight: 300;
+				margin-bottom: 9px;
 			}
 			@include tabletMax
 			{
@@ -1683,8 +1684,8 @@ body .landscape
 			@include tabletMax
 			{
 				display: block;
-				font-size: 30px;
-				max-width: 310px;
+				font-size: 28px;
+				max-width: 370px;
 				font-weight: 100;
 			}
 		}
