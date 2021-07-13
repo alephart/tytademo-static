@@ -8,6 +8,8 @@ import { PROCESS_ENUM } from '@/helpers/globals';
 import { CharacterChoose } from '@/components/FlowExperience';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TytaProgress } from '@/components/Anims';
+import { getUA } from 'react-device-detect';
+import CopyLink from '@/components/CopyLink';
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
@@ -65,15 +67,20 @@ const SelectCharacter = () => {
 
   return (
     <Layout>
-      <ExperienceContext.Provider value={contextValues}>
+      {getUA.includes("Instagram") ? (
+        <CopyLink />
 
-        <TytaProgress progress={progress}/>
+      ) : (
+        <ExperienceContext.Provider value={contextValues}>
 
-        {process === PROCESS_ENUM.character && (
-          <CharacterChoose />
-        )}
+          <TytaProgress progress={progress}/>
 
-      </ExperienceContext.Provider>
+          {process === PROCESS_ENUM.character && (
+            <CharacterChoose />
+          )}
+
+        </ExperienceContext.Provider>
+      )}
 
     </Layout>
   )

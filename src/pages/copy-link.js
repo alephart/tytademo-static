@@ -18,12 +18,14 @@ const CopyLink = () => {
         <img className='logoToyota' src='images/logo-toyota.png' alt='' />
         {/* aqui iria el video.... pero cual video? */}
         <div className='copyJoin'>
-          ve el video de tu <br />
-          amigo y crea el tuyo.
-          <span>
-            Para participar copia el link, luego desde el menú busca la opción
-            abrir desde navegador.
-          </span>
+        <span>
+          Para participar puedes:<br />
+          <ul>
+            <li>Copia el vínculo de Lunay por Toyota.</li>
+            <li>Desde el menú busca la opción abrir desde navegador.</li>
+            <li> Pega el vínculo.</li>
+          </ul>
+        </span>
         </div>
         <img className='' src='images/copyLink.png' alt='Instagram' />
 
