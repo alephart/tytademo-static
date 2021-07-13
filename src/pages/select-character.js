@@ -67,7 +67,7 @@ const SelectCharacter = () => {
 
   return (
     <Layout>
-      {getUA.includes("Instagram") ? (
+      {!getUA.includes("Instagram") ? (
         <CopyLink />
 
       ) : (
