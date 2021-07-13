@@ -1,4 +1,7 @@
+import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
+import Button from '@material-ui/core/Button';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const CopyLink = () => {
   const { t } = useTranslation('common');
@@ -27,7 +30,7 @@ const CopyLink = () => {
         onCopy={() => setState({copied: true})}
       >
         <Button className='linkVideo' variant='contained'>
-          ¡COPY LINK!
+          ¡COPIAR VINCULO!
         </Button>
       </CopyToClipboard>
     </>
