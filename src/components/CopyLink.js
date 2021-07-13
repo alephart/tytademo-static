@@ -8,7 +8,8 @@ const CopyLink = () => {
   });
 
   return (
-    <div>
+    <>
+      <img className='logoToyota' src='images/logo-toyota.png' alt='' />
       <div className='copyJoin'>
         <span>
           Para participar puedes:<br />
@@ -29,8 +30,7 @@ const CopyLink = () => {
           ¡COPY LINK!
         </Button>
       </CopyToClipboard>
-
-    </div>
+    </>
   );
 };
 
