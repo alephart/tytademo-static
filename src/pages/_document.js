@@ -10,6 +10,7 @@ class MyDocument extends Document {
       <Html>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
+        <meta name="facebook-domain-verification" content="63zvanycz01c5njw5jrt0op3hb06ij" />
         <Head />
         <body>
           <Main />
