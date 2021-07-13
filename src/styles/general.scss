@@ -1835,9 +1835,22 @@ input[type=number] {
 #cookieConcent div {
 	margin: 0.2em;
 }
-#cookieConcent button {
+#cookieConcent button.buttonCookie {
 	padding: 0.5em 1em;
 	border: Solid 1px black;
+	color: #fff !important;
+	-webkit-tap-highlight-color: #fff;
+	transition: initial;
+}
+#cookieConcent button.buttonCookie span
+{
+	color: #fff !important;
+	opacity: 1;
+}
+#cookieConcent button.buttonCookie.Mui-disabled.Mui-disabled span
+{
+	color: #fff !important;
+	opacity: 0.6;
 }
 #cookieConcent center {
 	margin-top: 1em;
