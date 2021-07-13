@@ -1840,14 +1840,18 @@ input[type=number] {
 	font-size: 13px;
 	overflow: hidden;
 }
+#cookieConcent .textCheck .MuiCheckbox-root
+{
+    padding-left: 0;
+}
 #cookieConcent .textCheck .copyCheckbox
 {
 	width: calc(100% - 60px);
 	float: right;
 	margin-right: 10px;
-	margin-top: 10px;
+	margin-top: 5px;
 }
 .buttonCookie
 {
-	width: 250px !important;
+	width: 100% !important;
 }
