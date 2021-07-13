@@ -33,6 +33,7 @@ const CopyLink = () => {
           ¡COPIAR VINCULO!
         </Button>
       </CopyToClipboard>
+      {state.copied ? <span>¡Vínculo copiado!.</span> : null}
     </>
   );
 };
