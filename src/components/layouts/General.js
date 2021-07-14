@@ -6,8 +6,8 @@ const Layout = ({ children, ...props }) => {
   const { className = null } = props;
   const { t } = useTranslation('common');
   return (
-    <>
-      <Meta {...props} />
+    <div>
+      <Meta />
       <div className={`container ${className ? className : ''} ${isAndroid ? 'android' : ''}`}>
         {children}
         {/* aqui va version desktop */}
@@ -34,7 +34,7 @@ const Layout = ({ children, ...props }) => {
             </div>
         </div>
       </div>
-    </>
+    </div>
   )
 };
 
