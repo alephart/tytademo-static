@@ -216,8 +216,13 @@ body {
 		&.MuiButton-contained.Mui-disabled
 		{
 			background-color: #383148;
-			color: #625F6B;
+			color: #fff;
 			margin: 0 auto;
+			span
+			{
+				color: #fff !important;
+				opacity: 0.6;
+			}
 		}
 		.MuiButton-label
 		{
