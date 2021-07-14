@@ -32,16 +32,16 @@ const CharacterChoose = () => {
   return (
       <div className={isActive ? 'active chooseCharacter': 'chooseCharacter'}> 
         <div className={isActive ? 'active selectCopy': 'selectCopy'}>{t("characterChoose.selectCopy")}</div>
-        <div className="BoxchooseCharacter">
+        <div className={`BoxchooseCharacter  ${character  ? 'selected' : ''}`}>
           <div
-            className={`selectCharacter2 normal ${character === 'female' ? 'selected' : ''}`}
+            className={`selectCharacter2  ${character === 'female' ? 'selected' : ''}`}
             data-character='female'
             onClick={handleSelectCharacter}
           >
             <img src='/images/silueta-femenina.png' alt='' />
           </div>
           <div
-            className={`selectCharacter1 normal ${character === 'male' ? 'selected' : ''}`}
+            className={`selectCharacter1  ${character === 'male' ? 'selected' : ''}`}
             data-character='male'
             onClick={handleSelectCharacter}
             >
