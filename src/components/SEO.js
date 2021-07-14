@@ -1,15 +1,15 @@
 import Head from 'next/head';
-import { useTranslation } from 'next-i18next';
 
 const Meta = (props) => {
-  const { t } = useTranslation('common');
-  const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
-  const pageTitle = t("meta.tags.title");
-  const description = t("meta.tags.description");
-  const currentURL = siteURL;
-  const previewImage = `${siteURL}/toyota-lunay-feature-you.png`;
-  const siteName = t("meta.tags.title");
-  const videoPath = `${siteURL}/videos/featureYouToyota.mp4`;
+  const { 
+    siteURL,
+    pageTitle,
+    description,
+    currentURL,
+    previewImage,
+    siteName,
+    videoPath,
+   } = props;
   
   return(
     <Head>
@@ -19,7 +19,7 @@ const Meta = (props) => {
       <link rel="alternate" href={`${siteURL}/`} hreflang="en" />
       <link rel="alternate" href={`${siteURL}/es/`} hreflang="es" />
 
-      {/* Open Graph */}
+      {/* // Open Graph
       <meta property="og:type" content="website" />
       <meta property="og:url" content={currentURL} />
       <meta property="og:site_name" content={siteName} />
@@ -27,7 +27,7 @@ const Meta = (props) => {
       <meta property="og:description" content={description} />
       <meta property="og:image" content={previewImage} />
       <meta property="og:locale" content="en" />
-      <meta property="og:locale:alternate" content="es" />
+      <meta property="og:locale:alternate" content="es" /> */}
 
     {/* Open Graph Video - use on video pages */}
       <meta property="og:video" content={videoPath} key="video" />
