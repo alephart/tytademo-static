@@ -71,7 +71,8 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
             <div className="copyStart ">
               {t("start.copyStart")}
               <span>
-                {t('start.subCopyStart')}
+                {t('start.subCopyStart')} <br/>
+                {t('start.subCopyStart2')}
               </span>
             </div>
 

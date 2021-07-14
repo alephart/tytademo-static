@@ -4,8 +4,8 @@ import { useTranslation } from 'next-i18next';
 const Layout = ({ children, ...props }) => {
   const { t } = useTranslation('common');
   return (
-    <>
-      <Meta {...props} />
+    <div>
+      <Meta />
       <div className="startPage">
         {children}
         <div className='landscape'>
@@ -31,7 +31,7 @@ const Layout = ({ children, ...props }) => {
             </div>
         </div>
       </div>
-    </>
+    </div>
   )
 };
 
