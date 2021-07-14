@@ -16,14 +16,19 @@ const Meta = (props) => {
     <Head>
       <title>{pageTitle}</title>
       <meta name="description" content={description}></meta>
-      
+      <link rel="canonical" href={`${siteURL}/`} />
+      <link rel="alternate" href={`${siteURL}/`} hreflang="en" />
+      <link rel="alternate" href={`${siteURL}/es/`} hreflang="es" />
+
       {/* Open Graph */}
-      <meta property="og:url" content={currentURL} key="ogurl" />
-      <meta property="og:site_name" content={siteName} key="ogsitename" />
-      <meta property="og:title" content={pageTitle} key="ogtitle" />
-      <meta property="og:description" content={description} key="ogdesc" />
-      <meta property="og:type" content="video.movie" />
-      <meta property="og:image" content={previewImage} key="ogthumb" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={currentURL} />
+      <meta property="og:site_name" content={siteName} />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={previewImage} />
+      <meta property="og:locale" content="en" />
+      <meta property="og:locale:alternate" content="es" />
 
     {/* Open Graph Video - use on video pages */}
       <meta property="og:video" content={videoPath} />
@@ -41,6 +46,7 @@ const Meta = (props) => {
       <meta name="twitter:description" content={description} />
       <meta name="twitter:domain" content="Toyota"/>
       <meta name="twitter:image" content={previewImage} />
+
     </Head>
   )
 }
