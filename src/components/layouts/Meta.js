@@ -10,7 +10,7 @@ const Meta = (props) => {
   const previewImage = `${siteURL}/toyota-lunay-feature-you.png`;
   const siteName = t("meta.tags.title");
   const videoPath = `${siteURL}/videos/featureYouToyota.mp4`;
-
+  
   return(
     <Head>
       <title>{pageTitle}</title>
@@ -18,6 +18,16 @@ const Meta = (props) => {
       <link rel="canonical" href={`${siteURL}/`} />
       <link rel="alternate" href={`${siteURL}/`} hreflang="en" />
       <link rel="alternate" href={`${siteURL}/es/`} hreflang="es" />
+
+      {/* Open Graph */}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={currentURL} />
+      <meta property="og:site_name" content={siteName} />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={previewImage} />
+      <meta property="og:locale" content="en" />
+      <meta property="og:locale:alternate" content="es" />
 
     {/* Open Graph Video - use on video pages */}
       <meta property="og:video" content={videoPath} />

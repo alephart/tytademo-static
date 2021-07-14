@@ -1,30 +1,11 @@
 import Meta from './Meta';
-import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
 
 const Layout = ({ children, ...props }) => {
   const { t } = useTranslation('common');
-
-  const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
-  const pageTitle = t("meta.tags.title");
-  const description = t("meta.tags.description");
-  const currentURL = siteURL;
-  const previewImage = `${siteURL}/toyota-lunay-feature-you.png`;
-  const siteName = t("meta.tags.title");
-
   return (
     <div>
-      <Head>
-      {/* Open Graph */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={currentURL} />
-        <meta property="og:site_name" content={siteName} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={previewImage} />
-        <meta property="og:locale" content="en" />
-        <meta property="og:locale:alternate" content="es" />
-      </Head>
+      <Meta />
       <div className="startPage">
         {children}
         <div className='landscape'>
