@@ -4,6 +4,14 @@ import { useTranslation } from 'next-i18next';
 
 const Layout = ({ children, ...props }) => {
   const { t } = useTranslation('common');
+
+  const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
+  const pageTitle = t("meta.tags.title");
+  const description = t("meta.tags.description");
+  const currentURL = siteURL;
+  const previewImage = `${siteURL}/toyota-lunay-feature-you.png`;
+  const siteName = t("meta.tags.title");
+
   return (
     <div>
       <Head>
