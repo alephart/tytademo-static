@@ -30,7 +30,7 @@ const Meta = (props) => {
       <meta property="og:locale:alternate" content="es" />
 
     {/* Open Graph Video - use on video pages */}
-      <meta property="og:video" content={videoPath} />
+      <meta property="og:video" content={videoPath} key="video" />
       <meta property="og:video:url" content={videoPath} />
       <meta property="og:video:secure_url" content={videoPath} />
       <meta property="og:video:type" content="video/mp4" />
