@@ -32,6 +32,24 @@ class MyDocument extends Document {
         <meta property="og:image" content={metaData.previewImage} />
         <meta property="og:locale" content="en" />
         <meta property="og:locale:alternate" content="es" />
+
+        {/* Open Graph Video - use on video pages */}
+        <meta property="og:video" content={metaData.videoPath} key="video" />
+        <meta property="og:video:url" content={metaData.videoPath} />
+        <meta property="og:video:secure_url" content={metaData.videoPath} />
+        <meta property="og:video:type" content="video/mp4" />
+        <meta property="og:video:width" content="1280" />
+        <meta property="og:video:height" content="720" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" key="player" />
+        <meta name="twitter:site" content="@Toyota" />
+        <meta name="twitter:creator" content="@Toyota" />
+        <meta name="twitter:title" content={metaData.pageTitle} />
+        <meta name="twitter:description" content={metaData.description} />
+        <meta name="twitter:domain" content="Toyota"/>
+        <meta name="twitter:image" content={metaData.previewImage} />
+
         <Head />
 
         <body>
