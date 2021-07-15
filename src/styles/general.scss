@@ -794,11 +794,17 @@ body {
 			{
 				.selectCharacter2, .selectCharacter1
 				{
-					filter: grayscale(100%);
+					zoom: 0.8;
+					width: 90%;
+					opacity: 0.4 !important;
+					transition: all 0.3s ease-out;
 				}
 				.selectCharacter2.selected, .selectCharacter1.selected
 				{
-					filter: grayscale(0%);
+					zoom: 1 !important;
+					opacity: 1 !important;
+					transition: all 0.3s ease-out;
+					width: 100%;
 				}
 			}
 		}
