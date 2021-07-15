@@ -369,6 +369,7 @@ body {
 				@include mobilePlus
 				{
 					display: block;
+					padding-bottom: 10px;
 				}
 			}
 			.indexDesktop
@@ -820,6 +821,17 @@ body {
 			}
 		}
 	}
+	.boxLink
+	{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		.logoToyota
+		{
+			margin-top: 0;
+		}
+	}
 	.copyLink
 	{
 		opacity: 0;
@@ -830,11 +842,20 @@ body {
 	}
 	.copyLinkText
 	{
-		font-size: 15px;
+		font-size: 16px;
 		font-family: "JoyrideEx";
 		margin: 0px auto 10px;
 		width: 300px;
 		line-height: 20px;
+		text-transform: lowercase;
+		span
+		{
+			font-family: 'ToyotaRegular' !important;
+			font-size: 18px !important;
+			width: 300px !important;
+			margin-top: 0 !important;
+			text-transform: initial !important;
+		}
 	}
 	.sharedExperience
 	{
@@ -849,6 +870,7 @@ body {
 			&.gif
 			{
 				width: 320px;
+				margin: 20px auto;
 			}
 		}
 		.react-player
@@ -1408,6 +1430,10 @@ body {
 					@include tabletMax
 					{
 						display: none;
+					}
+					&.join
+					{
+						margin-top: 25px;
 					}
 				}
 				a.desktop

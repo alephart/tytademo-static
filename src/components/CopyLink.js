@@ -11,39 +11,37 @@ const CopyLink = () => {
   });
 
   return (
-    <div className='copyLink'>
-      <br />
-      <img className='logoToyota' src='images/logo-toyota.png' alt='' />
-      <div className='copyThanks'>
-        <div className='copyLinkText'>
-          <p>Para participar puedes:</p> <br />
-          <span>Desde el menú busca la opción abrir en explorador.</span>
-
-          <img className='' src='images/copyLink.png' alt='Instagram' />
-          <br />
-          <span>Ó copia el vínculo de Lunay por Toyota, ve a un explorador distinto y pega el vínculo.</span>
-          <br />
-        </div>
-      </div>
-
+    <div className='boxLink'>
       <div className='copyLink'>
-        <CopyToClipboard 
-          text={state.value}
-          onCopy={() => setState({copied: true})}
-        >
-          <Button className='linkVideo' variant='contained'>
-            <div>¡COPIAR VINCULO!</div>
-          </Button>
-        </CopyToClipboard>
-      </div>
-
-      {state.copied ? (
-        <div className='copyThanks' style={ { animationDelay: '0.3s' } }>
-          <div className='copyLunay'><span>¡Vínculo copiado!.</span></div>
+        <img className='logoToyota' src='images/logo-toyota.png' alt='' />
+        <div className='copyThanks'>
+          <div className='copyLinkText'>
+            <p>{t('instagram.Title')}</p>
+            <span>{t('instagram.Text1')}</span>
+            <img className='' src='images/copyLink.png' alt='Instagram' />
+            <span>{t('instagram.Text2')}</span>
+          </div>
         </div>
-      ) : (
-        null
-      )}
+
+        <div className='copyLink'>
+          <CopyToClipboard 
+            text={state.value}
+            onCopy={() => setState({copied: true})}
+          >
+            <Button className='linkVideo' variant='contained'>
+              {t('instagram.Button')}
+            </Button>
+          </CopyToClipboard>
+        </div>
+
+        {state.copied ? (
+          <div className='copyThanks' style={ { animationDelay: '0.3s' } }>
+            <div className='copyLunay'>{t('instagram.Copy')}</div>
+          </div>
+        ) : (
+          null
+        )}
+      </div>
     </div>
   );
 };

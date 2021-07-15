@@ -55,6 +55,7 @@ const JoinExperince = ({data}) => {
                         <p>
                         {t("indexDesktop.copyDesktopText")}
                         </p>
+                        <img className="QR desktop join" src="/images/DesktopHome.png" alt=""/>
                     </div>
                 </div>
             </div>

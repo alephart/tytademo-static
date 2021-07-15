@@ -68,5 +68,10 @@
     "cookie.Check2": "I have read and agree to the ",
     "cookie.Check2LinkText": "Terms & Conditions",
     "cookie.Check2Link": "https://lunayxtoyota.com/rules/terms.html",
-    "cookie.button": "OK"   
+    "cookie.button": "OK",
+    "instagram.Title": "to participate:",
+    "instagram.Text1": "look for the open in browser option in menu",
+    "instagram.Text2": "or copy the Lunay X Toyota link, go to a different browser and paste the link",
+    "instagram.Button": "COPY LINK!",
+    "instagram.Copy": "Link copied!"
 }
