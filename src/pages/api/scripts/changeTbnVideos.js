@@ -19,7 +19,8 @@ const videoList = [
   'footage/010-WOMAN.mp4',
   'footage/011.mp4',
   'footage/012-WOMAN.mp4',
-
+  'footage/013.mp4',
+  'footage/014-WOMAN.mp4',
 ];
 
 modifyTbn(videoList).then(list => console.log(list));
