@@ -52,7 +52,7 @@ html, body {
 	display: flex;
 	margin: 0 auto;
 	animation: fadeIn 0.5s ease-in-out 1 forwards;
-	animation-delay: 3s;
+	animation-delay: 3.5s;
 	height: 100vh;  
 	max-height: -webkit-fill-available;
 }
@@ -1869,7 +1869,7 @@ input[type=number] {
 	font-family: sans-serif;
 	background: #000;
 	animation: fadeInBottom3 0.5s ease-in-out 1 forwards;
-	animation-delay: 4s;
+	animation-delay: 3s;
 	font-family: "ToyotaRegular";
 }
 #cookieConcent.cookieDisabled
