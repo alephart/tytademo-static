@@ -8,29 +8,29 @@
 export const videosListMale = (faceId) => {
   if (!faceId) return null;
   return [
-    { // 02
+    { // 002
       intensity: 1,
-      video_id: '722755d5-5a2b-47e4-b6b7-0a439a577d2e',
+      video_id: '62878afc-db4d-4699-a9fe-e7aed032df7f',
       facemapping: {
-        '94fdcf8a-bd23-48e6-a76c-8e448464e749': [
+        'b38dce27-d76c-49d7-be23-83bd4cb2f0ef': [
           `${faceId}`
         ]
       },
     },
-    { // 06
+    { // 006
       intensity: 1,
-      video_id: '62142062-6022-42f3-a360-0c13faa5222f',
+      video_id: 'f715b626-0baf-4bd8-ba85-65d6cdd37d09',
       facemapping: {
-        '9c4927ff-f563-4a7d-bfe6-0f8b98146f58': [
+        '7698a629-8512-4d7e-a900-63a5e63fc3ce': [
           `${faceId}`
         ]
       },
     },
     { // 08
       intensity: 1,
-      video_id: '51ab48bc-e3e0-4aeb-911a-d7c16d2e71cb',
+      video_id: '5192acc4-b79f-452a-85ca-4956cccb545f',
       facemapping: {
-        '1934ccb2-e84c-4a53-b654-df93f29dd5d5': [
+        '4d654d53-fedd-4e33-8cfb-93ec43203a8b': [
           `${faceId}`
         ]
       },
@@ -42,42 +42,51 @@ export const videosListMale = (faceId) => {
 export const videosListFemale = (faceId) => {
   if (!faceId) return null;
   return [
-    { // 04
+    { // 004
       intensity: 1,
-      video_id: 'd996972c-b32d-4a44-b174-45856d924fdc',
+      video_id: 'f070f853-d296-4fe1-8c9c-17a0cae2f812',
       facemapping: {
-        '926bb652-a54a-42a1-88d3-03b769a78acd': [
+        '4489a27d-f557-4d79-95a2-0494dd83a482': [
           `${faceId}`
         ]
       },
     },
-    { // 08
+    { // 008
       intensity: 1,
-      video_id: '51ab48bc-e3e0-4aeb-911a-d7c16d2e71cb',
+      video_id: '5192acc4-b79f-452a-85ca-4956cccb545f',
       facemapping: {
-        '1f97df12-38d6-469e-97d6-0df8dcf22af2': [
+        'd0fa0c00-1f39-4476-b912-b667c5bc0a83': [
           `${faceId}`
         ]
       },
     },
-    { // 10
+    { // 010
       intensity: 1,
-      video_id: 'cc53cecf-81c1-4ee6-89f6-35390a0e4a31',
+      video_id: '7c04edfd-7384-4bda-891f-387d991fb437',
       facemapping: {
-        'cba1cd22-fbcb-4d8e-8c9c-08c9f9de5d93': [
+        '7fcc1431-5f2c-4ec8-ac08-474d64a797e6': [
           `${faceId}`
         ]
       },
     },
-    { // 12
+    { // 012
       intensity: 1,
-      video_id: '4162d5e6-88d0-4ab2-9ec0-f300a024f961',
+      video_id: '875c7dee-2073-4925-8edd-82ece2b19444',
       facemapping: {
-        '8707bf55-cef5-4d0f-aac8-448ce4f3c32d': [
+        '2ddeddc5-a387-47a2-ad36-c68d33c31bc6': [
           `${faceId}`
         ]
       },
     },
+    { // 014
+      intensity: 1,
+      video_id: '515ee697-f38b-4d9b-9780-00bbca6bce09',
+      facemapping: {
+        '80930237-fd7e-485b-b1d5-2b3dc8d1b2be': [
+          `${faceId}`
+        ]
+      }
+    }
   ];
 };
 
@@ -95,4 +104,6 @@ export const videoListAll = [
   { name: 'footage/010-WOMAN.mp4', character: 'female' },
   { name: 'footage/011.mp4', character: '' },
   { name: 'footage/012-WOMAN.mp4', character: 'female' },
+  { name: 'footage/013.mp4', character: '' },
+  { name: 'footage/014-WOMAN.mp4', character: 'female' },
 ];
