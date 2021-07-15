@@ -22,9 +22,9 @@ const Share = ({ url, setShare }) => {
 
         <FacebookShareButton
           id='shareFacebook'
-          quote={`${message} #LunayXToyota`}
+          quote={`${message} ${url}`}
           url={url}
-          hashtags='#LunayXToyota'
+          hashtags={'#LunayXToyota'}
           className='share'
           style={shareStyle}
           onClick={handleClick}

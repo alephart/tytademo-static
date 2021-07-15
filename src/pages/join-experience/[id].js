@@ -7,7 +7,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ReactPlayer from 'react-player';
 
 const JoinExperince = ({data}) => {
-  console.log(data);
   const { urlVideo } = data;
     const { t } = useTranslation('common');
 
@@ -56,6 +55,7 @@ const JoinExperince = ({data}) => {
                         <p>
                         {t("indexDesktop.copyDesktopText")}
                         </p>
+                        <img className="QR desktop join" src="/images/DesktopHome.png" alt=""/>
                     </div>
                 </div>
             </div>
