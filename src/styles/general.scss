@@ -52,7 +52,7 @@ html, body {
 	display: flex;
 	margin: 0 auto;
 	animation: fadeIn 0.5s ease-in-out 1 forwards;
-	animation-delay: 3s;
+	animation-delay: 3.5s;
 	height: 100vh;  
 	max-height: -webkit-fill-available;
 }
@@ -794,11 +794,17 @@ body {
 			{
 				.selectCharacter2, .selectCharacter1
 				{
-					filter: grayscale(100%);
+					zoom: 0.8;
+					width: 90%;
+					opacity: 0.4 !important;
+					transition: all 0.3s ease-out;
 				}
 				.selectCharacter2.selected, .selectCharacter1.selected
 				{
-					filter: grayscale(0%);
+					zoom: 1 !important;
+					opacity: 1 !important;
+					transition: all 0.3s ease-out;
+					width: 100%;
 				}
 			}
 		}
@@ -1869,7 +1875,7 @@ input[type=number] {
 	font-family: sans-serif;
 	background: #000;
 	animation: fadeInBottom3 0.5s ease-in-out 1 forwards;
-	animation-delay: 4s;
+	animation-delay: 3s;
 	font-family: "ToyotaRegular";
 }
 #cookieConcent.cookieDisabled
