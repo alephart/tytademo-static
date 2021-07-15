@@ -6,7 +6,7 @@ const { dataSwapVideos, downloadSwapVideos, buildFileVideos, adjustTbnVideos } =
 const { videosListFemale, videosListMale, videoListAll } = require('./lib/dataVideos');
 
 const DIR_TEMP = './temp';
-const NAME_TRACK_AUDIO = 'footage/Audio_WIP13_1.m4a';
+const NAME_TRACK_AUDIO = 'footage/TodoONada_Final_Audio.m4a';
 const url = process.env.NEXT_PUBLIC_URL_SITE;
 
 export default async (req, res) => {
@@ -22,14 +22,14 @@ export default async (req, res) => {
        ********************************************************************************************************************/
       // 3. Swap videos and get ids
       const videosListCharacter = character === 'female' ? videosListFemale(faceId) : videosListMale(faceId);
-      //console.log('Videos List Character', videosListCharacter);
+      console.log('Videos List Character', videosListCharacter);
     
       const swapVideos = await dataSwapVideos(videosListCharacter);
-      //console.log('Data Swap Videos', swapVideos);
+      console.log('Data Swap Videos', swapVideos);
     
       // 4. Download videos, save in temp
       const dowloadVideos = await downloadSwapVideos(swapVideos);
-      //console.log('Dowload Videos', dowloadVideos);
+      console.log('Dowload Videos', dowloadVideos);
       
       // 4.1 modify video the TBN to 90K - please if not necessary, do not use!
       const adjustVideos = await adjustTbnVideos(dowloadVideos, 90000);
@@ -44,6 +44,7 @@ export default async (req, res) => {
         output: `${DIR_TEMP}/video-${userId}.mp4`,
         fileVideos: `${DIR_TEMP}/${nameFileVideos}`,
       };
+      console.log('dataFinal videos', dataFinal);
     
       await concatVideosTxtFluent(dataFinal);
     
@@ -55,6 +56,7 @@ export default async (req, res) => {
         output: `${DIR_TEMP}/${nameFinalVideo}`,
         track: path.join(DIR_TEMP, NAME_TRACK_AUDIO),
       }
+      console.log('track video and audio', dataTrack);
     
       await changeTrackFluent(dataTrack);
     
