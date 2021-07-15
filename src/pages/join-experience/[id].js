@@ -7,7 +7,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ReactPlayer from 'react-player';
 
 const JoinExperince = ({data}) => {
-  console.log(data);
   const { urlVideo } = data;
     const { t } = useTranslation('common');
 

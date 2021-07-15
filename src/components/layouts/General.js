@@ -1,14 +1,13 @@
-import Meta from './Meta';
-import { isAndroid } from 'react-device-detect';
 import { useTranslation } from 'next-i18next';
+import { isAndroid } from 'react-device-detect';
 
 const Layout = ({ children, ...props }) => {
   const { className = null } = props;
   const { t } = useTranslation('common');
+
   return (
-    <div>
-      <Meta />
-      <div className={`container ${className ? className : ''} ${isAndroid ? 'android' : ''}`}>
+    <>
+      <div className={`container ${className && className} ${isAndroid ? 'android' : ''}`}>
         {children}
         {/* aqui va version desktop */}
         <div className='landscape'>
@@ -34,7 +33,7 @@ const Layout = ({ children, ...props }) => {
             </div>
         </div>
       </div>
-    </div>
+    </>
   )
 };
 
