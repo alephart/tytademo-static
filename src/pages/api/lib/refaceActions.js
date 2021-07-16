@@ -90,25 +90,17 @@ const adjustTbnVideos = async (videosData, timeScale = 90000) => {
   try {
     const tasks = videosData.map(async video => {
       const pathVideo = path.join(DIR_TEMP, video);
-      const timeBaseActual = await getMetaData(pathVideo, 'time_base');
-    
-      if(timeBaseActual !== `1/${timeScale}`) {
-        const videoNewName = `${video.split('.')[0]}_tbn.mp4`;
+      const videoNewName = `${video.split('.')[0]}_tbn.mp4`;
         
-        const dataTBN = {
-          input: pathVideo,
-          output: path.join(DIR_TEMP, videoNewName),
-          timeScale: timeScale,
-        }
-    
-        await fixTBNField(dataTBN);
-    
-        return videoNewName;
-
-      } else {
-  
-        return video;
+      const dataTBN = {
+        input: pathVideo,
+        output: path.join(DIR_TEMP, videoNewName),
+        timeScale: timeScale,
       }
+  
+      await fixTBNField(dataTBN);
+  
+      return videoNewName;
     });
     
     const results = await Promise.all(tasks);
