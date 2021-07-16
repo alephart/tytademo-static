@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
                         <p className="desktop">
                         {t("desktop.QR")}
                         </p>
-                        <img className="QR desktop" src="/images/DesktopHome.png" alt=""/>
+                        <img className="QR desktop" src="/images/DesktopHome2.png" alt=""/>
                         <a className="desktop" href="https://lunayxtoyota.com">lunayxtoyota.com</a>
                         <h2 className="mobile">
                           {t("landscape")}
