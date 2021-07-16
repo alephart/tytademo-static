@@ -68,5 +68,10 @@
     "cookie.Check2": "He leído y acepto los ",
     "cookie.Check2LinkText": "Términos y condiciones",
     "cookie.Check2Link": "https://lunayxtoyota.com/rules/tyc.html",
-    "cookie.button": "OK"    
+    "cookie.button": "OK",
+    "instagram.Title": "Para participar puedes:",
+    "instagram.Text1": "Desde el menú busca la opción abrir en explorador",
+    "instagram.Text2": "Ó copia el vínculo de Lunay X Toyota, ve a un explorador distinto y pega el vínculo.",
+    "instagram.Button": "¡COPIAR VINCULO!",
+    "instagram.Copy": "¡Vínculo copiado!"   
 }
