@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ReactPlayer from 'react-player';
+import { isMobile } from 'react-device-detect';
 
 const JoinExperince = ({data}) => {
   const { urlVideo } = data;
@@ -19,7 +20,7 @@ const JoinExperince = ({data}) => {
                     className="react-player"
                     url={urlVideo}
                     controls={true}
-                    playing={true}
+                    playing={isMobile ? true : false}
                     width='100%'
                     height='100%'
                 />
@@ -42,7 +43,7 @@ const JoinExperince = ({data}) => {
                             className="react-player"
                             url={urlVideo}
                             controls={true}
-                            playing={false}
+                            playing={isMobile ? false : true}
                             width='100%'
                             height='100%'
                         />
