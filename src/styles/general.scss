@@ -52,7 +52,7 @@ html, body {
 	display: flex;
 	margin: 0 auto;
 	animation: fadeIn 0.5s ease-in-out 1 forwards;
-	animation-delay: 3.5s;
+	animation-delay: 4s;
 	height: 100vh;  
 	max-height: -webkit-fill-available;
 }
@@ -414,7 +414,7 @@ body {
 			animation-delay: 2s;
 			&.active
 			{
-				top: 70px;
+				top: 53px;
 				opacity: 1;
 				animation: fadeOutTop2 0.3s ease-in-out 1 forwards;
 				animation-delay: 2s;
@@ -635,6 +635,10 @@ body {
 				display: block;
 				letter-spacing: 0;
 				line-height: 19px;
+				a
+				{
+					text-decoration: underline;
+				}
 			}
 		}
 		.sharedSocial
@@ -796,13 +800,13 @@ body {
 				{
 					zoom: 0.8;
 					width: 90%;
-					opacity: 0.4 !important;
+					filter: brightness(40%);
 					transition: all 0.3s ease-out;
 				}
 				.selectCharacter2.selected, .selectCharacter1.selected
 				{
 					zoom: 1 !important;
-					opacity: 1 !important;
+					filter: brightness(100%);
 					transition: all 0.3s ease-out;
 					width: 100%;
 				}
@@ -1238,6 +1242,10 @@ body {
 				&.special
 				{
 					width: 100%;
+					a
+					{
+						text-decoration: underline;
+					}
 				}
 				
 			}
@@ -1679,9 +1687,9 @@ body {
     width: 300px;
 	p
 	{
-		font-size: 12px;
+		font-size: 10px;
 		text-transform: lowercase;
-		line-height: 16px;
+		line-height: 13px;
 		text-align: center;
 		height: 50px;
 		display: flex;
@@ -1875,7 +1883,7 @@ input[type=number] {
 	font-family: sans-serif;
 	background: #000;
 	animation: fadeInBottom3 0.5s ease-in-out 1 forwards;
-	animation-delay: 3s;
+	animation-delay: 3.5s;
 	font-family: "ToyotaRegular";
 }
 #cookieConcent.cookieDisabled
