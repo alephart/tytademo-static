@@ -52,7 +52,7 @@ html, body {
 	display: flex;
 	margin: 0 auto;
 	animation: fadeIn 0.5s ease-in-out 1 forwards;
-	animation-delay: 3s;
+	animation-delay: 3.5s;
 	height: 100vh;  
 	max-height: -webkit-fill-available;
 }
@@ -369,6 +369,7 @@ body {
 				@include mobilePlus
 				{
 					display: block;
+					padding-bottom: 10px;
 				}
 			}
 			.indexDesktop
@@ -793,11 +794,17 @@ body {
 			{
 				.selectCharacter2, .selectCharacter1
 				{
-					filter: grayscale(100%);
+					zoom: 0.8;
+					width: 90%;
+					opacity: 0.4 !important;
+					transition: all 0.3s ease-out;
 				}
 				.selectCharacter2.selected, .selectCharacter1.selected
 				{
-					filter: grayscale(0%);
+					zoom: 1 !important;
+					opacity: 1 !important;
+					transition: all 0.3s ease-out;
+					width: 100%;
 				}
 			}
 		}
@@ -820,6 +827,17 @@ body {
 			}
 		}
 	}
+	.boxLink
+	{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		.logoToyota
+		{
+			margin-top: 0;
+		}
+	}
 	.copyLink
 	{
 		opacity: 0;
@@ -830,11 +848,20 @@ body {
 	}
 	.copyLinkText
 	{
-		font-size: 15px;
+		font-size: 16px;
 		font-family: "JoyrideEx";
 		margin: 0px auto 10px;
 		width: 300px;
 		line-height: 20px;
+		text-transform: lowercase;
+		span
+		{
+			font-family: 'ToyotaRegular' !important;
+			font-size: 18px !important;
+			width: 300px !important;
+			margin-top: 0 !important;
+			text-transform: initial !important;
+		}
 	}
 	.sharedExperience
 	{
@@ -849,6 +876,7 @@ body {
 			&.gif
 			{
 				width: 320px;
+				margin: 20px auto;
 			}
 		}
 		.react-player
@@ -1409,6 +1437,10 @@ body {
 					{
 						display: none;
 					}
+					&.join
+					{
+						margin-top: 25px;
+					}
 				}
 				a.desktop
 				{
@@ -1843,7 +1875,7 @@ input[type=number] {
 	font-family: sans-serif;
 	background: #000;
 	animation: fadeInBottom3 0.5s ease-in-out 1 forwards;
-	animation-delay: 4s;
+	animation-delay: 3s;
 	font-family: "ToyotaRegular";
 }
 #cookieConcent.cookieDisabled

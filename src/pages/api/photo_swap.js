@@ -22,10 +22,10 @@ export default async (req, res) => {
        ********************************************************************************************************************/
       // 3. Swap videos and get ids
       const videosListCharacter = character === 'female' ? videosListFemale(faceId) : videosListMale(faceId);
-      console.log('Videos List Character', videosListCharacter);
+      //console.log('Videos List Character', videosListCharacter);
     
       const swapVideos = await dataSwapVideos(videosListCharacter);
-      console.log('Data Swap Videos', swapVideos);
+      //console.log('Data Swap Videos', swapVideos);
     
       // 4. Download videos, save in temp
       const dowloadVideos = await downloadSwapVideos(swapVideos);

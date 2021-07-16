@@ -86,7 +86,7 @@ const buildFileVideos = (videosSwap, videosList, character) => {
  * @param {number} timeScale Number of timescale to convert.
  * @returns Array with new name videos to concat.
  */
-const adjustTbnVideos = async (videosData, timeScale = 90000) => {
+ const adjustTbnVideos = async (videosData, timeScale = 90000) => {
   try {
     const tasks = videosData.map(async video => {
       const pathVideo = path.join(DIR_TEMP, video);
