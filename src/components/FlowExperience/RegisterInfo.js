@@ -318,7 +318,8 @@ const RegisterInfo = ({ userEmail }) => {
         </div>
         <div className="boxCheckbox">
             <div className="copyCheckbox special">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
+            {t("registerInfo.Legal")}{' '}<a href={t("registerInfo.link")} target="_blank">{t("registerInfo.linkLegal")}</a>
+            {t("registerInfo.Legal2")}{' '}<a href={t("registerInfo.link2")} target="_blank">{t("registerInfo.linkLegal2")}</a>
             </div>
         </div>
         {isSubmitting && (

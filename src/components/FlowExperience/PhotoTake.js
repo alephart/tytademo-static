@@ -5,8 +5,10 @@ import ButtonTake from '@/components/ButtonTake';
 import { PROCESS_ENUM, MESSAGE_DIALOG } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
 import { Help } from '@/components/DialogsTyta';
+import { useTranslation } from 'next-i18next';
 
 const PhotoTake = () => {
+  const { t } = useTranslation('common');
   const { facingMode, setFacingMode, setImgSrc, setProcess } = useContext(ExperienceContext);
   const [help, setHelp] = useState(false);
   const webcamRef = useRef(null);
@@ -48,7 +50,7 @@ const PhotoTake = () => {
 
         {/* <SelectDevice mode={facingMode} setMode={setFacingMode} /> */}
         <div className="zone-cameras">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+          <p>{t("Take.Photo")}</p>
         </div>
       </div>
 

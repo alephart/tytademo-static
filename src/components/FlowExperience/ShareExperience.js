@@ -47,6 +47,11 @@ const ShareExperience = () => {
             {t("shareExperience.buttonThanks")}
         </a>
       )}
+      <div className='copyThanks'>
+        <span>
+        {t("shareExperience.legal")}{' '}<a href={t("registerInfo.link")} target="_blank">{t("registerInfo.linkLegal")}</a>{' '}{t("shareExperience.legal2")}
+        </span>
+      </div>
     </div>
     <div className="indexDesktop">
         <div className="boxItemsDesktop">
