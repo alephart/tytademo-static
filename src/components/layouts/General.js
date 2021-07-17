@@ -4,7 +4,7 @@ import SEO from '../SEO';
 import { isAndroid } from 'react-device-detect';
 
 const Layout = ({ children, ...props }) => {
-  const { className = null } = props;
+  const { className = '' } = props;
   const { t } = useTranslation('common');
   const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
   
@@ -14,14 +14,14 @@ const Layout = ({ children, ...props }) => {
     description: t("meta_tags_description"),
     currentURL: siteURL,
     previewImage: `${siteURL}/toyota-lunay-feature-you.png`,
-    siteName: t("meta.tags.title"),
+    siteName: t("meta_tags_title"),
     videoPath: `${siteURL}/videos/featureYouToyota.mp4`,
   };
 
   return (
     <>
       <SEO {...metaData} />
-      <div className={`container ${className && className} ${isAndroid ? 'android' : ''}`}>
+      <div className={`container ${isAndroid ? 'android' : ''} ${className}`}>
         {children}
         <Landscape />
       </div>

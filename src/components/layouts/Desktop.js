@@ -13,7 +13,7 @@ const Layout = ({ children, ...props }) => {
     description: t("meta_tags_description"),
     currentURL: siteURL,
     previewImage: `${siteURL}/toyota-lunay-feature-you.png`,
-    siteName: t("meta.tags.title"),
+    siteName: t("meta_tags_title"),
     videoPath: `${siteURL}/videos/featureYouToyota.mp4`,
   };
 
