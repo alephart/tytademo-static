@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Layout from '@/components/layouts/General';
 import { ExperienceContext } from '@/components/Context';
 import { ShareExperience } from '@/components/FlowExperience';
@@ -8,21 +8,18 @@ const ToShareExp = ({data}) => {
   const [process, setProcess] = useState(PROCESS_ENUM.share);
   const [swap, setSwap] = useState(data);
 
-  useEffect(() => {
-    if (process !== PROCESS_ENUM.share) {
-      // return to correct process
-      console.log(process);
-      //setProcess(PROCESS_ENUM.share);
-    }
-  }, []);
-
   const contextValues = {
     process, setProcess,
     swap, setSwap,
   };
 
+  const metaData = {
+    videoPath: data.urlVideo,
+    currentURL: data.urlShare,
+  }
+
   return (
-    <Layout className="especial">
+    <Layout className="especial" {...metaData}>
       <ExperienceContext.Provider value={contextValues}>
         {process === PROCESS_ENUM.share && (
           <ShareExperience />
@@ -49,7 +46,6 @@ export const getServerSideProps = async (context) => {
     urlVideo: json.url_video,
     urlShare: `${urlSite}${pathLocale}share-experience/${params.id}`,
     urlJoin: `${urlSite}${pathLocale}join-experience/${params.id}`,
-    userId: params.id,
   };
 
   // Pass data to the page via props

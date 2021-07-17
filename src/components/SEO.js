@@ -2,7 +2,6 @@ import Head from 'next/head';
 import useTranslation from 'next-translate/useTranslation';
 
 const SEO = (props) => {
-  console.log('props in Meta', props);
   const { t } = useTranslation('common');
   const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
   const {
@@ -11,8 +10,10 @@ const SEO = (props) => {
     currentURL = siteURL,
     previewImage = `${siteURL}/toyota-lunay-feature-you.png`,
     siteName = t("meta_tags_title"),
-    videoPath = `${siteURL}/videos/featureYouToyota.mp4`,
+    videoPath,
   } = props;
+
+  console.log('videoPath', !!videoPath);
   return(
     <Head>
       <title>{pageTitle}</title>
@@ -23,17 +24,9 @@ const SEO = (props) => {
       <meta property="og:site_name" content={siteName} key="ogsitename" />
       <meta property="og:title" content={pageTitle} key="ogtitle" />
       <meta property="og:description" content={description} key="ogdesc" />
-      <meta property="og:type" content="video.movie" />
+      <meta property="og:type" content={!!videoPath ? "video.movie" : "website"} />
       <meta property="og:image" content={previewImage} key="ogthumb" />
       <meta property="fb:app_id" content="1421975721482769" />
-
-    {/* Open Graph Video - use on video pages */}
-      <meta property="og:video" content={videoPath} />
-      <meta property="og:video:url" content={videoPath} />
-      <meta property="og:video:secure_url" content={videoPath} />
-      <meta property="og:video:type" content="video/mp4" />
-      <meta property="og:video:width" content="1280" />
-      <meta property="og:video:height" content="720" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary" key="player" />
@@ -43,6 +36,15 @@ const SEO = (props) => {
       <meta name="twitter:description" content={description} />
       <meta name="twitter:domain" content="Toyota"/>
       <meta name="twitter:image" content={previewImage} />
+
+      {/* Open Graph Video - use on video pages */}
+      {!!videoPath && <meta property="og:video" content={videoPath} />}
+      {!!videoPath && <meta property="og:video:url" content={videoPath} />}
+      {!!videoPath && <meta property="og:video:secure_url" content={videoPath} />}
+      {!!videoPath && <meta property="og:video:type" content="video/mp4" />}
+      {!!videoPath && <meta property="og:video:width" content="1280" />}
+      {!!videoPath && <meta property="og:video:height" content="720" />}
+
     </Head>
   )
 }
