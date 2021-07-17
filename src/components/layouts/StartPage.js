@@ -1,18 +1,16 @@
-import { LandscapeStartPage } from '../Landscape';
-import { isMobile } from 'react-device-detect';
+import useTranslation from 'next-translate/useTranslation';
+import Landscape from '@/components/Landscape';
 import SEO from '../SEO';
-import { useTranslation } from 'next-i18next';
 
-const Layout = ({ children }) => {
-  console.log('isMobile', isMobile);
-  
+const Layout = ({ children, ...props }) => {
+  const { className = null } = props;
   const { t } = useTranslation('common');
   const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
 
   const metaData = {
     siteURL,
-    pageTitle: t("meta.tags.title"),
-    description: t("meta.tags.description"),
+    pageTitle: t("meta_tags_title"),
+    description: t("meta_tags_description"),
     currentURL: siteURL,
     previewImage: `${siteURL}/toyota-lunay-feature-you.png`,
     siteName: t("meta.tags.title"),
@@ -23,11 +21,8 @@ const Layout = ({ children }) => {
     <>
       <SEO {...metaData} />
       <div className="startPage">
-        {isMobile ? (
-          children
-        ) : (
-          <LandscapeStartPage />
-        )} 
+        {children}
+        <Landscape />
       </div>
     </>
   )

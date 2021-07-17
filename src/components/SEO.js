@@ -1,13 +1,13 @@
 import Head from 'next/head';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 const SEO = (props) => {
   console.log('props in Meta', props);
   const { t } = useTranslation('common');
   const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
   const {
-    pageTitle = t("meta.tags.title"),
-    description = t("meta.tags.description"),
+    pageTitle = t("meta_tags_title"),
+    description = t("meta_tags_description"),
     currentURL = siteURL,
     previewImage = `${siteURL}/toyota-lunay-feature-you.png`,
     siteName = 'Toyota Featuring You',

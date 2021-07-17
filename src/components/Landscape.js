@@ -1,6 +1,6 @@
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
-const LandscapeStartPage = () => {
+const Landscape = () => {
   const { t } = useTranslation('common');
   const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
   return (
@@ -15,10 +15,10 @@ const LandscapeStartPage = () => {
                       {t("desktop")}
                     </h2>
                     <p className="desktop">
-                    {t("desktop.QR")}
+                    {t("desktop_QR")}
                     </p>
                     <img className="QR desktop" src="/images/DesktopHome2.png" alt=""/>
-                    <a className="desktop" href="https://lunayxtoyota.com">lunayxtoyota.com</a>
+                    <a className="desktop" href={siteURL}>lunayxtoyota.com</a>
                     <h2 className="mobile">
                       {t("landscape")}
                     </h2>
@@ -29,4 +29,4 @@ const LandscapeStartPage = () => {
   );
 };
 
-export default LandscapeStartPage;
+export default Landscape;
