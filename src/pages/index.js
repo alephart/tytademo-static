@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import Layout from '@/components/layouts/StartPage';
 import { Rules } from '@/components/DialogsTyta';
@@ -9,27 +10,26 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useLocation } from '@/components/hooks';
 import CookieConsent from '@/components/CookieConsent';
 import { geolocationDb } from '@/utils/geolocationDB';
-//import { getUA } from 'react-device-detect';
+
+/// ::API::
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
-const Home = ({TOYOTA_COOKIE_CONSENT}) => {
+const Home = () => {
+  const router = useRouter();
+  const { data: cookie_consent, error: swr_error } = useSWR('/api/get_cookie', fetcher);
   const { loading, location, error } = useLocation(geolocationDb(geoDbKey));
   const { t } = useTranslation('common');
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [disabledExperience, setDisabledExperience] = useState(true);
   const [isActive, setActive] = useState(false);
-  const router = useRouter();
   
   useEffect(() => {
-    setDisabledExperience(!!TOYOTA_COOKIE_CONSENT ? false : true);
+    setDisabledExperience(!!cookie_consent ? false : true);
+  }, [cookie_consent]);
 
-    // if(getUA.includes("Instagram")) {
-    //   router.push('/copy-link');
-    // }
-  }, []);
-    
-  if(loading) {
+  if(loading || !cookie_consent || swr_error) {
     return (<></>);
   }
 
@@ -92,10 +92,17 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
           </div>
         </div>
 
-        {!TOYOTA_COOKIE_CONSENT && <CookieConsent setDisabledExperience={setDisabledExperience} />}
+        {!cookie_consent && <CookieConsent setDisabledExperience={setDisabledExperience} />}
     </Layout>
   )
 }
+
+// // SERVER
+// export const getStaticProps = async ({ locale }) => ({
+//   props: {
+//     ...(await serverSideTranslations(locale, ['common'])),
+//   },
+// });
 
 // SERVER
 export const getServerSideProps = async ({ req, locale }) => {
@@ -104,5 +111,6 @@ export const getServerSideProps = async ({ req, locale }) => {
     TOYOTA_COOKIE_CONSENT: req.cookies.TOYOTA_COOKIE_CONSENT || null,
   }, }
 };
+
 
 export default Home;
