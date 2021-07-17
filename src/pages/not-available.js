@@ -1,6 +1,5 @@
 import Layout from '@/components/layouts/General';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import useTranslation from 'next-translate/useTranslation';
 
 const NotAvailable = () => {
   const { t } = useTranslation('common');
@@ -11,14 +10,14 @@ const NotAvailable = () => {
               <div className="copyNotAvailable">
                   <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
                   <h2 className="desktopNot">
-                    {t("notAvailable.copyNotAvailable")}
+                    {t("notAvailable_copyNotAvailable")}
                   </h2>
                   <h2 className="mobile">
-                    {t("notAvailable.copyNotAvailable")}
+                    {t("notAvailable_copyNotAvailable")}
                   </h2>
                   <p>
-                    {t("notAvailable.copyNotAvailableParagrah")}:{' '}
-                    <a href={t("notAvailable.href")}>{t("notAvailable.link")}</a>
+                    {t("notAvailable_copyNotAvailableParagrah")}:{' '}
+                    <a href={t("notAvailable_href")}>{t("notAvailable_link")}</a>
                   </p>
               </div>
           </div>
@@ -26,11 +25,5 @@ const NotAvailable = () => {
   </div>
   );
 };
-
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...await serverSideTranslations(locale, ['common']),
-  },
-});
 
 export default NotAvailable;

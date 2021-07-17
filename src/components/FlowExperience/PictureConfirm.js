@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM, MESSAGE_DIALOG } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import { Help } from '@/components/DialogsTyta';
 import { Loading } from '@/components/Anims';
 import { isIOS, mobileVendor, mobileModel } from 'react-device-detect';
@@ -73,7 +73,7 @@ const PictureConfirm = () => {
             __html: "<div class='bgPhotoDegrade'></div><div class='boxAnimation'><iframe src='/face/new-vectors.html' /></div>",
           }}
         />
-        <div className='copyLike'>{!isLoading ? t("pictureConfirm.copyLike") : ' '}</div>
+        <div className='copyLike'>{!isLoading ? t("pictureConfirm_copyLike") : ' '}</div>
         {!isLoading ? (
           <>
             {deepFake && (
@@ -83,7 +83,7 @@ const PictureConfirm = () => {
                 variant='contained'
                 onClick={handlePhotoValid}
               >
-                {t("pictureConfirm.yesContinue")}
+                {t("pictureConfirm_yesContinue")}
               </Button>
             )}
 
@@ -93,7 +93,7 @@ const PictureConfirm = () => {
               variant='contained'
               onClick={() => setProcess(PROCESS_ENUM.photoTake)}
             >
-              {t("pictureConfirm.againPhoto")}
+              {t("pictureConfirm_againPhoto")}
             </Button>
           </>
         ) : (

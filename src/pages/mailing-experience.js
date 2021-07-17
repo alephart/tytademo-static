@@ -1,9 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import useTranslation from 'next-translate/useTranslation';
 
 const Mailing = () => {
   const { t } = useTranslation('common');
@@ -30,7 +27,7 @@ const Mailing = () => {
 
       <div className="mailing__content">
         <Image
-          src={t("mailing.title.youMadeIt")}
+          src={t("mailing_title_youMadeIt")}
           alt=""
           placeholder="blur"
           layout="fixed"
@@ -38,11 +35,11 @@ const Mailing = () => {
           height={18}
         />
 
-        <p>{t("mailing.watchYouFullVideo")}</p>
+        <p>{t("mailing_watchYouFullVideo")}</p>
 
         <a href={query.share} alt="">
           <Image
-            src={t("mailing.btn.watchVideo")}
+            src={t("mailing_btn_watchVideo")}
             alt=""
             placeholder="blur"
             layout="fixed"
@@ -64,7 +61,7 @@ const Mailing = () => {
           height={22}
         />
         
-        <p style={{ fontSize: '12px'}}>{t("mailing.terms")}</p>
+        <p style={{ fontSize: '12px'}}>{t("mailing_terms")}</p>
       </div>
       <style jsx>{`
         .mailing {
@@ -98,11 +95,5 @@ const Mailing = () => {
     </div>
   )
 };
-
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ['common'])),
-  },
-});
 
 export default Mailing;

@@ -2,8 +2,7 @@ import React from 'react';
 import Layout from '@/components/layouts/General';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import useTranslation from 'next-translate/useTranslation';
 import ReactPlayer from 'react-player';
 
 const JoinExperince = ({data}) => {
@@ -25,13 +24,13 @@ const JoinExperince = ({data}) => {
                 />
 
                 <div className="copyJoin">
-                    {t("join.copyJoin")}
+                    {t("join_copyJoin")}
                     <span>
-                        {t("join.subCopyJoin")}
+                        {t("join_subCopyJoin")}
                     </span>
                 </div>
                 <Link href="/">
-                    <Button className="buttonJoin" variant="contained">{t("join.buttonJoin")}</Button>
+                    <Button className="buttonJoin" variant="contained">{t("join_buttonJoin")}</Button>
                 </Link>
             </div>
 
@@ -50,10 +49,10 @@ const JoinExperince = ({data}) => {
                     <div className="copydesktop">
                         <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
                         <h2>
-                        {t("indexDesktop.copyDesktop")}
+                        {t("indexDesktop_copyDesktop")}
                         </h2>
                         <p>
-                        {t("indexDesktop.copyDesktopText")}
+                        {t("indexDesktop_copyDesktopText")}
                         </p>
                         <img className="QR desktop join" src="/images/DesktopHome.png" alt=""/>
                     </div>
@@ -76,7 +75,6 @@ export const getServerSideProps = async (context) => {
 
     // Pass data to the page via props
     return { props: { 
-      ...await serverSideTranslations(locale, ['common']),
       data
     }, }
   };

@@ -1,9 +1,8 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from '@/components/layouts/General';
 import { ExperienceContext } from '@/components/Context';
 import { ShareExperience } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/helpers/globals';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const ToShareExp = ({data}) => {
   const [process, setProcess] = useState(PROCESS_ENUM.share);
@@ -54,7 +53,6 @@ export const getServerSideProps = async (context) => {
 
   // Pass data to the page via props
   return { props: { 
-    ...await serverSideTranslations(locale, ['common']),
     data
   }, }
 };

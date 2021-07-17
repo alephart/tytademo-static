@@ -1,15 +1,12 @@
-import Layout from '@/components/layouts/StartPage';
-import { LandscapeGeneral } from '@/components/Landscape';
-import { isMobile } from 'react-device-detect';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Layout from '@/components/layouts/Desktop';
+import useTranslation from 'next-translate/useTranslation';
 
 const Prueba = () => {
   const { t } = useTranslation('common');
   
   return (
     <Layout>
-      <div>{t("meta.tags.title")}</div>
+        <div>{t("meta_tags_title")}</div>
     </Layout>
   )
 }
@@ -47,10 +44,10 @@ const Prueba = () => {
 
 // };
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ['common'])),
-  },
-});
+// export const getStaticProps = async ({ locale }) => ({
+//   props: {
+//     ...(await serverSideTranslations(locale, ['common'])),
+//   },
+// });
 
 export default Prueba;

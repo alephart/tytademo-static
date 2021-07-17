@@ -1,6 +1,6 @@
 /** meta tags og in components/layouts/Meta.js **/
 import { TwitterShareButton, FacebookShareButton } from "react-share";
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 const shareStyle = {
   margin: '20px'
@@ -13,10 +13,10 @@ const Share = ({ url, setShare }) => {
     setShare(true);
   }
   
-  const message = t("shareExperience.shareMessage");
+  const message = t("shareExperience_shareMessage");
   return (
     <div className='sharedSocial'>
-      {t("shareExperience.sharedSocial")} <br />
+      {t("shareExperience_sharedSocial")} <br />
 
       <div className='icons-social'>
 
