@@ -40,7 +40,7 @@ const Home = () => {
   }, [disabledExperience]);
 
   if(loading || !cookie_consent || swr_error) {
-    return (<></>);
+    return <><Layout /></>;
   }
 
   let noAvaliable;

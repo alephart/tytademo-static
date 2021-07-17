@@ -40,7 +40,7 @@ const SelectCharacter = () => {
   }, [process]);
 
   if(loading) {
-    return (<></>);
+    return <><Layout /></>;
   }
 
   let noAvaliable;

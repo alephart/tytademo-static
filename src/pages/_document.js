@@ -6,14 +6,6 @@ class MyDocument extends Document {
   }
 
   render() {
-    const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
-    const metaData = {
-      pageTitle: 'Featuring You Lunay X Toyota',
-      description: 'Take a selfie to be a part of LUNAY’s video and Corolla Apex',
-      currentURL: siteURL,
-      previewImage: `${siteURL}/toyota-lunay-feature-you.png`,
-      videoPath: `${siteURL}/videos/featureYouToyota.mp4`,
-    };
     return (
       <Html>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
