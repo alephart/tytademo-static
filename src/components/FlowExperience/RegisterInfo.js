@@ -11,6 +11,7 @@ import { ExperienceContext } from '@/components/Context';
 import useTranslation from 'next-translate/useTranslation';
 import { Help } from '@/components/DialogsTyta';
 import { Loading } from '@/components/Anims';
+import { useRouter } from 'next/router';
 
 const setCookie = (email) => {
   fetch('api/set_cookie', {
@@ -49,6 +50,7 @@ const RegisterInfo = ({ userEmail }) => {
     mode: 'onChange',
     reValidateMode: 'onChange',
   });
+  const router = useRouter();
 
   /******** EFFECT ACTIONS ********/
 
@@ -111,6 +113,10 @@ const RegisterInfo = ({ userEmail }) => {
 
         // when save json, then change to share
         setProcess(PROCESS_ENUM.share);
+        router.replace({
+          pathname: '/share-experience/[id]',
+          query: { id: data.userId },
+        });
         
       } else {
         setSubmitting(false);

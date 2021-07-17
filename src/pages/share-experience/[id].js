@@ -32,6 +32,7 @@ const ToShareExp = ({data}) => {
   )
 }
 
+// ::SERVER::
 export const getServerSideProps = async (context) => {
   const { params, locale } = context;
   const urlAdmin = process.env.NEXT_PUBLIC_TYTA_API;

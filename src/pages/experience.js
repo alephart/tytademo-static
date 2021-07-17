@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import Layout from '@/components/layouts/General';
 import { ExperienceContext } from '@/components/Context';
 import { useLocation } from '@/components/hooks';
@@ -48,7 +48,7 @@ const Experience = ({ userEmail }) => {
       router.push('/select-character');
       
     } else {
-      setCharacter(localStorage.getItem('character'));
+      setCharacter(typeCharacter);
       setProcess(PROCESS_ENUM.photoTake);
     }
   }, []);
@@ -76,7 +76,7 @@ const Experience = ({ userEmail }) => {
 
 
   if(loading) {
-    return (<></>);
+    return <><Layout /></>;
   }
 
   let noAvaliable;
@@ -120,10 +120,6 @@ const Experience = ({ userEmail }) => {
 
           {process === PROCESS_ENUM.register && (
             <RegisterInfo userEmail={userEmail} />
-          )}
-
-          {process === PROCESS_ENUM.share && (
-            <ShareExperience />
           )}
 
         </ExperienceContext.Provider>
