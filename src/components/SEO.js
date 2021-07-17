@@ -13,7 +13,6 @@ const SEO = (props) => {
     videoPath,
   } = props;
 
-  console.log('videoPath', !!videoPath);
   return(
     <Head>
       <title>{pageTitle}</title>
