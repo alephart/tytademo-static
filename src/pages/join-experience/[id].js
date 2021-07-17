@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import ReactPlayer from 'react-player';
+import { isMobile } from 'react-device-detect';
 
 const JoinExperince = ({data}) => {
   const { urlVideo, urlJoin } = data;
@@ -22,7 +23,7 @@ const JoinExperince = ({data}) => {
                     className="react-player"
                     url={urlVideo}
                     controls={true}
-                    playing={true}
+                    playing={isMobile ? true : false}
                     width='100%'
                     height='100%'
                 />
@@ -45,7 +46,7 @@ const JoinExperince = ({data}) => {
                             className="react-player"
                             url={urlVideo}
                             controls={true}
-                            playing={false}
+                            playing={isMobile ? false : true}
                             width='100%'
                             height='100%'
                         />
