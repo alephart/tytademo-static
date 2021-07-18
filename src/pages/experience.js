@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import Layout from '@/components/layouts/General';
 import { ExperienceContext } from '@/components/Context';
 import { useLocation } from '@/components/hooks';
@@ -11,7 +11,6 @@ import {
   RegisterInfo,
   ShareExperience,
 } from '@/components/FlowExperience';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TytaProgress } from '@/components/Anims';
 import { getUA } from 'react-device-detect';
 import CopyLink from '@/components/CopyLink';
@@ -49,7 +48,7 @@ const Experience = ({ userEmail }) => {
       router.push('/select-character');
       
     } else {
-      setCharacter(localStorage.getItem('character'));
+      setCharacter(typeCharacter);
       setProcess(PROCESS_ENUM.photoTake);
     }
   }, []);
@@ -74,15 +73,10 @@ const Experience = ({ userEmail }) => {
         break;
     }
   }, [process]);
-  
-  // useEffect(() => {
-  //   if(!isMobile) {
-  //     router.push('/toyota-experience');
-  //   }
-  // }, []);
+
 
   if(loading) {
-    return (<></>);
+    return <><Layout /></>;
   }
 
   let noAvaliable;
@@ -128,10 +122,6 @@ const Experience = ({ userEmail }) => {
             <RegisterInfo userEmail={userEmail} />
           )}
 
-          {process === PROCESS_ENUM.share && (
-            <ShareExperience />
-          )}
-
         </ExperienceContext.Provider>
 
       )}
@@ -140,10 +130,9 @@ const Experience = ({ userEmail }) => {
   )
 }
 
-export const getServerSideProps = async ({ req, locale }) => {
+export const getServerSideProps = async ({ req }) => {
   return { props: { 
-    ...await serverSideTranslations(locale, ['common']),
-    userEmail: req.cookies.userEmail || null,
+    userEmail: await req.cookies.userEmail || null,
   }, }
 };
 

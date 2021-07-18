@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 
@@ -45,9 +45,9 @@ const CookieConsent = ({setDisabledExperience}) => {
       className={acceptAllCookies ? 'cookieDisabled' : ''}
     >
     <p>
-      {t('cookie.paragraph1')}
-      <a href={t('cookie.link')} target="_blank" rel="noopener noreferrer"> {t('cookie.linkText')}</a>
-      {t('cookie.paragragh2')}
+      {t('cookie_paragraph1')}
+      <a href={t('cookie_link')} target="_blank" rel="noopener noreferrer"> {t('cookie_linkText')}</a>
+      {t('cookie_paragragh2')}
     </p>
 
     <div className="textCheck">
@@ -56,7 +56,7 @@ const CookieConsent = ({setDisabledExperience}) => {
             name='ofLegalAge'
             onChange={handleCheckedCookie}
             inputProps={{ 'aria-label': '18 years old' }}
-        /> <div className="copyCheckbox">{t('cookie.Check1')}</div> 
+        /> <div className="copyCheckbox">{t('cookie_Check1')}</div> 
     </div>
     <div className="textCheck">
         <Checkbox
@@ -64,7 +64,7 @@ const CookieConsent = ({setDisabledExperience}) => {
             name='termsAndConditions'
             onChange={handleCheckedCookie}
             inputProps={{ 'aria-label': 'Terms And Conditions' }}
-        /><div className="copyCheckbox"> {t('cookie.Check2')} <a href={t('cookie.Check2Link')} target="_blank">{t('cookie.Check2LinkText')}</a></div>
+        /><div className="copyCheckbox"> {t('cookie_Check2')} <a href={t('cookie_Check2Link')} target="_blank">{t('cookie_Check2LinkText')}</a></div>
     </div>
     <center>
       <Button 
@@ -72,7 +72,7 @@ const CookieConsent = ({setDisabledExperience}) => {
         disabled={btnCookiesHide}
         variant='contained'
         onClick={handleAcceptCookie}
-      >{t('cookie.button')}</Button>
+      >{t('cookie_button')}</Button>
     </center>
   </div>
   )

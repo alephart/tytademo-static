@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import { useCountUp } from 'react-countup';
 
 const VideoLoading = ({progress}) => {
@@ -15,7 +15,7 @@ const VideoLoading = ({progress}) => {
             <div className='percentage gray' style={{ width: 100 }}></div>
             <div className='percentage' style={{ width: progress }}></div>
           </div>
-          <div className='timePercentage'>{t("VideoLoading.timePercentage")}</div>
+          <div className='timePercentage'>{t("VideoLoading_timePercentage")}</div>
           <div className='secondPercentage'>{countUp}</div>
         </div>
       </div>

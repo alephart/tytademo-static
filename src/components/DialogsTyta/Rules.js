@@ -9,7 +9,7 @@ import {
   useMediaQuery,
 } from '@material-ui/core/';
 import { useTheme } from '@material-ui/core/styles';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 const Rules = ({ dialog, isOpen, setIsOpen }) => {
   const { t } = useTranslation('common');
@@ -34,7 +34,7 @@ const Rules = ({ dialog, isOpen, setIsOpen }) => {
             onClick={() => setIsOpen(false)}
             color='primary'
           >
-            {t("back.button")}
+            {t("back_button")}
           </Button>
 
       </DialogContent>

@@ -1,18 +1,21 @@
-import React from 'react';
 import Layout from '@/components/layouts/General';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import useTranslation from 'next-translate/useTranslation';
 import ReactPlayer from 'react-player';
 import { isMobile } from 'react-device-detect';
 
 const JoinExperince = ({data}) => {
-  const { urlVideo } = data;
+  const { urlVideo, urlJoin } = data;
     const { t } = useTranslation('common');
 
+    const metaData = {
+        videoPath: urlVideo,
+        currentURL: urlJoin,
+      }
+
     return (
-        <Layout className="especial">
+        <Layout className="especial" {...metaData}>
             <div className="checkVideoFinal">
                 <img className="logoToyota join" src="/images/logo-toyota.png" alt=""/>
 
@@ -26,13 +29,13 @@ const JoinExperince = ({data}) => {
                 />
 
                 <div className="copyJoin">
-                    {t("join.copyJoin")}
+                    {t("join_copyJoin")}
                     <span>
-                        {t("join.subCopyJoin")}
+                        {t("join_subCopyJoin")}
                     </span>
                 </div>
                 <Link href="/">
-                    <Button className="buttonJoin" variant="contained">{t("join.buttonJoin")}</Button>
+                    <Button className="buttonJoin" variant="contained">{t("join_buttonJoin")}</Button>
                 </Link>
             </div>
 
@@ -51,10 +54,10 @@ const JoinExperince = ({data}) => {
                     <div className="copydesktop">
                         <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
                         <h2>
-                        {t("indexDesktop.copyDesktop")}
+                        {t("indexDesktop_copyDesktop")}
                         </h2>
                         <p>
-                        {t("indexDesktop.copyDesktopText")}
+                        {t("indexDesktop_copyDesktopText")}
                         </p>
                         <img className="QR desktop join" src="/images/DesktopHome.png" alt=""/>
                     </div>
@@ -67,17 +70,21 @@ const JoinExperince = ({data}) => {
 export const getServerSideProps = async (context) => {
     const { params, locale } = context;
     const urlAdmin = process.env.NEXT_PUBLIC_TYTA_API;
+    const urlSite = process.env.NEXT_PUBLIC_URL_SITE;
 
     //Fetch data from external API
     const res = await fetch(`${urlAdmin}/participant/${params.id}`);
     const json = await res.json();
-    console.log(json);
 
-    const data = { success: true, urlVideo: json.url_video, id: params.id}
+    const pathLocale = locale === 'es' ? '/es/' : '/';
+    const data = {
+      success: true,
+      urlVideo: json.url_video,
+      urlJoin: `${urlSite}${pathLocale}join-experience/${params.id}`,
+    };
 
     // Pass data to the page via props
     return { props: { 
-      ...await serverSideTranslations(locale, ['common']),
       data
     }, }
   };

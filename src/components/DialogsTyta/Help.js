@@ -3,8 +3,7 @@ import {
   Dialog,
   DialogContent,
 } from '@material-ui/core/';
-import { useTheme } from '@material-ui/core/styles';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import { MESSAGE_DIALOG } from '@/helpers/globals';
 
 const Help = ({ isOpen, setIsOpen, message, id }) => {
@@ -18,27 +17,27 @@ const Help = ({ isOpen, setIsOpen, message, id }) => {
       aria-describedby='alert-dialog-description'
     >  
       <DialogContent id='alert-dialog-description'>
-          <h2 className="modal-title">{t("alertDescription.title")}</h2>
+          <h2 className="modal-title">{t("alertDescription_title")}</h2>
           { message === MESSAGE_DIALOG.rememberPhoto && (
             <>
-              <p>{t("alertDescription.text")}</p>
+              <p>{t("alertDescription_text")}</p>
               <ul>
-                <li>· {t("alertDescription.item1")}</li>
-                <li>· {t("alertDescription.item2")}</li>
-                <li>· {t("alertDescription.item3")}</li>
-                <li>· {t("alertDescription.item4")}</li>
+                <li>· {t("alertDescription_item1")}</li>
+                <li>· {t("alertDescription_item2")}</li>
+                <li>· {t("alertDescription_item3")}</li>
+                <li>· {t("alertDescription_item4")}</li>
               </ul>
             </>
           )}
           { message === MESSAGE_DIALOG.emailRegistered && (
-            <p>{t("alertDescription.userExist")}</p>
+            <p>{t("alertDescription_userExist")}</p>
           )}
           <Button
             id={id}
             onClick={() => setIsOpen(false)}
             color='primary'
           >
-            {t("alertDescription.button")}
+            {t("alertDescription_button")}
           </Button>
 
       </DialogContent>

@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router'
 
 const CharacterChoose = () => {
@@ -31,7 +31,7 @@ const CharacterChoose = () => {
 
   return (
       <div className={isActive ? 'active chooseCharacter': 'chooseCharacter'}> 
-        <div className={isActive ? 'active selectCopy': 'selectCopy'}>{t("characterChoose.selectCopy")}</div>
+        <div className={isActive ? 'active selectCopy': 'selectCopy'}>{t("characterChoose_selectCopy")}</div>
         <div className={`BoxchooseCharacter  ${character  ? 'selected' : ''}`}>
           <div
             className={`selectCharacter2  ${character === 'female' ? 'selected' : ''}`}
@@ -55,7 +55,7 @@ const CharacterChoose = () => {
             variant='contained'
             onClick={handleAdvance}
           >
-            {t("characterChooses.buttonPhoto")}
+            {t("characterChoose_buttonPhoto")}
         </Button>
       </div>
   );

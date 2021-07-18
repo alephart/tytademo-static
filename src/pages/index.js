@@ -1,36 +1,46 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import Layout from '@/components/layouts/StartPage';
 import { Rules } from '@/components/DialogsTyta';
 import { VideoBg } from '@/components/Anims';
 import Button from '@material-ui/core/Button';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import useTranslation from 'next-translate/useTranslation';
 import { useLocation } from '@/components/hooks';
 import CookieConsent from '@/components/CookieConsent';
 import { geolocationDb } from '@/utils/geolocationDB';
-//import { getUA } from 'react-device-detect';
+import { useRouter } from 'next/router';
+import useSWR from 'swr';
+
+/// ::API::
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
-const Home = ({TOYOTA_COOKIE_CONSENT}) => {
-  const { loading, location, error } = useLocation(geolocationDb(geoDbKey));
+const Home = () => {
   const { t } = useTranslation('common');
+  const { data: cookie_consent, error: swr_error } = useSWR('/api/get_cookie', fetcher);
+  const { loading, location, error } = useLocation(geolocationDb(geoDbKey));
   const [isOpenDialog, setIsOpenDialog] = useState(false);
-  const [disabledExperience, setDisabledExperience] = useState(true);
+  const [disabledExperience, setDisabledExperience] = useState(false);
+  const [showCookie, setShowCookie] = useState(false);
   const [isActive, setActive] = useState(false);
   const router = useRouter();
   
   useEffect(() => {
-    setDisabledExperience(!!TOYOTA_COOKIE_CONSENT ? false : true);
+    if(!!cookie_consent) {
+      setDisabledExperience(!!cookie_consent.TOYOTA_COOKIE_CONSENT ? false : true);
+    }
+  }, [cookie_consent]);
 
-    // if(getUA.includes("Instagram")) {
-    //   router.push('/copy-link');
-    // }
-  }, []);
-    
-  if(loading) {
-    return (<></>);
+  useEffect(() => {
+    if(disabledExperience) {
+      setTimeout(() => {
+        setShowCookie(disabledExperience);
+      }, 1800);
+    }
+  }, [disabledExperience]);
+
+  if(loading || !cookie_consent || swr_error) {
+    return <><Layout /></>;
   }
 
   let noAvaliable;
@@ -69,10 +79,10 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
         <div className={isActive ? 'containerSpecial animationExit': 'containerSpecial'}>
           <div>
             <div className="copyStart ">
-              {t("start.copyStart")}
+              {t("start_copyStart")}
               <span>
-                {t('start.subCopyStart')} <br/>
-                {t('start.subCopyStart2')}
+                {t('start_subCopyStart')} <br/>
+                {t('start_subCopyStart2')}
               </span>
             </div>
 
@@ -82,27 +92,19 @@ const Home = ({TOYOTA_COOKIE_CONSENT}) => {
                 onClick={handleAdvance}
                 className="buttonStart"
                 variant="contained">
-                {t('start.buttonStart')}
+                {t('start_buttonStart')}
               </Button>
           
             <div className="copyFooter">
-              {t('start.copyFooter1')} {t('start.copyFooter2')} <a id="termsAndConditions" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start.copyFooterLink')}</a>
+              {t('start_copyFooter1')} {t('start_copyFooter2')} <a id="termsAndConditions" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start_copyFooterLink')}</a>
             </div>
             <Rules dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
           </div>
         </div>
 
-        {!TOYOTA_COOKIE_CONSENT && <CookieConsent setDisabledExperience={setDisabledExperience} />}
+        {(disabledExperience && showCookie) && <CookieConsent setDisabledExperience={setDisabledExperience} />}
     </Layout>
   )
 }
-
-// SERVER
-export const getServerSideProps = async ({ req, locale }) => {
-  return { props: { 
-    ...await serverSideTranslations(locale, ['common']),
-    TOYOTA_COOKIE_CONSENT: req.cookies.TOYOTA_COOKIE_CONSENT || null,
-  }, }
-};
 
 export default Home;

@@ -2,7 +2,6 @@ import '@/styles/globals.css'
 import '@/styles/general.scss'
 
 import { useEffect } from 'react';
-import { appWithTranslation } from 'next-i18next';
 import TagManager from 'react-gtm-module';
 
 const MyApp = ({ Component, pageProps }) => {
@@ -13,4 +12,4 @@ const MyApp = ({ Component, pageProps }) => {
   return <Component {...pageProps} />
 }
 
-export default appWithTranslation(MyApp);
+export default MyApp;

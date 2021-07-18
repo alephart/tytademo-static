@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router'
 import Layout from '@/components/layouts/General';
 import { ExperienceContext } from '@/components/Context';
 import { useLocation } from '@/components/hooks';
 import { geolocationDb } from '@/utils/geolocationDB';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import { CharacterChoose } from '@/components/FlowExperience';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { TytaProgress } from '@/components/Anims';
 import { getUA } from 'react-device-detect';
 import CopyLink from '@/components/CopyLink';
+import { useRouter } from 'next/router';
 
 const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
@@ -41,7 +40,7 @@ const SelectCharacter = () => {
   }, [process]);
 
   if(loading) {
-    return (<></>);
+    return <><Layout /></>;
   }
 
   let noAvaliable;
@@ -85,12 +84,5 @@ const SelectCharacter = () => {
     </Layout>
   )
 }
-
-// Server
-export const getServerSideProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ['common'])),
-  },
-});
 
 export default SelectCharacter;

@@ -1,37 +1,16 @@
-import { useTranslation } from 'next-i18next';
 import { isAndroid } from 'react-device-detect';
+import Landscape from '@/components/Landscape';
+import SEO from '../SEO';
 
 const Layout = ({ children, ...props }) => {
-  const { className = null } = props;
-  const { t } = useTranslation('common');
+  const { className = '' } = props;
 
   return (
     <>
-      <div className={`container ${className && className} ${isAndroid ? 'android' : ''}`}>
+      <SEO {...props} />
+      <div className={`container ${isAndroid ? 'android' : ''} ${className}`}>
         {children}
-        {/* aqui va version desktop */}
-        <div className='landscape'>
-            <div className="notAvailable">
-                <div className="boxItemsNotAvailable">
-                    <div className="copyNotAvailable">
-                        <img className="logoToyota desktop" src="/images/logo-toyota.png" alt=""/>
-                        <hr className="desktop"/>
-                        <img className="rotate mobile" src="/images/RotatedYourPhone.png" alt=""/>
-                        <h2 className="desktop">
-                          {t("desktop")}
-                        </h2>
-                        <p className="desktop">
-                        {t("desktop.QR")}
-                        </p>
-                        <img className="QR desktop" src="/images/DesktopHome2.png" alt=""/>
-                        <a className="desktop" href="https://lunayxtoyota.com">lunayxtoyota.com</a>
-                        <h2 className="mobile">
-                          {t("landscape")}
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <Landscape />
       </div>
     </>
   )

@@ -2,12 +2,11 @@ import Landscape from '@/components/Landscape';
 import SEO from '../SEO';
 
 const Layout = ({ children, ...props }) => {
-  const { className = '' } = props;
 
   return (
     <>
       <SEO {...props} />
-      <div className="startPage">
+      <div className="container">
         {children}
         <Landscape />
       </div>
