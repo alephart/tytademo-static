@@ -49,7 +49,7 @@ const ShareExperience = () => {
       )}
       <div className='copyThanks'>
         <span>
-        {t("shareExperience.legal")}{' '}<a href={t("registerInfo.link")} target="_blank">{t("registerInfo.linkLegal")}</a>{' '}{t("shareExperience.legal2")}
+        {t("shareExperience_legal")}{' '}<a href={t("registerInfo_link")} target="_blank">{t("registerInfo_linkLegal")}</a>{' '}{t("shareExperience_legal2")}
         </span>
       </div>
     </div>

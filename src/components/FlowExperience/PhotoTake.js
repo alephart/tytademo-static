@@ -5,7 +5,7 @@ import ButtonTake from '@/components/ButtonTake';
 import { PROCESS_ENUM, MESSAGE_DIALOG } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
 import { Help } from '@/components/DialogsTyta';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 
 const PhotoTake = () => {
   const { t } = useTranslation('common');
@@ -50,7 +50,7 @@ const PhotoTake = () => {
 
         {/* <SelectDevice mode={facingMode} setMode={setFacingMode} /> */}
         <div className="zone-cameras">
-          <p>{t("Take.Photo")}</p>
+          <p>{t("Take_Photo")}</p>
         </div>
       </div>
 

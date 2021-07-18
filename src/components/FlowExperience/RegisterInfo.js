@@ -322,8 +322,8 @@ const RegisterInfo = ({ userEmail }) => {
         </div>
         <div className="boxCheckbox">
             <div className="copyCheckbox special">
-            {t("registerInfo.Legal")}{' '}<a href={t("registerInfo.link")} target="_blank">{t("registerInfo.linkLegal")}</a>
-            {t("registerInfo.Legal2")}{' '}<a href={t("registerInfo.link2")} target="_blank">{t("registerInfo.linkLegal2")}</a>
+            {t("registerInfo_Legal")}{' '}<a href={t("registerInfo_link")} target="_blank">{t("registerInfo_linkLegal")}</a>
+            {t("registerInfo_Legal2")}{' '}<a href={t("registerInfo_link2")} target="_blank">{t("registerInfo_linkLegal2")}</a>
             </div>
         </div>
         {isSubmitting && (
