@@ -2,6 +2,7 @@ import Head from 'next/head';
 import useTranslation from 'next-translate/useTranslation';
 
 const SEO = (props) => {
+  console.log('props meta data:::', props);
   const { t } = useTranslation('common');
   const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
   const {
