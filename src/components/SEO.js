@@ -23,7 +23,7 @@ const SEO = (props) => {
       <meta property="og:site_name" content={siteName} key="ogsitename" />
       <meta property="og:title" content={pageTitle} key="ogtitle" />
       <meta property="og:description" content={description} key="ogdesc" />
-      <meta property="og:type" content={!!videoPath ? "video.movie" : "website"} />
+      <meta property="og:type" content={!!videoPath ? "video.other" : "website"} />
       <meta property="og:image" content={previewImage} key="ogthumb" />
       <meta property="fb:app_id" content="1421975721482769" />
 
