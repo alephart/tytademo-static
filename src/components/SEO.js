@@ -24,6 +24,7 @@ const SEO = (props) => {
       <meta property="og:title" content={pageTitle} key="ogtitle" />
       <meta property="og:description" content={description} key="ogdesc" />
       <meta property="og:type" content={!!videoPath ? "video.other" : "website"} />
+      <meta property="og:image" content={previewImage} key="ogthumb" />
       <meta property="fb:app_id" content="1421975721482769" />
 
       {/* Twitter */}
