@@ -3,18 +3,17 @@ import {
   Input,
   Button,
   Switch,
-  Checkbox,
 } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { VideoLoading } from '@/components/Anims';
 import { PROCESS_ENUM, MESSAGE_DIALOG } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import { Help } from '@/components/DialogsTyta';
 import { Loading } from '@/components/Anims';
+import { useRouter } from 'next/router';
 
 const setCookie = (email) => {
-  //cookie.set('email', email, { expires: 1 / 24 });
   fetch('api/set_cookie', {
     method: 'POST',
     headers: {
@@ -51,6 +50,7 @@ const RegisterInfo = ({ userEmail }) => {
     mode: 'onChange',
     reValidateMode: 'onChange',
   });
+  const router = useRouter();
 
   /******** EFFECT ACTIONS ********/
 
@@ -113,6 +113,10 @@ const RegisterInfo = ({ userEmail }) => {
 
         // when save json, then change to share
         setProcess(PROCESS_ENUM.share);
+        router.replace({
+          pathname: '/share-experience/[id]',
+          query: { id: data.userId },
+        });
         
       } else {
         setSubmitting(false);
@@ -202,24 +206,24 @@ const RegisterInfo = ({ userEmail }) => {
       ...data,
       character,
       locale,
-      textOpenBrowser: t('mailing.openWithBrowser'),
-      textTitle: t('meta.tags.title'),
-      imgTitle: t('mailing.title.youMadeIt'),
-      textMessage: t('mailing.watchYouFullVideo'),
-      imgButton: t('mailing.btn.watchVideo'),
-      textTerms: t('mailing.terms'),
+      textOpenBrowser: t('mailing_openWithBrowser'),
+      textTitle: t('meta_tags_title'),
+      imgTitle: t('mailing_title_youMadeIt'),
+      textMessage: t('mailing_watchYouFullVideo'),
+      imgButton: t('mailing_btn_watchVideo'),
+      textTerms: t('mailing_terms'),
     });    
   };
 
   return (
     <div className='formVideo'>
       <VideoLoading progress={progress} />
-      <div className='copyTitleForm'>{t("registerInfo.copyTitleForm")}</div>
-      <div className='copySubtitleForm'>{t("registerInfo.copySubtitleForm")}</div>
+      <div className='copyTitleForm'>{t("registerInfo_copyTitleForm")}</div>
+      <div className='copySubtitleForm'>{t("registerInfo_copySubtitleForm")}</div>
       
       {(errors.firtsname || errors.lastname || errors.email || errors.zipcode) && (
           <span className='errorsField center'>
-            {t("registerInfo.errorsField")}
+            {t("registerInfo_errorsField")}
           </span>
         )}
 
@@ -231,8 +235,8 @@ const RegisterInfo = ({ userEmail }) => {
           `}
           name='firstname'
           {...register('firstname', { required: true })}
-          placeholder={t("registerInfo.name")}
-          inputProps={{ 'aria-label': t("registerInfo.name") }}
+          placeholder={t("registerInfo_name")}
+          inputProps={{ 'aria-label': t("registerInfo_name") }}
           value={values.firstname}
           onChange={handleChangeLetters}
           inputProps={{
@@ -246,8 +250,8 @@ const RegisterInfo = ({ userEmail }) => {
           `}
           name='lastname'
           {...register('lastname', { required: true })}
-          placeholder={t("registerInfo.lastName")}
-          inputProps={{ 'aria-label': t("registerInfo.lastName") }}
+          placeholder={t("registerInfo_lastName")}
+          inputProps={{ 'aria-label': t("registerInfo_lastName") }}
           value={values.lastname}
           onChange={handleChangeLetters}
           inputProps={{
@@ -263,8 +267,8 @@ const RegisterInfo = ({ userEmail }) => {
           name='email'
           type='email'
           {...register('email', { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ })}
-          placeholder={t("registerInfo.email")}
-          inputProps={{ 'aria-label': t("registerInfo.email") }}
+          placeholder={t("registerInfo_email")}
+          inputProps={{ 'aria-label': t("registerInfo_email") }}
           value={values.email}
           onChange={handleChangeEmail}
           inputProps={{
@@ -284,8 +288,8 @@ const RegisterInfo = ({ userEmail }) => {
               .slice(0, 5);
           }}
           {...register('zipcode', { required: true, pattern: /^[0-9]{5}(?:-[0-9]{4})?$/ })}
-          placeholder={t("registerInfo.zip")}
-          inputProps={{ 'aria-label': t("registerInfo.zip") }}
+          placeholder={t("registerInfo_zip")}
+          inputProps={{ 'aria-label': t("registerInfo_zip") }}
           value={values.zipcode}
           onChange={handleChangeZip}
           inputProps={{
@@ -295,30 +299,31 @@ const RegisterInfo = ({ userEmail }) => {
 
         <div className='boxCheckbox'>
           <div className='copyCheckbox'>
-            {t("registerInfo.copyCheckbox1")}
+            {t("registerInfo_copyCheckbox1")}
           </div>
           <Switch
             checked={contact.productNews}
             onChange={handleChangeContact}
             name='productNews'
-            inputProps={{ 'aria-label': t("registerInfo.copyCheckbox1") }}
+            inputProps={{ 'aria-label': t("registerInfo_copyCheckbox1") }}
           />
         </div>
         <div className='boxCheckbox'>
           <div className='copyCheckbox'>
-            {t("registerInfo.copyCheckbox2")}
+            {t("registerInfo_copyCheckbox2")}
           </div>
           <Switch
             className="switch2"
             checked={contact.testDrive}
             onChange={handleChangeContact}
             name='testDrive'
-            inputProps={{ 'aria-label': t("registerInfo.copyCheckbox2") }}
+            inputProps={{ 'aria-label': t("registerInfo_copyCheckbox2") }}
           />
         </div>
         <div className="boxCheckbox">
             <div className="copyCheckbox special">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
+            {t("registerInfo_Legal")}{' '}<a href={t("registerInfo_link")} target="_blank">{t("registerInfo_linkLegal")}</a>
+            {t("registerInfo_Legal2")}{' '}<a href={t("registerInfo_link2")} target="_blank">{t("registerInfo_linkLegal2")}</a>
             </div>
         </div>
         {isSubmitting && (
@@ -330,7 +335,7 @@ const RegisterInfo = ({ userEmail }) => {
           type="submit"
           disabled={isSubmitting}
         >
-          {t("registerInfo.yesContinue")}
+          {t("registerInfo_yesContinue")}
         </Button>
       </form>
 

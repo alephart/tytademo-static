@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
-import { useTranslation } from 'next-i18next';
+import useTranslation from 'next-translate/useTranslation';
 import { ExperienceContext } from '@/components/Context';
 import Share from '@/components/Share';
 import ReactPlayer from 'react-player';
@@ -31,9 +31,9 @@ const ShareExperience = () => {
       
 
       <div className='copyThanks'>
-        <div className='copyLunay'>{t("shareExperience.copyLunay")}</div>
+        <div className='copyLunay'>{t("shareExperience_copyLunay")}</div>
         <span>
-          {t("shareExperience.copyLunaySpan")}
+          {t("shareExperience_copyLunaySpan")}
         </span>
       </div>
 
@@ -44,9 +44,14 @@ const ShareExperience = () => {
           id='downloadVideoExperience'
           className='buttonThanks'
           href={`${siteURL}/api/download_video?filename=${swap.urlVideo}`}>
-            {t("shareExperience.buttonThanks")}
+            {t("shareExperience_buttonThanks")}
         </a>
       )}
+      <div className='copyThanks'>
+        <span>
+        {t("shareExperience_legal")}{' '}<a href={t("registerInfo_link")} target="_blank">{t("registerInfo_linkLegal")}</a>{' '}{t("shareExperience_legal2")}
+        </span>
+      </div>
     </div>
     <div className="indexDesktop">
         <div className="boxItemsDesktop">
@@ -63,16 +68,16 @@ const ShareExperience = () => {
             <div className="copydesktop">
                 <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
                 <h2>
-                  {t("shareExperience.copyLunay")}
+                  {t("shareExperience_copyLunay")}
                 </h2>
                 <p>
-                  {t("shareExperience.copyLunaySpan")}
+                  {t("shareExperience_copyLunaySpan")}
                 </p>
                 <a
                   id='downloadVideoDesktop'
                   className='buttonThanks'
                   href={`${siteURL}/api/download_video?filename=${swap.urlVideo}`}>
-                    {t("shareExperience.buttonThanks")}
+                    {t("shareExperience_buttonThanks")}
                 </a>
             </div>
         </div>

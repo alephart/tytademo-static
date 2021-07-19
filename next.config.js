@@ -1,6 +1,9 @@
-const { i18n } = require("./next-i18next.config");
-module.exports = {
-  i18n,
+const nextTranslate = require('next-translate');
+module.exports = nextTranslate({
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+  },
   images: {
     domains: ["devmds.com"],
   },
@@ -14,4 +17,4 @@ module.exports = {
     // You can, for example, get the latest git commit hash here
     return "1.0";
   },
-};
+});
