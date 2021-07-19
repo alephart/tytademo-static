@@ -36,7 +36,7 @@ const ShareExperience = () => {
         </span>
       </div>
 
-      <Share url={swap.urlShare} setShare={setDownload} />
+      <Share url={swap.urlJoin} setShare={setDownload} />
 
       {download && (
         <a
