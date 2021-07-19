@@ -28,7 +28,6 @@ const ShareExperience = () => {
         width='100%'
         height='100%'
       />
-      
 
       <div className='copyThanks'>
         <div className='copyLunay'>{t("shareExperience_copyLunay")}</div>
@@ -37,7 +36,7 @@ const ShareExperience = () => {
         </span>
       </div>
 
-      <Share url={swap.urlJoin} setShare={setDownload} />
+      <Share url={swap.urlShare} setShare={setDownload} />
 
       {download && (
         <a
