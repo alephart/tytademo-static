@@ -53,6 +53,7 @@ const CookieConsent = ({setDisabledExperience}) => {
     <div className="textCheck">
         <Checkbox
             checked={cookie.ofLegalAge}
+            id='ofLegalAge'
             name='ofLegalAge'
             onChange={handleCheckedCookie}
             inputProps={{ 'aria-label': '18 years old' }}
@@ -61,6 +62,7 @@ const CookieConsent = ({setDisabledExperience}) => {
     <div className="textCheck">
         <Checkbox
             checked={cookie.termsAndConditions}
+            id='termsAndConditions'
             name='termsAndConditions'
             onChange={handleCheckedCookie}
             inputProps={{ 'aria-label': 'Terms And Conditions' }}
