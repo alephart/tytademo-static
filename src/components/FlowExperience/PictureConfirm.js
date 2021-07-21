@@ -78,7 +78,7 @@ const PictureConfirm = () => {
           <>
             {deepFake && (
               <Button
-                id='btnLikePhoto'
+                id='likePhoto'
                 className='yesContinue'
                 variant='contained'
                 onClick={handlePhotoValid}

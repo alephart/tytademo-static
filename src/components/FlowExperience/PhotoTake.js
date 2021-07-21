@@ -46,7 +46,7 @@ const PhotoTake = () => {
           mirrored={facingMode === 'user' ? true : false}
         />
 
-        <ButtonTake id='btnPhotoTake' onClick={capture} />
+        <ButtonTake id='photoTake' onClick={capture} />
 
         {/* <SelectDevice mode={facingMode} setMode={setFacingMode} /> */}
         <div className="zone-cameras">

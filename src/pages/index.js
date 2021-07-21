@@ -88,7 +88,7 @@ const Home = () => {
 
               <Button
                 disabled={disabledExperience}
-                id='btndisabledExperience'
+                id='startExperience'
                 onClick={handleAdvance}
                 className="buttonStart"
                 variant="contained">
