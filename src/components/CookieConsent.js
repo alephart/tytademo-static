@@ -69,7 +69,8 @@ const CookieConsent = ({setDisabledExperience}) => {
         /><div className="copyCheckbox"> {t('cookie_Check2')} <a href={t('cookie_Check2Link')} target="_blank">{t('cookie_Check2LinkText')}</a></div>
     </div>
     <center>
-      <Button 
+      <Button
+        id='acceptCookieConsent'
         className="buttonCookie" 
         disabled={btnCookiesHide}
         variant='contained'
