@@ -207,11 +207,12 @@ const RegisterInfo = ({ userEmail }) => {
       character,
       locale,
       textOpenBrowser: t('mailing_openWithBrowser'),
-      textTitle: t('meta_tags_title'),
       imgTitle: t('mailing_title_youMadeIt'),
+      textTitle: t('mailing_title_youMadeIt_text'),
       textMessage: t('mailing_watchYouFullVideo'),
       imgButton: t('mailing_btn_watchVideo'),
-      textTerms: t('mailing_terms'),
+      textButton: t('mailing_btn_watchVideo_text'),
+      metaTitle: t('meta_tags_title'),
     });    
   };
 

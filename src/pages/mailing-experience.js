@@ -28,7 +28,7 @@ const Mailing = () => {
       <div className="mailing__content">
         <Image
           src={t("mailing_title_youMadeIt")}
-          alt=""
+          alt={t("mailing_title_youMadeIt_text")}
           placeholder="blur"
           layout="fixed"
           width={248}
@@ -40,7 +40,7 @@ const Mailing = () => {
         <a href={query.share} alt="">
           <Image
             src={t("mailing_btn_watchVideo")}
-            alt=""
+            alt={t("mailing_btn_watchVideo_text")}
             placeholder="blur"
             layout="fixed"
             width={233}
@@ -54,14 +54,14 @@ const Mailing = () => {
       <div className="mailing__content">
         <Image
           src="https://devmds.com/toyota/minilogo.png"
-          alt=""
+          alt="Toyota"
           placeholder="blur"
           layout="fixed"
           width={34}
           height={22}
         />
         
-        <p style={{ fontSize: '12px'}}>{t("mailing_terms")}</p>
+        <p style={{ fontSize: '12px'}}>{/*t("mailing_terms")*/}</p>
       </div>
       <style jsx>{`
         .mailing {
