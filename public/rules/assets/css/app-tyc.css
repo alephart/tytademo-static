@@ -38,10 +38,21 @@ body .terms {
   margin: 0 auto 10px;
   text-transform: lowercase;
   line-height: 20px;
+  text-align: center;
 }
 .terms .textTerms {
   margin: 20px auto;
   display: block;
   font-size: 14px;
   font-family: ToyotaRegular;
+  color: rgba(255, 255, 255, 0.856);
+}
+.terms .textTerms b
+{
+  font-family: ToyotaBold;
+  color: #fff;
+}
+.terms .textTerms a
+{
+  color: #fff;
 }
