@@ -49,7 +49,7 @@ const CharacterChoose = () => {
           </div>
         </div>
         <Button
-            id='btnSelectCharacter'
+            id='selectCharacter'
             disabled={!character}
             className={isActive ? 'active buttonPhoto': 'buttonPhoto'}
             variant='contained'

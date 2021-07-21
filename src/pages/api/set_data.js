@@ -29,7 +29,8 @@ export default async (req, res) => {
     imgTitle,
     textMessage,
     imgButton,
-    textTerms,
+    textButton,
+    metaTitle,
   } = req.body;
 
   try {    
@@ -114,10 +115,11 @@ export default async (req, res) => {
         imgTitle,
         textMessage,
         imgButton,
-        textTerms,
+        textButton,
+        metaTitle,
       };
 
-      //console.log(config, options)
+      console.log(config, options)
       await sendEmail(config, options);
       
       // return

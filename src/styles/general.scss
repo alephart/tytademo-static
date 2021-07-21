@@ -391,8 +391,9 @@ body {
 			width: 90%;
 			margin: 20px auto;
 			display: block;
-			font-size: 10px;
+			font-size: 12px;
 			font-family: 'ToyotaRegular';
+			text-align: left;
 		}
 		// chooseCharacter
 		.selectCopy
@@ -1682,7 +1683,7 @@ body {
 }
 .zone-cameras
 {
-	bottom: -95px;
+	bottom: -93px;
     position: absolute;
     width: 300px;
 	p

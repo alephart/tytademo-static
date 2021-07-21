@@ -5,7 +5,7 @@ module.exports = nextTranslate({
     locales: ['en', 'es'],
   },
   images: {
-    domains: ["devmds.com"],
+    domains: ['devmds.com'],
   },
   reactStrictMode: true,
   eslint: {

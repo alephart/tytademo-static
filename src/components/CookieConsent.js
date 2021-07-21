@@ -53,6 +53,7 @@ const CookieConsent = ({setDisabledExperience}) => {
     <div className="textCheck">
         <Checkbox
             checked={cookie.ofLegalAge}
+            id='ofLegalAge'
             name='ofLegalAge'
             onChange={handleCheckedCookie}
             inputProps={{ 'aria-label': '18 years old' }}
@@ -61,13 +62,15 @@ const CookieConsent = ({setDisabledExperience}) => {
     <div className="textCheck">
         <Checkbox
             checked={cookie.termsAndConditions}
+            id='termsAndConditions'
             name='termsAndConditions'
             onChange={handleCheckedCookie}
             inputProps={{ 'aria-label': 'Terms And Conditions' }}
         /><div className="copyCheckbox"> {t('cookie_Check2')} <a href={t('cookie_Check2Link')} target="_blank">{t('cookie_Check2LinkText')}</a></div>
     </div>
     <center>
-      <Button 
+      <Button
+        id='acceptCookieConsent'
         className="buttonCookie" 
         disabled={btnCookiesHide}
         variant='contained'
