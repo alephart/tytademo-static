@@ -119,7 +119,7 @@ export default async (req, res) => {
         metaTitle,
       };
 
-      //console.log(config, options)
+      console.log(config, options)
       await sendEmail(config, options);
       
       // return

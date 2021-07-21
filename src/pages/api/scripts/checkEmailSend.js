@@ -33,11 +33,12 @@ const testEmail = async () => {
     urlShare,
     urlOpenBrowser,
     textOpenBrowser: 'Open with browser',
-    textTitle: 'You already are the star of “Todo o Nada”',
+    textTitle: '¡LO LOGRASTE!',
     imgTitle: 'https://devmds.com/toyota/title.png',
     textMessage: 'You already are the star of “Todo o Nada”. Click to watch your full video featuring you with Lunay.',
     imgButton: 'https://devmds.com/toyota/watch-video.png',
-    textTerms: '',
+    textButton: 'VER VIDEO',
+    metaTitle: 'Featuring You Lunay X Toyota',
   };
   
   console.log(config, options);
