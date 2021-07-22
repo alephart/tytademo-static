@@ -34,6 +34,7 @@ const Help = ({ isOpen, setIsOpen, message, id }) => {
           )}
           <Button
             id={id}
+            className={id}
             onClick={() => setIsOpen(false)}
             color='primary'
           >
