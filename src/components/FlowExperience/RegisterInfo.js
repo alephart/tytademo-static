@@ -305,6 +305,7 @@ const RegisterInfo = ({ userEmail }) => {
           <Switch
             checked={contact.productNews}
             onChange={handleChangeContact}
+            id='productNews'
             name='productNews'
             inputProps={{ 'aria-label': t("registerInfo_copyCheckbox1") }}
           />
@@ -317,6 +318,7 @@ const RegisterInfo = ({ userEmail }) => {
             className="switch2"
             checked={contact.testDrive}
             onChange={handleChangeContact}
+            id='testDrive'
             name='testDrive'
             inputProps={{ 'aria-label': t("registerInfo_copyCheckbox2") }}
           />
