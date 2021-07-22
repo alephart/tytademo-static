@@ -342,7 +342,7 @@ const RegisterInfo = ({ userEmail }) => {
         </Button>
       </form>
 
-      <Help isOpen={userExists} setIsOpen={setUserExists} message={MESSAGE_DIALOG.emailRegistered} />
+      <Help id="emailExist" isOpen={userExists} setIsOpen={setUserExists} message={MESSAGE_DIALOG.emailRegistered} />
 
     </div>
   );
