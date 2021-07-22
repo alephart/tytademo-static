@@ -98,7 +98,7 @@ const Home = () => {
             <div className="copyFooter">
               {t('start_copyFooter1')} {t('start_copyFooter2')} <a id="termsAndConditions" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start_copyFooterLink')}</a>
             </div>
-            <Rules dialog='terms' isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
+            <Rules isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
           </div>
         </div>
 
