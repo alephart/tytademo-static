@@ -1,8 +1,8 @@
-const ButtonTake = ({onClick}) => {
+const ButtonTake = ({id, onClick}) => {
   return(
     <div className="container-circles">
     <div className="outer-circle">
-      <div className="inner-circle" onClick={onClick}></div>
+      <div id={id} className="inner-circle" onClick={onClick}></div>
     </div>
   </div>
   )

@@ -8,7 +8,7 @@ const SEO = (props) => {
     pageTitle = t("meta_tags_title"),
     description = t("meta_tags_description"),
     currentURL = siteURL,
-    previewImage = `${siteURL}/toyota-lunay-feature-you.jpeg`,
+    previewImage = `${siteURL}/toyota-lunay-feature-you.jpg`,
     siteName = t("meta_tags_title"),
     videoPath,
   } = props;
