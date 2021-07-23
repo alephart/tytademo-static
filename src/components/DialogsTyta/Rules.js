@@ -1,5 +1,5 @@
-import PoliciesContent from './PoliciesContent';
-import TermsContent from './TermsContent';
+import TermsContentEn from './TermsContentEn';
+import TermsContentEs from './TermsContentEs';
 import {
   Button,
   Dialog,
@@ -10,11 +10,14 @@ import {
 } from '@material-ui/core/';
 import { useTheme } from '@material-ui/core/styles';
 import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
 
-const Rules = ({ dialog, isOpen, setIsOpen }) => {
+const Rules = ({ isOpen, setIsOpen }) => {
   const { t } = useTranslation('common');
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('lg'));
+  const router = useRouter();
+  const { locale } = router;
 
   return (
     <Dialog
@@ -27,7 +30,7 @@ const Rules = ({ dialog, isOpen, setIsOpen }) => {
       <DialogContent id='alert-dialog-description' className='terms'>
 
           <img className='logoToyota' src='/images/logo-toyota.png' alt='Toyota' />
-          {dialog === 'terms' ? <TermsContent /> : <PoliciesContent />}
+          {locale === 'en' ? <TermsContentEn /> : <TermsContentEs />}
           
           <Button
             className='buttonThanks'

@@ -370,16 +370,17 @@ body {
 			.sharedExperience
 			{
 				display: none;
-				@include mobilePlus
+				@include tablet
 				{
 					display: block;
 					padding-bottom: 10px;
+					background: none;
 				}
 			}
 			.indexDesktop
 			{
 				display: flex;
-				@include mobilePlus
+				@include tablet
 				{
 					display: none;
 				}

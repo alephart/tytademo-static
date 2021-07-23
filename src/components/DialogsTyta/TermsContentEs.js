@@ -1,27 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
+// terminos en Español
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/favicon.png">
-  <title>Términos y Condiciones</title>
-
-  <!-- css -->
-  <link rel="stylesheet" href="assets/css/app-tyc.css">
-  <link rel="stylesheet" href="assets/css/fonts.css">
-
-
-
-</head>
-
-<body>
-  <div class="terms"><img class="logoToyota" src="assets/images/logo-toyota.png" alt="Toyota">
-      <div class="copyThanks"><br>
-        <h3 class="copyLunay">Sorteo FEATURING YOU/Lunay X Toyota</h3>
-        <h3 class="copyLunay">REGLAS OFICIALES</h3>
-        <p class="textTerms">
+const TermsContent = () => (
+  <div>
+    <div className='copyThanks'>
+      <br />
+      <h3 className="copyLunay">Sorteo FEATURING YOU/Lunay X Toyota</h3>
+        <h3 className="copyLunay">REGLAS OFICIALES</h3>
+        <p className="textTerms">
           <b>
             NO ES NECESARIO REALIZAR NINGUNA COMPRA NI NINGÚN PAGO PARA PARTICIPAR O GANAR. SE REQUIERE DISPOSITIVO MÓVIL PARA PARTICIPAR. PODRÁN APLICARSE TARIFAS DE DATOS.</b>VOID WHERE PROHIBITED OR RESTRICTED BY LAW. The following Sweepstakes (defined below)
             ESTE SORTEO NO ES VÁLIDO DONDE LO PROHÍBA O RESTRINJA LA LEY. El siguiente Sorteo (definido a continuación) está dirigido únicamente a 
@@ -29,12 +14,12 @@
             las leyes de los Estados Unidos. No continúe en este Sorteo si no es un residente legal de los EE. UU. que reside en los cincuenta 
             (50) Estados Unidos, Washington D. C. o Puerto Rico. En las reglas oficiales (“<b>Reglas oficiales</b>”) que figuran a continuación se incluyen otras restricciones de elegibilidad.
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>1. DESCRIPCIÓN:</b> El “<b>Sorteo FEATURINGYOU/Lunay X Toyota</b>” (el "<b>Sorteo</b>") comienza el miércoles, 28 de julio de 2021 a las 12:00:01 a.m. hora del Pacífico (“<b>PT</b>”)
           y finaliza el martes, 28 de septiembre de 2021 a las 11:59:59 a.m. PT (el “<b>Período del Sorteo</b>”). El Patrocinador de este Sorteo es Toyota Motor Sales, U.S.A., Inc., 6565 Headquarters Drive, Plano, TX 75024 (“<b>Patrocinador</b>”).
           El administrador de este Sorteo es Creative Zing Promotion Group, LLC (“<b>Administrador</b>”), 2265 Lee Road, Ste 229, Winter Park, FL 32789. El Patrocinador y el Administrador serán citados en conjunto como las (“<b>Entidades del Sorteo</b>”). Lunay, Starr Island, LLC y Lionfish Entertainment no son responsables de la recopilación, el envío o el procesamiento de las participaciones, la administración o ejecución del Sorteo, o la selección de los ganadores (como se describe a continuación).
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>2. ELEGIBILIDAD:</b> El Sorteo está disponible únicamente para los residentes legales de los EE. UU. que residen en los cincuenta (50) Estados Unidos, Washington D. C. y Puerto Rico, que se encuentren físicamente ubicados y residan en dichos lugares, y que hayan cumplido por lo menos dieciocho (18) años y la mayoría de edad en su estado/territorio de residencia principal al momento de participar (cada uno, el “<b>Participante</b>”).
           . Los empleados, propietarios, accionistas, ejecutivos y directores de las Entidades del Sorteo, los grupos locales de distribuidores y a los distribuidores/concesionarios autorizados del Patrocinador y a cada una de sus respectivas empresas matrices, filiales, divisiones, subsidiarias, agentes, representantes, agencias publicitarias y de promoción junto con los familiares cercanos y/o integrantes que viven en el mismo hogar de dichas personas (en conjunto,
           <b>“Integrantes del hogar”</b>), no son elegibles para participar en el Sorteo. A los efectos del Sorteo, los "<b>Integrantes del hogar</b>" son aquellas personas que comparten la misma residencia durante al menos tres meses al año;
@@ -42,7 +27,7 @@
           incluyen personas empleadas directamente por el grupo local de distribuidores, distribuidor o concesionario autorizado, tales como personal de ventas, mecánico, marketing, operaciones y contabilidad. En caso de que surgiera algún conflicto sobre la identidad de un Participante o de un posible ganador en el Sorteo, el Participante o el posible ganador será considerado el titular de cuenta autorizado de la dirección de correo electrónico asociada con la participación. “<b>Titular de cuenta autorizado</b>“
           se define como la persona física en cuyo nombre se abrió la cuenta de correo electrónico. En caso de algún conflicto sobre la identidad de un Participante o de un ganador potencial que no pueda resolverse a la satisfacción del patrocinador, la participación afectada se considerará no elegible. No se reconocerán las participaciones salvo conforme se haya dispuesto en el presente. El premio del Sorteo es intransferible y no puede sustituirse, venderse ni intercambiarse.
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>3. CÓMO PARTICIPAR:</b> Durante el Período del Sorteo, los Participantes elegibles pueden participar ingresando en
           el sitio web del Sorteo en <a href="http://www.lunayxtoyota.com/"  target="_blank"> www.lunayxtoyota.com</a> (el "<b>Sitio web</b>") a través de su dispositivo móvil (<b>podrán aplicarse
             tarifas de datos</b>), siguiendo las instrucciones en la pantalla para crear su video (“<b>Video</b>”)* y completar el
@@ -51,7 +36,7 @@
             Todas las participaciones deben recibirse hasta las 11:59:59 a.m. PT del martes, 28 de septiembre de 2021. El
             contenido del video no tendrá relación con la determinación de los ganadores en el Sorteo.
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           *La experiencia de Video utilizará tecnología de transformación de caras REFACE para permitir que el
           Participante tome una fotografía de su cara y la coloque en un video de música con el artista musical Lunay
           ("<b>Talento</b>"). La tecnología no introduce tecnologías de reconocimiento facial u otros medios técnicos para el
@@ -66,7 +51,7 @@
           para compartirlo en las redes sociales. La descarga y divulgación en las redes sociales no son obligatorias para
           participar en el Sorteo. 
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>
             Al participar en el Sorteo, cada Participante reconoce y acuerda que: (a) el Patrocinador le otorga al
             Participante una licencia limitada y no exclusiva para usar el Video y su contenido, en relación con y
@@ -78,13 +63,13 @@
             incluye, entre otros, cualquier propósito comercial. 
           </b>
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>IMPORTANTE: El Video del Participante puede aparecer en la transmisión de redes sociales del Patrocinador. Si
             el Participante no quiere que su Video se haga público, no debe participar en el Sorteo.</b>
             Las Entidades del Sorteo se reservan el derecho de solicitar que un Participante edite o elimine por completo cualquier contenido que 
             pudiese infringir de manera intencional o involuntaria estas Reglas Oficiales.
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           El límite es una (1) participación por persona. Si las participaciones exceden la cantidad límite de inscripciones,
           el Participante podrá ser descalificado, a entera discreción del Patrocinador. Las Participaciones generadas por
           una secuencia de comandos, macro u otro medio automatizado serán descalificadas. Los Participantes deben
@@ -98,7 +83,7 @@
           no aplicar una disposición específica de estas Reglas oficiales no constituye una renuncia a dicha disposición ni
           a las Reglas oficiales en general.
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>4. SELECCIÓN Y NOTIFICACIÓN DEL GANADOR: </b> Al finalizar el Período del Sorteo, se seleccionarán diez (10)
           posibles ganadores del premio (cada uno, un “<b>Ganador</b>”) en un sorteo aleatorio llevado a cabo por el
           Administrador entre todas las participaciones elegibles recibidas. Los posibles Ganadores serán notificados en o
@@ -119,21 +104,21 @@
           no cumpla totalmente con las Reglas Oficiales. Todos los impuestos federales, estatales y locales y todo otro
           costo y gasto asociado con la recepción o el uso del premio serán de responsabilidad exclusiva del Ganador.
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>5. PROBABILIDADES:</b>  Las probabilidades de ganar dependerán del número de participaciones elegibles que se
           reciban durante el período del sorteo. 
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>6. PREMIOS: </b> Diez (10) Premios están disponibles, cada uno consiste en un (1) encuentro personal virtual con el
           Talento, que actualmente está programado para realizarse en octubre de 2021 o alrededor de ese mes. Los
           Premios no tienen un valor de venta al por menor asociado. El encuentro personal se llevará a cabo virtualmente
           mediante la aplicación Looped y durará como máximo dos (2) minutos por Ganador. Cada Ganador recibirá
           un correo electrónico con instrucciones sobre cómo descargar la aplicación Looped de la App store
           correspondiente y acceder a su experiencia de encuentro personal virtual. El uso de la aplicación Looped para
-          el encuentro personal virtual está sujeto a los <a href="https://www.info.loopedlive.com/terms"  target="_blank">Términos de uso</a> de Looped. A cada Ganador se le asignará un
+          el encuentro personal virtual está sujeto a los <a href="https://www.info.loopedlive.com/terms" target="_blank">Términos de uso</a> de Looped. A cada Ganador se le asignará un
           tiempo para su encuentro personal, y el tiempo se informará al momento de la confirmación del Ganador.
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           Cada Ganador es responsable de acceder a su encuentro personal en el tiempo asignado, o puede perder la
           oportunidad de su encuentro personal, a entera discreción del Patrocinador. En el caso de que el encuentro
           personal no se lleve a cabo o no pueda llevarse a cabo según lo programado o en ningún momento, por
@@ -141,7 +126,7 @@
           otro motivo, el Ganador recibirá un Premio similar de igual o mayor valor. La fecha, la hora y el lugar del
           encuentro personal están sujetos a cambio, a entera discreción del Patrocinador. 
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>Comportamiento durante el encuentro personal:</b>  Los Ganadores deberán comportarse de acuerdo con la moral
           y las buenas costumbres públicas. Los Ganadores no podrán cometer un delito que entrañe una afrenta contra
           la moral en virtud de las leyes u ordenanzas locales. Los Ganadores no podrán cometer ningún acto que tienda
@@ -154,7 +139,7 @@
           el derecho de poner fin a la experiencia del encuentro personal por parte del Ganador sin ninguna obligación
           adicional con respecto al encuentro personal.
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>7. CONDICIONES DE PARTICIPACIÓN/EXENCIONES: </b> El Patrocinador, a su entera discreción, puede designar al
           Administrador para que maneje las tareas de la selección, la notificación y el cumplimiento de los Ganadores
           en nombre del Patrocinador. Se aplican todas las leyes y disposiciones locales, estatales y federales. Al
@@ -219,7 +204,7 @@
           JURISDICCIONES NO PERMITEN LAS LIMITACIONES O LA EXCLUSIÓN DE RESPONSABILIDAD, POR LO QUE LO
           INDICADO CON ANTERIORIDAD PUEDE NO APLICARSE EN SU CASO.
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>8. INDEMNIDAD:</b> Cada Participante (incluidos los posibles Ganadores) indemnizará, defenderá y eximirá de
           responsabilidad a las Partes eximidas de y contra todas y cada una de las reclamos, indemnización por daños
           y perjuicios, acciones, responsabilidad civil, pérdida, lesión o gasto, incluidos los honorarios y costos razonables
@@ -228,7 +213,7 @@
           u obligaciones del presente documento; y (c) aceptación, posesión, entrega o uso del Premio, incluidos, entre
           otros, lesiones personales, muerte y daños materiales que surjan de ello.
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>9. LEY VIGENTE:</b> Todas las disputas, reclamaciones y todos los derechos de demandas que surjan del Sorteo o
           estén relacionadas con el mismo, lo que incluye, entre otros, cualquier supuesto incumplimiento de estas Reglas
           Oficiales, cualquier controversia en relación con el arbitraje por cualquier disputa o cualquier alegación de que
@@ -242,17 +227,17 @@
           Participante procurará o tendrá derecho de rescisión, medidas cautelares u otros recursos del sistema jurídico
           de equidad, o prohibir o restringir el funcionamiento del Sorteo.
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           Todos los asuntos y preguntas con respecto a la estructura, validez, interpretación y aplicabilidad de este Sorteo,
           o los derechos y obligaciones de los Participantes y Entidades del Sorteo, estarán regidas por, y serán
           interpretadas de acuerdo a las leyes del estado de Nueva York, EE. UU., sin dar efecto a elección de legislación 
           alguna o conflicto de normas legales (ya sea en el estado de Nueva York o en cualquier otra jurisdicción), lo
           que ocasionaría la aplicación de las leyes de cualquier jurisdicción que no sea la del estado de Nueva York.
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>10. POLÍTICA DE PRIVACIDAD:</b> La información personal proporcionada por los Participantes solo se utilizará
           conforme a lo dispuesto en la política de privacidad del Patrocinador o en estas Reglas oficiales. Consulte la
-          política de privacidad del Patrocinador en <a href="https://www.toyota.com/support/privacy-rights/ "  target="_blank"> https://www.toyota.com/support/privacy-rights/</a> para conocer los
+          política de privacidad del Patrocinador en <a href="https://www.toyota.com/support/privacy-rights/"  target="_blank"> https://www.toyota.com/support/privacy-rights/</a> para conocer los
           detalles acerca del uso de la información personal recopilada en relación con este Sorteo. En el caso de algún
           conflicto entre estas Reglas Oficiales y tal política de privacidad, regirán estas Reglas Oficiales. Al participar en
           este Sorteo, el Participante otorga al Patrocinador permiso para comunicarse mediante correo electrónico en
@@ -263,15 +248,16 @@
           información de identificación personal a tercera parte alguna diferente a lo que estipulen estas Reglas Oficiales
           o por la Política de Privacidad.
         </p>
-        <p class="textTerms">
+        <p className="textTerms">
           <b>11. LISTA DE GANADORES/REGLAS OFICIALES: </b> Para obtener los nombres de los Ganadores del Premio o una copia
           de estas Reglas Oficiales, envíe una solicitud junto con un sobre con su dirección y estampilla a
           “<b>FEATURINGYOU/Lunay X Toyota Sweepstakes</b>" Winner/Rules, 2265 Lee Road, Ste 229, Winter Park, FL 32789. Las
           solicitudes para obtener el nombre de los ganadores deben recibirse a más tardar el 30 de agosto de 2021. Los
           residentes de Vermont pueden omitir el franqueo de devolución para las solicitudes de estas Regales Oficiales.
         </p>
-      </div>
-  </div>
-</body>
+    </div>
 
-</html>
+  </div>
+);
+
+export default TermsContent;

@@ -48,6 +48,11 @@ const ShareExperience = () => {
       )}
       <div className='copyThanks'>
         <span>
+        {t("shareExperience_legal3")}{' '}<a href={t("cookie_Check2Link")} target="_blank">{t("cookie_Check2LinkText")}</a>.
+        </span>
+      </div>
+      <div className='copyThanks'>
+        <span>
         {t("shareExperience_legal")}{' '}<a href={t("registerInfo_link")} target="_blank">{t("registerInfo_linkLegal")}</a>{' '}{t("shareExperience_legal2")}
         </span>
       </div>
