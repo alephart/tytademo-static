@@ -29,7 +29,7 @@ const TermsContent = () => (
         </p>
         <p className="textTerms">
           <b>3. CÓMO PARTICIPAR:</b> Durante el Período del Sorteo, los Participantes elegibles pueden participar ingresando en
-          el sitio web del Sorteo en <a href="http://www.lunayxtoyota.com/"> www.lunayxtoyota.com</a> (el "<b>Sitio web</b>") a través de su dispositivo móvil (<b>podrán aplicarse
+          el sitio web del Sorteo en <a href="http://www.lunayxtoyota.com/"  target="_blank"> www.lunayxtoyota.com</a> (el "<b>Sitio web</b>") a través de su dispositivo móvil (<b>podrán aplicarse
             tarifas de datos</b>), siguiendo las instrucciones en la pantalla para crear su video (“<b>Video</b>”)* y completar el
             formulario de participación en línea en forma fiel y precisa. El Participante luego debe confirmar que leyó,
             comprende y acepta las Reglas Oficiales y hacer clic en “Enviar” para recibir una (1) participación en el Sorteo.
@@ -237,7 +237,7 @@ const TermsContent = () => (
         <p className="textTerms">
           <b>10. POLÍTICA DE PRIVACIDAD:</b> La información personal proporcionada por los Participantes solo se utilizará
           conforme a lo dispuesto en la política de privacidad del Patrocinador o en estas Reglas oficiales. Consulte la
-          política de privacidad del Patrocinador en <a href="https://www.toyota.com/support/privacy-rights/"> https://www.toyota.com/support/privacy-rights/</a> para conocer los
+          política de privacidad del Patrocinador en <a href="https://www.toyota.com/support/privacy-rights/"  target="_blank"> https://www.toyota.com/support/privacy-rights/</a> para conocer los
           detalles acerca del uso de la información personal recopilada en relación con este Sorteo. En el caso de algún
           conflicto entre estas Reglas Oficiales y tal política de privacidad, regirán estas Reglas Oficiales. Al participar en
           este Sorteo, el Participante otorga al Patrocinador permiso para comunicarse mediante correo electrónico en
