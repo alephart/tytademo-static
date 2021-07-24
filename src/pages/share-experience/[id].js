@@ -14,9 +14,10 @@ const ToShareExp = ({data}) => {
   };
 
   const metaData = {
+    pageTitle: 'Share Experience',
     videoPath: data.urlVideo,
     currentURL: data.urlShare,
-  }
+  };
 
   return (
     <Layout className="especial" {...metaData}>

@@ -64,8 +64,12 @@ const SelectCharacter = () => {
     router.push('/not-available');
   }
 
+  const metaData = {
+    pageTitle: 'Experience - Select Character',
+  };
+
   return (
-    <Layout>
+    <Layout {...metaData}>
       {getUA.includes("Instagram") ? (
         <CopyLink />
 
