@@ -65,7 +65,7 @@ const SelectCharacter = () => {
   }
 
   const metaData = {
-    pageTitle: 'Experience - Select Character',
+    pageTitle: 'Experience - Select Character'
   };
 
   return (
