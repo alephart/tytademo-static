@@ -42,9 +42,6 @@ const RegisterInfo = ({ userEmail }) => {
     productNews: false,
     testDrive: false,
   });
-
-  const [isDisabled, setIsDisabled] = useState(true);
-  const [agreeTerms, setAgreeTerms] = useState(true);
   
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: 'onChange',
@@ -131,11 +128,6 @@ const RegisterInfo = ({ userEmail }) => {
       sendData();
     }
   }, [dataRegister]);
-
-  // effect to progress
-  useEffect(() => {
-    setIsDisabled(progress >= 100 ? false : true);
-  }, [progress]);
   
   // effect when values change
   useEffect(() => {
@@ -144,7 +136,7 @@ const RegisterInfo = ({ userEmail }) => {
       return item ? count + 1 : count;
     }, 0);
   
-    setProgress( (count * 100) / items.length );
+    setProgress( (count * 80) / items.length );
   }, [values]);
 
   /******** HANDLES ACTIONS ********/
@@ -182,10 +174,6 @@ const RegisterInfo = ({ userEmail }) => {
     text = value.replace(/[^A-Za-z/\W|_ ]+/ig, '').replace(/[.@!#$%&*()/><∆+]/g, '');
     
     setValues({...values, [name]: text});
-  };
-
-  const handleChangeCheck = (event) => {
-    setAgreeTerms(event.target.checked);
   };
 
     /******** ON SUBMIT PROCESS ********/
