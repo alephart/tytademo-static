@@ -39,7 +39,6 @@ export const getServerSideProps = async (context) => {
   // Fetch data from external API
   const res = await fetch(`${urlAdmin}/participant/${params.id}`);
   const json = await res.json();
-  console.log(json);
 
   const pathLocale = locale === 'es' ? '/es/' : '/';
   const data = {

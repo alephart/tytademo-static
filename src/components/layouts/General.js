@@ -3,7 +3,6 @@ import Landscape from '@/components/Landscape';
 import SEO from '../SEO';
 
 const Layout = ({ children, ...props }) => {
-  console.log(props);
   const { className = '' } = props;
 
   return (
