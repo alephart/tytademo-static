@@ -6,8 +6,9 @@
     "dev": "next dev -p 3131",
     "build": "next build",
     "start": "next start",
+    "start-server": "node server.js",
     "test": "jest --verbose",
-    "start-prod": "next build && next start -p $PORT"
+    "start-prod": "next build && npm run start-server"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
