@@ -100,8 +100,12 @@ const Experience = ({ userEmail }) => {
     router.push('/not-available');
   }
 
+  const metaData = {
+    pageTitle: 'Experience - Take Photo & Register',
+  }
+
   return (
-    <Layout>
+    <Layout {...metaData}>
       {getUA.includes("Instagram") ? (
         <CopyLink />
 
