@@ -10,7 +10,7 @@ const JoinExperince = ({data}) => {
     const { t } = useTranslation('common');
 
     const metaData = {
-        pageTitle: 'Join Experience',
+        pageTitle: `${t("meta_tags_title")} - Join Experience`,
         videoPath: urlVideo,
         currentURL: urlJoin,
     };

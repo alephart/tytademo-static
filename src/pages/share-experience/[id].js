@@ -14,7 +14,7 @@ const ToShareExp = ({data}) => {
   };
 
   const metaData = {
-    pageTitle: 'Share Experience',
+    pageTitle: `${t("meta_tags_title")} - Share Experience`,
     videoPath: data.urlVideo,
     currentURL: data.urlShare,
   };
