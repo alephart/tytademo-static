@@ -3,10 +3,12 @@ import Layout from '@/components/layouts/General';
 import { ExperienceContext } from '@/components/Context';
 import { ShareExperience } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/helpers/globals';
+import useTranslation from 'next-translate/useTranslation';
 
 const ToShareExp = ({data}) => {
   const [process, setProcess] = useState(PROCESS_ENUM.share);
   const [swap, setSwap] = useState(data);
+  const { t } = useTranslation('common');
 
   const contextValues = {
     process, setProcess,
