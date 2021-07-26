@@ -7,11 +7,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="facebook-domain-verification" content="x7oiizt4spq3btbnsskbccxdhp6gvg" key="fbdv" />
-          <link rel="icon" href="/favicon.png" />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
