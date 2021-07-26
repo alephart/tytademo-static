@@ -17,9 +17,6 @@ const SEO = (props) => {
     <Head>
       <title>{pageTitle}</title>
       <meta name="description" content={description}></meta>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="facebook-domain-verification" content="x7oiizt4spq3btbnsskbccxdhp6gvg" key="fbdv" />
-      <link rel="icon" href="/favicon.png" />
       
       {/* Open Graph */}
       <meta property="og:url" content={currentURL} key="ogurl" />
