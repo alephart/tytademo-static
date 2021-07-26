@@ -1,7 +1,9 @@
 const cluster = require("cluster");
-const { app } = require("./server");
 const { createServer } = require("http");
 const { parse } = require("url");
+
+// Import app
+const { app } = require("./server");
 
 const handle = app.getRequestHandler();
 
