@@ -76,7 +76,7 @@ export default async (req, res) => {
       let removeSubVideos = [];
       const allSubVideos = adjustVideos.map((video, index) => {
         const pathFile = path.join(DIR_TEMP, video);
-        //removeSubVideos[index] = pathFile;
+        removeSubVideos[index] = pathFile;
         return uploadFile(pathFile, video, 'swap', true);
       });
 
