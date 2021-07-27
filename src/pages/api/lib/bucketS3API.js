@@ -15,7 +15,7 @@ const uploadFileAsync = async (params) => {
         });
       });
           
-      // 'https://mds-tyta.s3.amazonaws.com/<bucket>/file'
+      // ex: 'https://mds-tyta.s3.amazonaws.com/<bucket>/file'
       return res.Location;
       
     } catch (error) {
@@ -28,10 +28,28 @@ const uploadFile = (pathFile, nameFile, type='image', async=false) => {
     try {      
       // Read content from the file
     const fileContent = fsSync.readFileSync(pathFile);
+
+    let folder = '';
+
+    switch (type) {
+      case 'swap':
+        folder = 'swaps';
+        break;
+      case 'video':
+        folder = 'videos';
+        break;
+      case 'txt':
+        folder = 'text';
+        break;
+    
+      default:
+        folder = 'photos';
+        break;
+    }
     
     // Setting up S3 upload parameters
     const params = {
-        Bucket: type ==='image' ? `${configS3.bucket}/photos` : `${configS3.bucket}/videos`,
+        Bucket: `${configS3.bucket}/${folder}`,
         Key: nameFile, // File name to save as in S3
         Body: fileContent,
         ACL: 'public-read'
