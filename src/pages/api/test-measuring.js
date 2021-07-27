@@ -64,7 +64,7 @@ export default async (req, res) => {
      ********************************************************************************************************************/
     // Step 3. Swap videos and get ids
     // Here we do not swap, but if we call the videos according to character and save them to disk to use
-    const adjustVideos = await videosListCharacter(
+    const adjustVideos = videosListCharacter(
       character,
       userId,
       videoListAll
