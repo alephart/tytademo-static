@@ -1,7 +1,7 @@
 const path = require('path');
 const { uploadFile } = require('./lib/bucketS3API');
 const { concatVideosTxtFluent, changeTrackFluent } = require('./lib/ffmpegActions');
-const { writeFileSync } = require('./lib/fileActions');
+const { writeFileSync, removeFileSync } = require('./lib/fileActions');
 const { dataSwapVideos, downloadSwapVideos, buildFileVideos, adjustTbnVideos } = require('./lib/refaceActions');
 const { videosListFemale, videosListMale, videoListAll } = require('./lib/dataVideos');
 
@@ -72,20 +72,20 @@ export default async (req, res) => {
       const videoLocation = uploadFile(dataTrack.output, nameFinalVideo, 'video', true);
       
       // save sub videos on cloud [this will not necessary for the final version]
-      //let removeSubVideos = [];
+      let removeSubVideos = [];
       const allSubVideos = adjustVideos.map((video, index) => {
         const pathFile = path.join(DIR_TEMP, video);
-        //removeSubVideos[index] = pathFile;
+        removeSubVideos[index] = pathFile;
         return uploadFile(pathFile, video, 'video', true);
       });
       
       const footage = await Promise.all([photoLocation, videoLocation, ...allSubVideos]);
     
       // TODO: generate list assets to remove - remove in async parallel
-      // removeFileSync(pathFinalPhoto);
-      // removeFileSync(dataFinal.output);
-      // removeFileSync(dataTrack.output);
-      // removeFileSync(removeSubVideos);
+      removeFileSync(pathFinalPhoto);
+      removeFileSync(dataFinal.output);
+      //removeFileSync(dataTrack.output);
+      removeFileSync(removeSubVideos);
       // removeFileSync(dataFinal.fileVideos);
 
       const pathLocale = locale === 'es' ? '/es/' : '/';
