@@ -22,7 +22,6 @@ const videosListCharacter = (character, videoId, videoListAll) => {
     if (video.character === character || video.character === 'mix') {
       // new name
       const name = `${videoId}-${index}.mp4`;
-      console.log(name);
 
       // get video
       const getVideo = loadFileSync(path.join(DIR_TEMP, video.name));
@@ -59,8 +58,7 @@ export default async (req, res) => {
     // Step 3. Swap videos and get ids
     // Here we do not swap, but if we call the videos according to character and save them to disk to use
     const adjustVideos = await videosListCharacter(character, userId, videoListAll);
-    console.log('Adjust videos', adjustVideos);
-    
+
     // 5. write file .txt with info videos
     const nameFileVideos = `videos-${userId}.txt`;
     writeFileSync( path.join(DIR_TEMP, nameFileVideos), buildFileVideos(adjustVideos, videoListAll, character) );
