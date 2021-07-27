@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 
 if (cluster.isMaster) {
   // Count the machine's CPUs
-  const cpuCount = require("os").cpus().length;
+  const cpuCount = 4;
 
   // Create a worker for each CPU
   for (let i = 0; i < cpuCount; i += 1) {
