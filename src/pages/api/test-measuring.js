@@ -2,7 +2,7 @@ const path = require('path');
 const cuid = require('cuid');
 const { concatVideosTxtFluent, changeTrackFluent } = require('./lib/ffmpegActions');
 const { writeFileSync, loadFileSync, removeFileSync } = require('./lib/fileActions');
-const { buildFileVideos, adjustTbnVideos } = require('./lib/refaceActions');
+const { buildFileVideos } = require('./lib/refaceActions');
 const { videoListAll } = require('./lib/dataVideos');
 
 const fetch = require('node-fetch');
@@ -68,7 +68,6 @@ export default async (req, res) => {
       output: `${DIR_TEMP}/video-${userId}.mp4`,
       fileVideos: `${DIR_TEMP}/${nameFileVideos}`,
     };
-    console.log('dataFinal videos', dataFinal);
   
     await concatVideosTxtFluent(dataFinal);
   
@@ -80,7 +79,6 @@ export default async (req, res) => {
       output: `${DIR_TEMP}/${nameFinalVideo}`,
       track: path.join(DIR_TEMP, NAME_TRACK_AUDIO),
     }
-    console.log('track video and audio', dataTrack);
   
     await changeTrackFluent(dataTrack);
   
@@ -101,9 +99,6 @@ export default async (req, res) => {
       userId,
       urlShare: `${url}${pathLocale}share-experience/${userId}`, 
       urlJoin: `${url}${pathLocale}join-experience/${userId}`,
-      // urlPhoto: footage[0],
-      // urlVideo: footage[1],
-      // footage,
     };
   
     const dataAdmin = {
@@ -144,7 +139,7 @@ export default async (req, res) => {
     res.status(200).send({ success: true, dataAdmin });
 
   } catch (error) {
-
+    console.error(error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
