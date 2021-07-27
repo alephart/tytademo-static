@@ -55,7 +55,7 @@ export default async (req, res) => {
   const character = characters[(characters.length * Math.random()) | 0];
 
   try {
-    console.time();
+    console.time("video_process");
     /********************************************************************************************************************
      * SWAP VIDEOS PROCESS
      * Each process here depends on the completion of the other. In the specific case of refase,
@@ -142,13 +142,11 @@ export default async (req, res) => {
 
       if (!jsonAdmin.participant) {
         // return
-        res
-          .status(200)
-          .send({
-            success: false,
-            action: "saveParticipant",
-            userExist: jsonAdmin.participant,
-          });
+        res.status(200).send({
+          success: false,
+          action: "saveParticipant",
+          userExist: jsonAdmin.participant,
+        });
       }
     } catch (error) {
       console.error(error);
@@ -158,7 +156,7 @@ export default async (req, res) => {
     }
 
     res.status(200).send({ success: true, dataAdmin });
-    console.timeEnd();
+    console.timeEnd("video_process");
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: error.message });
