@@ -1,5 +1,4 @@
 const cluster = require("cluster");
-const timeout = require("connect-timeout");
 const { createServer } = require("http");
 const { parse } = require("url");
 
@@ -22,18 +21,18 @@ if (cluster.isMaster) {
 } else {
   // Listening
   app.prepare().then(() => {
-    createServer((req, res) => {
+    const server = createServer((req, res) => {
       // Be sure to pass `true` as the second argument to `url.parse`.
       // This tells it to parse the query portion of the URL.
       const parsedUrl = parse(req.url, true);
       const { pathname, query } = parsedUrl;
 
       handle(req, res, parsedUrl);
-    })
-      .use(timeout("60s"))
-      .listen(PORT, (err) => {
-        if (err) throw err;
-        console.log(`> Ready on http://localhost:${PORT}`);
-      });
+    }).listen(PORT, (err) => {
+      if (err) throw err;
+      console.log(`> Ready on http://localhost:${PORT}`);
+    });
+
+    server.timeout = 60;
   });
 }
