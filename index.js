@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 
 if (cluster.isMaster) {
   // Count the machine's CPUs
-  const cpuCount = 4;
+  const cpuCount = require("os").cpus().length;
 
   // Create a worker for each CPU
   for (let i = 0; i < cpuCount; i += 1) {
@@ -33,6 +33,6 @@ if (cluster.isMaster) {
       console.log(`> Ready on http://localhost:${PORT}`);
     });
 
-    server.timeout = 60;
+    server.timeout = 180;
   });
 }
