@@ -10,9 +10,10 @@ const JoinExperince = ({data}) => {
     const { t } = useTranslation('common');
 
     const metaData = {
+        pageTitle: `${t("meta_tags_title")} - Join Experience`,
         videoPath: urlVideo,
         currentURL: urlJoin,
-      }
+    };
 
     return (
         <Layout className="especial" {...metaData}>

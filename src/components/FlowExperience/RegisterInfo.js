@@ -42,9 +42,6 @@ const RegisterInfo = ({ userEmail }) => {
     productNews: false,
     testDrive: false,
   });
-
-  const [isDisabled, setIsDisabled] = useState(true);
-  const [agreeTerms, setAgreeTerms] = useState(true);
   
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: 'onChange',
@@ -131,11 +128,6 @@ const RegisterInfo = ({ userEmail }) => {
       sendData();
     }
   }, [dataRegister]);
-
-  // effect to progress
-  useEffect(() => {
-    setIsDisabled(progress >= 100 ? false : true);
-  }, [progress]);
   
   // effect when values change
   useEffect(() => {
@@ -144,7 +136,7 @@ const RegisterInfo = ({ userEmail }) => {
       return item ? count + 1 : count;
     }, 0);
   
-    setProgress( (count * 100) / items.length );
+    setProgress( (count * 80) / items.length );
   }, [values]);
 
   /******** HANDLES ACTIONS ********/
@@ -167,10 +159,10 @@ const RegisterInfo = ({ userEmail }) => {
   };
   
   const handleChangeZip = (event) => {
-    const { name, value } = event.target;
-
-    const valid = /^[0-9]{5}(?:-[0-9]{4})?$/.test(value);
-    
+    let { name, value } = event.target;
+    value = value.substring(0,5);
+    const valid = /^\d{5}?$/.test(value); // 5digits
+    //const valid = /^\d{5}(?:-\d{4})?$/.test(value); // 5digits-4digits
     setValidZipCode(valid);
     setValues({...values, [name]: value});
   }
@@ -182,10 +174,6 @@ const RegisterInfo = ({ userEmail }) => {
     text = value.replace(/[^A-Za-z/\W|_ ]+/ig, '').replace(/[.@!#$%&*()/><∆+]/g, '');
     
     setValues({...values, [name]: text});
-  };
-
-  const handleChangeCheck = (event) => {
-    setAgreeTerms(event.target.checked);
   };
 
     /******** ON SUBMIT PROCESS ********/
@@ -283,17 +271,13 @@ const RegisterInfo = ({ userEmail }) => {
           `}
           name='zipcode'
           type='number'
-          onInput={(e) => {
-            e.target.value = Math.max(0, parseInt(e.target.value))
-              .toString()
-              .slice(0, 5);
-          }}
           {...register('zipcode', { required: true, pattern: /^[0-9]{5}(?:-[0-9]{4})?$/ })}
           placeholder={t("registerInfo_zip")}
           inputProps={{ 'aria-label': t("registerInfo_zip") }}
           value={values.zipcode}
           onChange={handleChangeZip}
           inputProps={{
+            maxLength: 5,
             autoComplete: "disabled", // disable autocomplete and autofill
           }}
         />
