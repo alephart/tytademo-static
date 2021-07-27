@@ -16,6 +16,7 @@
     "child_process": "^1.0.2",
     "cluster": "^0.7.7",
     "command-exists": "^1.2.9",
+    "connect-timeout": "^1.9.0",
     "cookie": "^0.4.1",
     "cuid": "^2.1.8",
     "date-fns": "^2.22.1",
