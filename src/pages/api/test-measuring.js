@@ -55,7 +55,7 @@ export default async (req, res) => {
   const character = characters[(characters.length * Math.random()) | 0];
 
   try {
-    console.time("video_process");
+    console.time("videosListCharacter_" + userId);
     /********************************************************************************************************************
      * SWAP VIDEOS PROCESS
      * Each process here depends on the completion of the other. In the specific case of refase,
@@ -64,19 +64,19 @@ export default async (req, res) => {
      ********************************************************************************************************************/
     // Step 3. Swap videos and get ids
     // Here we do not swap, but if we call the videos according to character and save them to disk to use
-    const adjustVideos = videosListCharacter(
-      character,
-      userId,
-      videoListAll
-    );
+    const adjustVideos = videosListCharacter(character, userId, videoListAll);
+    console.timeEnd("videosListCharacter_" + userId);
 
+    console.time("writeFileSync_" + userId);
     // 5. write file .txt with info videos
     const nameFileVideos = `videos-${userId}.txt`;
     writeFileSync(
       path.join(DIR_TEMP, nameFileVideos),
       buildFileVideos(adjustVideos, videoListAll, character)
     );
+    console.timeEnd("writeFileSync_" + userId);
 
+    console.time("concatVideosTxtFluent_" + userId);
     // 6. Merge videos (get final video)
     const dataFinal = {
       output: `${DIR_TEMP}/video-${userId}.mp4`,
@@ -84,7 +84,9 @@ export default async (req, res) => {
     };
 
     await concatVideosTxtFluent(dataFinal);
+    console.timeEnd("concatVideosTxtFluent_" + userId);
 
+    console.time("changeTrackFluent");
     // 6.1 chage track in final video
     const nameFinalVideo = `video-${userId}_final.mp4`;
 
@@ -95,7 +97,9 @@ export default async (req, res) => {
     };
 
     await changeTrackFluent(dataTrack);
+    console.timeEnd("changeTrackFluent_" + userId);
 
+    console.time("removeFileSync_" + userId);
     let removeSubVideos = [];
     const allSubVideos = adjustVideos.map((video, index) => {
       const pathFile = path.join(DIR_TEMP, video);
@@ -106,7 +110,9 @@ export default async (req, res) => {
     //removeFileSync(dataTrack.output);
     removeFileSync(removeSubVideos);
     removeFileSync(dataFinal.fileVideos);
+    console.timeEnd("removeFileSync_" + userId);
 
+    console.time("callAdminEndpoint_" + userId);
     const pathLocale = locale === "es" ? "/es/" : "/";
 
     const data = {
@@ -154,11 +160,10 @@ export default async (req, res) => {
         .status(500)
         .send({ success: false, action: "saveParticipant", error });
     }
-
-    res.status(200).send({ success: true, dataAdmin });
-    console.timeEnd("video_process");
+    console.timeEnd("removeFileSync_" + userId);
+    return res.status(200).send({ success: true, dataAdmin });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ success: false, message: error.message });
+    return res.status(500).json({ success: false, message: error.message });
   }
 };
