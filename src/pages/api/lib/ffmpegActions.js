@@ -42,7 +42,7 @@ const concatVideosTxtFluent = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
       ffmpeg()
-        //.renice(2)
+        .renice(-2)
         .input(fileVideos)
         .inputOptions(['-f concat', '-safe 0', '-threads 8'])
         .outputOptions('-vcodec copy')
@@ -113,7 +113,7 @@ const changeTrackFluent = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
       ffmpeg()
-        //.renice(2)
+        .renice(-2)
         .input(input)
         .input(track)
         .outputOptions(['-c copy', '-threads 8'])
