@@ -4,7 +4,7 @@ const { decodeBase64Image } = require ('./lib/utils');
 const { createDirSync, removeFileSync, loadFileSync, writeFile } = require('./lib/fileActions');
 const { uploadAsset, detectFacesInAsset } = require('./lib/refaceAPI');
 
-const DIR_TEMP = './temp';
+const DIR_TEMP = './temp1';
 
 export const config = {
   api: {

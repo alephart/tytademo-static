@@ -17,8 +17,7 @@ const fetch = require("node-fetch");
 const { configAdmin } = require("./lib/config");
 
 const DIR_TEMP = "./temp1";
-const DIR_TEMP_A = "./temp1";
-createDirSync(DIR_TEMP_A);
+createDirSync(DIR_TEMP);
 
 const NAME_TRACK_AUDIO = "footage/TodoONada_Final_Audio.m4a";
 const url = process.env.NEXT_PUBLIC_URL_SITE;
@@ -38,7 +37,7 @@ const videosListCharacter = (character, videoId, videoListAll) => {
       const getVideo = loadFileSync(path.join(DIR_TEMP, video.name));
 
       // save video
-      const pathName = path.join(DIR_TEMP_A, name);
+      const pathName = path.join(DIR_TEMP, name);
       writeFileSync(pathName, getVideo);
 
       allVideos.push(name);
@@ -75,7 +74,7 @@ export default async (req, res) => {
     // 5. write file .txt with info videos
     const nameFileVideos = `videos-${userId}.txt`;
     writeFileSync(
-      path.join(DIR_TEMP_A, nameFileVideos),
+      path.join(DIR_TEMP, nameFileVideos),
       buildFileVideos(adjustVideos, videoListAll, character)
     );
     console.timeEnd("writeFileSync_" + userId);
@@ -83,8 +82,8 @@ export default async (req, res) => {
     console.time("concatVideosTxtFluent_" + userId);
     // 6. Merge videos (get final video)
     const dataFinal = {
-      output: `${DIR_TEMP_A}/video-${userId}.mp4`,
-      fileVideos: `${DIR_TEMP_A}/${nameFileVideos}`,
+      output: `${DIR_TEMP}/video-${userId}.mp4`,
+      fileVideos: `${DIR_TEMP}/${nameFileVideos}`,
     };
 
     await concatVideosTxtFluent(dataFinal);
@@ -96,7 +95,7 @@ export default async (req, res) => {
 
     const dataTrack = {
       input: dataFinal.output,
-      output: `${DIR_TEMP_A}/${nameFinalVideo}`,
+      output: `${DIR_TEMP}/${nameFinalVideo}`,
       track: path.join(DIR_TEMP, NAME_TRACK_AUDIO),
     };
 
@@ -106,12 +105,12 @@ export default async (req, res) => {
     console.time("removeFileSync_" + userId);
     let removeSubVideos = [];
     const allSubVideos = adjustVideos.map((video, index) => {
-      const pathFile = path.join(DIR_TEMP_A, video);
+      const pathFile = path.join(DIR_TEMP, video);
       removeSubVideos[index] = pathFile;
     });
 
     removeFileSync(dataFinal.output);
-    //removeFileSync(dataTrack.output);
+    removeFileSync(dataTrack.output);
     removeFileSync(removeSubVideos);
     removeFileSync(dataFinal.fileVideos);
     console.timeEnd("removeFileSync_" + userId);

@@ -14,7 +14,7 @@ const {
 const itif = (condition) => condition ? it : it.skip;
 
 const ffmpegExist = commandExistsSync('ffmpeg');
-const DIR_TEMP = './temp';
+const DIR_TEMP = './temp1';
 
 describe('fluent ffmpeg', () => {
 

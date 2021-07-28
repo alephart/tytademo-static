@@ -1,7 +1,7 @@
 const { placeWatermarkOnVideo, concatVideosDemuxer } = require('../lib/ffmpegActions');
 const { createDirSync, removeFileSync, writeFile, loadFileBinarySync } = require('../lib/fileActions');
 
-const DIR_TEMP = './temp';
+const DIR_TEMP = './temp1';
 
 const nameFileVideo = `video-test2.mp4`;
 

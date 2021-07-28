@@ -7,7 +7,7 @@ const fsSync = require('fs');
 const path = require('path');
 const cuid = require('cuid');
 
-const DIR_TEMP = './temp';
+const DIR_TEMP = './temp1';
 
 //
 const checkFileSync = (path) => {
