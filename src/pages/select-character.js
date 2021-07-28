@@ -49,6 +49,9 @@ const SelectCharacter = () => {
     case 'US':
       noAvaliable = false;
       break;
+    case 'PR':
+      noAvaliable = false;
+      break;
     case 'CO':
       noAvaliable = false;
       break;
