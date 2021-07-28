@@ -5,7 +5,7 @@ const { writeFileSync, removeFileSync } = require('./lib/fileActions');
 const { dataSwapVideos, downloadSwapVideos, buildFileVideos, adjustTbnVideos } = require('./lib/refaceActions');
 const { videosListFemale, videosListMale, videoListAll } = require('./lib/dataVideos');
 
-const DIR_TEMP = './temp';
+const DIR_TEMP = './temp1';
 const NAME_TRACK_AUDIO = 'footage/TodoONada_Final_Audio.m4a';
 const url = process.env.NEXT_PUBLIC_URL_SITE;
 
@@ -88,9 +88,9 @@ export default async (req, res) => {
       // TODO: generate list assets to remove - remove in async parallel
       removeFileSync(pathFinalPhoto);
       removeFileSync(dataFinal.output);
-      //removeFileSync(dataTrack.output);
+      removeFileSync(dataTrack.output);
       removeFileSync(removeSubVideos);
-      // removeFileSync(dataFinal.fileVideos);
+      removeFileSync(dataFinal.fileVideos);
 
       const pathLocale = locale === 'es' ? '/es/' : '/';
       const data = {

@@ -5,7 +5,7 @@
 const path = require('path');
 const { uploadFile } = require('../lib/bucketS3API');
 
-const DIR_TEMP = './temp';
+const DIR_TEMP = './temp1';
 const nameImg = 'test/test-photo.png';
 
 const pathFinalImg = path.join(DIR_TEMP, nameImg);
