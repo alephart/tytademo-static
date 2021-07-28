@@ -4,7 +4,7 @@ const { swapVideo } = require('../lib/refaceAPI');
 const { fixTBNField, getMetaData } = require('../lib/ffmpegActions');
 const { writeFileSync } = require('../lib/fileActions');
 
-const DIR_TEMP = './temp';
+const DIR_TEMP = './temp1';
 
 /**
  * Make the swap of the videos.
