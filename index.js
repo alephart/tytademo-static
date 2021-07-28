@@ -11,11 +11,19 @@ const handle = app.getRequestHandler();
 // Port
 const PORT = process.env.PORT || 3000;
 
+const workers = {};
+
 const haltOnTimedout = (req, res, next) => {
   if (!req.timedout) {
     next();
   }
 };
+
+function spawn() {
+  const worker = cluster.fork();
+  workers[worker.pid] = worker;
+  return worker;
+}
 
 if (cluster.isMaster) {
   // Count the machine's CPUs
@@ -23,8 +31,14 @@ if (cluster.isMaster) {
 
   // Create a worker for each CPU
   for (let i = 0; i < cpuCount; i += 1) {
-    cluster.fork();
+    spawn();
   }
+
+  cluster.on("death", function (worker) {
+    console.log("worker " + worker.pid + " died. spawning a new process...");
+    delete workers[worker.pid];
+    spawn();
+  });
 } else {
   // Listening
   app.prepare().then(() => {
