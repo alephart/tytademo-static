@@ -3,7 +3,7 @@ const { loadFileSync } = require('../lib/fileActions');
 const { downloadSwapVideos, buildFileVideos, adjustTbnVideos } = require('../lib/refaceActions');
 
 const path = require('path');
-const DIR_TEMP = './temp';
+const DIR_TEMP = './temp1';
 
 describe.skip('Reface API - requires access to reface account', () => {
   test('It should upload an image to reface and get the url of the image', async (done) => {

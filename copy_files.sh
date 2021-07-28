@@ -4,12 +4,19 @@ echo "$(dirname "$BASH_SOURCE")"
 
 ZIP_FILE=footage.zip
 
-TEMP_PATH=./temp/
+TEMP_PATH=./temp1/
 
 NEW_PATH=./
 
-LOCAL_PATH=./temp/footage/
+LOCAL_PATH=./temp1/footage/
 {
+    if [[ ! -f "$TEMP_PATH" ]]; then
+        echo "Directory $TEMP_PATH was making"
+        mkdir $TEMP_PATH
+    fi
+
+    chmod -Rf 777 $TEMP_PATH
+
     if [[ ! -f "$LOCAL_PATH" ]]; then
         echo "Directory $LOCAL_PATH was making"
         mkdir $LOCAL_PATH

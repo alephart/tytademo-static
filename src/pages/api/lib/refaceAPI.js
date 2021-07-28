@@ -121,6 +121,7 @@ const swapVideo = async (obj) => {
     return json;
 
   } catch (error) {
+    console.log(JSON.stringify(obj));
     console.error(error);
     throw error;
   }

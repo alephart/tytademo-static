@@ -33,18 +33,24 @@ const getMetaData = (filePath, stream = 'all') => {
  */
 const concatVideosTxtFluent = (data) => {
   // commmand:
-  // ffmpeg -f concat -safe 0 -i ${fileVideos} -vcodec copy ${output}
+  // ffmpeg -f concat -safe 0 -i ${fileVideos} -vcodec copy ${output} </dev/null > /dev/null 2>&1 &
+
+  // ffmpeg -i input.mp4 -t 60 -f mp4 /mnt/a.mp4 </dev/null > /dev/null 2>&1 &
 
   const {output, fileVideos} = data;
 
   return new Promise(async (resolve, reject) => {
     try {
       ffmpeg()
+        .renice(-2)
         .input(fileVideos)
-        .inputOptions(['-f concat', '-safe 0'])
+        .inputOptions(['-f concat', '-safe 0', '-threads 8'])
         .outputOptions('-vcodec copy')
         .output(output)
-        .on('end', resolve)
+        .on('end', function() {
+          this.kill();
+          resolve();
+        })
         .on('error', reject)
         .run();
 
@@ -110,11 +116,15 @@ const changeTrackFluent = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
       ffmpeg()
+        .renice(-2)
         .input(input)
         .input(track)
-        .outputOptions(['-c copy'])
+        .outputOptions(['-c copy', '-threads 8'])
         .output(output)
-        .on('end', resolve)
+        .on('end', function() {
+          this.kill();
+          resolve();
+        })
         .on('error', reject)
         .run();
 

@@ -1,6 +1,6 @@
 const path = require('path');
 
-const DIR_TEMP = './temp';
+const DIR_TEMP = './temp1';
 
 videos = [
   '756b4dfd-e010-4de2-a200-967321c1d2eb.mp4',

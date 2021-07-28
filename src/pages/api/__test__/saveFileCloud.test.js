@@ -8,7 +8,7 @@ const path = require('path');
 //   const Vimeo = require('vimeo').Vimeo;
 //   const { configVimeo } = require('../lib/config');
 //   const clientVimeo = new Vimeo(configVimeo.client_id, configVimeo.client_secret, configVimeo.access_token);
-//   const DIR_TEMP = './temp';
+//   const DIR_TEMP = './temp1';
 
 //   test('Should return a success message from API Vimeo', async (done) => {
 //     const expected = 'Success!';
@@ -67,7 +67,7 @@ const path = require('path');
 // });
 
 describe('Save Cloud', () => {
-  const DIR_TEMP = './temp';
+  const DIR_TEMP = './temp1';
 
   test('it should save image to cloud storage sync', async (done) => {
 
