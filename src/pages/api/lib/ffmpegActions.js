@@ -47,7 +47,10 @@ const concatVideosTxtFluent = (data) => {
         .inputOptions(['-f concat', '-safe 0', '-threads 8'])
         .outputOptions('-vcodec copy')
         .output(output)
-        .on('end', resolve)
+        .on('end', function() {
+          this.kill();
+          resolve();
+        })
         .on('error', reject)
         .run();
 
@@ -118,7 +121,10 @@ const changeTrackFluent = (data) => {
         .input(track)
         .outputOptions(['-c copy', '-threads 8'])
         .output(output)
-        .on('end', resolve)
+        .on('end', function() {
+          this.kill();
+          resolve();
+        })
         .on('error', reject)
         .run();
 

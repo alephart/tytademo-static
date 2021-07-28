@@ -107,7 +107,7 @@ export default async (req, res) => {
     });
 
     removeFileSync(dataFinal.output);
-    removeFileSync(dataTrack.output);
+    //removeFileSync(dataTrack.output);
     removeFileSync(removeSubVideos);
     removeFileSync(dataFinal.fileVideos);
     console.timeEnd("removeFileSync_" + userId);
