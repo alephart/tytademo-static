@@ -15,6 +15,8 @@ LOCAL_PATH=./temp1/footage/
         mkdir $TEMP_PATH
     fi
 
+    chmod -Rf 777 $TEMP_PATH
+
     if [[ ! -f "$LOCAL_PATH" ]]; then
         echo "Directory $LOCAL_PATH was making"
         mkdir $LOCAL_PATH
