@@ -8,6 +8,7 @@ const {
   writeFileSync,
   loadFileSync,
   removeFileSync,
+  createDirSync,
 } = require("./lib/fileActions");
 const { buildFileVideos } = require("./lib/refaceActions");
 const { videoListAll } = require("./lib/dataVideos");
@@ -15,7 +16,10 @@ const { videoListAll } = require("./lib/dataVideos");
 const fetch = require("node-fetch");
 const { configAdmin } = require("./lib/config");
 
-const DIR_TEMP = "./temp";
+const DIR_TEMP = "./temp1";
+const DIR_TEMP_A = "./temp1";
+createDirSync(DIR_TEMP_A);
+
 const NAME_TRACK_AUDIO = "footage/TodoONada_Final_Audio.m4a";
 const url = process.env.NEXT_PUBLIC_URL_SITE;
 
@@ -34,7 +38,7 @@ const videosListCharacter = (character, videoId, videoListAll) => {
       const getVideo = loadFileSync(path.join(DIR_TEMP, video.name));
 
       // save video
-      const pathName = path.join(DIR_TEMP, name);
+      const pathName = path.join(DIR_TEMP_A, name);
       writeFileSync(pathName, getVideo);
 
       allVideos.push(name);
@@ -71,7 +75,7 @@ export default async (req, res) => {
     // 5. write file .txt with info videos
     const nameFileVideos = `videos-${userId}.txt`;
     writeFileSync(
-      path.join(DIR_TEMP, nameFileVideos),
+      path.join(DIR_TEMP_A, nameFileVideos),
       buildFileVideos(adjustVideos, videoListAll, character)
     );
     console.timeEnd("writeFileSync_" + userId);
@@ -79,8 +83,8 @@ export default async (req, res) => {
     console.time("concatVideosTxtFluent_" + userId);
     // 6. Merge videos (get final video)
     const dataFinal = {
-      output: `${DIR_TEMP}/video-${userId}.mp4`,
-      fileVideos: `${DIR_TEMP}/${nameFileVideos}`,
+      output: `${DIR_TEMP_A}/video-${userId}.mp4`,
+      fileVideos: `${DIR_TEMP_A}/${nameFileVideos}`,
     };
 
     await concatVideosTxtFluent(dataFinal);
@@ -92,7 +96,7 @@ export default async (req, res) => {
 
     const dataTrack = {
       input: dataFinal.output,
-      output: `${DIR_TEMP}/${nameFinalVideo}`,
+      output: `${DIR_TEMP_A}/${nameFinalVideo}`,
       track: path.join(DIR_TEMP, NAME_TRACK_AUDIO),
     };
 
@@ -102,7 +106,7 @@ export default async (req, res) => {
     console.time("removeFileSync_" + userId);
     let removeSubVideos = [];
     const allSubVideos = adjustVideos.map((video, index) => {
-      const pathFile = path.join(DIR_TEMP, video);
+      const pathFile = path.join(DIR_TEMP_A, video);
       removeSubVideos[index] = pathFile;
     });
 
