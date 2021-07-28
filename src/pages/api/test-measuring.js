@@ -103,6 +103,11 @@ export default async (req, res) => {
     console.timeEnd("changeTrackFluent_" + userId);
 
     console.time("removeFileSync_" + userId);
+    // save final video on cloud
+    const videoLocation = uploadFile(dataTrack.output, nameFinalVideo, 'video', true);
+    console.timeEnd("removeFileSync_" + userId);
+
+    console.time("removeFileSync_" + userId);
     let removeSubVideos = [];
     const allSubVideos = adjustVideos.map((video, index) => {
       const pathFile = path.join(DIR_TEMP, video);
