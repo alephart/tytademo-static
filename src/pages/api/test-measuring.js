@@ -3,6 +3,8 @@ const cuid = require("cuid");
 const {
   concatVideosTxtFluent,
   changeTrackFluent,
+  concatVideosDemuxer,
+  changeTrack,
 } = require("./lib/ffmpegActions");
 const {
   writeFileSync,
@@ -83,7 +85,8 @@ export default async (req, res) => {
       fileVideos: `${DIR_TEMP}/${nameFileVideos}`,
     };
 
-    await concatVideosTxtFluent(dataFinal);
+    //await concatVideosTxtFluent(dataFinal);
+    await concatVideosDemuxer(dataFinal);
     console.timeEnd("concatVideosTxtFluent_" + userId);
 
     console.time("changeTrackFluent");
@@ -96,7 +99,8 @@ export default async (req, res) => {
       track: path.join(DIR_TEMP, NAME_TRACK_AUDIO),
     };
 
-    await changeTrackFluent(dataTrack);
+    //await changeTrackFluent(dataTrack);
+    await changeTrack(dataTrack);
     console.timeEnd("changeTrackFluent_" + userId);
 
     console.time("removeFileSync_" + userId);
