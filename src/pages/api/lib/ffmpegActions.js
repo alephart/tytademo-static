@@ -1,64 +1,4 @@
 const ffmpeg = require('fluent-ffmpeg');
-const { exec } = require('child_process');
-
-// run Exec command promise
-const runExecCommand = (command) => {
-  //const generate = !isMac ? `${xvfb} ${command}` : command;
-  //console.log(command);
-
-  return new Promise((resolve, reject) => {
-    let stdoutData = '', stderrData = '';
-    
-    try {
-      exec(command, (error, stdout, stderr) => {
-        if (error) {    
-            console.log(`error exec: ${error.message}`);
-            return reject(error);
-        }
-        if (stderr) {
-            console.log(`stderr exec: ${stderr}`);
-            stderrData += stderr;
-        }
-        if (stdout) {
-            console.log(`stdout exec: ${stdout}`);
-            stdoutData += stdout;
-        }
-  
-        if(stderrData) {
-          reject(stderrData);
-        } else {
-          resolve(stdoutData);
-        }
-      });
-  
-    } catch (err) {
-      console.error(err);
-      reject(err);
-      //throw err;
-    }
-  });
-}
-
-// concatenate several videos - all with same codecs (stream level)
-const concatVideosDemuxer = async (data) => {
-  const {output, fileVideos} = data;
-  
-  //const concat = `ffmpeg -f concat -safe 0 -i ${fileVideos} -vcodec copy ${output}`;
-  const concat = `ffmpeg -f concat -safe 0 -i ${fileVideos} -vcodec copy ${output} > /dev/null 2>&1 < /dev/null`
-
-  return await runExecCommand(concat);
-}
-
-// changeTrack
-const changeTrack = async (data) => {
-  const {input, output, track} = data;
-
-  //const change = `ffmpeg -i ${input} -i ${track} -c:v copy -map 0:v:0 -map 1:a:0 ${output}`;
-
-  const change = `ffmpeg -i ${input} -i ${track} -c copy ${output} > /dev/null 2>&1 < /dev/null`;
-
-  return await runExecCommand(change);
-}
 
 /**
  * getMetaData: Get meta data from media file. Here get only data from streams [key 0].
@@ -283,6 +223,4 @@ module.exports = {
   changeTrackFluent,
   placeWatermarkOnVideo,
   fixTBNField,
-  concatVideosDemuxer,
-  changeTrack,
 }
