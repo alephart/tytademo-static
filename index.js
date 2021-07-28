@@ -11,6 +11,12 @@ const handle = app.getRequestHandler();
 // Port
 const PORT = process.env.PORT || 3000;
 
+const haltOnTimedout = (req, res, next) => {
+  if (!req.timedout) {
+    next();
+  }
+};
+
 if (cluster.isMaster) {
   // Count the machine's CPUs
   const cpuCount = require("os").cpus().length;
@@ -24,6 +30,7 @@ if (cluster.isMaster) {
   app.prepare().then(() => {
     const server = express();
     server.use(timeout("180s"));
+    server.use(haltOnTimedout);
 
     server.all("*", (req, res) => {
       const parsedUrl = parse(req.url, true);
