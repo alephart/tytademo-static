@@ -1,5 +1,6 @@
 const path = require('path');
 const cuid = require('cuid');
+const { uploadFile } = require('./lib/bucketS3API');
 const { decodeBase64Image } = require ('./lib/utils');
 const { createDirSync, removeFileSync, loadFileSync, writeFile } = require('./lib/fileActions');
 const { uploadAsset, detectFacesInAsset } = require('./lib/refaceAPI');
@@ -37,7 +38,7 @@ export default async (req, res) => {
     const binaryFile = loadFileSync(pathFinalPhoto);
 
     const uploadAsseUrlFile = await uploadAsset(binaryFile, `image/${ext}`);
-    console.log(uploadAsseUrlFile);
+    //console.log(uploadAsseUrlFile);
 
     if (!uploadAsseUrlFile) {
       // return 
@@ -59,11 +60,17 @@ export default async (req, res) => {
     } else { // continue
       faceId = Object.values(faces[0])[1].id;
 
+      // save image on cloud
+      const photoLocation = await uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
+      
+      //
+      removeFileSync(pathFinalPhoto);
+      
       const data = { 
         userId,
         faceId,
         nameFilePhoto,
-        pathFinalPhoto,
+        pathFinalPhoto: photoLocation,
         character,
       };
 

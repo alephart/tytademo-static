@@ -10,7 +10,7 @@ const NAME_TRACK_AUDIO = 'footage/TodoONada_Final_Audio.m4a';
 const url = process.env.NEXT_PUBLIC_URL_SITE;
 
 export default async (req, res) => {
-  const { userId, nameFilePhoto, pathFinalPhoto, character, faceId, locale } = JSON.parse(req.body);
+  const { userId, pathFinalPhoto, character, faceId, locale } = JSON.parse(req.body);
 
   try {
     if (faceId) {
@@ -29,11 +29,11 @@ export default async (req, res) => {
     
       // 4. Download videos, save in temp
       const dowloadVideos = await downloadSwapVideos(swapVideos);
-      console.log('Dowload Videos', dowloadVideos);
+      //console.log('Dowload Videos', dowloadVideos);
       
       // 4.1 modify video the TBN to 90K - please if not necessary, do not use!
       const adjustVideos = await adjustTbnVideos(dowloadVideos, 90000);
-      console.log('Adjust TBN Videos', adjustVideos);
+      //console.log('Adjust TBN Videos', adjustVideos);
     
       // 5. write file .txt with info videos
       const nameFileVideos = `videos-${userId}.txt`;
@@ -44,7 +44,7 @@ export default async (req, res) => {
         output: `${DIR_TEMP}/video-${userId}.mp4`,
         fileVideos: `${DIR_TEMP}/${nameFileVideos}`,
       };
-      console.log('dataFinal videos', dataFinal);
+      //console.log('dataFinal videos', dataFinal);
     
       await concatVideosTxtFluent(dataFinal);
     
@@ -56,7 +56,7 @@ export default async (req, res) => {
         output: `${DIR_TEMP}/${nameFinalVideo}`,
         track: path.join(DIR_TEMP, NAME_TRACK_AUDIO),
       }
-      console.log('track video and audio', dataTrack);
+      //console.log('track video and audio', dataTrack);
     
       await changeTrackFluent(dataTrack);
     
@@ -64,9 +64,6 @@ export default async (req, res) => {
        * The following processes are asynchronous, but here will use the technique that they run in parallel 
        * ([sync] since they can be independent) and it will continue until they all proceed (promises all)
        ********************************************************************************************************************/
-    
-      // save image on cloud
-      const photoLocation = uploadFile(pathFinalPhoto, nameFilePhoto, 'image', true);
       
       // save final video on cloud
       const videoLocation = uploadFile(dataTrack.output, nameFinalVideo, 'video', true);
@@ -83,10 +80,9 @@ export default async (req, res) => {
       // save txt file on cloud
       const txtLocation = uploadFile(dataFinal.fileVideos, nameFileVideos, 'txt', true);
       
-      const footage = await Promise.all([photoLocation, videoLocation, txtLocation, ...allSubVideos]);
+      const footage = await Promise.all([videoLocation, txtLocation, ...allSubVideos]);
     
       // TODO: generate list assets to remove - remove in async parallel
-      removeFileSync(pathFinalPhoto);
       removeFileSync(dataFinal.output);
       removeFileSync(dataTrack.output);
       removeFileSync(removeSubVideos);
@@ -97,8 +93,8 @@ export default async (req, res) => {
         userId,
         urlShare: `${url}${pathLocale}share-experience/${userId}`, 
         urlJoin: `${url}${pathLocale}join-experience/${userId}`,
-        urlPhoto: footage[0],
-        urlVideo: footage[1],
+        urlPhoto: pathFinalPhoto,
+        urlVideo: footage[0],
         footage,
       };
       
