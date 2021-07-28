@@ -1,7 +1,7 @@
 const cluster = require("cluster");
-const timeout = require("connect-timeout");
-const { createServer } = require("http");
+const express = require("express");
 const { parse } = require("url");
+const timeout = require("connect-timeout");
 
 // Import app
 const { app } = require("./server");
@@ -11,9 +11,15 @@ const handle = app.getRequestHandler();
 // Port
 const PORT = process.env.PORT || 3000;
 
+const haltOnTimedout = (req, res, next) => {
+  if (!req.timedout) {
+    next();
+  }
+};
+
 if (cluster.isMaster) {
   // Count the machine's CPUs
-  const cpuCount = 4;
+  const cpuCount = require("os").cpus().length;
 
   // Create a worker for each CPU
   for (let i = 0; i < cpuCount; i += 1) {
@@ -22,18 +28,20 @@ if (cluster.isMaster) {
 } else {
   // Listening
   app.prepare().then(() => {
-    createServer((req, res) => {
-      // Be sure to pass `true` as the second argument to `url.parse`.
-      // This tells it to parse the query portion of the URL.
+    const server = express();
+    server.use(timeout("180s"));
+    server.use(haltOnTimedout);
+
+    server.all("*", (req, res) => {
       const parsedUrl = parse(req.url, true);
       const { pathname, query } = parsedUrl;
 
-      handle(req, res, parsedUrl);
-    })
-      .use(timeout("60s"))
-      .listen(PORT, (err) => {
-        if (err) throw err;
-        console.log(`> Ready on http://localhost:${PORT}`);
-      });
+      return handle(req, res);
+    });
+
+    server.listen(PORT, (err) => {
+      if (err) throw err;
+      console.log(`> Ready on http://localhost:${PORT}`);
+    });
   });
 }
