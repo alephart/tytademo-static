@@ -17,23 +17,23 @@ const DIR_TEMP = './temp1';
  */
 const dataSwapVideos = async (videosData) => {
   try {
-    const tasks = videosData.map(data => {
+    const tasks = videosData.map(async data => {
       let json;
       let attempt = true;
 
       // here attempt while response not json correct
       while(attempt) {
-        json = swapVideo(data);
+        json = await swapVideo(data);
+        console.log(json);
         attempt = !isValidJSON(JSON.stringify(json));
       }
 
-      console.log(json);
       return json;
 
     });
 
     const results = await Promise.all(tasks);
-    console.log(results);
+    console.log('----------excelent!!!!----------');
     
     return results;
 
