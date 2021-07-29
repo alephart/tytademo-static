@@ -149,15 +149,15 @@ const detectFacesInAsset = async (imageUrl, contentType) => {
  */
 const swapVideo = async (obj) => {
   try {
-      const response = await fetch(`${configReface.url_base}/swapvideo`, {
-        method: 'POST',
-        body: JSON.stringify(obj),
-        headers: {'Content-Type': 'application/json'}
-      });
-  
-      const json = await response.json();
+    const response = await fetch(`${configReface.url_base}/swapvideo`, {
+      method: 'POST',
+      body: JSON.stringify(obj),
+      headers: {'Content-Type': 'application/json'}
+    });
 
-      return json;
+    const json = await response.json();
+
+    return json;
 
   } catch (error) {
     console.log(JSON.stringify(obj));
