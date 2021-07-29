@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const { configReface } = require('./config');
+let { logmailer, logmail } = require("./logmailer");
 
 /**
  * [GET] Generate Signed URL (video or image)
@@ -33,6 +34,20 @@ const getSignedUrl = async (type) => {
 
   } catch (error) {
     console.error(error);
+    logmail.summary.add("Starting time", `App run now: ${new Date().toISOString()}`);
+    logmail.errors.add("refaceAPI ::getSignedUrl::", "Problem when get the signed URL by DeepFake Provider");
+    logmail.errors.add(null, error);
+    logmail.errors.add("endpoint", endPoint);
+    logmail.errors.add(null, status);
+    logmail.errors.add(null, res);
+
+    logmailer.sendMail(err => {
+        if (err) {
+            console.log("error while sending", err);
+        } else {
+            console.log("error mail sent successfully");
+        }
+    });
     throw error;
   }
 }
@@ -66,6 +81,18 @@ const uploadAsset = async (binaryFile, contentType) => {
 
   } catch (error) {
     console.error(error);
+    logmail.summary.add("Starting time", `App run now: ${new Date().toISOString()}`);
+    logmail.errors.add("refaceAPI ::uploadAsset::", "Error when upload photo");
+    logmail.errors.add(null, error);
+    logmail.errors.add(null, data);
+
+    logmailer.sendMail(err => {
+        if (err) {
+            console.log("error while sending", err);
+        } else {
+            console.log("error mail sent successfully");
+        }
+    });    
     throw error;
   }
 }
@@ -99,6 +126,18 @@ const detectFacesInAsset = async (imageUrl, contentType) => {
 
   } catch (error) {
     console.error(error);
+    logmail.summary.add("Starting time", `App run now: ${new Date().toISOString()}`);
+    logmail.errors.add("refaceAPI ::detectFacesInAsset::", "Error when detect faces");
+    logmail.errors.add(null, error);
+    logmail.errors.add(null, imageUrl);
+
+    logmailer.sendMail(err => {
+        if (err) {
+            console.log("error while sending", err);
+        } else {
+            console.log("error mail sent successfully");
+        }
+    }); 
     throw error;
   }
 }
@@ -123,6 +162,18 @@ const swapVideo = async (obj) => {
   } catch (error) {
     console.log(JSON.stringify(obj));
     console.error(error);
+    logmail.summary.add("Starting time", `App run now: ${new Date().toISOString()}`);
+    logmail.errors.add("refaceAPI ::swapVideo::", "Error when swap videos, common: not json response = no process swap!");
+    logmail.errors.add(null, error);
+    logmail.errors.add(null, JSON.stringify(obj));
+
+    logmailer.sendMail(err => {
+        if (err) {
+            console.log("error while sending", err);
+        } else {
+            console.log("error mail sent successfully");
+        }
+    });
     throw error;
   }
 };
