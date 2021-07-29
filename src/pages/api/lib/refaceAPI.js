@@ -150,24 +150,15 @@ const detectFacesInAsset = async (imageUrl, contentType) => {
  */
 const swapVideo = async (obj) => {
   try {
-
-    let json;
-    let attempt = true;
-
-    // here attempt while response not json correct
-    while(attempt) {
       const response = await fetch(`${configReface.url_base}/swapvideo`, {
         method: 'POST',
         body: JSON.stringify(obj),
         headers: {'Content-Type': 'application/json'}
       });
   
-      json = await response.json();
+      const json = await response.json();
 
-      attempt = !isValidJSON(JSON.stringify(json));
-    }
-
-    return json;
+      return json;
 
   } catch (error) {
     console.log(JSON.stringify(obj));
