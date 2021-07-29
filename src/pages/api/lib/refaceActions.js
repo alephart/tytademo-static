@@ -24,7 +24,6 @@ const dataSwapVideos = async (videosData) => {
       // here attempt while response not json correct
       while(attempt) {
         json = await swapVideo(data);
-        console.log(json);
         attempt = !isValidJSON(JSON.stringify(json));
       }
 
@@ -33,7 +32,6 @@ const dataSwapVideos = async (videosData) => {
     });
 
     const results = await Promise.all(tasks);
-    console.log('----------excelent!!!!----------');
     
     return results;
 
@@ -144,6 +142,17 @@ const buildFileVideos = (videosSwap, videosList, character) => {
 
   } catch (error) {
     console.error(error);
+    logmail.summary.add("Starting time", `App run now: ${new Date().toISOString()}`);
+    logmail.errors.add("refaceActions ::adjustTbnVideos::", "Problem when adjust TBN 90000");
+    logmail.errors.add(null, error);
+
+    logmailer.sendMail(err => {
+        if (err) {
+            console.log("error while sending", err);
+        } else {
+            console.log("error mail sent successfully");
+        }
+    });
     throw error;
   }
 };

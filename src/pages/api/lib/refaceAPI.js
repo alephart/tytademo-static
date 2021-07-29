@@ -1,6 +1,5 @@
 const fetch = require('node-fetch');
 const { configReface } = require('./config');
-const { isValidJSON } = require('./utils');
 let { logmailer, logmail } = require("./logmailer");
 
 /**
@@ -167,7 +166,6 @@ const swapVideo = async (obj) => {
     logmail.errors.add("refaceAPI ::swapVideo::", "Error when swap videos, common: not json response = no process swap!");
     logmail.errors.add(null, error);
     logmail.errors.add(null, JSON.stringify(obj));
-    logmail.errors.add(null, json);
 
     logmailer.sendMail(err => {
         if (err) {
