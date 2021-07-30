@@ -96,7 +96,7 @@ export default async (req, res) => {
           zipcode,
         };
 
-        mozeus = await sendMozeus(dataMozeus);
+        //mozeus = await sendMozeus(dataMozeus);
       }
 
       // // Fourth: Email sending
