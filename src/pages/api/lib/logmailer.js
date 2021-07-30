@@ -28,7 +28,7 @@ let { logmailer, Recipient, Chapter, StandardChapters } = require("logmailer");
       },
       recipients: [
           "jpulido@mdsdigital.com", // receives everything
-          "dlara@mdsdigital.com",
+          //"dlara@mdsdigital.com",
           //"lcardona@mdsdigital.com",
           //"ftorres@mdsdigital.com",
 
