@@ -23,8 +23,23 @@ const encodeBinaryFromBase64 = (fileBase64) => {
   return Buffer(fileBase64, 'base64').toString('binary');
 }
 
+// check valid json - please parameter string
+const isValidJSON = (text) => {
+  if (typeof text!=="string"){
+      return false;
+  }
+  try{
+      JSON.parse(text);
+      return true;
+  }
+  catch (error){
+      return false;
+  }
+};
+
 module.exports = {
   imageBase64, 
   decodeBase64Image,
   encodeBinaryFromBase64,
+  isValidJSON,
 };
