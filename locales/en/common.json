@@ -85,5 +85,7 @@
     "instagram_Text2": "Or you can copy this link:",
     "instagram_Button": "www.lunayxtoyota.com",
     "instagram_Copy": "And paste it on a different browser",
-    "Take_Photo": "User images to be used only for the purposes of generating the video. Images are purged once personal video is produced."
+    "Take_Photo": "User images to be used only for the purposes of generating the video. Images are purged once personal video is produced.",
+    "stop": "stop",
+    "stop_Texts": "Your video is being processed and it will be sent to you by email once this process is completed."
 }

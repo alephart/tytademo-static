@@ -206,6 +206,12 @@ const RegisterInfo = ({ userEmail }) => {
 
   return (
     <div className='formVideo'>
+      <div className="problem">
+        <div>
+          <h2>{t("stop")}</h2>
+          <p>{t("stop_Texts")}</p>
+        </div>
+      </div>
       <VideoLoading progress={progress} />
       <div className='copyTitleForm'>{t("registerInfo_copyTitleForm")}</div>
       <div className='copySubtitleForm'>{t("registerInfo_copySubtitleForm")}</div>
