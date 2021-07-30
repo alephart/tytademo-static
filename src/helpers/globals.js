@@ -10,6 +10,7 @@ export const PROCESS_ENUM = Object.freeze(
     photoValid: 'Photo Valid',
     register: 'Fill Register',
     share: 'Share Video',
+    waitProcess: 'Processing Video',
   }
 );
 

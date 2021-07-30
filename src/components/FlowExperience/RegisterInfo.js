@@ -25,7 +25,7 @@ const setCookie = (email) => {
 
 const RegisterInfo = ({ userEmail }) => {
   const { t } = useTranslation('common');
-  const { setProcess, data, character, swap, setSwap, locale } = useContext(ExperienceContext);
+  const { setProcess, process, data, character, swap, setSwap, locale } = useContext(ExperienceContext);
   const [progress, setProgress] = useState(0);
   const [values, setValues] = useState({
     firstname: '',
@@ -38,6 +38,9 @@ const RegisterInfo = ({ userEmail }) => {
   const [validZipCode, setValidZipCode] = useState(false);
   const [isSubmitting, setSubmitting] = useState(false);
   const [dataRegister, setDataRegister] = useState({});
+  const [startSwap, setStartSwap] = useState(false);
+  const [swapProcess, setSwapProcess] = useState(false);
+
   const [contact, setContact] = useState({
     productNews: false,
     testDrive: false,
@@ -51,21 +54,41 @@ const RegisterInfo = ({ userEmail }) => {
 
   /******** EFFECT ACTIONS ********/
 
-  // effect to init DOM
+  // effect when startSwap = true
   useEffect(() => {
     const initSwap = async (payload) => {
+      console.log('payload data to swap!!!', payload);
       try {
         const response = await fetch('/api/photo_swap', {
           method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify(payload),
         });
         
         const json = await response.json();
+        const status = await response.status;
+        
+        console.log(json);
+        console.log(status);
         
         if(json.success) {
+          // all good!, goto share!
           setSwap(json.data);
+          setSwapProcess(true);
+          setProcess(PROCESS_ENUM.share);
+
+          router.replace({
+            pathname: '/share-experience/[id]',
+            query: { id: data.userId },
+          });
+
         } else {
-          //
+          // error reface then continue and go to STOP PAGE
+          setSwapProcess(true);
+          setProcess(PROCESS_ENUM.waitProcess);
+          router.replace('/process_you_video');
         }
         
       } catch (error) {
@@ -73,20 +96,20 @@ const RegisterInfo = ({ userEmail }) => {
       };
     };
     
-    if(data) {
-      initSwap({ ...data, locale });
+    if(startSwap) {
+      initSwap({ ...data, ...dataRegister, locale });
     }
-  }, []);
+  }, [startSwap]);
 
   // effect when swap change state
-  useEffect(() => {
-    if(swap) {
-      setDataRegister({
-        ...dataRegister,
-        ...swap,
-      });
-    }
-  }, [swap]);
+  // useEffect(() => {
+  //   if(swap) {
+  //     setDataRegister({
+  //       ...dataRegister,
+  //       ...swap,
+  //     });
+  //   }
+  // }, [swap]);
 
   // effect when dataRegister change state
   useEffect(() => {
@@ -108,12 +131,8 @@ const RegisterInfo = ({ userEmail }) => {
       if(json.success) {
         setCookie(dataRegister.email);
 
-        // when save json, then change to share
-        setProcess(PROCESS_ENUM.share);
-        router.replace({
-          pathname: '/share-experience/[id]',
-          query: { id: data.userId },
-        });
+        // when save json, then: swap proccess
+        setStartSwap(true);
         
       } else {
         setSubmitting(false);
@@ -124,7 +143,7 @@ const RegisterInfo = ({ userEmail }) => {
       }
     };
 
-    if(swap && isSubmitting) {
+    if(isSubmitting) {
       sendData();
     }
   }, [dataRegister]);
