@@ -1004,32 +1004,6 @@ body {
 				width: 290px;
 			}
 		}
-		.problem
-		{
-			z-index: 1000;
-			position: fixed;
-			width: 100%;
-			background-image: url("/images/bg-app.jpg");
-			background-position: center;
-			background-size: cover;
-			height: 100vh;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			align-content: center;
-			overflow: hidden;
-			text-align: center;
-			padding: 0 10%;
-			display: none;
-			&.active
-			{
-				display: block;
-			}
-			p
-			{
-				font-family: 'ToyotaRegular';
-			}
-		}
 		.percentageVideo
 		{
 			width: 100%;
@@ -1990,4 +1964,26 @@ input[type=number] {
 .buttonCookie
 {
 	width: 100% !important;
+}
+.problem
+{
+	z-index: 1000;
+	position: fixed;
+	width: 100%;
+	background-image: url("/images/bg-app.jpg");
+	background-position: center;
+	background-size: cover;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	overflow: hidden;
+	text-align: center;
+	padding: 0 10%;
+	display: flex;
+	p
+	{
+		font-family: 'ToyotaRegular';
+	}
 }
