@@ -38,6 +38,8 @@ const RegisterInfo = ({ userEmail }) => {
   const [validZipCode, setValidZipCode] = useState(false);
   const [isSubmitting, setSubmitting] = useState(false);
   const [dataRegister, setDataRegister] = useState({});
+  const [startSwap, setStartSwap] = useState(false);
+
   const [contact, setContact] = useState({
     productNews: false,
     testDrive: false,
@@ -51,21 +53,35 @@ const RegisterInfo = ({ userEmail }) => {
 
   /******** EFFECT ACTIONS ********/
 
-  // effect to init DOM
+  // effect when startSwap = true
   useEffect(() => {
     const initSwap = async (payload) => {
       try {
         const response = await fetch('/api/photo_swap', {
           method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify(payload),
         });
         
         const json = await response.json();
+        //const status = await response.status;
         
         if(json.success) {
-          setSwap(json.data);
+          // all good!, goto share!
+          //setSwap(json.data);
+          setProcess(PROCESS_ENUM.share);
+
+          router.replace({
+            pathname: '/share-experience/[id]',
+            query: { id: data.userId },
+          });
+
         } else {
-          //
+          // error reface then continue and go to STOP PAGE
+          setProcess(PROCESS_ENUM.waitProcess);
+          router.replace('/process_you_video');
         }
         
       } catch (error) {
@@ -73,20 +89,10 @@ const RegisterInfo = ({ userEmail }) => {
       };
     };
     
-    if(data) {
-      initSwap({ ...data, locale });
+    if(startSwap) {
+      initSwap({ ...data, ...dataRegister, locale });
     }
-  }, []);
-
-  // effect when swap change state
-  useEffect(() => {
-    if(swap) {
-      setDataRegister({
-        ...dataRegister,
-        ...swap,
-      });
-    }
-  }, [swap]);
+  }, [startSwap]);
 
   // effect when dataRegister change state
   useEffect(() => {
@@ -100,20 +106,12 @@ const RegisterInfo = ({ userEmail }) => {
       });
 
       const json = await response.json();
-
-      if(response.status !== 200) {
-        // server error 
-      }
       
       if(json.success) {
         setCookie(dataRegister.email);
 
-        // when save json, then change to share
-        setProcess(PROCESS_ENUM.share);
-        router.replace({
-          pathname: '/share-experience/[id]',
-          query: { id: data.userId },
-        });
+        // when save json, then: swap proccess
+        setStartSwap(true);
         
       } else {
         setSubmitting(false);
@@ -124,7 +122,7 @@ const RegisterInfo = ({ userEmail }) => {
       }
     };
 
-    if(swap && isSubmitting) {
+    if(isSubmitting) {
       sendData();
     }
   }, [dataRegister]);

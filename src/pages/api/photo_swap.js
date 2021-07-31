@@ -4,13 +4,33 @@ const { concatVideosTxtFluent, changeTrackFluent } = require('./lib/ffmpegAction
 const { writeFileSync, removeFileSync } = require('./lib/fileActions');
 const { dataSwapVideos, downloadSwapVideos, buildFileVideos, adjustTbnVideos } = require('./lib/refaceActions');
 const { videosListFemale, videosListMale, videoListAll } = require('./lib/dataVideos');
+const { configAdmin } = require('./lib/config');
+const { sendEmail } = require('./lib/sendEmail');
 
 const DIR_TEMP = './temp1';
 const NAME_TRACK_AUDIO = 'footage/TodoONada_Final_Audio.m4a';
 const url = process.env.NEXT_PUBLIC_URL_SITE;
 
 export default async (req, res) => {
-  const { userId, pathFinalPhoto, character, faceId, locale } = JSON.parse(req.body);
+    // get data from req body
+    const {
+      userId,
+      faceId,
+      character,
+      pathFinalPhoto,
+      locale,
+      firstname,
+      lastname,
+      email,
+
+      textOpenBrowser,
+      textTitle,
+      imgTitle,
+      textMessage,
+      imgButton,
+      textButton,
+      metaTitle,
+    } = req.body;
 
   try {
     if (faceId) {
@@ -68,7 +88,6 @@ export default async (req, res) => {
       // save final video on cloud
       const videoLocation = uploadFile(dataTrack.output, nameFinalVideo, 'video', true);
 
-      
       // save sub videos on cloud [this will not necessary for the final version]
       let removeSubVideos = [];
       const allSubVideos = adjustVideos.map((video, index) => {
@@ -89,16 +108,68 @@ export default async (req, res) => {
       removeFileSync(dataFinal.fileVideos);
 
       const pathLocale = locale === 'es' ? '/es/' : '/';
-      const data = {
-        userId,
-        urlShare: `${url}${pathLocale}share-experience/${userId}`, 
-        urlJoin: `${url}${pathLocale}join-experience/${userId}`,
-        urlPhoto: pathFinalPhoto,
-        urlVideo: footage[0],
+      const urlShare = `${url}${pathLocale}share-experience/${userId}`;
+      
+      const dataAdmin = {
+        url_video: footage[0], 
         footage,
       };
+
+      // update database
+      let jsonAdmin;
+
+      try {
+        const resAdmin = await fetch(`${configAdmin.url_api}/participant/${userId}`, {
+          method: 'PUT',
+          body:    JSON.stringify(dataAdmin),
+          headers: { 'Content-Type': 'application/json' },
+        });
       
-      res.status(200).send({ success: true, data });
+        jsonAdmin = await resAdmin.json();
+
+        if(!jsonAdmin.participant_id) {
+          res.status(500).send({ success: false, action: 'saveParticipant', jsonAdmin});
+        }
+        
+      } catch (error) {
+        console.error(error);
+        res.status(500).send({ success: false, action: 'saveParticipant', error});
+      }
+
+      // pass data to send email
+
+      // Fourth: Email sending
+      const config = {
+        host: process.env.AWS_SES_HOST,
+        port: process.env.AWS_SES_PORT,
+        user: process.env.AWS_SES_USERNAME,
+        pass: process.env.AWS_SES_PASSWORD,
+        from: process.env.NEXT_PUBLIC_FROM_EMAIL,
+      };
+      
+      const urlOpenBrowser = `${url}${pathLocale}mailing-experience?share=${urlShare}`;
+
+      const options = {
+        locale,
+        firstname,
+        lastname,
+        email,
+        urlShare,
+        urlOpenBrowser,
+        textOpenBrowser,
+        textTitle,
+        imgTitle,
+        textMessage,
+        imgButton,
+        textButton,
+        metaTitle,
+      };
+
+      //console.log(config, options)
+      await sendEmail(config, options);
+
+      
+      res.status(200).send({ success: true });
     
     } else {
       res.status(200).json({ success: false, message: 'Not data faceId!' });

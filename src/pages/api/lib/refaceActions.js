@@ -3,7 +3,6 @@ const fetch = require('node-fetch');
 const { swapVideo } = require('../lib/refaceAPI');
 const { fixTBNField, getMetaData } = require('../lib/ffmpegActions');
 const { writeFileSync } = require('../lib/fileActions');
-const { isValidJSON } = require('../lib/utils');
 let { logmailer, logmail } = require("../lib/logmailer");
 
 const DIR_TEMP = './temp1';
@@ -17,19 +16,7 @@ const DIR_TEMP = './temp1';
  */
 const dataSwapVideos = async (videosData) => {
   try {
-    const tasks = videosData.map(async data => {
-      let json;
-      let attempt = true;
-
-      // here attempt while response not json correct
-      while(attempt) {
-        json = await swapVideo(data);
-        attempt = !isValidJSON(JSON.stringify(json));
-      }
-
-      return json;
-
-    });
+    const tasks = videosData.map(async data => await swapVideo(data));
 
     const results = await Promise.all(tasks);
     
@@ -40,7 +27,7 @@ const dataSwapVideos = async (videosData) => {
     logmail.summary.add("Starting time", `App run now: ${new Date().toISOString()}`);
     logmail.errors.add("refaceActions ::dataSwapVideos::", "Problem when swap videos promises");
     logmail.errors.add(null, error);
-    logmail.errors.add(null, json);
+    logmail.errors.add(null, response);
 
     logmailer.sendMail(err => {
         if (err) {
