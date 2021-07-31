@@ -2,7 +2,6 @@ const fetch = require('node-fetch');
 const { configAdmin } = require('./lib/config');
 const { sendMozeus } = require('./lib/sendMozeus');
 const { checkEmail } = require('./lib/checkEmail');
-//const { sendEmail } = require('./lib/sendEmail');
 
 export default async (req, res) => {  
   // get data from req body
@@ -17,22 +16,7 @@ export default async (req, res) => {
     faceId,
     character,    
     pathFinalPhoto,
-    nameFilePhoto,
-    locale,
-    urlShare,
-    urlJoin,
-    urlVideo,
-    footage,
-    textOpenBrowser,
-    textTitle,
-    imgTitle,
-    textMessage,
-    imgButton,
-    textButton,
-    metaTitle,
   } = req.body;
-
-  console.log(req.body);
 
   try {    
     // First: check unique email address  
@@ -59,9 +43,6 @@ export default async (req, res) => {
         url_photo: pathFinalPhoto,
         productnews: productNews,
         testdrive: testDrive,
-
-        //url_video: urlVideo, // not going
-        //footage, // not going
       };
 
       let jsonAdmin;
@@ -96,38 +77,8 @@ export default async (req, res) => {
           zipcode,
         };
 
-        //mozeus = await sendMozeus(dataMozeus);
+        mozeus = await sendMozeus(dataMozeus);
       }
-
-      // // Fourth: Email sending
-      // const config = {
-      //   host: process.env.AWS_SES_HOST,
-      //   port: process.env.AWS_SES_PORT,
-      //   user: process.env.AWS_SES_USERNAME,
-      //   pass: process.env.AWS_SES_PASSWORD,
-      //   from: process.env.NEXT_PUBLIC_FROM_EMAIL,
-      // };
-      
-      // const urlOpenBrowser = `${process.env.NEXT_PUBLIC_URL_SITE}/${locale === 'es' ? 'es/' : ''}mailing-experience?share=${urlShare}`;
-
-      // const options = {
-      //   locale,
-      //   firstname,
-      //   lastname,
-      //   email,
-      //   urlShare,
-      //   urlOpenBrowser,
-      //   textOpenBrowser,
-      //   textTitle,
-      //   imgTitle,
-      //   textMessage,
-      //   imgButton,
-      //   textButton,
-      //   metaTitle,
-      // };
-
-      // console.log(config, options)
-      // await sendEmail(config, options);
       
       // return
       await res.status(200).send({ success: true, dataBody: req.body, mozeus });

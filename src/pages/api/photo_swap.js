@@ -32,14 +32,6 @@ export default async (req, res) => {
       metaTitle,
     } = req.body;
 
-    console.log(req.body);
-    console.log(userId);
-    console.log(faceId);
-    console.log(pathFinalPhoto);
-    console.log(character);
-
-  //const { userId, pathFinalPhoto, character, faceId, locale } = JSON.parse(req.body);
-
   try {
     if (faceId) {
       /********************************************************************************************************************
@@ -50,18 +42,18 @@ export default async (req, res) => {
        ********************************************************************************************************************/
       // 3. Swap videos and get ids
       const videosListCharacter = character === 'female' ? videosListFemale(faceId) : videosListMale(faceId);
-      console.log('Videos List Character', videosListCharacter);
+      //console.log('Videos List Character', videosListCharacter);
     
       const swapVideos = await dataSwapVideos(videosListCharacter);
       console.log('Data Swap Videos', swapVideos);
     
       // 4. Download videos, save in temp
       const dowloadVideos = await downloadSwapVideos(swapVideos);
-      console.log('Dowload Videos', dowloadVideos);
+      //console.log('Dowload Videos', dowloadVideos);
       
       // 4.1 modify video the TBN to 90K - please if not necessary, do not use!
       const adjustVideos = await adjustTbnVideos(dowloadVideos, 90000);
-      console.log('Adjust TBN Videos', adjustVideos);
+      //console.log('Adjust TBN Videos', adjustVideos);
     
       // 5. write file .txt with info videos
       const nameFileVideos = `videos-${userId}.txt`;
@@ -72,7 +64,7 @@ export default async (req, res) => {
         output: `${DIR_TEMP}/video-${userId}.mp4`,
         fileVideos: `${DIR_TEMP}/${nameFileVideos}`,
       };
-      console.log('dataFinal videos', dataFinal);
+      //console.log('dataFinal videos', dataFinal);
     
       await concatVideosTxtFluent(dataFinal);
     
@@ -84,7 +76,7 @@ export default async (req, res) => {
         output: `${DIR_TEMP}/${nameFinalVideo}`,
         track: path.join(DIR_TEMP, NAME_TRACK_AUDIO),
       }
-      console.log('track video and audio', dataTrack);
+      //console.log('track video and audio', dataTrack);
     
       await changeTrackFluent(dataTrack);
     
@@ -135,8 +127,7 @@ export default async (req, res) => {
       
         jsonAdmin = await resAdmin.json();
 
-        console.log('jsonAdmin', jsonAdmin);
-
+        //console.log('jsonAdmin', jsonAdmin);
 
       } catch (error) {
         console.error(error);
@@ -172,7 +163,7 @@ export default async (req, res) => {
         metaTitle,
       };
 
-      console.log(config, options)
+      //console.log(config, options)
       await sendEmail(config, options);
 
       
