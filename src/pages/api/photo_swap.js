@@ -127,12 +127,13 @@ export default async (req, res) => {
       
         jsonAdmin = await resAdmin.json();
 
-        console.log('jsonAdmin', jsonAdmin);
-
-        //res.status(500).send({ success: false, action: 'saveParticipant', error});
-
+        if(!jsonAdmin.participant_id) {
+          res.status(500).send({ success: false, action: 'saveParticipant', jsonAdmin});
+        }
+        
       } catch (error) {
         console.error(error);
+        res.status(500).send({ success: false, action: 'saveParticipant', error});
       }
 
       // pass data to send email
