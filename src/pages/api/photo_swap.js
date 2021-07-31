@@ -45,7 +45,7 @@ export default async (req, res) => {
       //console.log('Videos List Character', videosListCharacter);
     
       const swapVideos = await dataSwapVideos(videosListCharacter);
-      console.log('Data Swap Videos', swapVideos);
+      //console.log('Data Swap Videos', swapVideos);
     
       // 4. Download videos, save in temp
       const dowloadVideos = await downloadSwapVideos(swapVideos);
@@ -127,11 +127,12 @@ export default async (req, res) => {
       
         jsonAdmin = await resAdmin.json();
 
-        //console.log('jsonAdmin', jsonAdmin);
+        console.log('jsonAdmin', jsonAdmin);
+
+        //res.status(500).send({ success: false, action: 'saveParticipant', error});
 
       } catch (error) {
         console.error(error);
-        res.status(500).send({ success: false, action: 'saveParticipant', error});
       }
 
       // pass data to send email

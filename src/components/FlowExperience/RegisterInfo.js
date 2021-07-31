@@ -80,7 +80,6 @@ const RegisterInfo = ({ userEmail }) => {
 
         } else {
           // error reface then continue and go to STOP PAGE
-          setSwapProcess(true);
           setProcess(PROCESS_ENUM.waitProcess);
           router.replace('/process_you_video');
         }

@@ -28,7 +28,6 @@ const PictureConfirm = () => {
       if(json.success) {
         setIsLoading(false);
         setData(json.data);
-        console.log('data initial:', json.data);
         
         setProcess(PROCESS_ENUM.register);
         
