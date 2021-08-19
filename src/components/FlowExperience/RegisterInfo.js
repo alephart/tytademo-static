@@ -25,7 +25,7 @@ const setCookie = (email) => {
 
 const RegisterInfo = ({ userEmail }) => {
   const { t } = useTranslation('common');
-  const { setProcess, process, data, character, swap, setSwap, locale } = useContext(ExperienceContext);
+  const { setProcess, data, character, swap, setSwap, locale } = useContext(ExperienceContext);
   const [progress, setProgress] = useState(0);
   const [values, setValues] = useState({
     firstname: '',
@@ -39,7 +39,6 @@ const RegisterInfo = ({ userEmail }) => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [dataRegister, setDataRegister] = useState({});
   const [startSwap, setStartSwap] = useState(false);
-  const [swapProcess, setSwapProcess] = useState(false);
 
   const [contact, setContact] = useState({
     productNews: false,
@@ -57,7 +56,6 @@ const RegisterInfo = ({ userEmail }) => {
   // effect when startSwap = true
   useEffect(() => {
     const initSwap = async (payload) => {
-      console.log('payload data to swap!!!', payload);
       try {
         const response = await fetch('/api/photo_swap', {
           method: 'POST',
@@ -68,15 +66,11 @@ const RegisterInfo = ({ userEmail }) => {
         });
         
         const json = await response.json();
-        const status = await response.status;
-        
-        console.log(json);
-        console.log(status);
+        //const status = await response.status;
         
         if(json.success) {
           // all good!, goto share!
-          setSwap(json.data);
-          setSwapProcess(true);
+          //setSwap(json.data);
           setProcess(PROCESS_ENUM.share);
 
           router.replace({
@@ -86,7 +80,6 @@ const RegisterInfo = ({ userEmail }) => {
 
         } else {
           // error reface then continue and go to STOP PAGE
-          setSwapProcess(true);
           setProcess(PROCESS_ENUM.waitProcess);
           router.replace('/process_you_video');
         }
@@ -101,16 +94,6 @@ const RegisterInfo = ({ userEmail }) => {
     }
   }, [startSwap]);
 
-  // effect when swap change state
-  // useEffect(() => {
-  //   if(swap) {
-  //     setDataRegister({
-  //       ...dataRegister,
-  //       ...swap,
-  //     });
-  //   }
-  // }, [swap]);
-
   // effect when dataRegister change state
   useEffect(() => {
     const sendData = async () => {
@@ -123,10 +106,6 @@ const RegisterInfo = ({ userEmail }) => {
       });
 
       const json = await response.json();
-
-      if(response.status !== 200) {
-        // server error 
-      }
       
       if(json.success) {
         setCookie(dataRegister.email);

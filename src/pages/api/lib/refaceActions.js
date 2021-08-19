@@ -3,7 +3,6 @@ const fetch = require('node-fetch');
 const { swapVideo } = require('../lib/refaceAPI');
 const { fixTBNField, getMetaData } = require('../lib/ffmpegActions');
 const { writeFileSync } = require('../lib/fileActions');
-const { isValidJSON } = require('../lib/utils');
 let { logmailer, logmail } = require("../lib/logmailer");
 
 const DIR_TEMP = './temp1';
