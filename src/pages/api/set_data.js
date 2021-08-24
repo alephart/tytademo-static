@@ -75,6 +75,8 @@ export default async (req, res) => {
           lastname,
           email,
           zipcode,
+          emailOptin: productNews ? 'Yes' : 'No',
+          dealerOptin: testDrive ? 'Yes' : 'No',
         };
 
         mozeus = await sendMozeus(dataMozeus);
