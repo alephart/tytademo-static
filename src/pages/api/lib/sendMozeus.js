@@ -16,8 +16,8 @@ const sendMozeus = async (data) => {
         { name: "lastName", value: data.lastname },
         { name: "email", value: data.email },
         { name: "zipCode", value: data.zipcode },
-        { name: "emailOptin", value: "Yes" },
-        { name: "dealerOptin", value: "No" } 
+        { name: "emailOptin", value: data.emailOptin },
+        { name: "dealerOptin", value: data.dealerOptin }
       ] }
     ]
   };
