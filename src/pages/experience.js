@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Layout from '@/components/layouts/General';
 import { ExperienceContext } from '@/components/Context';
 import { useLocation } from '@/components/hooks';
-import { geolocationDb } from '@/utils/geolocationDB';
+import { geoIP } from '@/utils/geoIP';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import { 
   PhotoTake,
@@ -15,10 +15,10 @@ import { TytaProgress } from '@/components/Anims';
 import { getUA } from 'react-device-detect';
 import CopyLink from '@/components/CopyLink';
 
-const geoDbKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
+const geoIPKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Experience = ({ userEmail }) => {
-  const { loading, location, error } = useLocation(geolocationDb(geoDbKey));
+  const { loading, location, error } = useLocation(geoIP(geoIPKey));
   const [process, setProcess] = useState(null);
   const [progress, setProgress] = useState(0);
   const [character, setCharacter] = useState(null);
@@ -79,27 +79,7 @@ const Experience = ({ userEmail }) => {
     return <><Layout /></>;
   }
 
-  let noAvaliable;
-
-  switch (location) {
-    case 'US':
-      noAvaliable = false;
-      break;
-    case 'PR':
-      noAvaliable = false;
-      break;
-    case 'CO':
-      noAvaliable = false;
-      break;
-  
-    default:
-      noAvaliable = true;
-      break;
-  }
-
-  if(!!error) noAvaliable = true;
-
-  if(noAvaliable) {
+  if(!location || !!error) {
     router.push('/not-available');
   }
 

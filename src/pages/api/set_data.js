@@ -10,8 +10,8 @@ export default async (req, res) => {
     lastname,
     email,
     zipcode,
-    productNews = true || false,   // this way
-    testDrive = testDrive && true, // or this way
+    productNews = productNews && true,
+    testDrive = testDrive && true,
     userId,
     faceId,
     character,    
@@ -75,6 +75,8 @@ export default async (req, res) => {
           lastname,
           email,
           zipcode,
+          emailOptin: productNews ? 'Yes' : 'No',
+          dealerOptin: testDrive ? 'Yes' : 'No',
         };
 
         mozeus = await sendMozeus(dataMozeus);
