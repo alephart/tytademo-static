@@ -45,8 +45,6 @@ export default async (req, res) => {
         testdrive: testDrive,
       };
 
-      console.log('dataAdmin', dataAdmin);
-
       let jsonAdmin;
 
       try {
@@ -81,9 +79,7 @@ export default async (req, res) => {
           dealerOptin: testDrive ? 'Yes' : 'No',
         };
 
-        console.log('dataMozeus', dataMozeus);
         mozeus = await sendMozeus(dataMozeus);
-        console.log('mozeus', mozeus);
       }
       
       // return
