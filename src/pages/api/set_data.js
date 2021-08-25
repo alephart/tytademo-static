@@ -80,6 +80,7 @@ export default async (req, res) => {
         };
 
         mozeus = await sendMozeus(dataMozeus);
+        console.log('mozeus', mozeus);
       }
       
       // return
