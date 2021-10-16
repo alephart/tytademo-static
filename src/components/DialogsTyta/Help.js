@@ -3,11 +3,9 @@ import {
   Dialog,
   DialogContent,
 } from '@material-ui/core/';
-import useTranslation from 'next-translate/useTranslation';
 import { MESSAGE_DIALOG } from '@/helpers/globals';
 
 const Help = ({ isOpen, setIsOpen, message, id }) => {
-  const { t } = useTranslation('common');
   return (
     <Dialog
       className="dialogs"
@@ -17,20 +15,20 @@ const Help = ({ isOpen, setIsOpen, message, id }) => {
       aria-describedby='alert-dialog-description'
     >  
       <DialogContent id='alert-dialog-description'>
-          <h2 className="modal-title">{t("alertDescription_title")}</h2>
+          <h2 className="modal-title">TRY AGAIN</h2>
           { message === MESSAGE_DIALOG.rememberPhoto && (
             <>
-              <p>{t("alertDescription_text")}</p>
+              <p>Remember:</p>
               <ul>
-                <li>· {t("alertDescription_item1")}</li>
-                <li>· {t("alertDescription_item2")}</li>
-                <li>· {t("alertDescription_item3")}</li>
-                <li>· {t("alertDescription_item4")}</li>
+                <li>· Your face should be centered</li>
+                <li>· Avoid smiling and other gestures</li>
+                <li>· Only one person in the photo</li>
+                <li>· Make sure your face is visible</li>
               </ul>
             </>
           )}
           { message === MESSAGE_DIALOG.emailRegistered && (
-            <p>{t("alertDescription_userExist")}</p>
+            <p>This email address is already registered.</p>
           )}
           <Button
             id={id}
@@ -38,7 +36,7 @@ const Help = ({ isOpen, setIsOpen, message, id }) => {
             onClick={() => setIsOpen(false)}
             color='primary'
           >
-            {t("alertDescription_button")}
+            OK
           </Button>
 
       </DialogContent>

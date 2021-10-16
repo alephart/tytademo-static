@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import useTranslation from 'next-translate/useTranslation';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 
@@ -14,7 +13,6 @@ const setCookie = (consent) => {
 };
 
 const CookieConsent = ({setDisabledExperience}) => {
-  const { t } = useTranslation('common');
   const [cookie, setConsent] = useState({
     ofLegalAge: false,
     termsAndConditions: false,
@@ -45,9 +43,9 @@ const CookieConsent = ({setDisabledExperience}) => {
       className={acceptAllCookies ? 'cookieDisabled' : ''}
     >
     <p>
-      {t('cookie_paragraph1')}
-      <a href={t('cookie_link')} target="_blank" rel="noopener noreferrer"> {t('cookie_linkText')}</a>
-      {t('cookie_paragragh2')}
+    FEATURING YOU utilizes cookies for basic functionality and performance and are always enabled. Please visit Toyota’s
+      <a href="https://www.toyota.com/support/privacy-rights/" target="_blank" rel="noopener noreferrer"> Privacy Policy</a>
+      for additional information.
     </p>
 
     <div className="textCheck">
@@ -57,7 +55,7 @@ const CookieConsent = ({setDisabledExperience}) => {
             name='ofLegalAge'
             onChange={handleCheckedCookie}
             inputProps={{ 'aria-label': '18 years old' }}
-        /> <div className="copyCheckbox">{t('cookie_Check1')}</div> 
+        /> <div className="copyCheckbox">I am at least 18 years of age, a legal U.S. resident residing in the 48 contiguous U.S. or D.C.</div> 
     </div>
     <div className="textCheck">
         <Checkbox
@@ -66,7 +64,7 @@ const CookieConsent = ({setDisabledExperience}) => {
             name='termsAndConditions'
             onChange={handleCheckedCookie}
             inputProps={{ 'aria-label': 'Terms And Conditions' }}
-        /><div className="copyCheckbox"> {t('cookie_Check2')} <a href={t('cookie_Check2Link')} target="_blank">{t('cookie_Check2LinkText')}</a></div>
+        /><div className="copyCheckbox"> I have read and agree to the <a href="https://lunayxtoyota.com/rules/terms.html" target="_blank">Terms & Conditions.</a></div>
     </div>
     <center>
       <Button
@@ -75,7 +73,7 @@ const CookieConsent = ({setDisabledExperience}) => {
         disabled={btnCookiesHide}
         variant='contained'
         onClick={handleAcceptCookie}
-      >{t('cookie_button')}</Button>
+      >OK</Button>
     </center>
   </div>
   )

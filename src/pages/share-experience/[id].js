@@ -3,7 +3,6 @@ import Layout from '@/components/layouts/General';
 import { ExperienceContext } from '@/components/Context';
 import { ShareExperience } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/helpers/globals';
-import useTranslation from 'next-translate/useTranslation';
 
 const data = {
   success: true,
@@ -16,7 +15,6 @@ const ToShareExp = () => {
 
   const [process, setProcess] = useState(PROCESS_ENUM.share);
   const [swap, setSwap] = useState(data);
-  const { t } = useTranslation('common');
 
   const contextValues = {
     process, setProcess,
@@ -24,7 +22,7 @@ const ToShareExp = () => {
   };
 
   const metaData = {
-    pageTitle: `${t("meta_tags_title")} - Share Experience`,
+    pageTitle: 'Featuring You Lunay X Toyota - Share Experience',
     videoPath: data.urlVideo,
     currentURL: data.urlShare,
   };

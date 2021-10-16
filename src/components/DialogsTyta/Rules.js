@@ -9,11 +9,9 @@ import {
   useMediaQuery,
 } from '@material-ui/core/';
 import { useTheme } from '@material-ui/core/styles';
-import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 
 const Rules = ({ isOpen, setIsOpen }) => {
-  const { t } = useTranslation('common');
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('lg'));
   const router = useRouter();
@@ -37,7 +35,7 @@ const Rules = ({ isOpen, setIsOpen }) => {
             onClick={() => setIsOpen(false)}
             color='primary'
           >
-            {t("back_button")}
+            BACK
           </Button>
 
       </DialogContent>

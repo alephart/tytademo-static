@@ -8,7 +8,6 @@ import { useForm } from 'react-hook-form';
 import { VideoLoading } from '@/components/Anims';
 import { PROCESS_ENUM, MESSAGE_DIALOG } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
-import useTranslation from 'next-translate/useTranslation';
 import { Help } from '@/components/DialogsTyta';
 import { Loading } from '@/components/Anims';
 import { useRouter } from 'next/router';
@@ -24,7 +23,6 @@ import { useRouter } from 'next/router';
 // };
 
 const RegisterInfo = ({ userEmail }) => {
-  const { t } = useTranslation('common');
   const { setProcess, data, character, swap, setSwap, locale } = useContext(ExperienceContext);
   const [progress, setProgress] = useState(0);
   const [values, setValues] = useState({
@@ -196,25 +194,25 @@ const RegisterInfo = ({ userEmail }) => {
       ...data,
       character,
       locale,
-      textOpenBrowser: t('mailing_openWithBrowser'),
-      imgTitle: t('mailing_title_youMadeIt'),
-      textTitle: t('mailing_title_youMadeIt_text'),
-      textMessage: t('mailing_watchYouFullVideo'),
-      imgButton: t('mailing_btn_watchVideo'),
-      textButton: t('mailing_btn_watchVideo_text'),
-      metaTitle: t('meta_tags_title'),
+      textOpenBrowser: 'Open with browser',
+      imgTitle: 'https://devmds.com/toyota/title.png',
+      textTitle: 'YOU MADE IT!',
+      textMessage: 'You already are the star of “Todo o Nada”. Click to watch your full video featuring you with Lunay.',
+      imgButton: 'https://devmds.com/toyota/watch-video.png',
+      textButton: 'WATCH VIDEO',
+      metaTitle: 'Featuring You Lunay X Toyota',
     });    
   };
 
   return (
     <div className='formVideo'>
       <VideoLoading progress={progress} />
-      <div className='copyTitleForm'>{t("registerInfo_copyTitleForm")}</div>
-      <div className='copySubtitleForm'>{t("registerInfo_copySubtitleForm")}</div>
+      <div className='copyTitleForm'>ALMOST READY!</div>
+      <div className='copySubtitleForm'>Register to get your video.</div>
       
       {(errors.firtsname || errors.lastname || errors.email || errors.zipcode) && (
           <span className='errorsField center'>
-            {t("registerInfo_errorsField")}
+            Please fill out all required fields correctly.
           </span>
         )}
 
@@ -226,8 +224,8 @@ const RegisterInfo = ({ userEmail }) => {
           `}
           name='firstname'
           {...register('firstname', { required: true })}
-          placeholder={t("registerInfo_name")}
-          inputProps={{ 'aria-label': t("registerInfo_name") }}
+          placeholder='First Name'
+          inputProps={{ 'aria-label': 'First Name' }}
           value={values.firstname}
           onChange={handleChangeLetters}
           inputProps={{
@@ -241,8 +239,8 @@ const RegisterInfo = ({ userEmail }) => {
           `}
           name='lastname'
           {...register('lastname', { required: true })}
-          placeholder={t("registerInfo_lastName")}
-          inputProps={{ 'aria-label': t("registerInfo_lastName") }}
+          placeholder='Last Name'
+          inputProps={{ 'aria-label': 'Last Name' }}
           value={values.lastname}
           onChange={handleChangeLetters}
           inputProps={{
@@ -258,8 +256,8 @@ const RegisterInfo = ({ userEmail }) => {
           name='email'
           type='email'
           {...register('email', { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ })}
-          placeholder={t("registerInfo_email")}
-          inputProps={{ 'aria-label': t("registerInfo_email") }}
+          placeholder='Email'
+          inputProps={{ 'aria-label': 'Email' }}
           value={values.email}
           onChange={handleChangeEmail}
           inputProps={{
@@ -274,8 +272,8 @@ const RegisterInfo = ({ userEmail }) => {
           name='zipcode'
           type='number'
           {...register('zipcode', { required: true, pattern: /^[0-9]{5}(?:-[0-9]{4})?$/ })}
-          placeholder={t("registerInfo_zip")}
-          inputProps={{ 'aria-label': t("registerInfo_zip") }}
+          placeholder='Zip code'
+          inputProps={{ 'aria-label': 'Zip code' }}
           value={values.zipcode}
           onChange={handleChangeZip}
           inputProps={{
@@ -286,19 +284,19 @@ const RegisterInfo = ({ userEmail }) => {
 
         <div className='boxCheckbox'>
           <div className='copyCheckbox'>
-            {t("registerInfo_copyCheckbox1")}
+          I would like to receive exciting product and event news from Toyota.
           </div>
           <Switch
             checked={contact.productNews}
             onChange={handleChangeContact}
             id='productNews'
             name='productNews'
-            inputProps={{ 'aria-label': t("registerInfo_copyCheckbox1") }}
+            inputProps={{ 'aria-label': 'I would like to receive exciting product and event news from Toyota.' }}
           />
         </div>
         <div className='boxCheckbox'>
           <div className='copyCheckbox'>
-            {t("registerInfo_copyCheckbox2")}
+          I would like to be contacted by my local Toyota dealer for a test drive and more information about purchasing or leasing a new Toyota vehicle.
           </div>
           <Switch
             className="switch2"
@@ -306,13 +304,13 @@ const RegisterInfo = ({ userEmail }) => {
             onChange={handleChangeContact}
             id='testDrive'
             name='testDrive'
-            inputProps={{ 'aria-label': t("registerInfo_copyCheckbox2") }}
+            inputProps={{ 'aria-label': 'I would like to be contacted by my local Toyota dealer for a test drive and more information about purchasing or leasing a new Toyota vehicle.' }}
           />
         </div>
         <div className="boxCheckbox">
             <div className="copyCheckbox special">
-            {t("registerInfo_Legal")}{' '}<a href={t("registerInfo_link")} target="_blank">{t("registerInfo_linkLegal")}</a>
-            {t("registerInfo_Legal2")}{' '}<a href={t("registerInfo_link2")} target="_blank">{t("registerInfo_linkLegal2")}</a>
+            By submitting, you accept sweepstakes and data{' '}<a href="https://www.toyota.com/support/privacy-rights/" target="_blank">Privacy Policy</a>
+            as outlined in the {' '}<a href="https://lunayxtoyota.com/rules/terms.html" target="_blank">Terms & Conditions </a>
             </div>
         </div>
         {isSubmitting && (
@@ -324,7 +322,7 @@ const RegisterInfo = ({ userEmail }) => {
           type="submit"
           disabled={isSubmitting}
         >
-          {t("registerInfo_yesContinue")}
+          WATCH YOUR VIDEO
         </Button>
       </form>
 

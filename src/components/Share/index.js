@@ -1,22 +1,20 @@
 /** meta tags og in components/SEO.js **/
 import { TwitterShareButton, FacebookShareButton } from "react-share";
-import useTranslation from 'next-translate/useTranslation';
 
 const shareStyle = {
   margin: '20px'
 };
 
 const Share = ({ url, setShare }) => {
-  const { t } = useTranslation('common');
 
   const handleClick = () => {
     setShare(true);
   }
   
-  const message = t("shareExperience_shareMessage");
+  const message = "I'm one of the protagonists of Lunay's new music video, “Todo o Nada”, with the Corolla Apex. Check it out and create yours here:";
   return (
     <div className='sharedSocial'>
-      {t("shareExperience_sharedSocial")} <br />
+      SHARE VIDEO <br />
 
       <div className='icons-social'>
 

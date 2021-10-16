@@ -1,8 +1,6 @@
 import Layout from '@/components/layouts/Desktop';
-import useTranslation from 'next-translate/useTranslation';
 
 const NotAvailable = () => {
-  const { t } = useTranslation('common');
 
   const metaData = {
     pageTitle: 'Experience - not available',
@@ -15,14 +13,14 @@ const NotAvailable = () => {
                 <div className="copyNotAvailable">
                     <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
                     <h2 className="desktopNot">
-                      {t("notAvailable_copyNotAvailable")}
+                      SORRY, THIS EXPERIENCE IS NOT AVAILABLE IN YOUR COUNTRY.
                     </h2>
                     <h2 className="mobile">
-                      {t("notAvailable_copyNotAvailable")}
+                      SORRY, THIS EXPERIENCE IS NOT AVAILABLE IN YOUR COUNTRY.
                     </h2>
                     <p>
-                      {t("notAvailable_copyNotAvailableParagrah")}:{' '}
-                      <a href={t("notAvailable_href")}>{t("notAvailable_link")}</a>
+                      Learn more about the New Corolla Apex:{' '}
+                      <a href="https://www.toyota.com/corolla/">www.toyota.com/corolla/</a>
                     </p>
                 </div>
             </div>

@@ -1,9 +1,6 @@
-import Image from 'next/image';
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
 
 const Mailing = () => {
-  const { t } = useTranslation('common');
   const router = useRouter();
   const query = router.query;
   
@@ -14,37 +11,31 @@ const Mailing = () => {
       
       <div style={{ marginBottom: '30px' }}>
         <a href={query.share} alt="">
-          <Image
+          <img
             src="https://devmds.com/toyota/hero.png"
             alt="Featuring You Lunay X Toyota"
-            placeholder="blur"
-            layout="responsive"
-            width={620}
-            height={355}
+            width="620"
+            height="355"
           />
         </a>
       </div>
 
       <div className="mailing__content">
-        <Image
-          src={t("mailing_title_youMadeIt")}
-          alt={t("mailing_title_youMadeIt_text")}
-          placeholder="blur"
-          layout="fixed"
-          width={248}
-          height={18}
+        <img
+          src="https://devmds.com/toyota/title.png"
+          alt="YOU MADE IT!"
+          width="248"
+          height="18"
         />
 
-        <p>{t("mailing_watchYouFullVideo")}</p>
+        <p>You already are the star of “Todo o Nada”. Click to watch your full video featuring you with Lunay.</p>
 
         <a href={query.share} alt="">
-          <Image
-            src={t("mailing_btn_watchVideo")}
-            alt={t("mailing_btn_watchVideo_text")}
-            placeholder="blur"
-            layout="fixed"
-            width={233}
-            height={38}
+          <img
+            src="https://devmds.com/toyota/watch-video.png"
+            alt="WATCH VIDEO"
+            width="233"
+            height="38"
           />
         </a>
 
@@ -52,16 +43,14 @@ const Mailing = () => {
       </div>
 
       <div className="mailing__content">
-        <Image
+        <img
           src="https://devmds.com/toyota/minilogo.png"
           alt="Toyota"
-          placeholder="blur"
-          layout="fixed"
-          width={34}
-          height={22}
+          width="34"
+          height="22"
         />
         
-        <p style={{ fontSize: '12px'}}>{/*t("mailing_terms")*/}</p>
+        <p style={{ fontSize: '12px'}}></p>
       </div>
       <style jsx>{`
         .mailing {
@@ -90,6 +79,10 @@ const Mailing = () => {
       
         .mailing__content p {
           padding: 20px 0;
+        }
+
+        img {
+          width: inherit;
         }
       `}</style>
     </div>

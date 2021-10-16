@@ -3,8 +3,6 @@ import Layout from '@/components/layouts/StartPage';
 import { Rules } from '@/components/DialogsTyta';
 import { VideoBg } from '@/components/Anims';
 import Button from '@material-ui/core/Button';
-//import useTranslation from 'next-translate/useTranslation';
-import { useTranslation } from 'next-i18next';
 import { useLocation } from '@/components/hooks';
 import CookieConsent from '@/components/CookieConsent';
 import { geoIP } from '@/utils/geoIP';
@@ -17,7 +15,6 @@ import useSWR from 'swr';
 // const geoIPKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Home = () => {
-  const { t } = useTranslation('common');
   // const { data: cookie_consent, error: swr_error } = useSWR('/api/get_cookie', fetcher);
   // const { loading, location, error } = useLocation(geoIP(geoIPKey));
   const [isOpenDialog, setIsOpenDialog] = useState(false);

@@ -2,13 +2,11 @@ import React, { useState, useContext, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import { PROCESS_ENUM, MESSAGE_DIALOG } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
-import useTranslation from 'next-translate/useTranslation';
 import { Help } from '@/components/DialogsTyta';
 import { Loading } from '@/components/Anims';
 import { isIOS, mobileVendor, mobileModel } from 'react-device-detect';
 
 const PictureConfirm = () => {
-  const { t } = useTranslation('common');
   const { imgSrc, character, setData, process, setProcess } = useContext(ExperienceContext);
   const [isLoading, setIsLoading] = useState(false);
   const [deepFake, setDeepFake] = useState(true);
@@ -84,7 +82,7 @@ const PictureConfirm = () => {
             __html: "<div class='bgPhotoDegrade'></div><div class='boxAnimation'><iframe src='/face/new-vectors.html' /></div>",
           }}
         />
-        <div className='copyLike'>{!isLoading ? t("pictureConfirm_copyLike") : ' '}</div>
+        <div className='copyLike'>{!isLoading ? 'DO YOU LIKE THIS PHOTO?' : ' '}</div>
         {!isLoading ? (
           <>
             {deepFake && (
@@ -94,7 +92,7 @@ const PictureConfirm = () => {
                 variant='contained'
                 onClick={handlePhotoValid}
               >
-                {t("pictureConfirm_yesContinue")}
+              YES!
               </Button>
             )}
 
@@ -104,7 +102,7 @@ const PictureConfirm = () => {
               variant='contained'
               onClick={() => setProcess(PROCESS_ENUM.photoTake)}
             >
-              {t("pictureConfirm_againPhoto")}
+              TRY AGAIN
             </Button>
           </>
         ) : (

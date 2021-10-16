@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import '@/styles/general.scss'
+import '@/styles/general.css'
 
 //import { useEffect } from 'react';
 //import TagManager from 'react-gtm-module';

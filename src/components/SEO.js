@@ -1,15 +1,13 @@
 import Head from 'next/head';
-import useTranslation from 'next-translate/useTranslation';
 
 const SEO = (props) => {
-  const { t } = useTranslation('common');
   const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
   const {
-    pageTitle = t("meta_tags_title"),
-    description = t("meta_tags_description"),
+    pageTitle = 'Featuring You Lunay X Toyota',
+    description = 'Take a selfie and be part of “Todo o Nada” with Lunay and the Corolla Apex.',
     currentURL = siteURL,
     previewImage = `${siteURL}/toyota-lunay-feature-you.jpg`,
-    siteName = t("meta_tags_title"),
+    siteName = 'Featuring You Lunay X Toyota',
     videoPath,
   } = props;
 

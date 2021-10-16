@@ -1,7 +1,6 @@
 import Layout from '@/components/layouts/General';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
 import ReactPlayer from 'react-player';
 import { isMobile } from 'react-device-detect';
 
@@ -14,10 +13,9 @@ const data = {
 
 const JoinExperince = () => {
   const { urlVideo, urlJoin } = data;
-    const { t } = useTranslation('common');
 
     const metaData = {
-        pageTitle: `${t("meta_tags_title")} - Join Experience`,
+        pageTitle: 'Featuring You Lunay X Toyota - Join Experience',
         videoPath: urlVideo,
         currentURL: urlJoin,
     };
@@ -37,13 +35,13 @@ const JoinExperince = () => {
                 />
 
                 <div className="copyJoin">
-                    {t("join_copyJoin")}
+                    CHECK OUT YOUR FRIEND´S VIDEO AND MAKE YOUR OWN.
                     <span>
-                        {t("join_subCopyJoin")}
+                    Take a selfie and be part of “Todo o Nada” with Lunay and the Corolla Apex.
                     </span>
                 </div>
                 <Link href="/">
-                    <Button className="buttonJoin" variant="contained">{t("join_buttonJoin")}</Button>
+                    <Button className="buttonJoin" variant="contained">GET MY VIDEO!</Button>
                 </Link>
             </div>
 
@@ -62,10 +60,10 @@ const JoinExperince = () => {
                     <div className="copydesktop">
                         <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
                         <h2>
-                        {t("indexDesktop_copyDesktop")}
+                        CHECK OUT YOUR FRIEND´S VIDEO AND MAKE YOUR OWN.
                         </h2>
                         <p>
-                        {t("indexDesktop_copyDesktopText")}
+                            Take a selfie to be a part of LUNAY’s video.
                         </p>
                         <img className="QR desktop join" src="/images/DesktopHome.png" alt=""/>
                     </div>

@@ -5,10 +5,8 @@ import ButtonTake from '@/components/ButtonTake';
 import { PROCESS_ENUM, MESSAGE_DIALOG } from '@/helpers/globals';
 import { ExperienceContext } from '@/components/Context';
 import { Help } from '@/components/DialogsTyta';
-import useTranslation from 'next-translate/useTranslation';
 
 const PhotoTake = () => {
-  const { t } = useTranslation('common');
   const { facingMode, setFacingMode, setImgSrc, setProcess } = useContext(ExperienceContext);
   const [help, setHelp] = useState(false);
   const webcamRef = useRef(null);
@@ -50,7 +48,7 @@ const PhotoTake = () => {
 
         {/* <SelectDevice mode={facingMode} setMode={setFacingMode} /> */}
         <div className="zone-cameras">
-          <p>{t("Take_Photo")}</p>
+          <p>User images to be used only for the purposes of generating the video. Images are purged once personal video is produced.</p>
         </div>
       </div>
 

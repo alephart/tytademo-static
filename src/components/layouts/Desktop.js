@@ -1,10 +1,8 @@
 import Head from 'next/head';
-import useTranslation from 'next-translate/useTranslation';
 
 const Layout = ({ children, ...props }) => {
-  const { t } = useTranslation('common');
   const {
-    pageTitle = t("meta_tags_title"),
+    pageTitle = 'Featuring You Lunay X Toyota',
   } = props;
   return (
     <>

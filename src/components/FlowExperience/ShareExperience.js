@@ -1,12 +1,10 @@
 import { useState, useContext, useEffect } from 'react';
-import useTranslation from 'next-translate/useTranslation';
 import { ExperienceContext } from '@/components/Context';
 import Share from '@/components/Share';
 import ReactPlayer from 'react-player';
 import { isMobile } from 'react-device-detect';
 
 const ShareExperience = () => {
-  const { t } = useTranslation('common');
   const { setProcess, swap } = useContext(ExperienceContext);
   const [download, setDownload] = useState(false);
   const siteURL = process.env.NEXT_PUBLIC_URL_SITE;
@@ -30,9 +28,9 @@ const ShareExperience = () => {
       />
 
       <div className='copyThanks'>
-        <div className='copyLunay'>{t("shareExperience_copyLunay")}</div>
+        <div className='copyLunay'>You’re now a part of “Todo O Nada”!</div>
         <span>
-          {t("shareExperience_copyLunaySpan")}
+          Now share it with the world and you could win a virtual Meet & Greet with Lunay.
         </span>
       </div>
 
@@ -43,17 +41,17 @@ const ShareExperience = () => {
           id='downloadVideoExperience'
           className='buttonThanks'
           href={`${siteURL}/api/download_video?filename=${swap.urlVideo}`}>
-            {t("shareExperience_buttonThanks")}
+            DOWNLOAD VIDEO
         </a>
       )}
       <div className='copyThanks'>
         <span>
-        {t("shareExperience_legal3")}{' '}<a href={t("cookie_Check2Link")} target="_blank">{t("cookie_Check2LinkText")}</a>
+        Click here to see{' '}<a href="https://lunayxtoyota.com/rules/terms.html" target="_blank">Terms & Conditions.</a>
         </span>
       </div>
       <div className='copyThanks'>
         <span>
-        {t("shareExperience_legal")}{' '}<a href={t("registerInfo_link")} target="_blank">{t("registerInfo_linkLegal")}</a>{t("shareExperience_legal2")}
+        Per{' '}<a href="https://www.toyota.com/support/privacy-rights/" target="_blank"> Privacy Policy</a>, Toyota will not share user videos on social media. Video to be purged after 90 days.
         </span>
       </div>
     </div>
@@ -72,16 +70,16 @@ const ShareExperience = () => {
             <div className="copydesktop">
                 <img className="logoToyota" src="/images/logo-toyota.png" alt=""/>
                 <h2>
-                  {t("shareExperience_copyLunay")}
+                  You’re now a part of “Todo O Nada”!
                 </h2>
                 <p>
-                  {t("shareExperience_copyLunaySpan")}
+                Now share it with the world and you could win a virtual Meet & Greet with Lunay.
                 </p>
                 <a
                   id='downloadVideoDesktop'
                   className='buttonThanks'
                   href={`${siteURL}/api/download_video?filename=${swap.urlVideo}`}>
-                    {t("shareExperience_buttonThanks")}
+                    DOWNLOAD VIDEO
                 </a>
             </div>
         </div>
