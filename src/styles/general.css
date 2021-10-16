@@ -1,0 +1,3130 @@
+@font-face {
+  font-family: 'JoyrideEx';
+  src: url("/fonts/JoyrideExtended.eot");
+  src: url("/fonts/JoyrideExtended.eot?#iefix") format("embedded-opentype"), url("/fonts/JoyrideExtended.woff2") format("woff2"), url("/fonts/JoyrideExtended.woff") format("woff"), url("/fonts/JoyrideExtended.ttf") format("truetype"), url("/fonts/JoyrideExtended.svg#JoyrideExtended") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  letter-spacing: 0.5px;
+}
+
+@font-face {
+  font-family: 'ToyotaRegular';
+  src: url("/fonts/ToyotaType-Regular.eot");
+  src: url("/fonts/ToyotaType-Regular.eot?#iefix") format("embedded-opentype"), url("/fonts/ToyotaType-Regular.woff2") format("woff2"), url("/fonts/ToyotaType-Regular.woff") format("woff"), url("/fonts/ToyotaType-Regular.ttf") format("truetype"), url("/fonts/ToyotaType-Regular.svg#ToyotaType-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  letter-spacing: 0px;
+}
+
+@font-face {
+  font-family: 'ToyotaBold';
+  src: url("/fonts/ToyotaType-Bold.eot");
+  src: url("/fonts/ToyotaType-Bold.eot?#iefix") format("embedded-opentype"), url("/fonts/ToyotaType-Bold.woff2") format("woff2"), url("/fonts/ToyotaType-Bold.woff") format("woff"), url("/fonts/ToyotaType-Bold.ttf") format("truetype"), url("/fonts/ToyotaType-Bold.svg#ToyotaType-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+  letter-spacing: 0px;
+}
+
+@font-face {
+  font-family: 'prestolight';
+  src: url("/fonts/prestolight-webfont.woff2") format("woff2"), url("/fonts/prestolight-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 0px;
+}
+
+* {
+  outline: none;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  background: #000;
+  height: -webkit-fill-available;
+}
+
+#video {
+  position: absolute;
+  right: -1px;
+  top: 0px;
+  width: 101%;
+  min-height: 100%;
+  opacity: 1;
+  -webkit-animation: fadeOut 0.5s ease-in-out 1 forwards;
+          animation: fadeOut 0.5s ease-in-out 1 forwards;
+  -webkit-animation-delay: 7s;
+          animation-delay: 7s;
+}
+
+#video2 {
+  position: absolute;
+  right: -1px;
+  top: 0px;
+  width: 101%;
+  min-height: 100%;
+  opacity: 0;
+  -webkit-animation: fadeIn 0.5s ease-in-out 1 forwards;
+          animation: fadeIn 0.5s ease-in-out 1 forwards;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+
+.degrade {
+  background-image: url("/images/gradient-bg-home.png");
+  background-position: bottom left;
+  max-width: 430px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+
+.containerSpecial {
+  max-width: 430px;
+  width: 100%;
+  top: 0;
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  -webkit-animation: fadeIn 0.5s ease-in-out 1 forwards;
+          animation: fadeIn 0.5s ease-in-out 1 forwards;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+  height: 100vh;
+  max-height: -webkit-fill-available;
+}
+
+.animationStart {
+  opacity: 1;
+  -webkit-animation: fadeOut 0.5s ease-in-out 1 forwards;
+          animation: fadeOut 0.5s ease-in-out 1 forwards;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+
+.positionAbsolute {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.containerSpecial.animationExit {
+  opacity: 1;
+  -webkit-animation: fadeOutRight 0.5s ease-in-out 1 forwards;
+          animation: fadeOutRight 0.5s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  left: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOutRight {
+  from {
+    opacity: 1;
+    margin-left: 0%;
+  }
+  to {
+    opacity: 0;
+    margin-left: -50%;
+  }
+}
+
+@keyframes fadeOutRight {
+  from {
+    opacity: 1;
+    margin-left: 0%;
+  }
+  to {
+    opacity: 0;
+    margin-left: -50%;
+  }
+}
+
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    left: 50%;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    left: 50%;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@-webkit-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    left: -50%;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    left: -50%;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@-webkit-keyframes fadeInTop {
+  from {
+    opacity: 0;
+    top: -200px;
+  }
+  to {
+    opacity: 1;
+    top: 53px;
+  }
+}
+
+@keyframes fadeInTop {
+  from {
+    opacity: 0;
+    top: -200px;
+  }
+  to {
+    opacity: 1;
+    top: 53px;
+  }
+}
+
+@-webkit-keyframes fadeInBottom {
+  from {
+    opacity: 0;
+    bottom: -200px;
+  }
+  to {
+    opacity: 1;
+    bottom: 40px;
+  }
+}
+
+@keyframes fadeInBottom {
+  from {
+    opacity: 0;
+    bottom: -200px;
+  }
+  to {
+    opacity: 1;
+    bottom: 40px;
+  }
+}
+
+@-webkit-keyframes fadeInBottom2 {
+  from {
+    opacity: 0;
+    bottom: -200px;
+  }
+  to {
+    opacity: 1;
+    bottom: 0px;
+  }
+}
+
+@keyframes fadeInBottom2 {
+  from {
+    opacity: 0;
+    bottom: -200px;
+  }
+  to {
+    opacity: 1;
+    bottom: 0px;
+  }
+}
+
+@-webkit-keyframes fadeOutRight2 {
+  from {
+    opacity: 1;
+    left: 0%;
+  }
+  to {
+    opacity: 0;
+    left: 50%;
+  }
+}
+
+@keyframes fadeOutRight2 {
+  from {
+    opacity: 1;
+    left: 0%;
+  }
+  to {
+    opacity: 0;
+    left: 50%;
+  }
+}
+
+@-webkit-keyframes fadeOutLeft2 {
+  from {
+    opacity: 1;
+    left: 0%;
+  }
+  to {
+    opacity: 0;
+    left: -50%;
+  }
+}
+
+@keyframes fadeOutLeft2 {
+  from {
+    opacity: 1;
+    left: 0%;
+  }
+  to {
+    opacity: 0;
+    left: -50%;
+  }
+}
+
+@-webkit-keyframes fadeOutTop2 {
+  from {
+    opacity: 1;
+    top: 53px;
+  }
+  to {
+    opacity: 0;
+    top: -200px;
+  }
+}
+
+@keyframes fadeOutTop2 {
+  from {
+    opacity: 1;
+    top: 53px;
+  }
+  to {
+    opacity: 0;
+    top: -200px;
+  }
+}
+
+@-webkit-keyframes fadeOutBottom2 {
+  from {
+    opacity: 1;
+    bottom: 40px;
+  }
+  to {
+    opacity: 0;
+    bottom: -200px;
+  }
+}
+
+@keyframes fadeOutBottom2 {
+  from {
+    opacity: 1;
+    bottom: 40px;
+  }
+  to {
+    opacity: 0;
+    bottom: -200px;
+  }
+}
+
+@-webkit-keyframes fadeInTopform {
+  from {
+    opacity: 0;
+    top: -50vh;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@keyframes fadeInTopform {
+  from {
+    opacity: 0;
+    top: -50vh;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@-webkit-keyframes fadeInRightform {
+  from {
+    opacity: 0;
+    right: -100%;
+  }
+  to {
+    opacity: 1;
+    right: 0;
+  }
+}
+
+@keyframes fadeInRightform {
+  from {
+    opacity: 0;
+    right: -100%;
+  }
+  to {
+    opacity: 1;
+    right: 0;
+  }
+}
+
+@-webkit-keyframes fadeInBottom3 {
+  from {
+    opacity: 0;
+    bottom: -200%;
+  }
+  to {
+    opacity: 1;
+    bottom: 0%;
+  }
+}
+
+@keyframes fadeInBottom3 {
+  from {
+    opacity: 0;
+    bottom: -200%;
+  }
+  to {
+    opacity: 1;
+    bottom: 0%;
+  }
+}
+
+@-webkit-keyframes fadeInTop3 {
+  from {
+    opacity: 1;
+    bottom: 0%;
+  }
+  to {
+    opacity: 0;
+    bottom: -200%;
+  }
+}
+
+@keyframes fadeInTop3 {
+  from {
+    opacity: 1;
+    bottom: 0%;
+  }
+  to {
+    opacity: 0;
+    bottom: -200%;
+  }
+}
+
+body {
+  font-family: NotoSans-Regular;
+  -webkit-font-smoothing: antialiased;
+  background: transparent;
+  background: #000;
+  color: #fff;
+  letter-spacing: 1px;
+  overflow-x: hidden;
+  letter-spacing: 0px;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  /* buttom take photo */
+}
+
+body .MuiPaper-root {
+  background-color: #000;
+}
+
+body .MuiDialogContent-root:first-child {
+  padding-top: 0px;
+  padding-bottom: 27px;
+}
+
+body img {
+  width: 100%;
+}
+
+body a {
+  cursor: pointer;
+}
+
+body .buttonStart,
+body .buttonPhoto,
+body .buttonJoin,
+body .buttonThanks,
+body .yesContinue,
+body .againPhoto,
+body .linkVideo,
+body .button-send-form,
+body .buttonCookie {
+  background-color: #5A2DFC;
+  color: #fff;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  font-size: 14px;
+  width: 322px;
+  height: 56px;
+  border-radius: 30px;
+  font-family: 'JoyrideEx';
+  text-transform: lowercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 320px) {
+  body .buttonStart,
+  body .buttonPhoto,
+  body .buttonJoin,
+  body .buttonThanks,
+  body .yesContinue,
+  body .againPhoto,
+  body .linkVideo,
+  body .button-send-form,
+  body .buttonCookie {
+    width: 300px;
+  }
+}
+
+body .buttonStart.MuiButton-contained.Mui-disabled,
+body .buttonPhoto.MuiButton-contained.Mui-disabled,
+body .buttonJoin.MuiButton-contained.Mui-disabled,
+body .buttonThanks.MuiButton-contained.Mui-disabled,
+body .yesContinue.MuiButton-contained.Mui-disabled,
+body .againPhoto.MuiButton-contained.Mui-disabled,
+body .linkVideo.MuiButton-contained.Mui-disabled,
+body .button-send-form.MuiButton-contained.Mui-disabled,
+body .buttonCookie.MuiButton-contained.Mui-disabled {
+  background-color: #383148;
+  color: #fff;
+  margin: 0 auto;
+}
+
+body .buttonStart.MuiButton-contained.Mui-disabled span,
+body .buttonPhoto.MuiButton-contained.Mui-disabled span,
+body .buttonJoin.MuiButton-contained.Mui-disabled span,
+body .buttonThanks.MuiButton-contained.Mui-disabled span,
+body .yesContinue.MuiButton-contained.Mui-disabled span,
+body .againPhoto.MuiButton-contained.Mui-disabled span,
+body .linkVideo.MuiButton-contained.Mui-disabled span,
+body .button-send-form.MuiButton-contained.Mui-disabled span,
+body .buttonCookie.MuiButton-contained.Mui-disabled span {
+  color: #fff !important;
+  opacity: 0.6;
+}
+
+body .buttonStart .MuiButton-label,
+body .buttonPhoto .MuiButton-label,
+body .buttonJoin .MuiButton-label,
+body .buttonThanks .MuiButton-label,
+body .yesContinue .MuiButton-label,
+body .againPhoto .MuiButton-label,
+body .linkVideo .MuiButton-label,
+body .button-send-form .MuiButton-label,
+body .buttonCookie .MuiButton-label {
+  margin-top: 4px;
+}
+
+body .linkVideo {
+  font-size: 12px;
+}
+
+body .button-send-form {
+  margin: 30px auto !important;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 320px) {
+  body .button-send-form {
+    width: 290px;
+  }
+}
+
+body a.buttonThanks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .MuiButton-contained:hover {
+  background-color: #4720D6;
+}
+
+body.fancybox-active .navbar.bg-light {
+  position: fixed;
+  width: 100%;
+}
+
+body .startPage {
+  max-width: 430px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-image: url("/images/bg-app.jpg");
+  background-position: center;
+  background-size: cover;
+  font-family: 'JoyrideEx';
+}
+
+body .startPage .copyStart {
+  font-size: 17px;
+  text-align: center;
+  color: #fff;
+  margin: 0 auto 0;
+  width: 100%;
+  line-height: 24px;
+  max-width: 324px;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-transform: lowercase;
+  -webkit-filter: drop-shadow(0 0 1.4rem #0A074699);
+          filter: drop-shadow(0 0 1.4rem #0A074699);
+  bottom: 117px;
+  letter-spacing: 0px;
+}
+
+@media screen and (max-width: 320px) {
+  body .startPage .copyStart {
+    font-size: 16px;
+    width: 300px;
+  }
+}
+
+body .startPage .copyStart span {
+  font-family: "ToyotaRegular";
+  display: block;
+  font-size: 15px;
+  line-height: 20px;
+  margin-top: 4px;
+  text-transform: initial;
+  letter-spacing: 0px;
+  width: 280px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 320px) {
+  body .startPage .copyStart span {
+    font-size: 14px;
+    width: 300px;
+  }
+}
+
+body .startPage .buttonStart {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: auto;
+  bottom: 46px;
+}
+
+body .startPage .copyFooter {
+  position: absolute;
+  font-size: 0.66rem;
+  color: #ddd;
+  text-align: center;
+  bottom: 30px;
+  width: 100%;
+  letter-spacing: 0;
+  font-family: 'ToyotaRegular';
+  bottom: 17px;
+}
+
+body .startPage .copyFooter a {
+  text-decoration: underline;
+}
+
+body .container,
+body .chooseCharacter,
+body .formVideo,
+body .checkVideoFinal,
+body .sharedExperience,
+body .likePicture,
+body .loading,
+body .terms {
+  max-width: 430px;
+  width: 100%;
+  min-height: 100%;
+  display: block;
+  margin: 0 auto;
+  background-color: black;
+  overflow-x: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-family: 'JoyrideEx';
+  background-image: url("/images/bg-app.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+body .container.especial,
+body .chooseCharacter.especial,
+body .formVideo.especial,
+body .checkVideoFinal.especial,
+body .sharedExperience.especial,
+body .likePicture.especial,
+body .loading.especial,
+body .terms.especial {
+  max-width: 100%;
+}
+
+body .container.especial .sharedExperience,
+body .chooseCharacter.especial .sharedExperience,
+body .formVideo.especial .sharedExperience,
+body .checkVideoFinal.especial .sharedExperience,
+body .sharedExperience.especial .sharedExperience,
+body .likePicture.especial .sharedExperience,
+body .loading.especial .sharedExperience,
+body .terms.especial .sharedExperience {
+  display: none;
+}
+
+@media screen and (max-width: 1023px) {
+  body .container.especial .sharedExperience,
+  body .chooseCharacter.especial .sharedExperience,
+  body .formVideo.especial .sharedExperience,
+  body .checkVideoFinal.especial .sharedExperience,
+  body .sharedExperience.especial .sharedExperience,
+  body .likePicture.especial .sharedExperience,
+  body .loading.especial .sharedExperience,
+  body .terms.especial .sharedExperience {
+    display: block;
+    padding-bottom: 10px;
+    background: none;
+  }
+}
+
+body .container.especial .indexDesktop,
+body .chooseCharacter.especial .indexDesktop,
+body .formVideo.especial .indexDesktop,
+body .checkVideoFinal.especial .indexDesktop,
+body .sharedExperience.especial .indexDesktop,
+body .likePicture.especial .indexDesktop,
+body .loading.especial .indexDesktop,
+body .terms.especial .indexDesktop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 1023px) {
+  body .container.especial .indexDesktop,
+  body .chooseCharacter.especial .indexDesktop,
+  body .formVideo.especial .indexDesktop,
+  body .checkVideoFinal.especial .indexDesktop,
+  body .sharedExperience.especial .indexDesktop,
+  body .likePicture.especial .indexDesktop,
+  body .loading.especial .indexDesktop,
+  body .terms.especial .indexDesktop {
+    display: none;
+  }
+}
+
+body .container.especial .landscape,
+body .chooseCharacter.especial .landscape,
+body .formVideo.especial .landscape,
+body .checkVideoFinal.especial .landscape,
+body .sharedExperience.especial .landscape,
+body .likePicture.especial .landscape,
+body .loading.especial .landscape,
+body .terms.especial .landscape {
+  display: none;
+}
+
+body .container .textTerms,
+body .chooseCharacter .textTerms,
+body .formVideo .textTerms,
+body .checkVideoFinal .textTerms,
+body .sharedExperience .textTerms,
+body .likePicture .textTerms,
+body .loading .textTerms,
+body .terms .textTerms {
+  width: 90%;
+  margin: 20px auto;
+  display: block;
+  font-size: 12px;
+  font-family: 'ToyotaRegular';
+  text-align: left;
+}
+
+body .container .selectCopy,
+body .chooseCharacter .selectCopy,
+body .formVideo .selectCopy,
+body .checkVideoFinal .selectCopy,
+body .sharedExperience .selectCopy,
+body .likePicture .selectCopy,
+body .loading .selectCopy,
+body .terms .selectCopy {
+  font-size: 25px;
+  text-align: center;
+  color: #fff;
+  top: -200px;
+  width: 100%;
+  max-width: 300px;
+  line-height: 26px;
+  margin: -10px auto 0px;
+  text-transform: lowercase;
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  -webkit-animation: fadeInTop 0.3s ease-in-out 1 forwards;
+          animation: fadeInTop 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+body .container .selectCopy.active,
+body .chooseCharacter .selectCopy.active,
+body .formVideo .selectCopy.active,
+body .checkVideoFinal .selectCopy.active,
+body .sharedExperience .selectCopy.active,
+body .likePicture .selectCopy.active,
+body .loading .selectCopy.active,
+body .terms .selectCopy.active {
+  top: 53px;
+  opacity: 1;
+  -webkit-animation: fadeOutTop2 0.3s ease-in-out 1 forwards;
+          animation: fadeOutTop2 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+body .container .selectCharacter1,
+body .container .selectCharacter2,
+body .chooseCharacter .selectCharacter1,
+body .chooseCharacter .selectCharacter2,
+body .formVideo .selectCharacter1,
+body .formVideo .selectCharacter2,
+body .checkVideoFinal .selectCharacter1,
+body .checkVideoFinal .selectCharacter2,
+body .sharedExperience .selectCharacter1,
+body .sharedExperience .selectCharacter2,
+body .likePicture .selectCharacter1,
+body .likePicture .selectCharacter2,
+body .loading .selectCharacter1,
+body .loading .selectCharacter2,
+body .terms .selectCharacter1,
+body .terms .selectCharacter2 {
+  border: 1px solid #fff;
+  width: 100%;
+  height: 17.5vh;
+  margin: 0 auto 6vh;
+  display: block;
+  position: relative;
+  background-image: url("/images/bg-masculino.jpg");
+  background-position: center;
+  background-size: cover;
+  zoom: 1;
+  opacity: 0;
+}
+
+@media screen and (max-width: 320px) {
+  body .container .selectCharacter1,
+  body .container .selectCharacter2,
+  body .chooseCharacter .selectCharacter1,
+  body .chooseCharacter .selectCharacter2,
+  body .formVideo .selectCharacter1,
+  body .formVideo .selectCharacter2,
+  body .checkVideoFinal .selectCharacter1,
+  body .checkVideoFinal .selectCharacter2,
+  body .sharedExperience .selectCharacter1,
+  body .sharedExperience .selectCharacter2,
+  body .likePicture .selectCharacter1,
+  body .likePicture .selectCharacter2,
+  body .loading .selectCharacter1,
+  body .loading .selectCharacter2,
+  body .terms .selectCharacter1,
+  body .terms .selectCharacter2 {
+    width: 300px;
+  }
+}
+
+body .container .selectCharacter1 img,
+body .container .selectCharacter2 img,
+body .chooseCharacter .selectCharacter1 img,
+body .chooseCharacter .selectCharacter2 img,
+body .formVideo .selectCharacter1 img,
+body .formVideo .selectCharacter2 img,
+body .checkVideoFinal .selectCharacter1 img,
+body .checkVideoFinal .selectCharacter2 img,
+body .sharedExperience .selectCharacter1 img,
+body .sharedExperience .selectCharacter2 img,
+body .likePicture .selectCharacter1 img,
+body .likePicture .selectCharacter2 img,
+body .loading .selectCharacter1 img,
+body .loading .selectCharacter2 img,
+body .terms .selectCharacter1 img,
+body .terms .selectCharacter2 img {
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 21vh;
+  position: absolute;
+  bottom: 0;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+body .container .selectCharacter1.normal,
+body .container .selectCharacter2.normal,
+body .chooseCharacter .selectCharacter1.normal,
+body .chooseCharacter .selectCharacter2.normal,
+body .formVideo .selectCharacter1.normal,
+body .formVideo .selectCharacter2.normal,
+body .checkVideoFinal .selectCharacter1.normal,
+body .checkVideoFinal .selectCharacter2.normal,
+body .sharedExperience .selectCharacter1.normal,
+body .sharedExperience .selectCharacter2.normal,
+body .likePicture .selectCharacter1.normal,
+body .likePicture .selectCharacter2.normal,
+body .loading .selectCharacter1.normal,
+body .loading .selectCharacter2.normal,
+body .terms .selectCharacter1.normal,
+body .terms .selectCharacter2.normal {
+  opacity: 0.5;
+}
+
+body .container .selectCharacter1.selected,
+body .container .selectCharacter2.selected,
+body .chooseCharacter .selectCharacter1.selected,
+body .chooseCharacter .selectCharacter2.selected,
+body .formVideo .selectCharacter1.selected,
+body .formVideo .selectCharacter2.selected,
+body .checkVideoFinal .selectCharacter1.selected,
+body .checkVideoFinal .selectCharacter2.selected,
+body .sharedExperience .selectCharacter1.selected,
+body .sharedExperience .selectCharacter2.selected,
+body .likePicture .selectCharacter1.selected,
+body .likePicture .selectCharacter2.selected,
+body .loading .selectCharacter1.selected,
+body .loading .selectCharacter2.selected,
+body .terms .selectCharacter1.selected,
+body .terms .selectCharacter2.selected {
+  background-image: url("/images/bg-masculino2.jpg");
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  opacity: 1;
+  zoom: 1;
+  border: 4px solid #5A2DFC;
+}
+
+body .container .selectCharacter1.selected img,
+body .container .selectCharacter2.selected img,
+body .chooseCharacter .selectCharacter1.selected img,
+body .chooseCharacter .selectCharacter2.selected img,
+body .formVideo .selectCharacter1.selected img,
+body .formVideo .selectCharacter2.selected img,
+body .checkVideoFinal .selectCharacter1.selected img,
+body .checkVideoFinal .selectCharacter2.selected img,
+body .sharedExperience .selectCharacter1.selected img,
+body .sharedExperience .selectCharacter2.selected img,
+body .likePicture .selectCharacter1.selected img,
+body .likePicture .selectCharacter2.selected img,
+body .loading .selectCharacter1.selected img,
+body .loading .selectCharacter2.selected img,
+body .terms .selectCharacter1.selected img,
+body .terms .selectCharacter2.selected img {
+  width: 24vh;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+@media only screen and (max-width: 375px) and (max-height: 555px) {
+  body .container .selectCharacter1 img,
+  body .container .selectCharacter2 img,
+  body .chooseCharacter .selectCharacter1 img,
+  body .chooseCharacter .selectCharacter2 img,
+  body .formVideo .selectCharacter1 img,
+  body .formVideo .selectCharacter2 img,
+  body .checkVideoFinal .selectCharacter1 img,
+  body .checkVideoFinal .selectCharacter2 img,
+  body .sharedExperience .selectCharacter1 img,
+  body .sharedExperience .selectCharacter2 img,
+  body .likePicture .selectCharacter1 img,
+  body .likePicture .selectCharacter2 img,
+  body .loading .selectCharacter1 img,
+  body .loading .selectCharacter2 img,
+  body .terms .selectCharacter1 img,
+  body .terms .selectCharacter2 img {
+    width: 19vh;
+  }
+  body .container .selectCharacter1.selected img,
+  body .container .selectCharacter2.selected img,
+  body .chooseCharacter .selectCharacter1.selected img,
+  body .chooseCharacter .selectCharacter2.selected img,
+  body .formVideo .selectCharacter1.selected img,
+  body .formVideo .selectCharacter2.selected img,
+  body .checkVideoFinal .selectCharacter1.selected img,
+  body .checkVideoFinal .selectCharacter2.selected img,
+  body .sharedExperience .selectCharacter1.selected img,
+  body .sharedExperience .selectCharacter2.selected img,
+  body .likePicture .selectCharacter1.selected img,
+  body .likePicture .selectCharacter2.selected img,
+  body .loading .selectCharacter1.selected img,
+  body .loading .selectCharacter2.selected img,
+  body .terms .selectCharacter1.selected img,
+  body .terms .selectCharacter2.selected img {
+    width: 20vh;
+  }
+}
+
+body .container .selectCharacter1,
+body .chooseCharacter .selectCharacter1,
+body .formVideo .selectCharacter1,
+body .checkVideoFinal .selectCharacter1,
+body .sharedExperience .selectCharacter1,
+body .likePicture .selectCharacter1,
+body .loading .selectCharacter1,
+body .terms .selectCharacter1 {
+  -webkit-animation: fadeInLeft 0.3s ease-in-out 1 forwards;
+          animation: fadeInLeft 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+  margin: 0 auto 0px;
+}
+
+body .container .selectCharacter2,
+body .chooseCharacter .selectCharacter2,
+body .formVideo .selectCharacter2,
+body .checkVideoFinal .selectCharacter2,
+body .sharedExperience .selectCharacter2,
+body .likePicture .selectCharacter2,
+body .loading .selectCharacter2,
+body .terms .selectCharacter2 {
+  background-image: url("/images/bg-femenina.jpg");
+  -webkit-animation: fadeInRight 0.3s ease-in-out 1 forwards;
+          animation: fadeInRight 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+body .container .selectCharacter2.selected,
+body .chooseCharacter .selectCharacter2.selected,
+body .formVideo .selectCharacter2.selected,
+body .checkVideoFinal .selectCharacter2.selected,
+body .sharedExperience .selectCharacter2.selected,
+body .likePicture .selectCharacter2.selected,
+body .loading .selectCharacter2.selected,
+body .terms .selectCharacter2.selected {
+  background-image: url("/images/bg-femenina2.jpg");
+}
+
+body .container .selectCharacter2 img,
+body .chooseCharacter .selectCharacter2 img,
+body .formVideo .selectCharacter2 img,
+body .checkVideoFinal .selectCharacter2 img,
+body .sharedExperience .selectCharacter2 img,
+body .likePicture .selectCharacter2 img,
+body .loading .selectCharacter2 img,
+body .terms .selectCharacter2 img {
+  right: -20px;
+}
+
+body .container .canvasPhoto,
+body .chooseCharacter .canvasPhoto,
+body .formVideo .canvasPhoto,
+body .checkVideoFinal .canvasPhoto,
+body .sharedExperience .canvasPhoto,
+body .likePicture .canvasPhoto,
+body .loading .canvasPhoto,
+body .terms .canvasPhoto {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: absolute;
+}
+
+body .container .paddingCanvas,
+body .chooseCharacter .paddingCanvas,
+body .formVideo .paddingCanvas,
+body .checkVideoFinal .paddingCanvas,
+body .sharedExperience .paddingCanvas,
+body .likePicture .paddingCanvas,
+body .loading .paddingCanvas,
+body .terms .paddingCanvas {
+  height: 480px;
+  width: 100%;
+  position: relative;
+}
+
+body .container .boxPhoto,
+body .chooseCharacter .boxPhoto,
+body .formVideo .boxPhoto,
+body .checkVideoFinal .boxPhoto,
+body .sharedExperience .boxPhoto,
+body .likePicture .boxPhoto,
+body .loading .boxPhoto,
+body .terms .boxPhoto {
+  width: 680px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-position: center;
+  background-size: cover;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  body .container .boxPhoto,
+  body .chooseCharacter .boxPhoto,
+  body .formVideo .boxPhoto,
+  body .checkVideoFinal .boxPhoto,
+  body .sharedExperience .boxPhoto,
+  body .likePicture .boxPhoto,
+  body .loading .boxPhoto,
+  body .terms .boxPhoto {
+    /* width: 100%;*/
+  }
+}
+
+body .container .bgdegrade,
+body .chooseCharacter .bgdegrade,
+body .formVideo .bgdegrade,
+body .checkVideoFinal .bgdegrade,
+body .sharedExperience .bgdegrade,
+body .likePicture .bgdegrade,
+body .loading .bgdegrade,
+body .terms .bgdegrade {
+  height: 380px;
+  width: 100%;
+  position: absolute;
+  bottom: 1px;
+  background-image: url("/images/bgDegrade.png");
+  background-position: center;
+  background-size: cover;
+}
+
+body .container .yesContinue,
+body .container .againPhoto,
+body .chooseCharacter .yesContinue,
+body .chooseCharacter .againPhoto,
+body .formVideo .yesContinue,
+body .formVideo .againPhoto,
+body .checkVideoFinal .yesContinue,
+body .checkVideoFinal .againPhoto,
+body .sharedExperience .yesContinue,
+body .sharedExperience .againPhoto,
+body .likePicture .yesContinue,
+body .likePicture .againPhoto,
+body .loading .yesContinue,
+body .loading .againPhoto,
+body .terms .yesContinue,
+body .terms .againPhoto {
+  position: relative;
+  margin: 10px auto 20px;
+  opacity: 0;
+  left: -50%;
+  position: relative;
+  -webkit-animation: fadeInLeft 0.3s ease-in-out 1 forwards;
+          animation: fadeInLeft 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+body .container .againPhoto,
+body .chooseCharacter .againPhoto,
+body .formVideo .againPhoto,
+body .checkVideoFinal .againPhoto,
+body .sharedExperience .againPhoto,
+body .likePicture .againPhoto,
+body .loading .againPhoto,
+body .terms .againPhoto {
+  background: transparent;
+  border: 2px solid #fff;
+  opacity: 0;
+  right: -50%;
+  position: relative;
+  -webkit-animation: fadeInRight 0.3s ease-in-out 1 forwards;
+          animation: fadeInRight 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+body .container .copyLike,
+body .chooseCharacter .copyLike,
+body .formVideo .copyLike,
+body .checkVideoFinal .copyLike,
+body .sharedExperience .copyLike,
+body .likePicture .copyLike,
+body .loading .copyLike,
+body .terms .copyLike {
+  font-size: 15px;
+  width: 320px;
+  margin: 2% auto 17px;
+  text-align: center;
+  text-transform: lowercase;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  right: -50%;
+  position: relative;
+  -webkit-animation: fadeInRight 0.3s ease-in-out 1 forwards;
+          animation: fadeInRight 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+body .container .videoGeneral,
+body .chooseCharacter .videoGeneral,
+body .formVideo .videoGeneral,
+body .checkVideoFinal .videoGeneral,
+body .sharedExperience .videoGeneral,
+body .likePicture .videoGeneral,
+body .loading .videoGeneral,
+body .terms .videoGeneral {
+  width: 100%;
+}
+
+body .container .videoForm,
+body .chooseCharacter .videoForm,
+body .formVideo .videoForm,
+body .checkVideoFinal .videoForm,
+body .sharedExperience .videoForm,
+body .likePicture .videoForm,
+body .loading .videoForm,
+body .terms .videoForm {
+  z-index: 0;
+  width: 100%;
+  position: absolute;
+  opacity: 0.9;
+}
+
+body .container .logoToyota,
+body .chooseCharacter .logoToyota,
+body .formVideo .logoToyota,
+body .checkVideoFinal .logoToyota,
+body .sharedExperience .logoToyota,
+body .likePicture .logoToyota,
+body .loading .logoToyota,
+body .terms .logoToyota {
+  width: 240px;
+  display: block;
+  margin: 5% auto;
+}
+
+body .container .logoToyota.join,
+body .chooseCharacter .logoToyota.join,
+body .formVideo .logoToyota.join,
+body .checkVideoFinal .logoToyota.join,
+body .sharedExperience .logoToyota.join,
+body .likePicture .logoToyota.join,
+body .loading .logoToyota.join,
+body .terms .logoToyota.join {
+  width: 223px;
+  margin: 50px auto;
+  position: relative;
+  top: -50vh;
+  -webkit-animation: fadeInTopform 0.3s ease-in-out 1 forwards;
+          animation: fadeInTopform 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+body .container .copyThanks,
+body .chooseCharacter .copyThanks,
+body .formVideo .copyThanks,
+body .checkVideoFinal .copyThanks,
+body .sharedExperience .copyThanks,
+body .likePicture .copyThanks,
+body .loading .copyThanks,
+body .terms .copyThanks {
+  margin: 20px auto;
+  font-size: 22px;
+  text-align: center;
+  opacity: 0;
+  right: -50%;
+  position: relative;
+  -webkit-animation: fadeInRight 0.3s ease-in-out 1 forwards;
+          animation: fadeInRight 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+body .container .copyThanks .copyLunay,
+body .chooseCharacter .copyThanks .copyLunay,
+body .formVideo .copyThanks .copyLunay,
+body .checkVideoFinal .copyThanks .copyLunay,
+body .sharedExperience .copyThanks .copyLunay,
+body .likePicture .copyThanks .copyLunay,
+body .loading .copyThanks .copyLunay,
+body .terms .copyThanks .copyLunay {
+  font-size: 15px;
+  font-family: "JoyrideEx";
+  margin: 0px auto 10px;
+  text-transform: lowercase;
+  width: 300px;
+  line-height: 20px;
+}
+
+body .container .copyThanks span,
+body .chooseCharacter .copyThanks span,
+body .formVideo .copyThanks span,
+body .checkVideoFinal .copyThanks span,
+body .sharedExperience .copyThanks span,
+body .likePicture .copyThanks span,
+body .loading .copyThanks span,
+body .terms .copyThanks span {
+  font-size: 15px;
+  line-height: 100%;
+  font-family: "ToyotaRegular";
+  margin: 10px auto;
+  width: 310px;
+  display: block;
+  letter-spacing: 0;
+  line-height: 19px;
+}
+
+body .container .copyThanks span a,
+body .chooseCharacter .copyThanks span a,
+body .formVideo .copyThanks span a,
+body .checkVideoFinal .copyThanks span a,
+body .sharedExperience .copyThanks span a,
+body .likePicture .copyThanks span a,
+body .loading .copyThanks span a,
+body .terms .copyThanks span a {
+  text-decoration: underline;
+}
+
+body .container .sharedSocial,
+body .chooseCharacter .sharedSocial,
+body .formVideo .sharedSocial,
+body .checkVideoFinal .sharedSocial,
+body .sharedExperience .sharedSocial,
+body .likePicture .sharedSocial,
+body .loading .sharedSocial,
+body .terms .sharedSocial {
+  width: 300px;
+  height: 111px;
+  background-image: url("/images/bgSocial.png");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  color: #C0ACED;
+  font-size: 14px;
+  padding: 22px 0 0 0;
+  text-align: center;
+  margin: 20px auto 0;
+  text-transform: lowercase;
+  bottom: -200px;
+  opacity: 0;
+  position: relative;
+  -webkit-animation: fadeInBottom2 0.3s ease-in-out 1 forwards;
+          animation: fadeInBottom2 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+body .container .iconSocial,
+body .chooseCharacter .iconSocial,
+body .formVideo .iconSocial,
+body .checkVideoFinal .iconSocial,
+body .sharedExperience .iconSocial,
+body .likePicture .iconSocial,
+body .loading .iconSocial,
+body .terms .iconSocial {
+  text-align: center;
+  margin: 20px 0;
+}
+
+body .container .iconSocial a,
+body .chooseCharacter .iconSocial a,
+body .formVideo .iconSocial a,
+body .checkVideoFinal .iconSocial a,
+body .sharedExperience .iconSocial a,
+body .likePicture .iconSocial a,
+body .loading .iconSocial a,
+body .terms .iconSocial a {
+  margin: 0 20px;
+  display: inline-block;
+}
+
+body .container .iconSocial img,
+body .chooseCharacter .iconSocial img,
+body .formVideo .iconSocial img,
+body .checkVideoFinal .iconSocial img,
+body .sharedExperience .iconSocial img,
+body .likePicture .iconSocial img,
+body .loading .iconSocial img,
+body .terms .iconSocial img {
+  display: inline-block;
+  width: 35px;
+}
+
+body .container .buttonThanks,
+body .chooseCharacter .buttonThanks,
+body .formVideo .buttonThanks,
+body .checkVideoFinal .buttonThanks,
+body .sharedExperience .buttonThanks,
+body .likePicture .buttonThanks,
+body .loading .buttonThanks,
+body .terms .buttonThanks {
+  margin: 20px auto;
+  background: transparent;
+  border: 2px solid #FFFFFF54;
+}
+
+body .container .copyFooter,
+body .chooseCharacter .copyFooter,
+body .formVideo .copyFooter,
+body .checkVideoFinal .copyFooter,
+body .sharedExperience .copyFooter,
+body .likePicture .copyFooter,
+body .loading .copyFooter,
+body .terms .copyFooter {
+  position: absolute;
+  font-size: 11px;
+  color: #fff;
+  text-align: center;
+  bottom: 10px;
+  width: 100%;
+  font-family: 'ToyotaRegular';
+}
+
+body .container .copyFooter a,
+body .chooseCharacter .copyFooter a,
+body .formVideo .copyFooter a,
+body .checkVideoFinal .copyFooter a,
+body .sharedExperience .copyFooter a,
+body .likePicture .copyFooter a,
+body .loading .copyFooter a,
+body .terms .copyFooter a {
+  text-decoration: underline;
+}
+
+body .container video.checkVideoFinalVideo,
+body .chooseCharacter video.checkVideoFinalVideo,
+body .formVideo video.checkVideoFinalVideo,
+body .checkVideoFinal video.checkVideoFinalVideo,
+body .sharedExperience video.checkVideoFinalVideo,
+body .likePicture video.checkVideoFinalVideo,
+body .loading video.checkVideoFinalVideo,
+body .terms video.checkVideoFinalVideo {
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+}
+
+body .container .copyJoin,
+body .chooseCharacter .copyJoin,
+body .formVideo .copyJoin,
+body .checkVideoFinal .copyJoin,
+body .sharedExperience .copyJoin,
+body .likePicture .copyJoin,
+body .loading .copyJoin,
+body .terms .copyJoin {
+  margin: 10px auto;
+  font-size: 16px;
+  width: 90%;
+  text-align: center;
+  margin: 20px auto 20px;
+  line-height: 20px;
+  text-transform: lowercase;
+  width: 300px;
+  opacity: 0;
+  right: -50%;
+  position: relative;
+  -webkit-animation: fadeInRight 0.3s ease-in-out 1 forwards;
+          animation: fadeInRight 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+body .container .copyJoin span,
+body .chooseCharacter .copyJoin span,
+body .formVideo .copyJoin span,
+body .checkVideoFinal .copyJoin span,
+body .sharedExperience .copyJoin span,
+body .likePicture .copyJoin span,
+body .loading .copyJoin span,
+body .terms .copyJoin span {
+  font-size: 16px;
+  line-height: 20px;
+  font-family: "ToyotaRegular";
+  margin: 20px auto 23px;
+  display: block;
+  text-transform: initial;
+  width: 200px;
+}
+
+body .checkVideoFinal {
+  display: none;
+}
+
+@media screen and (max-width: 436px) {
+  body .checkVideoFinal {
+    display: block;
+  }
+}
+
+body .checkVideoFinal .logoToyota {
+  width: 223px;
+  margin: 48px auto 52px;
+}
+
+body .checkVideoFinal .buttonJoin {
+  margin-bottom: 10px;
+  bottom: -200px;
+  position: relative;
+  -webkit-animation: fadeInBottom2 0.3s ease-in-out 1 forwards;
+          animation: fadeInBottom2 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+body .checkVideoFinal .react-player {
+  left: -50%;
+  opacity: 0;
+  position: relative;
+  -webkit-animation: fadeInLeft 0.3s ease-in-out 1 forwards;
+          animation: fadeInLeft 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+body .buttonPhoto {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: -200px;
+  -webkit-animation: fadeInBottom 0.3s ease-in-out 1 forwards;
+          animation: fadeInBottom 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+body .buttonPhoto.active {
+  bottom: 40px;
+  opacity: 1;
+  -webkit-animation: fadeOutBottom2 0.3s ease-in-out 1 forwards;
+          animation: fadeOutBottom2 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+body .chooseCharacter {
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: none;
+  overflow: hidden;
+}
+
+body .chooseCharacter .BoxchooseCharacter {
+  padding-top: 15vh;
+  position: relative;
+  padding-bottom: 15vh;
+  width: 320px;
+}
+
+body .chooseCharacter .BoxchooseCharacter.selected .selectCharacter2, body .chooseCharacter .BoxchooseCharacter.selected .selectCharacter1 {
+  zoom: 0.8;
+  width: 90%;
+  -webkit-filter: brightness(40%);
+          filter: brightness(40%);
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+body .chooseCharacter .BoxchooseCharacter.selected .selectCharacter2.selected, body .chooseCharacter .BoxchooseCharacter.selected .selectCharacter1.selected {
+  zoom: 1 !important;
+  -webkit-filter: brightness(100%);
+          filter: brightness(100%);
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  width: 100%;
+}
+
+body .chooseCharacter.active .selectCharacter2 {
+  opacity: 1;
+  left: 0%;
+  -webkit-animation: fadeOutRight2 0.3s ease-in-out 1 forwards;
+          animation: fadeOutRight2 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+body .chooseCharacter.active .selectCharacter1 {
+  opacity: 1;
+  left: 0;
+  -webkit-animation: fadeOutLeft2 0.3s ease-in-out 1 forwards;
+          animation: fadeOutLeft2 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+body .boxLink {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+body .boxLink .logoToyota {
+  margin-top: 0;
+}
+
+body .copyLink {
+  opacity: 0;
+  right: -50%;
+  position: relative;
+  -webkit-animation: fadeInRight 0.3s ease-in-out 1 forwards;
+          animation: fadeInRight 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+body .copyLinkText {
+  font-size: 16px;
+  font-family: "JoyrideEx";
+  margin: 0px auto 10px;
+  width: 300px;
+  line-height: 20px;
+  text-transform: lowercase;
+}
+
+body .copyLinkText span {
+  font-family: 'ToyotaRegular' !important;
+  font-size: 18px !important;
+  width: 300px !important;
+  margin-top: 0 !important;
+  text-transform: initial !important;
+}
+
+body .sharedExperience .logoToyota {
+  width: 190px;
+  margin: 33px auto 35px;
+  position: relative;
+  top: -50vh;
+  -webkit-animation: fadeInTopform 0.3s ease-in-out 1 forwards;
+          animation: fadeInTopform 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+body .sharedExperience .logoToyota.gif {
+  width: 320px;
+  margin: 20px auto;
+}
+
+body .sharedExperience .react-player {
+  left: -50%;
+  opacity: 0;
+  position: relative;
+  -webkit-animation: fadeInLeft 0.3s ease-in-out 1 forwards;
+          animation: fadeInLeft 0.3s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+body .sharedExperience .copyFooter {
+  position: relative;
+  margin: 20px auto;
+}
+
+body .loading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .loading .logoToyota {
+  width: 240px;
+  display: block;
+  margin: 5% auto;
+}
+
+body .loading .percentageVideo {
+  width: 100%;
+  height: 280px;
+  min-height: 150px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 1;
+}
+
+body .loading .percentageVideo .boxPercentage {
+  width: 140px;
+  height: 60px;
+  font-family: 'ToyotaRegular';
+  letter-spacing: 0px;
+}
+
+body .loading .percentageVideo .boxPercentage .iconPercentage {
+  width: 40px;
+  height: 40px;
+  background-image: url("/images/vector-animacion.svg");
+  background-position: center left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  float: left;
+  margin: 8px 0px 0px;
+}
+
+body .loading .percentageVideo .boxPercentage .numberPercentage {
+  float: right;
+  font-size: 11px;
+  width: calc(100% - 45px);
+  text-shadow: 0 0 3px #000;
+}
+
+body .loading .percentageVideo .boxPercentage .linePercentage {
+  height: 2px;
+  float: left;
+  width: calc(100% - 50px);
+  margin: 0 0 0 5px;
+}
+
+body .loading .percentageVideo .boxPercentage .linePercentage .percentage {
+  height: 2px;
+  background: #FFD800;
+}
+
+body .loading .percentageVideo .boxPercentage .timePercentage {
+  float: right;
+  font-size: 11px;
+  width: calc(100% - 45px);
+  text-shadow: 0 0 3px #000;
+}
+
+body .loading .percentageVideo .boxPercentage .secondPercentage {
+  float: right;
+  font-size: 11px;
+  width: calc(100% - 45px);
+  text-shadow: 0 0 3px #000;
+}
+
+body .terms {
+  color: #fff;
+}
+
+body .formVideo {
+  height: auto;
+  min-height: 100%;
+}
+
+body .formVideo form {
+  width: 315px;
+  margin: 0 auto 20px;
+  z-index: 0;
+  position: relative;
+  right: -100%;
+  opacity: 0;
+  -webkit-animation: fadeInRightform 0.5s ease-in-out 1 forwards;
+          animation: fadeInRightform 0.5s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+
+@media screen and (max-width: 320px) {
+  body .formVideo form {
+    width: 290px;
+  }
+}
+
+body .formVideo .percentageVideo {
+  width: 100%;
+  height: 240px;
+  min-height: 150px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 1;
+}
+
+@media screen and (max-width: 375px) {
+  body .formVideo .percentageVideo {
+    height: 213px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  body .formVideo .percentageVideo {
+    height: 180px;
+  }
+}
+
+body .formVideo .percentageVideo .boxPercentage {
+  width: 200px;
+  height: 60px;
+  font-family: 'ToyotaRegular';
+  letter-spacing: 0px;
+}
+
+body .formVideo .percentageVideo .boxPercentage .iconPercentage {
+  width: 60px;
+  height: 60px;
+  background-image: url("/images/cube.gif");
+  background-position: center left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  float: left;
+  margin: -8px 0px 0px;
+}
+
+body .formVideo .percentageVideo .boxPercentage .numberPercentage {
+  float: right;
+  font-size: 11px;
+  width: calc(100% - 60px);
+}
+
+body .formVideo .percentageVideo .boxPercentage .linePercentage {
+  height: 2px;
+  float: left;
+  width: calc(100% - 70px);
+  margin: 0 0 0 10px;
+  position: relative;
+}
+
+body .formVideo .percentageVideo .boxPercentage .linePercentage .percentage {
+  height: 2px;
+  background: #FFD800;
+  position: absolute;
+  z-index: 1;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+}
+
+body .formVideo .percentageVideo .boxPercentage .linePercentage .percentage.gray {
+  background: #3c3c3c;
+}
+
+body .formVideo .percentageVideo .boxPercentage .timePercentage {
+  float: right;
+  font-size: 11px;
+  width: calc(100% - 60px);
+}
+
+body .formVideo .percentageVideo .boxPercentage .secondPercentage {
+  float: right;
+  font-size: 11px;
+  width: calc(100% - 60px);
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+}
+
+body .formVideo .copyTitleForm {
+  margin-top: 28px;
+  font-size: 22px;
+  text-align: center;
+  width: 100%;
+  text-transform: lowercase;
+  position: relative;
+  z-index: 0;
+  top: -50vh;
+  opacity: 0;
+  -webkit-animation: fadeInTopform 0.5s ease-in-out 1 forwards;
+          animation: fadeInTopform 0.5s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+body .formVideo .copySubtitleForm {
+  margin: 10px auto;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  font-family: 'ToyotaRegular';
+  z-index: 0;
+  position: relative;
+  top: -50vh;
+  opacity: 0;
+  -webkit-animation: fadeInTopform 0.5s ease-in-out 1 forwards;
+          animation: fadeInTopform 0.5s ease-in-out 1 forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+body .formVideo .MuiInputBase-root {
+  width: 100%;
+  margin: 23px auto;
+  display: block;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+  padding-right: 25px;
+}
+
+body .formVideo .MuiInputBase-root.check {
+  background-image: url("/images/icon-ok.svg");
+  background-repeat: no-repeat;
+  background-position: center right;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+}
+
+body .formVideo .MuiInput-underline.error:before {
+  border-bottom: 2px solid #FAC2C2;
+}
+
+body .formVideo .MuiInput-underline.error:hover:not(.Mui-disabled):before {
+  border-bottom: 2px solid #FAC2C2;
+}
+
+body .formVideo .MuiInput-underline:before {
+  border-bottom: 2px solid #848484;
+}
+
+body .formVideo .MuiInput-underline:hover:not(.Mui-disabled):before {
+  border-bottom: 2px solid #848484;
+}
+
+body .formVideo .MuiInput-underline:after {
+  border-bottom: 2px solid #fff;
+  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0, 0, 0.2, 1) 0ms;
+  transition: -webkit-transform 0.5s cubic-bezier(0, 0, 0.2, 1) 0ms;
+  transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1) 0ms;
+  transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1) 0ms, -webkit-transform 0.5s cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+
+body .formVideo .MuiInputBase-input {
+  width: 100%;
+  color: #fff;
+  font-family: 'ToyotaRegular';
+  padding-bottom: 10px;
+}
+
+body .formVideo .MuiInput-underline.error .MuiInputBase-input::-webkit-input-placeholder {
+  color: #FAC2C2;
+}
+
+body .formVideo .MuiInput-underline.error .MuiInputBase-input:-ms-input-placeholder {
+  color: #FAC2C2;
+}
+
+body .formVideo .MuiInput-underline.error .MuiInputBase-input::-ms-input-placeholder {
+  color: #FAC2C2;
+}
+
+body .formVideo .MuiInput-underline.error .MuiInputBase-input::placeholder {
+  color: #FAC2C2;
+}
+
+body .formVideo .errorsField {
+  display: block;
+  width: 100%;
+  margin: -20px auto -15px;
+  color: #FAC2C2;
+  font-family: 'ToyotaRegular';
+  font-size: 12px;
+}
+
+body .formVideo .errorsField.center {
+  width: 100%;
+  text-align: center;
+  margin: 10px auto;
+}
+
+body .formVideo .boxCheckbox {
+  width: 100%;
+  margin: 20px auto;
+  display: block;
+  font-family: 'ToyotaRegular';
+  letter-spacing: 0px;
+  overflow: hidden;
+  color: #848484;
+  font-size: 15px;
+  position: relative;
+}
+
+body .formVideo .boxCheckbox .MuiSvgIcon-root {
+  color: #414141;
+}
+
+body .formVideo .boxCheckbox .MuiCheckbox-colorSecondary.Mui-checked .MuiSvgIcon-root {
+  color: #5A2CFB;
+}
+
+body .formVideo .boxCheckbox .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
+  background-color: transparent;
+}
+
+body .formVideo .boxCheckbox .MuiSwitch-colorSecondary.Mui-checked {
+  color: #5A2CFB;
+}
+
+body .formVideo .boxCheckbox .MuiSwitch-colorSecondary .MuiSwitch-thumb {
+  background-image: url("/images/icon-buttonx.png");
+  background-size: 20px;
+  background-repeat: no-repeat;
+}
+
+body .formVideo .boxCheckbox .MuiSwitch-colorSecondary.Mui-checked .MuiSwitch-thumb {
+  background-image: url("/images/icon-button.png");
+}
+
+body .formVideo .boxCheckbox .MuiSwitch-switchBase {
+  color: #544E5C;
+}
+
+body .formVideo .boxCheckbox .MuiSwitch-track {
+  border: 2px solid #544E5C;
+  padding: 12px 22px;
+  margin: -7px -7px;
+  border-radius: 15px;
+  background-color: transparent;
+}
+
+body .formVideo .boxCheckbox .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
+  border: 2px solid #5A2CFB;
+  padding: 12px 22px;
+  margin: -7px -7px;
+  border-radius: 15px;
+}
+
+body .formVideo .boxCheckbox .MuiSwitch-root {
+  margin: 5px 0;
+  right: -6px;
+}
+
+body .formVideo .boxCheckbox .switch2 {
+  margin: 35px 0;
+}
+
+body .formVideo .boxCheckbox .copyCheckbox {
+  width: calc(100% - 80px);
+  float: left;
+  margin-right: 20px;
+}
+
+body .formVideo .boxCheckbox .copyCheckbox.special {
+  width: 100%;
+}
+
+body .formVideo .boxCheckbox .copyCheckbox.special a {
+  text-decoration: underline;
+}
+
+body .likePicture .boxIframe {
+  max-width: 430px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: transparent;
+}
+
+body .likePicture .boxIframe .bgPhotoDegrade {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  opacity: 0.3;
+  background: #000;
+}
+
+body .likePicture .boxAnimation {
+  width: 375px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 100%;
+  overflow: hidden;
+  top: -30px;
+}
+
+body .likePicture .boxAnimation iframe {
+  position: relative;
+  width: 750px;
+  height: 150%;
+  border: none;
+  top: 0;
+  -moz-transform: scale(0.5);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(0.5);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+}
+
+@media screen and (max-width: 375px) {
+  body .likePicture .boxAnimation iframe {
+    left: 0;
+    width: 250%;
+    -webkit-transform: scale(0.5);
+  }
+}
+
+@media screen and (max-width: 360px) {
+  body .likePicture .boxAnimation iframe {
+    left: 0;
+    width: 250%;
+    -webkit-transform: scale(0.48);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  body .likePicture .boxAnimation iframe {
+    width: 250%;
+    -webkit-transform: scale(0.42);
+  }
+}
+
+body .indexDesktop,
+body .notAvailable {
+  background: #000;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-image: url("/images/bg-site-desktop.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media screen and (max-width: 1023px) {
+  body .indexDesktop,
+  body .notAvailable {
+    min-height: 100%;
+    height: auto;
+    padding: 5% 0 10%;
+  }
+}
+
+body .indexDesktop .boxItemsDesktop,
+body .indexDesktop .boxItemsNotAvailable,
+body .notAvailable .boxItemsDesktop,
+body .notAvailable .boxItemsNotAvailable {
+  display: block;
+  width: 100%;
+  max-width: 1280px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 1%;
+}
+
+@media screen and (max-width: 1023px) {
+  body .indexDesktop .boxItemsDesktop,
+  body .indexDesktop .boxItemsNotAvailable,
+  body .notAvailable .boxItemsDesktop,
+  body .notAvailable .boxItemsNotAvailable {
+    display: block;
+  }
+}
+
+body .indexDesktop .boxItemsDesktop .videoDesktop,
+body .indexDesktop .boxItemsNotAvailable .videoDesktop,
+body .notAvailable .boxItemsDesktop .videoDesktop,
+body .notAvailable .boxItemsNotAvailable .videoDesktop {
+  width: calc(100% - 420px);
+  height: auto;
+  float: left;
+}
+
+body .indexDesktop .boxItemsDesktop .videoDesktop video,
+body .indexDesktop .boxItemsNotAvailable .videoDesktop video,
+body .notAvailable .boxItemsDesktop .videoDesktop video,
+body .notAvailable .boxItemsNotAvailable .videoDesktop video {
+  width: 100%;
+  -webkit-box-shadow: 0px 5px 10px #080808;
+          box-shadow: 0px 5px 10px #080808;
+}
+
+@media screen and (max-width: 1023px) {
+  body .indexDesktop .boxItemsDesktop .videoDesktop,
+  body .indexDesktop .boxItemsNotAvailable .videoDesktop,
+  body .notAvailable .boxItemsDesktop .videoDesktop,
+  body .notAvailable .boxItemsNotAvailable .videoDesktop {
+    width: 100%;
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+body .indexDesktop .boxItemsDesktop .copydesktop,
+body .indexDesktop .boxItemsDesktop .copyNotAvailable,
+body .indexDesktop .boxItemsNotAvailable .copydesktop,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable,
+body .notAvailable .boxItemsDesktop .copydesktop,
+body .notAvailable .boxItemsDesktop .copyNotAvailable,
+body .notAvailable .boxItemsNotAvailable .copydesktop,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable {
+  width: 325px;
+  height: auto;
+  float: left;
+  text-align: center;
+  padding: 0 0;
+}
+
+@media screen and (max-width: 1023px) {
+  body .indexDesktop .boxItemsDesktop .copydesktop,
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable,
+  body .indexDesktop .boxItemsNotAvailable .copydesktop,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable,
+  body .notAvailable .boxItemsDesktop .copydesktop,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable,
+  body .notAvailable .boxItemsNotAvailable .copydesktop,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable {
+    width: 100%;
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+body .indexDesktop .boxItemsDesktop .copydesktop .logoToyota,
+body .indexDesktop .boxItemsDesktop .copyNotAvailable .logoToyota,
+body .indexDesktop .boxItemsNotAvailable .copydesktop .logoToyota,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable .logoToyota,
+body .notAvailable .boxItemsDesktop .copydesktop .logoToyota,
+body .notAvailable .boxItemsDesktop .copyNotAvailable .logoToyota,
+body .notAvailable .boxItemsNotAvailable .copydesktop .logoToyota,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable .logoToyota {
+  width: 100%;
+  max-width: 336px;
+  margin: 0 auto 40px;
+  display: block;
+}
+
+@media screen and (max-width: 9920px) {
+  body .indexDesktop .boxItemsDesktop .copydesktop .logoToyota.desktop,
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable .logoToyota.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copydesktop .logoToyota.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable .logoToyota.desktop,
+  body .notAvailable .boxItemsDesktop .copydesktop .logoToyota.desktop,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable .logoToyota.desktop,
+  body .notAvailable .boxItemsNotAvailable .copydesktop .logoToyota.desktop,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable .logoToyota.desktop {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body .indexDesktop .boxItemsDesktop .copydesktop .logoToyota.desktop,
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable .logoToyota.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copydesktop .logoToyota.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable .logoToyota.desktop,
+  body .notAvailable .boxItemsDesktop .copydesktop .logoToyota.desktop,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable .logoToyota.desktop,
+  body .notAvailable .boxItemsNotAvailable .copydesktop .logoToyota.desktop,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable .logoToyota.desktop {
+    display: none;
+  }
+}
+
+body .indexDesktop .boxItemsDesktop .copydesktop hr.desktop,
+body .indexDesktop .boxItemsDesktop .copyNotAvailable hr.desktop,
+body .indexDesktop .boxItemsNotAvailable .copydesktop hr.desktop,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable hr.desktop,
+body .notAvailable .boxItemsDesktop .copydesktop hr.desktop,
+body .notAvailable .boxItemsDesktop .copyNotAvailable hr.desktop,
+body .notAvailable .boxItemsNotAvailable .copydesktop hr.desktop,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable hr.desktop {
+  width: 336px;
+  margin: 0px auto 40px;
+}
+
+@media screen and (max-width: 9920px) {
+  body .indexDesktop .boxItemsDesktop .copydesktop hr.desktop,
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable hr.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copydesktop hr.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable hr.desktop,
+  body .notAvailable .boxItemsDesktop .copydesktop hr.desktop,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable hr.desktop,
+  body .notAvailable .boxItemsNotAvailable .copydesktop hr.desktop,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable hr.desktop {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body .indexDesktop .boxItemsDesktop .copydesktop hr.desktop,
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable hr.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copydesktop hr.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable hr.desktop,
+  body .notAvailable .boxItemsDesktop .copydesktop hr.desktop,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable hr.desktop,
+  body .notAvailable .boxItemsNotAvailable .copydesktop hr.desktop,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable hr.desktop {
+    display: none;
+  }
+}
+
+body .indexDesktop .boxItemsDesktop .copydesktop p.desktop,
+body .indexDesktop .boxItemsDesktop .copyNotAvailable p.desktop,
+body .indexDesktop .boxItemsNotAvailable .copydesktop p.desktop,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable p.desktop,
+body .notAvailable .boxItemsDesktop .copydesktop p.desktop,
+body .notAvailable .boxItemsDesktop .copyNotAvailable p.desktop,
+body .notAvailable .boxItemsNotAvailable .copydesktop p.desktop,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable p.desktop {
+  width: 280px;
+  margin: 0px auto 40px;
+}
+
+@media screen and (max-width: 9920px) {
+  body .indexDesktop .boxItemsDesktop .copydesktop p.desktop,
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable p.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copydesktop p.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable p.desktop,
+  body .notAvailable .boxItemsDesktop .copydesktop p.desktop,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable p.desktop,
+  body .notAvailable .boxItemsNotAvailable .copydesktop p.desktop,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable p.desktop {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body .indexDesktop .boxItemsDesktop .copydesktop p.desktop,
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable p.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copydesktop p.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable p.desktop,
+  body .notAvailable .boxItemsDesktop .copydesktop p.desktop,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable p.desktop,
+  body .notAvailable .boxItemsNotAvailable .copydesktop p.desktop,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable p.desktop {
+    display: none;
+  }
+}
+
+body .indexDesktop .boxItemsDesktop .copydesktop .QR,
+body .indexDesktop .boxItemsDesktop .copyNotAvailable .QR,
+body .indexDesktop .boxItemsNotAvailable .copydesktop .QR,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable .QR,
+body .notAvailable .boxItemsDesktop .copydesktop .QR,
+body .notAvailable .boxItemsDesktop .copyNotAvailable .QR,
+body .notAvailable .boxItemsNotAvailable .copydesktop .QR,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable .QR {
+  width: 195px;
+  margin: 0 auto;
+  display: block;
+}
+
+@media screen and (max-width: 9920px) {
+  body .indexDesktop .boxItemsDesktop .copydesktop .QR,
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable .QR,
+  body .indexDesktop .boxItemsNotAvailable .copydesktop .QR,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable .QR,
+  body .notAvailable .boxItemsDesktop .copydesktop .QR,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable .QR,
+  body .notAvailable .boxItemsNotAvailable .copydesktop .QR,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable .QR {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body .indexDesktop .boxItemsDesktop .copydesktop .QR,
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable .QR,
+  body .indexDesktop .boxItemsNotAvailable .copydesktop .QR,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable .QR,
+  body .notAvailable .boxItemsDesktop .copydesktop .QR,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable .QR,
+  body .notAvailable .boxItemsNotAvailable .copydesktop .QR,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable .QR {
+    display: none;
+  }
+}
+
+body .indexDesktop .boxItemsDesktop .copydesktop .QR.join,
+body .indexDesktop .boxItemsDesktop .copyNotAvailable .QR.join,
+body .indexDesktop .boxItemsNotAvailable .copydesktop .QR.join,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable .QR.join,
+body .notAvailable .boxItemsDesktop .copydesktop .QR.join,
+body .notAvailable .boxItemsDesktop .copyNotAvailable .QR.join,
+body .notAvailable .boxItemsNotAvailable .copydesktop .QR.join,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable .QR.join {
+  margin-top: 25px;
+}
+
+body .indexDesktop .boxItemsDesktop .copydesktop a.desktop,
+body .indexDesktop .boxItemsDesktop .copyNotAvailable a.desktop,
+body .indexDesktop .boxItemsNotAvailable .copydesktop a.desktop,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable a.desktop,
+body .notAvailable .boxItemsDesktop .copydesktop a.desktop,
+body .notAvailable .boxItemsDesktop .copyNotAvailable a.desktop,
+body .notAvailable .boxItemsNotAvailable .copydesktop a.desktop,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable a.desktop {
+  width: 287px;
+  display: block;
+  font-size: 12px;
+  text-decoration: none;
+  margin: 15px auto 20px;
+  font-weight: 100;
+  font-family: "ToyotaRegular";
+}
+
+body .indexDesktop .boxItemsDesktop .copydesktop a.desktop:hover,
+body .indexDesktop .boxItemsDesktop .copyNotAvailable a.desktop:hover,
+body .indexDesktop .boxItemsNotAvailable .copydesktop a.desktop:hover,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable a.desktop:hover,
+body .notAvailable .boxItemsDesktop .copydesktop a.desktop:hover,
+body .notAvailable .boxItemsDesktop .copyNotAvailable a.desktop:hover,
+body .notAvailable .boxItemsNotAvailable .copydesktop a.desktop:hover,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable a.desktop:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 9920px) {
+  body .indexDesktop .boxItemsDesktop .copydesktop a.desktop,
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable a.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copydesktop a.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable a.desktop,
+  body .notAvailable .boxItemsDesktop .copydesktop a.desktop,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable a.desktop,
+  body .notAvailable .boxItemsNotAvailable .copydesktop a.desktop,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable a.desktop {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body .indexDesktop .boxItemsDesktop .copydesktop a.desktop,
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable a.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copydesktop a.desktop,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable a.desktop,
+  body .notAvailable .boxItemsDesktop .copydesktop a.desktop,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable a.desktop,
+  body .notAvailable .boxItemsNotAvailable .copydesktop a.desktop,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable a.desktop {
+    display: none;
+  }
+}
+
+body .indexDesktop .boxItemsDesktop .copydesktop .rotate,
+body .indexDesktop .boxItemsDesktop .copyNotAvailable .rotate,
+body .indexDesktop .boxItemsNotAvailable .copydesktop .rotate,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable .rotate,
+body .notAvailable .boxItemsDesktop .copydesktop .rotate,
+body .notAvailable .boxItemsDesktop .copyNotAvailable .rotate,
+body .notAvailable .boxItemsNotAvailable .copydesktop .rotate,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable .rotate {
+  width: 100%;
+  max-width: 100px;
+  margin: 0 auto;
+  display: block;
+}
+
+@media screen and (max-width: 9920px) {
+  body .indexDesktop .boxItemsDesktop .copydesktop .rotate.mobile,
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable .rotate.mobile,
+  body .indexDesktop .boxItemsNotAvailable .copydesktop .rotate.mobile,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable .rotate.mobile,
+  body .notAvailable .boxItemsDesktop .copydesktop .rotate.mobile,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable .rotate.mobile,
+  body .notAvailable .boxItemsNotAvailable .copydesktop .rotate.mobile,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable .rotate.mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body .indexDesktop .boxItemsDesktop .copydesktop .rotate.mobile,
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable .rotate.mobile,
+  body .indexDesktop .boxItemsNotAvailable .copydesktop .rotate.mobile,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable .rotate.mobile,
+  body .notAvailable .boxItemsDesktop .copydesktop .rotate.mobile,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable .rotate.mobile,
+  body .notAvailable .boxItemsNotAvailable .copydesktop .rotate.mobile,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable .rotate.mobile {
+    display: block;
+  }
+}
+
+body .indexDesktop .boxItemsDesktop .copydesktop h2,
+body .indexDesktop .boxItemsDesktop .copyNotAvailable h2,
+body .indexDesktop .boxItemsNotAvailable .copydesktop h2,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable h2,
+body .notAvailable .boxItemsDesktop .copydesktop h2,
+body .notAvailable .boxItemsDesktop .copyNotAvailable h2,
+body .notAvailable .boxItemsNotAvailable .copydesktop h2,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable h2 {
+  line-height: 30px;
+  margin: 5% auto 10px;
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  font-size: 20px;
+  font-family: 'JoyrideEx';
+  text-transform: lowercase;
+}
+
+body .indexDesktop .boxItemsDesktop .copydesktop p,
+body .indexDesktop .boxItemsDesktop .copyNotAvailable p,
+body .indexDesktop .boxItemsNotAvailable .copydesktop p,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable p,
+body .notAvailable .boxItemsDesktop .copydesktop p,
+body .notAvailable .boxItemsDesktop .copyNotAvailable p,
+body .notAvailable .boxItemsNotAvailable .copydesktop p,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable p {
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  font-family: 'ToyotaRegular';
+}
+
+body .indexDesktop .boxItemsDesktop .copyNotAvailable,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable,
+body .notAvailable .boxItemsDesktop .copyNotAvailable,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable {
+  width: 100%;
+}
+
+body .indexDesktop .boxItemsDesktop .copyNotAvailable p, body .indexDesktop .boxItemsDesktop .copyNotAvailable h2,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable p,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable h2,
+body .notAvailable .boxItemsDesktop .copyNotAvailable p,
+body .notAvailable .boxItemsDesktop .copyNotAvailable h2,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable p,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable h2 {
+  font-size: 13px;
+  max-width: 470px;
+}
+
+@media screen and (max-width: 1024px) {
+  body .indexDesktop .boxItemsDesktop .copyNotAvailable p,
+  body .indexDesktop .boxItemsNotAvailable .copyNotAvailable p,
+  body .notAvailable .boxItemsDesktop .copyNotAvailable p,
+  body .notAvailable .boxItemsNotAvailable .copyNotAvailable p {
+    max-width: 375px;
+    font-size: 16px;
+  }
+}
+
+body .indexDesktop .boxItemsDesktop .copyNotAvailable a,
+body .indexDesktop .boxItemsNotAvailable .copyNotAvailable a,
+body .notAvailable .boxItemsDesktop .copyNotAvailable a,
+body .notAvailable .boxItemsNotAvailable .copyNotAvailable a {
+  text-decoration: underline;
+  font-family: 'ToyotaBold';
+}
+
+body .indexDesktop {
+  height: 100vh;
+  padding: 0 5%;
+}
+
+@media screen and (max-width: 436px) {
+  body .indexDesktop {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  body .indexDesktop .videoDesktop {
+    max-width: 500px;
+    margin: 0 auto 20px !important;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  body .indexDesktop .copydesktop h2 {
+    max-width: 500px !important;
+  }
+}
+
+body .zoneTakePhoto {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  width: 800px;
+  max-width: 800px;
+  margin: 0 auto;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  height: calc(100% - 110px);
+  background-image: url("/images/loading.svg");
+  background-position: 50% 30%;
+  background-repeat: no-repeat;
+}
+
+body .zoneTakePhoto .bgFace {
+  background-image: url("/images/frame-capt-photo_left.svg"), url("/images/frame-capt-photo_right.svg");
+  background-position: 32%, 68%;
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: contain;
+  position: absolute;
+  z-index: 10;
+  height: 320px;
+}
+
+body .zoneTakePhoto video {
+  min-height: 100%;
+  position: relative;
+}
+
+body .zoneMessage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  max-width: 430px;
+  margin: 10px 0;
+  position: absolute;
+  bottom: 0;
+}
+
+body .zoneMessage p {
+  font-family: "ToyotaRegular";
+  text-align: center;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 10px;
+}
+
+body .container-circles {
+  position: relative;
+  height: 75px;
+  width: 75px;
+  margin: 10px auto;
+  cursor: pointer;
+  margin-top: -90px;
+}
+
+body .outer-circle {
+  position: absolute;
+  left: 0;
+  height: 75px;
+  width: 75px;
+  background-color: #fff;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+body .inner-circle {
+  position: absolute;
+  left: 50%;
+  top: 33px;
+  height: 54px;
+  width: 54px;
+  background: white;
+  border-radius: 50%;
+  margin: -22px 0px 0px -27px;
+  z-index: 2;
+  border: 2px solid #5A2CFB;
+}
+
+body .outer-circle:hover {
+  zoom: 0.99;
+  -webkit-transition: width 0.1s;
+  transition: width 0.1s;
+}
+
+body .icons-social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 200px;
+  margin: 0 auto;
+}
+
+body .icons-social button {
+  margin: 20px 0 !important;
+}
+
+.boxProgrees {
+  position: absolute !important;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.boxProgrees .MuiCircularProgress-determinate.lineProgrees {
+  color: #5A2DFC;
+}
+
+.zone-cameras {
+  bottom: -93px;
+  position: absolute;
+  width: 300px;
+}
+
+.zone-cameras p {
+  font-size: 10px;
+  text-transform: lowercase;
+  line-height: 13px;
+  text-align: center;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.zone-cameras button {
+  background: transparent;
+  border: none;
+}
+
+.zone-cameras button img {
+  width: 55px;
+}
+
+.portrait {
+  display: none;
+}
+
+body .landscape {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  zoom: 0.9;
+  height: 100%;
+  z-index: 1000;
+  top: 0;
+}
+
+@media screen and (max-width: 9920px) {
+  body .landscape .notAvailable h2.desktopNot {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body .landscape .notAvailable h2.desktopNot {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 9920px) {
+  body .landscape .notAvailable h2.desktop {
+    display: block;
+    margin-top: 0;
+    width: 280px;
+    line-height: 31px;
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 9px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body .landscape .notAvailable h2.desktop {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 9920px) {
+  body .landscape .notAvailable h2.mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body .landscape .notAvailable h2.mobile {
+    display: block;
+    font-size: 28px;
+    max-width: 370px;
+    font-weight: 100;
+  }
+}
+
+body .landscape.not h2.mobile {
+  font-size: 15px;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 9920px) {
+  body .landscape.not {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 436px) {
+  body .landscape.not {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 9920px) {
+  body .landscape {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 436px) {
+  body .landscape {
+    display: none;
+  }
+}
+
+.android .boxPhoto {
+  width: 680px !important;
+}
+
+.ios.boxPhoto {
+  width: 100% !important;
+}
+
+.motorola.boxPhoto {
+  width: 600px !important;
+}
+
+.registerVideoBG {
+  position: absolute;
+  z-index: 1;
+}
+
+.dialogs {
+  width: 100%;
+  color: #fff;
+}
+
+.dialogs .MuiPaper-root {
+  width: 300px;
+  color: #fff;
+  margin: 0;
+}
+
+.dialogs h2 {
+  font-size: 20px;
+  font-family: 'ToyotaBold';
+  text-align: center;
+}
+
+.dialogs p {
+  font-size: 16px;
+  font-family: 'ToyotaBold';
+}
+
+.dialogs ul {
+  font-family: "ToyotaRegular";
+  padding: 0 0 0 0px;
+  list-style: none;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.dialogs ul li {
+  font-size: 14px;
+}
+
+.dialogs .MuiButton-root {
+  background: #fff !important;
+  width: 250px;
+  height: 56px;
+  font-size: 20px;
+  font-family: 'ToyotaBold';
+  color: #000;
+  border-radius: 0px;
+}
+
+.dialogs .MuiButton-root:hover {
+  opacity: 0.7;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  -webkit-transition-delay: 10000s;
+          transition-delay: 10000s;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#cookieConcent {
+  position: absolute;
+  width: 100%;
+  max-width: 430px;
+  bottom: -200%;
+  left: 0%;
+  right: 0;
+  margin: 0 auto;
+  border: Solid 1px black;
+  border-bottom: 0;
+  padding: 1em 2em 2em 2em;
+  font-family: sans-serif;
+  background: #000;
+  -webkit-animation: fadeInBottom3 0.5s ease-in-out 1 forwards;
+          animation: fadeInBottom3 0.5s ease-in-out 1 forwards;
+  -webkit-animation-delay: 3.5s;
+          animation-delay: 3.5s;
+  font-family: "ToyotaRegular";
+}
+
+#cookieConcent.cookieDisabled {
+  bottom: 0;
+  -webkit-animation: fadeInTop3 0.5s ease-in-out 1 forwards;
+          animation: fadeInTop3 0.5s ease-in-out 1 forwards;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+#cookieConcent h1 {
+  margin: 0;
+}
+
+#cookieConcent p {
+  font-size: 13px;
+  line-height: 16px;
+}
+
+#cookieConcent a {
+  text-decoration: underline;
+}
+
+#cookieConcent div {
+  margin: 0.2em;
+}
+
+#cookieConcent button.buttonCookie {
+  padding: 0.5em 1em;
+  border: Solid 1px black;
+  color: #fff !important;
+  -webkit-tap-highlight-color: #fff;
+  -webkit-transition: initial;
+  transition: initial;
+}
+
+#cookieConcent button.buttonCookie span {
+  color: #fff !important;
+  opacity: 1;
+}
+
+#cookieConcent button.buttonCookie.Mui-disabled.Mui-disabled span {
+  color: #fff !important;
+  opacity: 0.6;
+}
+
+#cookieConcent center {
+  margin-top: 1em;
+}
+
+#cookieConcent input {
+  width: 1.5em;
+  background: red;
+  vertical-align: middle;
+}
+
+#cookieConcent .MuiSvgIcon-root {
+  border: 2px solid #544e5c;
+}
+
+#cookieConcent .MuiCheckbox-colorSecondary.Mui-checked .MuiSvgIcon-root {
+  color: #5A2CFB;
+}
+
+#cookieConcent .textCheck {
+  font-size: 13px;
+  overflow: hidden;
+}
+
+#cookieConcent .textCheck .MuiCheckbox-root {
+  padding-left: 0;
+}
+
+#cookieConcent .textCheck .copyCheckbox {
+  width: calc(100% - 60px);
+  float: right;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.buttonCookie {
+  width: 100% !important;
+}
+
+.problem {
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  background-image: url("/images/bg-app.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  overflow: hidden;
+  text-align: center;
+  padding: 0 10%;
+  display: flex;
+}
+
+.problem p {
+  font-family: 'ToyotaRegular';
+}
+/*# sourceMappingURL=general.css.map */

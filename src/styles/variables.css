@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'JoyrideEx';
+  src: url("/fonts/JoyrideExtended.eot");
+  src: url("/fonts/JoyrideExtended.eot?#iefix") format("embedded-opentype"), url("/fonts/JoyrideExtended.woff2") format("woff2"), url("/fonts/JoyrideExtended.woff") format("woff"), url("/fonts/JoyrideExtended.ttf") format("truetype"), url("/fonts/JoyrideExtended.svg#JoyrideExtended") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  letter-spacing: 0.5px;
+}
+
+@font-face {
+  font-family: 'ToyotaRegular';
+  src: url("/fonts/ToyotaType-Regular.eot");
+  src: url("/fonts/ToyotaType-Regular.eot?#iefix") format("embedded-opentype"), url("/fonts/ToyotaType-Regular.woff2") format("woff2"), url("/fonts/ToyotaType-Regular.woff") format("woff"), url("/fonts/ToyotaType-Regular.ttf") format("truetype"), url("/fonts/ToyotaType-Regular.svg#ToyotaType-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  letter-spacing: 0px;
+}
+
+@font-face {
+  font-family: 'ToyotaBold';
+  src: url("/fonts/ToyotaType-Bold.eot");
+  src: url("/fonts/ToyotaType-Bold.eot?#iefix") format("embedded-opentype"), url("/fonts/ToyotaType-Bold.woff2") format("woff2"), url("/fonts/ToyotaType-Bold.woff") format("woff"), url("/fonts/ToyotaType-Bold.ttf") format("truetype"), url("/fonts/ToyotaType-Bold.svg#ToyotaType-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+  letter-spacing: 0px;
+}
+
+@font-face {
+  font-family: 'prestolight';
+  src: url("/fonts/prestolight-webfont.woff2") format("woff2"), url("/fonts/prestolight-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 0px;
+}
+/*# sourceMappingURL=variables.css.map */
