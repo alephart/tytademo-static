@@ -15,10 +15,10 @@ import { TytaProgress } from '@/components/Anims';
 import { getUA } from 'react-device-detect';
 import CopyLink from '@/components/CopyLink';
 
-const geoIPKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
+// const geoIPKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
-const Experience = ({ userEmail }) => {
-  const { loading, location, error } = useLocation(geoIP(geoIPKey));
+const Experience = () => {
+  // const { loading, location, error } = useLocation(geoIP(geoIPKey));
   const [process, setProcess] = useState(null);
   const [progress, setProgress] = useState(0);
   const [character, setCharacter] = useState(null);
@@ -75,13 +75,13 @@ const Experience = ({ userEmail }) => {
   }, [process]);
 
 
-  if(loading) {
-    return <><Layout /></>;
-  }
+  // if(loading) {
+  //   return <><Layout /></>;
+  // }
 
-  if(!location || !!error) {
-    router.push('/not-available');
-  }
+  // if(!location || !!error) {
+  //   router.push('/not-available');
+  // }
 
   const metaData = {
     pageTitle: 'Experience - Take Photo & Register',
@@ -106,7 +106,7 @@ const Experience = ({ userEmail }) => {
           )}
 
           {process === PROCESS_ENUM.register && (
-            <RegisterInfo userEmail={userEmail} />
+            <RegisterInfo userEmail={''} />
           )}
 
         </ExperienceContext.Provider>
@@ -116,11 +116,5 @@ const Experience = ({ userEmail }) => {
     </Layout>
   )
 }
-
-export const getServerSideProps = async ({ req }) => {
-  return { props: { 
-    userEmail: await req.cookies.userEmail || null,
-  }, }
-};
 
 export default Experience;

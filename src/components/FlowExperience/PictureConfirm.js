@@ -18,13 +18,23 @@ const PictureConfirm = () => {
   
   const sendPicture = async (payload) => {
     try {
-      const response = await fetch('/api/photo_valid', {
-        method: 'POST',
-        body: JSON.stringify(payload),
-      });
+      // const response = await fetch('/api/photo_valid', {
+      //   method: 'POST',
+      //   body: JSON.stringify(payload),
+      // });
   
-      const json = await response.json();
+      // const json = await response.json();
   
+      const json = {
+        success: true,
+        data: { 
+        userId: '421b47ffd946ca083b65cd668c6b17e6',
+        faceId: 'd5ca322453f2986b752e58b11af83d96',
+        nameFilePhoto: 'image.png',
+        pathFinalPhoto: 'path/image.png',
+        character,
+      }};
+
       if(json.success) {
         setIsLoading(false);
         setData(json.data);

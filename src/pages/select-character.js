@@ -10,10 +10,7 @@ import { getUA } from 'react-device-detect';
 import CopyLink from '@/components/CopyLink';
 import { useRouter } from 'next/router';
 
-const geoIPKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
-
 const SelectCharacter = () => {
-  const { loading, location, error } = useLocation(geoIP(geoIPKey));
   const [process, setProcess] = useState(PROCESS_ENUM.character);
   const [progress, setProgress] = useState(0);
   const [character, setCharacter] = useState(null);
@@ -39,13 +36,13 @@ const SelectCharacter = () => {
     }
   }, [process]);
 
-  if(loading) {
-    return <><Layout /></>;
-  }
+  // if(loading) {
+  //   return <><Layout /></>;
+  // }
 
-  if(!location || !!error) {
-    router.push('/not-available');
-  }
+  // if(!location || !!error) {
+  //   router.push('/not-available');
+  // }
 
   const metaData = {
     pageTitle: 'Experience - Select Character'

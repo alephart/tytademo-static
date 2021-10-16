@@ -5,7 +5,14 @@ import useTranslation from 'next-translate/useTranslation';
 import ReactPlayer from 'react-player';
 import { isMobile } from 'react-device-detect';
 
-const JoinExperince = ({data}) => {
+const data = {
+    success: true,
+    urlVideo: 'https://mds-tyta.s3.amazonaws.com/videos/video-58349558309583490503_final.mp4',
+    urlShare: `https://tytademo.devmds.com/share-experience/`,
+    urlJoin: `https://tytademo.devmds.com/join-experience/`,
+  };
+
+const JoinExperince = () => {
   const { urlVideo, urlJoin } = data;
     const { t } = useTranslation('common');
 
@@ -68,26 +75,26 @@ const JoinExperince = ({data}) => {
     )
 }
 
-export const getServerSideProps = async (context) => {
-    const { params, locale } = context;
-    const urlAdmin = process.env.NEXT_PUBLIC_TYTA_API;
-    const urlSite = process.env.NEXT_PUBLIC_URL_SITE;
+// export const getServerSideProps = async (context) => {
+//     const { params, locale } = context;
+//     const urlAdmin = process.env.NEXT_PUBLIC_TYTA_API;
+//     const urlSite = process.env.NEXT_PUBLIC_URL_SITE;
 
-    //Fetch data from external API
-    const res = await fetch(`${urlAdmin}/participant/${params.id}`);
-    const json = await res.json();
+//     //Fetch data from external API
+//     const res = await fetch(`${urlAdmin}/participant/${params.id}`);
+//     const json = await res.json();
 
-    const pathLocale = locale === 'es' ? '/es/' : '/';
-    const data = {
-      success: true,
-      urlVideo: json.url_video,
-      urlJoin: `${urlSite}${pathLocale}join-experience/${params.id}`,
-    };
+//     const pathLocale = locale === 'es' ? '/es/' : '/';
+//     const data = {
+//       success: true,
+//       urlVideo: json.url_video,
+//       urlJoin: `${urlSite}${pathLocale}join-experience/${params.id}`,
+//     };
 
-    // Pass data to the page via props
-    return { props: { 
-      data
-    }, }
-  };
+//     // Pass data to the page via props
+//     return { props: { 
+//       data
+//     }, }
+//   };
   
 export default JoinExperince;

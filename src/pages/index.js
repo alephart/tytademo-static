@@ -3,7 +3,8 @@ import Layout from '@/components/layouts/StartPage';
 import { Rules } from '@/components/DialogsTyta';
 import { VideoBg } from '@/components/Anims';
 import Button from '@material-ui/core/Button';
-import useTranslation from 'next-translate/useTranslation';
+//import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'next-i18next';
 import { useLocation } from '@/components/hooks';
 import CookieConsent from '@/components/CookieConsent';
 import { geoIP } from '@/utils/geoIP';
@@ -11,25 +12,25 @@ import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
 /// ::API::
-const fetcher = (url) => fetch(url).then((r) => r.json());
+// const fetcher = (url) => fetch(url).then((r) => r.json());
 
-const geoIPKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
+// const geoIPKey = process.env.NEXT_PUBLIC_GEODB_API_KEY;
 
 const Home = () => {
   const { t } = useTranslation('common');
-  const { data: cookie_consent, error: swr_error } = useSWR('/api/get_cookie', fetcher);
-  const { loading, location, error } = useLocation(geoIP(geoIPKey));
+  // const { data: cookie_consent, error: swr_error } = useSWR('/api/get_cookie', fetcher);
+  // const { loading, location, error } = useLocation(geoIP(geoIPKey));
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const [disabledExperience, setDisabledExperience] = useState(false);
   const [showCookie, setShowCookie] = useState(false);
   const [isActive, setActive] = useState(false);
   const router = useRouter();
   
-  useEffect(() => {
-    if(!!cookie_consent) {
-      setDisabledExperience(!!cookie_consent.TOYOTA_COOKIE_CONSENT ? false : true);
-    }
-  }, [cookie_consent]);
+  // useEffect(() => {
+  //   if(!!cookie_consent) {
+  //     setDisabledExperience(!!cookie_consent.TOYOTA_COOKIE_CONSENT ? false : true);
+  //   }
+  // }, [cookie_consent]);
 
   useEffect(() => {
     if(disabledExperience) {
@@ -39,13 +40,13 @@ const Home = () => {
     }
   }, [disabledExperience]);
 
-  if(loading || !cookie_consent || swr_error) {
-    return <><Layout /></>;
-  }
+  // if(loading || !cookie_consent || swr_error) {
+  //   return <><Layout /></>;
+  // }
 
-  if(!location || !!error) {
-    router.push('/not-available');
-  }
+  // if(!location || !!error) {
+  //   router.push('/not-available');
+  // }
 
   const handleAdvance = () => {
     setActive(!isActive);
@@ -62,10 +63,10 @@ const Home = () => {
         <div className={isActive ? 'containerSpecial animationExit': 'containerSpecial'}>
           <div>
             <div className="copyStart ">
-              {t("start_copyStart")}
+              TAKE A SELFIE AND BE PART OF LUNAY’S VIDEO
               <span>
-                {t('start_subCopyStart')} <br/>
-                {t('start_subCopyStart2')}
+                Register and you could win a virtual  <br/>
+                Meet & Greet with Lunay
               </span>
             </div>
 
@@ -75,11 +76,11 @@ const Home = () => {
                 onClick={handleAdvance}
                 className="buttonStart"
                 variant="contained">
-                {t('start_buttonStart')}
+                START
               </Button>
           
             <div className="copyFooter">
-              {t('start_copyFooter1')} {t('start_copyFooter2')} <a id="termsAndConditions" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">{t('start_copyFooterLink')}</a>
+            By clicking you are accepting the <a id="termsAndConditions" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">Terms & Conditions.</a>
             </div>
             <Rules isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
           </div>

@@ -13,15 +13,15 @@ import { Help } from '@/components/DialogsTyta';
 import { Loading } from '@/components/Anims';
 import { useRouter } from 'next/router';
 
-const setCookie = (email) => {
-  fetch('api/set_cookie', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ email }),
-  });
-};
+// const setCookie = (email) => {
+//   fetch('api/set_cookie', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({ email }),
+//   });
+// };
 
 const RegisterInfo = ({ userEmail }) => {
   const { t } = useTranslation('common');
@@ -57,16 +57,18 @@ const RegisterInfo = ({ userEmail }) => {
   useEffect(() => {
     const initSwap = async (payload) => {
       try {
-        const response = await fetch('/api/photo_swap', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload),
-        });
+        // const response = await fetch('/api/photo_swap', {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify(payload),
+        // });
         
-        const json = await response.json();
-        //const status = await response.status;
+        // const json = await response.json();
+        // //const status = await response.status;
+
+        const json = { success: true };
         
         if(json.success) {
           // all good!, goto share!
@@ -97,18 +99,20 @@ const RegisterInfo = ({ userEmail }) => {
   // effect when dataRegister change state
   useEffect(() => {
     const sendData = async () => {
-      const response = await fetch('api/set_data', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dataRegister),
-      });
+      // const response = await fetch('api/set_data', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(dataRegister),
+      // });
 
-      const json = await response.json();
+      // const json = await response.json();
       
+      const json = { success: true };
+
       if(json.success) {
-        setCookie(dataRegister.email);
+        //setCookie(dataRegister.email);
 
         // when save json, then: swap proccess
         setStartSwap(true);
@@ -116,9 +120,9 @@ const RegisterInfo = ({ userEmail }) => {
       } else {
         setSubmitting(false);
         
-        if(json.userExist) {
-          setUserExists(json.userExist);
-        }
+        // if(json.userExist) {
+        //   setUserExists(json.userExist);
+        // }
       }
     };
 
@@ -151,9 +155,9 @@ const RegisterInfo = ({ userEmail }) => {
     setValues({...values, [name]: value});
 
     // check user exist
-    if(value === userEmail) {
-      setUserExists(true);
-    }
+    // if(value === userEmail) {
+    //   setUserExists(true);
+    // }
   };
   
   const handleChangeZip = (event) => {

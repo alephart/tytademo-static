@@ -5,7 +5,15 @@ import { ShareExperience } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/helpers/globals';
 import useTranslation from 'next-translate/useTranslation';
 
-const ToShareExp = ({data}) => {
+const data = {
+  success: true,
+  urlVideo: 'https://mds-tyta.s3.amazonaws.com/videos/video-58349558309583490503_final.mp4',
+  urlShare: `https://tytademo.devmds.com/share-experience/`,
+  urlJoin: `https://tytademo.devmds.com/join-experience/`,
+};
+
+const ToShareExp = () => {
+
   const [process, setProcess] = useState(PROCESS_ENUM.share);
   const [swap, setSwap] = useState(data);
   const { t } = useTranslation('common');
@@ -33,27 +41,27 @@ const ToShareExp = ({data}) => {
 }
 
 // ::SERVER::
-export const getServerSideProps = async (context) => {
-  const { params, locale } = context;
-  const urlAdmin = process.env.NEXT_PUBLIC_TYTA_API;
-  const urlSite = process.env.NEXT_PUBLIC_URL_SITE;
+// export const getServerSideProps = async (context) => {
+//   const { params, locale } = context;
+//   const urlAdmin = process.env.NEXT_PUBLIC_TYTA_API;
+//   const urlSite = process.env.NEXT_PUBLIC_URL_SITE;
 
-  // Fetch data from external API
-  const res = await fetch(`${urlAdmin}/participant/${params.id}`);
-  const json = await res.json();
+//   // Fetch data from external API
+//   const res = await fetch(`${urlAdmin}/participant/${params.id}`);
+//   const json = await res.json();
 
-  const pathLocale = locale === 'es' ? '/es/' : '/';
-  const data = {
-    success: true,
-    urlVideo: json.url_video,
-    urlShare: `${urlSite}${pathLocale}share-experience/${params.id}`,
-    urlJoin: `${urlSite}${pathLocale}join-experience/${params.id}`,
-  };
+//   const pathLocale = locale === 'es' ? '/es/' : '/';
+//   const data = {
+//     success: true,
+//     urlVideo: json.url_video,
+//     urlShare: `${urlSite}${pathLocale}share-experience/${params.id}`,
+//     urlJoin: `${urlSite}${pathLocale}join-experience/${params.id}`,
+//   };
 
-  // Pass data to the page via props
-  return { props: { 
-    data
-  }, }
-};
+//   // Pass data to the page via props
+//   return { props: { 
+//     data
+//   }, }
+// };
 
 export default ToShareExp;
