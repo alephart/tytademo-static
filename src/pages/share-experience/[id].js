@@ -1,18 +1,12 @@
+import { sql_query } from '../../lib/db';
+
 import { useState } from 'react';
 import Layout from '@/components/layouts/General';
 import { ExperienceContext } from '@/components/Context';
 import { ShareExperience } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/helpers/globals';
 
-const data = {
-  success: true,
-  urlVideo: 'https://mds-tyta.s3.amazonaws.com/videos/video-58349558309583490503_final.mp4',
-  urlShare: `https://tytademo.devmds.com/share-experience/`,
-  urlJoin: `https://tytademo.devmds.com/join-experience/`,
-};
-
-const ToShareExp = () => {
-
+const ToShareExp = ({data}) => {
   const [process, setProcess] = useState(PROCESS_ENUM.share);
   const [swap, setSwap] = useState(data);
 
@@ -39,27 +33,35 @@ const ToShareExp = () => {
 }
 
 // ::SERVER::
-// export const getServerSideProps = async (context) => {
-//   const { params, locale } = context;
-//   const urlAdmin = process.env.NEXT_PUBLIC_TYTA_API;
-//   const urlSite = process.env.NEXT_PUBLIC_URL_SITE;
+export const getServerSideProps = async (context) => {
+  const { params, locale } = context;
+  const urlSite = process.env.NEXT_PUBLIC_URL_SITE;
 
-//   // Fetch data from external API
-//   const res = await fetch(`${urlAdmin}/participant/${params.id}`);
-//   const json = await res.json();
+  const result = await sql_query(`
+    SELECT url_video FROM participants
+    WHERE participant_id = '${params.id}';
+  `);
 
-//   const pathLocale = locale === 'es' ? '/es/' : '/';
-//   const data = {
-//     success: true,
-//     urlVideo: json.url_video,
-//     urlShare: `${urlSite}${pathLocale}share-experience/${params.id}`,
-//     urlJoin: `${urlSite}${pathLocale}join-experience/${params.id}`,
-//   };
+  const participant = JSON.parse(JSON.stringify(result));
 
-//   // Pass data to the page via props
-//   return { props: { 
-//     data
-//   }, }
-// };
+  console.log('participant', participant);
+
+  const urlVideo = participant.length > 0
+    ? participant[0].url_video
+    : 'https://mds-tyta.s3.amazonaws.com/videos/video-58349558309583490503_final.mp4';
+
+  const pathLocale = locale === 'es' ? '/es/' : '/';
+  const data = {
+    success: true,
+    urlVideo,
+    urlShare: `${urlSite}${pathLocale}share-experience/${params.id}`,
+    urlJoin: `${urlSite}${pathLocale}join-experience/${params.id}`,
+  };
+
+  // Pass data to the page via props
+  return { props: { 
+    data
+  }, }
+};
 
 export default ToShareExp;
