@@ -60,7 +60,7 @@ const JoinExperince = ({data}) => {
                         <p>
                             Take a selfie to be a part of LUNAY’s video.
                         </p>
-                        <img className="QR desktop join" src="/images/DesktopHome.png" alt=""/>
+                        <img className="QR desktop join" src="/images/DesktopHomeDemo.png" alt=""/>
                     </div>
                 </div>
             </div>

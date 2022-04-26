@@ -14,7 +14,7 @@ const Landscape = () => {
                     <p className="desktop">
                       Scan the QR Code with your device or enter the URL in your mobile web browser.
                     </p>
-                    <img className="QR desktop" src="/images/DesktopHome2.png" alt=""/>
+                    <img className="QR desktop" src="/images/DesktopHomeDemo.png" alt=""/>
                     <a className="desktop" href={siteURL}>lunayxtoyota.com</a>
                     <h2 className="mobile">
                       PLEASE ROTATE YOUR DEVICE
