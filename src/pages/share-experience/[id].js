@@ -1,14 +1,22 @@
-import { sql_query } from '../../lib/db';
+//import { sql_query } from '../../lib/db';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from '@/components/layouts/General';
 import { ExperienceContext } from '@/components/Context';
 import { ShareExperience } from '@/components/FlowExperience';
 import { PROCESS_ENUM } from '@/helpers/globals';
+import { Demo } from '@/components/DialogsTyta';
 
 const ToShareExp = ({data}) => {
   const [process, setProcess] = useState(PROCESS_ENUM.share);
   const [swap, setSwap] = useState(data);
+  const [demo, setDemo] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDemo(true);
+    }, 2500);
+  }, []);
 
   const contextValues = {
     process, setProcess,
@@ -28,6 +36,7 @@ const ToShareExp = ({data}) => {
           <ShareExperience />
         )}
       </ExperienceContext.Provider>
+      <Demo id='messageDemo' isOpen={demo} setIsOpen={setDemo} final={true} />
     </Layout>
   )
 }
@@ -37,18 +46,20 @@ export const getServerSideProps = async (context) => {
   const { params, locale } = context;
   const urlSite = process.env.NEXT_PUBLIC_URL_SITE;
 
-  const result = await sql_query(`
-    SELECT url_video FROM participants
-    WHERE participant_id = '${params.id}';
-  `);
+  // const result = await sql_query(`
+  //   SELECT url_video FROM participants
+  //   WHERE participant_id = '${params.id}';
+  // `);
 
-  const participant = JSON.parse(JSON.stringify(result));
+  // const participant = JSON.parse(JSON.stringify(result));
 
-  console.log('participant', participant);
+  // console.log('participant', participant);
 
-  const urlVideo = participant.length > 0
-    ? participant[0].url_video
-    : 'https://mds-tyta.s3.amazonaws.com/videos/video-58349558309583490503_final.mp4';
+  // const urlVideo = participant.length > 0
+  //   ? participant[0].url_video
+  //   : 'https://mds-tyta.s3.amazonaws.com/videos/video-58349558309583490503_final.mp4';
+
+  const urlVideo = 'https://mds-tyta.s3.amazonaws.com/videos/video-58349558309583490503_final.mp4';
 
   const pathLocale = locale === 'es' ? '/es/' : '/';
   const data = {

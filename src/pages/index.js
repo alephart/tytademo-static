@@ -8,6 +8,7 @@ import CookieConsent from '@/components/CookieConsent';
 import { geoIP } from '@/utils/geoIP';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
+import { Demo } from '@/components/DialogsTyta';
 
 /// ::API::
 // const fetcher = (url) => fetch(url).then((r) => r.json());
@@ -22,6 +23,13 @@ const Home = () => {
   const [showCookie, setShowCookie] = useState(false);
   const [isActive, setActive] = useState(false);
   const router = useRouter();
+  const [demo, setDemo] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDemo(true);
+    }, 4000);
+  }, []);
   
   // useEffect(() => {
   //   if(!!cookie_consent) {
@@ -80,6 +88,7 @@ const Home = () => {
             By clicking you are accepting the <a id="termsAndConditions" onClick={() => setIsOpenDialog(!isOpenDialog)} role="button">Terms & Conditions.</a>
             </div>
             <Rules isOpen={isOpenDialog} setIsOpen={setIsOpenDialog} />
+            <Demo id='messageDemo' isOpen={demo} setIsOpen={setDemo} />
           </div>
         </div>
 

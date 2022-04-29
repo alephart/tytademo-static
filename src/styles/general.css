@@ -2954,6 +2954,11 @@ body .landscape.not h2.mobile {
   font-family: 'ToyotaBold';
 }
 
+.dialogs .center p {
+  text-align: center;
+  padding: 2px 20px;
+}
+
 .dialogs ul {
   font-family: "ToyotaRegular";
   padding: 0 0 0 0px;
