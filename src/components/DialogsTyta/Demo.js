@@ -26,7 +26,11 @@ const Demo = ({ isOpen, setIsOpen, final, id }) => {
             to the chosen character.</p>
 
             {final  && (
-              <p>See the music video here in this page.</p>
+              <div>
+                <p>See the music video here:</p>
+                <p><a href="https://www.youtube.com/watch?v=rIRpQwLQ2lY" target="_blank">TODO O NADA<br />LUNAY X ANITTA</a></p>
+              </div>
+
             )}
           </div>
           <Button

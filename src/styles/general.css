@@ -2959,6 +2959,16 @@ body .landscape.not h2.mobile {
   padding: 2px 20px;
 }
 
+.dialogs .center a {
+  color: rgb(226, 226, 226);
+  text-decoration: underline;
+}
+
+.dialogs .center a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 .dialogs ul {
   font-family: "ToyotaRegular";
   padding: 0 0 0 0px;
